@@ -1,0 +1,26 @@
+{*notag*}
+<table align="center">
+    <tr>
+	<td>
+	    {if $sm.lb_flag=="duels"}
+		{get_mod mod=leaderboard mgr=leaderboard choice=lb_duels uname=$sm.uname chk=1}
+	    {/if}
+	    {if $sm.lb_flag=="exp_point"}
+	     {get_mod mod=leaderboard mgr=leaderboard choice=lb_exp_point uname=$sm.uname chk=1}
+	    {/if}{if $sm.lb_flag=="ques_won"}
+		{get_mod mod=leaderboard mgr=leaderboard choice=lb_ques_won uname=$sm.uname iduser=$sm.id_user chk=1}
+	    {/if}{if $sm.lb_flag=="achievements"}
+		 {get_mod mod=leaderboard mgr=leaderboard choice=lb_achievements uname=$sm.uname iduser=$sm.id_user chk=1}
+	    {/if}
+	</td>
+    </tr>
+</table>
+{literal}
+<script type="text/javascript">
+    if('{/literal}{$sm.search1}{literal}'=='1'){
+	     $('#hsid').html(" No such user in the rankings.");
+    }
+</script>
+{/literal}
+
+

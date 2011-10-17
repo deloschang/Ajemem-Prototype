@@ -1,0 +1,68 @@
+{* notag *}
+
+<div id="leaderboard_lb_caption">
+<div class="box box-75 altbox">
+    <div class="boxin">
+        
+	 <input type="hidden" name="htot" id="rtot" value='{$sm.next_prev->total}'/>
+        <input type="hidden" id="qstart" value="{$sm.qstart}"/>
+        <div class="content">
+		    <table align="center" cellspacing="0"  border="1">
+			<thead>
+			    <th colspan="3" align="center">CAPTION RANKING</th>
+			</thead>
+			<thead><th></th>
+			    <th>Position</th>
+			    <th>Username</th>
+			    <th>Caption</th>
+			</thead>
+			<tbody>
+			{section name=cur loop=$sm.list}
+			{assign var=x value=$sm.list[cur]}
+			 <tr><td>{$x.id_user}</td>
+			    <td>{$smarty.section.cur.iteration+$sm.qstart}</td>
+			    <td>{$x.uname}</td>
+			    <td>{$x.cpoint}</td>
+			  </tr>
+			{sectionelse}
+			<tr>
+			    <td colspan="3">
+			    No caption Found.
+			    </td>
+			</tr>
+		    {/section}
+		    </tbody>
+		    </table>
+		
+		{if $sm.type=='advance'}
+	    <div class="pagination_adv">
+	        {$sm.next_prev->generateadv()}
+	    </div>
+	{elseif $sm.type=='box'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='normal'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='nextprev'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->onlynextprev()}</div>
+	    </div>
+	{elseif $sm.type=='extra'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generateextra()}</div>
+	    </div>
+	{else}
+	    {if $sm.type!='no'}
+	        <div>
+	            <div align="center">{$sm.next_prev->generate()}</div>
+	        </div>
+	    {/if}
+	{/if}
+        </div>
+    </div>
+</div>
+</div>
+	

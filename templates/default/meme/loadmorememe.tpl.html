@@ -1,0 +1,87 @@
+{if $sm.res_meme}
+{assign var=category value=$util->get_values_from_config('CATEGORY')}
+{literal}
+<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var id = "{/literal}{$sm.last_idmeme}{literal}";
+	var new_ids = "{/literal}{$sm.id_memes}{literal}";
+	if(id!=''){
+	    $("#last_id_meme_cur_page").val(id);
+	    var id_memes = $("#rand_id_memes").val();
+	    $("#rand_id_memes").val(id_memes+","+new_ids);
+	}
+	else{
+	    $("#last_id_meme_cur_page").val('');
+	    $("#chk_me").val("1");
+	}
+	$(".fb_btn").each(function (){
+	    FB.XFBML.parse($(this).get(0));
+	});
+</script>
+{/literal}
+{foreach name=cur_meme item=x key=k from=$sm.res_meme}
+<div >
+	    <div  id="meme{$x.id_meme}" class="meme">
+
+{* Height between memes *}
+		<div style="height: 90px;">
+
+<!-- Image specs for live feed meme -->
+			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="cursor:pointer;width: 80px;height: 80px;" align="left" title="Meme" onclick="show_details('{$x.id_meme}');"/> 
+
+{* Meme Title *}
+			<div style="vertical-align: top; font-size: 15px"><b><a href ="#" OnClick="show_details('{$x.id_meme}'); return false;">{$x.title|capitalize}</a></b><span style="font-size:12px"> by {$sm.uinfo[$x.id_user].fname|capitalize} {$sm.uinfo[$x.id_user].lname|capitalize}</span></div>
+
+<!-- Caption shows below image -->
+			<div style="font-size: 12px;color:blue;"><span id="hrc{$x.id_meme}">{if $sm.hrc[$x.id_meme].caption}"{$sm.hrc[$x.id_meme].caption}"{else}{/if}</span></div><br/>
+
+<!-- Comment out Category
+			    Category:<b>{$category[$x.category]}</b><br/> -->
+
+<!-- Meme Author (Commented out)
+			    by {$sm.uinfo[$x.id_user].fname|capitalize} {$sm.uinfo[$x.id_user].lname|capitalize} <br/> -->
+
+<!-- Date (Commented out)
+			    On: {$x.add_date|date_format:"%m-%d-%Y"} @ {$x.add_date|date_format:"%I:%M %p"}<br/><br/>  -->
+
+<!-- Reply-->
+			    {if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
+			    <label id="repl{$x.id_meme}">{$x.tot_reply}</label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('{$x.id_meme}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;
+			    {/if} 
+
+<!-- Honor -->
+			    <label id="aggr{$x.id_meme}">{$x.tot_honour}</label>&nbsp;<a href="javascript:void(0);" id="agr_link{$x.id_meme}" onclick="set_tot_adaggr('{$x.id_meme}','A');">Honor</a>&emsp;
+
+<!-- Dishonor -->
+			    <label id="disaggr{$x.id_meme}">{$x.tot_dishonour}</label>&nbsp;<a href="javascript:void(0);" id="disagr_link{$x.id_meme}" onclick="set_tot_adaggr('{$x.id_meme}','D');">Dishonor</a>
+
+<!-- Add Caption -->
+			    {if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
+			    &nbsp;<label id="capt{$x.id_meme}">{$x.tot_caption} </label> <a href="javascript:void(0)" onclick="get_captions('{$x.id_meme}');" >Add Caption</a>
+			    {/if}
+
+<!-- Flag -->
+			    {if $x.id_user!=$smarty.session.id_user}
+				 &nbsp;<a href="javascript:void(0)" onclick="flagging('{$x.id_meme}')">Flag</a>
+			    {/if}
+
+			</div>
+
+<!-- Caption shows below image (commented out for now)
+			<div style="font-size: 12px;color:blue;"><span id="hrc{$x.id_meme}">{if $sm.hrc[$x.id_meme].caption}{$sm.hrc[$x.id_meme].caption}{else}{/if}</span></div><br/> -->
+
+<!-- Twitter function commented out
+			    <span class="fb_btn"><fb:like href="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like></span>
+			</span><br/>
+			<span ><a href="http://twitter.com/share" class="twitter-share-button" data-url="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje"  >Tweet</a></span> 
+
+-->
+	    </div>
+	    <div id="send_reply{$x.id_meme}" style="width:60%;display: none;"></div>
+	    <div id="add_caption{$x.id_meme}" style="width:60%;display: none;"></div>
+	    <input type="hidden" name="is_replied" id="is_replied{$x.id_meme}" value=''/>
+	    <input type="hidden" name="is_agreed" id="is_agreed{$x.id_meme}" value=''/>
+	    <input type="hidden" name="is_disagreed" id="is_disagreed{$x.id_meme}" value=''/>
+</div><br/>
+{/foreach}
+{/if}

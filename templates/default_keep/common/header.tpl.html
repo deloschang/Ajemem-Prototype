@@ -1,0 +1,24 @@
+<div id="header">
+	<h1><a href="##LBL_SITE_URL##">Memeje</a></h1>
+	<center>
+	    {if $smarty.session.id_user}
+		 Welcome {$smarty.session.email}
+	    {/if}
+	</center>
+	<div class="fltrht" style="margin-top:0px;">
+		{if $smarty.session.id_admin || $smarty.session.id_user}
+			<a href ="javascript:void(0);" onclick="fb_logout();">Logout</a>
+	    {/if}
+		{if $smarty.session.id_admin}
+			<br/><a href="##LBL_ADMIN_SITE_URL##">Return to Admin Site</a>
+		{/if}
+		{if !$smarty.session.id_user}
+		    <br/><a href="##LBL_SITE_URL##">Login</a>
+		{/if}
+		
+		<br/><a href="##LBL_SITE_URL##index.php/cms/show/code/aboutus">About Us</a>
+		<!--<br/><a href="##LBL_SITE_URL##index.php/cms/show/code/memeja">What is Memeja</a>-->
+		<br/><a href="##LBL_SITE_URL##achievements/whatisMemeja">What is Memeja</a>
+		<br/><a href="##LBL_SITE_URL##leaderboard/leaderboard">Leaderboard</a>
+	</div>
+</div>

@@ -1,0 +1,93 @@
+<link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/filter.css"/>
+
+<div align="center">
+      <h2>Add friends to memeje friend list </h2>
+      <div> You have currently {if $sm.frnds_cnt}<b>{$sm.frnds_cnt}</b>{else}no{/if} friend{if $sm.frnds_cnt > 1}s{/if}</div>
+      <div id="search" >
+        <label for="filter">Find friends</label> <input type="text" name="filter" value="" id="filter" />
+      </div>
+      <div id="result" style="width:600px;overflow: auto; height: 250px;border-width: .2em; border-style: ridge;border-color: #000; " >
+		{section name=cur loop=$sm.frnds}
+		{assign var=f value=$sm.frnds[cur]}
+		<div class="each_record in_txt">
+			<table border='0' width='160'>
+				<tr  pidusr="{$f.id_user}" class="pinfo">
+					<td width="60" height="60">
+						<div class='photo_container'><img src="##LBL_SITE_URL##image/thumb/avatar/{if $f.avatar}{$f.avatar}{else}{if $f.gender=='M'}memeje_male.jpg{else}memeje_female.jpg{/if}{/if}" height="60px" width="60px"/><input type="checkbox" name="sel[]" value="{$f.id_user}" class='tick_chkbox'></div>
+					</td>
+					<td class='frend_name'><span class="filt_txt">{$f.fname}<br>{if $f.mname}{$f.mname}<br>{/if}{$f.lname}</span></td>
+				</tr>
+			</table>
+		</div>
+		{/section}
+      </div>
+      <div><input type="button" name="send_req" value="Add as friends" onclick="add_memeje_frnds();"></div>
+      <input type="hidden" id="frndpg" value="-1">
+</div>
+{literal}
+<script src="##LBL_SITE_URL##templates/flexyjs/filter.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+	function add_memeje_frnds(){
+		var ids='';
+		var i=0;
+		$('.tick_chkbox').each(function(){
+			if($(this).is(':checked')){
+			    if(ids==""){
+				 ids =$(this).val();
+			    }else{
+				ids +=","+$(this).val();
+			    }
+			    i++;
+			}
+		});
+		var url="##LBL_SITE_URL##index.php";
+		$.post(url,{"page":"user","choice":"add_memeje_frnds","ids":ids,ce:0},function(res){
+			if(res){
+			    $.fancybox.close();
+			}
+		})
+	}
+	function loadjscssfile(filename, filetype){
+		if (filetype=="js"){ //if filename is a external JavaScript file
+			var fileref=document.createElement('script')
+			fileref.setAttribute("type","text/javascript")
+			fileref.setAttribute("src", filename)
+		}
+		else if (filetype=="css"){ //if filename is an external CSS file
+			var fileref=document.createElement("link")
+			fileref.setAttribute("rel", "stylesheet")
+			fileref.setAttribute("type", "text/css")
+			fileref.setAttribute("href", filename)
+		}
+		if (typeof fileref!="undefined")
+			document.getElementsByTagName("head")[0].appendChild(fileref)
+	}
+	function show_profile_info(id_user){
+		var url="##LBL_SITE_URL##";
+		$.post(url,{"page":"leaderboard","choice":"show_profile","id":id_user,ce:0,"nofrndbtn":1},function(res){
+		    if($("#frndpg").val()=='-1')
+			    $("#show_profile_info").css('z-index','99999').html(res);
+		    else
+			    $("#show_profile_info").html('');
+		});
+	}
+	$(document).ready(function(){
+	    $(".pinfo").mouseenter(function(){
+		show_profile_info($(this).attr('pidusr'));
+
+	    }).mouseleave(function(){
+		$("#show_profile_info").html('');
+
+	    });
+	});
+</script>
+<style type="text/css">
+	.each_record{
+		margin-left:10px;
+		margin-right:20px;
+		margin-top:20px;
+		float:left;
+	}
+</style>
+{/literal}

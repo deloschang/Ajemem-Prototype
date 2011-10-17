@@ -1,0 +1,138 @@
+{assign var=m value=$sm.next_prev->module}
+{if defined($smarty.const.LINK_SEPARATOR)}
+	{assign var=sep value=$smarty.const.LINK_SEPARATOR}
+{else}
+	{assign var=sep value="-"}
+{/if}
+{if $sm.list || $sm.hlink}
+			<div class="box box-75 altbox">
+				<div class="boxin">
+					<div class="header" width>
+						<h3>
+						{if $sm.pg_header}
+							{$sm.pg_header}
+						{else}
+							{$sm.next_prev->module|capitalize:true} Lists
+						{/if}
+						</h3>
+						{if $sm.hlink}
+							{foreach from=$sm.hlink item=item key=key}
+								<a {$item.action} class="button">{$item.prompt}</a>
+							{/foreach}
+						{/if}							
+					</div>
+					<div class="content">
+						<table cellspacing="0">
+						<thead>
+							<tr>
+								{if $sm.special}
+									<td class="tb">{$sm.special.prompt}</td>
+								{/if}
+								{foreach from=$sm.field item=item key=key}
+									{if $key == $smarty.session.$m.sort_by}
+										{if $smarty.session.$m.sort_order=="ASC"}
+											{assign var=cls value="asc"}
+										{else}
+											{assign var=cls value="desc"}
+										{/if}
+									{else}
+										{assign var=cls value=""}
+									{/if}
+
+									<td class="tc {$cls}">
+										{if $item.1!=0}
+											{if $sm.ajax}
+												<a href="javascript:get_next_page('##APP_ROOT_URL##{$sm.uri}{$sep}sort_by{$sep}{$key}',0,0)">{if $item!=""}{$item.0}{else}{$key}{/if}</a>
+											{else}
+												<a href="##APP_ROOT_URL##{$sm.uri}{$sep}sort_by{$sep}{$key}">{if $item!=""}{$item.0}{else}{$key}{/if}</a>
+											{/if}
+										{else}
+											{if $item!=""}{$item.0}{else}{$key}{/if}
+										{/if}
+									</td>
+								{/foreach}
+								{foreach from=$sm.links item=item key=key}
+									<td class="tc">
+										{$item.0}
+									</td>
+								{/foreach}
+							</tr>
+						</thead>
+						<tbody>
+						{section name=cur loop=$sm.list}
+						{assign var=x value=$sm.list[cur]}
+							<tr {if $smarty.section.cur.iteration==1}class="first"{/if}>
+							{if $sm.special}
+								<td class="tb">
+									{assign var=id value=$sm.special.id}
+									<input type="checkbox" class="chkbox" value="{$x.$id}"/>
+								</td>
+							{/if}
+							{foreach from=$sm.field item=item key=key}
+								<td class="tb">
+									{if $item.anchor}
+										{if $item.condition}
+											{assign var=cond value=$x.$key}
+											<a href="{$item.anchor}{$x.id_user}">{$item.condition.$cond}</a>
+										{else}
+											<a href="{$item.anchor}{$x.$key}">{$x.$key}</a>
+										{/if}
+									{elseif $item.condition}
+										{assign var=cond value=$x.$key}
+										{$item.condition.$cond}
+									{else}
+										{if $item.format!=""}
+											{capture name=k}
+												{ldelim}"{$x.$key}"|{$item.format}{rdelim}
+											{/capture}
+											{eval var=$smarty.capture.k}
+										{elseif $item.image!=""}
+											<img src="{$item.image}{$x.$key}" />
+										{else}
+											{$x.$key}
+										{/if}
+									{/if}
+								</td>
+							{/foreach}
+							{foreach from=$sm.links item=item key=key}
+								<td class="tc">
+									<a {if $item.function}onclick='{$item.function}("{$item.1}{$x[$item.2]}");'{else}href="{$item.1}{$x[$item.2]}"{/if}>{if $item.3}<img src="{$item.3}" title="{$item.0}"/>{else}{$item.0}{/if}</a>
+								</td>
+							{/foreach}
+							</tr>
+						{/section}
+						</tbody>
+						</table>
+					</div>
+				</div>
+				{if $sm.type=='advance'}
+					<div class="pagination_adv">
+						{$sm.next_prev->generateadv()}
+					</div>
+				{elseif $sm.type=='box'}
+					<div class="pagination_box">
+						<div align="center">{$sm.next_prev->generate()}</div>
+					</div>
+				{elseif $sm.type=='normal'}
+					<div class="pagination">
+						<div align="center">{$sm.next_prev->generate()}</div>
+					</div>
+				{elseif $sm.type=='nextprev'}
+					<div class="pagination">
+						<div align="center">{$sm.next_prev->onlynextprev()}</div>
+					</div>
+				{elseif $sm.type=='extra'}
+					<div class="pagination_box">
+						<div align="center">{$sm.next_prev->generateextra()}</div>
+					</div>
+				{else}
+					{if $sm.type!='no'}
+						<div>
+							<div align="center">{$sm.next_prev->generate()}</div>
+						</div>
+					{/if}
+				{/if}
+			</div>
+{else}
+	<center><b>No records found</b></center>
+{/if}

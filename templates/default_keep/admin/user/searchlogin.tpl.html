@@ -1,0 +1,47 @@
+<div class="box box-50 altbox tl">
+
+    <div class="boxin">
+        <div class="header">
+        	<h3>Search Login</h3>
+        </div>
+	<form class="basic" action="##LBL_ADMIN_SITE_URL##index.php/user/getuserlogin" method="post" name="search_form" id="search_form" enctype="multipart/form-data" onSubmit=" return checkfield();">       
+     <div class="inner-form">
+     		<input type="hidden" name="sfld" id="sfld" value="1">
+            <dl>
+                <dt class="t1"><label for="some1">Username:</label></dt>
+                
+                <dd>
+                     <input type="text" id="s_user" name="s_user" class="txt"/>
+                </dd>
+                <dt class="t1"><label for="some1">IP Address:</label></dt>
+                
+                <dd>
+                	<input type="text" id="s_ip" name="s_ip" class="txt"/>
+                </dd>
+				 <dt class="t1"><label for="some1">Email Id:</label></dt>
+                
+                <dd>
+                	<input type="text" id="s_email" name="s_email" class="txt"/>
+                </dd> 
+				 <dt></dt>
+                <dd>
+                	<input class="button" type="submit" id="btn_search" name="btn_search" value="Search"/>
+                </dd> 
+            </dl>
+           <div id="failmsg" style="color:#FF0000">{if $sm.fail_msg}{$sm.fail_msg}{/if}</div>
+        </div>
+       </form>
+	</div>
+</div>
+{literal}
+ <script type="text/javascript">
+ 	function checkfield() {
+		if(!(document.getElementById('s_user').value || document.getElementById('s_ip').value || document.getElementById('s_email').value))	{
+			$('#failmsg').html('Atleast mention one search field.');
+			return false;
+		}else{
+			$('#failmsg').html('');
+		}
+	}
+ </script>
+{/literal}

@@ -1,0 +1,130 @@
+<script type="text/javascript" src="##JS_PATH##libsext/js/reorder.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/js/table_dnd.js"></script>
+
+{literal}
+<style type="text/css">
+.class1{
+	background:#3366FF;
+}
+.showDragHandle{	
+	background:#FF0000;
+	cursor:move;
+}
+.altbox .content table tr.even td {background: #fff;}
+</style>
+{/literal}
+{if $sm.res}
+	<div class="box box-75 altbox"> 
+		<div class="boxin">
+			<div class="header">
+				<h3>Config Settings</h3><input id="collapse" type="button" class="button" value="Expand All"/>
+			</div>
+            <div style="margin-bottom:10px">
+			{section name=setting loop=$sm.res}
+			{assign var=x value=$sm.res[setting]}
+				{if $sm.res[setting.index_prev].name != $x.name}
+                        <div class="div_head"><div class="fl"><b class="sign" style="font-size:16px; margin-left:5px">+</b></div><div class="fl"><b>&nbsp;&nbsp;&nbsp;{$x.name}</b></div></div>
+                        <div class="content table_margin" style="display:none">
+                        <!--<form action="##LBL_ADMIN_SITE_URL##index.php/page-setting-choice-update_config" name="setting_{$x.name}" method="post">-->			
+			{literal}
+				<script type="text/javascript">
+				$(document).ready(function(){
+					var curl='##LBL_ADMIN_SITE_URL##index.php/setting/reorder?tab=';
+					{/literal}
+					new callreorder("tab{$x.name}","dragHandle",curl,"showDragHandle","class1");
+					{literal}
+				});
+				</script>
+			{/literal}
+                        <form action="javascript:void(0);" id="setting_{$x.name}" name="setting_{$x.name}" method="post" onsubmit="updateConfig('##LBL_ADMIN_SITE_URL##index.php/setting/update_config','{$x.name}')">
+                        <input type="hidden" name="sectype" value="{$x.name}" />
+                        <table align="center" id="tab{$x.name}" style="width:550px;">
+                    {/if}
+                    <tr class="nodrag" id="{$x.id_config}">
+						<td class="dragHandle" style="width:10px" title="Drag"></td>
+                        <td class="ttop" style="width:100px; text-align:right" align="right">{$x.ckey}</td>
+                        <td class="ttop">
+                            <div style="float:left;">
+                                {assign var=f_key value=","|explode:$x.f_key}
+                                {assign var=f_value value=","|explode:$x.f_value}
+                                {assign var=name_field value=$x.name|cat:'['|cat:$x.id_config|cat:']'}
+                                {if $x.f_type=='radio'}
+                                    <span>{html_radios name=$name_field values=$f_key output=$f_value selected=$x.value}</span>
+                                {elseif $x.f_type=='checkbox'}
+                                    {assign var=x_value value=","|explode:$x.value}
+                                    <span>{html_checkboxes name=$name_field values=$f_key output=$f_value}</span>
+                                {elseif $x.f_type=='dropdown'}							
+                                    <select name="{$name_field}">
+                                        {html_options values=$f_key output=$f_value selected=$x.value}
+                                    </select>
+                                {else}
+                                    <input type="text" name="{$name_field}" value="{$x.value}"/>
+                                {/if}
+                            </div>
+                            {if $x.comment}
+                            <div style="float:left; padding:3px"><a href="javascript:void(0);" class="comment" onmouseover="return overlib('{$x.comment}', CAPTION, '&nbsp;Comment', CLOSECLICK, CSSCLASS,FGCLASS,'fgClass',
+                            BGCLASS,'bgClass', CLOSEFONTCLASS, 'capfontClass','CAPTIONFONTCLASS','fontclass',FOLLOWMOUSE)" onmouseout="return nd();" style="text-decoration:none"><img src="##LBL_SITE_URL##templates/css_theme/img/help_sign.gif" alt="help"/></a></div>
+                            {/if}
+                            {if $sm.res[setting.index_next].name != $x.name}
+                                </td>
+                                </tr>
+                                </table><div style="float:right; position:relative; margin-top:-30px"><input class="button" type="submit" value="Update" name="submit"/></div>
+                                </form>
+                                </div>
+						{else}   
+							</td>
+							</tr>
+						{/if}
+			{/section}
+            </div>
+		</div>
+	</div>
+{else}
+	<center><b>No records found</b></center>
+{/if}
+{literal}
+<script type="text/javascript">
+ function updateConfig(url,id){
+ 	var fval=$("#setting_"+id).serialize();
+	url+="/ce/0?"+fval;
+ 	$.post(url,function(response){
+		showmsg('',"Successfully Updated");//showmsg('divid','error message');
+		if(id=="ADMIN_THEME")
+		window.location.href=response;
+	});
+ }
+ 
+ $('.div_head').click(function(){
+	var txt=$('.sign',this).html();
+	if(txt=='-'){
+		$(this).next('.table_margin').slideUp('slow');
+		$('.sign',this).html('+');
+		$('#collapse').attr('value','Expand All');
+	 }
+	else if(txt=='+'){
+		$(this).next('.table_margin').slideDown('slow');
+		$('.sign',this).html('-');
+		$('#collapse').attr('value','Collapse All');
+	 }
+ });
+
+ $('#collapse').click(function(){
+	var txt=$('#collapse').attr('value');
+	if(txt=='Collapse All'){
+		$('.table_margin').slideUp(1000);
+		$('#collapse').attr('value','Expand All');
+		$('.sign').html('+');
+
+	 }
+	else if(txt=='Expand All'){
+		$('.table_margin').slideDown(1000);
+		$('#collapse').attr('value','Collapse All');
+		$('.sign').html('-');	
+	 }
+ });
+
+ $(document).ready(function(){
+ 	$('table#tab').css({background:'none'});
+ });
+</script> 
+{/literal}

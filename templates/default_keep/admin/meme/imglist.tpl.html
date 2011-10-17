@@ -1,0 +1,19 @@
+{if $sm.res}
+{section name=cur loop=$sm.res}
+    {assign var=x value=$sm.res[cur]}
+    <span><b>{$x.image}<br></b></span>
+{/section}
+{/if}
+<br>
+<input type="button" value="Done" onclick="get_imglist();"/>
+{literal}
+<script type="text/javascript">
+	function get_imglist(){
+	    var url="##LBL_ADMIN_SITE_URL##index.php";
+	    $.post(url,{"page":"meme","choice":"list_premadeImages","chk":1,ce:0},function(res){
+		$('#meme_list_premadeImages').html(res);
+	    });
+	     $.fancybox.close();
+	}
+</script>
+{/literal}

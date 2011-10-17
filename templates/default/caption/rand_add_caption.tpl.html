@@ -1,0 +1,115 @@
+{literal}
+    <script type="text/javascript">
+	var flag_post =0;
+	$(document).ready(function(){
+	     $("#rand_last_caption_id_page").val("{/literal}{if $sm.last_id}{$sm.last_id}{else}-1{/if}{literal}");
+	     $("#rand_last_caption_id").val("{/literal}{if $sm.lst_cap}{$sm.lst_cap}{else}-1{/if}{literal}");
+	     $("#rand_chk").val("{/literal}{$sm.last_id}{literal}");
+	    setInterval("rand_get_all_time()",7000);
+	    $("#rand_caption").keyup(function (){
+		($("#rand_caption").val()!='')?$("#rand_msg").html(""):$("#rand_msg").html("Please add a caption");
+	    });
+	});
+	function rand_caption_post(id){
+		var fg = rand_checkcaption(id);
+		if(fg){
+		   var caption = $("#rand_caption"+id).val();
+		   var url = "##LBL_SITE_URL##caption/insert_caption";
+		   $("#rand_caption"+id).val('');
+		   $("#rand_loading"+id).show();
+		   $.post(url,{id_meme:id,ce:0,caption:caption,flag:'rand'},function(res){
+		       flag_post=1;
+		       $("#rand_capt"+id).html(parseInt($("#rand_capt"+id).html())+1);
+		       $("#rand_loading"+id).hide();
+		       $("#rand_all_captions"+id).prepend(res);
+		   });
+		}else{
+		    return false;
+		}
+	}
+	function rand_checkcaption(id){
+	    var flag = ($("#rand_caption"+id).val())?true:false;
+	    if(!flag)
+		$("#rand_msg"+id).html("Please add a caption");
+	    return flag;
+	}
+	function rand_close_me(id){
+	    $("#randadd_caption"+id).slideToggle();
+	}
+	function rand_get_all_time(){
+			   var id_cap = $("#rand_last_caption_id_page").val();
+			   var id_meme = "{/literal}{$sm.id}{literal}";
+			   var last_cap = $("#rand_last_caption_id").val();
+			   var url = "##LBL_SITE_URL##caption/get_all_time";
+			   $.post(url,{id_meme:id_meme,ce:0,id_cap:id_cap,last_cap:last_cap},function(data){
+			       if(data[0]){
+				   if(!flag_post)
+				       $("#rand_all_captions").prepend(data[0]);
+					if(id_cap=="-1")
+					    $("#rand_last_caption_id_page").val(data[3]);
+					$("#rand_last_caption_id").val(data[2]);
+				    }
+				    if(data[1]){ 
+					var temp = data[1];
+					for(var i=0;i<temp.length;i++){
+					    $("#rand_sp"+temp[i]['id_caption']).html(temp[i]['timesago']);
+					    $("#rand_hnr"+temp[i]['id_caption']).html(temp[i]['tot_honour']);
+					    $("#rand_dishnr"+temp[i]['id_caption']).html(temp[i]['tot_dishonour']);
+					}
+				    }
+				},"json");
+	}
+	function rand_set_hnrdishnr(obj,id_cap){
+		var url = "##LBL_SITE_URL##caption/update_hnr_dishnr";
+		var id_meme = "{/literal}{$sm.id}{literal}";
+		var id_cap = id_cap; 
+		var flag = $(obj).val();
+		$.post(url,{id:id_meme,flag:flag,id_cap:id_cap,ce:0},function(res){
+		    if(res[0]!=0){
+			if(res[1]==1)
+			    $("#rand_hnr"+id_cap).html(res[0]);
+			else
+			    $("#rand_dishnr"+id_cap).html(res[0]);
+		    }else
+			alert("You have already voted.");
+		},"json");
+	}
+    </script>
+    <style type="text/css">
+	.iden{
+	   background: black;
+	   color: white;
+	   border:none;
+	   cursor: pointer; 
+	}
+	input {
+	    cursor: pointer;
+	}
+	textarea{
+	    height: 50px;
+	    width: 90%;
+	}
+    </style>
+{/literal}
+<div align="center">
+        <br />
+	<input type="hidden" id="rand_last_caption_id_page" />
+	<input type="hidden" id="rand_last_caption_id" />
+	<input type="hidden" id="rand_chk" />
+	<div style="width: 80%;height: auto;" >
+	    <span style="font-weight: lighter;font-size: 8pt;">POST A CAPTION</span>
+	    <div style="float:right;margin-right: 7px;cursor:pointer;" onClick="rand_close_me('{$sm.id}');">
+		<img src="##LBL_SITE_URL##spad/site_image/delete.png" title="Close"/>
+	    </div>
+	    <span style="float:left;" id="rand_msg{$sm.id}"></span>
+	    <textarea  name="caption" id="rand_caption{$sm.id}"></textarea><br/>
+		<input  class="iden"  type="button" value="Post" onclick="rand_caption_post('{$sm.id}');"/>
+	</div><br/>
+	<div id="rand_loading{$sm.id}" style="position:relative;top:-120px;display:none;"><img src="##LBL_SITE_URL##templates/images/loadingAnimation.gif" /></div>
+    <div id="rand_all_captions{$sm.id}">
+    {include file="caption/rand_loadmore_caption"}
+    </div>
+    <div id="rand_loading_img" style="display:none;">
+	<img src="##LBL_SITE_URL##templates/images/loading.gif" />
+    </div>	
+</div>

@@ -1,0 +1,29 @@
+{assign var=category value=$util->get_values_from_config('PREMADE_CATEGORY')}
+Image:<b>{$sm.res.0.image}</b><br>
+<label for="category">Category:</label>
+<select name="categery" id="ucategory">
+    <!--<option value="">--Select--</option>-->
+    {html_options options=$category selected=$sm.res.0.id_category }
+</select><br>
+<input type="button" value="update" onclick="update_category('{$sm.res.0.id_premade_image}','{$sm.res.0.id_category}');"/>
+{literal}
+<script type="text/javascript">
+  function update_category(id,idc){
+      qstart='{/literal}{$sm.qstart}{literal}';
+      var id_category=$('#ucategory').val();
+      if(id_category==idc){
+	  $.fancybox.close();
+      }else{
+	  var url="##LBL_ADMIN_SITE_URL##index.php";
+	    $.post(url,{"page":"meme","choice":"update_category",id_category:id_category,"id":id,"qstart":qstart,ce:0},function(response){
+		     $("#meme_list_premadeImages").html(response);
+	    });
+	      $.fancybox.close();
+	  
+      }
+      
+  }
+	
+  
+</script>
+{/literal}

@@ -1,0 +1,50 @@
+<div style="position:relative; left:15px">
+	<a href="javascript:void(0);" onclick="show_div('php{$sm.mod_name}')" style="color:#FF0000">PHP files:</a>
+	<div id="php{$sm.mod_name}" style="position:relative; left:15px; display:none" >
+		{foreach from=$sm.files key=key item=item}
+			<a href="javascript:void(0);" onclick="show_detail('{$item}','{$sm.mod_name}','{$key}');" style="color:#FF0000">{$item}</a><br />
+		{/foreach}
+	</div>
+</div>
+
+<div style="position:relative; left:15px">
+	<a href="javascript:void(0);" onclick="show_div('temp{$sm.mod_name}')" style="color:#00CC66">Template  files:</a>
+		<div id="temp{$sm.mod_name}" style="display:none">
+			{if $sm.templates.admin}
+				<div style="position:relative; left:15px">
+					<a href="javascript:void(0);" onclick="show_div('admin{$sm.mod_name}')">Admin:</a><br />
+					<div id="admin{$sm.mod_name}" style="position:relative; left:15px; display:none">
+						{foreach from=$sm.templates.admin item=item}
+							<a href="javascript:void(0);" onclick="show_detail('{$item}','{$sm.mod_name}','tpl');" style="color:#00CC66">{$item}</a><br />
+						{/foreach}
+					</div>
+				</div>
+			{else}
+				No files in admin.
+			{/if}
+			{if $sm.templates.genral}
+				<div style="position:relative; left:15px">
+					<a href="javascript:void(0);" onclick="show_div('gen{$sm.mod_name}')">General:</a><br />
+					<div id="gen{$sm.mod_name}" style="position:relative; left:15px; display:none">
+						{foreach from=$sm.templates.genral item=item}
+							<a href="javascript:void(0);" onclick="show_detail('{$item}','{$sm.mod_name}','tpl');">{$item}</a><br />
+						{/foreach}
+					</div>
+				</div>
+			{else}
+				No files.
+			{/if}
+	</div>
+</div>
+
+{literal}
+<script type="text/javascript">
+var flag=true;
+function add_new(type,mod){
+	var url='##LBL_ADMIN_SITE_URL##index.php';
+	$.post(url,{"page":"module","choice":"add_template",ce:0,type:type,mod_name:mod},function(res){
+		$('#edit_sec').html(res);
+	});
+}
+</script>
+{/literal}

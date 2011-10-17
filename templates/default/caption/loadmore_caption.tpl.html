@@ -1,0 +1,52 @@
+{*notag*}
+{literal}
+<script type="text/javascript">
+	$("#chk").val("{/literal}{if $sm.last_id}{$sm.last_id}{else}1{/if}{literal}");
+</script>
+{/literal}
+{if $sm.captions}
+	{foreach name=cap item=i key=k from=$sm.captions}
+	<div>
+	    <div style="margin-left:62px; float:left;">
+
+		{* Shows avatar *}
+		<img src="##LBL_SITE_URL##image/thumb/avatar/{$sm.user_info[$i.id_user].avatar}" style="width:45px;height:45px;" align="left"/><br/>
+		
+	    </div>
+
+	    <div class="sam_div" align="left" style="padding-left:60px; width: 100%; padding-bottom: 10px; background-color: white;"> 
+
+		{* Shows username *}
+
+		<div class="caption_name" style="font-size:13px; float:left; width:10px;"><b>&nbsp;{$sm.user_info[$i.id_user].fname|capitalize}&nbsp;{$sm.user_info[$i.id_user].lname|capitalize}</b></div>
+		<div align="right">Posted <span id="sp{$i.id_caption}">{$i.timesago}</span> ago</div>
+
+		<br/>
+
+		{* Shows user-submitted caption *}
+		<div style="font-size:12px; color:blue; float:left;"><span id="hrc{$x.id_meme}">&emsp;"{$i.caption}"</span></font></div>
+		
+		<br/>
+
+		<div class="fltrht">
+
+		{* Honor Button *}
+		<span id="hnr{$i.id_caption}">{$i.tot_honour}</span>
+
+		<input   class="iden" id="hnr_btn{$i.id_caption}" type="button" value="Honor"  onclick="set_hnrdishnr(this,'{$i.id_caption}')"/>&nbsp;&nbsp;
+
+		{* Dishonor Button *}
+		<span id="dishnr{$i.id_caption}">{$i.tot_dishonour}</span>
+
+		<input   class="iden" id="dishnr_btn{$i.id_caption}"type="button" value="Dishonor"  onclick="set_hnrdishnr(this,'{$i.id_caption}')"/>&nbsp;
+		</div>
+
+		{* Separator *}
+		<br/><br/><hr/>
+
+
+	    </div>
+	</div>
+	 <br/>
+	{/foreach}
+    {/if}

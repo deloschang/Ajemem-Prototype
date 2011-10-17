@@ -1,0 +1,43 @@
+<form action="" id="upfile" class="form">
+<input type="hidden" name="fpath" id="fpath" value="{$sm.fpath}" />
+<table>
+<tr>
+	<td>File Name: {$sm.fpath}</td>
+</tr>
+{if !$sm.fmsg}
+<tr>
+	<td>
+    	Edit the contents:
+    </td>
+</tr>
+<tr>
+	<td>
+    	<textarea cols="60" rows="30" name="efile" id="efile">{$sm.file_content}</textarea>
+    </td>
+</tr>
+<tr>
+	<td >
+    	<input type="button" class="button" value="Save" onclick="update();"/>
+    	<input type="button" class="button" value="Close" onclick="closeme();"/>
+    </td>
+</tr>
+{else}
+	{$sm.fmsg}
+{/if}
+</table>
+</form>
+{literal}
+<script type="text/javascript">
+	function update(){
+		var url="##LBL_ADMIN_SITE_URL##index.php";
+		var fpath=$('#fpath').val();
+		var efile=$('#efile').val();
+		$.post(url,{"page":"template","choice":"update_tpl",ce:0,fpath:fpath,efile:efile},function(res){
+		});
+	}
+	function closeme(){
+		$('#tpl_name').val('');
+		$('#edit_tpl').html('Edit the template contents here.');
+	}
+</script>
+{/literal}
