@@ -1,6 +1,6 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-17 22:39:45
+<?php /* Smarty version 2.6.7, created on 2011-10-18 00:17:46
          compiled from user/user_home.tpl.html */ ?>
 
-<!-- Template: user/user_home.tpl.html Start 17/10/2011 22:39:45 --> 
+<!-- Template: user/user_home.tpl.html Start 18/10/2011 00:17:46 --> 
  <center><b>User home.</b></center>
 <!-- Template: user/user_home.tpl.html End --> 

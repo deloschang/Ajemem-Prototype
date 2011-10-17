@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-17 22:39:45
+<?php /* Smarty version 2.6.7, created on 2011-10-18 00:17:46
          compiled from common/menu.tpl.html */ ?>
 
-<!-- Template: common/menu.tpl.html Start 17/10/2011 22:39:45 --> 
+<!-- Template: common/menu.tpl.html Start 18/10/2011 00:17:46 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <div id="navigation">
     <div class="menu-header">
