@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-18 00:17:46
+<?php /* Smarty version 2.6.7, created on 2011-10-18 09:00:46
          compiled from user/right_pan.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'user/right_pan.tpl.html', 15, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/%%35^35C^35CD1516%%right_pan.tpl.html.inc'] = 'b2f88adf04628d5df4b637d4b4dc0ad4'; ?>
-<!-- Template: user/right_pan.tpl.html Start 18/10/2011 00:17:46 --> 
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/%%35^35C^35CD1516%%right_pan.tpl.html.inc'] = '356708c65bd0de6f3277552c02d18eb0'; ?>
+<!-- Template: user/right_pan.tpl.html Start 18/10/2011 09:00:46 --> 
  <br/>
 	<div class="fbfrnd">
 		<a href="javascript:void(0);" onclick="invitePopup();" class="facebook">Invite Facebook Friends </a>
@@ -14,7 +14,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
     <div id="show_profile_info" style="position: fixed;background-color:white;border: 1px solid #CAD8F3;"></div>
     <div >
 		<br>
-		<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b2f88adf04628d5df4b637d4b4dc0ad4#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user','choice' => 'friend_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b2f88adf04628d5df4b637d4b4dc0ad4#0}';}?>
+		<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:356708c65bd0de6f3277552c02d18eb0#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user','choice' => 'friend_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:356708c65bd0de6f3277552c02d18eb0#0}';}?>
 
     </div>
     <div>
@@ -23,7 +23,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
     </div>
 	<div>
 	    <br>
-	    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b2f88adf04628d5df4b637d4b4dc0ad4#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'paypal','mgr' => 'paypal','choice' => 'form'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b2f88adf04628d5df4b637d4b4dc0ad4#1}';}?>
+	    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:356708c65bd0de6f3277552c02d18eb0#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'paypal','mgr' => 'paypal','choice' => 'form'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:356708c65bd0de6f3277552c02d18eb0#1}';}?>
 
 	</div>
 <?php endif; ?>

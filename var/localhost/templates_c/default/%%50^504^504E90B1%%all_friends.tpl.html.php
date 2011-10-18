@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-17 20:32:00
+<?php /* Smarty version 2.6.7, created on 2011-10-18 08:38:37
          compiled from user/all_friends.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'user/all_friends.tpl.html', 8, false),)), $this); ?>
@@ -40,13 +40,14 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 	    <?php $this->assign('x', $this->_tpl_vars['sm']['list'][$this->_sections['cur']['index']]); ?>
 		<div style="width:40%" class="ind_frnd" id_user="<?php echo $this->_tpl_vars['x']['id_user']; ?>
 ">
-		    <span style="float:right;display: none;cursor: pointer;" onclick="remove_frnd('<?php echo $this->_tpl_vars['x']['id_user']; ?>
+
+					    <span style="float:right;display: none;cursor: pointer;" onclick="remove_frnd('<?php echo $this->_tpl_vars['x']['id_user']; ?>
 ','<?php echo $this->_tpl_vars['x']['memeje_friends']; ?>
 ');" ><img src="http://localhost/spad/site_image/delete.png" title="Remove"/></span>
 		    <table border="0" width="300px">
 			<tr>
-			    <td width="100" height="90">
-				    <img src="http://localhost/<?php echo $this->_tpl_vars['img_path']['avtar_thumb'];  if ($this->_tpl_vars['x']['avatar']):  echo $this->_tpl_vars['x']['avatar'];  else:  if ($this->_tpl_vars['x']['gender'] == 'M'): ?>memeje_male.jpg<?php else: ?>memeje_female.jpg<?php endif;  endif; ?>" width="80" height="80"/>
+			    <td width="90" height="80">
+				    <img src="http://localhost/<?php echo $this->_tpl_vars['img_path']['avtar_thumb'];  if ($this->_tpl_vars['x']['avatar']):  echo $this->_tpl_vars['x']['avatar'];  else:  if ($this->_tpl_vars['x']['gender'] == 'M'): ?>memeje_male.jpg<?php else: ?>memeje_female.jpg<?php endif;  endif; ?>" width="50" height="50"/>
 			    </td>
 			    <td>
 				<h3><?php echo $this->_tpl_vars['x']['name']; ?>
@@ -100,7 +101,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 	    <?php endif; ?>
 	<?php endif; ?>
     </div>
-    <div id="frnd_profile" style="float:right;position: relative;top:-200px;"></div>
+    <div id="frnd_profile" style="float:right;position: relative;top:-300px;"></div>
 <?php echo '
 <script type="text/javascript">
     $(document).ready(function(){

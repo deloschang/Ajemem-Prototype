@@ -102,10 +102,12 @@
 	}
 	first_id = after_5sec;
     }
+
+{* Fade out color after agree/disagree *}
     function common_fun(id,color_code){
 	    $("#meme"+id).css("background",color_code);
 	    $("#meme"+id).fadeOut(1200,function(){
-		$("#meme"+id).css("background","gainsboro");
+		$("#meme"+id).css("background","white");
 		$("#meme"+id).fadeIn(0);
 	    });
     }
@@ -173,7 +175,7 @@
 	if (httpRequest.status == 200) {
 		res=httpRequest.responseText;
 		$.fancybox(res,{
-		    centerOnScroll:false,
+		    centerOnScroll:true,
 		    onComplete : function (){
 			$.fancybox.resize();
 		    }

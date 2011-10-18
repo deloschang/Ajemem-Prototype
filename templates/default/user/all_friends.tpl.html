@@ -10,11 +10,13 @@
 	    {section name=cur loop=$sm.list}
 	    {assign var=x value=$sm.list[cur]}
 		<div style="width:40%" class="ind_frnd" id_user="{$x.id_user}">
+
+			{* Delete 'X' icon *}
 		    <span style="float:right;display: none;cursor: pointer;" onclick="remove_frnd('{$x.id_user}','{$x.memeje_friends}');" ><img src="##LBL_SITE_URL##spad/site_image/delete.png" title="Remove"/></span>
 		    <table border="0" width="300px">
 			<tr>
-			    <td width="100" height="90">
-				    <img src="##LBL_SITE_URL##{$img_path.avtar_thumb}{if $x.avatar}{$x.avatar}{else}{if $x.gender=='M'}memeje_male.jpg{else}memeje_female.jpg{/if}{/if}" width="80" height="80"/>
+			    <td width="90" height="80">
+				    <img src="##LBL_SITE_URL##{$img_path.avtar_thumb}{if $x.avatar}{$x.avatar}{else}{if $x.gender=='M'}memeje_male.jpg{else}memeje_female.jpg{/if}{/if}" width="50" height="50"/>
 			    </td>
 			    <td>
 				<h3>{$x.name} {$x.mname}{$x.lname}</h3><br/>
@@ -60,7 +62,9 @@
 	    {/if}
 	{/if}
     </div>
-    <div id="frnd_profile" style="float:right;position: relative;top:-200px;"></div>
+
+	{* HTML for Profile pop-up *}
+    <div id="frnd_profile" style="float:right;position: relative;top:-300px;"></div>
 {literal}
 <script type="text/javascript">
     $(document).ready(function(){

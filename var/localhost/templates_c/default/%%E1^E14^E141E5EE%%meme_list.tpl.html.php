@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-17 23:49:10
+<?php /* Smarty version 2.6.7, created on 2011-10-18 09:00:44
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -103,10 +103,12 @@
 	 }
 	first_id = after_5sec;
      }
+
+/* Fade out color after agree/disagree */
     function common_fun(id,color_code){
 	    $("#meme"+id).css("background",color_code);
 	    $("#meme"+id).fadeOut(1200,function(){
-		$("#meme"+id).css("background","gainsboro");
+		$("#meme"+id).css("background","white");
 		$("#meme"+id).fadeIn(0);
 	     });
      }

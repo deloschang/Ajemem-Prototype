@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-17 20:31:52
+<?php /* Smarty version 2.6.7, created on 2011-10-18 08:58:46
          compiled from achievements/badge_list_all.tpl.html */ ?>
 <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
 
@@ -28,7 +28,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 ?>
 <?php $this->assign('x', $this->_tpl_vars['sm']['res'][$this->_sections['cur']['index']]); ?>
     <div>
-	<fieldset style=" background-color:#CAD8F3;width: 550px;margin-left: 250px;border:10px solid gainsboro;" >
+	<fieldset style=" background-color:#CAD8F3;width: 350px;margin-left: 50px;border:10px solid gainsboro;" >
 	<legend><b><?php echo $this->_tpl_vars['x']['title_badge']; ?>
 :</b></legend>
 		<table border="0">
