@@ -103,7 +103,7 @@
 	first_id = after_5sec;
     }
 
-{* Fade out color after agree/disagree *}
+/* Fade out color after agree/disagree */
     function common_fun(id,color_code){
 	    $("#meme"+id).css("background",color_code);
 	    $("#meme"+id).fadeOut(1200,function(){

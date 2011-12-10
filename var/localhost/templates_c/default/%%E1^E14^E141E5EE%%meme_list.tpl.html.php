@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-18 09:00:44
+<?php /* Smarty version 2.6.7, created on 2011-12-10 23:33:08
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -289,26 +289,6 @@
 </style>
 '; ?>
 
-<center>
-<fieldset style="width:40%;align:center;">
-    <legend><b><h3>Search meme</h3></b></legend>
-    <form>
-	    <table>
-		<tr>
-		    <td class="dec">Username:</td>
-		    <td><input type="text" name="muname" id="muname" value="<?php echo $_REQUEST['muname']; ?>
-"/></td>
-		</tr>
-		<tr>
-		    <td class="dec">Title:</td>
-		    <td><input type="text" name="mtitle" id="mtitle" value="<?php echo $_REQUEST['mtitle']; ?>
-"/></td>
-		</tr>
-	    </table>
-	<input type="submit" value="Search"/>
-    </form>
-</fieldset><br/><br/>
-</center>
 <input type="hidden" name="last_id_meme_cur_page" id="last_id_meme_cur_page" value=''/>
 <input type="hidden" name="rand_id_memes" id="rand_id_memes" value=''/>
 <input type="hidden" name="chk_me" id="chk_me" value=''/>
