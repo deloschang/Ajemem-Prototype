@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-10 23:33:08
+<?php /* Smarty version 2.6.7, created on 2011-12-12 06:24:59
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -107,11 +107,15 @@
 /* Fade out color after agree/disagree */
     function common_fun(id,color_code){
 	    $("#meme"+id).css("background",color_code);
-	    $("#meme"+id).fadeOut(1200,function(){
+	    $("#meme"+id).animate( { "opacity" : 0.2  }, 700, function() {
+<!--	    $("#meme"+id).fadeOut(600,function(){-->
 		$("#meme"+id).css("background","white");
-		$("#meme"+id).fadeIn(0);
+<!--		$("#meme"+id).fadeIn(0);-->
+		$("#meme"+id).animate( { "opacity" : 1  }, 300)
 	     });
      }
+
+/* Expand replies after reply button is pressed on the meme */
     function get_all_replies(id){
 	var url = "http://localhost/meme/get_all_replies";
 	$.post(url,{id:id,ce:0 }, function(res){
@@ -149,9 +153,13 @@
 	    common_fun(id,reply_color);
 	 });
      }
+
+/* JS call after Agree/Disagree button is pressed */
     function set_tot_adaggr(id,con){
 	var url = "http://localhost/meme/set_adaggr";
 	$.post(url,{id_meme:id,ce:0,con:con },function(res){
+
+	    /* If user has not voted */
 	    if(res[0]!=0){
 		    if(res[1]==1){
 			$("#aggr"+id).html(res[0]);
@@ -178,7 +186,7 @@
 		$.fancybox(res,{
 		    centerOnScroll:true,
 		    onComplete : function (){
-			$.fancybox.resize();
+			$.fancybox.resize();  
 		     }
 		 });
 	 }
@@ -215,7 +223,7 @@
 		    delay: 500
 		 });
 
-		// For tab system
+		// jQuery CSS change for Live and Network feed
 		$(\'#tab div\').mouseover(function(){
 			if($(this).hasClass(\'selected\'));
 			else

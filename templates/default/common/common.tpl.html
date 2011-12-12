@@ -1,3 +1,4 @@
+
 {*notag*}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -12,13 +13,11 @@
 
 
 <script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-1.3.2.pack.js"></script>
-{if $chc neq 'addMeme'}
 <script type="text/javascript" src="##JS_PATH##libsext/js/jquery.validate.js"></script>
 <script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/flexymessage.js"></script>
 <script type="text/javascript" src="##JS_PATH##libsext/js/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="##JS_PATH##libsext/js/ui.datepicker.js"></script>
 <script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/jquery.bubblepopup.v2.3.1.min.js"></script>
-{/if}
 <script type="text/javascript" src="##JS_PATH##libsext/js/ajaxfileupload.js"></script>
 
 
@@ -42,6 +41,7 @@
 		get_details_notification();
 		$(this).next().slideToggle();
 	    });
+
 	    if(idu!="" && chc!='addMeme'){
 		setInterval("getall_notification()",3000);
 
@@ -49,6 +49,8 @@
 	    /* For popup bar */
 		setInterval("popup_expbar()",6000);
 	    }
+
+	    /* TOS Fancybox Popup on First Login */
 	    var first_login="{/literal}{$smarty.session.toc}{literal}";
 	    if(first_login=='0'){
 		    $.get('##LBL_SITE_URL##user/first_login_msg/ce/0', function(res) {
@@ -68,7 +70,7 @@
 		    });
 	    }
 
-	    if(idu && chc!='addMeme'){
+	    if(idu){
 	        $('.expbar').CreateBubblePopup({
 			position :'top',
 			align	 : 'left',
@@ -78,7 +80,7 @@
 			themeName: 	'all-blue',
 			themePath: 	'##LBL_SITE_URL##templates/css_theme/images/jquerybubblepopup-theme',
 			alwaysVisible: false,
-			closingDelay: 4000,
+			closingDelay: 2000,
 			afterShown: function () {
 				$("#tst").val(1);
 			},
@@ -153,7 +155,7 @@
 			align	 : 'left',
 			tail	 : {align: 'left'},
 			innerHtml: '<img src="##LBL_SITE_URL##templates/css_theme/images/loading.gif" style="border:0px; vertical-align:middle; display:inline;" >loading!',
-			innerHtmlStyle: {color:'#FFFFFF','text-align':'center'},
+			innerHtmlStyle: {color:'#CCCCCC','text-align':'center'},
 			themeName: 	'all-blue',
 			themePath: 	'##LBL_SITE_URL##templates/css_theme/images/jquerybubblepopup-theme',
 			alwaysVisible: false,
@@ -262,6 +264,7 @@ body {
 	margin-right:75px;
 }
 
+/* Exp Bar Tab */
 .expbar{
 	position:fixed;
 	bottom:15px;
@@ -312,11 +315,15 @@ body {
          top:400px;
 	 z-index: 5;
 }
+
+/* Notification pop-up */
 .inner{
 	outline:1px solid #000;
 	background-color:wheat;
 
 }
+
+/* Location of Notification pop-up */
 .slide .inner {
 	position: fixed;
 	left: 102px;
@@ -335,10 +342,13 @@ body {
 	    	{include file='common/header'}
 
 	    	{include file='common/menu'}
+
 		{if $smarty.session.id_user && $smarty.request.choice !='addMeme'}
 	    	<div class="leftpan_img"></div>
 	    	<div class="rightpan_img"></div>
 		{/if}
+
+		<!-- Left/Center/Right Content -->
 		<table border="2" width="100%" id="mid_cont">
 		    <tr>
 			{if $smarty.request.choice !='addMeme'}
@@ -374,19 +384,19 @@ body {
 		</table>
 
 		{if $smarty.session.id_user}
-		{if $smarty.request.choice !='addMeme'}
+
 		<!-- For Experience button -->
 	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>
 		<!-- End -->
 		<!-- For Notification button -->
 		<div id="slidebottom" class="slide">
-		      <div class='notify' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;float:left;">
+		      <div class='notify' style="z-index:99999; border:3px  solid #cccccc; background-color:#f2f2f2; float:left;">
 			Notification
 			<label class="not_txt"><font style="color:white;margin-left: 3px;font-weight:bold;"><span id="not_cnt"></span></font></label>
 		      </div>
 		      <div class="inner"></div>
 		</div>
-		{/if}
+
 		{/if}
 		<div class="clear"></div>
 		<div class="push"></div>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-18 08:58:46
+<?php /* Smarty version 2.6.7, created on 2011-12-12 02:21:39
          compiled from achievements/badge_list_all.tpl.html */ ?>
 <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
 

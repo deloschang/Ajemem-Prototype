@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-18 08:40:08
+<?php /* Smarty version 2.6.7, created on 2011-12-12 02:22:32
          compiled from leaderboard/show_profile.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'leaderboard/show_profile.tpl.html', 47, false),)), $this); ?>

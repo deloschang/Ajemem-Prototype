@@ -1,8 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-10 23:33:10
+<?php /* Smarty version 2.6.7, created on 2011-12-12 06:25:00
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 358, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '01fc55ece3d31a1f2f15ccb46cb958a6'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 368, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '8530f3e796caed27ca429bdcadf5b51a'; ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -15,13 +16,11 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 
 
 <script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox-1.3.2.pack.js"></script>
-<?php if ($this->_tpl_vars['chc'] != 'addMeme'): ?>
 <script type="text/javascript" src="http://localhost/libsext/js/jquery.validate.js"></script>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/flexymessage.js"></script>
 <script type="text/javascript" src="http://localhost/libsext/js/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="http://localhost/libsext/js/ui.datepicker.js"></script>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/jquery.bubblepopup.v2.3.1.min.js"></script>
-<?php endif; ?>
 <script type="text/javascript" src="http://localhost/libsext/js/ajaxfileupload.js"></script>
 
 
@@ -45,6 +44,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		get_details_notification();
 		$(this).next().slideToggle();
 	     });
+
 	    if(idu!="" && chc!=\'addMeme\'){
 		setInterval("getall_notification()",3000);
 
@@ -52,6 +52,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	    /* For popup bar */
 		setInterval("popup_expbar()",6000);
 	     }
+
+	    /* TOS Fancybox Popup on First Login */
 	    var first_login="';  echo $_SESSION['toc'];  echo '";
 	    if(first_login==\'0\'){
 		    $.get(\'http://localhost/user/first_login_msg/ce/0\', function(res) {
@@ -71,7 +73,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		     });
 	     }
 
-	    if(idu && chc!=\'addMeme\'){
+	    if(idu){
 	        $(\'.expbar\').CreateBubblePopup({
 			position :\'top\',
 			align	 : \'left\',
@@ -81,7 +83,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			themeName: 	\'all-blue\',
 			themePath: 	\'http://localhost/templates/css_theme/images/jquerybubblepopup-theme\',
 			alwaysVisible: false,
-			closingDelay: 4000,
+			closingDelay: 2000,
 			afterShown: function () {
 				$("#tst").val(1);
 			 },
@@ -156,7 +158,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			align	 : \'left\',
 			tail	 : {align: \'left\' },
 			innerHtml: \'<img src="http://localhost/templates/css_theme/images/loading.gif" style="border:0px; vertical-align:middle; display:inline;" >loading!\',
-			innerHtmlStyle: {color:\'#FFFFFF\',\'text-align\':\'center\' },
+			innerHtmlStyle: {color:\'#CCCCCC\',\'text-align\':\'center\' },
 			themeName: 	\'all-blue\',
 			themePath: 	\'http://localhost/templates/css_theme/images/jquerybubblepopup-theme\',
 			alwaysVisible: false,
@@ -265,6 +267,7 @@ body {
 	margin-right:75px;
  }
 
+/* Exp Bar Tab */
 .expbar{
 	position:fixed;
 	bottom:15px;
@@ -315,11 +318,15 @@ body {
          top:400px;
 	 z-index: 5;
  }
+
+/* Notification pop-up */
 .inner{
 	outline:1px solid #000;
 	background-color:wheat;
 
  }
+
+/* Location of Notification pop-up */
 .slide .inner {
 	position: fixed;
 	left: 102px;
@@ -347,10 +354,13 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "common/menu.tpl.html"
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+
 		<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'addMeme'): ?>
 	    	<div class="leftpan_img"></div>
 	    	<div class="rightpan_img"></div>
 		<?php endif; ?>
+
+		<!-- Left/Center/Right Content -->
 		<table border="2" width="100%" id="mid_cont">
 		    <tr>
 			<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
@@ -375,7 +385,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:01fc55ece3d31a1f2f15ccb46cb958a6#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:01fc55ece3d31a1f2f15ccb46cb958a6#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:8530f3e796caed27ca429bdcadf5b51a#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:8530f3e796caed27ca429bdcadf5b51a#0}';}?>
 <br>
 				<?php endif; ?>
 				<?php $_smarty_tpl_vars = $this->_tpl_vars;
@@ -407,19 +417,19 @@ unset($_smarty_tpl_vars);
 		</table>
 
 		<?php if ($_SESSION['id_user']): ?>
-		<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
+
 		<!-- For Experience button -->
 	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>
 		<!-- End -->
 		<!-- For Notification button -->
 		<div id="slidebottom" class="slide">
-		      <div class='notify' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;float:left;">
+		      <div class='notify' style="z-index:99999; border:3px  solid #cccccc; background-color:#f2f2f2; float:left;">
 			Notification
 			<label class="not_txt"><font style="color:white;margin-left: 3px;font-weight:bold;"><span id="not_cnt"></span></font></label>
 		      </div>
 		      <div class="inner"></div>
 		</div>
-		<?php endif; ?>
+
 		<?php endif; ?>
 		<div class="clear"></div>
 		<div class="push"></div>
