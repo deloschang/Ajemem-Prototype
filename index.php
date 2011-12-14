@@ -25,9 +25,10 @@ if(defined("SITE_USED") && file_exists(AFIXI_ROOT.'../'.SITE_USED.'.php')){
 }else{
 	include_once(AFIXI_ROOT.'../site.php');
 }
-$site = new site;
-$site->init();
-$smarty = getSmarty();
+
+$site = new site; // called from site.php
+$site->init(); // calls function in instance 'site'
+$smarty = getSmarty(); // from common5.php, assigned to $smarty
 $site->smarty= &$smarty;
 $site->cache_id= &$cache_id;
 

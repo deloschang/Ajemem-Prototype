@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-12 06:24:59
+<?php /* Smarty version 2.6.7, created on 2011-12-14 11:47:07
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 35, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 47, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 35, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 48, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 12/12/2011 06:24:59 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 14/12/2011 11:47:07 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -42,11 +42,12 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 " style="cursor:pointer;width: 80px;height: 80px;" align="left" title="Meme" onclick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ');"/> 
 
-			<div style="vertical-align: top; font-size: 15px"><b><a href ="#" OnClick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+			<div style="vertical-align: top; font-size: 15px"><b><a href ="javascript:void(0)" OnClick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 '); return false;"><?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 </a></b><span style="font-size:12px"> by <?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
  <?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['lname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 </span></div>
+	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
 
 <!-- Caption shows below image -->
 			<div style="font-size: 12px;color:blue;"><span id="hrc<?php echo $this->_tpl_vars['x']['id_meme']; ?>

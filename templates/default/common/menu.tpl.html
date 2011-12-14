@@ -12,6 +12,9 @@
 		<a href="##LBL_SITE_URL##meme/addMeme">Make-A-Meme</a>
 	    </li>
 
+	    <li {if $smarty.request.page == 'meme' && $smarty.request.choice == 'meme_list' && $smarty.request.cat=='top'}class="current"{/if}>
+		<a href="##LBL_SITE_URL##meme/meme_list/cat/top">Top Memes</a>
+	    </li>
 
 <!-- CATEGORIES COMMENTED OUT
 	    {foreach key=key item=item from=$category}
@@ -25,11 +28,6 @@
 		<a href="javascript:void(0);" onclick="get_random_meme();">Random Generator</a>
 	    </li>
 
-<!-- TOP MEMES COMMENTED OUT 
-	    <li {if $smarty.request.page == 'meme' && $smarty.request.choice == 'meme_list' && $smarty.request.cat=='top'}class="current"{/if}>
-		<a href="##LBL_SITE_URL##meme/meme_list/cat/top">Top Memes</a>
-	    </li>
-!-->
 	   
         </ul>
     </div>

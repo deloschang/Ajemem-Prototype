@@ -1,19 +1,24 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-12 06:24:49
+<?php /* Smarty version 2.6.7, created on 2011-12-14 11:20:29
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 142, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 147, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 12/12/2011 06:24:49 --> 
+<!-- Template: meme/meme_editor.tpl.html Start 14/12/2011 11:20:29 --> 
  <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
 <?php echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
 <script type="text/javascript">
+
+/* Tool Functions in scratchpad.js */
+
 var debug=0;
 function loadcanvas() {
 	if (debug==1) {
 		var debugDiv = $(\'<div>\').attr({\'id\':\'debug\' }).css({ \'overflow\':\'scroll\',\'position\':\'fixed\',\'width\':\'300px\',\'height\':\'400px\',\'border\':\'1px solid #ccc\',\'top\':\'350px\',\'right\':\'0px\' });
 		debugDiv.appendTo("body");;
 	 }
+
+	/* Highlights tool once clicked */
 	$(\'#hilight\').find(\'img\').click(function(){
 		$(\'#hilight\').find(\'img\').removeClass(\'active\');
 		$(this).addClass(\'active\');
@@ -203,4 +208,5 @@ _img.png" target="new" title="View Image In a new Window">Image</a><br />
         <button title="Save In Disk" class="memeje_button" onclick="return saveindisk(0);">Disk</button>
 	</div>
 </div>
+
 <!-- Template: meme/meme_editor.tpl.html End --> 

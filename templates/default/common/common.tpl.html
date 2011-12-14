@@ -367,10 +367,15 @@ body {
 				{if $smarty.session.id_user && $smarty.request.choice !='answer_to_ques' && $smarty.request.choice !='addMeme' && $smarty.request.choice !='meme_details'}
 				    {get_mod mod=question mgr=question choice=get_this_week_question}<br>
 				{/if}
+
+		<!-- Content in middle of page (Live Feed/Editor) -->
 				{include file=$content}
-				{if !$smarty.session.id_user && !$smarty.request.page}{include file='user/login_form'}{/if}
+
+		<!-- Login form if user not logged in -->
+				{if !$smarty.session.id_user && !$smarty.request.page}{include file='user/login_form'}{/if} 
 			    </div>
 			</td>
+
 			{if $smarty.request.choice !='addMeme'}
 			<td width="15%" id="rightpan" align="center" valign="top" >
 			    {if $smarty.session.id_user}	

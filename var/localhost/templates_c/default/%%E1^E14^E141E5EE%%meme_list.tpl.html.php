@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-12 06:24:59
+<?php /* Smarty version 2.6.7, created on 2011-12-14 11:47:07
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -81,10 +81,12 @@
 		 }
 		    $("#is_replied"+first[i][\'id_meme\']).val("");
 	     }
+
 	    if(then[i][\'tot_caption\']!=first[i][\'tot_caption\']){
 		    $("#capt"+first[i][\'id_meme\']).html(then[i][\'tot_caption\']);
 		    common_fun(first[i][\'id_meme\'],addcaption_color);
 	     }
+
 	    if(then[i][\'tot_honour\']!=first[i][\'tot_honour\']){
 		if($("#is_agreed"+first[i][\'id_meme\']).val()==\'\'){
 		    $("#aggr"+first[i][\'id_meme\']).html(then[i][\'tot_honour\']);
@@ -92,6 +94,7 @@
 		 }
 		    $("#is_agreed"+first[i][\'id_meme\']).val("");
 	     }
+
 	    if(then[i][\'tot_dishonour\']!=first[i][\'tot_dishonour\']){
 		if($("#is_disagreed"+first[i][\'id_meme\']).val()==\'\'){
 		    $("#disaggr"+first[i][\'id_meme\']).html(then[i][\'tot_dishonour\']);
@@ -107,19 +110,25 @@
 /* Fade out color after agree/disagree */
     function common_fun(id,color_code){
 	    $("#meme"+id).css("background",color_code);
-	    $("#meme"+id).animate( { "opacity" : 0.2  }, 700, function() {
+	    $("#meme"+id).animate( { "opacity" : 0.4  }, 700, function() {
 <!--	    $("#meme"+id).fadeOut(600,function(){-->
-		$("#meme"+id).css("background","white");
+			$("#meme"+id).css("background","white");
 <!--		$("#meme"+id).fadeIn(0);-->
-		$("#meme"+id).animate( { "opacity" : 1  }, 300)
+			$("#meme"+id).animate( { "opacity" : 1  }, 300)
 	     });
      }
 
 /* Expand replies after reply button is pressed on the meme */
     function get_all_replies(id){
+    
+    /* D: Strangely...URL seems to be respective_replies in /meme/ */
+    
+    /* D: Q? Where does get_all_replies come from?? */
 	var url = "http://localhost/meme/get_all_replies";
 	$.post(url,{id:id,ce:0 }, function(res){
 	    $("#send_reply"+id).html(res);
+	    
+	    /* If caption is up, swap */
 	    if(!$("#add_caption"+id).is(":hidden"))
 		$(\'#add_caption\'+id).slideToggle(\'slow\');
 	    $(\'#send_reply\'+id).slideToggle(\'slow\');
@@ -178,7 +187,7 @@
 	$.fancybox.showActivity();
 	var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
 	var httpRequest = new XMLHttpRequest();
-	httpRequest.open(\'POST\', url, false);
+	httpRequest.open(\'POST\', url, false); // why is this synchronous?
 
 	httpRequest.send(); // this blocks as request is synchronous
 	if (httpRequest.status == 200) {

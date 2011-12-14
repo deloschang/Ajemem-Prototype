@@ -2,12 +2,17 @@
 {literal}
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
 <script type="text/javascript">
+
+/* Tool Functions in scratchpad.js */
+
 var debug=0;
 function loadcanvas() {
 	if (debug==1) {
 		var debugDiv = $('<div>').attr({'id':'debug'}).css({ 'overflow':'scroll','position':'fixed','width':'300px','height':'400px','border':'1px solid #ccc','top':'350px','right':'0px'});
 		debugDiv.appendTo("body");;
 	}
+
+	/* Highlights tool once clicked */
 	$('#hilight').find('img').click(function(){
 		$('#hilight').find('img').removeClass('active');
 		$(this).addClass('active');

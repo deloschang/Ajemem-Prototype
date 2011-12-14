@@ -24,6 +24,8 @@
 	});
 	function caption_post(id){
 		var fg = checkcaption(id);
+		
+		/* Posts only if there is content from checkcaption(id) */
 		if(fg){
 		   var caption = $("#caption"+id).val();
 		   var url = "##LBL_SITE_URL##caption/insert_caption";
@@ -32,7 +34,10 @@
 		   $.post(url,{id_meme:id,ce:0,caption:caption},function(res){
 		       flag_post=1;
 		       $("#loading"+id).hide();
+		
+		/* Adds to caption list on id div */
 		       $("#all_captions"+id).prepend(res);
+	    common_fun(id,addcaption_color);
 		   });
 		}else{
 		    return false;
@@ -40,6 +45,7 @@
 	}
 
 	function checkcaption(id){
+		/* Checks to see if there is any input */
 	    var flag = ($("#caption"+id).val())?true:false;
 	    if(!flag)
 		$("#msg"+id).html("Please add a caption");

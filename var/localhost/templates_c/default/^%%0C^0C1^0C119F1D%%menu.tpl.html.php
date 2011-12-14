@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-12 06:25:00
+<?php /* Smarty version 2.6.7, created on 2011-12-14 11:47:08
          compiled from common/menu.tpl.html */ ?>
 
-<!-- Template: common/menu.tpl.html Start 12/12/2011 06:25:00 --> 
+<!-- Template: common/menu.tpl.html Start 14/12/2011 11:47:08 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <div id="navigation">
     <div class="menu-header">
@@ -16,6 +16,9 @@
 		<a href="http://localhost/meme/addMeme">Make-A-Meme</a>
 	    </li>
 
+	    <li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'meme_list' && $_REQUEST['cat'] == 'top'): ?>class="current"<?php endif; ?>>
+		<a href="http://localhost/meme/meme_list/cat/top">Top Memes</a>
+	    </li>
 
 <!-- CATEGORIES COMMENTED OUT
 	    <?php if (count($_from = (array)$this->_tpl_vars['category'])):
@@ -33,11 +36,6 @@
 		<a href="javascript:void(0);" onclick="get_random_meme();">Random Generator</a>
 	    </li>
 
-<!-- TOP MEMES COMMENTED OUT 
-	    <li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'meme_list' && $_REQUEST['cat'] == 'top'): ?>class="current"<?php endif; ?>>
-		<a href="http://localhost/meme/meme_list/cat/top">Top Memes</a>
-	    </li>
-!-->
 	   
         </ul>
     </div>
