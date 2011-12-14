@@ -122,7 +122,7 @@
     
     /* D: Strangely...URL seems to be respective_replies in /meme/ */
     
-    /* D: Q? Where does get_all_replies come from?? */
+    /* _get_all_replies is a priv function in meme_manager.php that links to respective_replies */
 	var url = "##LBL_SITE_URL##meme/get_all_replies";
 	$.post(url,{id:id,ce:0}, function(res){
 	    $("#send_reply"+id).html(res);

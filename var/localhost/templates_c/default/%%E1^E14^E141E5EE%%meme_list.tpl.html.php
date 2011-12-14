@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-14 11:47:07
+<?php /* Smarty version 2.6.7, created on 2011-12-14 12:23:51
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -123,7 +123,7 @@
     
     /* D: Strangely...URL seems to be respective_replies in /meme/ */
     
-    /* D: Q? Where does get_all_replies come from?? */
+    /* _get_all_replies is a priv function in meme_manager.php that links to respective_replies */
 	var url = "http://localhost/meme/get_all_replies";
 	$.post(url,{id:id,ce:0 }, function(res){
 	    $("#send_reply"+id).html(res);
