@@ -356,7 +356,7 @@ body {
 			    {if $smarty.session.id_user}	
 				    {include file="user/left_pan"}
 			    {else}
-				    <h2>Ads goes here....</h2>
+				    {include file="user/login_form"}
 			    {/if}
 			</td>
 			{/if}
@@ -372,7 +372,8 @@ body {
 				{include file=$content}
 
 		<!-- Login form if user not logged in -->
-				{if !$smarty.session.id_user && !$smarty.request.page}{include file='user/login_form'}{/if} 
+			<!-- switched from user/login_form -->
+				{if !$smarty.session.id_user && !$smarty.request.page}{include file='meme/meme_list'}{/if} 
 			    </div>
 			</td>
 

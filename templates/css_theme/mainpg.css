@@ -407,15 +407,15 @@ div.menu li {
 	border-bottom:#B2B2B2 solid 1px;
 }
 #logintable	{
-	width:1000px;
+	width:250px;
 	margin:20px auto;
 }
 #logintable #new_user	{
-	border:#06C solid 1px;
-	width:360px;
-	height:250px;
+	/*border:#06C solid 1px;*/
+	width:220px;  
+	height:125px;
 	float:left;
-	padding:20px 20px 0px;
+	padding:5px 10px 0px;
 }
 #new_user h1	{
 	color:#587381;
@@ -424,13 +424,19 @@ div.menu li {
 	padding-bottom:5px;
 	border-bottom:#C4D6EC solid 1px;
 }
+
+/* CSS for REGISTERED USERS */
 #logintable #register_user	{
-	border:#06C solid 1px;
-	width:360px;
+	/* border:#06C solid 1px;  */
+	width:220px;
 	height:250px;
 	float:left;
-	padding:20px 20px 0px;
-	margin-left:30px;
+	padding:5px 10px 0px;
+ 	/*margin-left:5px */
+}
+
+#logintable #uname, #pass {
+	width:95%
 }
 #fgtpwdtable	{
 	width:500px;
@@ -471,7 +477,7 @@ table.userinfo input.fields:focus	{
 	padding:2px;
 }
 .create_account	{
-	float:right;
+	float:left;
 	background:#F18200;
 	border:#FF0000 solid 1px;
 	width:120px;

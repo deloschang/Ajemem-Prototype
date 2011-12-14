@@ -51,6 +51,7 @@ if ($_input['mod']) {
 		$_input['choice'] = str_replace('choice_', '', $_input['fail']);
 	}
 }
+
 $page = isset ($_input['page']) ? $_input['page'] : 'common';
 $site->handle_page($page);
 $smarty->assign('page_title', $page_title);
@@ -61,8 +62,11 @@ if (isset($_input['ce']) ) {
 
 //Added By Parwesh For Error Handling When Page is not found
 $file_test = TEMPLATE_DIR.$_SESSION['multi_language']."/".$site->default_tpl.TEMPLATE_EXTENSION;
+
 if($page =='user' || file_exists($file_test)) {
 	if ($site->is_container_enabled()) {
+	
+		// $content used in common.tpl.html
 		$smarty->assign('content', $smarty->add_theme_to_template($site->default_tpl));
 		$tpl = isset ($_GET['c_tpl']) ? $_GET['c_tpl'] : $site->get_container_tpl();
 	} else {
@@ -76,7 +80,9 @@ if($page =='user' || file_exists($file_test)) {
 	$report['end_code'] = getmicrotime();
 	$smarty->assign_by_ref('report', $report);
 	$smarty->debugging_ctrl='URL';
-	$smarty->display($tpl, $cache_id);
+	
+	$smarty->display($tpl, $cache_id); //display func in AfixiSmarty.php
+	
 	$time_end = getmicrotime();
 	unset ($_SESSION['raise_message']);
 	if (!empty ($_SESSION['CACHE_OUTPUT'])) {
