@@ -9,7 +9,7 @@ FTP SIDE :
 chmod 777 var/ image/ preview/ spad/workspace/ [userfiles/] -R  []-> If cms present
 
 4.Under flexycms/configs and var/ change the directory name "changeme.com" to your domain name.
-u nigger
+
 5.Under flexycms/configs, change the filenames to reflect the domain name (e.g, changeme.com.constants.php, changeme.com .site_constants.php).
 
 DATABASE SIDE : 
@@ -20,5 +20,4 @@ DATABASE SIDE :
 3.Import db.sql file as provided into this database.
 
 4.If you want to change your username and password for administrator then edit admin record  in user table.
-
-dsfbufuvygsarifhqwehfwehfyuadfhfuck yo5.Go to http://domain.name and login using the administrator username and password.
+heiuwejfhsdkjfhskjd5.Go to http://domain.name and login using the administrator username and password.
