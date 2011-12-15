@@ -12,7 +12,7 @@ chmod 777 var/ image/ preview/ spad/workspace/ [userfiles/] -R  []-> If cms pres
 
 5.Under flexycms/configs, change the filenames to reflect the domain name (e.g, changeme.com.constants.php, changeme.com .site_constants.php).
 
-DATABASE SIDE : 
+DATABASE SIDE : JADJASLKFAKJFLKJASLKADGHKJ
 1.Create a database (in this example, yourProjectName_db) on MySQL.
 
 2.Change the DB configuration under flexycms/configs/domain.name/constants.php.
