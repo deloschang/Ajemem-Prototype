@@ -1,0 +1,43 @@
+<div id="fgtpwdtable">
+<div id="new_user">
+<h1>Forgot Password?</h1>
+<div style="height:102px"><p>
+<form action="##APP_ROOT_URL##user/get_forgot_pwd" method="post" name="forgotform" id="forgotform" onsubmit="return validate();">
+    <table align="center" width="100%" class="userinfo">
+        <tr>
+            <td class="tl">Email Address :</td>
+        </tr>
+        <tr>
+          <td><input type="text" name="email" id="email"/></td>
+        </tr>	
+        <tr>
+            <td colspan="2" class="tl"><input type="submit" value="Submit" class="inputbtn"/></td>
+        </tr>
+    </table>
+</form>
+</p></div>
+</div>
+</div>
+{literal}
+<script type="text/javascript">
+function validate(){
+
+	var validator=$("#forgotform").validate({
+	   rules: {
+	   		"email":{
+				required:true,
+				email:true
+			}
+		},
+		messages: {
+			"email":{
+				required:flexymsg.required,
+				email:flexymsg.email
+			}
+		}
+	});
+	var x=validator.form();
+	return x;
+}
+</script>
+{/literal}

@@ -1,0 +1,76 @@
+{section name=cur loop=$sm.feature}
+{assign var=x value=$sm.feature[cur]}
+<div>
+    <fieldset style=" background-color:#CAD8F3;width: 550px;margin-left: 250px;border:7px solid gainsboro;" >
+    <legend><b>{$x.title}:</b></legend>
+	    <table border="0">
+		<tr>
+		    <td align="left">{$x.description}</td>
+		</tr>
+		<tr>
+		    <td>
+			<div id="sug{$x.id_feature}" class="xyz" style="display: none"><textarea id="suggest{$x.id_feature}" row="5" cols="67"></textarea>
+			<input type="button" name="save" value="Save"  onClick="insert_suggestion('{$x.id_feature}')"/><input type="reset" name="rese" value="cancel" onClick="cancel_suggestion('{$x.id_feature}')"/>
+			 </div>
+		    </td>
+		</tr>
+		<tr>
+		    <td><div id="bt{$x.id_feature}" class="xxxx" style="margin-left:0px;"><a  href="javascript:void(0);" onclick="suggest('{$x.id_feature}');">suggest</a> </div></td>
+		</tr>
+		<tr>
+		    <td>
+		       <span class="error" generated="true"  id="hfid{$x.id_feature}"></span>
+		    </td>
+		</tr>
+	</table>
+    </fieldset>
+</div>
+{sectionelse}
+<div>
+     No Features Found.
+</div>
+{/section}
+
+{literal}
+<script type="text/javascript">
+    function suggest(id_feature){
+	var uid="sug"+id_feature;
+	var but="bt"+id_feature;
+	$(".xyz").hide();
+	$(".xxxx").show();
+	$("#"+uid).slideToggle('slow');
+	$("#"+but).slideToggle('slow');
+	
+    }
+    function insert_suggestion(id_feature){
+	var id="suggest"+id_feature;
+	var hfid="hfid"+id_feature;
+	var suggestion=$("#"+id).val();
+	if(suggestion!=""){
+	    var url="##LBL_SITE_URL##index.php";
+	    $.post(url,{"page":"manage","choice":"insert_suggestion",suggestion:suggestion,id_feature:id_feature,ce:0},function(res){
+		if(res){
+		    //setTimeout($("#"+hfid).html("thanks for giving your suggestion"),1000)
+		    cancel_suggestion(id_feature);
+		}
+	    });
+	}else{
+	    alert("You have not give any suggestion ");
+	    return false;
+	}
+	
+    
+    }
+    
+    function cancel_suggestion(id_feature){
+	var uid="sug"+id_feature;
+	var but="bt"+id_feature;
+	var id="suggest"+id_feature;
+	$("#"+id).val("");
+	$("#"+uid).slideToggle('slow');
+	$("#"+but).slideToggle('slow');
+
+    }
+    
+</script>
+{/literal}

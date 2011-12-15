@@ -1,0 +1,89 @@
+{* notag *}
+<div id="leaderboard_lb_ques_won">
+<div class="box box-75 altbox">
+    <div class="boxin">
+	<input type="hidden" name="htot" id="rtot" value='{$sm.next_prev->total}'/>
+        <input type="hidden" id="qstart" value="{$sm.qstart}"/>
+        <div class="content">
+	    <table  align="center" cellpadding="10" border="1" width="345px;">
+		<thead>
+		    <th colspan="3" align="center">MOST QUESTION OF THE WEEK WON</th>
+		</thead>
+		<thead>
+		    <th>Position</th>
+		    <th align="center">Username</th>
+		    <th>Question Won</th>
+		</thead>
+		<tbody>
+		    {section name=cur loop=$sm.list}
+		    {assign var=x value=$sm.list[cur]}
+			<tr id="uqid{$x.id_user}" class="hndptr" upi="{$smarty.section.cur.iteration+$sm.qstart}" lid_user="{$x.id_user}" lpos="{$smarty.section.cur.iteration+$sm.qstart}">
+			    <td>{$smarty.section.cur.iteration+$sm.qstart}</td>
+			    <td>{$x.email}</td>
+			    <td>{$x.ques_week_won}</td>
+			</tr>
+		    {sectionelse}
+			<tr>
+			    <td colspan="3">
+			    No Question Found.
+			    </td>
+			</tr>
+		    {/section}
+		</tbody>
+	    </table>
+		{if $sm.type=='advance'}
+	    <div class="pagination_adv">
+	        {$sm.next_prev->generateadv()}
+	    </div>
+	{elseif $sm.type=='box'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='normal'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='nextprev'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->onlynextprev()}</div>
+	    </div>
+	{elseif $sm.type=='extra'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generateextra()}</div>
+	    </div>
+	{else}
+	    {if $sm.type!='no'}
+	        <div>
+	            <div align="center">{$sm.next_prev->generate()}</div>
+	        </div>
+	    {/if}
+	{/if}
+        </div>
+    </div>
+</div>
+</div>
+
+{literal}
+<script type="text/javascript">
+    $(document).ready(function(){
+	$(".hndptr").mouseenter(function(){
+	    show_profile($(this).attr('lid_user'),$(this).attr('lpos'));
+	});
+	
+    });
+   var id_user='{/literal}{$sm.id_user}{literal}';
+	 if(id_user){
+	    var uid='uqid'+id_user;
+	    $("#"+uid).css({"color":"red"});
+    }
+    function show_profile(id_user,pos){
+	    var url="##LBL_SITE_URL##index.php/";
+	    $.post(url,{"page":"leaderboard","choice":"show_profile","id":id_user,pos:pos,ce:0},function(res){
+		  $("#leaderboard_profile").html(res);
+	    });
+    }
+
+</script>
+{/literal}
+
+

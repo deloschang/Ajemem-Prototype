@@ -1,0 +1,85 @@
+{* notag *}
+<div id="leaderboard_lb_exp_point">
+<div class="box box-75 altbox">
+    <div class="boxin">
+	<input type="hidden" name="htot" id="rtot" value='{$sm.next_prev->total}'/>
+        <input type="hidden" id="qstart" value="{$sm.qstart}"/>
+        <div class="content">
+	    <table  align="center" cellpadding="10" border="1" width="345px">
+		<thead>
+		    <th colspan="3" align="center">MOST EXP POINT GAIN</th>
+		</thead>
+		<thead>
+		    <th>Position</th>
+		    <th>Username</th>
+		    <th>Exp Point</th>
+		</thead>
+		<tbody>
+		    {section name=cur loop=$sm.list}
+		    {assign var=x value=$sm.list[cur]}
+			<tr id="uid{$x.id_user}" class="hndptr" lid_user="{$x.id_user}" lpos="{$smarty.section.cur.iteration+$sm.qstart}" >
+			    <td>{$smarty.section.cur.iteration+$sm.qstart}</td>
+			    <td>{$x.email}</td>
+			    <td>{$x.exp_point}</td>
+			</tr>
+		    {sectionelse}
+			<tr>
+			    <td colspan="3">
+			    No Exp Point Found.
+			    </td>
+			</tr>
+		    {/section}
+		</tbody>
+	    </table>
+		{if $sm.type=='advance'}
+	    <div class="pagination_adv">
+	        {$sm.next_prev->generateadv()}
+	    </div>
+	{elseif $sm.type=='box'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='normal'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='nextprev'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->onlynextprev()}</div>
+	    </div>
+	{elseif $sm.type=='extra'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generateextra()}</div>
+	    </div>
+	{else}
+	    {if $sm.type!='no'}
+	        <div>
+	            <div align="center">{$sm.next_prev->generate()}</div>
+	        </div>
+	    {/if}
+	{/if}
+        </div>
+    </div>
+</div>
+</div>
+{literal}
+<script type="text/javascript">
+    $(document).ready(function(){
+	$(".hndptr").mouseenter(function(){
+	    show_profile($(this).attr('lid_user'),$(this).attr('lpos'));
+	});
+	var id_user='{/literal}{$sm.id_user}{literal}';
+	if(id_user){
+	    var uid='uid'+id_user;
+	    $("#"+uid).css({"color":"red"});
+	}
+    });
+    function show_profile(id_user,pos){
+	    var url="##LBL_SITE_URL##";
+	    $.post(url,{"page":"leaderboard","choice":"show_profile","id":id_user,pos:pos,ce:0},function(res){
+		  $("#leaderboard_profile").html(res);
+	    });
+    }
+
+</script>
+{/literal}
