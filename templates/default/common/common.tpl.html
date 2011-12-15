@@ -382,7 +382,9 @@ body {
 			    {if $smarty.session.id_user}	
 				    {include file="user/right_pan"}
 			    {else}
-				    <h2>Ads goes here....</h2>
+			    
+			    	<!-- Only shows Search meme w/o login -->
+				    {include file="user/right_pan"}
 			    {/if}
 			</td>
 			{/if}
