@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-16 09:20:53
+<?php /* Smarty version 2.6.7, created on 2011-12-16 10:19:09
          compiled from common/header.tpl.html */ ?>
 
-<!-- Template: common/header.tpl.html Start 16/12/2011 09:20:53 --> 
+<!-- Template: common/header.tpl.html Start 16/12/2011 10:19:09 --> 
  <div id="header">
 	<h1><a href="http://localhost/">Memeja logo here</a></h1>
 	<center>
