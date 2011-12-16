@@ -150,7 +150,7 @@
     function post_reply(id){
 	if($("#rpl_con"+id).val()=="" || $("#rpl_con"+id).val()=="Reply with answer."){
 	     $("#rpl_con"+id).val("Reply with answer.");
-	     return false;
+	     return true;
 	}
 	$("#send_reply"+id).hide("slow",function(){});
 	var url = "##LBL_SITE_URL##meme/answer_to_meme";

@@ -76,7 +76,7 @@ class user_manager extends mod_manager {
 		if(isset($_COOKIE['username']) && isset($_COOKIE['password'])){
 			$login = $this->get_checkcookie();
 		}elseif($_SESSION['id_user'] && !$_SESSION['id_admin']) {
-			redirect(LBL_SITE_URL."user/user_home");
+			redirect(LBL_SITE_URL."meme/meme_list/cat/main_feed");
 		}
 
 	}

@@ -1,4 +1,7 @@
 {foreach name=rep item=i key=k from=$sm.reparr}
+
+<!-- D: $sm values passed in from meme_manager.php. For e.g., $sm.reparr is a property defined by $this->_output['reparr'] = $replies; -->
+
 <br/><span>Replied by {$sm.uinfo[$i.id_user].fname} {$sm.uinfo[$i.id_user].lname} : <br><b>{$i.reply}</b></span><br/>
 {/foreach}<br/>
 
