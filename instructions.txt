@@ -1,5 +1,9 @@
+
+a kdf dgjlkvjlcxldgjadoigjsdaojdoifjasdiofjasdlkmm
+
+
 MEMEJE INSTALLATION GUIDE
-FTP SIDE : 
+FTP SIDE : zxmcnZXVCnZKCXKJZLXCZKLXCjlkzXJClkZJCXZXCXKCZXZClklZXJXClZXCjlZZCj
 
 1.Download and extract project folder package to the root directory of your Apache installation.
 
@@ -12,7 +16,7 @@ chmod 777 var/ image/ preview/ spad/workspace/ [userfiles/] -R  []-> If cms pres
 
 5.Under flexycms/configs, change the filenames to reflect the domain name (e.g, changeme.com.constants.php, changeme.com .site_constants.php).
 
-DATABASE SIDE : JADJASLKFAKJFLKJASLKADGHKJ
+DATABASE SIDE : 
 1.Create a database (in this example, yourProjectName_db) on MySQL.
 
 2.Change the DB configuration under flexycms/configs/domain.name/constants.php.
@@ -20,4 +24,5 @@ DATABASE SIDE : JADJASLKFAKJFLKJASLKADGHKJ
 3.Import db.sql file as provided into this database.
 
 4.If you want to change your username and password for administrator then edit admin record  in user table.
-heiuwejfhsdkjfhskjd5.Go to http://domain.name and login using the administrator username and password.
+
+5.Go to http://domain.name and login using the administrator username and password.

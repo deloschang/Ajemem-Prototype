@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-17 20:32:14
+<?php /* Smarty version 2.6.7, created on 2011-12-13 08:02:06
          compiled from leaderboard/leaderboard_search.tpl.html */ ?>
 
-<!-- Template: leaderboard/leaderboard_search.tpl.html Start 17/10/2011 20:32:14 --> 
+<!-- Template: leaderboard/leaderboard_search.tpl.html Start 13/12/2011 08:02:06 --> 
  <div id="u_search">
 	 <!--<a href="javascript:void(0)" onclick="leaderboard('duels');">MOST DUELS OWN</a>
 	 &nbsp;<a href="javascript:void(0)" onclick="leaderboard('exp_point');">MOST EXP POINT GAIN</a>

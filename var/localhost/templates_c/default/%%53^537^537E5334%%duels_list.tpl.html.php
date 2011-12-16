@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-17 20:32:14
+<?php /* Smarty version 2.6.7, created on 2011-12-13 08:02:06
          compiled from leaderboard/duels_list.tpl.html */ ?>
 <div id="leaderboard_lb_duels">
 <div class="box box-75 altbox">

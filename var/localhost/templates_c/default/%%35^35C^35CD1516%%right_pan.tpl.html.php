@@ -1,20 +1,41 @@
-<?php /* Smarty version 2.6.7, created on 2011-11-02 08:34:59
+<?php /* Smarty version 2.6.7, created on 2011-12-16 09:20:53
          compiled from user/right_pan.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'user/right_pan.tpl.html', 15, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\%%35^35C^35CD1516%%right_pan.tpl.html.inc'] = '78945e8c0df1ab99f9434a5a134a24ca'; ?>
-<!-- Template: user/right_pan.tpl.html Start 02/11/2011 08:34:59 --> 
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'user/right_pan.tpl.html', 34, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\%%35^35C^35CD1516%%right_pan.tpl.html.inc'] = '3c98a5e9dedf54422239244efaac9da5'; ?>
+<!-- Template: user/right_pan.tpl.html Start 16/12/2011 09:20:53 --> 
  <br/>
+<fieldset style="width:40%;align:center;">
+    <legend><b><h3>Search meme</h3></b></legend>
+    <form>
+	    <table>
+		<tr>
+		    <td class="dec">Username:</td>
+		    <td><input type="text" name="muname" id="muname" value="<?php echo $_REQUEST['muname']; ?>
+"/></td>
+		</tr>
+		<tr>
+		    <td class="dec">Title:</td>
+		    <td><input type="text" name="mtitle" id="mtitle" value="<?php echo $_REQUEST['mtitle']; ?>
+"/></td>
+		</tr>
+	    </table>
+	<input type="submit" value="Search"/>
+    </form>
+</fieldset>
+</br>
+<?php if ($_SESSION['id_user']): ?>  <!-- If not logged in, then don't show -->
 	<div class="fbfrnd">
 		<a href="javascript:void(0);" onclick="invitePopup();" class="facebook">Invite Facebook Friends </a>
 	</div>
 <br>
+<?php endif; ?>
 <?php if ($_SESSION['id_user']): ?>
     <a href="javascript:void(0);" onclick="show_memeje_frnds();">Find friends in Memeja to add</a><br />
     <div id="show_profile_info" style="position: fixed;background-color:white;border: 1px solid #CAD8F3;"></div>
     <div >
 		<br>
-		<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:78945e8c0df1ab99f9434a5a134a24ca#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user','choice' => 'friend_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:78945e8c0df1ab99f9434a5a134a24ca#0}';}?>
+		<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:3c98a5e9dedf54422239244efaac9da5#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user','choice' => 'friend_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:3c98a5e9dedf54422239244efaac9da5#0}';}?>
 
     </div>
     <div>
@@ -23,7 +44,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
     </div>
 	<div>
 	    <br>
-	    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:78945e8c0df1ab99f9434a5a134a24ca#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'paypal','mgr' => 'paypal','choice' => 'form'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:78945e8c0df1ab99f9434a5a134a24ca#1}';}?>
+	    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:3c98a5e9dedf54422239244efaac9da5#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'paypal','mgr' => 'paypal','choice' => 'form'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:3c98a5e9dedf54422239244efaac9da5#1}';}?>
 
 	</div>
 <?php endif; ?>

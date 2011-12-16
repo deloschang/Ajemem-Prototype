@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-18 00:17:17
+<?php /* Smarty version 2.6.7, created on 2011-12-15 00:17:47
          compiled from caption/add_caption.tpl.html */ ?>
 
-<!-- Template: caption/add_caption.tpl.html Start 18/10/2011 00:17:17 --> 
+<!-- Template: caption/add_caption.tpl.html Start 15/12/2011 00:17:47 --> 
  <?php echo '
     <script type="text/javascript">
 	var flag_post =0;
@@ -28,6 +28,8 @@
 	 });
 	function caption_post(id){
 		var fg = checkcaption(id);
+		
+		/* Posts only if there is content from checkcaption(id) */
 		if(fg){
 		   var caption = $("#caption"+id).val();
 		   var url = "http://localhost/caption/insert_caption";
@@ -36,7 +38,10 @@
 		   $.post(url,{id_meme:id,ce:0,caption:caption },function(res){
 		       flag_post=1;
 		       $("#loading"+id).hide();
+		
+		/* Adds to caption list on id div */
 		       $("#all_captions"+id).prepend(res);
+	    common_fun(id,addcaption_color);
 		    });
 		 }else{
 		    return false;
@@ -44,6 +49,7 @@
 	 }
 
 	function checkcaption(id){
+		/* Checks to see if there is any input */
 	    var flag = ($("#caption"+id).val())?true:false;
 	    if(!flag)
 		$("#msg"+id).html("Please add a caption");

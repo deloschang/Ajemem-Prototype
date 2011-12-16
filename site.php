@@ -8,6 +8,8 @@ class site {
 		$this->cache_id = $page;
 		$this->smarty->caching = 0;
 		switch ($page) {
+		
+			// static from templates/
 			case "static" :
 				$type=$_REQUEST['choice'];
 				$this->default_tpl = "static/$type";

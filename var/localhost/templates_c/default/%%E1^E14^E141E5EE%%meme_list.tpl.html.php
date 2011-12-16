@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-11-02 08:34:59
+<?php /* Smarty version 2.6.7, created on 2011-12-16 09:20:13
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -81,10 +81,12 @@
 		 }
 		    $("#is_replied"+first[i][\'id_meme\']).val("");
 	     }
+
 	    if(then[i][\'tot_caption\']!=first[i][\'tot_caption\']){
 		    $("#capt"+first[i][\'id_meme\']).html(then[i][\'tot_caption\']);
 		    common_fun(first[i][\'id_meme\'],addcaption_color);
 	     }
+
 	    if(then[i][\'tot_honour\']!=first[i][\'tot_honour\']){
 		if($("#is_agreed"+first[i][\'id_meme\']).val()==\'\'){
 		    $("#aggr"+first[i][\'id_meme\']).html(then[i][\'tot_honour\']);
@@ -92,6 +94,7 @@
 		 }
 		    $("#is_agreed"+first[i][\'id_meme\']).val("");
 	     }
+
 	    if(then[i][\'tot_dishonour\']!=first[i][\'tot_dishonour\']){
 		if($("#is_disagreed"+first[i][\'id_meme\']).val()==\'\'){
 		    $("#disaggr"+first[i][\'id_meme\']).html(then[i][\'tot_dishonour\']);
@@ -103,17 +106,29 @@
 	 }
 	first_id = after_5sec;
      }
+
+/* Fade out color after agree/disagree */
     function common_fun(id,color_code){
 	    $("#meme"+id).css("background",color_code);
-	    $("#meme"+id).fadeOut(1200,function(){
-		$("#meme"+id).css("background","gainsboro");
-		$("#meme"+id).fadeIn(0);
+	    $("#meme"+id).animate( { "opacity" : 0.4  }, 700, function() {
+<!--	    $("#meme"+id).fadeOut(600,function(){-->
+			$("#meme"+id).css("background","white");
+<!--		$("#meme"+id).fadeIn(0);-->
+			$("#meme"+id).animate( { "opacity" : 1  }, 300)
 	     });
      }
+
+/* Expand replies after reply button is pressed on the meme */
     function get_all_replies(id){
+    
+    /* D: Strangely...URL seems to be respective_replies in /meme/ */
+    
+    /* _get_all_replies is a priv function in meme_manager.php that links to respective_replies */
 	var url = "http://localhost/meme/get_all_replies";
 	$.post(url,{id:id,ce:0 }, function(res){
 	    $("#send_reply"+id).html(res);
+	    
+	    /* If caption is up, swap */
 	    if(!$("#add_caption"+id).is(":hidden"))
 		$(\'#add_caption\'+id).slideToggle(\'slow\');
 	    $(\'#send_reply\'+id).slideToggle(\'slow\');
@@ -147,9 +162,13 @@
 	    common_fun(id,reply_color);
 	 });
      }
+
+/* JS call after Agree/Disagree button is pressed */
     function set_tot_adaggr(id,con){
 	var url = "http://localhost/meme/set_adaggr";
 	$.post(url,{id_meme:id,ce:0,con:con },function(res){
+
+	    /* If user has not voted */
 	    if(res[0]!=0){
 		    if(res[1]==1){
 			$("#aggr"+id).html(res[0]);
@@ -168,7 +187,7 @@
 	$.fancybox.showActivity();
 	var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
 	var httpRequest = new XMLHttpRequest();
-	httpRequest.open(\'POST\', url, false);
+	httpRequest.open(\'POST\', url, false); // why is this synchronous?
 
 	httpRequest.send(); // this blocks as request is synchronous
 	if (httpRequest.status == 200) {
@@ -176,7 +195,7 @@
 		$.fancybox(res,{
 		    centerOnScroll:true,
 		    onComplete : function (){
-			$.fancybox.resize();
+			$.fancybox.resize();  
 		     }
 		 });
 	 }
@@ -213,7 +232,7 @@
 		    delay: 500
 		 });
 
-		// For tab system
+		// jQuery CSS change for Live and Network feed
 		$(\'#tab div\').mouseover(function(){
 			if($(this).hasClass(\'selected\'));
 			else
@@ -287,26 +306,6 @@
 </style>
 '; ?>
 
-<center>
-<fieldset style="width:40%;align:center;">
-    <legend><b><h3>Search meme</h3></b></legend>
-    <form>
-	    <table>
-		<tr>
-		    <td class="dec">Username:</td>
-		    <td><input type="text" name="muname" id="muname" value="<?php echo $_REQUEST['muname']; ?>
-"/></td>
-		</tr>
-		<tr>
-		    <td class="dec">Title:</td>
-		    <td><input type="text" name="mtitle" id="mtitle" value="<?php echo $_REQUEST['mtitle']; ?>
-"/></td>
-		</tr>
-	    </table>
-	<input type="submit" value="Search"/>
-    </form>
-</fieldset><br/><br/>
-</center>
 <input type="hidden" name="last_id_meme_cur_page" id="last_id_meme_cur_page" value=''/>
 <input type="hidden" name="rand_id_memes" id="rand_id_memes" value=''/>
 <input type="hidden" name="chk_me" id="chk_me" value=''/>
