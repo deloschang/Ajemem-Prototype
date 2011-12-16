@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-16 08:52:06
+<?php /* Smarty version 2.6.7, created on 2011-12-16 09:55:22
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -153,11 +153,16 @@
 	     $("#rpl_con"+id).val("Reply with answer.");
 	     return false;
 	 }
-	$("#send_reply"+id).hide("slow",function(){ });
+	
+	
+	$("#replyinsert").html("Replied by ';  echo $_SESSION['fname']; ?>
+ <?php echo $_SESSION['lname'];  echo ' :<b>"+$("#rpl_con"+id).val()+"</b>")
+	    
+	/* $("#send_reply"+id).hide("slow",function(){ }); */
 	var url = "http://localhost/meme/answer_to_meme";
 	$.post(url,{answer:$("#rpl_con"+id).val(),id:id,ce:0 },function(res){
-	    $("#rpl_con"+id).val(\'\');
-	    $("#is_replied"+id).val(\'1\');
+	    $("#rpl_con"+id).val(\'\'); /* clears form text space */
+	    $("#is_replied"+id).val(\'1\'); /* increasing reply count value */
 	    $("#repl"+id).html(res);
 	    common_fun(id,reply_color);
 	 });

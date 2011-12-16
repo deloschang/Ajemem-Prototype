@@ -152,11 +152,15 @@
 	     $("#rpl_con"+id).val("Reply with answer.");
 	     return false;
 	}
-	$("#send_reply"+id).hide("slow",function(){});
+	
+	
+	$("#replyinsert").html("Replied by {/literal}{$smarty.session.fname} {$smarty.session.lname}{literal} : <br/><b>"+$("#rpl_con"+id).val()+"</b>")
+	    
+	/* $("#send_reply"+id).hide("slow",function(){}); */
 	var url = "##LBL_SITE_URL##meme/answer_to_meme";
 	$.post(url,{answer:$("#rpl_con"+id).val(),id:id,ce:0},function(res){
-	    $("#rpl_con"+id).val('');
-	    $("#is_replied"+id).val('1');
+	    $("#rpl_con"+id).val(''); /* clears form text space */
+	    $("#is_replied"+id).val('1'); /* increasing reply count value */
 	    $("#repl"+id).html(res);
 	    common_fun(id,reply_color);
 	});

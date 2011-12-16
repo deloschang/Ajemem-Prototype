@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-15 00:17:47
+<?php /* Smarty version 2.6.7, created on 2011-12-16 09:48:47
          compiled from caption/add_caption.tpl.html */ ?>
 
-<!-- Template: caption/add_caption.tpl.html Start 15/12/2011 00:17:47 --> 
+<!-- Template: caption/add_caption.tpl.html Start 16/12/2011 09:48:47 --> 
  <?php echo '
     <script type="text/javascript">
 	var flag_post =0;
