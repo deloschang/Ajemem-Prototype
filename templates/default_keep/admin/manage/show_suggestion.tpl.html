@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {* notag *}
 <div id="manage_see_detail">
 <div id="dv1">
@@ -63,4 +64,71 @@
     </div>
 </div>
 </div>
+=======
+{* notag *}
+<div id="manage_see_detail">
+<div id="dv1">
+<div class="box box-75 altbox" style="width:900px">
+    <div class="boxin" style="width:1500">
+        <div class="header" style="width:1500">
+            <h3>suggetions({$sm.next_prev->total})</h3>
+            </div>
+		<input type="hidden" name="qstart" id="qstart" value="{$sm.qstart}" />
+		<input type="hidden" name="id_feature" id="id_feature" value="{$sm.id_feature}" />
+        <div class="content">
+            <table cellspacing="0">
+                <thead>
+					<th>Name</th>
+                    <th>Suggestion</th>
+                    <th>Add-date</th>
+                 </thead>
+            <tbody>
+            {section name=cur loop=$sm.list}
+            {assign var=x value=$sm.list[cur]}
+		 <tr>
+			 <td>{$x.fname|ucfirst} {$x.lname|ucfirst}</td>
+			 <td>{$x.suggestion}</td>
+			 <td>{$x.add_date}</td>
+		</tr>
+	    {sectionelse}
+		<tr>
+			 <td colspan="13">
+			 No suggestion information.
+			</td>
+		</tr>
+            {/section}
+            </tbody>
+            </table>
+		{if $sm.type=='advance'}
+	    <div class="pagination_adv">
+	        {$sm.next_prev->generateadv()}
+	    </div>
+	{elseif $sm.type=='box'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='normal'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='nextprev'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->onlynextprev()}</div>
+	    </div>
+	{elseif $sm.type=='extra'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generateextra()}</div>
+	    </div>
+	{else}
+	    {if $sm.type!='no'}
+	        <div>
+	            <div align="center">{$sm.next_prev->generate()}</div>
+	        </div>
+	    {/if}
+	{/if}
+        </div>
+    </div>
+</div>
+</div>
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
 </div>

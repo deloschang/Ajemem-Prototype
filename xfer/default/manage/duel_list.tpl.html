@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {assign var=img_path value=$util->get_values_from_config('IMAGE')}
 <div id="duel_list">
 <form name="duels">
@@ -128,3 +129,135 @@
 </script>
 {/literal}
  
+=======
+{assign var=img_path value=$util->get_values_from_config('IMAGE')}
+<div id="duel_list">
+<form name="duels">
+   <center>
+    {if $sm.res_active}
+    <fieldset style=" background-color:#CAD8F3;width: 550px;border:12px solid gainsboro;">
+	 <legend ><b>Active Challanges</b></legend>
+	    {section name=cur loop=$sm.res_active}
+	    {assign var=x value=$sm.res_active[cur]}
+
+	    {if $smarty.session.id_user==$x.duelled_to}
+	    <div >
+	    <div style="float:left">
+		    <div style="margin-left: 150px"><img src="##LBL_SITE_URL##image/thumb/avatar/{if $x.duelledto_avatar}{$x.duelledto_avatar}{else}memeje_male.jpg{/if}" height="50px" width="50px" /></div>
+		    <div style="margin-left: 150px">YOU </div>
+		    
+	    </div>
+	    <div>
+		  <div><img src="##LBL_SITE_URL##image/thumb/avatar/{if $x.duelledby_avatar}{$x.duelledby_avatar}{else}memeje_male.jpg{/if}" height="50px" width="50px"/></div>
+		  <div>{$x.duelledby_name}</div>  
+	    </div>
+	     <div style="float:left">
+		    <div style="margin-left: 150px;height: 20px;">
+			{if $x.is_accepted=='0'}
+			    <input type="button" id="acpt" name="accept" value="Accept"  onClick="acpt_chall(1,'{$x.id_duel}','{$x.duelled_by}','{$x.duelled_to}');"/>
+			    <input type="button" id="ign"  name="ignore" value="Ignore" onClick="acpt_chall(2,'{$x.id_duel}');"/>
+			{/if}
+			{if $x.is_accepted=='1' && $x.duelled_meme==""}<input type="button" value="Post Meme" onClick="post_meme();"/> {/if}
+		    </div>
+	    </div>
+		<br/><br/><div style="border: 1px solid gray;"></div> <br/>
+	    </div>
+	   
+	    {else}
+	    <div>
+		<div style="float:left">
+		     <div style="margin-left: 150px"><img src="##LBL_SITE_URL##image/thumb/avatar/{if $x.duelledby_avatar}{$x.duelledby_avatar}{else}memeje_male.jpg{/if}" height="50px" width="50px" /></div>
+		    <div style="margin-left: 150px">YOU  </div>
+		   
+		</div>
+		<div>
+		    <div><img src="##LBL_SITE_URL##image/thumb/avatar/{if $x.duelledto_avatar}{$x.duelledto_avatar}{else}memeje_male.jpg{/if}" height="50px" width="50px"/></div>
+		    <div>{$x.duelledto_name}</div>
+		    <div style="margin-left: 190px;">{if $x.is_accepted=='0'}Waiting to approve.{/if}</div>
+		</div>
+		<div style="float:left">
+		    <div style="margin-left: 150px;height:20px">
+			{if $x.is_accepted=='1' && $x.own_meme==""}<input type="button" value="Post Meme" onClick="post_meme();"/>{/if} 
+		    </div>
+		</div>
+		<br/><br/><div style="border: 1px solid gray;"></div><br/>
+	    </div>
+		{/if}
+		{/section}
+	</fieldset>
+    {else}
+	<fieldset style="background-color:#CAD8F3;width: 550px;height: 120px;border:12px solid gainsboro;">
+	    <legend><b>Active Challanges</b></legend>
+	    <h2>No Active Challenges.</h2> 
+	</fieldset>
+    {/if}
+    {if $sm.res_complete}
+     <fieldset style="background-color:#CAD8F3;width: 550px;border:12px solid gainsboro;">
+	 <legend><b>Completed Challanges</b></legend>
+	    {section name=cur loop=$sm.res_complete}
+	    {assign var=x value=$sm.res_complete[cur]}
+
+		{if $smarty.session.id_user==$x.duelled_to}
+		    <div>
+			<div style="float:left">
+			    <div style="margin-left: 150px"><img src="##LBL_SITE_URL##image/thumb/avatar/{if $x.duelledto_avatar}{$x.duelledto_avatar}{else}memeje_male.jpg{/if}" height="50px" width="50px" /></div>
+			    <div style="margin-left: 150px">YOU </div>
+			</div>
+			<div>
+			    <div><img src="##LBL_SITE_URL##image/thumb/avatar/{if $x.duelledby_avatar}{$x.duelledby_avatar}{else}memeje_emale.jpg{/if}" height="50px" width="50px" /></div>
+			    <div style="margin-left: 190px;">{$x.duelledby_name}</div>
+			</div>
+			
+			<br/><br/><div style="border: 1px solid gray;"></div> <br/>
+		    </div>
+		{else}
+		    <div >
+			<div style="float:left">
+			    <div style="margin-left: 150px"><img src="##LBL_SITE_URL##image/thumb/avatar/{if $x.duelledby_avatar}{$x.duelledby_avatar}{else}memeje_male.jpg{/if}" height="50px" width="50px" /></div>
+			    <div style="margin-left: 150px">YOU</div>
+			</div>
+			<div>
+			    <div><img src="##LBL_SITE_URL##image/thumb/avatar/{if $x.duelledto_avatar}{$x.duelledto_avatar}{else}memeje_male.jpg{/if}" height="50px" width="50px"/></div>
+			    <div style="margin-left: 190px;">{$x.duelledto_name}</div>
+			</div>
+			<br/><br/><div style="border: 1px solid gray;"></div> <br/>
+		    </div>
+		{/if}
+	    {/section}
+     </fieldset>
+    {else}
+    <fieldset style="background-color:#CAD8F3;width: 550px;height: 120px;border:12px solid gainsboro;">
+	 <legend><b>Completed Challanges</b></legend>
+		<h2>No Completed Challenges.</h2> 
+    </fieldset>
+    {/if}
+   </center>
+</form>
+</div>
+{literal}
+<script type="text/javascript">
+    function acpt_chall(i,id_duel,duelled_by,duelled_to){
+	if(i==1){
+	    var fld="is_accepted";
+	}else{
+	    var fld="is_ignored";
+	}
+	var url="##LBL_SITE_URL##index.php";
+	$.post(url,{"page":"manage","choice":"accept_challange",fld:fld,id_duel:id_duel,duelled_by:duelled_by,duelled_to:duelled_to,ce:0},function(res){
+	    if(res==1){
+		window.location.reload();
+	    }else{
+		alert(res);
+		 $("#duel_list").html(res);
+	    }
+	 
+	});
+    }
+    function post_meme(){
+	window.location="##LBL_SITE_URL##meme/addMeme/duel/1";
+    }
+    
+</script>
+{/literal}
+ 
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {* notag *}
 <div id="dv1">
 <div class="box box-75 altbox" style="width:1500px">
@@ -89,4 +90,97 @@
         </div>
     </div>
 </div>
+=======
+{* notag *}
+<div id="dv1">
+<div class="box box-75 altbox" style="width:1500px">
+    <div class="boxin" style="width:1500">
+        <div class="header" style="width:1500">
+            <h3>Visitors on pages({$sm.next_prev->total})</h3>
+            </div>
+        <input type="hidden" id="qstart" value="{$sm.qstart}"/>
+        <div class="content">
+            <table cellspacing="0">
+                <thead>
+					<th>Name</th>
+					<th>user</th>
+					<th>Home page</th>
+                    <th>Make a meme</th>
+                    <th>Funny</th>
+					<th>Feature</th>
+					<th>Love</th>
+					<th>Trees</th>
+					<th>Everyday</th>
+					<th>Random</th>
+					<th>Top memes</th>
+					<th>Add caption</th>
+					<th>Leaderboard</th>
+					<th>What is memeja</th>
+					<th>About us</th>
+					<th>Visit all pages</th>
+                 </thead>
+            <tbody>
+
+            {section name=cur loop=$sm.list}
+            {assign var=x value=$sm.list[cur]}
+		 <tr>
+							<td>{$x.fname|ucfirst} {$x.lname|ucfirst}</td>
+							<!--<td>{$x.fname|capitalize:true} {$x.lname|capitalize:true}</td> -->
+							<td>{$x.email}</td>
+							<td>{$x.home_page}</td>
+							<td>{$x.maka_a_meme}</td>
+							<td>{$x.funny}</td>
+							<td>{$x.feature}</td>
+							<td>{$x.love}</td>
+							<td>{$x.trees}</td>
+							<td>{$x.everyday}</td>
+							<td>{$x.random}</td>
+							<td>{$x.top_memes}</td>
+							<td>{$x.add_caption}</td>
+							<td>{$x.leaderboard}</td>
+							<td>{$x.what_is_memeja}</td>
+							<td>{$x.aboutus}</td>
+							<td>{$x.visitall}</td>
+			</tr>
+						{sectionelse}
+						<tr>
+							 <td colspan="13">
+							  No Page information.
+							 </td>
+						</tr>
+		</tr>
+            {/section}
+            </tbody>
+            </table>
+		{if $sm.type=='advance'}
+	    <div class="pagination_adv">
+	        {$sm.next_prev->generateadv()}
+	    </div>
+	{elseif $sm.type=='box'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='normal'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='nextprev'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->onlynextprev()}</div>
+	    </div>
+	{elseif $sm.type=='extra'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generateextra()}</div>
+	    </div>
+	{else}
+	    {if $sm.type!='no'}
+	        <div>
+	            <div align="center">{$sm.next_prev->generate()}</div>
+	        </div>
+	    {/if}
+	{/if}
+        </div>
+    </div>
+</div>
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
 </div>

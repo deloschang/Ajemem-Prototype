@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <center>
 <a href="javascript:void(0);" onclick="getuserdata('a');" id="a">a</a>&nbsp;|&nbsp;
 <a href="javascript:void(0);" onclick="getuserdata('b');" id="b">b</a>&nbsp;|&nbsp;
@@ -57,3 +58,64 @@
 		}
     </script>
 {/literal}
+=======
+<center>
+<a href="javascript:void(0);" onclick="getuserdata('a');" id="a">a</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('b');" id="b">b</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('c');" id="c">c</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('d');" id="d">d</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('e');" id="e">e</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('f');" id="f">f</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('g');" id="g">g</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('h');" id="h">h</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('i');" id="i">i</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('j');" id="j">j</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('k');" id="k">k</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('l');" id="l">l</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('m');" id="m">m</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('n');" id="n">n</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('o');" id="o">o</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('p');" id="p">p</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('q');" id="q">q</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('r');" id="r">r</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('s');" id="s">s</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('t');" id="t">t</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('u');" id="u">u</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('v');" id="v">v</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('w');" id="w">w</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('x');" id="x">x</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('y');" id="y">y</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('z');" id="z">z</a>&nbsp;|&nbsp;
+<a href="javascript:void(0);" onclick="getuserdata('all');" id="all">all</a>&nbsp;&nbsp;
+</center>
+<div id="showerr">{$sm.failmsg}</div>
+<div id="user_getuserlogin"></div>
+{literal}
+	<script type="text/javascript">
+			$('.selectc').attr('id','all');
+			$('#all').attr('class','selectc');
+			$('#all').css({ color:"red", fontWeight:"bolder" });
+			//var url="##LBL_ADMIN_SITE_URL##page-user-choice-getuserlogin";
+			var url="##LBL_ADMIN_SITE_URL##index.php";
+			var c='all';
+			$.post(url,{"page":"user","choice":"getuserlogin",c:c,ce:0},function(res){
+				$('#user_getuserlogin').html(res);
+			});
+
+    	function getuserdata(txt) {
+			if($('.selectc').attr('id')) {
+				$('.selectc').css('color','black');
+				$('.selectc').css('fontWeight','normal');
+				$('.selectc').removeAttr('class');
+			} 
+			$('#'+txt).attr('class','selectc');
+			$('#'+txt).css({ color:"red", fontWeight:"bolder" });
+			var url="##LBL_ADMIN_SITE_URL##index.php";
+			var c=txt;
+			$.post(url,{"page":"user","choice":"getuserlogin",c:c,ce:0},function(res){
+				$('#user_getuserlogin').html(res);
+			});
+		}
+    </script>
+{/literal}
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

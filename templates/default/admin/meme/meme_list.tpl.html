@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {*notag*}{$sm.sql}
 {assign var=category value=$util->get_values_from_config('CATEGORY')}
 {assign var=img_path value=$util->get_values_from_config('IMAGE')}
@@ -84,3 +85,91 @@
     </div>
 </div>
 </div>
+=======
+{*notag*}{$sm.sql}
+{assign var=category value=$util->get_values_from_config('CATEGORY')}
+{assign var=img_path value=$util->get_values_from_config('IMAGE')}
+<div id="dv1">
+<div class="box box-100 altbox">
+    <div class="boxin">
+        <div class="header">
+	    <h3>Meme List ({$sm.next_prev->total})</h3>
+            <a class="button" href="javascript:void(0);" onclick="add_images();">Delete</a>
+        </div>
+        <input type="hidden" id="qstart" value="{$sm.qstart}"/>
+        <div class="content">
+            <table cellspacing="0">
+		    <thead>
+			<th>Check/Uncheck<br/>&nbsp;&nbsp;&nbsp;<input type="checkbox" id="chk_unchk" />
+			</th>
+			<th>Image</th>
+			<th>Title</th>
+			<th>Category</th>
+			<th>Total Honour</th>
+			<th>Total Dishonour</th>
+			<th>Add Date</th>
+			<th>Action</th>
+		    </thead>
+		    <tbody>
+
+		    {section name=cur loop=$sm.list}
+		    {assign var=x value=$sm.list[cur]}
+			 <tr>
+			    <td>
+				  <input type="checkbox" name="chk_box" id="chk{$x.id_meme}" value="{$x.id_meme}" class="chkbox_image"/>
+			    </td>
+			    <td>
+				<img src="##LBL_SITE_URL##{$img_path.image_thumb}meme/{$x.image}" alt="{$x.image}"/>
+			    </td>
+			    <td>
+				<nobr/>{$x.title}
+			    </td>
+			    <td>{$category[$x.category]}</td>
+			    <td>{$x.tot_honour}</td>
+			    <td>{$x.tot_dishonour}</td>
+			    <td>{$x.add_date|date_format:"%m-%d-%Y"}</td>
+			    <td>
+				<img src="##LBL_SITE_URL##templates/css_theme/img/led-ico/delete.png" alt="delete" title="Delete" onclick="delete_meme('{$x.id_meme}');"/>
+			    </td>
+			</tr>
+		    {sectionelse}
+			<tr>
+			    <td colspan="5">
+			    No Meme Found.
+			    </td>
+			</tr>
+		    {/section}
+		    </tbody>
+            </table>
+		{if $sm.type=='advance'}
+	    <div class="pagination_adv">
+	        {$sm.next_prev->generateadv()}
+	    </div>
+	{elseif $sm.type=='box'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='normal'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='nextprev'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->onlynextprev()}</div>
+	    </div>
+	{elseif $sm.type=='extra'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generateextra()}</div>
+	    </div>
+	{else}
+	    {if $sm.type!='no'}
+	        <div>
+	            <div align="center">{$sm.next_prev->generate()}</div>
+	        </div>
+	    {/if}
+	{/if}
+        </div>
+    </div>
+</div>
+</div>
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

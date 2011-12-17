@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2011-12-17 09:52:44
          compiled from common/messages.tpl.html */ ?>
 
@@ -8,6 +9,18 @@
 </div>
 <?php endif; ?>
 <?php if ($this->_tpl_vars['sm']['message']): ?>
+=======
+<?php /* Smarty version 2.6.7, created on 2011-12-16 05:38:44
+         compiled from common/messages.tpl.html */ ?>
+
+<!-- Template: common/messages.tpl.html Start 16/12/2011 05:38:44 --> 
+ <!-- messages set by all modules shown here -->
+<?php if ($_SESSION['raise_message'][$this->_tpl_vars['module']]): ?>
+    <div class="alert" align="center"><?php echo $_SESSION['raise_message'][$this->_tpl_vars['module']]; ?>
+</div>
+<?php endif; ?>
+<?php if ($this->_tpl_vars['sm']['message']): ?>
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
 <?php unset($this->_sections['cur_msg']);
 $this->_sections['cur_msg']['name'] = 'cur_msg';
 $this->_sections['cur_msg']['loop'] = is_array($_loop=$this->_tpl_vars['sm']['message']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
@@ -22,15 +35,22 @@ if ($this->_sections['cur_msg']['show']) {
 } else
     $this->_sections['cur_msg']['total'] = 0;
 if ($this->_sections['cur_msg']['show']):
+<<<<<<< HEAD
 
             for ($this->_sections['cur_msg']['index'] = $this->_sections['cur_msg']['start'], $this->_sections['cur_msg']['iteration'] = 1;
                  $this->_sections['cur_msg']['iteration'] <= $this->_sections['cur_msg']['total'];
+=======
+
+            for ($this->_sections['cur_msg']['index'] = $this->_sections['cur_msg']['start'], $this->_sections['cur_msg']['iteration'] = 1;
+                 $this->_sections['cur_msg']['iteration'] <= $this->_sections['cur_msg']['total'];
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
                  $this->_sections['cur_msg']['index'] += $this->_sections['cur_msg']['step'], $this->_sections['cur_msg']['iteration']++):
 $this->_sections['cur_msg']['rownum'] = $this->_sections['cur_msg']['iteration'];
 $this->_sections['cur_msg']['index_prev'] = $this->_sections['cur_msg']['index'] - $this->_sections['cur_msg']['step'];
 $this->_sections['cur_msg']['index_next'] = $this->_sections['cur_msg']['index'] + $this->_sections['cur_msg']['step'];
 $this->_sections['cur_msg']['first']      = ($this->_sections['cur_msg']['iteration'] == 1);
 $this->_sections['cur_msg']['last']       = ($this->_sections['cur_msg']['iteration'] == $this->_sections['cur_msg']['total']);
+<<<<<<< HEAD
 ?>
      <div class="alert" align="center"><?php echo $this->_tpl_vars['sm']['message'][$this->_sections['cur_msg']['index']]; ?>
 </div>
@@ -39,5 +59,15 @@ $this->_sections['cur_msg']['last']       = ($this->_sections['cur_msg']['iterat
 </div>
 <?php endif; ?>
 <?php endif; ?>
+=======
+?>
+     <div class="alert" align="center"><?php echo $this->_tpl_vars['sm']['message'][$this->_sections['cur_msg']['index']]; ?>
+</div>
+<?php endfor; else: ?>
+     <div class="alert" align="center"><?php echo $this->_tpl_vars['sm']['message']; ?>
+</div>
+<?php endif; ?>
+<?php endif; ?>
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
 
 <!-- Template: common/messages.tpl.html End --> 

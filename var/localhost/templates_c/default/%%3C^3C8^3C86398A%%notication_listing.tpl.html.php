@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2011-12-16 09:20:52
+=======
+<?php /* Smarty version 2.6.7, created on 2011-12-13 06:38:15
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
          compiled from manage/notication_listing.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('NOTIFY_TYPE')); ?>
 <?php if ($this->_tpl_vars['sm']['result']['notifications']): ?>

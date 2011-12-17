@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <public:component lightweight="true">
 
 <script language="javascript">
@@ -13,3 +14,20 @@ this.onbeforeeditfocus = CancelEvent ;
 </script>
 
 </public:component>
+=======
+<public:component lightweight="true">
+
+<script language="javascript">
+
+function CancelEvent()
+{
+	return false ;
+}
+
+this.onresizestart = CancelEvent ;
+this.onbeforeeditfocus = CancelEvent ;
+
+</script>
+
+</public:component>
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

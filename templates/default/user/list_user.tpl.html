@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {if $sm.list}
 <table class="list_tbl" align="center">
 	<tr>
@@ -25,3 +26,32 @@
 {else}
 	<center>No results found</center>
 {/if}
+=======
+{if $sm.list}
+<table class="list_tbl" align="center">
+	<tr>
+    	<th colspan="5">Listing</th>
+    </tr>
+	<tr>
+    	<th>Name</th>
+    	<th>Email</th>
+    	<th>Address</th>
+    	<th>Hobbies</th>
+    	<th>Dob</th>
+    </tr>
+    {section name=cur loop=$sm.list}
+    {assign var=x value=$sm.list[cur]}
+    <tr class="{cycle values="odd,even"}">
+    	<td>{$x.first_name} {$x.last_name}</td>
+    	<td><a href="mailto:{$x.email}">{$x.email}</a></td>
+    	<td>{$x.address}</td>
+    	<td>{$sm.hobbies[$x.hobbies]}</td>
+    	<td>{$x.dob}</td>
+    </tr>
+    {/section}
+</table>
+<div class="pagination">{$sm.next_prev->generate()}</div> 
+{else}
+	<center>No results found</center>
+{/if}
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

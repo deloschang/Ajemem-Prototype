@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class [module]_manager extends mod_manager {
 	function [module]_manager (& $smarty, & $_output, & $_input) {
 		$this->mod_manager($smarty, $_output, $_input, '[module]');
@@ -22,3 +23,29 @@ class [module]_manager extends mod_manager {
 		}
 	}
 }	
+=======
+class [module]_manager extends mod_manager {
+	function [module]_manager (& $smarty, & $_output, & $_input) {
+		$this->mod_manager($smarty, $_output, $_input, '[module]');
+		$this->obj_[module] = new [module];
+		$this->[module]_bl = new [module]_bl;
+ 	}
+	function get_module_name() { 
+		return '[module]';
+	}
+	function get_manager_name() {
+		return '[module]';
+	}
+	function _default() {
+	
+	}
+	function manager_error_handler() {
+		$call = "_".$this->_input['choice'];
+		if (function_exists($call)) {
+			$call($this);
+		} else {
+			print "<h1>Put your own error handling code here</h1>";
+		}
+	}
+}	
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

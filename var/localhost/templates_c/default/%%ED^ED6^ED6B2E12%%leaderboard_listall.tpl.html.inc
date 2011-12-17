@@ -5,6 +5,7 @@ $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/d
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'leaderboard/leaderboard_listall.tpl.html', 6, false),)), $this); ?>
+<<<<<<< HEAD
 <?php
 function _smarty_tplfunc_335fc3ac4d109eed4f131086b7ed44ae_0(&$_smarty)
 {
@@ -29,6 +30,32 @@ function _smarty_tplfunc_335fc3ac4d109eed4f131086b7ed44ae_3(&$_smarty)
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'leaderboard','mgr' => 'leaderboard','choice' => 'lb_achievements','uname' => $_smarty->_tpl_vars['sm']['uname'],'iduser' => $_smarty->_tpl_vars['sm']['id_user'],'chk' => 1), $_smarty);
 }
 
+=======
+<?php
+function _smarty_tplfunc_335fc3ac4d109eed4f131086b7ed44ae_0(&$_smarty)
+{
+echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'leaderboard','mgr' => 'leaderboard','choice' => 'lb_duels','uname' => $_smarty->_tpl_vars['sm']['uname'],'chk' => 1), $_smarty);
+}
+
+
+function _smarty_tplfunc_335fc3ac4d109eed4f131086b7ed44ae_1(&$_smarty)
+{
+echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'leaderboard','mgr' => 'leaderboard','choice' => 'lb_exp_point','uname' => $_smarty->_tpl_vars['sm']['uname'],'chk' => 1), $_smarty);
+}
+
+
+function _smarty_tplfunc_335fc3ac4d109eed4f131086b7ed44ae_2(&$_smarty)
+{
+echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'leaderboard','mgr' => 'leaderboard','choice' => 'lb_ques_won','uname' => $_smarty->_tpl_vars['sm']['uname'],'iduser' => $_smarty->_tpl_vars['sm']['id_user'],'chk' => 1), $_smarty);
+}
+
+
+function _smarty_tplfunc_335fc3ac4d109eed4f131086b7ed44ae_3(&$_smarty)
+{
+echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'leaderboard','mgr' => 'leaderboard','choice' => 'lb_achievements','uname' => $_smarty->_tpl_vars['sm']['uname'],'iduser' => $_smarty->_tpl_vars['sm']['id_user'],'chk' => 1), $_smarty);
+}
+
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
 
 
 ?>

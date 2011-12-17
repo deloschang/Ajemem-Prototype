@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {*notag*}
 {assign var=cat value=$util->get_values_from_config('CATEGORY')}
 {assign var=x value=$sm.det_meme}
@@ -15,4 +16,23 @@
     <div>
 	On :{$x.add_date|date_format:"%m-%d-%Y @ %H:%I %p"} 
     </div>
+=======
+{*notag*}
+{assign var=cat value=$util->get_values_from_config('CATEGORY')}
+{assign var=x value=$sm.det_meme}
+<div style="width:640px;;height:auto;">
+    <div>
+	<span><b>Category:</b></span>
+	<span>{$cat[$x.category]}</span>
+    </div>
+    <div >
+	<img src="##LBL_SITE_URL##image/orig/{if $sm.fg==1}duel{else}meme{/if}/{$sm.det_meme.image}" title="Meme" />
+    </div>
+    <div>
+	Posted by :{$sm.uinfo[$x.id_user].fname} {$sm.uinfo[$x.id_user].lname} 
+    </div>
+    <div>
+	On :{$x.add_date|date_format:"%m-%d-%Y @ %H:%I %p"} 
+    </div>
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
 </div>

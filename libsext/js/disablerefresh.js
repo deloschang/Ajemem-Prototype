@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //Ctrl+Shift+R  82
 //Ctrl+Shift+U  85
 
@@ -45,3 +46,52 @@ function unsetEventListener(eventListener) {
 //event.keyCode = 0; //or any other number but F5
 //event.returnValue = false;
 //return false;[/color]
+=======
+//Ctrl+Shift+R  82
+//Ctrl+Shift+U  85
+
+function disableKey(event) {
+	if (!event) event = window.event;
+	if (!event) return;
+
+	var keyCode = event.keyCode ? event.keyCode : event.charCode;
+	//alert(keyCode);
+	//window.status = keyCode;
+	//alert(keyCode);
+	// keyCode for F% on Opera is 57349 ?!
+	if (keyCode == 116 || keyCode == 82 || keyCode == 85) {
+		window.status = "F5 key detected! Attempting to disabling default response.";
+		window.setTimeout("window.status='';", 2000);
+
+		// Standard DOM (Mozilla):
+		if (event.preventDefault) event.preventDefault();
+
+		//IE (exclude Opera with !event.preventDefault):
+			if (document.all && window.event && !event.preventDefault) {
+			event.cancelBubble = true;
+			event.returnValue = false;
+			event.keyCode = 0;
+		}
+		return false;
+	}
+}
+function setEventListener(eventListener) {
+	if (document.addEventListener) document.addEventListener('keypress', eventListener, true);
+	else if (document.attachEvent) document.attachEvent('onkeydown', eventListener);
+	else document.onkeydown = eventListener;
+	if (!document.getElementById) return;
+	var el = document.getElementById("Msg");
+	if (el) el.innerHTML = "Event handler added.";
+}
+function unsetEventListener(eventListener) {
+	if (document.removeEventListener) document.removeEventListener('keypress', eventListener, true);
+	else if (document.detachEvent) document.detachEvent('onkeydown', eventListener);
+	else document.onkeydown = null;
+	if (!document.getElementById) return;
+	var el = document.getElementById("Msg");
+	if (el) el.innerHTML = "Event handler removed.";
+}
+//event.keyCode = 0; //or any other number but F5
+//event.returnValue = false;
+//return false;[/color]
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

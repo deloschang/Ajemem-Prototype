@@ -1,7 +1,16 @@
+<<<<<<< HEAD
 {* notag *}
 <form {$sm.formheader.name} {$sm.formheader.action} {$sm.formheader.method}>
 	{section name=cur loop=$sm.form}
 		{assign var=f value=$sm.form[cur]}
 		{$f.prompt} <input type="{$f.type}" name="{$f.name}" id="{$f.id}" value="{$f.value}" >{$f.break}
 	{/section}
+=======
+{* notag *}
+<form {$sm.formheader.name} {$sm.formheader.action} {$sm.formheader.method}>
+	{section name=cur loop=$sm.form}
+		{assign var=f value=$sm.form[cur]}
+		{$f.prompt} <input type="{$f.type}" name="{$f.name}" id="{$f.id}" value="{$f.value}" >{$f.break}
+	{/section}
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
 </form>

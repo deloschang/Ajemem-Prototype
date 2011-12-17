@@ -1,3 +1,4 @@
+<<<<<<< HEAD
     {assign var=img_path value=$util->get_values_from_config('IMAGE')}
     
 	<table>
@@ -25,3 +26,32 @@
 	    
 	</table>
     {/if}
+=======
+    {assign var=img_path value=$util->get_values_from_config('IMAGE')}
+    
+	<table>
+	    {if $sm.res}
+		Account Holder's Badge:<br>
+	    <tr>
+		<td>
+		
+		{section name=cur loop=$sm.res}
+		{assign var=x value=$sm.res[cur]}
+			<img src="##LBL_SITE_URL##{$img_path.badge_thumb}{$x.id_badge}_{$x.image_badge}" height="50px" width="50px" title="{$x.desc_badge}" />
+		    {if (($smarty.section.cur.iteration % 4) == 0)}
+			    </td>
+			  </tr><td>
+		    {/if}
+		</td>
+	    </tr>
+	    {/section}
+	    {else}
+	    <tr>
+		<td>
+		    No Badge found
+		</td>
+	    </tr>
+	    
+	</table>
+    {/if}
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

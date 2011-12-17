@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {*notag*}
 {if $smarty.session.id_user}
 <table style="margin-top:0px" >
@@ -57,3 +58,64 @@
 </table>
 {/if}
 
+=======
+{*notag*}
+{if $smarty.session.id_user}
+<table style="margin-top:0px" >
+    <tr>
+		<td valign="top">
+			<div id="changePhoto" style="margin-top:1px">
+				{include file='user/avatar'}
+			</div>
+		</td>
+    </tr>
+     <tr>
+		<td><b>{$smarty.session.fname|capitalize}{if $smarty.session.mname} {$smarty.session.mname}{/if} {$smarty.session.lname|capitalize}</b></td>
+    </tr>
+    <tr>
+		<td>Rank #<b>{if $smarty.session.achv_rank}{$smarty.session.achv_rank}{else}NA{/if}</b></td>
+    </tr>
+    <tr>
+		<td><a href="javascript:void(0);">Account Setting</a></td>
+    </tr>
+    <tr>
+{************ Duels commented out
+		<td><a href="##LBL_SITE_URL##duels/list_duels" title="See all duels">Challenge Duel</a></td> *********}
+
+    </tr>
+    <tr>
+		<td>
+			<div id="badge_list" >
+			{get_mod mod=achievements mgr=achievements choice=badge_list gmod=1}
+			</div>
+		</td>
+    </tr>
+    <tr>
+		<td>
+		<div id="my_meme_list" >
+			{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+		</div>
+		</td>
+    </tr>
+	<tr>
+		<td>
+		<div id="my_favorites" >
+			{get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
+		</div>
+		</td>
+    </tr>
+	<tr>
+		<td>
+		<div id="tagged_meme" >
+			{get_mod mod=manage mgr=manage choice=tagged_meme gmod=1}
+		</div>
+		</td>
+    </tr>
+	<tr> {***** Dueled Meme Commented out
+		<td><a href="##LBL_SITE_URL##meme/dueled_meme">Dueled Meme</a></td> *}
+    </tr>
+	
+</table>
+{/if}
+
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

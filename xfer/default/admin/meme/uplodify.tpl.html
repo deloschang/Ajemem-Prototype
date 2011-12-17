@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/js/uploadify/swfobject.js"></script>
 <script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/js/uploadify/jquery.uploadify.v2.1.0.min.js"></script>
 <script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/js/jquery.application.js"></script>
@@ -99,3 +100,106 @@ function preview(ID){//
 	
 	</div>
 </div>
+=======
+<script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/js/uploadify/swfobject.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/js/uploadify/jquery.uploadify.v2.1.0.min.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/js/jquery.application.js"></script>
+<link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/css/style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/mainpg.css" media="screen" />
+{literal}
+<script type="text/javascript">
+$(document).ready(function() {
+	var count=0;
+	var upload_id = '';
+	$('#file_upload').uploadify({
+		'buttonText'  : 'Upload Image',
+		'uploader'    : '##LBL_SITE_URL##templates/flexyjs/js/uploadify/uploadify.swf',
+		'script'      : '##LBL_ADMIN_SITE_URL##meme/upload_image/ce/0',
+		'cancelImg'   : '##LBL_SITE_URL##templates/flexyjs/js/uploadify/cancel.png',
+		'method'      : 'POST',
+		'fileExt'     : '*.jpg;*.jpeg;*.png;*.gif;*tif;*.tiff;*.bmp',
+		'fileDesc'    : 'Image Files',
+		'multi'       : true,
+		'onComplete'  : function(event, ID, fileObj, response, data){ 
+				$("#imgs_id").val($("#imgs_id").val()+response+',');
+				//alert($("#imgs_id").val($("#imgs_id").val()+response+','));return;
+				$('#uploadbtn').hide();
+				$('#Clearbtn').hide();
+		},
+		'onAllComplete'  : function(event, ID, fileObj, response, data) {
+				//alert($("#imgs_id").val());
+				var url = "##LBL_ADMIN_SITE_URL##meme/imgList/ce/0";
+				$.post(url,{ids:$("#imgs_id").val()},function (data){
+					$('#img_list').html(data);
+				});
+				$("#imgs_id").val("");
+		},
+		'onSelect'  : function(event, ID, fileObj, response, data){
+			    $('#img_list').html("");
+				//preview(ID);
+				$('#uploadbtn').show();
+				$('#Clearbtn').show();
+				$.fancybox.resize();
+		},
+		'onCancel': function () {
+				count--;
+				if(count==0){
+					$('#uploadbtn').hide();
+					$('#Clearbtn').hide();
+				}
+		}
+	});
+});
+function preview(ID){//
+	var url = "##LBL_ADMIN_SITE_URL##meme/preview/ce/0/ID/"+ID;
+	$.ajaxFileUpload({
+	    url:url,
+	    secureuri:false,
+	    fileElementId:ID,     
+	    dataType: 'json',
+	    complete: function (data, status){
+		var img_name=data.responseText;
+		alert(img_name);
+		var picture = "<img src = '##LBL_SITE_URL##{/literal}{$img_path.preview_thumb}{literal}"+img_name+"' height = '{/literal}{$img_path.thumb_height}{literal}px' width = '{/literal}{$img_path.thumb_width}{literal}px' />";
+		$('#getimage').html(picture);
+		$('#img_name_span').html($('#server_img').val(img_name));
+		$('#get_img_err').hide();
+	    }
+	});
+    }
+	function check_folder_again(){
+	var category = $('#category').val();
+		$('#file_upload').uploadifySettings(
+		    'scriptData', {
+			'category':category
+		    }
+		);
+	}
+	
+	function clear_all(){
+		$('#uploadbtn').hide();
+		$('#Clearbtn').hide();
+	}
+</script>
+
+{/literal}
+<div style="width:400px;">
+    <input type="hidden" name="imgs_id" id="imgs_id"/>
+		<div id="" style="color:rosybrown;font-size:16px">
+	<h2><b>Upload Image</b></h2>
+   </div>
+    <label for="category"><b>Category:</b></label>
+	    <select name="categery" id="category">
+		<!--<option value="">--Select--</option>-->
+		{html_options options=$sm.category }
+	    </select><br><br></br>
+    
+	<input id="file_upload" name="file_upload" type="file" />
+
+	<a  href="javascript:$('#file_upload').uploadifyUpload();" id="uploadbtn" style="display:none;" onclick="check_folder_again();">Upload</a>
+	<a  href="javascript:$('#file_upload').uploadifyClearQueue();" id="Clearbtn" style="display:none;" onclick="clear_all();">|Clear Queue</a>
+	<div id="img_list">
+	
+	</div>
+</div>
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

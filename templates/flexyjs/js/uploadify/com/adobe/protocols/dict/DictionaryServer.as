@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.adobe.protocols.dict
 {
 	public class DictionaryServer
@@ -25,4 +26,33 @@ package com.adobe.protocols.dict
 			return this._description;
 		}
 	}
+=======
+package com.adobe.protocols.dict
+{
+	public class DictionaryServer
+	{
+		private var _server:String;
+		private var _description:String;
+
+		public function set server(server:String):void
+		{
+			this._server = server;
+		}
+		
+		public function get server():String
+		{
+			return this._server;
+		}
+
+		public function set description(description:String):void
+		{
+			this._description = description;
+		}
+		
+		public function get description():String
+		{
+			return this._description;
+		}
+	}
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
 }

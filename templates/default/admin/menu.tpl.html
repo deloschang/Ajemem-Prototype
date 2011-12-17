@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 	<div id="nav_list_cont">
 		<ul id="nav_list">
             <li class="border">
@@ -67,3 +68,74 @@
             </li>
         </ul>
     </div>
+=======
+	<div id="nav_list_cont">
+		<ul id="nav_list">
+            <li class="border">
+            	<a href="##LBL_ADMIN_SITE_URL##" title="Go to Home" class="menu_head">Home</a>
+            </li>
+            <li class="border">
+            	<a href="#" class="menu_head">Management</a>
+                <ul style="visibility: hidden;">
+                    <li>
+                        <div class="nav-col">
+                            <a href="##LBL_ADMIN_SITE_URL##meme/list_premadeImages"{if $smarty.request.page == 'meme' && $smarty.request.choice =='list_premadeImages'}class="current"{/if}>Premade Images</a>
+                            <a href="##LBL_ADMIN_SITE_URL##cms/list"{if $smarty.request.page == 'cms' && $smarty.request.choice =='listing'}class="current"{/if}>Content</a>
+                            <a href="##LBL_ADMIN_SITE_URL##question/list"{if $smarty.request.page == 'question' && $smarty.request.choice =='list'}class="current"{/if}>Question</a>
+                            <!--<a href="##LBL_ADMIN_SITE_URL##manage/list"{if $smarty.request.page == 'manage' && $smarty.request.choice =='list'}class="current"{/if}>Badges</a>-->
+			    <a href="##LBL_ADMIN_SITE_URL##achievements/list_badge"{if $smarty.request.page == 'achievements' && $smarty.request.choice =='list_badge'}class="current"{/if}>Badges</a>
+			    <a href="##LBL_ADMIN_SITE_URL##manage/list_feature"{if $smarty.request.page == 'manage' && $smarty.request.choice =='list_feature'}class="current"{/if}>Features</a>
+
+			    
+			    <a href="##LBL_ADMIN_SITE_URL##manage/show_points"{if $smarty.request.page == 'manage' && $smarty.request.choice =='show_points'}class="current"{/if}>Show Points</a>
+		    </div>			
+			<div class="nav-col Last">
+			   
+			    {if $smarty.session.id_developer}
+				<!--
+				<a href="##LBL_ADMIN_SITE_URL##achievements/list_page"{if $smarty.request.page == 'achievements' && $smarty.request.choice =='list_page'}class="current"{/if}>Pages</a>
+				<a href="##LBL_ADMIN_SITE_URL##manage/list_glory"{if $smarty.request.page == 'manage' && $smarty.request.choice =='list_glory'}class="current"{/if}>Glory</a>
+				<a href="##LBL_ADMIN_SITE_URL##manage/glory_list"{if $smarty.request.page == 'manage' && $smarty.request.choice =='glory_list'}class="current"{/if}>Glory Details</a>
+				<a href="##LBL_ADMIN_SITE_URL##meme/meme_listing"{if $smarty.request.page == 'meme' && $smarty.request.choice =='meme_listing'}class="current"{/if}>Memes</a>
+				<a href="##LBL_ADMIN_SITE_URL##manage/list/opt/ok"{if $smarty.request.page == 'manage' && $smarty.request.choice =='list'}class="current"{/if}>glory_icon_badges</a>
+				<a href="##LBL_ADMIN_SITE_URL##question/cron_question" {if $smarty.request.page == 'question' && $smarty.request.choice =='cron_question'}class="current"{/if}>cron_question</a>
+				
+				<a href="##LBL_ADMIN_SITE_URL##meme/show_flag"{if $smarty.request.page == 'meme' && $smarty.request.choice =='show_flag'}class="current"{/if}>Flags</a>
+				<a href="##LBL_ADMIN_SITE_URL##module/form_module"{if $smarty.request.page == 'module' && $smarty.request.choice =='form_module'}class="current"{/if}>Module</a>
+				<a href="##LBL_ADMIN_SITE_URL##template/show"{if $smarty.request.page == 'template' && $smarty.request.choice =='show'}class="current"{/if}>Template</a>
+				-->
+			    {/if}
+			</div>
+                    </li>			
+                </ul>
+            </li>
+            <li class="border">
+            	<a href="#" class="menu_head">Listing</a>
+                <ul class="three-col" style="visibility: hidden;">
+                    <li>
+                        <div class="nav-col Last">
+                         	<!--<a href="##LBL_ADMIN_SITE_URL##user/listing"{if $smarty.request.page == 'user' && $smarty.request.choice =='listing'}class="current"{/if}>User Logs</a>-->
+                         	<a href="##LBL_ADMIN_SITE_URL##user/user_listing"{if $smarty.request.page == 'user' && $smarty.request.choice =='user_listing'}class="current"{/if}>User List</a>
+                         	<a href="##LBL_ADMIN_SITE_URL##user/log_list"{if $smarty.request.page == 'user' && $smarty.request.choice =='log_list'}class="current"{/if}>User Logs</a>
+                         	
+			</div>
+                    </li>
+                </ul>
+            </li>
+            <li class="border">
+            	<a href="#" class="menu_head">Settings</a>
+                <ul class="three-col" style="visibility: hidden;">
+                    <li>
+                        <div class="nav-col Last">
+                         	 <a href="##LBL_ADMIN_SITE_URL##setting/listing"{if $smarty.request.page == 'setting' && $smarty.request.choice =='listing'}class="current"{/if}>Config</a>
+                             <!--<a href="##LBL_ADMIN_SITE_URL##setting/msg_list"{*if $smarty.request.page == 'setting' && $smarty.request.choice =='msg_list'*}class="current"{*/if*}>Message</a>-->
+</div>
+                    </li>
+                </ul>
+            </li>
+            <li class="border">
+            	<a class="menu_head" href="##LBL_SITE_URL##" target="_blank">Go to User Site &gt;&gt;</a>
+            </li>
+        </ul>
+    </div>
+>>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
