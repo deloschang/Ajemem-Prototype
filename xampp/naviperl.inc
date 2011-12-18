@@ -1,2 +1,0 @@
-<a class=n target=content onClick="h(this);" href=perlinfo.pl>perlinfo()</a><br>
-<a class=n target=content onClick="h(this);" href=guestbook-<?=file_get_contents("lang.tmp")?>.pl><?=$TEXT['navi-guest']?></a>

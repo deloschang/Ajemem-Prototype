@@ -1,7 +1,0 @@
-{foreach name=rep item=i key=k from=$sm.reparr}
-<br/><span>Replied by {$sm.uinfo[$i.id_user].fname} {$sm.uinfo[$i.id_user].lname} : <br><b>{$i.reply}</b></span><br/>
-{/foreach}<br/>
-
-<textarea id="{if !$sm.flag}rpl_con{else}rand_rpl_con{/if}{$sm.id_meme}" style="width:90%;" onclick="{if !$sm.flag}chk_forclear{else}rand_chk_forclear{/if}('{$sm.id_meme}');" ></textarea><br/>
-
-<a  href="javascript:void(0);" onclick="return {if !$sm.flag}post_reply{else}rand_post_reply{/if}('{$sm.id_meme}');" style="cursor: pointer;"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a><br/>

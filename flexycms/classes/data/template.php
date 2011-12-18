@@ -1,7 +1,0 @@
-<?
-class template{
-	function template(){
-		
-	}
-}
-?>
