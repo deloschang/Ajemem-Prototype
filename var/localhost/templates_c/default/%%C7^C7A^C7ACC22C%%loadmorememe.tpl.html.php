@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-16 09:55:22
+<?php /* Smarty version 2.6.7, created on 2011-12-18 22:26:55
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 35, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 48, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 16/12/2011 09:55:22 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 18/12/2011 22:26:55 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -105,10 +105,6 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 			    <?php endif; ?>
 
 			</div>
-
-<!-- Caption shows below image (commented out for now)
-			<div style="font-size: 12px;color:blue;"><span id="hrc<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-"><?php if ($this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption']):  echo $this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption'];  else:  endif; ?></span></div><br/> -->
 
 <!-- Twitter function commented out
 			    <span class="fb_btn"><fb:like href="http://localhost/meme/meme_details/id/<?php echo $this->_tpl_vars['x']['id_meme']; ?>

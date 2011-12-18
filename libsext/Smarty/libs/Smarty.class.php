@@ -1257,6 +1257,8 @@ class Smarty
             {
                 include($_smarty_compile_path);
             }
+            
+            // D: var that creates live feed
             $_smarty_results = ob_get_contents();
             ob_end_clean();
 

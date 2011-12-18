@@ -8,6 +8,7 @@
 <title>Memeja: 2 Me's; 1 Meme</title>
 {assign var=appid value=$util->get_values_from_config('FACEBOOK')}
 {assign var=chc value=$smarty.request.choice}
+
 <script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
 <script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery-1.4.2.min.js"></script>
 
@@ -30,10 +31,11 @@
 <script type="text/javascript">
 	var chc ="{/literal}{$chc}{literal}";
 	var idu="{/literal}{$smarty.session.id_user}{literal}";
+	
 	$(document).ready(function(){
+		/*console.log(moretest)*/
 	    var scrn_height = window.screen.availHeight;
             $("#mid_cont").height(scrn_height/2 + scrn_height/9);
-
 
 	    /* For notification */
 	    $(".inner").hide();
@@ -373,7 +375,7 @@ body {
 
 		<!-- Login form if user not logged in -->
 			<!-- switched from user/login_form -->
-				{if !$smarty.session.id_user && !$smarty.request.page}{include file='meme/meme_list'}{/if} 
+				{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
 			    </div>
 			</td>
 

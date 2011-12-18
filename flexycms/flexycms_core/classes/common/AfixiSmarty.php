@@ -20,9 +20,12 @@ class AfixiSmarty extends Smarty {
 		return $this->theme ? $this->theme : $this->def_theme;
 	}
     
+    // returns $tpl with $tpl.tpl.html
     function add_theme_to_template($tpl){
     	$theme_dir = is_file(AFIXI_ROOT."../templates/".$this->theme.'/'.$tpl.TEMPLATE_EXTENSION)?$this->theme : 'default';
-		//print $theme_dir.'//'.$tpl.TEMPLATE_EXTENSION;exit;
+    	// D: $theme_dir => default
+    	// D: TEMPLATE_EXTENSION => .tpl.html
+		// print $theme_dir.'//'.$tpl.TEMPLATE_EXTENSION;exit;
     	return $tpl.TEMPLATE_EXTENSION;     	  	 
     }
     

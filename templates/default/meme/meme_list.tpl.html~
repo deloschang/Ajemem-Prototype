@@ -154,7 +154,7 @@
 	}
 	
 	
-	$("#replyinsert").html("Replied by {/literal}{$smarty.session.fname} {$smarty.session.lname}{literal} : <br/><b>"+$("#rpl_con"+id).val()+"</b>")
+	$("#replyinsert").html("Replied by {/literal}{$smarty.session.fname} {$smarty.session.lname}{literal} :<b>"+$("#rpl_con"+id).val()+"</b>")
 	    
 	/* $("#send_reply"+id).hide("slow",function(){}); */
 	var url = "##LBL_SITE_URL##meme/answer_to_meme";
@@ -327,6 +327,7 @@
     {else}
 	<input type="hidden" id="msgexist" value="1">
 	No meme found.
+	{include file="meme/loadmorememe"}
     {/if}
 </div>
 <div id="loadingmeme_img" style="display:none;">

@@ -53,20 +53,20 @@ if ($_input['mod']) {
 }
 
 $page = isset ($_input['page']) ? $_input['page'] : 'common';
-$site->handle_page($page);
+$site->handle_page($page); //sets default_tpl to $page/home UNLESS static
 $smarty->assign('page_title', $page_title);
 
 if (isset($_input['ce']) ) {
 	$site->set_container_enabled($_input['ce']);
 }
 
-//Added By Parwesh For Error Handling When Page is not found
+// Error Handling When Page is not found
 $file_test = TEMPLATE_DIR.$_SESSION['multi_language']."/".$site->default_tpl.TEMPLATE_EXTENSION;
 
 if($page =='user' || file_exists($file_test)) {
 	if ($site->is_container_enabled()) {
 	
-		// $content used in common.tpl.html
+		// $content used in common.tpl.html to show live feed/meme editor
 		$smarty->assign('content', $smarty->add_theme_to_template($site->default_tpl));
 		$tpl = isset ($_GET['c_tpl']) ? $_GET['c_tpl'] : $site->get_container_tpl();
 	} else {
@@ -81,7 +81,7 @@ if($page =='user' || file_exists($file_test)) {
 	$smarty->assign_by_ref('report', $report);
 	$smarty->debugging_ctrl='URL';
 	
-	$smarty->display($tpl, $cache_id); //display func in AfixiSmarty.php
+	$smarty->display($tpl, $cache_id); //display func in AfixiSmarty.php; executes template
 	
 	$time_end = getmicrotime();
 	unset ($_SESSION['raise_message']);
@@ -90,6 +90,8 @@ if($page =='user' || file_exists($file_test)) {
 		unset ($_SESSION['CACHE_OUTPUT']);
 	}
 }else {
+
+	// Error handling because file does not exist
 	if(!($page =='templates' || $page =='image')){
 		$_SESSION['raise_message']['global'] = "<h2>The requested page is not available.<h2>";
 		redirect(LBL_SITE_URL);
