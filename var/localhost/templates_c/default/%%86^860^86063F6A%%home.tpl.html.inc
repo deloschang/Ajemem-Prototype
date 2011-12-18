@@ -5,21 +5,12 @@ $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/d
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'achievements/home.tpl.html', 2, false),)), $this); ?>
-<<<<<<< HEAD
 <?php
 function _smarty_tplfunc_202e75e7f80908f4c5525de08fcf4365_0(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'achievements','mgr' => 'achievements'), $_smarty);
 }
 
-=======
-<?php
-function _smarty_tplfunc_202e75e7f80908f4c5525de08fcf4365_0(&$_smarty)
-{
-echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'achievements','mgr' => 'achievements'), $_smarty);
-}
-
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
 
 
 ?>

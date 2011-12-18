@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {*notag*}
 {assign var=x value=$util->get_values_from_config('NOTIFY_TYPE')}
 {if $sm.result.notifications}
@@ -68,74 +67,3 @@
     }
 </style>
 {/literal}
-=======
-{*notag*}
-{assign var=x value=$util->get_values_from_config('NOTIFY_TYPE')}
-{if $sm.result.notifications}
-{foreach name="not" item=i key=k from=$sm.result.notifications}
-    {if $i.notification_type==1}
-	<div class="not">
-	    <span class="outline_image"> <img src="##LBL_SITE_URL##image/thumb/avatar/{if $sm.result.user_info[$i.id_user].avatar}{$sm.result.user_info[$i.id_user].avatar}{elseif $sm.result.user_info[$i.id_user].gender=='M'}memeje_male.jpg{else}memeje_female.jpg{/if}" style="width: 40px;height: 40px;"/></span>
-	    <span><b>{$sm.result.user_info[$i.id_user].fname} {$sm.result.user_info[$i.id_user].lname}</b><a href="##LBL_SITE_URL##user/all_friends/" class="rmv_uline"> {$x[$i.notification_type]}</a></span>
-	</div>
-    {elseif $i.notification_type==2}
-	<div class="not">
-	    <span class="outline_image"> <img src="##LBL_SITE_URL##image/thumb/avatar/{if $sm.result.user_info[$i.id_user].avatar}{$sm.result.user_info[$i.id_user].avatar}{elseif $sm.result.user_info[$i.id_user].gender=='M'}memeje_male.jpg{else}memeje_female.jpg{/if}" style="width: 40px;height: 40px;"/></span>
-	    <span><b>{$sm.result.user_info[$i.id_user].fname} {$sm.result.user_info[$i.id_user].lname}</b> <a href="##LBL_SITE_URL##duels/list_duels" class="rmv_uline">{$x[$i.notification_type]}</a></span>
-	</div>
-    {elseif $i.notification_type==3}
-    <div class="not" style="padding-right:5px;padding-left:5px;">
-	   <span class="outline_image"> <img src="##LBL_SITE_URL##image/thumb/avatar/{if $sm.result.user_info[$i.id_user].avatar}{$sm.result.user_info[$i.id_user].avatar}{elseif $sm.result.user_info[$i.id_user].gender=='M'}memeje_male.jpg{else}memeje_female.jpg{/if}" width="40" height="44" /></span>
-	   <span style="vertical-align:top;"><b>{$sm.result.user_info[$i.id_user].fname} {$sm.result.user_info[$i.id_user].lname}</b> <a href="##LBL_SITE_URL##duels/list_duels" class="rmv_uline">{$x[$i.notification_type]}</a></span>
-	</div>
-	{elseif $i.notification_type==5}
-	<div class="not">
-	    <span class="outline_image"> <img src="##LBL_SITE_URL##image/thumb/avatar/{if $sm.result.user_info[$i.id_user].avatar}{$sm.result.user_info[$i.id_user].avatar}{elseif $sm.result.user_info[$i.id_user].gender=='M'}memeje_male.jpg{else}memeje_female.jpg{/if}" style="width: 40px;height: 40px;"/></span>
-	    <span><b>{$sm.result.user_info[$i.id_user].fname} {$sm.result.user_info[$i.id_user].lname}</b><a href="##LBL_SITE_URL##user/friend_req_list" class="rmv_uline" title="See friend request" class="rmv_uline"> {$x[$i.notification_type]}</a></span>
-	</div>
-    	{elseif $i.notification_type==4}
-	<div class="not">
-	    <span> <img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{elseif $smarty.session.gender=='M'}memeje_male.jpg{else}memeje_female.jpg{/if}" /></span>
-	   <span>You   {$x[$i.notification_type]}</span>
-	</div>
-	{elseif $i.notification_type==6}
-	<div class="not">
-	    <span class="outline_image"> <img src="##LBL_SITE_URL##image/thumb/avatar/{if $sm.result.user_info[$i.id_user].avatar}{$sm.result.user_info[$i.id_user].avatar}{elseif $sm.result.user_info[$i.id_user].gender=='M'}memeje_male.jpg{else}memeje_female.jpg{/if}" style="width: 40px;height: 40px;"/></span>
-	    <span><b>{$sm.result.user_info[$i.id_user].fname} {$sm.result.user_info[$i.id_user].lname}</b><a href="##LBL_SITE_URL##manage/tagged_meme" class="rmv_uline"> {$x[$i.notification_type]}</a></span>
-	</div>
-    {/if}
-    <div style="border:1px solid gray;"></div>
-{/foreach}
-<div class="see_all_not">
-	    See All Notifications
-</div>
-{else}
-    No Notification found
-{/if}
-{literal}
-<script type="text/javascript">
-	$(".see_all_not").click(function(){
-	    var url = "##LBL_SITE_URL##manage/see_all_notification";
-	    window.location = url;
-	});
-</script>
-<style type="text/css">
-    .not{
-	height:47px;
-	margin-top:1px;
-    }
-    .outline_image{
-	float:left;
-    }
-    .see_all_not{
-	background-color: gainsboro;
-	text-align: center;
-	font-weight:bold;
-	cursor: pointer;
-    }
-    .rmv_uline{
-	text-decoration:none;
-    }
-</style>
-{/literal}
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

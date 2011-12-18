@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div id="regdiv">
 {literal}
 <script type="text/javascript">
@@ -45,51 +44,3 @@
   </center>
 </form>
 </div>
-=======
-<div id="regdiv">
-{literal}
-<script type="text/javascript">
-	var  validator1;
-       function validate_feature(){
-		    validator1 = $('#form1').validate(
-		   {
-			   rules:{
-				   'form[title]':{
-					   required:true
-				   },
-				   'form[description]':{
-					   required:true
-				   }
-				},messages:{
-				   'form[title]':{
-					   required:flexymsg.required
-				   },
-				   'form[desc]':{
-					   required:flexymsg.required
-				   }
-			   }
-		   });var x = validator1.form();
-		   return x;
-   }
-</script>
-{/literal}
-{if $sm.res}<b>Edit the feature</b>{else}<b>Add a feature</b>{/if}<br />
-<form name="form1" id="form1" method="post" action="{if $sm.res}##LBL_ADMIN_SITE_URL##manage/update_feature/id/{$sm.res.id_feature}{else}##LBL_ADMIN_SITE_URL##manage/insert_feature{/if}" onSubmit="return validate_feature();">
-	<center>
-      <table style="border:1px;border-color:cyan">
-		<tr>
-			<td>Title</td>
-			<td><input type="text" name="form[title]" value="{$sm.res.title}"/></td>
-		</tr>
-        <tr>
-			<td>Description</td>
-			<td><textarea name="form[description]" rows=10 cols=23 value="{$sm.res.descriptio}">{$sm.res.description}</textarea></td>
-		</tr>
-		<tr><td>&nbsp;&nbsp;</td>
-			<td><input type="submit" class="button altbutton" name="sub"  id="btn" value="{if $sm.res}{if $sm.err}Submit{else}Update{/if}{else}Submit{/if}" class="btn"/></td>
-		</tr>
-    </table>
-  </center>
-</form>
-</div>
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

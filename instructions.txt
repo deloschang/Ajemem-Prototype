@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 a kdf dgjlkvjlcxldgjadoigjsdaojdoifjasdiofjasdlkmm
 
@@ -27,33 +26,3 @@ DATABASE SIDE :
 4.If you want to change your username and password for administrator then edit admin record  in user table.
 
 5.Go to http://domain.name and login using the administrator username and password.
-=======
-
-a kdf dgjlkvjlcxldgjadoigjsdaojdoifjasdiofjasdlkmm
-
-
-MEMEJE INSTALLATION GUIDE
-FTP SIDE : 
-
-1.Download and extract project folder package to the root directory of your Apache installation.
-
-2.Chown all files and directories so they are owned by Apache user (e.g. www-data)
-
-3.Change the mode of the directories var/ and image/ preview/ spad/workspace/ so they are writable: 
-chmod 777 var/ image/ preview/ spad/workspace/ [userfiles/] -R  []-> If cms present
-
-4.Under flexycms/configs and var/ change the directory name "changeme.com" to your domain name.
-
-5.Under flexycms/configs, change the filenames to reflect the domain name (e.g, changeme.com.constants.php, changeme.com .site_constants.php).
-
-DATABASE SIDE : 
-1.Create a database (in this example, yourProjectName_db) on MySQL.
-
-2.Change the DB configuration under flexycms/configs/domain.name/constants.php.
-
-3.Import db.sql file as provided into this database.
-
-4.If you want to change your username and password for administrator then edit admin record  in user table.
-
-5.Go to http://domain.name and login using the administrator username and password.
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

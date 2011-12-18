@@ -1,8 +1,7 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2011-12-16 10:19:09
+<?php /* Smarty version 2.6.7, created on 2011-12-17 10:34:00
          compiled from user/avatar.tpl.html */ ?>
 
-<!-- Template: user/avatar.tpl.html Start 16/12/2011 10:19:09 --> 
+<!-- Template: user/avatar.tpl.html Start 17/12/2011 10:34:00 --> 
  <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
 <div id="edit_photo">
 <a href="javascript:void(0);" onclick="editPhoto();">
@@ -24,32 +23,5 @@
 </script>
 '; ?>
 
-=======
-<?php /* Smarty version 2.6.7, created on 2011-12-16 09:55:22
-         compiled from user/avatar.tpl.html */ ?>
-
-<!-- Template: user/avatar.tpl.html Start 16/12/2011 09:55:22 --> 
- <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
-<div id="edit_photo">
-<a href="javascript:void(0);" onclick="editPhoto();">
-    <img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['avatar']):  echo $_SESSION['avatar'];  else:  if ($_SESSION['gender'] == 'M'): ?>memeje_male.jpg<?php else: ?>memeje_female.jpg<?php endif;  endif; ?>" /></a>
-</div>
-<div>
- <a href="javascript:void(0);" onclick="editPhoto('<?php echo $_SESSION['id_user']; ?>
-');">Change Photo</a>
-</div>
-<?php echo '
-<script type="text/javascript">
-    function editPhoto(id){
-	var url="http://localhost/index.php";
-	    $.fancybox.showActivity();
-	    $.post(url,{"page":"user","choice":"edit_avatar","id":id,ce:0 },function(response){
-		    $.fancybox(response);
-	     });
-     }
-</script>
-'; ?>
-
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
 
 <!-- Template: user/avatar.tpl.html End --> 

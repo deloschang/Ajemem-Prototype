@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <form action="##APP_ROOT_URL##user/insert_pwd" method="post" name="resetform" id="resetform" onsubmit="return validate();">
     <table cellpadding="3" align="center" style="border:#B51818 1px solid">
         <tr>
@@ -62,68 +61,3 @@ function validate(){
 }
 </script>
 {/literal}
-=======
-<form action="##APP_ROOT_URL##user/insert_pwd" method="post" name="resetform" id="resetform" onsubmit="return validate();">
-    <table cellpadding="3" align="center" style="border:#B51818 1px solid">
-        <tr>
-            <th colspan="2" class="frg_regi_head">Reset Password</th>
-        </tr>
-        <tr>
-        	<td>&nbsp;</td>
-        </tr>
-	<tr>
-            <td align="right"  class="frg_pass"><b>Your Email Id is :&nbsp;</b> </td>
-            <td><input type="text" name="email" id="email" readonly='true'/></td>
-        </tr>
-        <tr>
-            <td align="right"  class="frg_pass"><b>Enter New Password :&nbsp;</b> </td>
-            <td><input type="password" name="pwd[npass]" id="npass"/></td>
-        </tr>
-	 <tr>
-            <td align="right"  class="frg_pass"><b>Confirm Password :&nbsp;</b> </td>
-            <td><input type="password" name="cpass" id="cpass"/></td>
-        </tr>	
-        <tr><td>&nbsp;</td></tr>
-        <tr>
-            <td colspan="2" align="center"><input type="submit" value="Reset Your Password"/></td>
-        </tr>
-    </table>
-</form>
-{literal}
-<style>
-	label.error	{
-		color:#FF0000;
-		font-size:15px;
-	}
-</style>
-<script type="text/javascript">
-function validate(){
-
-	var validator=$("#resetform").validate({
-	   rules: {
-	   		"pwd[npass]":{
-				required: true,
-				minlength: 6
-			},
-			"cpass":{
-				required: true,
-				equalTo:'#npass'
-			}
-		},
-		messages: {
-			"pwd[npass]":{
-				required:'<br>This field cannot be left blank',
-				minlength:'<br>At least 6 charcters'
-			},
-			"cpass":{
-				required: '<br>This field cannot be left blank',
-				equalTo: '<br>Please Enter the same value again'
-			}
-		}
-	});
-	var x=validator.form();
-	return x;
-}
-</script>
-{/literal}
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

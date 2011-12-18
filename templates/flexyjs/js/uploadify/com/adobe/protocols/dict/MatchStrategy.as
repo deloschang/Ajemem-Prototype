@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.adobe.protocols.dict
 {
 	public class MatchStrategy
@@ -32,39 +31,4 @@ package com.adobe.protocols.dict
 			return this._description;
 		}
 	}
-=======
-package com.adobe.protocols.dict
-{
-	public class MatchStrategy
-	{
-		private var _name:String;
-		private var _description:String;
-
-		public function MatchStrategy(name:String, description:String)
-		{
-			this._name = name;
-			this._description = description;
-		}
-
-		public function set name(name:String):void
-		{
-			this._name = name;
-		}
-
-		public function get name():String
-		{
-			return this._name;
-		}
-
-		public function set description(description:String):void
-		{
-			this._description = description;
-		}
-
-		public function get description():String
-		{
-			return this._description;
-		}
-	}
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
 }

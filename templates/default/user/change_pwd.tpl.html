@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {literal}
 	<script type="text/javascript">
 		function validate_pass() {
@@ -68,74 +67,3 @@
         </tr>
     </table>
 </form>
-=======
-{literal}
-	<script type="text/javascript">
-		function validate_pass() {
-			var validator=$("#changepass").validate({
-			   	rules: {
-					"pwd[pwd]": {
-						required:true,
-						minlength:6
-					},
-					"pwd[pass]":{
-						required:true,
-						minlength:6
-					},
-					"pwd[cpass]":{
-						required:true,
-						equalTo:'#npwd1'
-					}
-				},
-				messages: {
-					"pwd[pwd]": {
-						required:flexymsg.required,
-						minlength:flexymsg.minlength
-					},
-					"pwd[pass]":{
-						required:flexymsg.required,
-						minlength:flexymsg.minlength
-					},
-					"pwd[cpass]":{
-						required: flexymsg.required,
-						equalTo: flexymsg.equalTo
-					}
-					
-				}
-			});
-			var x=validator.form();
-			return x;
-		}
-	</script> 
-<style>
-	label.error	{
-		color:#FF0000;
-		font-size:15px;
-	}
-</style>
-{/literal}
-<form name="changepass" id="changepass" method="post" action="##LBL_SITE_URL##user/update_password" onSubmit="return validate_pass();">
-	<table align="center" class="form_tbl">
-    	<tr>
-        	<th colspan="2" align="center">Change Password</th>
-        </tr>
-        <tr>
-        	<td align="right">Enter Old Password :</td>
-            <td align="left"><input type="password" name="pwd[pwd]" id="pwd" /></td>
-        </tr>
-        <tr>
-        	<td align="right">Enter New Password :</td>
-            <td align="left"><input type="password" name="pwd[pass]" id="npwd1" /></td>
-        </tr>
-        <tr>
-        	<td align="right">Confirm New Password :</td>
-            <td align="left"><input type="password" name="pwd[cpass]" id="npwd2" /></td>
-        </tr>
-        <tr>
-        	
-  <td>&nbsp;</td>
-  <td class="tl"><input type="submit" name="submit" value="Change Password" class="btn" /></td>
-        </tr>
-    </table>
-</form>
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2011-12-16 10:19:12
-=======
-<?php /* Smarty version 2.6.7, created on 2011-12-16 09:48:53
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
+<?php /* Smarty version 2.6.7, created on 2011-12-17 10:33:04
          compiled from caption/loadmore_caption.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'caption/loadmore_caption.tpl.html', 21, false),)), $this); ?>

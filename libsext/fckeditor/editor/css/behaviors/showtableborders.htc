@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <public:component lightweight="true">
 
 <public:attach event="oncontentready" onevent="ShowBorders()" />
@@ -35,41 +34,3 @@ function OnPropertyChange()
 </script>
 
 </public:component>
-=======
-<public:component lightweight="true">
-
-<public:attach event="oncontentready" onevent="ShowBorders()" />
-<public:attach event="onpropertychange" onevent="OnPropertyChange()" />
-
-<script language="javascript">
-
-var oClassRegex = /\s*FCK__ShowTableBorders/ ;
-
-function ShowBorders()
-{
-	if ( this.border == 0 )
-	{
-		if ( !oClassRegex.test( this.className ) )
-			this.className += ' FCK__ShowTableBorders' ;
-	}
-	else
-	{
-		if ( oClassRegex.test( this.className ) )
-		{
-			this.className = this.className.replace( oClassRegex, '' ) ;
-			if ( this.className.length == 0 )
-				this.removeAttribute( 'className', 0 ) ;
-		}
-	}
-}
-
-function OnPropertyChange()
-{
-	if ( event.propertyName == 'border' || event.propertyName == 'className' )
-		ShowBorders.call(this) ;
-}
-
-</script>
-
-</public:component>
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #ColorPickerDiv 
 {
     display: block;
@@ -26,33 +25,4 @@
 	padding: 0px 10px;	
 	position: relative;
 	cursor: pointer;
-=======
-#ColorPickerDiv 
-{
-    display: block;
-    display: none;
-    position: relative;
-    border: 1px solid #777;
-    background: #fff
-}
-
-#ColorPickerDiv TD.color
-{
-	cursor: pointer;
-	font-size: xx-small;
-	font-family: 'Arial' , 'Microsoft Sans Serif';
-}
-#ColorPickerDiv TD.color label
-{
-	cursor: pointer;
-}
-
-.ColorPickerDivSample
-{
-	margin: 0px 0px 0px 4px;
-	border: solid 1px #000;
-	padding: 0px 10px;	
-	position: relative;
-	cursor: pointer;
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
 }

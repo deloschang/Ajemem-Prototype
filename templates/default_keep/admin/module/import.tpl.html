@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {literal}
 	<script type="text/javascript">
 		function validate(){
@@ -37,43 +36,3 @@
 		</div>
 	</fieldset>
 </form>
-=======
-{literal}
-	<script type="text/javascript">
-		function validate(){
-			if($('#imp_file').val() && $('#imp_path').val()){
-				alert("Only one Required not both.");
-				return false;
-			}
-			if($('#imp_file').val()=='' && $('#imp_path').val()==''){
-				alert("Provide either one value in the field.");
-				return false;
-			}
-			if($('#imp_file').val() || $('#imp_path').val()){
-					var z = ".zip";
-					var br = $('#imp_file').val()+$('#imp_path').val();
-					if(br.match(z))
-						return true;
-					else{
-						alert("provide only zip files with correct relative path");
-						return false;
-					}
-			}else{		
-				return true;
-			}
-		}
-	</script>
-{/literal}
-<form action="##LBL_ADMIN_SITE_URL##index.php/module/importmodule" id="upd_mod" class="fields" method="post" enctype="multipart/form-data" onsubmit = "return validate();">
-	<fieldset>
-		<label>Upload your module here&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;<input type="file" name="imp_file" id="imp_file" /></label>
-		<div class="sep"></div>
-		<label><b>OR</b></label>
-		<div class="sep"></div>
-		<label>Relative path for module upload:&nbsp;&nbsp;<input type="text" name="imp_path" id="imp_path" size="50" /></label>
-		<div class="sep">
-			<input type="submit" value="Upload" class="button" />
-		</div>
-	</fieldset>
-</form>
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833

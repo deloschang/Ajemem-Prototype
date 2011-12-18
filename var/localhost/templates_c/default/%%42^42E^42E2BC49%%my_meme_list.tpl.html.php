@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2011-12-16 10:19:09
-=======
-<?php /* Smarty version 2.6.7, created on 2011-12-16 09:55:22
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
+<?php /* Smarty version 2.6.7, created on 2011-12-17 10:34:00
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php echo '
 <script type="text/javascript">

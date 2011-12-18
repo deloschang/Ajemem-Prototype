@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.adobe.protocols.dict
 {
 	public class Definition
@@ -37,44 +36,4 @@ package com.adobe.protocols.dict
 			return this._term;
 		}
 	}
-=======
-package com.adobe.protocols.dict
-{
-	public class Definition
-	{
-		private var _definition:String;
-		private var _database:String;
-		private var _term:String;
-		
-		public function set definition(definition:String):void
-		{
-			this._definition = definition;
-		}
-		
-		public function get definition():String
-		{
-			return this._definition;
-		}
-
-		public function set database(database:String):void
-		{
-			this._database = database;
-		}
-		
-		public function get database():String
-		{
-			return this._database;
-		}
-
-		public function set term(term:String):void
-		{
-			this._term = term;
-		}
-		
-		public function get term():String
-		{
-			return this._term;
-		}
-	}
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
 }

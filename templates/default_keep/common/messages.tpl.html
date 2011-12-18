@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!-- messages set by all modules shown here -->
 {*nofilter file="debug" *}
 {*$module*}
@@ -13,19 +12,3 @@
 {/section}
 {/if}
 {* $smarty.session.ip_count *}
-=======
-<!-- messages set by all modules shown here -->
-{*nofilter file="debug" *}
-{*$module*}
-{if $smarty.session.raise_message.$module}
-    <div class="alert" align="center">{$smarty.session.raise_message.$module}</div>
-{/if}
-{if $sm.message}
-{section name=cur_msg loop=$sm.message}
-     <div class="alert" align="center">{$sm.message[cur_msg]}</div>
-{sectionelse}
-     <div class="alert" align="center">{$sm.message}</div>
-{/section}
-{/if}
-{* $smarty.session.ip_count *}
->>>>>>> 92a34e21bcd0e6ce28c090bc9e39740372d54833
