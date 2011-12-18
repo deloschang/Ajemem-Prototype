@@ -1,0 +1,78 @@
+{assign var=img_path value=$util->get_values_from_config('IMAGE')}
+<div id="manage_glory_list">
+<div class="box box-70 altbox">
+    <div class="boxin">
+	<div class="header">
+	    <h3>Glory Point List</h3>
+	    <a class="button" href="javascript:void(0);" onclick="add_glory();">Add Glory point</a>
+	</div>
+        <div class="content">
+            <table cellspacing="0">
+		<thead>
+		   <td class="tc">
+			    <a href="javascript:get_next_page('##LBL_ADMIN_SITE_URL##manage/glory_list/sort_by/glory_points',0,0,'manage_glory_list')">Glory Points</a>
+			</td>
+		   <td class="tc">Badge</td>
+		</thead>
+		<tbody>
+		    {section name=cur loop=$sm.list}
+		    {assign var=x value=$sm.list[cur]}
+		    <tr>
+			<td class="tc">
+			    {$x.glory_points}
+			</td>
+			<td><img src="##LBL_SITE_URL##{$img_path.glorybadge_thumb}{$x.id_glorygained}_{$x.badges}" height="70px" width="70px" /><br>{$x.badges}</td>
+		    </tr>
+		{sectionelse}
+		    <tr>
+			<td colspan="2">
+			    No Glory Point  Found.
+			</td>
+		    </tr>
+		{/section}
+		</tbody>
+            </table>
+		{if $sm.type=='advance'}
+	    <div class="pagination_adv">
+		    {$sm.next_prev->generateadv()}
+	    </div>
+		{elseif $sm.type=='box'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='normal'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='nextprev'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->onlynextprev()}</div>
+	    </div>
+	{elseif $sm.type=='extra'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generateextra()}</div>
+	    </div>
+	{else}
+	    {if $sm.type!='no'}
+	        <div>
+	            <div align="center">{$sm.next_prev->generate()}</div>
+	        </div>
+	    {/if}
+	{/if}
+        </div>
+    </div>
+</div>
+</div>
+
+{literal}
+    <script type="text/javascript">
+	function add_glory(){
+	    //var url="##LBL_ADMIN_SITE_URL##manage/add_glory_badge";
+	    var url="##LBL_ADMIN_SITE_URL##index.php";
+	    $.fancybox.showActivity();
+	    $.post(url,{"page":"manage","choice":"add_glory_badge","ce":"0"},function(res){
+		show_fancybox(res);
+	    });
+	}
+    </script>
+{/literal}

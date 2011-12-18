@@ -1,0 +1,90 @@
+
+{assign var=gen value=$util->get_values_from_config('GLORY_CATEGORY')}
+{literal}
+<script type="text/javascript">
+function edit_glory(id){
+	$.fancybox.showActivity();
+	$.post("##LBL_ADMIN_SITE_URL##manage/edit_glory",{'id':id,ce:0},function(res){
+		$.fancybox(res,{
+			centerOnScroll:true,
+			hideOnOverlayClick:false,
+			onCleanup : function (){
+				window.location="##LBL_ADMIN_SITE_URL##manage/list_glory";
+			}
+		    });
+	});
+}
+function add_glory(){
+        var url = "##LBL_ADMIN_SITE_URL##index.php";
+	$.fancybox.showActivity();
+	$.post(url,{"page":"manage","choice":"add_glory",ce:0},function(res){
+		  $.fancybox(res,{
+			centerOnScroll:true,
+			hideOnOverlayClick:false,
+			onCleanup : function (){
+				window.location="##LBL_ADMIN_SITE_URL##manage/list_glory";
+			}
+		    });
+	});
+}
+</script>
+{/literal}
+{assign var=img_path value=$util->get_values_from_config('IMAGE')}
+<div class="box box-75 altbox" id="dt">
+    <div class="boxin" style="width:900px">
+    <div class="header">
+        <h3>Glory list({$sm.count1})</h3>
+        <a class="button" href="javascript:void(0);" onclick="add_glory();">Add glory</a> 
+	    </div>
+        <div class="content">
+            <table cellspacing="0">
+                <thead>
+					<th>Icon</th>
+                    <th>Catagory</th>
+					<th>Point</th>
+                    <th>Start date</th>
+					<th>Start time</th>
+					<th>End date</th>
+					<th>End time</th>
+                    <th>No of users available</th>
+					<th>Add date</th>
+					<th>Action</th>
+                 </thead>
+                <tbody>
+                    {section name=cur loop=$sm.list}
+                    {assign var=x value=$sm.list[cur]}
+                    <tr>
+                    <td><img src="##LBL_SITE_URL##{$img_path.gloryicon_thumb}{$x.id_gloryicon}_{$x.icon}" height="70px" width="70px" /><br>{$x.icon}</td>
+					{assign var=glory value=$x.id_glory_category}
+					<td>{$sm.cat[$glory]}</td>
+					<td>{$x.point}</td>
+					<td>{$x.start_on|date_format:"%m-%d-%Y"}</td>
+					<td>{$x.start_time}</td>
+					<td>{$x.end_on|date_format:"%m-%d-%Y"}</td>
+					<td>{$x.end_time}</td>
+					<td>{$x.avail_no_of_users}</td>
+					<td>{$x.add_date|date_format:"%d-%m-%Y"}</td>
+						
+					<td><center>
+                        <a href="javascript:void(0);" onClick="edit_glory('{$x.id_gloryicon}');"><img src="##LBL_SITE_URL##templates/css_theme/img/led-ico/pencil.png" alt="edit" title="Edit"/></a>  
+                    
+						&nbsp;&nbsp;<a href="##LBL_ADMIN_SITE_URL##manage/delete_glory/id/{$x.id_gloryicon}" onclick="javascript: return confirm('Do you want to delete?');"><img src="##LBL_SITE_URL##templates/css_theme/img/led-ico/delete.png" alt="delete" title="Delete"/></a>
+					</center>
+					</td>
+					</tr>
+                    {sectionelse}
+                    <tr>
+                         <td colspan="9">
+                         No Glories Found.
+                        </td>
+                    </tr>
+                    {/section}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
