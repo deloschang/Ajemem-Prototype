@@ -285,14 +285,10 @@ var settings = {
                                 dummyc.strokeRect(startX,startY,endX-startX,endY-startY);
                                 break;
                             case 'fcircle':
-                                dummyc.beginPath();
-                                dummyc.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-                                dummyc.fill();
+                                drawOval(dummyc, centerX, centerY, endX-startX, endY-startY, true);
                                 break;
                             case 'circle':
-                                dummyc.beginPath();
-                                dummyc.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-                                dummyc.stroke();
+                                drawOval(dummyc, centerX, centerY, endX-startX, endY-startY, false);
                                 break;
                             case 'DLine':
                                 dummyc.beginPath();
@@ -325,8 +321,6 @@ var settings = {
             }
             $(this).mousemove(function (e) {
                 x = $('#mycid').offset();
-				xcoord = e.pageX;
-				ycoord = e.pageY;
                 startX = e.pageX - this.offsetLeft - x.left +  Math.round(settings.lineWidth/2);
                 startY = e.pageY - this.offsetTop - x.top + Math.round(settings.lineWidth/2);
                 if (draw == 1) {
