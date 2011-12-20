@@ -746,11 +746,15 @@ function putincanvas(e) {
     cntx.restore();
 }
 function submit_memeje() {
-        var wm=$("#memejimark");
+
+        /*  Commented out the watermark 
+		
+		var wm=$("#memejimark");
         var paddings=3;
         var x=mycanvas.width-wm.width()-paddings;
         var y=mycanvas.height-wm.height()-paddings;
-        cntx.drawImage(wm[0],x,y,wm.width(),wm.height());
+        cntx.drawImage(wm[0],x,y,wm.width(),wm.height()); */
+		
 	saveindisk(1);
 }
 function saveindisk(csave) {
@@ -804,6 +808,7 @@ function addRow(number){
 	settings.panel+=number;
 	resizeCanvasSize();
 	drawpanellines(number);
+	//This is to ensure that if you draw in the bottom panel and delete the panels.
 	if(undoPanel[0]!= ""){
 	
 	if ( $.browser.msie ) {
