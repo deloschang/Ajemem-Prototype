@@ -8,19 +8,22 @@
 
 // Location of all the images for the tools, very easy to change the look of the toolbox
 var SITE_IMAGE_PATH=LBL_SITE_URL+'spad/site_image/';
+
 // Cursor has the sizes for the brushes (from 1-25)
 var CURSOR_PATH=LBL_SITE_URL+'spad/cursor/';
-
 var SAVE_IMG_PATH=LBL_SITE_URL+"meme/save_meme/ce/0";
 var SET_OFFLEFT=8;
 var SET_OFFTOP=158;
 var SET_EDITOR_HEIGHT=23;
 var DEGREE_ROTATE=2;
+
 // The var last_comic comes from addmeme.tpl and refers to the last comic the user was working on
 var preloadImage=last_comic;
 
+// Keeps track of the new images added
 var newimgid = 1;
 var newtextid = 1;
+
 // Stacks which hold the actions done 
 var img_rotate = [];
 var undoPoints = [];
@@ -29,6 +32,7 @@ var undowidth = [];
 var redoPoints = [];
 var redoheight = [];
 var redowidth = [];
+
 // Stacks to hold actions specific to panel problem
 var undoPanel = [];
 var undoPanelHeight = [];
@@ -36,8 +40,13 @@ var undoPanelWidth = [];
 
 // Canvas objects
 var mycanvas, cntx;
-// Keeps track of saves
+
+// Keeps track of # of saves
 var lastimgdrawn = 1;
+
+// Keeps track of image location for new meme faces 
+var xcoord, ycoord;
+
 // Default settings for the Memeja Editor, called in the jQuery Plugin
 var settings = {
     'width': 380,
@@ -172,7 +181,8 @@ var settings = {
 				// Why the restore is necessary - http://html5.litten.com/understanding-save-and-restore-for-the-canvas-context/
                 cntx.restore();
             });
-			
+        
+		
 			// Detects if the user is within the canvas area
             $(this).mouseenter(function () {
                 if (jitter > 0) {
@@ -315,6 +325,8 @@ var settings = {
             }
             $(this).mousemove(function (e) {
                 x = $('#mycid').offset();
+				xcoord = e.pageX;
+				ycoord = e.pageY;
                 startX = e.pageX - this.offsetLeft - x.left +  Math.round(settings.lineWidth/2);
                 startY = e.pageY - this.offsetTop - x.top + Math.round(settings.lineWidth/2);
                 if (draw == 1) {
@@ -649,12 +661,11 @@ function create_Imagebox(clicked_img) {
 		winW = window.innerWidth;
 	}
 	leftpos = Math.round((winW-img.width)/2);
-    
+
     var div = $("<div id='"+newimgid+"' class='newdd'>").html("<img id='image"+newimgid+"' src='"+clicked_img+"' />").css({
         
 		// Sets the position at which you see the image box
-	    //'top': Math.round(document.body.offsetHeight)+"px",
-		'top': Math.round(window.scrollTop() +(window.innerHeight/2))+"px",
+	    'top': ycoord+"px",
         'left':leftpos+"px",
         'height':img.height+"px",
         'width':img.width+"px",
@@ -880,7 +891,7 @@ function showdocount() {
 	$(".undo").attr("title",undoPoints.length+ " Undo's Left (CTRL+Z)");
     $(".redo").attr("title",redoPoints.length+ " Redo's Left (CTRL+Y)");
 }
-
+console.log(ycoord);
 // Function for the REDO tool (ctrl+y)
 function redoimage(){
     if (redoPoints.length > 0) {
