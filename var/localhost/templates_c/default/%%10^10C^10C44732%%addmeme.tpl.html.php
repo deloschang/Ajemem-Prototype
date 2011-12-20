@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-20 11:08:52
+<?php /* Smarty version 2.6.7, created on 2011-12-20 12:15:18
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 120, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 20/12/2011 11:08:52 --> 
+<!-- Template: meme/addmeme.tpl.html Start 20/12/2011 12:15:18 --> 
  <div id="showmodal" class="showmodal">Loading the Memeja Editor.</div>
 <script type="text/javascript">
     var last_comic="http://localhost/spad/workspace/<?php echo $_SESSION['id_user']; ?>
