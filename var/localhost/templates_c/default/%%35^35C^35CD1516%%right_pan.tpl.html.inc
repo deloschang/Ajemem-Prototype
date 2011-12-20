@@ -1,18 +1,18 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-20 04:26:40
+<?php /* Smarty version 2.6.7, created on 2011-12-20 05:53:51
          compiled from user/right_pan.tpl.html */
 
-$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\%%35^35C^35CD1516%%right_pan.tpl.html.inc'] = '8a3c3204db208edd4d6e2ade16446422';
+$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\%%35^35C^35CD1516%%right_pan.tpl.html.inc'] = '2a13b4c0dd0df8b54ff3a126c1169c45';
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'user/right_pan.tpl.html', 34, false),)), $this); ?>
 <?php
-function _smarty_tplfunc_8a3c3204db208edd4d6e2ade16446422_0(&$_smarty)
+function _smarty_tplfunc_2a13b4c0dd0df8b54ff3a126c1169c45_0(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user','choice' => 'friend_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_8a3c3204db208edd4d6e2ade16446422_1(&$_smarty)
+function _smarty_tplfunc_2a13b4c0dd0df8b54ff3a126c1169c45_1(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'paypal','mgr' => 'paypal','choice' => 'form'), $_smarty);
 }

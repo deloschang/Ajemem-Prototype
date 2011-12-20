@@ -164,7 +164,7 @@ var settings = {
 			   The following code will change the canvas based on events inside the canvas
 			*/
 			
-			//Adjust coordinates after a mouseup event. Then sets the canvascontext back to original state
+			//Adjusts coordinates after a mouseup event. Then sets the canvas context back to original state.
             $(document).mouseup(function (e) {
                 endX = e.pageX - this.offsetLeft - settings.offsetLeft;
                 endY = e.pageY - this.offsetTop - settings.offsetTop;
@@ -625,8 +625,10 @@ function create_Textbox(){
     $("body").prepend(html)
     change_attr_of_text(textId);
 }
+
 function create_Imagebox(clicked_img) {
-    img_rotate[newimgid] = new Array();
+    // newimgid corresponds to the newest image we clicked
+	img_rotate[newimgid] = new Array();
     img_rotate[newimgid]['rotate'] = 0;
     img_rotate[newimgid]['x'] = 1;
     img_rotate[newimgid]['y'] = 1;
@@ -647,8 +649,12 @@ function create_Imagebox(clicked_img) {
 		winW = window.innerWidth;
 	}
 	leftpos = Math.round((winW-img.width)/2);
+    
     var div = $("<div id='"+newimgid+"' class='newdd'>").html("<img id='image"+newimgid+"' src='"+clicked_img+"' />").css({
-        'top':'200px',
+        
+		// Sets the position at which you see the image box
+	    //'top': Math.round(document.body.offsetHeight)+"px",
+		'top': Math.round(window.scrollTop() +(window.innerHeight/2))+"px",
         'left':leftpos+"px",
         'height':img.height+"px",
         'width':img.width+"px",
@@ -701,6 +707,7 @@ function create_Imagebox(clicked_img) {
     });
     ++newimgid;
 }
+
 function putincanvas(e) {
     saveRestorePoint();
 	lastimgdrawn = 1;
@@ -808,7 +815,9 @@ function addRow(number){
 	settings.panel+=number;
 	resizeCanvasSize();
 	drawpanellines(number);
-	//This is to ensure that if you draw in the bottom panel and delete the panels.
+	/* This portion was added to ensure that if you draw in the bottom panel and delete the panels,
+	then try to add panels again, your original image will be shown
+	*/
 	if(undoPanel[0]!= ""){
 	
 	if ( $.browser.msie ) {
@@ -868,8 +877,8 @@ function clear_canvas() {
 
 // Adjust attributes of the Undo/Redo buttons. (As seen on hover)
 function showdocount() {
-	$(".undo").attr("title",undoPoints.length+ " Undo's Left (CTRL + Z)");
-    $(".redo").attr("title",redoPoints.length+ " Redo's Left (CTRL + Y)");
+	$(".undo").attr("title",undoPoints.length+ " Undo's Left (CTRL+Z)");
+    $(".redo").attr("title",redoPoints.length+ " Redo's Left (CTRL+Y)");
 }
 
 // Function for the REDO tool (ctrl+y)
