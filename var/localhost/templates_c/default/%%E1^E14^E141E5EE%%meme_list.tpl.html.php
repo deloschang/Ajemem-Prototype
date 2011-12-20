@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-18 22:26:55
+<?php /* Smarty version 2.6.7, created on 2011-12-20 04:07:33
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -8,27 +8,33 @@
     var honour_color = "';  echo $this->_tpl_vars['x']['agree'];  echo '";
     var dishonour_color = "';  echo $this->_tpl_vars['x']['disagree'];  echo '";
     var addcaption_color = "';  echo $this->_tpl_vars['x']['add_caption'];  echo '";
+    
+    // Added by Delos to detect if user is logged in
+	var logged_in="';  echo $_SESSION['id_user'];  echo '";
+    
     var first_id,after_5sec=0,backup_rand_id_memes=\'\',backup_last_id_meme=\'\';
     $(document).ready(function(){
-	$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
-	var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
-	$("#rand_id_memes").val("';  echo $this->_tpl_vars['sm']['id_memes'];  echo '");
-	$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
-	    get_all_flag_details(1);
-	    setInterval("get_all_flag_details()",4000);
-	$(window).scroll(function(){
-		if  ($(window).scrollTop() == $(document).height() - $(window).height()){
-			var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
-			var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
-		      if($("#last_id_meme_cur_page").val()!=""){
-			  if($("#chk_me").val()!=1){
-			      backup_last_id_meme = $("#last_id_meme_cur_page").val();
-			      loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
-			      $("#last_id_meme_cur_page").val("");
-			   }
-		       }
-		 }
-	  });
+		$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
+		var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
+		$("#rand_id_memes").val("';  echo $this->_tpl_vars['sm']['id_memes'];  echo '");
+		$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
+	    	get_all_flag_details(1);
+	    	setInterval("get_all_flag_details()",4000);
+	    	
+		$(window).scroll(function(){
+			if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+				var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
+				var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
+			      if($("#last_id_meme_cur_page").val()!=""){
+				  	if($("#chk_me").val()!=1){
+				      backup_last_id_meme = $("#last_id_meme_cur_page").val();
+				      loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
+				      $("#last_id_meme_cur_page").val("");
+			  		 }
+		      	 }
+			 }
+	 	 });
+	 	
      });
     function loadmorememe(cat,last_id,srch_uname,srch_title){
 	$("#loadingmeme_img").show();
@@ -149,45 +155,69 @@
      }
 
     function post_reply(id){
-	if($("#rpl_con"+id).val()=="" || $("#rpl_con"+id).val()=="Reply with answer."){
-	     $("#rpl_con"+id).val("Reply with answer.");
-	     return false;
-	 }
-	
-	
-	$("#replyinsert").html("Replied by ';  echo $_SESSION['fname']; ?>
- <?php echo $_SESSION['lname'];  echo ' :<b>"+$("#rpl_con"+id).val()+"</b>")
+		if($("#rpl_con"+id).val()=="" || $("#rpl_con"+id).val()=="Reply with answer."){
+	    	 $("#rpl_con"+id).val("Reply with answer.");
+	    	 return false;
+		 }
 	    
-	/* $("#send_reply"+id).hide("slow",function(){ }); */
-	var url = "http://localhost/meme/answer_to_meme";
-	$.post(url,{answer:$("#rpl_con"+id).val(),id:id,ce:0 },function(res){
-	    $("#rpl_con"+id).val(\'\'); /* clears form text space */
-	    $("#is_replied"+id).val(\'1\'); /* increasing reply count value */
-	    $("#repl"+id).html(res);
-	    common_fun(id,reply_color);
-	 });
+	   if (logged_in) { 
+			/* $("#send_reply"+id).hide("slow",function(){ }); */
+			var url = "http://localhost/meme/answer_to_meme";
+			$.post(url,{answer:$("#rpl_con"+id).val(),id:id,ce:0 },function(res){
+			    $("#rpl_con"+id).val(\'\'); /* clears form text space */
+			    $("#is_replied"+id).val(\'1\'); 
+			    $("#repl"+id).html(res);
+			    common_fun(id,reply_color);
+			 });
+		
+			/* Added by Delos for live reply */
+			$("#replyinsert").html("Replied by ';  echo $_SESSION['fname']; ?>
+ <?php echo $_SESSION['lname'];  echo ' :<b>"+$("#rpl_con"+id).val()+"</b>")
+		
+    	 } else {
+    		alert("Please log in to reply.");
+    	 }
      }
 
 /* JS call after Agree/Disagree button is pressed */
     function set_tot_adaggr(id,con){
 	var url = "http://localhost/meme/set_adaggr";
-	$.post(url,{id_meme:id,ce:0,con:con },function(res){
+	
+	/* Added by Delos to check if user is logged in */
+	if (logged_in) {
+		$.post(url,{id_meme:id,ce:0,con:con },function(res){
 
-	    /* If user has not voted */
-	    if(res[0]!=0){
-		    if(res[1]==1){
-			$("#aggr"+id).html(res[0]);
-			$("#is_agreed"+id).val(\'1\');
-			common_fun(id,honour_color);
-		     }else{
-			$("#disaggr"+id).html(res[0]);
-			$("#is_disagreed"+id).val(\'1\');
-			common_fun(id,dishonour_color);
-		     }
-	     }else
-		   alert("You have already voted.");
-	 },"json");
+	    	/* If user has not voted */
+	    	if(res[0]!=0){
+			    if(res[1]==1){
+					$("#aggr"+id).html(res[0]);		/* Updates H/D count */
+					$("#is_agreed"+id).val(\'1\');
+					common_fun(id,honour_color);
+					
+					/* After voting, Highlight Agree + Grey out Disagree */					
+					$("#agr_link"+id).css({"color" : "green", "cursor" : "default" });
+					$("#disagr_link"+id).css({"color" : "gray", "cursor" : "default" });
+
+			     } else {
+					$("#disaggr"+id).html(res[0]);
+					$("#is_disagreed"+id).val(\'1\');
+					common_fun(id,dishonour_color);
+					
+					/* After voting, Highlight Disagree + Grey out Agree */
+					$("#disagr_link"+id).css({"color" : "red", "cursor" : "default" });
+					$("#agr_link"+id).css({"color" : "gray", "cursor" : "default" });
+			     }
+	    	 }  else {
+	    		/* res[0] = 0 and user has already voted */
+	    			// Commented out because of highlighting feature
+	    		/* alert("You already voted!"); */ 
+	    	 }
+		 },"json");
+    	 } else {
+    	alert("Please log in to vote");
      }
+     }
+    
     function show_details(id_meme){
 	$.fancybox.showActivity();
 	var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
@@ -308,6 +338,7 @@
 	.borderyes	{
 		border:#000000 solid 1px;
 	 }
+	
 </style>
 '; ?>
 
@@ -315,6 +346,7 @@
 <input type="hidden" name="rand_id_memes" id="rand_id_memes" value=''/>
 <input type="hidden" name="chk_me" id="chk_me" value=''/>
 <input type="hidden" name="last_id_meme" id="last_id_meme" value=''/>
+<?php if ($_SESSION['id_user']): ?>
 <div class="fltlft" id="tab">
 	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>unselected<?php else: ?>selected<?php endif; ?>">
 		<a href="http://localhost/meme/meme_list/cat/<?php echo $this->_tpl_vars['sm']['cat']; ?>
@@ -325,6 +357,7 @@
 /ext/1" >NETWORK FEED</a>
 	</div>
 </div>
+<?php endif; ?>
 <br><br><br>
 <div id="all_memes">
     <?php if ($this->_tpl_vars['sm']['res_meme']): ?>

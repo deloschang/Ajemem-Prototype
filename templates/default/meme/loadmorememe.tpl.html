@@ -5,15 +5,16 @@
 <script type="text/javascript">
 	var id = "{/literal}{$sm.last_idmeme}{literal}";
 	var new_ids = "{/literal}{$sm.id_memes}{literal}";
+	
 	if(id!=''){
 	    $("#last_id_meme_cur_page").val(id);
 	    var id_memes = $("#rand_id_memes").val();
 	    $("#rand_id_memes").val(id_memes+","+new_ids);
-	}
-	else{
+	} else {
 	    $("#last_id_meme_cur_page").val('');
 	    $("#chk_me").val("1");
 	}
+	
 	$(".fb_btn").each(function (){
 	    FB.XFBML.parse($(this).get(0));
 	});
@@ -27,14 +28,25 @@
 		<div style="height: 90px;">
 
 <!-- Image specs for live feed meme -->
-			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="cursor:pointer;width: 80px;height: 80px;" align="left" title="Meme" onclick="show_details('{$x.id_meme}');"/> 
+			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="cursor:pointer;width: 80px;height: 80px; 
+			{* Added by Delos: highlights if you created the meme *}
+			{if $smarty.session.id_user}
+				{if $x.id_user == $smarty.session.id_user}
+					border-style:outset; border-width:2px; border-color:#6699FF;
+				{/if}
+			{/if}
+					
+		" align="left" title="Meme" onclick="show_details('{$x.id_meme}');"/>
 
 {* Meme Title *}
-			<div style="vertical-align: top; font-size: 15px"><b><a href ="javascript:void(0)" OnClick="show_details('{$x.id_meme}'); return false;">{$x.title|capitalize}</a></b><span style="font-size:12px"> by {$sm.uinfo[$x.id_user].fname|capitalize} {$sm.uinfo[$x.id_user].lname|capitalize}</span></div>
+			<div style="vertical-align: top; font-size: 15px">
+			<b><a href ="javascript:void(0)" OnClick="show_details('{$x.id_meme}'); return false;" style="padding-left:5px">{$x.title|capitalize}</a></b>
+			
+			<span style="font-size:12px"> by {$sm.uinfo[$x.id_user].fname|capitalize} {$sm.uinfo[$x.id_user].lname|capitalize}</span></div>
 	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
 
 <!-- Caption shows below image -->
-			<div style="font-size: 12px;color:blue;"><span id="hrc{$x.id_meme}">{if $sm.hrc[$x.id_meme].caption}"{$sm.hrc[$x.id_meme].caption}"{else}{/if}</span></div><br/>
+			<div style="font-size: 12px; color:blue"><span id="hrc{$x.id_meme}">{if $sm.hrc[$x.id_meme].caption}"{$sm.hrc[$x.id_meme].caption}"{else}{/if}</span></div><br/>
 
 <!-- Comment out Category
 			    Category:<b>{$category[$x.category]}</b><br/> -->
@@ -51,10 +63,30 @@
 			    {/if} 
 
 <!-- Honor -->
-			    <label id="aggr{$x.id_meme}">{$x.tot_honour}</label>&nbsp;<a href="javascript:void(0);" id="agr_link{$x.id_meme}" onclick="set_tot_adaggr('{$x.id_meme}','A');">Honor</a>&emsp;
+			    <label id="aggr{$x.id_meme}">{$x.tot_honour}</label>&nbsp;<a href="javascript:void(0);" id="agr_link{$x.id_meme}" 
+			    
+			    	{* Added by Delos: highlights according to agree/disagree *}
+			    	{if $smarty.session.id_user}
+			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
+				    		style="color: green; cursor: default"
+				    	{elseif substr_count($x.dishonour_id_user, $smarty.session.id_user)}
+				    		style="color: gray; cursor: default"
+				    	{/if}
+				    {/if}
+			    onclick="set_tot_adaggr('{$x.id_meme}','A');">Honor{*$x.honour_id_user*}</a>&emsp;
 
 <!-- Dishonor -->
-			    <label id="disaggr{$x.id_meme}">{$x.tot_dishonour}</label>&nbsp;<a href="javascript:void(0);" id="disagr_link{$x.id_meme}" onclick="set_tot_adaggr('{$x.id_meme}','D');">Dishonor</a>
+			    <label id="disaggr{$x.id_meme}">{$x.tot_dishonour}</label>&nbsp;<a href="javascript:void(0);" id="disagr_link{$x.id_meme}" 
+			    	{* Added by Delos: highlights according to agree/disagree *}
+			    	{if $smarty.session.id_user}
+			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
+			    			style="color: gray; cursor: default"
+			    		{elseif substr_count($x.dishonour_id_user, $smarty.session.id_user)}
+			    			style="color: red; cursor: default"
+			    		{/if}
+			    	{/if}
+			    
+			    onclick="set_tot_adaggr('{$x.id_meme}','D');">Dishonor{*$x.dishonour_id_user*}</a>
 
 <!-- Add Caption -->
 			    {if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}

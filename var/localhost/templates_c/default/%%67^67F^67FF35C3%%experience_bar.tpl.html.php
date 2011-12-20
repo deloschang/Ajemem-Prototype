@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-18 08:42:27
+<?php /* Smarty version 2.6.7, created on 2011-12-20 04:01:34
          compiled from user/experience_bar.tpl.html */ ?>
 
-<!-- Template: user/experience_bar.tpl.html Start 18/12/2011 08:42:27 --> 
+<!-- Template: user/experience_bar.tpl.html Start 20/12/2011 04:01:34 --> 
  <div style="padding:5px 5px 5px 5px">
     <strong>Experience Points (<?php echo $_SESSION['exp_point']; ?>
 ): <font color="#ffffff"> <?php echo $this->_tpl_vars['sm']['points']; ?>

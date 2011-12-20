@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-16 09:48:47
+<?php /* Smarty version 2.6.7, created on 2011-12-20 04:07:38
          compiled from caption/add_caption.tpl.html */ ?>
 
-<!-- Template: caption/add_caption.tpl.html Start 16/12/2011 09:48:47 --> 
+<!-- Template: caption/add_caption.tpl.html Start 20/12/2011 04:07:37 --> 
  <?php echo '
     <script type="text/javascript">
 	var flag_post =0;
@@ -27,6 +27,11 @@
 	     });	*/    
 	 });
 	function caption_post(id){
+		/* Added by Delos to check login */
+		if (!logged_in) {
+			alert("You need to be logged in to post a caption");
+			return;
+		 }
 		var fg = checkcaption(id);
 		
 		/* Posts only if there is content from checkcaption(id) */

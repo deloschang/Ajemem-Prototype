@@ -23,6 +23,10 @@
 	    });	*/    
 	});
 	function caption_post(id){
+		if (!logged_in) {
+			alert("You need to be logged in to post a caption");
+			return;
+		}
 		var fg = checkcaption(id);
 		
 		/* Posts only if there is content from checkcaption(id) */
