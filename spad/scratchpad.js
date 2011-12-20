@@ -830,8 +830,8 @@ function clear_canvas() {
 
 //
 function showdocount() {
-	$(".undo").attr("title","Undo #"+undoPoints.length+ " ctrl + z");
-    $(".redo").attr("title","Redo #"+redoPoints.length+ " ctrl + y");
+	$(".undo").attr("title","Undo's Left "+undoPoints.length+ " (CTRL + Z)");
+    $(".redo").attr("title","Redo's Left "+redoPoints.length+ " (CTRL + Y)");
 }
 
 // Function for the REDO tool (ctrl+y)
