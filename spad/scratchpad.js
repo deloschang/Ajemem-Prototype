@@ -827,9 +827,11 @@ function clear_canvas() {
 	drawpanellines(settings.panel);
 	return false;
 }
+
+//
 function showdocount() {
-	$(".undo").attr("title","undo "+undoPoints.length);
-    $(".redo").attr("title","redo "+redoPoints.length);
+	$(".undo").attr("title","Undo #"+undoPoints.length+ " ctrl + z");
+    $(".redo").attr("title","Redo #"+redoPoints.length+ " ctrl + y");
 }
 
 // Function for the REDO tool (ctrl+y)
@@ -862,8 +864,7 @@ function undoimage(){
         var imgSrc = getcanvasimage("mycid");
         redoPoints.push(imgSrc);
         oh = undoheight.pop();
-        ow = undowidth.pop();
-		// Anyone know why he pushes the previous image's height/width onto the redo stacks? Shouldn't we save the current height/width in redo? 
+        ow = undowidth.pop(); 
         redoheight.push(mycanvas.height);
         redowidth.push(mycanvas.width);
         mycanvas.height = oh;
