@@ -1,14 +1,27 @@
+/*
+   Muaz-
+   This is the main Memeja Editor, we have most of the functionalities in here.
+   I cross-referenced this with an HTML 5/JS scratchpad I found online and looks like 
+   Pati has added a few more functions along with jQuery
+   I am commenting every little thing...
+*/
+
+// Location of all the images for the tools, very easy to change the look of the toolbox
 var SITE_IMAGE_PATH=LBL_SITE_URL+'spad/site_image/';
+// Cursor has the sizes for the brushes (from 1-25)
 var CURSOR_PATH=LBL_SITE_URL+'spad/cursor/';
+
 var SAVE_IMG_PATH=LBL_SITE_URL+"meme/save_meme/ce/0";
 var SET_OFFLEFT=8;
 var SET_OFFTOP=158;
 var SET_EDITOR_HEIGHT=23;
 var DEGREE_ROTATE=2;
+// The var last_comic comes from addmeme.tpl and refers to the last comic the user was working on
 var preloadImage=last_comic;
 
 var newimgid = 1;
 var newtextid = 1;
+// Stacks which hold the actions done 
 var img_rotate = [];
 var undoPoints = [];
 var undoheight = [];
@@ -16,8 +29,11 @@ var undowidth = [];
 var redoPoints = [];
 var redoheight = [];
 var redowidth = [];
+// Canvas objects
 var mycanvas, cntx;
+// Keeps track of saves
 var lastimgdrawn = 1;
+// Default settings for the Memeja Editor, called in the jQuery Plugin
 var settings = {
     'width': 380,
     'height': 380,
@@ -31,11 +47,19 @@ var settings = {
     'type':'line',
     'panel':2
 };
+
+/*
+   This is a Jquery Plugin that Pati's Team wrote for our Memeja Editor.
+   This Plugin detects the user's window settings and adjusts the above (var settings) accordingly.
+   It also detects events and changes setting accordingly.   
+*/
 (function ($) {
+    //Code below just provides several options for the settings of this plugin.
     $.fn.scratchpad = function (options) {
         if (options) {
             $.extend(settings, options);
         }
+		// Check to see if a 2D canvas is supported by user.
         var supports_canvas = function () {
             return true;
             var iscompat = false;
@@ -46,13 +70,19 @@ var settings = {
             }
             return this.iscompat;
         }
+		//If user is drawing on the editor (draw !=0)
         var draw = 0;
+		//Detects if the user is drawing on the canvas (jitter!=0)
         var jitter = 0;
+		
+		// Variables for canvas start and end
         var startX, startY, endX, endY;
         
         $(window).resize(function() {
             setleftmargin();
         });
+		
+		// Detects browser settings and set the left margin for the window
         function setleftmargin() {
             var winW = 630;
             if (document.body && document.body.offsetWidth) {
@@ -68,6 +98,8 @@ var settings = {
             }
             settings.offsetLeft = (winW/2) - (mycanvas.width/2) - SET_OFFLEFT ;
         }
+		
+		// Adjusts the size of the cursor from 1-25
         function adjustfontsize(mysize) {
             $('#fontsize').val(mysize);
             $('#line_size').text('Size-'+mysize);
@@ -76,7 +108,15 @@ var settings = {
 			mycanvas.style.cursor = 'url('+cc+'), none';
             $( "#vs" ).slider( "option", "value", mysize );
         }
+		
+		/* 
+		   Checks to see if HTML 5 is enabled, else it gives an error message.
+		   Main bulk of the plugin
+		*/
         if (supports_canvas() == true) {
+		
+		// The code below was commented out by Pati
+		
 /*            var canvasElem = $('<canvas>').attr({
                 'width': settings.width.toString()+"px",
                 'height': settings.height.toString()+"px",
@@ -88,6 +128,7 @@ var settings = {
             });
             $(this).append(canvasElem);
             mycanvas = $('canvas')[0];*/
+			
 			mycanvas = document.getElementById('mycid');
 			cntx = mycanvas.getContext("2d");
 			mycanvas.width = settings.width;
@@ -95,6 +136,8 @@ var settings = {
 			mycanvas.style.border = settings.borderWidth + 'px solid ' + settings.borderColor;
 //            mycanvas.style.background-color = settings.backgroundColor;
             mycanvas.style.cursor = 'pointer';
+			
+			// If the User doesn't have a preloaded image saved in workspace it creates a new Image for them 
             if (preloadImage!="") {
                 var oImg = new Image();
                 oImg.onload = function() {
@@ -105,30 +148,47 @@ var settings = {
                 }
                 oImg.src = preloadImage;
             }
+			
+			// Fills the rest of the Memeja Editor with white color
             cntx.save();
             cntx.fillStyle = '#fff';
             cntx.fillRect(0, 0, cntx.canvas.width, cntx.canvas.height);
             cntx.restore();
+			
+			/*
+			   The following code will change the canvas based on events inside the canvas
+			*/
+			
+			//Adjust coordinates after a mouseup event. Then sets the canvascontext back to original state
             $(document).mouseup(function (e) {
                 endX = e.pageX - this.offsetLeft - settings.offsetLeft;
                 endY = e.pageY - this.offsetTop - settings.offsetTop;
                 jitter = draw = 0;
+				// Why the restore is necessary - http://html5.litten.com/understanding-save-and-restore-for-the-canvas-context/
                 cntx.restore();
             });
+			
+			// Detects if the user is within the canvas area
             $(this).mouseenter(function () {
                 if (jitter > 0) {
                     draw = 1;
                 }
             });
+			
+			// If the user leaves the canvas area we set draw = 0
             $(this).mouseleave(function () {
                 if (draw == 1) {
                     draw = 0;
                 }
             });
+			
+			// If the user clicks down we go through these steps
             $(this).mousedown(function (e) {
+			    // Anything other than a default line goes into a "dummy canvas"
                 if (settings.type=='square' || settings.type=='circle' || settings.type=='fcircle' || settings.type=='fsquare' || settings.type=='DLine'){
                     createdummycanvas();
                 }
+				
                 saveRestorePoint();
                 cntx.save();
                 jitter = draw = 1;
@@ -150,6 +210,7 @@ var settings = {
                     cntx.moveTo(startX, startY);
                 }
             });
+			
             function createdummycanvas() {
 				if ( $.browser.msie ) {
 	                showdebug(mycanvas.width+"----"+mycanvas.height+" : IE");
@@ -237,6 +298,7 @@ var settings = {
                     copytooriginal();
                 });
             }
+			
             function copytooriginal() {
                 var iddummy = document.getElementById('dummy');
                 var oImg = new Image();
@@ -791,19 +853,24 @@ function redoimage(){
         showdocount();
     }
 }
+
+// Function for the UNDO tool (ctrl+c)
 function undoimage(){
     if (undoPoints.length > 0) {
         var imgSrc = getcanvasimage("mycid");
         redoPoints.push(imgSrc);
         oh = undoheight.pop();
         ow = undowidth.pop();
-        redoheight.push(oh);
-        redowidth.push(ow);
+		// Anyone know why he pushes the previous image's height/width onto the redo stacks? Shouldn't we save the current height/width in redo? 
+        redoheight.push(mycanvas.height);
+        redowidth.push(mycanvas.width);
         mycanvas.height = oh;
         mycanvas.width = ow;
+		// For IE pops last image off of stack and sets it to current canvas 
 		if ( $.browser.msie ) {
 			mycanvas.innerHTML = undoPoints.pop();
 		} else {
+		    // All other browsers 
 			var oImg = new Image();
 			oImg.onload = function() {
 				cntx.drawImage(oImg,0,0);
@@ -813,6 +880,8 @@ function undoimage(){
         showdocount();
     }
 }
+
+// Saves the current image by pushing vars into stacks
 function saveRestorePoint(){
 	if (lastimgdrawn==1) {
 		var imgSrc = getcanvasimage("mycid");
@@ -828,11 +897,15 @@ function saveRestorePoint(){
 		showdebug("nothing to save");
 	}
 }
+
+// Returns the filepath for the image currently on the canvas
 function getcanvasimage(imgid) {
+    //Only for IE browsers
 	if ( $.browser.msie ) {
 		var canvasid = document.getElementById(imgid);
 		return canvasid.innerHTML;
 	} else {
+	// All normal browsers
 		var canvasid = $("#"+imgid)[0];
 		return canvasid.toDataURL();
 	}
