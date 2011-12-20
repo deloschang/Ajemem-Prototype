@@ -285,10 +285,10 @@ var settings = {
                                 dummyc.strokeRect(startX,startY,endX-startX,endY-startY);
                                 break;
                             case 'fcircle':
-                                drawOval(dummyc, centerX, centerY, endX-startX, endY-startY, true);
+                                drawOvals(dummyc, centerX, centerY, endX-startX, endY-startY, true);
                                 break;
                             case 'circle':
-                                drawOval(dummyc, centerX, centerY, endX-startX, endY-startY, false);
+                                drawOvals(dummyc, centerX, centerY, endX-startX, endY-startY, false);
                                 break;
                             case 'DLine':
                                 dummyc.beginPath();
