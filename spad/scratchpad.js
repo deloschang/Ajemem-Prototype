@@ -44,9 +44,6 @@ var mycanvas, cntx;
 // Keeps track of # of saves
 var lastimgdrawn = 1;
 
-// Keeps track of image location for new meme faces 
-var xcoord, ycoord;
-
 // Default settings for the Memeja Editor, called in the jQuery Plugin
 var settings = {
     'width': 380,
@@ -197,9 +194,9 @@ var settings = {
                 }
             });
 			
-			// If the user clicks down we go through these steps
+			// When the user clicks on the canvas we start drawing
             $(this).mousedown(function (e) {
-			    // Anything other than a default line goes into a "dummy canvas"
+			    // Anything other than a default line goes into a new "dummy canvas"
                 if (settings.type=='square' || settings.type=='circle' || settings.type=='fcircle' || settings.type=='fsquare' || settings.type=='DLine'){
                     createdummycanvas();
                 }
@@ -233,6 +230,7 @@ var settings = {
 				}
                 var x = $('#mycid').offset();
 				cc = CURSOR_PATH+settings.lineWidth+".png";
+				// Create a new dummycanvas and add it to the body
                 var cdummy = $('<canvas>').attr({
                     'width': mycanvas.width.toString(),
                     'height': mycanvas.height.toString(),
@@ -245,6 +243,7 @@ var settings = {
 					cursor:'url('+cc+'), none'
                 });
                 cdummy.appendTo("body");
+				
 				var iddummy = document.getElementById('dummy');
                 var dummyc = iddummy.getContext("2d");
 //              var x = $('#mycid').offset();
@@ -259,6 +258,7 @@ var settings = {
 //				iddummy.style.cursor = 'url('+cc+'), none';
                 dummyc.fillStyle = "rgba(0, 0, 200, 0.5)";
                 stopdraw=1;
+				
                 $(iddummy).mousemove(function (e) {
                     if (startX=="undefined") {
                         startX=e.pageX;
@@ -639,7 +639,8 @@ function create_Textbox(){
 }
 
 function create_Imagebox(clicked_img) {
-    // newimgid corresponds to the newest image we clicked
+
+    // newimgid corresponds to the newest meme face we clicked
 	img_rotate[newimgid] = new Array();
     img_rotate[newimgid]['rotate'] = 0;
     img_rotate[newimgid]['x'] = 1;
@@ -660,12 +661,32 @@ function create_Imagebox(clicked_img) {
 	if (window.innerWidth && window.innerHeight) {
 		winW = window.innerWidth;
 	}
+	
 	leftpos = Math.round((winW-img.width)/2);
 
+	// Makes sure the selected meme face is near the top of the canvas
+    memeTop = 250;
+    if(window.pageYOffset > 250) {
+        memeTop = window.pageYOffset;
+    }
+    
+    // Makes sure the next selected meme face isn't overlapping another one
+    if(newimgid % 3 == 1)
+	   memeTop+=50;
+    if(newimgid % 3 == 2)
+	   memeTop+=75;
+    if(newimgid % 6 == 3)
+	   memeTop+=100;
+    if(newimgid % 6 == 4)
+	   memeTop+=125;
+    if(newimgid % 6 == 5) 
+	   memeTop+=150;
+	   
+	// This is the image box created
     var div = $("<div id='"+newimgid+"' class='newdd'>").html("<img id='image"+newimgid+"' src='"+clicked_img+"' />").css({
         
 		// Sets the position at which you see the image box
-	    'top': ycoord+"px",
+	    'top': memeTop+"px",
         'left':leftpos+"px",
         'height':img.height+"px",
         'width':img.width+"px",
@@ -891,7 +912,7 @@ function showdocount() {
 	$(".undo").attr("title",undoPoints.length+ " Undo's Left (CTRL+Z)");
     $(".redo").attr("title",redoPoints.length+ " Redo's Left (CTRL+Y)");
 }
-console.log(ycoord);
+
 // Function for the REDO tool (ctrl+y)
 function redoimage(){
     if (redoPoints.length > 0) {
@@ -941,6 +962,30 @@ function undoimage(){
         showdocount();
     }
 }
+
+// This function allows for drawing ovals/circles filled or empty
+function drawOvals(context, centX, centY, width, height, fill)
+        {
+            context.beginPath();  
+            context.moveTo(centX, centY - height/2);
+            context.bezierCurveTo(
+                centX + width/2, centY - height/2,
+                centX + width/2, centY + height/2,
+                centX, centY + height/2);
+            context.bezierCurveTo(
+                centX - width/2, centY + height/2,
+                centX - width/2, centY - height/2,
+                centX, centY - height/2);
+            if(fill !== undefined && fill === true)
+            {
+                context.fill();
+            }
+            else 
+			{
+                context.stroke();
+            }
+            context.closePath();
+        }
 
 // Saves the current image by pushing vars into stacks
 function saveRestorePoint(){
