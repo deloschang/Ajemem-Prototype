@@ -831,14 +831,16 @@ function showdocount() {
 	$(".undo").attr("title","undo "+undoPoints.length);
     $(".redo").attr("title","redo "+redoPoints.length);
 }
+
+// Function for the REDO tool (ctrl+y)
 function redoimage(){
     if (redoPoints.length > 0) {
         var imgSrc = getcanvasimage("mycid");
         undoPoints.push(imgSrc);
         oh = redoheight.pop();
         ow = redowidth.pop();
-        undoheight.push(oh);
-        undowidth.push(ow);
+        undoheight.push(mycanvas.height);
+        undowidth.push(mycanvas.width);
         mycanvas.height = oh;
         mycanvas.width = ow;
 		if ( $.browser.msie ) {
@@ -854,7 +856,7 @@ function redoimage(){
     }
 }
 
-// Function for the UNDO tool (ctrl+c)
+// Function for the UNDO tool (ctrl+z)
 function undoimage(){
     if (undoPoints.length > 0) {
         var imgSrc = getcanvasimage("mycid");
