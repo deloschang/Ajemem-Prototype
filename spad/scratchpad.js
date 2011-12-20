@@ -29,6 +29,11 @@ var undowidth = [];
 var redoPoints = [];
 var redoheight = [];
 var redowidth = [];
+// Stacks to hold actions specific to panel problem
+var undoPanel = [];
+var undoPanelHeight = [];
+var undoPanelWidth = [];
+
 // Canvas objects
 var mycanvas, cntx;
 // Keeps track of saves
@@ -770,11 +775,7 @@ function saveindisk(csave) {
     });
 	return false;
 }
-function addRow(number){
-	settings.panel+=number;
-	resizeCanvasSize();
-	drawpanellines(number);
-}
+
 function drawpanellines(number){
 	var panelHeight=cntx.canvas.height/settings.panel;
 	cntx.save();
@@ -797,12 +798,40 @@ function drawpanellines(number){
 	cntx.closePath();
 	cntx.restore();
 }
+
+// Adds two panels to the bottom
+function addRow(number){
+	settings.panel+=number;
+	resizeCanvasSize();
+	drawpanellines(number);
+	if(undoPanel[0]!= ""){
+	
+	if ( $.browser.msie ) {
+		mycanvas.innerHTML = undoPanel.pop();
+	} else {
+		var oImg = new Image();
+		oImg.onload = function() {
+			cntx.drawImage(oImg,0,0);
+		}
+		oImg.src = undoPanel.pop();
+	}
+	
+  }
+}
+
+// Removes the bottom two panels
 function removeRow(){
 	if(settings.panel>1){
+        var imgSrc = getcanvasimage("mycid");
+        undoPanel.push(imgSrc);
+        undoPanelHeight.push(mycanvas.height);
+        undoPanelWidth.push(mycanvas.width);		
 		settings.panel-=1;
 		resizeCanvasSize();
 	}
 }
+
+// Resizes the canvas area
 function resizeCanvasSize(){
 	lastimgdrawn = 1;
 	saveRestorePoint();
@@ -810,6 +839,7 @@ function resizeCanvasSize(){
 	var panelHeight=panelWidth/1.3333;
 	mycanvas.height = panelHeight*settings.panel;
 	mycanvas.width = panelWidth*2;
+	// Done after saveRestorePoint() called to keep current image
 	if ( $.browser.msie ) {
 		mycanvas.innerHTML = undoPoints.pop();
 	} else {
@@ -819,19 +849,22 @@ function resizeCanvasSize(){
 		}
 		oImg.src = undoPoints.pop();
 	}
+	//Pop the last values off the undo stacks, because the current value has been stored in them since saveRestorePoint() was called
 	undoheight.pop();
 	undowidth.pop();
 }
+
+// Clears the Canvas
 function clear_canvas() {
 	cntx.clearRect(0, 0, cntx.canvas.width, cntx.canvas.height);
 	drawpanellines(settings.panel);
 	return false;
 }
 
-//
+// Adjust attributes of the Undo/Redo buttons. (As seen on hover)
 function showdocount() {
-	$(".undo").attr("title","Undo's Left "+undoPoints.length+ " (CTRL + Z)");
-    $(".redo").attr("title","Redo's Left "+redoPoints.length+ " (CTRL + Y)");
+	$(".undo").attr("title",undoPoints.length+ " Undo's Left (CTRL + Z)");
+    $(".redo").attr("title",redoPoints.length+ " Redo's Left (CTRL + Y)");
 }
 
 // Function for the REDO tool (ctrl+y)
