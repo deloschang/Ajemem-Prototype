@@ -1,4 +1,9 @@
-<div id="showmodal" class="showmodal">Loading the Memeja Editor.</div>
+<!-- 
+     Commented by Muaz :D
+	 This is the main HTML for the Memeja Editor.
+-->
+
+<div id="showmodal" class="showmodal">Enter Memeja Dojo</div>
 <script type="text/javascript">
     var last_comic="##LBL_SITE_URL##spad/workspace/{$smarty.session.id_user}_img.png";
     var LBL_SITE_URL="##LBL_SITE_URL##";
@@ -94,8 +99,7 @@
                         <td valign='top'><b>Visibility:</b></td>
                         <td>
                             <select id="see_fr" name="meme[can_all_view]">
-                                <option value="">--Select--</option>
-                                <option value="1">All</option>
+                                <option value="1" selected = "selected">All</option>
                                 <option value="0">Friends</option>
                             </select>
                         </td>
@@ -104,12 +108,12 @@
                         <td valign='top'><b>Who comments:</b></td>
                         <td>
                             <select id="friends" name="meme[can_all_comment]">
-                                <option value="">--Select--</option>
-                                <option value="1">All</option>
+                                <option value="1" selected = "selected">All</option>
                                 <option value="0">Friends</option>
                             </select>
                         </td>
                     </tr>
+					<!-- Commented out since we are contemplating having categories
                     <tr>
                         <td valign='top'><b>Meme Category:</b></td>
                         <td>
@@ -119,12 +123,13 @@
                             </select>
                         </td>
                     </tr>
+					-->
 					<tr>
                         <td valign='top'><b>Tag your friends:</b></td>
                         <td><select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select></td>
                     </tr>
                     <tr>
-                        <td colspan='2' align='center'><input type="button" value="Submit" onclick="validate_me();"/> &nbsp; <input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/></td>
+                        <td align='center'><input type="button" value="Submit" onclick="validate_me();"/> &nbsp; <input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/></td>
                     </tr>
                 </table>
             </div>

@@ -1,8 +1,7 @@
 /*
    Muaz-
    This is the main Memeja Editor, we have most of the functionalities in here.
-   I cross-referenced this with an HTML 5/JS scratchpad I found online and looks like 
-   Pati has added a few more functions along with jQuery
+   This is called in addmeme.tpl which contains the html/php for this stuff
    I am commenting every little thing...
 */
 
@@ -149,6 +148,7 @@ var settings = {
             mycanvas.style.cursor = 'pointer';
 			
 			// If the User doesn't have a preloaded image saved in workspace it creates a new Image for them 
+			
             /*  Get's kind of annoying, let's try (ctrl+s) 
 			if (preloadImage!="") {
                 var oImg = new Image();

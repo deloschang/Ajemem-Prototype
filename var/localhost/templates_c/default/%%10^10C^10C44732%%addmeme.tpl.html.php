@@ -1,10 +1,15 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-20 13:02:06
+<?php /* Smarty version 2.6.7, created on 2011-12-20 14:13:24
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 120, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 124, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 20/12/2011 13:02:06 --> 
- <div id="showmodal" class="showmodal">Loading the Memeja Editor.</div>
+<!-- Template: meme/addmeme.tpl.html Start 20/12/2011 14:13:24 --> 
+ <!-- 
+     Commented by Muaz :D
+	 This is the main HTML for the Memeja Editor.
+-->
+
+<div id="showmodal" class="showmodal">Enter Memeja Dojo</div>
 <script type="text/javascript">
     var last_comic="http://localhost/spad/workspace/<?php echo $_SESSION['id_user']; ?>
 _img.png";
@@ -109,8 +114,7 @@ unset($_smarty_tpl_vars);
                         <td valign='top'><b>Visibility:</b></td>
                         <td>
                             <select id="see_fr" name="meme[can_all_view]">
-                                <option value="">--Select--</option>
-                                <option value="1">All</option>
+                                <option value="1" selected = "selected">All</option>
                                 <option value="0">Friends</option>
                             </select>
                         </td>
@@ -119,12 +123,12 @@ unset($_smarty_tpl_vars);
                         <td valign='top'><b>Who comments:</b></td>
                         <td>
                             <select id="friends" name="meme[can_all_comment]">
-                                <option value="">--Select--</option>
-                                <option value="1">All</option>
+                                <option value="1" selected = "selected">All</option>
                                 <option value="0">Friends</option>
                             </select>
                         </td>
                     </tr>
+					<!-- Commented out since we are contemplating having categories
                     <tr>
                         <td valign='top'><b>Meme Category:</b></td>
                         <td>
@@ -135,12 +139,13 @@ unset($_smarty_tpl_vars);
                             </select>
                         </td>
                     </tr>
+					-->
 					<tr>
                         <td valign='top'><b>Tag your friends:</b></td>
                         <td><select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select></td>
                     </tr>
                     <tr>
-                        <td colspan='2' align='center'><input type="button" value="Submit" onclick="validate_me();"/> &nbsp; <input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/></td>
+                        <td align='center'><input type="button" value="Submit" onclick="validate_me();"/> &nbsp; <input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/></td>
                     </tr>
                 </table>
             </div>
