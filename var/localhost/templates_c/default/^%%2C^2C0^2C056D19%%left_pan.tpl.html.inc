@@ -1,30 +1,30 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-20 12:40:34
+<?php /* Smarty version 2.6.7, created on 2011-12-20 13:02:08
          compiled from user/left_pan.tpl.html */
 
-$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = '32b168ceb2650cf359c29b0d796cebbe';
+$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = 'dbd1020a4b65a89e402cf8a5afa6c448';
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 12, false),array('function', 'get_mod', 'user/left_pan.tpl.html', 28, false),)), $this); ?>
 <?php
-function _smarty_tplfunc_32b168ceb2650cf359c29b0d796cebbe_0(&$_smarty)
+function _smarty_tplfunc_dbd1020a4b65a89e402cf8a5afa6c448_0(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'achievements','mgr' => 'achievements','choice' => 'badge_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_32b168ceb2650cf359c29b0d796cebbe_1(&$_smarty)
+function _smarty_tplfunc_dbd1020a4b65a89e402cf8a5afa6c448_1(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_32b168ceb2650cf359c29b0d796cebbe_2(&$_smarty)
+function _smarty_tplfunc_dbd1020a4b65a89e402cf8a5afa6c448_2(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_32b168ceb2650cf359c29b0d796cebbe_3(&$_smarty)
+function _smarty_tplfunc_dbd1020a4b65a89e402cf8a5afa6c448_3(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_meme','gmod' => 1), $_smarty);
 }

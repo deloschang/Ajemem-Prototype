@@ -149,7 +149,8 @@ var settings = {
             mycanvas.style.cursor = 'pointer';
 			
 			// If the User doesn't have a preloaded image saved in workspace it creates a new Image for them 
-            if (preloadImage!="") {
+            /*  Get's kind of annoying, let's try (ctrl+s) 
+			if (preloadImage!="") {
                 var oImg = new Image();
                 oImg.onload = function() {
                     settings.panel = Math.round(oImg.height / (settings.height / 2));
@@ -159,6 +160,7 @@ var settings = {
                 }
                 oImg.src = preloadImage;
             }
+			*/
 			
 			// Fills the rest of the Memeja Editor with white color
             cntx.save();
