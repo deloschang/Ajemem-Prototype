@@ -1157,78 +1157,102 @@ class user_manager extends mod_manager {
 	    $facebook = $arr[0]; // instance of class FB 
 	    $data = $arr[1];	// decrypted data with access token + session_key
 
-		//var_dump($facebook);
-		// Grab the user's ID via Graph API
+		//var_dump($facebook);		Does FB instance exist?
+		
+		// See if there is a user from a cookie
 		$user_id = $facebook->getUser();
-		var_dump($user_id);
+		
+		//var_dump($user_id); 		Can you grab user's ID?
+		
+		// Retrieve user information from FB in JSON
+		// e.g. callable var_dump $me['name']
+		$user_details = $facebook->api('/me');
+		
+		### 	SAMPLE DETAILS ###
+		#	Array ( 
+		#	[id] => 641286114 
+		#	[name] => Delos Faith Chang 
+		#	[first_name] => Delos 
+		#	[middle_name] => Faith 
+		#	[last_name] => Chang 
+		#	[link] => http://www.facebook.com/delos.chang 
+		#	[username] => delos.chang 
+		#	[hometown] => Array ( [id] => 111948785483165 [name] => Cupertino, California ) 
+		#	[location] => Array ( [id] => 104049022964484 [name] => Hanover, New Hampshire ) 
+		#	[gender] => male 
+		#	[email] => lol.i.laugh@gmail.com 
+		#	[timezone] => -8 
+		#	[locale] => en_US 
+		#	[verified] => 1 
+		#	[updated_time] => 2011-12-04T14:42:09+0000 
+		#	)
+		### 
+		
+		// Without user ID, something went wrong
+	    if(!$user_details['id']){
+			redirect(LBL_SITE_URL);
+	    } 
 
-	    // Retrieve user information of facebook
-	    $fb_user_info = $facebook->api_client->users_getInfo($data['uid'], array('uid','about_me','activities','affiliations','birthday','birthday_date','books','contact_email','current_location','education_history','email','email_hashes','family','has_added_app','hometown_location','hs_info','interests','is_app_user',' is_blocked','locale','meeting_for','meeting_sex','movies','music','name','first_name','middle_name','last_name','notes_count','pic','pic_with_logo','pic_big','pic_big_with_logo',' pic_small','pic_small_with_logo','pic_square','pic_square_with_logo','political','profile_blurb','profile_update_time','profile_url','proxied_email',' quotes','relationship_status',' religion',' sex',' significant_other_id','status','timezone',' tv','username','wall_count','website','work_history'));
-
-	    $user_details = $fb_user_info[0];
-
-	    if(!$user_details['uid']){
-			redirect(LBL_SITE_URL.'nowork');
-	    } else {
-	    	redirect(LBL_SITE_URL.'work');
-		}
-
-	    $sql="SELECT * FROM ".TABLE_PREFIX."user WHERE uid=".$user_details['uid']." LIMIT 1";
-	    $qry=mysqli_query($link,$sql);
-	    $results=mysqli_fetch_assoc($qry);
+		// Check if user exists in DB (first-time user?)
+	    $sql = "SELECT * FROM ".TABLE_PREFIX."user WHERE uid=".$user_details['id']." LIMIT 1";
+	    $qry = mysqli_query($link, $sql);
+	    $results = mysqli_fetch_assoc($qry);
 	    
-	    $_SESSION['fb_login']=1;
+	    $_SESSION['fb_login'] = 1;
 	    
-	    // Check if user exists in DB (first-time user?)
 	    if($results){
-		$this->_set_login($results['email'],$results['password']);
-	    }else{
+	    	// Not a first-time user. 
+	    	// _set_login works like 'return', rest of func not 	invoked
+			$this->_set_login($results['email'],$results['password']);
+	    } else {
 
-		$friends=$facebook->api_client->friends_get('',$data['uid']);
-		$pwd=rand(10000,99999);
+			$friends=$facebook->api_client->friends_get('',$data['uid']);
+			$pwd=rand(10000,99999);
 
-		$sex=($user_details['sex']=='male')?'M':(($user_details['sex']=='female')?'F':'');
+			$sex=($user_details['sex']=='male')?'M':(($user_details['sex']=='female')?'F':'');
 
-		$in_user['id_user']  = $user_details[''];
-		$in_user['uid']  = $user_details['uid'];
-		$in_user['name']  = $user_details['name'];
-		//$in_user['fb_pic_big']  = $user_details['pic_big'];
-		//$in_user['fb_pic_square']  = $user_details['pic_square'];
-		$in_user['fname']  = $user_details['first_name'];
-		$in_user['mname']  = $user_details['middle_name'];
-		$in_user['lname']  = $user_details['last_name'];
-		$in_user['email']  = $user_details['email'];
-		$in_user['password']  = $pwd;
-		//$in_user['id_admin']  = $user_details[''];
-		$in_user['gender']  = $sex;
-		$in_user['dob']  = $user_details['birthday_date'];
-		//$in_user['avatar']  = $user_details[''];
-		$addr=( $user_details['current_location']['city'])? $user_details['current_location']['city'].",":'';
-		$addr.=($user_details['current_location']['state'])? $user_details['current_location']['state'].",":'';
-		$addr.=($user_details['current_location']['country'])? $user_details['current_location']['country']:'';
-		$in_user['address']  = trim($addr,",");
-		$in_user['address']  = $user_details[''];
-		//$in_user['ques_week_won']  = $user_details[''];
-		//$in_user['duels_won']  = $user_details[''];
-		//$in_user['exp_point']  = $user_details[''];
-		//$in_user['no_badges']  = $user_details[''];
-		//$in_user['login_status']  = $user_details[''];
-		//$in_user['no_of_logs']  = $user_details[''];
-		//$in_user['last_login']  = $user_details[''];
-		//$in_user['update_login']  = $user_details[''];
-		//$in_user['login_time']  = $user_details[''];
-		$in_user['random_num']  = '0';
-		$in_user['flag']  = 1;
-		$in_user['user_status']  = 1;
-		$in_user['id_friends']  = implode(",",$friends);
-		//$in_user['toc']  = $user_details[''];
-		//$in_user['add_date']  = $user_details[''];
-		$in_user['ip']  = $_SERVER['REMOTE_ADDR'];
+			$in_user['id_user']  = $user_details[''];
+			$in_user['uid']  = $user_details['uid'];
+			$in_user['name']  = $user_details['name'];
+			//$in_user['fb_pic_big']  = $user_details['pic_big'];
+			//$in_user['fb_pic_square']  = $user_details['pic_square'];
+			$in_user['fname']  = $user_details['first_name'];
+			$in_user['mname']  = $user_details['middle_name'];
+			$in_user['lname']  = $user_details['last_name'];
+			$in_user['email']  = $user_details['email'];
+			$in_user['password']  = $pwd;
+			//$in_user['id_admin']  = $user_details[''];
+			$in_user['gender']  = $sex;
+			$in_user['dob']  = $user_details['birthday_date'];
+			//$in_user['avatar']  = $user_details[''];
+			$addr=( $user_details['current_location']['city'])? $user_details['current_location']['city'].",":'';
+			$addr.=($user_details['current_location']['state'])? $user_details['current_location']['state'].",":'';
+			$addr.=($user_details['current_location']['country'])? $user_details['current_location']['country']:'';
+			$in_user['address']  = trim($addr,",");
+			$in_user['address']  = $user_details[''];
+			//$in_user['ques_week_won']  = $user_details[''];
+			//$in_user['duels_won']  = $user_details[''];
+			//$in_user['exp_point']  = $user_details[''];
+			//$in_user['no_badges']  = $user_details[''];
+			//$in_user['login_status']  = $user_details[''];
+			//$in_user['no_of_logs']  = $user_details[''];
+			//$in_user['last_login']  = $user_details[''];
+			//$in_user['update_login']  = $user_details[''];
+			//$in_user['login_time']  = $user_details[''];
+			$in_user['random_num']  = '0';
+			$in_user['flag']  = 1;
+			$in_user['user_status']  = 1;
+			$in_user['id_friends']  = implode(",",$friends);
+			//$in_user['toc']  = $user_details[''];
+			//$in_user['add_date']  = $user_details[''];
+			$in_user['ip']  = $_SERVER['REMOTE_ADDR'];
 
-	    }
-	    $this->obj_user->insert_all('user',$in_user,1,$dt_fld='add_date');
-	    $this->_set_login($in_user['email'],$pwd);
+		}
+			// First-time user continues
+		    $this->obj_user->insert_all('user',$in_user,1,$dt_fld='add_date');
+		    $this->_set_login($in_user['email'],$pwd);
 	}
+		
 	function _invited(){
 		print "<pre>";
 		print_r($_REQUEST);
