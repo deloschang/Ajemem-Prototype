@@ -38,9 +38,9 @@ image_display = "/waf_content/images/"
 company_logo = "/var/www/html/waf_res/logo/thumb/"
 
 [FACEBOOK]
-api_key = "213764722000439"
-secret_key = "59fab34c926f3ac596bac25c568e1b55"
-app_id = "213764722000439"
+api_key = "219049284838691"
+secret_key = "0b378365e966491e3e3b1d12bbc65afa"
+app_id = "219049284838691"
 
 [FLAGGING_ACTION]
 1 = "Approve"

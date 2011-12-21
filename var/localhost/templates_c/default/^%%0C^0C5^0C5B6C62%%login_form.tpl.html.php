@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-20 04:07:01
+<?php /* Smarty version 2.6.7, created on 2011-12-21 02:32:54
          compiled from user/login_form.tpl.html */ ?>
 
-<!-- Template: user/login_form.tpl.html Start 20/12/2011 04:07:01 --> 
+<!-- Template: user/login_form.tpl.html Start 21/12/2011 02:32:54 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -77,9 +77,9 @@
     </tr>
     <tr>
         <td colspan="2">
-	    <fb:login-button perms="email,user_checkins,publish_stream">
-		Login with Facebook
-	    </fb:login-button>
+	    <div class="fb-login-button" scope="email,user_checkins,publish_stream">
+        Login with Facebook
+      </div>
 	</td>
     </tr>
 </table>

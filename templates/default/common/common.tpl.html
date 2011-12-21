@@ -238,12 +238,7 @@
 	    //For validation form before submitting paypal button
 	}
 </script>
-<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script>
 <script type="text/javascript">
-	var app_id='{/literal}{$appid.app_id}{literal}';
-	    window.fbAsyncInit = function() {
-		   FB.init({appId: app_id, status: true, cookie: true, xfbml: true});
-	    }
 	    function fb_logout(){
 	       url="##LBL_SITE_URL##";
 	       $.post(url,{page:"user",choice:"check_fb_session",ce:0},function(res){
@@ -256,7 +251,7 @@
 		}
 
 	       })
-	}
+		}
 
 </script>
 <style type="text/css">
@@ -337,6 +332,26 @@ body {
 {/literal}
 </head>
 <body>
+<div id="fb-root"></div>
+      {literal}
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '219049284838691',
+            status     : true, 
+            cookie     : true,
+            xfbml      : true,
+            oauth      : true,
+          });
+        };
+        (function(d){
+           var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+           js = d.createElement('script'); js.id = id; js.async = true;
+           js.src = "//connect.facebook.net/en_US/all.js";
+           d.getElementsByTagName('head')[0].appendChild(js);
+         }(document))
+      </script>       {/literal}
+      
     <input type="hidden" id="tst" value="2">
     <div id="page1">
 		<div id="fb-root"></div>
