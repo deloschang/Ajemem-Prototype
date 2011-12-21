@@ -1091,19 +1091,38 @@ class user_manager extends mod_manager {
          . "client_id=" . $app_id . "&client_secret=" . $application_secret. "&redirect_uri=" . "&code=" . $data['code'];
    
    			//var_dump($token_url);
+   			// e.g.  "https://graph.facebook.com/oauth/access_token?client_id=219049284838691&client_secret=0b378365e966491e3e3b1d12bbc65afa&redirect_uri=&code=2.AQA__rw8Zipnc4k6.3600.1324440000.1-641286114|_u5nb7xpTi24QbgwPu6UWpUCJ8I" 
    			
           	$response = @file_get_contents($token_url);
           	$params = null;
           	
           	parse_str($response, $params);
+          	
+          	//var_dump($response);
+          	// e.g. access_token=AAADHOWLPpSMBALRAuPIE7
+//	184M0A80ARK8yRZBPIkvjaeCTk1JvrAZAUSRSIrQvyuBrIkZCrl9WJ8Qb
+//	fttPeuOgD2dcgZDZD&expires=4659
+
+			//var_dump($params);
+			// e.g. ["access_token"] => "AAAADHOW..."
+
           	$data['access_token'] = $params['access_token']; 
           	
           	// formerly was $data['session_key']
           	$data['session_key'] = $data['code'];
           	$session_key = $data['code'];
           	
-          	echo $data['uid'];
-          	return $data;
+          	//var_dump($data['uid']); => evals to null
+          	
+			$arr[0] = new Facebook(array(
+  				'appId'  => $app_id,
+  				'secret' => $application_secret,
+			));
+			
+			$arr[1] = $data;
+			return $arr;
+			
+          	//return $data;
      	} else {
      		// FB cookie doesn't exist
           	return null;
@@ -1113,6 +1132,7 @@ class user_manager extends mod_manager {
 	
 	
 		//can break code for debugging	
+		
 		/* Pati's old shit code */
 //$arr = explode('&',trim(stripslashes($_COOKIE['fbs_'.$app_id]),'"'));
 //		foreach($arr as $k => $v){
@@ -1133,14 +1153,19 @@ class user_manager extends mod_manager {
 	function _facebook_info(){
 	    global $link;
 
-	    $arr=$this->decrypt_fb_data();
-	    $facebook = $arr[0];
-	    $data = $arr[1];
+	    $arr = $this->decrypt_fb_data();
+	    $facebook = $arr[0]; // instance of class FB 
+	    $data = $arr[1];	// decrypted data with access token + session_key
 
-	    //Retrieve user information of facebook
-	    $fb_user_info=$facebook->api_client->users_getInfo($data['uid'], array('uid','about_me','activities','affiliations','birthday','birthday_date','books','contact_email','current_location','education_history','email','email_hashes','family','has_added_app','hometown_location','hs_info','interests','is_app_user',' is_blocked','locale','meeting_for','meeting_sex','movies','music','name','first_name','middle_name','last_name','notes_count','pic','pic_with_logo','pic_big','pic_big_with_logo',' pic_small','pic_small_with_logo','pic_square','pic_square_with_logo','political','profile_blurb','profile_update_time','profile_url','proxied_email',' quotes','relationship_status',' religion',' sex',' significant_other_id','status','timezone',' tv','username','wall_count','website','work_history'));
+		//var_dump($facebook);
+		// Grab the user's ID via Graph API
+		$user_id = $facebook->getUser();
+		var_dump($user_id);
 
-	    $user_details=$fb_user_info[0];
+	    // Retrieve user information of facebook
+	    $fb_user_info = $facebook->api_client->users_getInfo($data['uid'], array('uid','about_me','activities','affiliations','birthday','birthday_date','books','contact_email','current_location','education_history','email','email_hashes','family','has_added_app','hometown_location','hs_info','interests','is_app_user',' is_blocked','locale','meeting_for','meeting_sex','movies','music','name','first_name','middle_name','last_name','notes_count','pic','pic_with_logo','pic_big','pic_big_with_logo',' pic_small','pic_small_with_logo','pic_square','pic_square_with_logo','political','profile_blurb','profile_update_time','profile_url','proxied_email',' quotes','relationship_status',' religion',' sex',' significant_other_id','status','timezone',' tv','username','wall_count','website','work_history'));
+
+	    $user_details = $fb_user_info[0];
 
 	    if(!$user_details['uid']){
 			redirect(LBL_SITE_URL.'nowork');
@@ -1151,7 +1176,10 @@ class user_manager extends mod_manager {
 	    $sql="SELECT * FROM ".TABLE_PREFIX."user WHERE uid=".$user_details['uid']." LIMIT 1";
 	    $qry=mysqli_query($link,$sql);
 	    $results=mysqli_fetch_assoc($qry);
+	    
 	    $_SESSION['fb_login']=1;
+	    
+	    // Check if user exists in DB (first-time user?)
 	    if($results){
 		$this->_set_login($results['email'],$results['password']);
 	    }else{
