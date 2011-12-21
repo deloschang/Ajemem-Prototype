@@ -1063,21 +1063,73 @@ class user_manager extends mod_manager {
 		}
 		print $fb_login_sts;exit;
 	}
+	
 	function decrypt_fb_data(){
-		$api_key=$GLOBALS['conf']['FACEBOOK']['api_key'];
-		$secret=$GLOBALS['conf']['FACEBOOK']['secret_key'];
-		$app_id=$GLOBALS['conf']['FACEBOOK']['app_id'];
-		$arr = explode('&',trim(stripslashes($_COOKIE['fbs_'.$app_id]),'"'));
-		foreach($arr as $k => $v){
-			$key = substr($v,0,strpos($v,'='));
-			$val = substr($v,strpos($v,'=')+1);
-			$data[$key] = $val;
-		}
-		$session_key = $data['session_key'];
-		$arr[0] = new Facebook($api_key,$secret,$session_key);
-		$arr[1] = $data;
-		return $arr;
-	}
+		//$api_key=$GLOBALS['conf']['FACEBOOK']['api_key'];
+		$application_secret = $GLOBALS['conf']['FACEBOOK']['secret_key'];
+		$app_id = $GLOBALS['conf']['FACEBOOK']['app_id'];
+		
+		// Start of newest FB changes
+		if(isset($_COOKIE['fbsr_' . $app_id])){
+			list($encoded_sig, $payload) = explode('.', $_COOKIE['fbsr_' . $app_id], 2);
+   
+        	$sig = base64_decode(strtr($encoded_sig, '-_', '+/'));
+        	$data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
+  
+        	if (strtoupper($data['algorithm']) !== 'HMAC-SHA256') {
+            	return null;
+         	}
+         	
+         	$expected_sig = hash_hmac('sha256', $payload,
+         	$application_secret, $raw = true);
+         	
+          	if ($sig !== $expected_sig) {
+            	return null;
+          	}
+          	
+        	$token_url = "https://graph.facebook.com/oauth/access_token?"
+         . "client_id=" . $app_id . "&client_secret=" . $application_secret. "&redirect_uri=" . "&code=" . $data['code'];
+   
+   			//var_dump($token_url);
+   			
+          	$response = @file_get_contents($token_url);
+          	$params = null;
+          	
+          	parse_str($response, $params);
+          	$data['access_token'] = $params['access_token']; 
+          	
+          	// formerly was $data['session_key']
+          	$data['session_key'] = $data['code'];
+          	$session_key = $data['code'];
+          	
+          	echo $data['uid'];
+          	return $data;
+     	} else {
+     		// FB cookie doesn't exist
+          	return null;
+     	}
+     }
+		// End of newest FB changes
+	
+	
+		//can break code for debugging	
+		/* Pati's old shit code */
+//$arr = explode('&',trim(stripslashes($_COOKIE['fbs_'.$app_id]),'"'));
+//		foreach($arr as $k => $v){
+//			$key = substr($v,0,strpos($v,'='));
+//			$val = substr($v,strpos($v,'=')+1);
+//			$data[$key] = $val;
+//		}
+		
+		// FB changed 'session_key' to 'code'
+		//$session_key = $data['session_key'];
+		
+		
+//		$arr[0] = new Facebook($api_key,$secret,$session_key);
+//		$arr[1] = $data;
+//		return $arr;
+//	}
+	
 	function _facebook_info(){
 	    global $link;
 
@@ -1091,8 +1143,10 @@ class user_manager extends mod_manager {
 	    $user_details=$fb_user_info[0];
 
 	    if(!$user_details['uid']){
-		redirect(LBL_SITE_URL);
-	    }
+			redirect(LBL_SITE_URL.'nowork');
+	    } else {
+	    	redirect(LBL_SITE_URL.'work');
+		}
 
 	    $sql="SELECT * FROM ".TABLE_PREFIX."user WHERE uid=".$user_details['uid']." LIMIT 1";
 	    $qry=mysqli_query($link,$sql);
