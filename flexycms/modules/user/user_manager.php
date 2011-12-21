@@ -1205,31 +1205,71 @@ class user_manager extends mod_manager {
 	    	// _set_login works like 'return', rest of func not 	invoked
 			$this->_set_login($results['email'],$results['password']);
 	    } else {
-
-			$friends=$facebook->api_client->friends_get('',$data['uid']);
-			$pwd=rand(10000,99999);
-
-			$sex=($user_details['sex']=='male')?'M':(($user_details['sex']=='female')?'F':'');
-
+				
+			// Iterate through friends list and sep by id and name
+			$friends = $facebook->api('me/friends');
+			$id_list = array();
+			$name_list = array();
+			
+			foreach ($friends as $friend_array) {
+				foreach ($friend_array as $friend) {
+					$id_list[] = $friend['id'];
+					$name_list[] = $friend['name'];
+				}
+			}
+			$in_user['id_friends'] = implode(",", $id_list);
+			$in_user['name_friends'] = implode(",", $name_list);
+						
+			// Enable permission 'user_education_history' in login_form to access.
+			$education = $user_details['education'];
+			
+			$school_name_list = array();
+			$school_id_list = array();
+			foreach ($education as $education_array) {
+				
+				$school_name_list[] = $education_array['school']['name'];
+				$school_id_list[] = $education_array['school']['id'];
+			
+			}
+			$in_user['school_name'] = implode(",", $school_name_list);
+			$in_user['school_id'] = implode(",", $school_id_list);		
+			
+			// Unique FB ID
+			$in_user['uid']  = $user_details['id'];			
+			
+			// Profile Pictures in diff sizes
+			$profile_link = 'http://graph.facebook.com/'.$user_details['id'].'/picture?type=';	
+			$in_user['fb_pic_square'] = $profile_link.'square';
+			$in_user['fb_pic_normal']  = $profile_link.'normal';
+			$pwd=rand(1000,99999);
+		
+			// **** 
 			$in_user['id_user']  = $user_details[''];
-			$in_user['uid']  = $user_details['uid'];
-			$in_user['name']  = $user_details['name'];
-			//$in_user['fb_pic_big']  = $user_details['pic_big'];
-			//$in_user['fb_pic_square']  = $user_details['pic_square'];
+
+			$in_user['username']  = //$user_details['name'];
+						
 			$in_user['fname']  = $user_details['first_name'];
 			$in_user['mname']  = $user_details['middle_name'];
 			$in_user['lname']  = $user_details['last_name'];
 			$in_user['email']  = $user_details['email'];
 			$in_user['password']  = $pwd;
+			
 			//$in_user['id_admin']  = $user_details[''];
-			$in_user['gender']  = $sex;
-			$in_user['dob']  = $user_details['birthday_date'];
+			
+			// Gender
+			$gender = ($user_details['gender']=='male')?'M':(($user_details['gender']=='female')?'F':'');
+			$in_user['gender']  = $gender;
+			
+			// Enable permission 'user_birthday' in login_form to access.
+				// ** Phase two ** 
+				//$in_user['dob']  = $user_details['birthday'];
+			
 			//$in_user['avatar']  = $user_details[''];
-			$addr=( $user_details['current_location']['city'])? $user_details['current_location']['city'].",":'';
-			$addr.=($user_details['current_location']['state'])? $user_details['current_location']['state'].",":'';
-			$addr.=($user_details['current_location']['country'])? $user_details['current_location']['country']:'';
-			$in_user['address']  = trim($addr,",");
-			$in_user['address']  = $user_details[''];
+			
+			// Hometown and Location
+			$in_user['hometown'] = $user_details['hometown']['id'];
+			$in_user['location'] = $user_details['location']['id'];
+			
 			//$in_user['ques_week_won']  = $user_details[''];
 			//$in_user['duels_won']  = $user_details[''];
 			//$in_user['exp_point']  = $user_details[''];
@@ -1242,15 +1282,15 @@ class user_manager extends mod_manager {
 			$in_user['random_num']  = '0';
 			$in_user['flag']  = 1;
 			$in_user['user_status']  = 1;
-			$in_user['id_friends']  = implode(",",$friends);
+			
 			//$in_user['toc']  = $user_details[''];
 			//$in_user['add_date']  = $user_details[''];
 			$in_user['ip']  = $_SERVER['REMOTE_ADDR'];
 
 		}
 			// First-time user continues
-		    $this->obj_user->insert_all('user',$in_user,1,$dt_fld='add_date');
-		    $this->_set_login($in_user['email'],$pwd);
+		    //$this->obj_user->insert_all('user', $in_user, 1,$dt_fld='add_date');
+		    //$this->_set_login($in_user['email'], $pwd);
 	}
 		
 	function _invited(){
