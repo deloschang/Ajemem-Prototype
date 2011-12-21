@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-21 02:32:54
+<?php /* Smarty version 2.6.7, created on 2011-12-21 02:45:58
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 385, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '4798a495c63f7509ee1d1f970f9f315b'; ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 392, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '1d41d00a4087f7956033811412121d02'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -347,19 +347,26 @@ body {
             xfbml      : true,
             oauth      : true,
            });
+          
+          FB.Event.subscribe(\'auth.login\', function (response) {
+          	console.log("FB.event.subscribe auth login fired");
+          	window.location = "http://localhost/user/facebook_info";
+    	   });
          };
+        
+        
         (function(d){
            var js, id = \'facebook-jssdk\'; if (d.getElementById(id)) {return; }
            js = d.createElement(\'script\'); js.id = id; js.async = true;
            js.src = "//connect.facebook.net/en_US/all.js";
            d.getElementsByTagName(\'head\')[0].appendChild(js);
           }(document))
-      </script>       '; ?>
+      </script>       
+'; ?>
 
-      
-    <input type="hidden" id="tst" value="2">
+
+  <input type="hidden" id="tst" value="2">
     <div id="page1">
-		<div id="fb-root"></div>
 		<div id="mymodal"></div>
 	    	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "common/header.tpl.html", 'smarty_include_vars' => array()));
@@ -407,7 +414,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:4798a495c63f7509ee1d1f970f9f315b#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:4798a495c63f7509ee1d1f970f9f315b#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:1d41d00a4087f7956033811412121d02#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:1d41d00a4087f7956033811412121d02#0}';}?>
 <br>
 				<?php endif; ?>
 

@@ -27,7 +27,6 @@
 	}
 </script>
 {/literal}
-
 <!-- css in mainpg.css -->
 <div id="logintable">
 <div id="new_user">
@@ -72,9 +71,11 @@
     </tr>
     <tr>
         <td colspan="2">
+        
 	    <div class="fb-login-button" scope="email,user_checkins,publish_stream">
         Login with Facebook
       </div>
+      
 	</td>
     </tr>
 </table>
@@ -82,12 +83,3 @@
 </div>
 </div>
 <div class="clear"></div>
-<div id="fb-root"></div>
-{literal}
-<script type="text/javascript">
-    FB.Event.subscribe('auth.login', function (response) {
-          window.location = "##LBL_SITE_URL##user/facebook_info";
-    });
-
-</script>
-{/literal}

@@ -343,18 +343,25 @@ body {
             xfbml      : true,
             oauth      : true,
           });
+          
+          FB.Event.subscribe('auth.login', function (response) {
+          	console.log("FB.event.subscribe auth login fired");
+          	window.location = "##LBL_SITE_URL##user/facebook_info";
+    	  });
         };
+        
+        
         (function(d){
            var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
            js = d.createElement('script'); js.id = id; js.async = true;
            js.src = "//connect.facebook.net/en_US/all.js";
            d.getElementsByTagName('head')[0].appendChild(js);
          }(document))
-      </script>       {/literal}
-      
-    <input type="hidden" id="tst" value="2">
+      </script>       
+{/literal}
+
+  <input type="hidden" id="tst" value="2">
     <div id="page1">
-		<div id="fb-root"></div>
 		<div id="mymodal"></div>
 	    	{include file='common/header'}
 

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-21 02:32:54
+<?php /* Smarty version 2.6.7, created on 2011-12-21 02:45:58
          compiled from user/login_form.tpl.html */ ?>
 
-<!-- Template: user/login_form.tpl.html Start 21/12/2011 02:32:54 --> 
+<!-- Template: user/login_form.tpl.html Start 21/12/2011 02:45:58 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -31,7 +31,6 @@
 	 }
 </script>
 '; ?>
-
 
 <!-- css in mainpg.css -->
 <div id="logintable">
@@ -77,9 +76,11 @@
     </tr>
     <tr>
         <td colspan="2">
+        
 	    <div class="fb-login-button" scope="email,user_checkins,publish_stream">
         Login with Facebook
       </div>
+      
 	</td>
     </tr>
 </table>
@@ -87,15 +88,5 @@
 </div>
 </div>
 <div class="clear"></div>
-<div id="fb-root"></div>
-<?php echo '
-<script type="text/javascript">
-    FB.Event.subscribe(\'auth.login\', function (response) {
-          window.location = "http://localhost/user/facebook_info";
-     });
-
-</script>
-'; ?>
-
 
 <!-- Template: user/login_form.tpl.html End --> 
