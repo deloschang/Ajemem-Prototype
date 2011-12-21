@@ -683,7 +683,7 @@ function create_Imagebox(clicked_img) {
         
 		// Sets the position at which you see the image box
 	    'top': memeTop+"px",
-        'left':leftpos+"px",
+        'left':leftpos+200+"px",
         'height':img.height+"px",
         'width':img.width+"px",
         'z-index':1

@@ -1,15 +1,15 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-20 14:13:24
+<?php /* Smarty version 2.6.7, created on 2011-12-21 05:55:35
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 124, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 20/12/2011 14:13:24 --> 
+<!-- Template: meme/addmeme.tpl.html Start 21/12/2011 05:55:35 --> 
  <!-- 
      Commented by Muaz :D
 	 This is the main HTML for the Memeja Editor.
 -->
 
-<div id="showmodal" class="showmodal">Enter Memeja Dojo</div>
+<div id="showmodal" class="showmodal"><em><center>ENTER MEMEJA DOJO</center></em></div>
 <script type="text/javascript">
     var last_comic="http://localhost/spad/workspace/<?php echo $_SESSION['id_user']; ?>
 _img.png";
@@ -64,7 +64,7 @@ _img.png";
             return false;
          }else{
 		if(!$("#tag").val()){
-			var conf=confirm("Are you sure you do not want to tag any of your friends?");
+			var conf=confirm("Are you sure you don\'t want to tag your friends?");
 			if(conf){
 				submit_memeje();
 			 }else{
@@ -108,14 +108,14 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 
-            <div class='right_pos_abs'>
+            <div class= 'right_pos_abs'>
                 <table>
                     <tr>
                         <td valign='top'><b>Visibility:</b></td>
                         <td>
                             <select id="see_fr" name="meme[can_all_view]">
-                                <option value="1" selected = "selected">All</option>
-                                <option value="0">Friends</option>
+                                <option value="1" selected = "selected">Everyone</option>
+                                <option value="0">Friends Only</option>
                             </select>
                         </td>
                     </tr>
@@ -123,8 +123,8 @@ unset($_smarty_tpl_vars);
                         <td valign='top'><b>Who comments:</b></td>
                         <td>
                             <select id="friends" name="meme[can_all_comment]">
-                                <option value="1" selected = "selected">All</option>
-                                <option value="0">Friends</option>
+                                <option value="1" selected = "selected">Everyone</option>
+                                <option value="0">Friends Only</option>
                             </select>
                         </td>
                     </tr>

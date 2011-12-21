@@ -3,7 +3,7 @@
 	 This is the main HTML for the Memeja Editor.
 -->
 
-<div id="showmodal" class="showmodal">Enter Memeja Dojo</div>
+<div id="showmodal" class="showmodal"><em><center>ENTER MEMEJA DOJO</center></em></div>
 <script type="text/javascript">
     var last_comic="##LBL_SITE_URL##spad/workspace/{$smarty.session.id_user}_img.png";
     var LBL_SITE_URL="##LBL_SITE_URL##";
@@ -57,7 +57,7 @@
             return false;
         }else{
 		if(!$("#tag").val()){
-			var conf=confirm("Are you sure you do not want to tag any of your friends?");
+			var conf=confirm("Are you sure you don't want to tag your friends?");
 			if(conf){
 				submit_memeje();
 			}else{
@@ -93,14 +93,14 @@
         <div id="edtr">
 	{include file="meme/meme_editor"}
 
-            <div class='right_pos_abs'>
+            <div class= 'right_pos_abs'>
                 <table>
                     <tr>
                         <td valign='top'><b>Visibility:</b></td>
                         <td>
                             <select id="see_fr" name="meme[can_all_view]">
-                                <option value="1" selected = "selected">All</option>
-                                <option value="0">Friends</option>
+                                <option value="1" selected = "selected">Everyone</option>
+                                <option value="0">Friends Only</option>
                             </select>
                         </td>
                     </tr>
@@ -108,8 +108,8 @@
                         <td valign='top'><b>Who comments:</b></td>
                         <td>
                             <select id="friends" name="meme[can_all_comment]">
-                                <option value="1" selected = "selected">All</option>
-                                <option value="0">Friends</option>
+                                <option value="1" selected = "selected">Everyone</option>
+                                <option value="0">Friends Only</option>
                             </select>
                         </td>
                     </tr>
