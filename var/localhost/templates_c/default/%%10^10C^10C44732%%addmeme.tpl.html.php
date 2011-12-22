@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-21 05:55:35
+<?php /* Smarty version 2.6.7, created on 2011-12-22 01:07:08
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 124, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 122, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 21/12/2011 05:55:35 --> 
+<!-- Template: meme/addmeme.tpl.html Start 22/12/2011 01:07:08 --> 
  <!-- 
      Commented by Muaz :D
 	 This is the main HTML for the Memeja Editor.
@@ -108,20 +108,18 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 
-            <div class= 'right_pos_abs'>
+            <div style="position:absolute;margin:auto; width:300px;right:200px;">
                 <table>
                     <tr>
-                        <td valign='top'><b>Visibility:</b></td>
-                        <td>
+                        <td valign='baseline'><b>Visibility:</b></td>
+						<td>
                             <select id="see_fr" name="meme[can_all_view]">
                                 <option value="1" selected = "selected">Everyone</option>
                                 <option value="0">Friends Only</option>
                             </select>
                         </td>
-                    </tr>
-                    <tr>
-                        <td valign='top'><b>Who comments:</b></td>
-                        <td>
+                        <td valign='baseline' ><b>Who comments:</b></td>
+						<td>
                             <select id="friends" name="meme[can_all_comment]">
                                 <option value="1" selected = "selected">Everyone</option>
                                 <option value="0">Friends Only</option>
@@ -141,11 +139,12 @@ unset($_smarty_tpl_vars);
                     </tr>
 					-->
 					<tr>
-                        <td valign='top'><b>Tag your friends:</b></td>
-                        <td><select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select></td>
+                        <td valign='baseline'><b>Tag your friends:</b></td>
+                        <td width="636px"><select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select></td>
                     </tr>
                     <tr>
-                        <td align='center'><input type="button" value="Submit" onclick="validate_me();"/> &nbsp; <input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/></td>
+                        <td align='center'colspan="4"><input type="button" value="Submit" onclick="validate_me();"/> &nbsp; <!--<input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/> -->
+						</td>
                     </tr>
                 </table>
             </div>

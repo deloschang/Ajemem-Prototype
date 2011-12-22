@@ -614,10 +614,16 @@ function rright() {
         rotateme($(this).parents("div.newdd").attr("id"), DEGREE_ROTATE);
     });
 }
+/* Makes sure the selected meme face is near the top of the canvas
+    memeTop = 250;
+    if(window.pageYOffset > 250) {
+        memeTop = window.pageYOffset;
+    }*/
 function create_Textbox(){
     var textId="text"+newtextid;
     newtextid++;
-    var html = "<div class='newtextdd' id='"+textId+"'  style='position:relative;padding-top:14px;'>"+
+    //var html = "<div class='newtextdd' id='"+textId+"'  style='position:relative;padding-top:14px; top:'"+memeTop+"px;left:150px;'>"+
+	var html = "<div class='newtextdd' id='"+textId+"'  style='position:relative;padding-top:14px;left:150px;'>"+
     "<div class='memejeTextContainer'>"+
     "<img title='Remove' src='"+SITE_IMAGE_PATH+"delete.png' onclick='removeMemeid(this,\"text\")' />"+
     "<img title='Put in Canvas' src='"+SITE_IMAGE_PATH+"shape_move_backwards.png' onclick='puttextincanvas(this)' />"+

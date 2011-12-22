@@ -1,17 +1,16 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-21 05:55:35
+<?php /* Smarty version 2.6.7, created on 2011-12-22 01:07:08
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 192, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 190, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 21/12/2011 05:55:35 --> 
+<!-- Template: meme/meme_editor.tpl.html Start 22/12/2011 01:07:08 --> 
  <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
 <?php echo '
+ 
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
 <script type="text/javascript">
 
-/* 
-    Tool Functions in scratchpad.js 
-*/
+/* Tool Functions in scratchpad.js */
 
 var debug=0;
 function loadcanvas() {
@@ -29,7 +28,7 @@ function loadcanvas() {
 	 });
 	
 	// Line size Slider Function
-	$(\'#line_size\').click(function(){
+    $(\'#line_size\').click(function(){
 		if($(\'#vs\').is(\':hidden\'))
 			$(\'#vs\').slideDown(\'slow\');
 		else
@@ -48,7 +47,6 @@ function loadcanvas() {
 	
 	
 	$(\'#sp\').scratchpad({ \'width\':636, \'height\':478  });
-	
 	$(\'input[type="button"]\').click(function(){
 		$(\'input[type="button"]\').removeClass("selected");
 		$(this).addClass("selected");
@@ -99,6 +97,7 @@ function upload_from_url(){
 		return false;
 	 });
  }
+
 function image_upload_draggable(url) {
 	$(\'#prev_image\').html("<img src=\'"+url+"\' id=\'newimg\' onclick=\'create_Imagebox(this.src)\'>");
  }
@@ -151,7 +150,6 @@ $(document).ready(function(){
 			 });
 		 }
 	 });
-	
 	$("#page").show();
  });
 </script>
@@ -164,7 +162,7 @@ $(document).ready(function(){
 	<!-- This specifically moves the meme editor -->
 	<div id="sp" style="position:relative;"><canvas id="mycid" style="border:1px solid red"></canvas></div>
 	<!-- Use this to move the jqDock images and the File Uploads-->
-   <div style="position:absolute;top:10%;left:-5%;">
+   <div style="position:absolute; top:0px; left:0px;">
         <table width='100%' class="smil_tabl_fixed" border="0">
 			<tr>
                 <td align='right'>
@@ -180,7 +178,7 @@ $(document).ready(function(){
         </table>
 		
 		<!-- The following is the positioning of the jqDock with the Meme Faces	-->
-        <div class='main_smiley_loading'>
+        <div class='main_smiley_loading'">
             <div class="smileys_in_small_size">
                 <div id="loadimg" ></div>
             </div>
@@ -189,7 +187,7 @@ $(document).ready(function(){
     </div>
 	<!-- Placement of the Toolbar-->
     <div id="main" style="width:660px;">
-        <div id="vs" style="height: 50px; left:65px; margin-top:-1px; display:none;"></div>
+        <div id="vs" style="height:100px; margin-left:65px; margin-top:-1px; display:none;"></div>
 		<!-- The following is the Line Size Slider Button-->
 		<table border="0;">
 		<tr>
