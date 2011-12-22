@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-18 08:38:37
+<?php /* Smarty version 2.6.7, created on 2011-12-22 02:28:51
          compiled from user/all_friends.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'user/all_friends.tpl.html', 8, false),)), $this); ?>
@@ -101,7 +101,8 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 	    <?php endif; ?>
 	<?php endif; ?>
     </div>
-    <div id="frnd_profile" style="float:right;position: relative;top:-300px;"></div>
+
+	    <div id="frnd_profile" style="float:right;position: relative;top:-300px;"></div>
 <?php echo '
 <script type="text/javascript">
     $(document).ready(function(){

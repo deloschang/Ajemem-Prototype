@@ -2,16 +2,18 @@
 	<h1><a href="##LBL_SITE_URL##">Memeja logo here</a></h1>
 	<center>
 	    {if $smarty.session.id_user}
-		 Welcome {$smarty.session.fname}
+		 Welcome {$smarty.session.fname|capitalize}
 	    {/if}
 	</center>
 	<div class="fltrht" style="margin-top:0px;">
 		{if $smarty.session.id_admin || $smarty.session.id_user}
 			<a href ="javascript:void(0);" onclick="fb_logout();">Logout</a>
 	    {/if}
+	    
 		{if $smarty.session.id_admin}
 			<br/><a href="##LBL_ADMIN_SITE_URL##">Return to Admin Site</a>
 		{/if}
+		
 		{if !$smarty.session.id_user}
 		    <br/><a href="##LBL_SITE_URL##">Login</a>
 		{/if}

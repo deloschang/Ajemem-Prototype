@@ -1,7 +1,16 @@
 {assign var=img_path value=$util->get_values_from_config('IMAGE')}
 <div id="edit_photo">
 <a href="javascript:void(0);" onclick="editPhoto();">
-    <img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeje_male.jpg{else}memeje_female.jpg{/if}{/if}" /></a>
+    <img src="##LBL_SITE_URL##image/thumb/avatar/
+    {if $smarty.session.avatar}
+    	{$smarty.session.avatar}
+    {else}
+    	{if $smarty.session.gender=='M'}
+    		memeje_male.jpg
+   		{else}
+    		memeje_female.jpg
+    	{/if}
+    {/if}" /></a>
 </div>
 <div>
  <a href="javascript:void(0);" onclick="editPhoto('{$smarty.session.id_user}');">Change Photo</a>

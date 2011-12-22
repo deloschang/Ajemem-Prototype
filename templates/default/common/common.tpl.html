@@ -244,10 +244,16 @@
 	       $.post(url,{page:"user",choice:"check_fb_session",ce:0},function(res){
 		if(res=='-1'){
 		       window.location.href = url+"user/logout";
-		}else{
-		       FB.logout(function(response) {
+		} else {
+				// First try logging out normal user
 				window.location.href = url+"user/logout";
-		       });
+				
+				// Then try FB logout
+				if (idu) {
+		       		FB.logout(function(response) {
+						window.location.href = url+"user/logout";
+		       		});
+		       	}
 		}
 
 	       })

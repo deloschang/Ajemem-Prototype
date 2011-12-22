@@ -127,7 +127,7 @@ class user_manager extends mod_manager {
 		$rem = $this->_input['rem'];
 		$admin_url =  $this->_input['admin_st'];
 		if (empty($uname)||empty($pwd)){
-			$_SESSION['raise_message']['global']=  "<center>". "Enter  Username  &  password";
+			$_SESSION['raise_message']['global']=  "<center>". "Please enter a username  & password";
 			if($admin_url) {
 				redirect(LBL_ADMIN_SITE_URL);
 			}else {
@@ -154,15 +154,18 @@ class user_manager extends mod_manager {
 							'username' => $result['username'],
 							'email' => $result['email'],
 							'password' => $result['password']);
+							
 						if($rem){
 							$this->set_auto_login($info);
 						}
+						
 						if($result['id_admin'] == $result['id_user']) {
 							$_SESSION['admin']=isset($this->_input['admin'])?$this->_input['admin']:1;
 							if($_SESSION['admin']==1){
 								$_SESSION['id_admin'] = $result['id_user'];
 							}
 						}
+						
 						$dconf=array_flip($GLOBALS['conf']['USER_TYPE']);
 						if($result['email'] == "developer") {
 							$_SESSION['id_developer'] = $result['id_user'];
@@ -173,6 +176,7 @@ class user_manager extends mod_manager {
 							redirect(LBL_ADMIN_SITE_URL);
 
 						}
+						
 						if($result['toc']=='0'){
 						    $_SESSION['toc']='0';
 						}
@@ -180,16 +184,18 @@ class user_manager extends mod_manager {
 						$_SESSION['fname']=$result['fname'];
 						$_SESSION['lname']=$result['lname'];
 						$_SESSION['email'] = $result['email'];
-						$_SESSION['avatar']=$result['avatar']?$result['avatar']:($result['gender']=='M'?'memeje_male.jpg':'memeje_female.jpg');
+						$_SESSION['avatar']=$result['avatar'] ? $result['avatar']:($result['gender']=='M'?'memeje_male.jpg':'memeje_female.jpg');
 						$_SESSION['friends']=$result['memeje_friends'];
 						$_SESSION['gender']=$result['gender'];
 						$_SESSION['id_user'] = $result['id_user'];
 						$_SESSION['exp_point'] = $result['exp_point'];
+						
 						// Achievement Rank
 						$sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY no_badges DESC ) t WHERE id_user=".$_SESSION['id_user'];
 						$res_ach=getsingleindexrow($sql_ach);
 						
 						$_SESSION['achv_rank']=$res_ach['POSITION'];
+						
 						// End
 						$_SESSION['raise_message']['global'] = "Successfully logged in";
 						$_SESSION['login_count']=0;
@@ -215,7 +221,7 @@ class user_manager extends mod_manager {
 					redirect(LBL_SITE_URL);
 				}
 			}else {
-				$_SESSION['raise_message']['global'] = "Please enter correct username and password";
+				$_SESSION['raise_message']['global'] = "Incorrect user and pass. Please try again.";
 				if($admin_url) {
 					redirect(LBL_ADMIN_SITE_URL);
 				}else {
@@ -223,7 +229,7 @@ class user_manager extends mod_manager {
 				}
 			}
 		}else {
-			$_SESSION['raise_message']['global'] = "Please enter correct username and password";
+			$_SESSION['raise_message']['global'] = "Incorrect user and pass. Please try again.";
 			if($admin_url) {
 				redirect(LBL_ADMIN_SITE_URL);
 			}else {
@@ -596,6 +602,8 @@ class user_manager extends mod_manager {
 ################## LOGOUT  #######################
 ##################################################
 	function _logout(){
+		// Called for both FB and normal user logout
+		
 		$site = $_SESSION['site_used'];
 		setcookie('username', '', time()-60*60*24*365,"/".SUB_DIR);
 		setcookie('password','', time()-60*60*24*365,"/".SUB_DIR);
@@ -616,7 +624,7 @@ class user_manager extends mod_manager {
 		$_SESSION['username'] = "";
 		$_SESSION['email'] = "";
 		$_SESSION['id_user'] = "";
-		$_SESSION['raise_message']['global'] = "You have successfully logged out!.";
+		$_SESSION['raise_message']['global'] = "You have successfully logged out!";
 
 
 
@@ -626,7 +634,7 @@ class user_manager extends mod_manager {
 			$_SESSION['id_admin'] = "";
 			$_SESSION['admin'] = "";
 			redirect(LBL_ADMIN_SITE_URL);
-		}else {
+		} else {
 			redirect(LBL_SITE_URL);
 		}
 	}
@@ -1203,7 +1211,8 @@ class user_manager extends mod_manager {
 	    if($results){
 	    	// Not a first-time user. 
 	    	// _set_login works like 'return', rest of func not 	invoked
-			$this->_set_login($results['email'],$results['password']);
+	    	
+	    	$this->_set_login($results['email'], $results['password']);
 	    } else {
 				
 			// Iterate through friends list and sep by id and name
@@ -1218,7 +1227,13 @@ class user_manager extends mod_manager {
 				}
 			}
 			$in_user['id_friends'] = implode(",", $id_list);
-			$in_user['name_friends'] = implode(",", $name_list);
+			
+			#### Does not load properly into name_friends ####
+			## Tried LONGTEXT and LONGBLOB for column structure ##
+			//$in_user['name_friends'] = implode(",", $name_list);
+			
+			#### Below example works ####
+			//$in_user['name_friends'] = 'Stacy';	
 						
 			// Enable permission 'user_education_history' in login_form to access.
 			$education = $user_details['education'];
@@ -1231,22 +1246,23 @@ class user_manager extends mod_manager {
 				$school_id_list[] = $education_array['school']['id'];
 			
 			}
-			$in_user['school_name'] = implode(",", $school_name_list);
-			$in_user['school_id'] = implode(",", $school_id_list);		
+			$in_user['school_id'] = implode(",", $school_id_list);	
+			$in_user['school_name'] = implode(",", $school_name_list);	
 			
-			// Unique FB ID
-			$in_user['uid']  = $user_details['id'];			
+			// Unique FB ID & USERNAME
+			$in_user['uid'] = $user_details['id'];
 			
 			// Profile Pictures in diff sizes
 			$profile_link = 'http://graph.facebook.com/'.$user_details['id'].'/picture?type=';	
-			$in_user['fb_pic_square'] = $profile_link.'square';
 			$in_user['fb_pic_normal']  = $profile_link.'normal';
+			$in_user['fb_pic_square'] = $profile_link.'square';
+
 			$pwd=rand(1000,99999);
 		
 			// **** 
 			$in_user['id_user']  = $user_details[''];
 
-			$in_user['username']  = //$user_details['name'];
+			$in_user['username']  = 'username'.rand(1,9999999);
 						
 			$in_user['fname']  = $user_details['first_name'];
 			$in_user['mname']  = $user_details['middle_name'];
@@ -1254,9 +1270,8 @@ class user_manager extends mod_manager {
 			$in_user['email']  = $user_details['email'];
 			$in_user['password']  = $pwd;
 			
-			//$in_user['id_admin']  = $user_details[''];
+			#$in_user['id_admin']  = 0;
 			
-			// Gender
 			$gender = ($user_details['gender']=='male')?'M':(($user_details['gender']=='female')?'F':'');
 			$in_user['gender']  = $gender;
 			
@@ -1270,27 +1285,29 @@ class user_manager extends mod_manager {
 			$in_user['hometown'] = $user_details['hometown']['id'];
 			$in_user['location'] = $user_details['location']['id'];
 			
-			//$in_user['ques_week_won']  = $user_details[''];
-			//$in_user['duels_won']  = $user_details[''];
-			//$in_user['exp_point']  = $user_details[''];
-			//$in_user['no_badges']  = $user_details[''];
-			//$in_user['login_status']  = $user_details[''];
-			//$in_user['no_of_logs']  = $user_details[''];
-			//$in_user['last_login']  = $user_details[''];
-			//$in_user['update_login']  = $user_details[''];
-			//$in_user['login_time']  = $user_details[''];
+			#$in_user['ques_week_won']  = $user_details[''];
+			#$in_user['duels_won']  = $user_details[''];
+			#$in_user['exp_point']  = $user_details[''];
+			#$in_user['no_badges']  = $user_details[''];
+			#$in_user['login_status']  = $user_details[''];
+			#$in_user['no_of_logs']  = $user_details[''];
+			#$in_user['last_login']  = $user_details[''];
+			#$in_user['update_login']  = $user_details[''];
+			#$in_user['login_time']  = $user_details[''];
 			$in_user['random_num']  = '0';
 			$in_user['flag']  = 1;
 			$in_user['user_status']  = 1;
 			
-			//$in_user['toc']  = $user_details[''];
-			//$in_user['add_date']  = $user_details[''];
+			$in_user['memeje_friends'] = $user_details[''];
+			#$in_user['toc']  = $user_details[''];
+			#$in_user['add_date']  = $user_details[''];
 			$in_user['ip']  = $_SERVER['REMOTE_ADDR'];
 
-		}
 			// First-time user continues
-		    //$this->obj_user->insert_all('user', $in_user, 1,$dt_fld='add_date');
-		    //$this->_set_login($in_user['email'], $pwd);
+				// initiates from user.php
+		    $this->obj_user->insert_all('user', $in_user, 1,$dt_fld='add_date');
+		    $this->_set_login($in_user['email'], $pwd);
+		}
 	}
 		
 	function _invited(){
