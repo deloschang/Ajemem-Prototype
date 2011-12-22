@@ -1077,7 +1077,7 @@ class user_manager extends mod_manager {
 				var_dump($result);
 			}
 		} else {
-			echo 'Enter a username';
+			echo 'Please enter a username';
 		}
 	}
 	
