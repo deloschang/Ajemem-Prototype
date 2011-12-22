@@ -1,12 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-22 02:28:54
+<?php /* Smarty version 2.6.7, created on 2011-12-22 04:43:26
          compiled from leaderboard/home.tpl.html */
 
-$this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%89^89C^89C17571%%home.tpl.html.inc'] = '61e520b78ac28a800ef2848b8dbfc036';
+$this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%89^89C^89C17571%%home.tpl.html.inc'] = 'f11f62d8fc959f7e2ef25ca7f287abdc';
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'leaderboard/home.tpl.html', 2, false),)), $this); ?>
 <?php
-function _smarty_tplfunc_61e520b78ac28a800ef2848b8dbfc036_0(&$_smarty)
+function _smarty_tplfunc_f11f62d8fc959f7e2ef25ca7f287abdc_0(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'leaderboard','mgr' => 'leaderboard'), $_smarty);
 }

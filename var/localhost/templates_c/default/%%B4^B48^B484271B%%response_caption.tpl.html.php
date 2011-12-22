@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-18 23:17:43
+<?php /* Smarty version 2.6.7, created on 2011-12-22 04:47:47
          compiled from caption/response_caption.tpl.html */ ?>
 <div>
     <div style="position:relative;left:62px;float:left;">

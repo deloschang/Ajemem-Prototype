@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-22 04:00:15
+<?php /* Smarty version 2.6.7, created on 2011-12-22 10:30:05
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 398, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '23a4647ddde1d7f47ec56618df443cc6'; ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '3ab6e7fac8b801897565f73521f6cf75'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -64,7 +64,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			    hideOnOverlayClick:false,
 			    onCleanup : function (){
 				if($("#toc").is(":checked")){
-				    $.get(\'http://localhost/user/first_login_msg/ce/0/upd/upd\', function(data) { });
+				    $.get(\'http://localhost/user/first_login_msg/ce/0/pass/pass\', function(data) { });
 				    return true;
 				 }else{
 				    alert("Please agree with our Terms Of Services");
@@ -420,7 +420,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:23a4647ddde1d7f47ec56618df443cc6#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:23a4647ddde1d7f47ec56618df443cc6#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:3ab6e7fac8b801897565f73521f6cf75#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:3ab6e7fac8b801897565f73521f6cf75#0}';}?>
 <br>
 				<?php endif; ?>
 

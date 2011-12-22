@@ -1,11 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-22 04:00:15
+<?php /* Smarty version 2.6.7, created on 2011-12-22 10:30:05
          compiled from user/avatar.tpl.html */ ?>
 
-<!-- Template: user/avatar.tpl.html Start 22/12/2011 04:00:15 --> 
+<!-- Template: user/avatar.tpl.html Start 22/12/2011 10:30:05 --> 
  <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
 <div id="edit_photo">
 <a href="javascript:void(0);" onclick="editPhoto();">
-    <img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['avatar']):  echo $_SESSION['avatar'];  else:  if ($_SESSION['gender'] == 'M'): ?>memeje_male.jpg<?php else: ?>memeje_female.jpg<?php endif;  endif; ?>" /></a>
+    <img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['avatar']):  echo $_SESSION['avatar'];  else:  if ($_SESSION['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png<?php endif;  endif; ?>"/>
+    </a>
 </div>
 <div>
  <a href="javascript:void(0);" onclick="editPhoto('<?php echo $_SESSION['id_user']; ?>

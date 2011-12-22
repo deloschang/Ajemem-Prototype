@@ -184,7 +184,8 @@ class user_manager extends mod_manager {
 						$_SESSION['fname']=$result['fname'];
 						$_SESSION['lname']=$result['lname'];
 						$_SESSION['email'] = $result['email'];
-						$_SESSION['avatar']=$result['avatar'] ? $result['avatar']:($result['gender']=='M'?'memeje_male.jpg':'memeje_female.jpg');
+												
+						$_SESSION['avatar']=$result['avatar'] ? $result['avatar']:($result['gender']=='M'?'memeja_male.png':'memeja_female.png');
 						$_SESSION['friends']=$result['memeje_friends'];
 						$_SESSION['gender']=$result['gender'];
 						$_SESSION['id_user'] = $result['id_user'];
@@ -1050,17 +1051,49 @@ class user_manager extends mod_manager {
 		$this->obj_user->update_user_login_time($user);
 	    }
 	}
+	
+	function _create_username(){
+		global $link;
+		
+		if (isset($this->_input['myusername'])){
+			// Setup query to see if username is already taken
+			$myusername = mysql_real_escape_string(stripslashes($this->_input['myusername']));
+
+			$check_table="SELECT COUNT(*) FROM ".TABLE_PREFIX."user WHERE username='".$myusername."'";
+			//var_dump($check_table);			
+			$result = mysqli_query($link, $check_table) or die(mysqli_error());
+			
+			$row = mysqli_fetch_assoc($result); 
+			
+			//var_dump($row['COUNT(*)']);
+		
+			
+			if ( $row['COUNT(*)'] != 0 ) {
+		    	echo 'This user already exists';
+			} else {
+		
+				$sql="UPDATE ".TABLE_PREFIX."user SET username= '".$myusername."' WHERE id_user=".$_SESSION['id_user'];
+				$result = mysqli_query($link,$sql);
+				var_dump($result);
+			}
+		} else {
+			echo 'Enter a username';
+		}
+	}
+	
+	# First login msg with TOC and Choose_Username #
 	function _first_login_msg(){
 	    global $link;
-	    if($this->_input['upd']=='upd'){
-		$sql="UPDATE ".TABLE_PREFIX."user SET toc=1 WHERE id_user=".$_SESSION['id_user'];
-		mysqli_query($link,$sql);
-		$_SESSION['toc']='1';
+	    if($this->_input['pass']=='pass'){
+			$sql="UPDATE ".TABLE_PREFIX."user SET toc=1 WHERE id_user=".$_SESSION['id_user'];
+			mysqli_query($link,$sql);
+			//$_SESSION['toc']='1';
 	    }
 	    if($_SESSION['toc']=='0'){
-		$this->_output['tpl']="user/first_login_msg";
+			$this->_output['tpl']="user/first_login_msg";
 	    }
 	}
+
 	function _check_fb_session(){
 		$arr=$this->decrypt_fb_data();
 		$facebook = $arr[0];
@@ -1515,7 +1548,7 @@ class user_manager extends mod_manager {
 		    $sql =get_search_sql("user","id_user IN(".$res_frnd[0]['memeje_friends'].") ");
 	 	    $res = mysqli_query($link,$sql);
 		    while($rec= mysqli_fetch_assoc($res)){
-				$img_nm = ($rec['avatar'])?$rec['avatar']:(($rec['gender']='M')?"memeje_male.jpg":"memeje_female.jpg");
+				$img_nm = ($rec['avatar'])?$rec['avatar']:(($rec['gender']='M')?"memeja_male.png":"memeja_female.png");
 				$img = "<img src='".LBL_SITE_URL."image/thumb/avatar/".$img_nm."' style='width:40px;height:40px;'/>";
 				$arr[] = array("name"=>$rec['fname'],"value"=>$rec['id_user'],"lname"=>$rec['lname'],"pf_img"=>$img);
 		    }
