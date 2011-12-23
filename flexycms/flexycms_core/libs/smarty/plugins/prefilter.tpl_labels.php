@@ -57,6 +57,9 @@ function smarty_prefilter_tpl_labels($source, &$smarty) {
 	include_once (AFIXI_ROOT.'labels/labels.php');
 	//include_once(APP_ROOT."labels/$labels_filename");
 	$lbl_file = AFIXI_ROOT.'labels/'.preg_replace('/\./', '_', $smarty->_current_file).'.php';
+	
+	//print_r($lbl_file);
+	
 	if (!file_exists($lbl_file)) {
 		//$smarty->trigger_error ("Could not locate labels file $lbl_file for this template");
 		@ touch($lbl_file);
@@ -66,16 +69,26 @@ function smarty_prefilter_tpl_labels($source, &$smarty) {
 
 	$source = preg_replace('/{([\s]+)*myinclude([\s]+)*file([\s]+)*=([\s]+)*/', '{include file=', str_replace(array ("}"), ' }', $source));
 	$source = preg_replace_callback('/{include file=.*?[\s]+/si', 'change', $source);
+	
+	// Match up 
 	$replace = preg_match_all("/##([^#]*)##/im", $source, $matches);
+	
+	// If there are matched items...
 	if ($replace) {
 		$patterns_raw = array_unique($matches[1]);
+				
 		foreach ($patterns_raw as $pattern_raw) {
 			if($pattern_raw != ''){
+			
+				// Creates ##LBL_SITE_URL## /i like pattern
 				$patterns[] = '/##'.$pattern_raw.'##/i';
 				$replacements[] = constant($pattern_raw);
 			}
 		}
-		return preg_replace($patterns, $replacements, $source);
+		//print_r($replacements);
+		$result = preg_replace($patterns, $replacements, $source);
+		
+		return $result;
 	} else {
 		return $source;
 	}

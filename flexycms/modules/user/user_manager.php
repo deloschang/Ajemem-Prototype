@@ -1051,7 +1051,7 @@ class user_manager extends mod_manager {
 		$this->obj_user->update_user_login_time($user);
 	    }
 	}
-	
+		
 	function _create_username(){
 		global $link;
 		
