@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-23 03:19:47
+<?php /* Smarty version 2.6.7, created on 2011-12-23 07:03:44
          compiled from achievements/badgelist.tpl.html */ ?>
 
-<!-- Template: achievements/badgelist.tpl.html Start 23/12/2011 03:19:47 --> 
+<!-- Template: achievements/badgelist.tpl.html Start 23/12/2011 07:03:44 --> 
  <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
 <fieldset style=" background-color:#CAD8F3;width: 200px;margin-left:0px" >
 <legend><b>My Badges:</b></legend>

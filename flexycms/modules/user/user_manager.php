@@ -1055,7 +1055,7 @@ class user_manager extends mod_manager {
 	function _create_username(){
 		global $link;
 		
-		if (isset($this->_input['myusername'])){
+		if (isset($this->_input['username'])){
 			// Setup query to see if username is already taken
 			$myusername = mysql_real_escape_string(stripslashes($this->_input['myusername']));
 
@@ -1072,9 +1072,10 @@ class user_manager extends mod_manager {
 		    	echo 'This user already exists';
 			} else {
 		
-				$sql="UPDATE ".TABLE_PREFIX."user SET username= '".$myusername."' WHERE id_user=".$_SESSION['id_user'];
-				$result = mysqli_query($link,$sql);
-				var_dump($result);
+				var_dump($myusername);
+			//	$sql="UPDATE ".TABLE_PREFIX."user SET username= '".$myusername."' WHERE id_user=".$_SESSION['id_user'];
+			//	$result = mysqli_query($link,$sql);
+			//	var_dump($result);
 			}
 		} else {
 			echo 'Please enter a username';
