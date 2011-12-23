@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-22 02:28:51
+<?php /* Smarty version 2.6.7, created on 2011-12-23 08:35:00
          compiled from user/all_friends.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'count', 'user/all_friends.tpl.html', 8, false),)), $this); ?>

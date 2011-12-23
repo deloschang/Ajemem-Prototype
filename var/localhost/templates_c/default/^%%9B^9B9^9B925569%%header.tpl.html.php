@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-23 07:03:44
+<?php /* Smarty version 2.6.7, created on 2011-12-23 08:49:53
          compiled from common/header.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/header.tpl.html', 7, false),)), $this); ?>
 
-<!-- Template: common/header.tpl.html Start 23/12/2011 07:03:44 --> 
+<!-- Template: common/header.tpl.html Start 23/12/2011 08:49:53 --> 
  <div id="header">
 	<h1><a href="http://localhost/">Memeja logo here</a></h1>
 	<center>

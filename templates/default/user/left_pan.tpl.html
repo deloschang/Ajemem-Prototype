@@ -12,6 +12,9 @@
 		<td><b>{$smarty.session.fname|capitalize}{if $smarty.session.mname} {$smarty.session.mname}{/if} {$smarty.session.lname|capitalize}</b></td>
     </tr>
     <tr>
+		<td>({if $smarty.session.username}{$smarty.session.username}{/if})</td>
+	</tr>
+    <tr>
 		<td>Rank #<b>{if $smarty.session.achv_rank}{$smarty.session.achv_rank}{else}NA{/if}</b></td>
     </tr>
     <tr>

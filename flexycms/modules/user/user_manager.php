@@ -95,13 +95,25 @@ class user_manager extends mod_manager {
 ##################################################
 	function check_login($uname){
 		global $link;
+		
+		// Check via email
 		$sql = get_search_sql("user","email = '".$uname."' LIMIT 1");
 		$query = mysqli_query($link,$sql);
 		$res  = mysqli_fetch_assoc($query);
 		if($res) {
 			return $res;
-		}else {
-			return 0;
+		} else {
+		
+			// Check via username
+			$sql = get_search_sql("user","username = '".$uname."' LIMIT 1");
+			$query = mysqli_query($link,$sql);
+			$res  = mysqli_fetch_assoc($query);
+			
+			if ($res) {
+				return $res;
+			} else {
+				return 0;
+			}
 		}
 	}
 
@@ -138,7 +150,7 @@ class user_manager extends mod_manager {
 		$logincount=$_SESSION['login_count'];
 		$result= $this->check_login($uname);
 		if($result !=0){
-			if($uname==$result['email'] && $pwd==$result['password']) {
+			if(($uname==$result['email'] || $uname==$result['username']) && $pwd==$result['password']) {
 				if($result['random_num']=='0') {
 					if($result['flag']==1) {
 					    if($result['user_status']==1){
@@ -184,6 +196,7 @@ class user_manager extends mod_manager {
 						$_SESSION['fname']=$result['fname'];
 						$_SESSION['lname']=$result['lname'];
 						$_SESSION['email'] = $result['email'];
+						$_SESSION['username'] = $result['username'];
 												
 						$_SESSION['avatar']=$result['avatar'] ? $result['avatar']:($result['gender']=='M'?'memeja_male.png':'memeja_female.png');
 						$_SESSION['friends']=$result['memeje_friends'];
@@ -1057,7 +1070,7 @@ class user_manager extends mod_manager {
 		
 		if (isset($this->_input['username'])){
 			// Setup query to see if username is already taken
-			$myusername = mysql_real_escape_string(stripslashes($this->_input['myusername']));
+			$myusername = mysql_real_escape_string(stripslashes($this->_input['username']));
 
 			$check_table="SELECT COUNT(*) FROM ".TABLE_PREFIX."user WHERE username='".$myusername."'";
 			//var_dump($check_table);			
@@ -1071,24 +1084,32 @@ class user_manager extends mod_manager {
 			if ( $row['COUNT(*)'] != 0 ) {
 		    	echo 'This user already exists';
 			} else {
-		
-				var_dump($myusername);
-			//	$sql="UPDATE ".TABLE_PREFIX."user SET username= '".$myusername."' WHERE id_user=".$_SESSION['id_user'];
-			//	$result = mysqli_query($link,$sql);
-			//	var_dump($result);
+				##### Updating database with new username #####
+				//var_dump($myusername);
+				$sql="UPDATE ".TABLE_PREFIX."user SET username= '".$myusername."' WHERE id_user=".$_SESSION['id_user'];
+				$result = mysqli_query($link,$sql);
+				//var_dump($result);
+				
+				##### Update TOC session to 1, username selected ######
+				$sql="UPDATE ".TABLE_PREFIX."user SET toc=1 WHERE id_user=".$_SESSION['id_user'];
+				mysqli_query($link,$sql);
+				$_SESSION['toc']='1';
+				$_SESSION['username']=$myusername;
+				
+				##### Redirect user out #####
+				// Insert static landing page here? //
+				redirect(LBL_SITE_URL."meme/meme_list/cat/main_feed");
 			}
-		} else {
-			echo 'Please enter a username';
-		}
+		} 
 	}
 	
-	# First login msg with TOC and Choose_Username #
+	#### Deprecated with Submit and other functions
 	function _first_login_msg(){
 	    global $link;
 	    if($this->_input['pass']=='pass'){
 			$sql="UPDATE ".TABLE_PREFIX."user SET toc=1 WHERE id_user=".$_SESSION['id_user'];
 			mysqli_query($link,$sql);
-			//$_SESSION['toc']='1';
+			$_SESSION['toc']='1';
 	    }
 	    if($_SESSION['toc']=='0'){
 			$this->_output['tpl']="user/first_login_msg";
@@ -1296,7 +1317,7 @@ class user_manager extends mod_manager {
 			// **** 
 			$in_user['id_user']  = $user_details[''];
 
-			$in_user['username']  = 'username'.rand(1,9999999);
+			$in_user['username']  = 'Derpja #'.rand(1,9999999);
 						
 			$in_user['fname']  = $user_details['first_name'];
 			$in_user['mname']  = $user_details['middle_name'];

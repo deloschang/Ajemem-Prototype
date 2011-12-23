@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-23 07:03:44
+<?php /* Smarty version 2.6.7, created on 2011-12-23 08:49:54
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 45, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 60, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 23/12/2011 07:03:44 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 23/12/2011 08:49:54 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -55,8 +55,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 '); return false;" style="padding-left:5px"><?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 </a></b>
 			
-			<span style="font-size:12px"> by <?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
- <?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['lname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+			<span style="font-size:12px"> by <?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
 </span></div>
 	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
 

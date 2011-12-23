@@ -22,10 +22,13 @@
 	    	
 		$(window).scroll(function(){
 			if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+				console.log("scroll pagination fired");
 				var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
 				var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
-			      if($("#last_id_meme_cur_page").val()!=""){
-				  	if($("#chk_me").val()!=1){
+				
+				if ($("#last_id_meme_cur_page").val() != "") {
+			      	console.log("last_id_meme fired");
+				  	if ($("#chk_me").val()!=1) {
 				      backup_last_id_meme = $("#last_id_meme_cur_page").val();
 				      loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
 				      $("#last_id_meme_cur_page").val("");
@@ -35,6 +38,7 @@
 	 	});
 	 	
     });
+    
     function loadmorememe(cat,last_id,srch_uname,srch_title){
 	$("#loadingmeme_img").show();
 	var ext = "{/literal}{$smarty.request.ext}{literal}";

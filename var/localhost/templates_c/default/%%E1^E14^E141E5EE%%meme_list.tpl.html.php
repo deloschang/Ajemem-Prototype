@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-23 07:03:44
+<?php /* Smarty version 2.6.7, created on 2011-12-23 08:49:54
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -23,10 +23,13 @@
 	    	
 		$(window).scroll(function(){
 			if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+				console.log("scroll pagination fired");
 				var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
 				var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
-			      if($("#last_id_meme_cur_page").val()!=""){
-				  	if($("#chk_me").val()!=1){
+				
+				if ($("#last_id_meme_cur_page").val() != "") {
+			      	console.log("last_id_meme fired");
+				  	if ($("#chk_me").val()!=1) {
 				      backup_last_id_meme = $("#last_id_meme_cur_page").val();
 				      loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
 				      $("#last_id_meme_cur_page").val("");
@@ -36,6 +39,7 @@
 	 	 });
 	 	
      });
+    
     function loadmorememe(cat,last_id,srch_uname,srch_title){
 	$("#loadingmeme_img").show();
 	var ext = "';  echo $_REQUEST['ext'];  echo '";
