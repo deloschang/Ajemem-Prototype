@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-20 01:37:26
+<?php /* Smarty version 2.6.7, created on 2011-12-23 12:18:47
          compiled from meme/random_meme.tpl.html */ ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -9,11 +9,18 @@
 	$.post(url,{id_meme:id,ce:0,con:con },function(res){
 	    if(res[0]!=0){
 		    if(res[1]==1){
-			$("#aggr"+id).html(res[0]);
-			$("#is_agreed"+id).val(\'1\');
+				$("#aggr"+id).html(res[0]);
+				$("#is_agreed"+id).val(\'1\');
+				
+				/* After voting, Highlight Agree + Grey out Disagree */					
+					$("#randagr_link"+id).css({"color" : "green", "cursor" : "default" });
+					$("#randdisagr_link"+id).css({"color" : "gray", "cursor" : "default" });
 		     }else{
-			$("#disaggr"+id).html(res[0]);
-			$("#is_disagreed"+id).val(\'1\');
+				$("#disaggr"+id).html(res[0]);
+				$("#is_disagreed"+id).val(\'1\');
+				/* After voting, Highlight Disagree + Grey out Agree */
+					$("#randdisagr_link"+id).css({"color" : "red", "cursor" : "default" });
+					$("#randagr_link"+id).css({"color" : "gray", "cursor" : "default" });
 		     }
 	     }else
 		   alert("You have already voted.");

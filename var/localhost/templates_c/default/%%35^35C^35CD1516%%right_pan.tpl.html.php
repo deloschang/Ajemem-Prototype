@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-23 08:49:54
+<?php /* Smarty version 2.6.7, created on 2011-12-23 22:00:13
          compiled from user/right_pan.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'user/right_pan.tpl.html', 34, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/%%35^35C^35CD1516%%right_pan.tpl.html.inc'] = 'f048eec43e9b491f14d37add54cb3feb'; ?>
-<!-- Template: user/right_pan.tpl.html Start 23/12/2011 08:49:54 --> 
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/%%35^35C^35CD1516%%right_pan.tpl.html.inc'] = '4503e1b9725e1501095ca61a520e5a82'; ?>
+<!-- Template: user/right_pan.tpl.html Start 23/12/2011 22:00:13 --> 
  <br/>
 <fieldset style="width:40%;align:center;">
     <legend><b><h3>Search meme</h3></b></legend>
@@ -35,7 +35,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
     <div id="show_profile_info" style="position: fixed;background-color:white;border: 1px solid #CAD8F3;"></div>
     <div >
 		<br>
-		<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:f048eec43e9b491f14d37add54cb3feb#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user','choice' => 'friend_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:f048eec43e9b491f14d37add54cb3feb#0}';}?>
+		<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:4503e1b9725e1501095ca61a520e5a82#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user','choice' => 'friend_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:4503e1b9725e1501095ca61a520e5a82#0}';}?>
 
     </div>
     <div>
@@ -44,7 +44,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
     </div>
 	<div>
 	    <br>
-	    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:f048eec43e9b491f14d37add54cb3feb#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'paypal','mgr' => 'paypal','choice' => 'form'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:f048eec43e9b491f14d37add54cb3feb#1}';}?>
+	    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:4503e1b9725e1501095ca61a520e5a82#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'paypal','mgr' => 'paypal','choice' => 'form'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:4503e1b9725e1501095ca61a520e5a82#1}';}?>
 
 	</div>
 <?php endif; ?>

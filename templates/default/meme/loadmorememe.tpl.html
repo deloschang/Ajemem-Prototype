@@ -6,6 +6,17 @@
 	var id = "{/literal}{$sm.last_idmeme}{literal}";
 	var new_ids = "{/literal}{$sm.id_memes}{literal}";
 	
+	function hover_feed(id,imageid,title){
+		$('#memeimage'+id).mouseenter(function() {
+			$.fancybox(
+				{href : '##LBL_SITE_URL##image/thumb/meme/'+imageid,
+				title : title}
+			);
+		}).mouseleave(function () {
+			console.log("close fire");
+		});
+    }
+	
 	if(id!=''){
 	    $("#last_id_meme_cur_page").val(id);
 	    var id_memes = $("#rand_id_memes").val();
@@ -28,7 +39,7 @@
 		<div style="height: 90px;">
 
 <!-- Image specs for live feed meme -->
-			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="cursor:pointer;width: 80px;height: 80px; 
+			<div id="memeimage{$x.id_meme}"><img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="cursor:pointer;width: 80px;height: 80px; 
 			{* Added by Delos: highlights if you created the meme *}
 			{if $smarty.session.id_user}
 				{if $x.id_user == $smarty.session.id_user}
@@ -36,9 +47,8 @@
 				{/if}
 			{/if}
 					
-		" align="left" title="Meme" onclick="show_details('{$x.id_meme}');"/>
+		" align="left" title="Meme" onMouseOver="hover_feed('{$x.id_meme}','{$x.image}','{$x.title|capitalize}');" onclick="show_details('{$x.id_meme}');"/></div>
 
-{* Meme Title *}
 			<div style="vertical-align: top; font-size: 15px">
 			<b><a href ="javascript:void(0)" OnClick="show_details('{$x.id_meme}'); return false;" style="padding-left:5px">{$x.title|capitalize}</a></b>
 			

@@ -12,30 +12,50 @@
 <script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
 <script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery-1.4.2.min.js"></script>
 
+
+
 <!-- JQuery Library for New Fancybox -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
 
 
-<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-1.3.2.pack.js"></script>
+	<!-- Add fancyBox -->
+<link rel="stylesheet" href="##LBL_SITE_URL##templates/css_theme/fancybox/jquery.fancybox.css?v=2.0.4" type="text/css" media="screen" />
+<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox.pack.js?v=2.0.4"></script>
+
+	<!-- Optionally add button and/or thumbnail helpers -->
+<link rel="stylesheet" href="##LBL_SITE_URL##templates/css_theme/fancybox/jquery.fancybox-buttons.css?v=2.0.4" type="text/css" media="screen" />
+
+<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.4"></script>
+
+
+<link rel="stylesheet" href="##LBL_SITE_URL##templates/css_theme/fancybox/jquery.fancybox-thumbs.css?v=2.0.4" type="text/css" media="
+<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.4"></script>
+
+
+<!--
 <script type="text/javascript" src="##JS_PATH##libsext/js/jquery.validate.js"></script>
+-->
+
 <script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/flexymessage.js"></script>
 <script type="text/javascript" src="##JS_PATH##libsext/js/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="##JS_PATH##libsext/js/ui.datepicker.js"></script>
 <script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/jquery.bubblepopup.v2.3.1.min.js"></script>
 <script type="text/javascript" src="##JS_PATH##libsext/js/ajaxfileupload.js"></script>
-
-
-
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/jquery.bubblepopup.v2.3.1.css"/>
-
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/mainpg.css"/>
-<link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/fancybox/jquery.fancybox-1.3.2.css"/>
 {literal}
 <script type="text/javascript">
 	var chc ="{/literal}{$chc}{literal}";
 	var idu="{/literal}{$smarty.session.id_user}{literal}";
 	
 	$(document).ready(function(){
+	
+		$('.fancybox').fancybox();
+		
+		
+		
+		
 		/*console.log(moretest)*/
 	    var scrn_height = window.screen.availHeight;
             $("#mid_cont").height(scrn_height/2 + scrn_height/9);
@@ -59,19 +79,13 @@
 	    var first_login="{/literal}{$smarty.session.toc}{literal}";
 	    if(first_login=='0'){
 		    $.get('##LBL_SITE_URL##user/first_login_msg/ce/0', function(res) {
-			$.fancybox(res,{
-			    centerOnScroll:true,
-			    hideOnOverlayClick:false,
-			    onCleanup : function (){
-				if($("#toc").is(":checked")){
-				    $.get('##LBL_SITE_URL##user/first_login_msg/ce/0/pass/pass', function(data) {});
-				    return true;
-				} else {
-				    alert("Please agree with our Terms Of Services");
-				    return false;
-				}
-			    }
-			});
+				$.fancybox(res,{
+			    	closeBtn:false,
+			    	closeClick:false,
+			    	//onCancel: function (){
+				    //	console.log("fired");
+					//});
+				});
 		    });
 	    }
 
@@ -372,6 +386,7 @@ body {
   <input type="hidden" id="tst" value="2">
     <div id="page1">
 		<div id="mymodal"></div>
+			<a class="fancybox" href="/image/1_b.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="/image/1_s.jpg" alt="" /></a>
 	    	{include file='common/header'}
 
 	    	{include file='common/menu'}

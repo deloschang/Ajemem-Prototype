@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-23 08:49:53
+<?php /* Smarty version 2.6.7, created on 2011-12-23 22:00:13
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 401, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'e0365d252f39e00a3667df7f2cf83454'; ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 416, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '5ed079547404dfcd1e38d9cc0be650a9'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -15,30 +15,50 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 <script type="text/javascript" src="http://localhost/libsext/jquery/jquery.js"></script>
 <script type="text/javascript" src="http://localhost/libsext/jquery/jquery-1.4.2.min.js"></script>
 
+
+
 <!-- JQuery Library for New Fancybox -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
 
 
-<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox-1.3.2.pack.js"></script>
+	<!-- Add fancyBox -->
+<link rel="stylesheet" href="http://localhost/templates/css_theme/fancybox/jquery.fancybox.css?v=2.0.4" type="text/css" media="screen" />
+<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox.pack.js?v=2.0.4"></script>
+
+	<!-- Optionally add button and/or thumbnail helpers -->
+<link rel="stylesheet" href="http://localhost/templates/css_theme/fancybox/jquery.fancybox-buttons.css?v=2.0.4" type="text/css" media="screen" />
+
+<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.4"></script>
+
+
+<link rel="stylesheet" href="http://localhost/templates/css_theme/fancybox/jquery.fancybox-thumbs.css?v=2.0.4" type="text/css" media="
+<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.4"></script>
+
+
+<!--
 <script type="text/javascript" src="http://localhost/libsext/js/jquery.validate.js"></script>
+-->
+
 <script type="text/javascript" src="http://localhost/templates/flexyjs/flexymessage.js"></script>
 <script type="text/javascript" src="http://localhost/libsext/js/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="http://localhost/libsext/js/ui.datepicker.js"></script>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/jquery.bubblepopup.v2.3.1.min.js"></script>
 <script type="text/javascript" src="http://localhost/libsext/js/ajaxfileupload.js"></script>
-
-
-
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/jquery.bubblepopup.v2.3.1.css"/>
-
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
-<link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/fancybox/jquery.fancybox-1.3.2.css"/>
 <?php echo '
 <script type="text/javascript">
 	var chc ="';  echo $this->_tpl_vars['chc'];  echo '";
 	var idu="';  echo $_SESSION['id_user'];  echo '";
 	
 	$(document).ready(function(){
+	
+		$(\'.fancybox\').fancybox();
+		
+		
+		
+		
 		/*console.log(moretest)*/
 	    var scrn_height = window.screen.availHeight;
             $("#mid_cont").height(scrn_height/2 + scrn_height/9);
@@ -62,19 +82,13 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	    var first_login="';  echo $_SESSION['toc'];  echo '";
 	    if(first_login==\'0\'){
 		    $.get(\'http://localhost/user/first_login_msg/ce/0\', function(res) {
-			$.fancybox(res,{
-			    centerOnScroll:true,
-			    hideOnOverlayClick:false,
-			    onCleanup : function (){
-				if($("#toc").is(":checked")){
-				    $.get(\'http://localhost/user/first_login_msg/ce/0/pass/pass\', function(data) { });
-				    return true;
-				 } else {
-				    alert("Please agree with our Terms Of Services");
-				    return false;
-				 }
-			     }
-			 });
+				$.fancybox(res,{
+			    	closeBtn:false,
+			    	closeClick:false,
+			    	//onCancel: function (){
+				    //	console.log("fired");
+					// });
+				 });
 		     });
 	     }
 
@@ -377,6 +391,7 @@ body {
   <input type="hidden" id="tst" value="2">
     <div id="page1">
 		<div id="mymodal"></div>
+			<a class="fancybox" href="/image/1_b.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="/image/1_s.jpg" alt="" /></a>
 	    	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "common/header.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -423,7 +438,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:e0365d252f39e00a3667df7f2cf83454#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:e0365d252f39e00a3667df7f2cf83454#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:5ed079547404dfcd1e38d9cc0be650a9#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:5ed079547404dfcd1e38d9cc0be650a9#0}';}?>
 <br>
 				<?php endif; ?>
 

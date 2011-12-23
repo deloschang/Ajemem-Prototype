@@ -1,8 +1,28 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-23 08:49:53
+<?php /* Smarty version 2.6.7, created on 2011-12-23 22:00:13
          compiled from common/menu.tpl.html */ ?>
 
-<!-- Template: common/menu.tpl.html Start 23/12/2011 08:49:53 --> 
+<!-- Template: common/menu.tpl.html Start 23/12/2011 22:00:13 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
+<script type="text/javascript">
+    function get_random_meme(){
+	var url = "http://localhost/meme/meme_list/cat/rand";
+	//$.fancybox.showActivity();
+	$.fancybox.showLoading();
+	$.post(url,{ce:0 },function(res){
+	    $("#randpgexist").val(1);
+	    $.fancybox.open(res,{
+		    centerOnScroll:true,
+		    afterClose : function (){
+				$("#randpgexist").val(0);
+		     }
+	     });
+	    $.fancybox.update();
+	 });
+     }
+</script>
+'; ?>
+
 <div id="navigation">
     <div class="menu-header">
 	<ul class="menu">
@@ -50,22 +70,6 @@
  }
 
 </style>
-<script type="text/javascript">
-    function get_random_meme(){
-	var url = "http://localhost/meme/meme_list/cat/rand";
-	$.fancybox.showActivity();
-	$.post(url,{ce:0 },function(res){
-	    $("#randpgexist").val(1);
-	    $.fancybox(res,{
-		    centerOnScroll:true,
-		    onCleanup : function (){
-			$("#randpgexist").val(0);
-		     }
-	     });
-	    $.fancybox.resize();
-	 });
-     }
-</script>
 '; ?>
 
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-17 20:01:31
+<?php /* Smarty version 2.6.7, created on 2011-12-23 11:25:31
          compiled from caption/rand_loadmore_caption.tpl.html */ ?>
 <?php echo '
 <script type="text/javascript">

@@ -12,7 +12,7 @@
 	var logged_in="{/literal}{$smarty.session.id_user}{literal}";
     
     var first_id,after_5sec=0,backup_rand_id_memes='',backup_last_id_meme='';
-    $(document).ready(function(){
+    $(document).ready(function(){	
 		$("#last_id_meme").val("{/literal}{$sm.last_id_meme}{literal}");
 		var cat = "{/literal}{$sm.cat}{literal}";
 		$("#rand_id_memes").val("{/literal}{$sm.id_memes}{literal}");
@@ -221,7 +221,7 @@
     }
     
     function show_details(id_meme){
-	$.fancybox.showActivity();
+	$.fancybox.open();
 	var url="##LBL_SITE_URL##meme/meme_details/ce/0/id/"+id_meme;
 	var httpRequest = new XMLHttpRequest();
 	httpRequest.open('POST', url, false); // why is this synchronous?

@@ -1,12 +1,13 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-20 01:37:26
+<?php /* Smarty version 2.6.7, created on 2011-12-23 12:18:50
          compiled from meme/loadmore_rand_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmore_rand_meme.tpl.html', 9, false),array('modifier', 'date_format', 'meme/loadmore_rand_meme.tpl.html', 11, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmore_rand_meme.tpl.html', 10, false),array('modifier', 'date_format', 'meme/loadmore_rand_meme.tpl.html', 12, false),)), $this); ?>
 <?php if ($this->_tpl_vars['sm']['res_meme']['0']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php $this->assign('x', $this->_tpl_vars['sm']['res_meme']['0']); ?>
   <div  id="rand_meme" style="width:640px;height:auto;">
 	    <div>
+	    <!--
 		    Posted by:<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fname']; ?>
  <?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['lname']; ?>
 <br/>
@@ -14,7 +15,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 </b><br/>
 		    Title:<b><?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 </b><br/> 
-
+		-->
 		    On : <?php echo ((is_array($_tmp=$this->_tpl_vars['x']['add_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%m-%d-%Y") : smarty_modifier_date_format($_tmp, "%m-%d-%Y")); ?>
  @ <?php echo ((is_array($_tmp=$this->_tpl_vars['x']['add_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%I:%M %p") : smarty_modifier_date_format($_tmp, "%I:%M %p")); ?>
 
@@ -37,16 +38,39 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 </label>&nbsp;<a href="javascript:void(0);" onclick="get_all_rand_replies('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ');"><img src="http://localhost/templates/images/reply.gif" />Reply</a>&emsp;
 			<?php endif; ?>
+			
+			
 			<label id="randaggr<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "><?php echo $this->_tpl_vars['x']['tot_honour']; ?>
 </label>&nbsp;<a href="javascript:void(0);" id="randagr_link<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-" onclick="rand_set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-','A');">Honour</a>&emsp;
+" 
+						    	<?php if ($_SESSION['id_user']): ?>
+			    		<?php if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )): ?>
+				    		style="color: green; cursor: default"
+				    	<?php elseif (substr_count ( $this->_tpl_vars['x']['dishonour_id_user'] , $_SESSION['id_user'] )): ?>
+				    		style="color: gray; cursor: default"
+				    	<?php endif; ?>
+				    <?php endif; ?>
+			
+			onclick="rand_set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+','A');">Honor</a>&emsp;
+			
 			<label id="randdisaggr<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "><?php echo $this->_tpl_vars['x']['tot_dishonour']; ?>
 </label>&nbsp;<a href="javascript:void(0);" id="randdisagr_link<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-" onclick="rand_set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-','D');">Dishonour</a>
+" 
+						    	<?php if ($_SESSION['id_user']): ?>
+			    		<?php if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )): ?>
+			    			style="color: gray; cursor: default"
+			    		<?php elseif (substr_count ( $this->_tpl_vars['x']['dishonour_id_user'] , $_SESSION['id_user'] )): ?>
+			    			style="color: red; cursor: default"
+			    		<?php endif; ?>
+			    	<?php endif; ?>
+			
+			onclick="rand_set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+','D');">Dishonor</a>
+			
+			
 			<?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
 			&nbsp;<label id="rand_capt<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "><?php echo $this->_tpl_vars['x']['tot_caption']; ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-23 08:49:54
+<?php /* Smarty version 2.6.7, created on 2011-12-23 22:00:13
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -13,7 +13,7 @@
 	var logged_in="';  echo $_SESSION['id_user'];  echo '";
     
     var first_id,after_5sec=0,backup_rand_id_memes=\'\',backup_last_id_meme=\'\';
-    $(document).ready(function(){
+    $(document).ready(function(){	
 		$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
 		var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
 		$("#rand_id_memes").val("';  echo $this->_tpl_vars['sm']['id_memes'];  echo '");
@@ -223,7 +223,7 @@
      }
     
     function show_details(id_meme){
-	$.fancybox.showActivity();
+	$.fancybox.open();
 	var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
 	var httpRequest = new XMLHttpRequest();
 	httpRequest.open(\'POST\', url, false); // why is this synchronous?
