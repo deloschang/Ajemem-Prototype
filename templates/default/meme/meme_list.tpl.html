@@ -50,7 +50,6 @@
 	    	
 		$(window).scroll(function(){
 			if  ($(window).scrollTop() == $(document).height() - $(window).height()){
-				console.log("scroll pagination fired");
 				var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
 				var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
 				
@@ -77,6 +76,7 @@
 		$("#all_memes").append(res);
 	});
     }
+    
     function get_all_flag_details(timer){
 		var last_id_page ;
 		var cat = "{/literal}{$sm.cat}{literal}";

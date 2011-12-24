@@ -24,6 +24,7 @@
 <br>
 {*/if*}
 {/if}
+
 {if $smarty.session.id_user}
     <a href="javascript:void(0);" onclick="show_memeje_frnds();">Find friends in Memeja to add</a><br />
     <div id="show_profile_info" style="position: fixed;background-color:white;border: 1px solid #CAD8F3;"></div>
@@ -43,6 +44,7 @@
 {literal}
 <script type="text/javascript">
 
+// Find friends in Memeja to add
 function show_memeje_frnds(){
 	var url="##LBL_SITE_URL##index.php";
 	$.post(url,{page:"user",choice:"get_memeje_frnds",ce:0},function(res){//alert(res);
@@ -56,6 +58,7 @@ function show_memeje_frnds(){
 		    });
 	})
 }
+
 function invitePopup() {
 	var z;
 	var url="##LBL_SITE_URL##index.php?page=user&choice=get_sent_users&ce=0";

@@ -1035,30 +1035,41 @@ class user_manager extends mod_manager {
 		}
 		return;
 	}
+	
 	function _getExperience(){
 	    global $link;
+	    
 	    if(!$_SESSION['id_user']){
-		exit("2");
+	    	// No users
+			exit("2");
 	    }
-	    $tot_points=100000;
+	    
+	    $tot_points=3000;
 	    $sql="SELECT exp_point FROM ".TABLE_PREFIX."user WHERE id_user=".$_SESSION['id_user']." LIMIT 1";
 	    $res=mysqli_fetch_assoc(mysqli_query($link,$sql));
+	    
 	    if(!$res){
-		exit("2");
+	    	// Could not find exp_point in MySQL database for user
+			exit("2");
 	    }
-	    if(($_SESSION['exp_point']==$res['exp_point']) && $this->_input['chk']=='1'){
-		exit("1");
-	    }else{
-		    $_SESSION['exp_point']=$res['exp_point'];
-		    $percent=round((($res['exp_point']/$tot_points)*100),2);
-		    $this->_output['points']=$percent;
-		    $this->_output['tpl']="user/experience_bar";
+	    
+	    
+	    if(($_SESSION['exp_point'] == $res['exp_point']) && $this->_input['chk']=='1'){
+			// Exp points have not changed
+			exit("1");
+	    } else {
+		    $_SESSION['exp_point'] = $res['exp_point'];
+		    $percent = round((($res['exp_point'] / $tot_points) * 100), 2);
+		    $this->_output['points'] = $percent;
+		    $this->_output['tpl'] = "user/experience_bar";
 	    }
 	}
-        function _getFriends(){
+	
+    function _getFriends(){
 	    $sql=$this->user_bl->get_frnds_sql();
 	    $this->_output['frnds']=getrows($sql,$err);
 	}
+	
 	function _set_login_time(){
 	    if($_SESSION['id_user']){
 		$this->obj_user->update_user_login_time($user);
@@ -1424,6 +1435,7 @@ class user_manager extends mod_manager {
 		$this->_output['frnds']=$res;
 		$this->_output['tpl']="user/memeje_friends";
 	}
+	
 	function _add_memeje_frnds(){
 	    $ids=array();
 	    $data = $_REQUEST;
@@ -1437,8 +1449,9 @@ class user_manager extends mod_manager {
 			$notify_id = $this->obj_user->insert_all("notification",$notify,1);
 			//print $id;
 	    }
+	    
 	    if($id)
-		$this->_mail_notification($this->_input['ids'],"send_frnd_request");
+			$this->_mail_notification($this->_input['ids'],"send_frnd_request");
 	}
 	function _mail_notification($ids,$param){
 		global $link;
@@ -1447,12 +1460,13 @@ class user_manager extends mod_manager {
 		}
 		switch($param){
 		    case "send_frnd_request":
-			$subject=$_SESSION['fname']." send you a friend request";
-			$tpl="user/mail_send_frnd_request";
+				$subject=$_SESSION['fname']." send you a friend request";
+				$tpl="user/mail_send_frnd_request";
 			break;
+			
 		    case "conf_frnd_request":
-			$subject=$_SESSION['fname']." accept your friend request";
-			$tpl="user/mail_conf_frnd_request";
+				$subject=$_SESSION['fname']." accept your friend request";
+				$tpl="user/mail_conf_frnd_request";
 			break;
 		}
 		$sql="SELECT email,fname FROM memeje__user where id_user IN ($ids)";

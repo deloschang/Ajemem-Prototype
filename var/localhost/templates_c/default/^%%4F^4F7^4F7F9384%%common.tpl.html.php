@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-24 04:36:15
+<?php /* Smarty version 2.6.7, created on 2011-12-24 10:57:02
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 441, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '975d5988f175c9904e037a39a4ae3e7e'; ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 456, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '8d37bfeb36a8d254d16291fb9a843cfa'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -36,63 +36,62 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 <script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.4"></script>
 
 
-<!--
+<!-- Removed bc of conflicts with Fancybox
 <script type="text/javascript" src="http://localhost/libsext/js/jquery.validate.js"></script>
 -->
 
 <script type="text/javascript" src="http://localhost/templates/flexyjs/flexymessage.js"></script>
 <script type="text/javascript" src="http://localhost/libsext/js/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="http://localhost/libsext/js/ui.datepicker.js"></script>
-<script type="text/javascript" src="http://localhost/templates/flexyjs/jquery.bubblepopup.v2.3.1.min.js"></script>
+
 <script type="text/javascript" src="http://localhost/libsext/js/ajaxfileupload.js"></script>
+
+
+<!--Popup (use later for badges?)-->
+<script type="text/javascript" src="http://localhost/templates/flexyjs/jquery.bubblepopup.v2.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/jquery.bubblepopup.v2.3.1.css"/>
+
+<!-- XP Bar CSS + JS-->
+<link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/jquery-ui-1.8.16.custom.css"/>
+<script type="text/javascript" src="http://localhost/libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+<!--end-->
+
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
 <?php echo '
 <script type="text/javascript">
 	var chc ="';  echo $this->_tpl_vars['chc'];  echo '";
 	var idu="';  echo $_SESSION['id_user'];  echo '";
 	
-	$(document).ready(function(){
+	var curr_xp = ';  echo $_SESSION['exp_point'];  echo ';
+	//Leveling Xp -- test
+	var curr_xp_to_level = 5000;
+	var xp_percent = (curr_xp / curr_xp_to_level) *100;
 	
-	
-		// FANCYBOX TESTING
-		$(\'.fancybox\').fancybox();
+	$(document).ready(function(){			
 		
-		$(\'.fancybox-thumbs\').fancybox({
-				prevEffect : \'none\',
-				nextEffect : \'none\',
+		console.log(xp_percent);
+		
+		// User XP displayed
+		$("#xpbar").progressbar({
+			value: xp_percent
+		 });
 
-				closeBtn  : false,
-				arrows    : false,
-				nextClick : true,
-
-				helpers : { 
-					thumbs : {
-						width  : 50,
-						height : 50
-					 }
-				 }
-			 });
-		
-		
-		
-		/*console.log(moretest)*/
-	    var scrn_height = window.screen.availHeight;
+		var scrn_height = window.screen.availHeight;
             $("#mid_cont").height(scrn_height/2 + scrn_height/9);
 
 	    /* For notification */
 	    $(".inner").hide();
 	    $(\'#slidebottom div\').click(function() {
-		get_details_notification();
-		$(this).next().slideToggle();
+			get_details_notification();
+			$(this).next().slideToggle();
 	     });
 
 	    if(idu!="" && chc!=\'addMeme\'){
-		setInterval("getall_notification()",3000);
+			setInterval("getall_notification()",3000);
 
-	    /* end */
 	    /* For popup bar */
-		setInterval("popup_expbar()",6000);
+			setInterval("popup_expbar()",6000);
 	     }
 
 	    /* TOS Fancybox Popup on First Login */
@@ -111,7 +110,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		     });
 	     }
 
-	    if(idu){
+	    if (idu) {
 	        $(\'.expbar\').CreateBubblePopup({
 			position :\'top\',
 			align	 : \'left\',
@@ -130,25 +129,26 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			 }
 		 });
 
-		 $(\'.expbar\').mouseover(function(){
-		   	var button = $(this);
-		   	$.get(\'http://localhost/user/getExperience/ce/0\', function(data) {
-			    var seconds_to_wait = 1;
-			    function pause(){
-				    var timer = setTimeout(function(){
-					    seconds_to_wait--;
-					    if(seconds_to_wait > 0){
-						    pause();
-					     }else{
-						  if(data!=2){
-						    button.SetBubblePopupInnerHtml(data, false);
+		 	$(\'.expbar\').mouseover(function(){
+		   		var button = $(this);
+		   		$.get(\'http://localhost/user/getExperience/ce/0\', function(data) {
+			   		var seconds_to_wait = 1;
+			    	function pause(){
+				    	var timer = setTimeout(function(){
+					 	   seconds_to_wait--;
+					    	if(seconds_to_wait > 0){
+							    pause();
+					    	 } else {
+						  		if(data!=2){
+						    		button.SetBubblePopupInnerHtml(data, false);
 						   }
 					     };
-				     },1000);
+				     }, 1000);
 			     };pause();
 		    	 });
 		  });
 	     }
+	    
 	    /* End */
 	    /* For updating total login time */
 	    upd_log_time();
@@ -158,24 +158,26 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	function getall_notification(){
 	    var url="http://localhost/manage/getall_notification";
 	    $.post(url,{ce:0 },function(res){
-		if(res[0]!="-1"){
-			if(res[2]==0)
-			    $(".not_txt").hide();
-			else
-			    $(".not_txt").show();
-			$(\'#user_ids\').val(res[0]);
-			$(\'#id_badges\').val(res[1]);
-			$("#not_cnt").html(res[2]);
-		 }
+			if(res[0] != "-1"){
+				if(res[2]==0)
+			    	$(".not_txt").hide();
+				else
+			    	$(".not_txt").show();
+				$(\'#user_ids\').val(res[0]);
+				$(\'#id_badges\').val(res[1]);
+				$("#not_cnt").html(res[2]);
+			 }
 	     },\'json\');
 	 }
+	
 	function get_details_notification(){
 	    var url="http://localhost//manage/get_details_notification";
 	    $.post(url,{id_users:$(\'#user_ids\').val(),id_badges:$(\'#id_badges\').val(),ce:0 },function(data){
-		$(".inner").html(data);
-		$(".not_txt").hide();
+			$(".inner").html(data);
+			$(".not_txt").hide();
 	     });
 	 }
+	
 	function popup_expbar(){
 
 		var data;
@@ -185,9 +187,10 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 
 		httpRequest.send(); // this blocks as request is synchronous
 		if (httpRequest.status == 200) {
-			data=httpRequest.responseText;
+			data = httpRequest.responseText;
 		 }
-		if(data==1){
+		
+		if(data == 1){
 			return false;
 		 }
 
@@ -208,23 +211,29 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 				$("#tst").val(2);
 			 }
 		 });
+		
 		var button = $(\'.expbar\');
 
 		var seconds_to_wait = 1;
+		
 		function pause(){
-		    var timer = setTimeout(function(){
-			    seconds_to_wait--;
-			    if(seconds_to_wait > 0){
-				    pause();
-			     }else{
-				if(data!=2)
-				    button.SetBubblePopupInnerHtml(data, false);
-			     };
-		     },1000);
-		 };pause();
+			var timer = setTimeout(function(){
+				seconds_to_wait--;
+				if(seconds_to_wait > 0){
+					pause();
+					 } else {
+						if(data != 2)
+							button.SetBubblePopupInnerHtml(data, false);
+					 };
+				 },1000);
+		 };
+	
+	pause();
+		
 		$(\'.expbar\').ShowBubblePopup();
 		setTimeout("closeexpbar()",8000);
 	 }
+	
 	/*$(window).scroll(function () { 
 		var tst=$("#tst").val();
 		if (tst==\'1\'){
@@ -237,6 +246,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	function closeexpbar(){
 	    $(\'.expbar\').trigger("hidebubblepopup", [true]);
 	 }
+	
 	function upd_log_time() {
 		  var url="http://localhost/index.php";
 		  $.post(url,{page:"user",choice:"set_login_time",ce:0 },function(res){//alert(res);
@@ -255,6 +265,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		$.fancybox(res,{centerOnScroll:true,hideOnOverlayClick:false });
 		//$.fancybox(res,{margin:600,hideOnOverlayClick:false });
 	 }
+	
 	$(function(){
 		$(".leftpan_img").click(function(){
 			$("#leftpan").toggle();
@@ -273,9 +284,11 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		 });
 
 	 });
+	
 	function chkvalid(){
 	    //For validation form before submitting paypal button
 	 }
+	
 </script>
 <script type="text/javascript">
 	    function fb_logout(){
@@ -304,6 +317,15 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 body {
 	margin-left:75px;
 	margin-right:75px;
+	margin-top:1.5em;
+ }
+
+#xpbar {
+	position: fixed;
+	top: 0px;
+	left: 74px;
+	right: 75px;
+	z-index: 99999;
  }
 
 /* Exp Bar Tab */
@@ -410,13 +432,6 @@ body {
   <input type="hidden" id="tst" value="2">
     <div id="page1">
 		<div id="mymodal"></div>
-		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="/image/4_b.jpg"><img src="/image/4_s.jpg" alt="" /></a>
-
-		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="/image/3_b.jpg"><img src="/image/3_s.jpg" alt="" /></a>
-
-		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="/image/2_b.jpg"><img src="/image/2_s.jpg" alt="" /></a>
-
-		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="/image/1_b.jpg"><img src="/image/1_s.jpg" alt="" /></a>
 	    	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "common/header.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -463,7 +478,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:975d5988f175c9904e037a39a4ae3e7e#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:975d5988f175c9904e037a39a4ae3e7e#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:8d37bfeb36a8d254d16291fb9a843cfa#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:8d37bfeb36a8d254d16291fb9a843cfa#0}';}?>
 <br>
 				<?php endif; ?>
 
@@ -511,6 +526,7 @@ unset($_smarty_tpl_vars);
 		<!-- For Experience button -->
 	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>
 		<!-- End -->
+		
 		<!-- For Notification button -->
 		<div id="slidebottom" class="slide">
 		      <div class='notify' style="z-index:99999; border:3px  solid #cccccc; background-color:#f2f2f2; float:left;">

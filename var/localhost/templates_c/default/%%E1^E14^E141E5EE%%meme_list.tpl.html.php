@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-24 04:36:16
+<?php /* Smarty version 2.6.7, created on 2011-12-24 10:57:02
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -51,7 +51,6 @@
 	    	
 		$(window).scroll(function(){
 			if  ($(window).scrollTop() == $(document).height() - $(window).height()){
-				console.log("scroll pagination fired");
 				var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
 				var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
 				
@@ -78,6 +77,7 @@
 		$("#all_memes").append(res);
 	 });
      }
+    
     function get_all_flag_details(timer){
 		var last_id_page ;
 		var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";

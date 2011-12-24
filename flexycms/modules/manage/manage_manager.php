@@ -153,41 +153,50 @@ class manage_manager extends mod_manager {
 	
 	function _getall_notification($fg=""){
 	    global $link;
-	    $cnt=0;$id_users="";$id_badges="";
+	    $cnt=0;
+	    $id_users="";
+	    $id_badges="";
 	    $cond = "notified_user=".$_SESSION['id_user']." AND is_removed<>1";
+	    
 	    if(!$fg)
-		$cond.=" AND is_read<>1";
+			$cond.=" AND is_read<>1";
 	    $cond.=" ORDER BY id_notification DESC LIMIT ".$GLOBALS['conf']['PAGINATE']['rec_per_page'];
 	    $sql = $this->manage_bl->get_search_sql("notification",$cond);
 	    $res = mysqli_query($link,$sql);
-	    while($rec=mysqli_fetch_assoc($res)){
-		$cnt++;
-		$not_arr[] = $rec;
-		if($rec['notification_type']!='4')
-		    $id_users .= $rec['id_user'].",";
-		else
-		    $id_badges .= $rec['id_user'].",";
+	    
+	    while ($rec=mysqli_fetch_assoc($res)) {
+			$cnt++;
+			$not_arr[] = $rec;
+			if($rec['notification_type']!='4')
+				$id_users .= $rec['id_user'].",";
+			else
+				$id_badges .= $rec['id_user'].",";
 	    }
+	    
 	    mysqli_free_result($res); 
 	    mysqli_next_result($link);
+	    
 	    if($fg==1){
-		$arr['notifications'] = $not_arr;
-		$arr['id_users'] = trim($id_users,',');
-		$arr['id_badges'] = trim($id_badges,',');
-		return $arr;
+			$arr['notifications'] = $not_arr;
+			$arr['id_users'] = trim($id_users,',');
+			$arr['id_badges'] = trim($id_badges,',');
+			return $arr;
 	    }
+	    
 	    if($fg==2)
-		return $not_arr;
+			return $not_arr;
+			
 	    $not[0] = trim($id_users,',');
 	    $not[1] = trim($id_badges,',');
 	    $not[2] = $cnt;
+	    
 	    if($cnt!=0){
-		print json_encode($not);
-	    }else{
-		 $not[0] = "-1";
-		 $not[1] = "1";
-		 $not[2] = "1";	    
-		 print json_encode($not);
+			print json_encode($not);
+	    } else {
+			$not[0] = "-1";
+			$not[1] = "1";
+			$not[2] = "1";	    
+			print json_encode($not);
 	    }	
 	    exit;
 	}
@@ -198,18 +207,20 @@ class manage_manager extends mod_manager {
 	
 	function _get_details_notification(){
 	    if($this->_input['id_users']!='' || $this->_input['id_badges']!=''){
-		if($this->_input['id_users']!='')
-		    $not['user_info'] = $this->get_user_info();
-		if($this->_input['id_badges']!='')
-		    $not['badge_info'] = $this->get_user_info();
-		$not['notifications'] = $this->_getall_notification(2);
+			if($this->_input['id_users']!='')
+		    	$not['user_info'] = $this->get_user_info();
+			if($this->_input['id_badges']!='')
+			    $not['badge_info'] = $this->get_user_info();
+			$not['notifications'] = $this->_getall_notification(2);
 	    }
+	    
 	    if($this->_input['id_badges']=='' && $this->_input['id_users']==''){
-		$info = $this->_getall_notification(1);
-		$not['notifications'] = $info['notifications'];
-		$not['user_info'] = ($info['id_users']!='')?$this->get_user_info():'';
-		$not['badge_info'] = ($info['id_badges']!='')?$this->badge_info($info['id_badges']):'';
+			$info = $this->_getall_notification(1);
+			$not['notifications'] = $info['notifications'];
+			$not['user_info'] = ($info['id_users']!='')?$this->get_user_info():'';
+			$not['badge_info'] = ($info['id_badges']!='')?$this->badge_info($info['id_badges']):'';
 	    }
+	    
 	    $isread["is_read"]='1';
 	    $this->obj_manage->update_this("notification", $isread, "notified_user=".$_SESSION['id_user']);
 

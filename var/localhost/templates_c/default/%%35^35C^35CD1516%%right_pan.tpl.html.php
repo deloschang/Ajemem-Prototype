@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-24 04:36:16
+<?php /* Smarty version 2.6.7, created on 2011-12-24 10:57:03
          compiled from user/right_pan.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'user/right_pan.tpl.html', 34, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/%%35^35C^35CD1516%%right_pan.tpl.html.inc'] = 'd7adcd7cf41f8e92480de137aa14d1ad'; ?>
-<!-- Template: user/right_pan.tpl.html Start 24/12/2011 04:36:16 --> 
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'user/right_pan.tpl.html', 35, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/%%35^35C^35CD1516%%right_pan.tpl.html.inc'] = 'c0ba10ebf4cccf48240073e9e0384b52'; ?>
+<!-- Template: user/right_pan.tpl.html Start 24/12/2011 10:57:03 --> 
  <br/>
 <fieldset style="width:40%;align:center;">
     <legend><b><h3>Search meme</h3></b></legend>
@@ -30,12 +30,13 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	</div>
 <br>
 <?php endif; ?>
+
 <?php if ($_SESSION['id_user']): ?>
     <a href="javascript:void(0);" onclick="show_memeje_frnds();">Find friends in Memeja to add</a><br />
     <div id="show_profile_info" style="position: fixed;background-color:white;border: 1px solid #CAD8F3;"></div>
     <div >
 		<br>
-		<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:d7adcd7cf41f8e92480de137aa14d1ad#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user','choice' => 'friend_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:d7adcd7cf41f8e92480de137aa14d1ad#0}';}?>
+		<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:c0ba10ebf4cccf48240073e9e0384b52#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user','choice' => 'friend_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:c0ba10ebf4cccf48240073e9e0384b52#0}';}?>
 
     </div>
     <div>
@@ -44,13 +45,14 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
     </div>
 	<div>
 	    <br>
-	    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:d7adcd7cf41f8e92480de137aa14d1ad#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'paypal','mgr' => 'paypal','choice' => 'form'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:d7adcd7cf41f8e92480de137aa14d1ad#1}';}?>
+	    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:c0ba10ebf4cccf48240073e9e0384b52#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'paypal','mgr' => 'paypal','choice' => 'form'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:c0ba10ebf4cccf48240073e9e0384b52#1}';}?>
 
 	</div>
 <?php endif; ?>
 <?php echo '
 <script type="text/javascript">
 
+// Find friends in Memeja to add
 function show_memeje_frnds(){
 	var url="http://localhost/index.php";
 	$.post(url,{page:"user",choice:"get_memeje_frnds",ce:0 },function(res){//alert(res);
@@ -64,6 +66,7 @@ function show_memeje_frnds(){
 		     });
 	 })
  }
+
 function invitePopup() {
 	var z;
 	var url="http://localhost/index.php?page=user&choice=get_sent_users&ce=0";

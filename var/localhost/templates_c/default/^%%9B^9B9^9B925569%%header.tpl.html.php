@@ -1,10 +1,11 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-24 04:36:15
+<?php /* Smarty version 2.6.7, created on 2011-12-24 10:57:02
          compiled from common/header.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/header.tpl.html', 7, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/header.tpl.html', 8, false),)), $this); ?>
 
-<!-- Template: common/header.tpl.html Start 24/12/2011 04:36:15 --> 
- <div id="header">
+<!-- Template: common/header.tpl.html Start 24/12/2011 10:57:02 --> 
+ <div id="xpbar"></div>
+<div id="header">
 	<h1><a href="http://localhost/">Memeja logo here</a></h1>
 	<center>
 	    <?php if ($_SESSION['id_user']): ?>

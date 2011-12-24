@@ -35,7 +35,7 @@
 						height : 50
 					},
 					overlay : {
-						opacity : 0.75
+						opacity : 0.8
 					}
 				}
 			});
@@ -50,7 +50,6 @@
 	    	
 		$(window).scroll(function(){
 			if  ($(window).scrollTop() == $(document).height() - $(window).height()){
-				console.log("scroll pagination fired");
 				var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
 				var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
 				

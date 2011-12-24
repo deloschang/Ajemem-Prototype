@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-17 05:11:18
+<?php /* Smarty version 2.6.7, created on 2011-12-24 06:45:52
          compiled from manage/see_all_not.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'manage/see_all_not.tpl.html', 6, false),)), $this); ?>
 
-<!-- Template: manage/see_all_not.tpl.html Start 17/10/2011 05:11:18 --> 
+<!-- Template: manage/see_all_not.tpl.html Start 24/12/2011 06:45:52 --> 
  <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('NOTIFY_TYPE')); ?>
 <?php if (count($_from = (array)$this->_tpl_vars['sm']['not'])):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['i']):
