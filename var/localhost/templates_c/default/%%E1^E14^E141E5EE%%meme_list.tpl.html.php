@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-24 04:12:22
+<?php /* Smarty version 2.6.7, created on 2011-12-24 04:36:16
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -16,37 +16,31 @@
     $(document).ready(function(){	
     
 			$(\'.meme_gallery\').fancybox({
-				prevEffect : \'none\',
+				padding: 0,
+			
+				openEffect : \'elastic\',
+				openSpeed  : 150,
+				
+				prevEffect : \'fade\',
 				nextEffect : \'none\',
+				closeEffect : \'elastic\',
+				closeSpeed : 100,
 
 				closeBtn  : false,
-				arrows    : false,
+				arrows    : true,
 				nextClick : true,
-
+				
 				helpers : { 
 					thumbs : {
 						width  : 50,
 						height : 50
+					 },
+					overlay : {
+						opacity : 0.8
 					 }
 				 }
 			 });
 			
-			$(\'.meme_gallery_title\').fancybox({
-				prevEffect : \'none\',
-				nextEffect : \'none\',
-
-				closeBtn  : false,
-				arrows    : false,
-				nextClick : true,
-
-				helpers : { 
-					thumbs : {
-						width  : 50,
-						height : 50
-					 }
-				 }
-			 });
-
     
 		$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
 		var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";

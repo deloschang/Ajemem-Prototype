@@ -15,17 +15,27 @@
     $(document).ready(function(){	
     
 			$('.meme_gallery').fancybox({
-				prevEffect : 'none',
+				padding: 0,
+			
+				openEffect : 'elastic',
+				openSpeed  : 150,
+				
+				prevEffect : 'fade',
 				nextEffect : 'none',
+				closeEffect : 'elastic',
+				closeSpeed : 100,
 
 				closeBtn  : false,
-				arrows    : false,
+				arrows    : true,
 				nextClick : true,
-
+				
 				helpers : { 
 					thumbs : {
 						width  : 50,
 						height : 50
+					},
+					overlay : {
+						opacity : 0.8
 					}
 				}
 			});
