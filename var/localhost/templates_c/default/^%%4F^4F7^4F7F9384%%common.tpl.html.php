@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-24 13:11:39
+<?php /* Smarty version 2.6.7, created on 2011-12-24 13:32:51
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 510, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'cc668f6e3309d8dbe45577ca136b0c81'; ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 515, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'a4266883ab78b83a823f617081a67801'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -83,8 +83,13 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		$("#xpbar_status").html(\'(\'+ Math.round(xp_percent)+\'%) \'+curr_xp +\' / \'+ curr_xp_to_level);
 		
 		// Mouseover shows XP and %
+		$("#xpbar, #xpbar_status").hoverIntent({
+			interval: 200,
+			timeout:1000
+		 });
+		
 		$("#xpbar, #xpbar_status").hoverIntent(function(){
-			$("#xpbar_status").show();
+			$("#xpbar_status").delay(200).show();
 		 }, function() {
 			$("#xpbar_status").delay(1000).fadeOut();
 		 });
@@ -532,7 +537,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:cc668f6e3309d8dbe45577ca136b0c81#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:cc668f6e3309d8dbe45577ca136b0c81#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:a4266883ab78b83a823f617081a67801#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:a4266883ab78b83a823f617081a67801#0}';}?>
 <br>
 				<?php endif; ?>
 

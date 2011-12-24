@@ -80,8 +80,13 @@
 		$("#xpbar_status").html('('+ Math.round(xp_percent)+'%) '+curr_xp +' / '+ curr_xp_to_level);
 		
 		// Mouseover shows XP and %
+		$("#xpbar, #xpbar_status").hoverIntent({
+			interval: 200,
+			timeout:1000
+		});
+		
 		$("#xpbar, #xpbar_status").hoverIntent(function(){
-			$("#xpbar_status").show();
+			$("#xpbar_status").delay(200).show();
 		}, function() {
 			$("#xpbar_status").delay(1000).fadeOut();
 		});
