@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-23 22:00:13
+<?php /* Smarty version 2.6.7, created on 2011-12-24 04:12:22
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -14,6 +14,40 @@
     
     var first_id,after_5sec=0,backup_rand_id_memes=\'\',backup_last_id_meme=\'\';
     $(document).ready(function(){	
+    
+			$(\'.meme_gallery\').fancybox({
+				prevEffect : \'none\',
+				nextEffect : \'none\',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : { 
+					thumbs : {
+						width  : 50,
+						height : 50
+					 }
+				 }
+			 });
+			
+			$(\'.meme_gallery_title\').fancybox({
+				prevEffect : \'none\',
+				nextEffect : \'none\',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : { 
+					thumbs : {
+						width  : 50,
+						height : 50
+					 }
+				 }
+			 });
+
+    
 		$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
 		var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
 		$("#rand_id_memes").val("';  echo $this->_tpl_vars['sm']['id_memes'];  echo '");
@@ -223,21 +257,21 @@
      }
     
     function show_details(id_meme){
-	$.fancybox.open();
-	var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
-	var httpRequest = new XMLHttpRequest();
-	httpRequest.open(\'POST\', url, false); // why is this synchronous?
+		var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
+				
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open(\'POST\', url, false); // why is this synchronous?
 
-	httpRequest.send(); // this blocks as request is synchronous
-	if (httpRequest.status == 200) {
-		res=httpRequest.responseText;
-		$.fancybox(res,{
-		    centerOnScroll:true,
-		    onComplete : function (){
-			$.fancybox.resize();  
-		     }
-		 });
-	 }
+		httpRequest.send(); // this blocks as request is synchronous
+<!--		if (httpRequest.status == 200) {-->
+<!--			res = httpRequest.responseText;-->
+<!--			console.log(res);-->
+<!--			-->
+<!--			//return res-->
+<!--			//$.fancybox(res,{-->
+<!--			//	title : title-->
+<!--			// });-->
+<!--		 }-->
      }
     function flagging(id_meme){
 	var flaged_bfr=0;

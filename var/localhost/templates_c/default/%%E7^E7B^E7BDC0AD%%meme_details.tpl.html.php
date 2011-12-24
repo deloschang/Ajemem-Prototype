@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-22 20:20:51
+<?php /* Smarty version 2.6.7, created on 2011-12-24 03:32:49
          compiled from meme/meme_details.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'meme/meme_details.tpl.html', 16, false),)), $this); ?>

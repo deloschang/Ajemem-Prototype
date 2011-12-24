@@ -29,7 +29,7 @@
 <script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.4"></script>
 
 
-<link rel="stylesheet" href="##LBL_SITE_URL##templates/css_theme/fancybox/jquery.fancybox-thumbs.css?v=2.0.4" type="text/css" media="
+<link rel="stylesheet" href="##LBL_SITE_URL##templates/css_theme/fancybox/jquery.fancybox-thumbs.css?v=2.0.4" type="text/css" media="screen" />
 <script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.4"></script>
 
 
@@ -51,8 +51,25 @@
 	
 	$(document).ready(function(){
 	
+	
+		// FANCYBOX TESTING
 		$('.fancybox').fancybox();
 		
+		$('.fancybox-thumbs').fancybox({
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : { 
+					thumbs : {
+						width  : 50,
+						height : 50
+					}
+				}
+			});
 		
 		
 		
@@ -82,9 +99,11 @@
 				$.fancybox(res,{
 			    	closeBtn:false,
 			    	closeClick:false,
-			    	//onCancel: function (){
-				    //	console.log("fired");
-					//});
+			    	helpers : {
+						overlay : {
+							opacity : 0.8
+						}
+					}
 				});
 		    });
 	    }
@@ -386,7 +405,13 @@ body {
   <input type="hidden" id="tst" value="2">
     <div id="page1">
 		<div id="mymodal"></div>
-			<a class="fancybox" href="/image/1_b.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="/image/1_s.jpg" alt="" /></a>
+		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="/image/4_b.jpg"><img src="/image/4_s.jpg" alt="" /></a>
+
+		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="/image/3_b.jpg"><img src="/image/3_s.jpg" alt="" /></a>
+
+		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="/image/2_b.jpg"><img src="/image/2_s.jpg" alt="" /></a>
+
+		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="/image/1_b.jpg"><img src="/image/1_s.jpg" alt="" /></a>
 	    	{include file='common/header'}
 
 	    	{include file='common/menu'}

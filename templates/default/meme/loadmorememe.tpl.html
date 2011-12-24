@@ -6,16 +6,17 @@
 	var id = "{/literal}{$sm.last_idmeme}{literal}";
 	var new_ids = "{/literal}{$sm.id_memes}{literal}";
 	
-	function hover_feed(id,imageid,title){
-		$('#memeimage'+id).mouseenter(function() {
-			$.fancybox(
-				{href : '##LBL_SITE_URL##image/thumb/meme/'+imageid,
-				title : title}
-			);
-		}).mouseleave(function () {
-			console.log("close fire");
-		});
-    }
+<!--	Experimental Hover Feed-->
+<!--	function hover_feed(id,imageid,title){-->
+<!--		$('#memeimage'+id).mouseenter(function() {-->
+<!--			$.fancybox(-->
+<!--				{href : '##LBL_SITE_URL##image/thumb/meme/'+imageid,-->
+<!--				title : title}-->
+<!--			);-->
+<!--		}).mouseleave(function () {-->
+<!--			console.log("close fire");-->
+<!--		});-->
+<!--    }-->
 	
 	if(id!=''){
 	    $("#last_id_meme_cur_page").val(id);
@@ -38,8 +39,13 @@
 {* Height between memes *}
 		<div style="height: 90px;">
 
+<!--javascript:show_details('{$x.id_meme}');-->
 <!-- Image specs for live feed meme -->
-			<div id="memeimage{$x.id_meme}"><img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="cursor:pointer;width: 80px;height: 80px; 
+
+<!-- Show details updates view count -->
+			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
+<!--			<div style="vertical-align: top; font-size: 15px" style="padding-left:5px"><b>{$x.title|capitalize}</b></div>-->
+			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="cursor:pointer;width: 80px;height: 80px; 
 			{* Added by Delos: highlights if you created the meme *}
 			{if $smarty.session.id_user}
 				{if $x.id_user == $smarty.session.id_user}
@@ -47,12 +53,15 @@
 				{/if}
 			{/if}
 					
-		" align="left" title="Meme" onMouseOver="hover_feed('{$x.id_meme}','{$x.image}','{$x.title|capitalize}');" onclick="show_details('{$x.id_meme}');"/></div>
+		" align="left" onMouseOver="hover_feed('{$x.id_meme}','{$x.image}','{$x.title|capitalize}');" />
 
-			<div style="vertical-align: top; font-size: 15px">
-			<b><a href ="javascript:void(0)" OnClick="show_details('{$x.id_meme}'); return false;" style="padding-left:5px">{$x.title|capitalize}</a></b>
+			<span style="vertical-align: top; padding-left:5px; font-size: 15px">
+			<b>
 			
-			<span style="font-size:12px"> by {$sm.uinfo[$x.id_user].username}</span></div>
+			{$x.title|capitalize}</b></span></a>
+	<!-- end of gallery class-->
+			
+			<span style="font-size:12px"> by {$sm.uinfo[$x.id_user].username}</span>
 	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
 
 <!-- Caption shows below image -->

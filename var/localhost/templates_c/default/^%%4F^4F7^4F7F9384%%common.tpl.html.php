@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-23 22:00:13
+<?php /* Smarty version 2.6.7, created on 2011-12-24 04:12:21
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 416, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '5ed079547404dfcd1e38d9cc0be650a9'; ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 441, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '9e5dee741b6b12b74dae0adcf9b71b6a'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,7 +32,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 <script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.4"></script>
 
 
-<link rel="stylesheet" href="http://localhost/templates/css_theme/fancybox/jquery.fancybox-thumbs.css?v=2.0.4" type="text/css" media="
+<link rel="stylesheet" href="http://localhost/templates/css_theme/fancybox/jquery.fancybox-thumbs.css?v=2.0.4" type="text/css" media="screen" />
 <script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.4"></script>
 
 
@@ -54,8 +54,25 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	
 	$(document).ready(function(){
 	
+	
+		// FANCYBOX TESTING
 		$(\'.fancybox\').fancybox();
 		
+		$(\'.fancybox-thumbs\').fancybox({
+				prevEffect : \'none\',
+				nextEffect : \'none\',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : { 
+					thumbs : {
+						width  : 50,
+						height : 50
+					 }
+				 }
+			 });
 		
 		
 		
@@ -85,9 +102,11 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 				$.fancybox(res,{
 			    	closeBtn:false,
 			    	closeClick:false,
-			    	//onCancel: function (){
-				    //	console.log("fired");
-					// });
+			    	helpers : {
+						overlay : {
+							opacity : 0.8
+						 }
+					 }
 				 });
 		     });
 	     }
@@ -391,7 +410,13 @@ body {
   <input type="hidden" id="tst" value="2">
     <div id="page1">
 		<div id="mymodal"></div>
-			<a class="fancybox" href="/image/1_b.jpg" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet"><img src="/image/1_s.jpg" alt="" /></a>
+		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="/image/4_b.jpg"><img src="/image/4_s.jpg" alt="" /></a>
+
+		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="/image/3_b.jpg"><img src="/image/3_s.jpg" alt="" /></a>
+
+		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="/image/2_b.jpg"><img src="/image/2_s.jpg" alt="" /></a>
+
+		<a class="fancybox-thumbs" data-fancybox-group="thumb" href="/image/1_b.jpg"><img src="/image/1_s.jpg" alt="" /></a>
 	    	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "common/header.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -438,7 +463,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:5ed079547404dfcd1e38d9cc0be650a9#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:5ed079547404dfcd1e38d9cc0be650a9#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9e5dee741b6b12b74dae0adcf9b71b6a#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9e5dee741b6b12b74dae0adcf9b71b6a#0}';}?>
 <br>
 				<?php endif; ?>
 

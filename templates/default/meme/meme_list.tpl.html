@@ -13,6 +13,24 @@
     
     var first_id,after_5sec=0,backup_rand_id_memes='',backup_last_id_meme='';
     $(document).ready(function(){	
+    
+			$('.meme_gallery').fancybox({
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : false,
+				arrows    : false,
+				nextClick : true,
+
+				helpers : { 
+					thumbs : {
+						width  : 50,
+						height : 50
+					}
+				}
+			});
+			
+    
 		$("#last_id_meme").val("{/literal}{$sm.last_id_meme}{literal}");
 		var cat = "{/literal}{$sm.cat}{literal}";
 		$("#rand_id_memes").val("{/literal}{$sm.id_memes}{literal}");
@@ -221,21 +239,21 @@
     }
     
     function show_details(id_meme){
-	$.fancybox.open();
-	var url="##LBL_SITE_URL##meme/meme_details/ce/0/id/"+id_meme;
-	var httpRequest = new XMLHttpRequest();
-	httpRequest.open('POST', url, false); // why is this synchronous?
+		var url="##LBL_SITE_URL##meme/meme_details/ce/0/id/"+id_meme;
+				
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open('POST', url, false); // why is this synchronous?
 
-	httpRequest.send(); // this blocks as request is synchronous
-	if (httpRequest.status == 200) {
-		res=httpRequest.responseText;
-		$.fancybox(res,{
-		    centerOnScroll:true,
-		    onComplete : function (){
-			$.fancybox.resize();  
-		    }
-		});
-	}
+		httpRequest.send(); // this blocks as request is synchronous
+<!--		if (httpRequest.status == 200) {-->
+<!--			res = httpRequest.responseText;-->
+<!--			console.log(res);-->
+<!--			-->
+<!--			//return res-->
+<!--			//$.fancybox(res,{-->
+<!--			//	title : title-->
+<!--			//});-->
+<!--		}-->
     }
     function flagging(id_meme){
 	var flaged_bfr=0;

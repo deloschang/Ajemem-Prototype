@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-23 22:00:13
+<?php /* Smarty version 2.6.7, created on 2011-12-24 04:12:22
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 52, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 70, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 48, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 79, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 23/12/2011 22:00:13 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 24/12/2011 04:12:22 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -12,16 +12,17 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
 	
-	function hover_feed(id,imageid,title){
-		$(\'#memeimage\'+id).mouseenter(function() {
-			$.fancybox(
-				{href : \'http://localhost/image/thumb/meme/\'+imageid,
-				title : title }
-			);
-		 }).mouseleave(function () {
-			console.log("close fire");
-		 });
-     }
+<!--	Experimental Hover Feed-->
+<!--	function hover_feed(id,imageid,title){-->
+<!--		$(\'#memeimage\'+id).mouseenter(function() {-->
+<!--			$.fancybox(-->
+<!--				{href : \'http://localhost/image/thumb/meme/\'+imageid,-->
+<!--				title : title }-->
+<!--			);-->
+<!--		 }).mouseleave(function () {-->
+<!--			console.log("close fire");-->
+<!--		 });-->
+<!--     }-->
 	
 	if(id!=\'\'){
 	    $("#last_id_meme_cur_page").val(id);
@@ -49,9 +50,19 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 
 		<div style="height: 90px;">
 
+<!--javascript:show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+');-->
 <!-- Image specs for live feed meme -->
-			<div id="memeimage<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-"><img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+
+<!-- Show details updates view count -->
+			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+" onclick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+');" href="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+">
+<!--			<div style="vertical-align: top; font-size: 15px" style="padding-left:5px"><b><?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+</b></div>-->
+			<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
 " style="cursor:pointer;width: 80px;height: 80px; 
 						<?php if ($_SESSION['id_user']): ?>
 				<?php if ($this->_tpl_vars['x']['id_user'] == $_SESSION['id_user']): ?>
@@ -59,19 +70,20 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 				<?php endif; ?>
 			<?php endif; ?>
 					
-		" align="left" title="Meme" onMouseOver="hover_feed('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+		" align="left" onMouseOver="hover_feed('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ','<?php echo $this->_tpl_vars['x']['image']; ?>
 ','<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
-');" onclick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-');"/></div>
+');" />
 
-			<div style="vertical-align: top; font-size: 15px">
-			<b><a href ="javascript:void(0)" OnClick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-'); return false;" style="padding-left:5px"><?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
-</a></b>
+			<span style="vertical-align: top; padding-left:5px; font-size: 15px">
+			<b>
+			
+			<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+</b></span></a>
+	<!-- end of gallery class-->
 			
 			<span style="font-size:12px"> by <?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
-</span></div>
+</span>
 	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
 
 <!-- Caption shows below image -->
