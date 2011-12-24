@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-24 13:32:51
+<?php /* Smarty version 2.6.7, created on 2011-12-24 23:05:00
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 515, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'a4266883ab78b83a823f617081a67801'; ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 535, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '9e2c2111b4d3fd29b4198d83a0e5b260'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -68,19 +68,24 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	
 	// Variables for XP updating
 	var curr_xp = ';  echo $_SESSION['exp_point'];  echo ';
-	var curr_xp_to_level = 4000;  // later move to scaling...
-	var xp_percent = (curr_xp / curr_xp_to_level) *100;
+	var xp_to_level = ';  echo $_SESSION['xp_to_level'];  echo '
+	
+	var xp_percent = (curr_xp / xp_to_level) * 100;
+	var user_level = ';  echo $_SESSION['level'];  echo '
 	
 	$(document).ready(function(){			
 		console.log("Current XP is "+curr_xp);
 		console.log(xp_percent);
+		console.log("User level is "+user_level);
+		console.log("XP needed to level is "+xp_to_level);
 		
 		// User XP initial display
 		$("#xpbar").progressbar({
 			value: xp_percent
 		 });
 		
-		$("#xpbar_status").html(\'(\'+ Math.round(xp_percent)+\'%) \'+curr_xp +\' / \'+ curr_xp_to_level);
+		$("#user_level").html(\'L\'+user_level);
+		$("#xpbar_status").html(\'(\'+ Math.round(xp_percent)+\'%) \'+curr_xp +\' / \'+ xp_to_level);
 		
 		// Mouseover shows XP and %
 		$("#xpbar, #xpbar_status").hoverIntent({
@@ -214,7 +219,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			return false;
 		 }	
 		
-		new_xp_percent = ((data / curr_xp_to_level) * 100);
+		new_xp_percent = ((data / xp_to_level) * 100);
 		
 		console.log("New XP is "+data);
 		console.log("New Percentage is "+new_xp_percent);
@@ -223,7 +228,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			value: new_xp_percent 
 		 });
 		
-		$("#xpbar_status").html(\'(\'+ Math.round(new_xp_percent)+\'%) \'+data +\' / \'+ curr_xp_to_level);
+		$("#xpbar_status").html(\'(\'+ Math.round(new_xp_percent)+\'%) \'+data +\' / \'+ xp_to_level);
 		
 		// Status bar with XP pops up too
 		$("#xpbar_status").show();
@@ -370,6 +375,21 @@ body {
 	left: 74px;
 	right: 75px;
 	z-index: 99998;
+ }
+
+#user_level{
+	position: fixed;
+	
+	font-size: 10px;
+	font: Verdana;
+	color: white;
+	
+	cursor: default;
+	
+	top: 2px;
+	left: 9%;
+	z-index: 999999;
+
  }
 
 #xpbar_status {
@@ -537,7 +557,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:a4266883ab78b83a823f617081a67801#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:a4266883ab78b83a823f617081a67801#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9e2c2111b4d3fd29b4198d83a0e5b260#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9e2c2111b4d3fd29b4198d83a0e5b260#0}';}?>
 <br>
 				<?php endif; ?>
 

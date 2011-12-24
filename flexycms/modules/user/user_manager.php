@@ -202,7 +202,20 @@ class user_manager extends mod_manager {
 						$_SESSION['friends']=$result['memeje_friends'];
 						$_SESSION['gender']=$result['gender'];
 						$_SESSION['id_user'] = $result['id_user'];
+						
+						// User Level
 						$_SESSION['exp_point'] = $result['exp_point'];
+						$_SESSION['level'] = $result['level'];
+						
+						// Find XP to Next Level
+						$sql_xp = "SELECT * FROM ".TABLE_PREFIX."level WHERE level=".$_SESSION['level'];
+						var_dump($sql);
+						
+	   					$results_xp = getsingleindexrow($sql_xp);
+	   					
+	   					//var_dump((int)$results_xp['xp_to_level']);
+	   					//exit();
+						$_SESSION['xp_to_level'] = (int)$results_xp['xp_to_level'];
 						
 						// Achievement Rank
 						$sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY no_badges DESC ) t WHERE id_user=".$_SESSION['id_user'];
@@ -573,7 +586,7 @@ class user_manager extends mod_manager {
 
 				$tpl = "user/forgot_password";
 
-				//changed for encripted password
+				//changed for encrypted password
 				if($GLOBALS['conf']['FORGOT_PASSWORD']['password_type']){
 					$info['link'] = LBL_SITE_URL.'user/setpwd/email/'.$arr[0]['email'];
 					$info['p_type'] = $GLOBALS['conf']['FORGOT_PASSWORD']['password_type'];
