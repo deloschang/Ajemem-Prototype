@@ -1076,12 +1076,42 @@ class user_manager extends mod_manager {
 			// Note: set high so that data cannot reach this XP and trigger incorrect update
 	    } else {
 	    	// XP points have changed
-	    	
-	    	// Update the session
+	 
+	    	// Update the session with New XP points
 		    $_SESSION['exp_point'] = $res['exp_point'];
-		    
-		    // send back the new XP points
-			exit($_SESSION['exp_point']);
+		    		    
+		    // Check if user has levelled up...
+		    if ($_SESSION['exp_point'] < $_SESSION['xp_to_level']) {
+		    	
+		    	$response_data = $_SESSION['exp_point'];
+		    	// send back the new XP points
+				//exit($_SESSION['exp_point']);
+				
+				exit($response_data);
+			} else {
+			// If user has leveled up,
+				
+			// Update session level client and server-side
+				$_SESSION['level'] = $_SESSION['level'] + 1;
+				
+				$info['level']  = 'level+1';
+
+				$this->obj_user->update_this("user",$info," id_user=".$_SESSION['id_user'],1);
+				
+				
+			// Update the client xp_to_level
+				$sql_xp = "SELECT * FROM ".TABLE_PREFIX."level WHERE level=".$_SESSION['level'];
+				$results_xp = getsingleindexrow($sql_xp);
+				
+				$_SESSION['xp_to_level'] = $results_xp['xp_to_level'];
+				
+				exit();
+				
+				
+				
+				//exit();
+			}	
+				
 		    
 		    ############## Old Deprecated Pati Code #############
 		    //$percent = round((($res['exp_point'] / $tot_points) * 100), 2);
@@ -1509,8 +1539,9 @@ class user_manager extends mod_manager {
 		    $body = $this->smarty->fetch($this->smarty->add_theme_to_template($tpl));
 		    print($body);exit;
 		    $msg=sendmail($to,$subject,$body,$from);
+		    
 		    if ($msg){
-			$msg[]="Mail Sent Sucessfully TO ".$value;
+				$msg[]="Mail Sent Sucessfully TO ".$value;
 		    }
 		}
 	}

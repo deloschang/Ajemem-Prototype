@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-24 23:05:00
+<?php /* Smarty version 2.6.7, created on 2011-12-25 00:15:22
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 535, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '9e2c2111b4d3fd29b4198d83a0e5b260'; ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '97e676458b1044032c354939a4c517e8'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -228,7 +228,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			value: new_xp_percent 
 		 });
 		
-		$("#xpbar_status").html(\'(\'+ Math.round(new_xp_percent)+\'%) \'+data +\' / \'+ xp_to_level);
+		$("#xpbar_status").html(\'(\'+ Math.round(new_xp_percent)+\'%) \'+ data +\' / \'+ xp_to_level);
 		
 		// Status bar with XP pops up too
 		$("#xpbar_status").show();
@@ -557,7 +557,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9e2c2111b4d3fd29b4198d83a0e5b260#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9e2c2111b4d3fd29b4198d83a0e5b260#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:97e676458b1044032c354939a4c517e8#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:97e676458b1044032c354939a4c517e8#0}';}?>
 <br>
 				<?php endif; ?>
 
