@@ -1044,7 +1044,10 @@ class user_manager extends mod_manager {
 			exit("2");
 	    }
 	    
-	    $tot_points=2500;
+	    ###### OLD TOTAL XP 
+	    	##$tot_points=2500;
+	    #####
+	    
 	    $sql="SELECT exp_point FROM ".TABLE_PREFIX."user WHERE id_user=".$_SESSION['id_user']." LIMIT 1";
 	    $res=mysqli_fetch_assoc(mysqli_query($link,$sql));
 	    
@@ -1060,10 +1063,14 @@ class user_manager extends mod_manager {
 			// Note: set high so that data cannot reach this XP and trigger incorrect update
 	    } else {
 	    	// XP points have changed
-	    
+	    	
+	    	// Update the session
 		    $_SESSION['exp_point'] = $res['exp_point'];
+		    
+		    // send back the new XP points
 			exit($_SESSION['exp_point']);
 		    
+		    ############## Old Deprecated Pati Code #############
 		    //$percent = round((($res['exp_point'] / $tot_points) * 100), 2);
 		    
 		    //$_SESSION['xp_percent'] = $percent;

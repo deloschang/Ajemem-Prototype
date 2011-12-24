@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-24 11:51:41
+<?php /* Smarty version 2.6.7, created on 2011-12-24 13:11:39
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 467, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '094ca15670711fd96809d93691011c56'; ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 510, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'cc668f6e3309d8dbe45577ca136b0c81'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -51,6 +51,9 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 <script type="text/javascript" src="http://localhost/templates/flexyjs/jquery.bubblepopup.v2.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/jquery.bubblepopup.v2.3.1.css"/>
 
+<!-- Hover Intent -->
+<script type="text/javascript" src="http://localhost/libsext/hoverintent/jquery.hoverIntent.js"></script>
+
 <!-- XP Bar CSS + JS-->
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/jquery-ui-1.8.16.custom.css"/>
 <script type="text/javascript" src="http://localhost/libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
@@ -63,18 +66,27 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	var chc ="';  echo $this->_tpl_vars['chc'];  echo '";
 	var idu="';  echo $_SESSION['id_user'];  echo '";
 	
+	// Variables for XP updating
 	var curr_xp = ';  echo $_SESSION['exp_point'];  echo ';
-	//Leveling Xp -- test
-	var curr_xp_to_level = 2500;
+	var curr_xp_to_level = 4000;  // later move to scaling...
 	var xp_percent = (curr_xp / curr_xp_to_level) *100;
 	
 	$(document).ready(function(){			
 		console.log("Current XP is "+curr_xp);
 		console.log(xp_percent);
 		
-		// User XP displayed
+		// User XP initial display
 		$("#xpbar").progressbar({
 			value: xp_percent
+		 });
+		
+		$("#xpbar_status").html(\'(\'+ Math.round(xp_percent)+\'%) \'+curr_xp +\' / \'+ curr_xp_to_level);
+		
+		// Mouseover shows XP and %
+		$("#xpbar, #xpbar_status").hoverIntent(function(){
+			$("#xpbar_status").show();
+		 }, function() {
+			$("#xpbar_status").delay(1000).fadeOut();
 		 });
 
 		var scrn_height = window.screen.availHeight;
@@ -91,7 +103,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			setInterval("getall_notification()",3000);
 
 	    /* For popup bar */
-			setInterval("popup_expbar()",6000);
+			setInterval("popup_expbar()", 2000); 	// Pati orig set timer to 6000
 	     }
 
 	    /* TOS Fancybox Popup on First Login */
@@ -111,6 +123,12 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	     }
 
 	    if (idu) {
+		    /* For updating total login time */
+		    upd_log_time();
+	    	/* End */
+	     }
+	    
+	    	/* Deprecated XP Code
 	        $(\'.expbar\').CreateBubblePopup({
 			position :\'top\',
 			align	 : \'left\',
@@ -149,9 +167,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		  });
 	     }
 	    
-	    /* End */
-	    /* For updating total login time */
-	    upd_log_time();
 	    /* End */
 
 	 });
@@ -194,17 +209,26 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			return false;
 		 }	
 		
-		// did not update!
-		console.log(data);
+		new_xp_percent = ((data / curr_xp_to_level) * 100);
+		
 		console.log("New XP is "+data);
+		console.log("New Percentage is "+new_xp_percent);
+		
 		$("#xpbar").progressbar({
-			value: 99
+			value: new_xp_percent 
 		 });
 		
-		curr_xp = ';  echo $_SESSION['exp_point'];  echo ';
-		console.log("..JS XP Percentage is "+xp_percent);
-		//console.log("PHP Percentage updated is "+{$smarty.session.xp_percent });
-
+		$("#xpbar_status").html(\'(\'+ Math.round(new_xp_percent)+\'%) \'+data +\' / \'+ curr_xp_to_level);
+		
+		// Status bar with XP pops up too
+		$("#xpbar_status").show();
+		setTimeout(\'$("#xpbar_status").fadeOut();\', 2000);
+		
+	 }
+		
+		//console.log("Old JS XP Percentage was "+xp_percent);
+	
+	/* OLD EXP BAR CODE -- REPLACED --
 		$(\'.expbar\').CreateBubblePopup({
 			position : \'top\',
 			align	 : \'left\',
@@ -245,6 +269,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		setTimeout("closeexpbar()",8000);
 	 }
 	
+	*/
 	/*$(window).scroll(function () { 
 		var tst=$("#tst").val();
 		if (tst==\'1\'){
@@ -253,17 +278,19 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		else 
 			var s=6;
 	 });
-	*/
+	
 	function closeexpbar(){
 	    $(\'.expbar\').trigger("hidebubblepopup", [true]);
 	 }
+	*/
 	
 	function upd_log_time() {
 		  var url="http://localhost/index.php";
 		  $.post(url,{page:"user",choice:"set_login_time",ce:0 },function(res){//alert(res);
 		   })
-		  setTimeout("upd_log_time()",10000);
+		  setTimeout("upd_log_time()", 10000);
     	 }
+    	
 	function get_next_page(url, start, limit, div_id) {
 		if (!document.getElementById(div_id)) {
 			div_id = "content";
@@ -272,6 +299,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			//css_even_odd();
 		 });
 	 }
+	
 	function show_fancybox(res){
 		$.fancybox(res,{centerOnScroll:true,hideOnOverlayClick:false });
 		//$.fancybox(res,{margin:600,hideOnOverlayClick:false });
@@ -336,6 +364,21 @@ body {
 	top: 0px;
 	left: 74px;
 	right: 75px;
+	z-index: 99998;
+ }
+
+#xpbar_status {
+	position: fixed;
+	
+	font-size: 10px;
+	font: Verdana;
+	color: white;
+	
+	display: none;
+	cursor: default;
+	
+	top: 2px;
+	left: 45%;
 	z-index: 99999;
  }
 
@@ -489,7 +532,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:094ca15670711fd96809d93691011c56#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:094ca15670711fd96809d93691011c56#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:cc668f6e3309d8dbe45577ca136b0c81#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:cc668f6e3309d8dbe45577ca136b0c81#0}';}?>
 <br>
 				<?php endif; ?>
 
@@ -535,7 +578,7 @@ unset($_smarty_tpl_vars);
 		<?php if ($_SESSION['id_user']): ?>
 
 		<!-- For Experience button -->
-	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>
+<!--	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>-->
 		<!-- End -->
 		
 		<!-- For Notification button -->

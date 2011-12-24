@@ -48,6 +48,9 @@
 <script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/jquery.bubblepopup.v2.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/jquery.bubblepopup.v2.3.1.css"/>
 
+<!-- Hover Intent -->
+<script type="text/javascript" src="##LBL_SITE_URL##libsext/hoverintent/jquery.hoverIntent.js"></script>
+
 <!-- XP Bar CSS + JS-->
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/jquery-ui-1.8.16.custom.css"/>
 <script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
@@ -60,18 +63,27 @@
 	var chc ="{/literal}{$chc}{literal}";
 	var idu="{/literal}{$smarty.session.id_user}{literal}";
 	
+	// Variables for XP updating
 	var curr_xp = {/literal}{$smarty.session.exp_point}{literal};
-	//Leveling Xp -- test
-	var curr_xp_to_level = 2500;
+	var curr_xp_to_level = 4000;  // later move to scaling...
 	var xp_percent = (curr_xp / curr_xp_to_level) *100;
 	
 	$(document).ready(function(){			
 		console.log("Current XP is "+curr_xp);
 		console.log(xp_percent);
 		
-		// User XP displayed
+		// User XP initial display
 		$("#xpbar").progressbar({
 			value: xp_percent
+		});
+		
+		$("#xpbar_status").html('('+ Math.round(xp_percent)+'%) '+curr_xp +' / '+ curr_xp_to_level);
+		
+		// Mouseover shows XP and %
+		$("#xpbar, #xpbar_status").hoverIntent(function(){
+			$("#xpbar_status").show();
+		}, function() {
+			$("#xpbar_status").delay(1000).fadeOut();
 		});
 
 		var scrn_height = window.screen.availHeight;
@@ -88,7 +100,7 @@
 			setInterval("getall_notification()",3000);
 
 	    /* For popup bar */
-			setInterval("popup_expbar()",6000);
+			setInterval("popup_expbar()", 2000); 	// Pati orig set timer to 6000
 	    }
 
 	    /* TOS Fancybox Popup on First Login */
@@ -108,6 +120,12 @@
 	    }
 
 	    if (idu) {
+		    /* For updating total login time */
+		    upd_log_time();
+	    	/* End */
+	    }
+	    
+	    	/* Deprecated XP Code
 	        $('.expbar').CreateBubblePopup({
 			position :'top',
 			align	 : 'left',
@@ -146,9 +164,6 @@
 		 });
 	    }
 	    
-	    /* End */
-	    /* For updating total login time */
-	    upd_log_time();
 	    /* End */
 
 	});
@@ -191,17 +206,26 @@
 			return false;
 		}	
 		
-		// did not update!
-		console.log(data);
+		new_xp_percent = ((data / curr_xp_to_level) * 100);
+		
 		console.log("New XP is "+data);
+		console.log("New Percentage is "+new_xp_percent);
+		
 		$("#xpbar").progressbar({
-			value: 99
+			value: new_xp_percent 
 		});
 		
-		curr_xp = {/literal}{$smarty.session.exp_point}{literal};
-		console.log("..JS XP Percentage is "+xp_percent);
-		//console.log("PHP Percentage updated is "+{$smarty.session.xp_percent});
-
+		$("#xpbar_status").html('('+ Math.round(new_xp_percent)+'%) '+data +' / '+ curr_xp_to_level);
+		
+		// Status bar with XP pops up too
+		$("#xpbar_status").show();
+		setTimeout('$("#xpbar_status").fadeOut();', 2000);
+		
+	}
+		
+		//console.log("Old JS XP Percentage was "+xp_percent);
+	
+	/* OLD EXP BAR CODE -- REPLACED --
 		$('.expbar').CreateBubblePopup({
 			position : 'top',
 			align	 : 'left',
@@ -242,6 +266,7 @@
 		setTimeout("closeexpbar()",8000);
 	}
 	
+	*/
 	/*$(window).scroll(function () { 
 		var tst=$("#tst").val();
 		if (tst=='1'){
@@ -250,17 +275,19 @@
 		else 
 			var s=6;
 	});
-	*/
+	
 	function closeexpbar(){
 	    $('.expbar').trigger("hidebubblepopup", [true]);
 	}
+	*/
 	
 	function upd_log_time() {
 		  var url="##LBL_SITE_URL##index.php";
 		  $.post(url,{page:"user",choice:"set_login_time",ce:0},function(res){//alert(res);
 		  })
-		  setTimeout("upd_log_time()",10000);
+		  setTimeout("upd_log_time()", 10000);
     	}
+    	
 	function get_next_page(url, start, limit, div_id) {
 		if (!document.getElementById(div_id)) {
 			div_id = "content";
@@ -269,6 +296,7 @@
 			//css_even_odd();
 		});
 	}
+	
 	function show_fancybox(res){
 		$.fancybox(res,{centerOnScroll:true,hideOnOverlayClick:false});
 		//$.fancybox(res,{margin:600,hideOnOverlayClick:false});
@@ -333,6 +361,21 @@ body {
 	top: 0px;
 	left: 74px;
 	right: 75px;
+	z-index: 99998;
+}
+
+#xpbar_status {
+	position: fixed;
+	
+	font-size: 10px;
+	font: Verdana;
+	color: white;
+	
+	display: none;
+	cursor: default;
+	
+	top: 2px;
+	left: 45%;
 	z-index: 99999;
 }
 
@@ -493,7 +536,7 @@ body {
 		{if $smarty.session.id_user}
 
 		<!-- For Experience button -->
-	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>
+<!--	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>-->
 		<!-- End -->
 		
 		<!-- For Notification button -->
