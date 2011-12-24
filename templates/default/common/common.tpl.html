@@ -62,11 +62,11 @@
 	
 	var curr_xp = {/literal}{$smarty.session.exp_point}{literal};
 	//Leveling Xp -- test
-	var curr_xp_to_level = 5000;
+	var curr_xp_to_level = 2500;
 	var xp_percent = (curr_xp / curr_xp_to_level) *100;
 	
 	$(document).ready(function(){			
-		
+		console.log("Current XP is "+curr_xp);
 		console.log(xp_percent);
 		
 		// User XP displayed
@@ -187,9 +187,20 @@
 			data = httpRequest.responseText;
 		}
 		
-		if(data == 1){
+		if(data == 90999999999){
 			return false;
-		}
+		}	
+		
+		// did not update!
+		console.log(data);
+		console.log("New XP is "+data);
+		$("#xpbar").progressbar({
+			value: 99
+		});
+		
+		curr_xp = {/literal}{$smarty.session.exp_point}{literal};
+		console.log("..JS XP Percentage is "+xp_percent);
+		//console.log("PHP Percentage updated is "+{$smarty.session.xp_percent});
 
 		$('.expbar').CreateBubblePopup({
 			position : 'top',

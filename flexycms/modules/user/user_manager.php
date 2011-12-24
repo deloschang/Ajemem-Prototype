@@ -1044,7 +1044,7 @@ class user_manager extends mod_manager {
 			exit("2");
 	    }
 	    
-	    $tot_points=3000;
+	    $tot_points=2500;
 	    $sql="SELECT exp_point FROM ".TABLE_PREFIX."user WHERE id_user=".$_SESSION['id_user']." LIMIT 1";
 	    $res=mysqli_fetch_assoc(mysqli_query($link,$sql));
 	    
@@ -1056,12 +1056,20 @@ class user_manager extends mod_manager {
 	    
 	    if(($_SESSION['exp_point'] == $res['exp_point']) && $this->_input['chk']=='1'){
 			// Exp points have not changed
-			exit("1");
+			exit("90999999999");		
+			// Note: set high so that data cannot reach this XP and trigger incorrect update
 	    } else {
+	    	// XP points have changed
+	    
 		    $_SESSION['exp_point'] = $res['exp_point'];
-		    $percent = round((($res['exp_point'] / $tot_points) * 100), 2);
-		    $this->_output['points'] = $percent;
-		    $this->_output['tpl'] = "user/experience_bar";
+			exit($_SESSION['exp_point']);
+		    
+		    //$percent = round((($res['exp_point'] / $tot_points) * 100), 2);
+		    
+		    //$_SESSION['xp_percent'] = $percent;
+		    
+		    //$this->_output['points'] = $percent;
+		    //$this->_output['tpl'] = "user/experience_bar";
 	    }
 	}
 	

@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-24 10:57:02
+<?php /* Smarty version 2.6.7, created on 2011-12-24 11:51:41
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 456, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '8d37bfeb36a8d254d16291fb9a843cfa'; ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 467, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '094ca15670711fd96809d93691011c56'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -65,11 +65,11 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	
 	var curr_xp = ';  echo $_SESSION['exp_point'];  echo ';
 	//Leveling Xp -- test
-	var curr_xp_to_level = 5000;
+	var curr_xp_to_level = 2500;
 	var xp_percent = (curr_xp / curr_xp_to_level) *100;
 	
 	$(document).ready(function(){			
-		
+		console.log("Current XP is "+curr_xp);
 		console.log(xp_percent);
 		
 		// User XP displayed
@@ -190,9 +190,20 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			data = httpRequest.responseText;
 		 }
 		
-		if(data == 1){
+		if(data == 90999999999){
 			return false;
-		 }
+		 }	
+		
+		// did not update!
+		console.log(data);
+		console.log("New XP is "+data);
+		$("#xpbar").progressbar({
+			value: 99
+		 });
+		
+		curr_xp = ';  echo $_SESSION['exp_point'];  echo ';
+		console.log("..JS XP Percentage is "+xp_percent);
+		//console.log("PHP Percentage updated is "+{$smarty.session.xp_percent });
 
 		$(\'.expbar\').CreateBubblePopup({
 			position : \'top\',
@@ -478,7 +489,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:8d37bfeb36a8d254d16291fb9a843cfa#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:8d37bfeb36a8d254d16291fb9a843cfa#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:094ca15670711fd96809d93691011c56#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:094ca15670711fd96809d93691011c56#0}';}?>
 <br>
 				<?php endif; ?>
 
