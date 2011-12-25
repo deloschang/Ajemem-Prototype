@@ -73,7 +73,7 @@
 	if (user_level == 1) {
 		var xp_percent = (curr_xp / xp_to_level) * 100;
 	} else {
-		xp_percent = ((curr_xp - previous_xp_to_level) / xp_to_level) * 100;
+		xp_percent = ((curr_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level)) * 100;
 	}
 	
 	$(document).ready(function(){			
@@ -91,7 +91,7 @@
 		});
 		
 		$("#user_level").html('L'+user_level);
-		$("#xpbar_status").html('('+ xp_percent.toFixed(2) +'%) '+ (curr_xp - previous_xp_to_level) +' / '+ xp_to_level);
+		$("#xpbar_status").html('('+ xp_percent.toFixed(2) +'%) '+ (curr_xp - previous_xp_to_level) +' / '+ (xp_to_level - previous_xp_to_level));
 		
 		// Mouseover shows XP and %
 		$("#xpbar, #xpbar_status").hoverIntent({
@@ -144,47 +144,6 @@
 	    	/* End */
 	    }
 	    
-	    	/* Deprecated XP Code
-	        $('.expbar').CreateBubblePopup({
-			position :'top',
-			align	 : 'left',
-			tail	 : {align: 'left'},
-			innerHtml: '<img src="##LBL_SITE_URL##templates/css_theme/images/loading.gif" style="border:0px; vertical-align:middle; display:inline;" >loading!',
-			innerHtmlStyle: {color:'#FFFFFF','text-align':'center'},
-			themeName: 	'all-blue',
-			themePath: 	'##LBL_SITE_URL##templates/css_theme/images/jquerybubblepopup-theme',
-			alwaysVisible: false,
-			closingDelay: 2000,
-			afterShown: function () {
-				$("#tst").val(1);
-			},
-	            	afterHidden: function () {
-				$("#tst").val(2);
-			}
-		});
-
-		 	$('.expbar').mouseover(function(){
-		   		var button = $(this);
-		   		$.get('##LBL_SITE_URL##user/getExperience/ce/0', function(data) {
-			   		var seconds_to_wait = 1;
-			    	function pause(){
-				    	var timer = setTimeout(function(){
-					 	   seconds_to_wait--;
-					    	if(seconds_to_wait > 0){
-							    pause();
-					    	} else {
-						  		if(data!=2){
-						    		button.SetBubblePopupInnerHtml(data, false);
-						  }
-					    };
-				    }, 1000);
-			    };pause();
-		    	});
-		 });
-	    }
-	    
-	    /* End */
-
 	});
 	function getall_notification(){
 	    var url="##LBL_SITE_URL##manage/getall_notification";
@@ -267,14 +226,10 @@
 			calc_new_xp_percent = new_xp - parseInt(previous_xp_to_level);
 			new_xp_percent = calc_new_xp_percent / (new_xp_to_level - previous_xp_to_level) * 100;
 			
-			console.log("NEW XP is "+new_xp);
 			console.log("XP TO LEVEL is "+xp_to_level);
 			console.log("NEW XP TO LEVEL IS "+new_xp_to_level);
-			console.log("NEW XP PERCENT IS  "+new_xp_percent);
 			console.log(calc_new_xp_percent);
-			
-			// Clobber old value with new_xp_to_level	
-			
+						
 			console.log("PREVIOUS XP TO LEVEL IS "+previous_xp_to_level);
 			
 			xp_to_level = new_xp_to_level;
