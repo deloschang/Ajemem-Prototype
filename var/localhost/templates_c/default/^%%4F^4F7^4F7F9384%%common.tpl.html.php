@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-25 05:21:07
+<?php /* Smarty version 2.6.7, created on 2011-12-25 06:47:19
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 596, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '520e6d18d20d8a11d6309b362a797020'; ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 600, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'e6708582f0da0be4a55d075f676a72e7'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -228,6 +228,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			return false;
 		 }	
 		
+		// XP has changed
 		if (data.indexOf(",") == -1) {
 			// User has not levelled
 			console.log("user has not levelled");
@@ -246,7 +247,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			 } else {
 				console.log("New Total XP is "+new_xp);
 				console.log("Previous XP to Level is "+previous_xp_to_level);
-				new_xp_percent = (new_xp - previous_xp_to_level) / xp_to_level * 100;
+				new_xp_percent = (new_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
 			 }
 			
 		 } else {
@@ -264,18 +265,21 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			// [2] -- New XP to level
 			new_xp_to_level = ajax_response[2];
 			
-			calc_new_xp_percent = new_xp - xp_to_level - parseInt(previous_xp_to_level);
-			new_xp_percent = calc_new_xp_percent / new_xp_to_level * 100;
+			previous_xp_to_level = xp_to_level;
+			
+			calc_new_xp_percent = new_xp - parseInt(previous_xp_to_level);
+			new_xp_percent = calc_new_xp_percent / (new_xp_to_level - previous_xp_to_level) * 100;
 			
 			console.log("NEW XP is "+new_xp);
 			console.log("XP TO LEVEL is "+xp_to_level);
-			console.log("PREVIOUS XP TO LEVEL IS "+previous_xp_to_level);
 			console.log("NEW XP TO LEVEL IS "+new_xp_to_level);
 			console.log("NEW XP PERCENT IS  "+new_xp_percent);
 			console.log(calc_new_xp_percent);
 			
 			// Clobber old value with new_xp_to_level	
-			previous_xp_to_level = xp_to_level;
+			
+			console.log("PREVIOUS XP TO LEVEL IS "+previous_xp_to_level);
+			
 			xp_to_level = new_xp_to_level;
 			
 			 
@@ -289,7 +293,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			value: new_xp_percent 
 		 });
 		
-		$("#xpbar_status").html(\'(\'+ new_xp_percent.toFixed(2) +\'%) \'+ (new_xp - previous_xp_to_level) +\' / \'+ xp_to_level);
+		$("#xpbar_status").html(\'(\'+ new_xp_percent.toFixed(2) +\'%) \'+ (new_xp - previous_xp_to_level) +\' / \'+ (xp_to_level - previous_xp_to_level));
 		
 		// Status bar with XP pops up too
 		$("#xpbar_status").show();
@@ -618,7 +622,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:520e6d18d20d8a11d6309b362a797020#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:520e6d18d20d8a11d6309b362a797020#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:e6708582f0da0be4a55d075f676a72e7#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:e6708582f0da0be4a55d075f676a72e7#0}';}?>
 <br>
 				<?php endif; ?>
 

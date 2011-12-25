@@ -244,7 +244,7 @@
 			} else {
 				console.log("New Total XP is "+new_xp);
 				console.log("Previous XP to Level is "+previous_xp_to_level);
-				new_xp_percent = (new_xp - previous_xp_to_level) / xp_to_level * 100;
+				new_xp_percent = (new_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
 			}
 			
 		} else {
@@ -262,8 +262,10 @@
 			// [2] -- New XP to level
 			new_xp_to_level = ajax_response[2];
 			
-			calc_new_xp_percent = new_xp - xp_to_level - parseInt(previous_xp_to_level);
-			new_xp_percent = calc_new_xp_percent / new_xp_to_level * 100;
+			previous_xp_to_level = xp_to_level;
+			
+			calc_new_xp_percent = new_xp - parseInt(previous_xp_to_level);
+			new_xp_percent = calc_new_xp_percent / (new_xp_to_level - previous_xp_to_level) * 100;
 			
 			console.log("NEW XP is "+new_xp);
 			console.log("XP TO LEVEL is "+xp_to_level);
@@ -272,7 +274,7 @@
 			console.log(calc_new_xp_percent);
 			
 			// Clobber old value with new_xp_to_level	
-			previous_xp_to_level = xp_to_level;
+			
 			console.log("PREVIOUS XP TO LEVEL IS "+previous_xp_to_level);
 			
 			xp_to_level = new_xp_to_level;
@@ -288,7 +290,7 @@
 			value: new_xp_percent 
 		});
 		
-		$("#xpbar_status").html('('+ new_xp_percent.toFixed(2) +'%) '+ (new_xp - previous_xp_to_level) +' / '+ xp_to_level);
+		$("#xpbar_status").html('('+ new_xp_percent.toFixed(2) +'%) '+ (new_xp - previous_xp_to_level) +' / '+ (xp_to_level - previous_xp_to_level));
 		
 		// Status bar with XP pops up too
 		$("#xpbar_status").show();

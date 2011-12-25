@@ -1084,7 +1084,7 @@ class user_manager extends mod_manager {
 		    $_SESSION['exp_point'] = $res['exp_point'];
 		    		    
 		    // Check if user has levelled up...
-		    if (($_SESSION['exp_point'] - $_SESSION['previous_xp_to_level']) < $_SESSION['xp_to_level']) {
+		    if ($_SESSION['exp_point'] < $_SESSION['xp_to_level']) {
 		    	
 		    	// Previous XPs needed if user JUST levelled up (var is stuck)
 		    	$response_data = $_SESSION['exp_point']."~".$_SESSION['previous_xp_to_level']."~".$_SESSION['level'];
