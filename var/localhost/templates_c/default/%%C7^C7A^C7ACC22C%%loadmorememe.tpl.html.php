@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-25 09:46:09
+<?php /* Smarty version 2.6.7, created on 2011-12-25 09:50:28
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 36, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 67, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 25/12/2011 09:46:09 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 25/12/2011 09:50:27 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -93,15 +93,13 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 <!-- Reply-->
 			    <?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
 			    <label id="repl<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-"><?php echo $this->_tpl_vars['x']['tot_reply']; ?>
-</label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+"><?php if ($this->_tpl_vars['x']['tot_reply'] != 0):  echo $this->_tpl_vars['x']['tot_reply'];  endif; ?></label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ');"><img src="http://localhost/templates/images/reply.gif" />Reply</a>&emsp;
 			    <?php endif; ?> 
 
 <!-- Honor -->
 			    <label id="aggr<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-"><?php echo $this->_tpl_vars['x']['tot_honour']; ?>
-</label>&nbsp;<a href="javascript:void(0);" id="agr_link<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+"><?php if ($this->_tpl_vars['x']['tot_honour'] != 0):  echo $this->_tpl_vars['x']['tot_honour'];  endif; ?></label>&nbsp;<a href="javascript:void(0);" id="agr_link<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " 
 			    
 			    				    	<?php if ($_SESSION['id_user']): ?>
@@ -116,8 +114,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 
 <!-- Dishonor -->
 			    <label id="disaggr<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-"><?php echo $this->_tpl_vars['x']['tot_dishonour']; ?>
-</label>&nbsp;<a href="javascript:void(0);" id="disagr_link<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+"><?php if ($this->_tpl_vars['x']['tot_dishonour'] != 0):  echo $this->_tpl_vars['x']['tot_dishonour'];  endif; ?></label>&nbsp;<a href="javascript:void(0);" id="disagr_link<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " 
 			    				    	<?php if ($_SESSION['id_user']): ?>
 			    		<?php if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )): ?>
@@ -133,8 +130,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 <!-- Add Caption -->
 			    <?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
 			    &nbsp;<label id="capt<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-"><?php echo $this->_tpl_vars['x']['tot_caption']; ?>
- </label> <a href="javascript:void(0)" onclick="get_captions('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+"><?php if ($this->_tpl_vars['x']['tot_caption'] != 0):  echo $this->_tpl_vars['x']['tot_caption'];  endif; ?></label> <a href="javascript:void(0)" onclick="get_captions('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ');" >Add Caption</a>
 			    <?php endif; ?>
 

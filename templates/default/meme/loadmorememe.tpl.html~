@@ -6,18 +6,6 @@
 	var id = "{/literal}{$sm.last_idmeme}{literal}";
 	var new_ids = "{/literal}{$sm.id_memes}{literal}";
 	
-<!--	Experimental Hover Feed-->
-<!--	function hover_feed(id,imageid,title){-->
-<!--		$('#memeimage'+id).mouseenter(function() {-->
-<!--			$.fancybox(-->
-<!--				{href : '##LBL_SITE_URL##image/thumb/meme/'+imageid,-->
-<!--				title : title}-->
-<!--			);-->
-<!--		}).mouseleave(function () {-->
-<!--			console.log("close fire");-->
-<!--		});-->
-<!--    }-->
-	
 	if(id!=''){
 	    $("#last_id_meme_cur_page").val(id);
 	    var id_memes = $("#rand_id_memes").val();
@@ -78,11 +66,11 @@
 
 <!-- Reply-->
 			    {if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
-			    <label id="repl{$x.id_meme}">{$x.tot_reply}</label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('{$x.id_meme}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;
+			    <label id="repl{$x.id_meme}">{if $x.tot_reply != 0}{$x.tot_reply}{/if}</label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('{$x.id_meme}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;
 			    {/if} 
 
 <!-- Honor -->
-			    <label id="aggr{$x.id_meme}">{$x.tot_honour}</label>&nbsp;<a href="javascript:void(0);" id="agr_link{$x.id_meme}" 
+			    <label id="aggr{$x.id_meme}">{if $x.tot_honour != 0}{$x.tot_honour}{/if}</label>&nbsp;<a href="javascript:void(0);" id="agr_link{$x.id_meme}" 
 			    
 			    	{* Added by Delos: highlights according to agree/disagree *}
 			    	{if $smarty.session.id_user}
@@ -95,7 +83,7 @@
 			    onclick="set_tot_adaggr('{$x.id_meme}','A');">Honor{*$x.honour_id_user*}</a>&emsp;
 
 <!-- Dishonor -->
-			    <label id="disaggr{$x.id_meme}">{$x.tot_dishonour}</label>&nbsp;<a href="javascript:void(0);" id="disagr_link{$x.id_meme}" 
+			    <label id="disaggr{$x.id_meme}">{if $x.tot_dishonour != 0}{$x.tot_dishonour}{/if}</label>&nbsp;<a href="javascript:void(0);" id="disagr_link{$x.id_meme}" 
 			    	{* Added by Delos: highlights according to agree/disagree *}
 			    	{if $smarty.session.id_user}
 			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
