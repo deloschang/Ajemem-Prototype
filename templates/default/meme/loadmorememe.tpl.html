@@ -6,18 +6,6 @@
 	var id = "{/literal}{$sm.last_idmeme}{literal}";
 	var new_ids = "{/literal}{$sm.id_memes}{literal}";
 	
-<!--	Experimental Hover Feed-->
-<!--	function hover_feed(id,imageid,title){-->
-<!--		$('#memeimage'+id).mouseenter(function() {-->
-<!--			$.fancybox(-->
-<!--				{href : '##LBL_SITE_URL##image/thumb/meme/'+imageid,-->
-<!--				title : title}-->
-<!--			);-->
-<!--		}).mouseleave(function () {-->
-<!--			console.log("close fire");-->
-<!--		});-->
-<!--    }-->
-	
 	if(id!=''){
 	    $("#last_id_meme_cur_page").val(id);
 	    var id_memes = $("#rand_id_memes").val();
@@ -53,7 +41,7 @@
 				{/if}
 			{/if}
 					
-		" align="left" onMouseOver="hover_feed('{$x.id_meme}','{$x.image}','{$x.title|capitalize}');" />
+		" align="left"/>
 
 			<span style="vertical-align: top; padding-left:5px; font-size: 15px">
 			<b>

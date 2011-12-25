@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-25 00:15:22
+<?php /* Smarty version 2.6.7, created on 2011-12-25 05:21:08
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 48, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 79, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 36, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 67, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 25/12/2011 00:15:22 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 25/12/2011 05:21:08 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -11,18 +11,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <script type="text/javascript">
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
-	
-<!--	Experimental Hover Feed-->
-<!--	function hover_feed(id,imageid,title){-->
-<!--		$(\'#memeimage\'+id).mouseenter(function() {-->
-<!--			$.fancybox(-->
-<!--				{href : \'http://localhost/image/thumb/meme/\'+imageid,-->
-<!--				title : title }-->
-<!--			);-->
-<!--		 }).mouseleave(function () {-->
-<!--			console.log("close fire");-->
-<!--		 });-->
-<!--     }-->
 	
 	if(id!=\'\'){
 	    $("#last_id_meme_cur_page").val(id);
@@ -70,10 +58,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 				<?php endif; ?>
 			<?php endif; ?>
 					
-		" align="left" onMouseOver="hover_feed('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-','<?php echo $this->_tpl_vars['x']['image']; ?>
-','<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
-');" />
+		" align="left"/>
 
 			<span style="vertical-align: top; padding-left:5px; font-size: 15px">
 			<b>

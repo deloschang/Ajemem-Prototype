@@ -65,16 +65,25 @@
 	
 	// Variables for XP updating
 	var curr_xp = {/literal}{$smarty.session.exp_point}{literal};
-	var xp_to_level = {/literal}{$smarty.session.xp_to_level}{literal}
-	
-	var xp_percent = (curr_xp / xp_to_level) * 100;
-	var user_level = {/literal}{$smarty.session.level}{literal}
+	var xp_to_level = {/literal}{$smarty.session.xp_to_level}{literal};
+	var previous_xp_to_level = {/literal}{$smarty.session.previous_xp_to_level}{literal};
+
+	var user_level = {/literal}{$smarty.session.level}{literal};
+
+	if (user_level == 1) {
+		var xp_percent = (curr_xp / xp_to_level) * 100;
+	} else {
+		xp_percent = ((curr_xp - previous_xp_to_level) / xp_to_level) * 100;
+	}
 	
 	$(document).ready(function(){			
-		console.log("Current XP is "+curr_xp);
-		console.log(xp_percent);
 		console.log("User level is "+user_level);
+		console.log("Total XP is "+curr_xp);
 		console.log("XP needed to level is "+xp_to_level);
+		console.log("XP Percent displayed is "+xp_percent);
+		
+		console.log("Previous XP To level is "+previous_xp_to_level);
+		
 		
 		// User XP initial display
 		$("#xpbar").progressbar({
@@ -82,7 +91,7 @@
 		});
 		
 		$("#user_level").html('L'+user_level);
-		$("#xpbar_status").html('('+ Math.round(xp_percent)+'%) '+curr_xp +' / '+ xp_to_level);
+		$("#xpbar_status").html('('+ xp_percent.toFixed(2) +'%) '+ (curr_xp - previous_xp_to_level) +' / '+ xp_to_level);
 		
 		// Mouseover shows XP and %
 		$("#xpbar, #xpbar_status").hoverIntent({
@@ -216,16 +225,70 @@
 			return false;
 		}	
 		
-		new_xp_percent = ((data / xp_to_level) * 100);
+		// XP has changed
+		if (data.indexOf(",") == -1) {
+			// User has not levelled
+			console.log("user has not levelled");
+			
+			var ajax_response_main = data.split('~');
+			new_xp = ajax_response_main[0];
+			previous_xp_to_level = ajax_response_main[1];
+			user_level = ajax_response_main[2];
+			
+			console.log("User Level is "+user_level);
+			console.log("Previous XP to Level is "+previous_xp_to_level);
+			console.log("XP_TO_LEVEL is "+xp_to_level);
+			
+			if (user_level == 1) {
+				new_xp_percent = (new_xp / xp_to_level) * 100;
+			} else {
+				console.log("New Total XP is "+new_xp);
+				console.log("Previous XP to Level is "+previous_xp_to_level);
+				new_xp_percent = (new_xp - previous_xp_to_level) / xp_to_level * 100;
+			}
+			
+		} else {
+			// User level has changed; Unpack data
+			console.log("user has levelled");
+												
+			var ajax_response = data.split(',');
+			// [0] -- New XP
+			new_xp = ajax_response[0]; 
+			// [1] -- New level
+			new_level = ajax_response[1];
+			$("#user_level").html('L'+new_level);
+			$("#left_pan_level").html('L'+new_level);
+			
+			// [2] -- New XP to level
+			new_xp_to_level = ajax_response[2];
+			
+			calc_new_xp_percent = new_xp - xp_to_level - parseInt(previous_xp_to_level);
+			new_xp_percent = calc_new_xp_percent / new_xp_to_level * 100;
+			
+			console.log("NEW XP is "+new_xp);
+			console.log("XP TO LEVEL is "+xp_to_level);
+			console.log("NEW XP TO LEVEL IS "+new_xp_to_level);
+			console.log("NEW XP PERCENT IS  "+new_xp_percent);
+			console.log(calc_new_xp_percent);
+			
+			// Clobber old value with new_xp_to_level	
+			previous_xp_to_level = xp_to_level;
+			console.log("PREVIOUS XP TO LEVEL IS "+previous_xp_to_level);
+			
+			xp_to_level = new_xp_to_level;
+			
+			 
 		
-		console.log("New XP is "+data);
-		console.log("New Percentage is "+new_xp_percent);
+		}	
+		
+		console.log("New XP is " + new_xp);
+		console.log("New Percentage is " + new_xp_percent);
 		
 		$("#xpbar").progressbar({
 			value: new_xp_percent 
 		});
 		
-		$("#xpbar_status").html('('+ Math.round(new_xp_percent)+'%) '+ data +' / '+ xp_to_level);
+		$("#xpbar_status").html('('+ new_xp_percent.toFixed(2) +'%) '+ (new_xp - previous_xp_to_level) +' / '+ xp_to_level);
 		
 		// Status bar with XP pops up too
 		$("#xpbar_status").show();

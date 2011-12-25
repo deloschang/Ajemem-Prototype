@@ -206,16 +206,19 @@ class user_manager extends mod_manager {
 						// User Level
 						$_SESSION['exp_point'] = $result['exp_point'];
 						$_SESSION['level'] = $result['level'];
+						$previous_level = $result['level'] - 1;
 						
 						// Find XP to Next Level
 						$sql_xp = "SELECT * FROM ".TABLE_PREFIX."level WHERE level=".$_SESSION['level'];
-						var_dump($sql);
+						$sql_previous_xp = "SELECT * FROM ".TABLE_PREFIX."level WHERE level=".$previous_level;
 						
 	   					$results_xp = getsingleindexrow($sql_xp);
+	   					$results_previous_xp = getsingleindexrow($sql_previous_xp);
 	   					
 	   					//var_dump((int)$results_xp['xp_to_level']);
 	   					//exit();
 						$_SESSION['xp_to_level'] = (int)$results_xp['xp_to_level'];
+						$_SESSION['previous_xp_to_level'] = (int)$results_previous_xp['xp_to_level'];
 						
 						// Achievement Rank
 						$sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY no_badges DESC ) t WHERE id_user=".$_SESSION['id_user'];
@@ -1081,9 +1084,10 @@ class user_manager extends mod_manager {
 		    $_SESSION['exp_point'] = $res['exp_point'];
 		    		    
 		    // Check if user has levelled up...
-		    if ($_SESSION['exp_point'] < $_SESSION['xp_to_level']) {
+		    if (($_SESSION['exp_point'] - $_SESSION['previous_xp_to_level']) < $_SESSION['xp_to_level']) {
 		    	
-		    	$response_data = $_SESSION['exp_point'];
+		    	// Previous XPs needed if user JUST levelled up (var is stuck)
+		    	$response_data = $_SESSION['exp_point']."~".$_SESSION['previous_xp_to_level']."~".$_SESSION['level'];
 		    	// send back the new XP points
 				//exit($_SESSION['exp_point']);
 				
@@ -1091,21 +1095,25 @@ class user_manager extends mod_manager {
 			} else {
 			// If user has leveled up,
 				
-			// Update session level client and server-side
+				// Update client-side level
 				$_SESSION['level'] = $_SESSION['level'] + 1;
 				
+				// Update server-side level
 				$info['level']  = 'level+1';
-
 				$this->obj_user->update_this("user",$info," id_user=".$_SESSION['id_user'],1);
 				
 				
-			// Update the client xp_to_level
+				// Update the client xp_to_level
 				$sql_xp = "SELECT * FROM ".TABLE_PREFIX."level WHERE level=".$_SESSION['level'];
 				$results_xp = getsingleindexrow($sql_xp);
 				
+				// Move levels up by 1 (switch previous level to update session)
+				$_SESSION['previous_xp_to_level'] = $_SESSION['xp_to_level'];
 				$_SESSION['xp_to_level'] = $results_xp['xp_to_level'];
 				
-				exit();
+				// Pack new XP, new level, new xp_to_level in data
+				$response_data = $_SESSION['exp_point'].",".$_SESSION['level'].",".$_SESSION['xp_to_level'];
+				exit($response_data);
 				
 				
 				
