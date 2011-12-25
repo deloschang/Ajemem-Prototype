@@ -243,10 +243,8 @@
 		}
 			 
 		
-		}	
-		
-		console.log("New XP is " + new_xp);
-		console.log("New Percentage is " + new_xp_percent);
+		//console.log("New XP is " + new_xp);
+		//console.log("New Percentage is " + new_xp_percent);
 		
 		$("#xpbar").progressbar({
 			value: new_xp_percent 
@@ -257,6 +255,8 @@
 		// Status bar with XP pops up too
 		$("#xpbar_status").show();
 		setTimeout('$("#xpbar_status").fadeOut();', 2000);
+		
+	}
 	
 	function upd_log_time() {
 		  var url="##LBL_SITE_URL##index.php";
