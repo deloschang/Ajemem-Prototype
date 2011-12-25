@@ -1,30 +1,30 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-25 09:50:16
+<?php /* Smarty version 2.6.7, created on 2011-12-25 10:00:18
          compiled from user/left_pan.tpl.html */
 
-$this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = '09dc2dce845e0eb1677ca89a03cd1cfa';
+$this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = 'fc659acd9cc1bac202fa508831a415d8';
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 12, false),array('function', 'get_mod', 'user/left_pan.tpl.html', 31, false),)), $this); ?>
 <?php
-function _smarty_tplfunc_09dc2dce845e0eb1677ca89a03cd1cfa_0(&$_smarty)
+function _smarty_tplfunc_fc659acd9cc1bac202fa508831a415d8_0(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'achievements','mgr' => 'achievements','choice' => 'badge_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_09dc2dce845e0eb1677ca89a03cd1cfa_1(&$_smarty)
+function _smarty_tplfunc_fc659acd9cc1bac202fa508831a415d8_1(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_09dc2dce845e0eb1677ca89a03cd1cfa_2(&$_smarty)
+function _smarty_tplfunc_fc659acd9cc1bac202fa508831a415d8_2(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_09dc2dce845e0eb1677ca89a03cd1cfa_3(&$_smarty)
+function _smarty_tplfunc_fc659acd9cc1bac202fa508831a415d8_3(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_meme','gmod' => 1), $_smarty);
 }
