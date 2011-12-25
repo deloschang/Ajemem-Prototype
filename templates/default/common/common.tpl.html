@@ -234,6 +234,13 @@
 			
 			xp_to_level = new_xp_to_level;
 			
+			// Level has a "live feed like flash"
+			$("#left_pan_level").css("background", '#81D4A2');
+	    	$("#left_pan_level").animate( { "opacity" : 0.4 }, 700, function() {
+				$("#left_pan_level").css("background","white");
+				$("#left_pan_level").animate( { "opacity" : 1 }, 300)
+			});
+		}
 			 
 		
 		}	
@@ -250,66 +257,6 @@
 		// Status bar with XP pops up too
 		$("#xpbar_status").show();
 		setTimeout('$("#xpbar_status").fadeOut();', 2000);
-		
-	}
-		
-		//console.log("Old JS XP Percentage was "+xp_percent);
-	
-	/* OLD EXP BAR CODE -- REPLACED --
-		$('.expbar').CreateBubblePopup({
-			position : 'top',
-			align	 : 'left',
-			tail	 : {align: 'left'},
-			innerHtml: '<img src="##LBL_SITE_URL##templates/css_theme/images/loading.gif" style="border:0px; vertical-align:middle; display:inline;" >loading!',
-			innerHtmlStyle: {color:'#CCCCCC','text-align':'center'},
-			themeName: 	'all-blue',
-			themePath: 	'##LBL_SITE_URL##templates/css_theme/images/jquerybubblepopup-theme',
-			alwaysVisible: false,
-			closingDelay: 500,
-			afterShown: function () {
-				$("#tst").val(1);
-			},
-	            	afterHidden: function () {
-				$("#tst").val(2);
-			}
-		});
-		
-		var button = $('.expbar');
-
-		var seconds_to_wait = 1;
-		
-		function pause(){
-			var timer = setTimeout(function(){
-				seconds_to_wait--;
-				if(seconds_to_wait > 0){
-					pause();
-					} else {
-						if(data != 2)
-							button.SetBubblePopupInnerHtml(data, false);
-					};
-				},1000);
-		};
-	
-	pause();
-		
-		$('.expbar').ShowBubblePopup();
-		setTimeout("closeexpbar()",8000);
-	}
-	
-	*/
-	/*$(window).scroll(function () { 
-		var tst=$("#tst").val();
-		if (tst=='1'){
-		  window.scroll=false;
-		}
-		else 
-			var s=6;
-	});
-	
-	function closeexpbar(){
-	    $('.expbar').trigger("hidebubblepopup", [true]);
-	}
-	*/
 	
 	function upd_log_time() {
 		  var url="##LBL_SITE_URL##index.php";
