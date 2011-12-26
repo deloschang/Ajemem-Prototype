@@ -225,6 +225,15 @@ class user_manager extends mod_manager {
 						$res_ach=getsingleindexrow($sql_ach);
 						
 						$_SESSION['exp_rank']=$res_ach['POSITION'];
+						$one_less_rank = $_SESSION['exp_rank'] + 1;
+						
+						var_dump($one_less_rank);
+						$sql_one_less="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE POSITION=".$one_less_rank;
+						$res_one_less=getsingleindexrow($sql_one_less);
+						
+						$_SESSION['one_less_rank'] = $one_less_rank;
+						$_SESSION['one_less_exp'] = $res_one_less['exp_point'];
+						$_SESSION['one_less_user'] = $res_one_less['username'];
 						
 						// End
 						$_SESSION['raise_message']['global'] = "Successfully logged in";
@@ -1060,21 +1069,63 @@ class user_manager extends mod_manager {
 		$sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE id_user=".$_SESSION['id_user'];
 	    $res=getsingleindexrow($sql_ach);
 	    
+	    $less_one_user_rank = $res['POSITION'] - 1;
+	    
+	    // experimental start
+	    $sql_other="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE POSITION=".$less_one_user_rank;
+	    $res_other = getsingleindexrow($sql_other);
+	    
 	    if(!$res){
 	    	// Could not find user's exp rank
 			exit("no update");
 		}
-				
+		
+		// Has Rank Changed? No		
 		if($_SESSION['exp_rank'] == $res['POSITION']){
-			exit("09999990");
+			
+			// Has trailing user changed? No
+			if ($_SESSION['one_less_user'] == $res_other['username']) {
+			
+				// Has trailing user XP changed? No
+				if ($_SESSION['one_less_exp'] == $res_other['exp_point']) {
+					exit("no update");
+				
+				// Has trailing user XP changed? Yes
+				} else {
+					$_SESSION['one_less_exp'] = $res_other['exp_point'];
+					exit("AAB".",".$res_other['exp_point']);
+				}
+			
+			// Has trailing user changed? Yes
+			} else {
+				$_SESSION['one_less_user'] = $res_other['username'];
+				$_SESSION['one_less_exp'] = $res_other['exp_point'];
+				exit("AB".",".$res_other['exp_point'].",".$res_other['username']);
+			}
+		
+		// Has Rank Changed? Yes	
 	    } else {
-	    	// Rank has improved (lower is better)
+	    
+	    	// Find New trailing user row
+	    	$less_one_user_updated_rank = $res['POSITION'] + 1;
+	    
+			$sql_updated_other="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE POSITION=".$less_one_user_updated_rank;
+			$res_updated_other = getsingleindexrow($sql_updated_other);
+			
+	    	$_SESSION['one_less_exp'] = $res_updated_other['exp_point'];
+	    	$_SESSION['one_less_user'] = $res_updated_other['username'];
+	    	$_SESSION['one_less_rank'] = $less_one_user_updated_rank;
+	    
+	    	// Which direction has rank changed? Rank improved (lower)
 	    	if ($_SESSION['exp_rank'] > $res['POSITION']) {
 	    		$_SESSION['exp_rank'] = $res['POSITION'];
-	    		exit($res['POSITION'].','.'1');
+	    		
+	    		exit("BA".','.$res['POSITION'].",".$res_other['exp_point'].",".$res_other['username'].",".$less_one_user_updated_rank);
+	    	
+	    	// Which direction has rank changed? Rank deproved (higher)
 	    	} else {
 	    		$_SESSION['exp_rank'] = $res['POSITION'];
-	    		exit($res['POSITION'].','.'0');
+	    		exit("BB".','.$res['POSITION'].",".$res_other['exp_point'].",".$res_other['username'].",".$less_one_user_updated_rank);
 	    	}
 	    	
 	    }

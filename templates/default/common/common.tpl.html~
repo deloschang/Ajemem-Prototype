@@ -181,7 +181,7 @@
 			ranking_data = httpRequest.responseText;
 		}
 		
-		//console.log(ranking_data);
+		console.log(ranking_data);
 		
 		
 		if (ranking_data.trim() == "no update"){
@@ -189,28 +189,94 @@
 			return false;
 		} else {
 			
+			
 			var ajax_response_exp = ranking_data.split(',');
-			new_rank = ajax_response_exp[0];
-			rank_trend = ajax_response_exp[1];
 			
-			console.log("Rank Trend is "+rank_trend);
+			// Rank? No. 1- User? No. 1- XP? Yes.
+			if (ajax_response_exp[0].trim() == "AAB"){
+				console.log("Trailing User XP changed");
+				
+				$("#trailing_exp").html('('+ajax_response_exp[1]+' XP)');
+
+				$("#trailing_exp").css("background", '#AAF2DC');
+				$("#trailing_exp").animate( { "opacity" : 0.4 }, 700, function() {
+					$("#trailing_exp").css("background","white");
+					$("#trailing_exp").animate( { "opacity" : 1 }, 300)
+				});
 			
-			$("#ranking_number").html('Rank #'+parseInt(new_rank));
-			
-			if (rank_trend == 1) {
-				// flash, exp rank improvement ( 1 better than 2 ) 
+			// Rank? No 1- User? Yes.
+			} else if (ajax_response_exp[0].trim() == "AB") {
+				console.log("Trailing User changed");
+				$("#trailing_user").html(ajax_response_exp[2]);
+				$("#trailing_exp").html('('+ajax_response_exp[1]+' XP)');	
+				
+				$("#trailing_all").css("background", '#FFE303');	
+				$("#trailing_all").animate( { "opacity" : 0.4 }, 700, function() {
+					$("#trailing_all").css("background","white");
+					$("#trailing_all").animate( { "opacity" : 1 }, 300)
+				});
+					
+			// Rank? Yes. Improvement? Yes.
+			} else if (ajax_response_exp[0].trim() == "BA") {
+				console.log("Improvement in Rank");
+				new_rank = ajax_response_exp[1];
+				trailing_xp = ajax_response_exp[2];
+				trailing_user = ajax_response_exp[3];
+				trailing_rank = ajax_response_exp[4];
+				
+				$("#ranking_number").html('Rank #'+parseInt(new_rank));
+				
+				// Green flash
 				$("#ranking_number").css("background", '#33CC00');
 				$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
 					$("#ranking_number").css("background","white");
 					$("#ranking_number").animate( { "opacity" : 1 }, 300)
 				});
+				
+				if (trailing_user) {
+				
+					$("#trailing_ranking_number").html(' Rank #'+parseInt(trailing_rank));
+					$("#trailing_exp").html('('+trailing_xp+' XP)');	
+						
+					$("#trailing_user").html(trailing_user);
+					$("#trailing_all").css("background", '#FFE303');	
+					$("#trailing_all").animate( { "opacity" : 0.4 }, 700, function() {
+						$("#trailing_all").css("background","white");
+						$("#trailing_all").animate( { "opacity" : 1 }, 300)
+					});
+				
+				}
+				
+			
+			// Rank? Yes. Improve? No.
 			} else {
-				// flash, exp rank decrease 
+				console.log("Loss in rank");
+
+				new_rank = ajax_response_exp[1];
+				trailing_xp = ajax_response_exp[2];
+				trailing_user = ajax_response_exp[3];
+				trailing_rank = ajax_response_exp[4];
+				
+				$("#ranking_number").html('Rank #'+parseInt(new_rank));
+						
+				// Red flash
 				$("#ranking_number").css("background", '#FF0000');
 				$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
 					$("#ranking_number").css("background","white");
 					$("#ranking_number").animate( { "opacity" : 1 }, 300)
 				});
+				
+				if (trailing_user) {
+					$("#trailing_ranking_number").html(' Rank #'+parseInt(trailing_rank));
+					$("#trailing_exp").html('('+trailing_xp+' XP)');	
+							
+					$("#trailing_user").html(trailing_user);
+					$("#trailing_all").css("background", '#FFE303');	
+					$("#trailing_all").animate( { "opacity" : 0.4 }, 700, function() {
+						$("#trailing_all").css("background","white");
+						$("#trailing_all").animate( { "opacity" : 1 }, 300)
+					});
+					}
 			}
 		}
 	}

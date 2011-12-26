@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-26 09:03:09
+<?php /* Smarty version 2.6.7, created on 2011-12-26 11:40:41
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 558, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '1a99ea880e8e2522c15651d23ff0d677'; ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 624, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '735bc1cd6a980b0ab134af09a38aaf5b'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -188,32 +188,98 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		
 		
 		if (ranking_data.trim() == "no update"){
-			console.log(\'no update yet\');
+			//console.log(\'no update yet\');
 			return false;
 		 } else {
 			
+			
 			var ajax_response_exp = ranking_data.split(\',\');
-			new_rank = ajax_response_exp[0];
-			rank_trend = ajax_response_exp[1];
 			
-			console.log("Rank Trend is"+rank_trend);
+			// Rank? No. 1- User? No. 1- XP? Yes.
+			if (ajax_response_exp[0].trim() == "AAB"){
+				console.log("Trailing User XP changed");
+				
+				$("#trailing_exp").html(\'(\'+ajax_response_exp[1]+\' XP)\');
+
+				$("#trailing_exp").css("background", \'#AAF2DC\');
+				$("#trailing_exp").animate( { "opacity" : 0.4  }, 700, function() {
+					$("#trailing_exp").css("background","white");
+					$("#trailing_exp").animate( { "opacity" : 1  }, 300)
+				 });
 			
-			$("#ranking_number").html(\'Rank #\'+parseInt(new_rank));
-			
-			if (rank_trend == 1) {
-				// flash, exp rank improvement ( 1 better than 2 ) 
+			// Rank? No 1- User? Yes.
+			 } else if (ajax_response_exp[0].trim() == "AB") {
+				console.log("Trailing User changed");
+				$("#trailing_user").html(ajax_response_exp[2]);
+				$("#trailing_exp").html(\'(\'+ajax_response_exp[1]+\' XP)\');	
+				
+				$("#trailing_all").css("background", \'#FFE303\');	
+				$("#trailing_all").animate( { "opacity" : 0.4  }, 700, function() {
+					$("#trailing_all").css("background","white");
+					$("#trailing_all").animate( { "opacity" : 1  }, 300)
+				 });
+					
+			// Rank? Yes. Improvement? Yes.
+			 } else if (ajax_response_exp[0].trim() == "BA") {
+				console.log("Improvement in Rank");
+				new_rank = ajax_response_exp[1];
+				trailing_xp = ajax_response_exp[2];
+				trailing_user = ajax_response_exp[3];
+				trailing_rank = ajax_response_exp[4];
+				
+				$("#ranking_number").html(\'Rank #\'+parseInt(new_rank));
+				
+				// Green flash
 				$("#ranking_number").css("background", \'#33CC00\');
 				$("#ranking_number").animate( { "opacity" : 0.4  }, 700, function() {
 					$("#ranking_number").css("background","white");
 					$("#ranking_number").animate( { "opacity" : 1  }, 300)
 				 });
+				
+				if (trailing_user) {
+				
+					$("#trailing_ranking_number").html(\' Rank #\'+parseInt(trailing_rank));
+					$("#trailing_exp").html(\'(\'+trailing_xp+\' XP)\');	
+						
+					$("#trailing_user").html(trailing_user);
+					$("#trailing_all").css("background", \'#FFE303\');	
+					$("#trailing_all").animate( { "opacity" : 0.4  }, 700, function() {
+						$("#trailing_all").css("background","white");
+						$("#trailing_all").animate( { "opacity" : 1  }, 300)
+					 });
+				
+				 }
+				
+			
+			// Rank? Yes. Improve? No.
 			 } else {
-				// flash, exp rank decrease 
+				console.log("Loss in rank");
+
+				new_rank = ajax_response_exp[1];
+				trailing_xp = ajax_response_exp[2];
+				trailing_user = ajax_response_exp[3];
+				trailing_rank = ajax_response_exp[4];
+				
+				$("#ranking_number").html(\'Rank #\'+parseInt(new_rank));
+						
+				// Red flash
 				$("#ranking_number").css("background", \'#FF0000\');
 				$("#ranking_number").animate( { "opacity" : 0.4  }, 700, function() {
 					$("#ranking_number").css("background","white");
 					$("#ranking_number").animate( { "opacity" : 1  }, 300)
 				 });
+				
+				if (trailing_user) {
+					$("#trailing_ranking_number").html(\' Rank #\'+parseInt(trailing_rank));
+					$("#trailing_exp").html(\'(\'+trailing_xp+\' XP)\');	
+							
+					$("#trailing_user").html(trailing_user);
+					$("#trailing_all").css("background", \'#FFE303\');	
+					$("#trailing_all").animate( { "opacity" : 0.4  }, 700, function() {
+						$("#trailing_all").css("background","white");
+						$("#trailing_all").animate( { "opacity" : 1  }, 300)
+					 });
+				 }
 			 }
 		 }
 	 }
@@ -580,7 +646,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:1a99ea880e8e2522c15651d23ff0d677#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:1a99ea880e8e2522c15651d23ff0d677#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:735bc1cd6a980b0ab134af09a38aaf5b#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:735bc1cd6a980b0ab134af09a38aaf5b#0}';}?>
 <br>
 				<?php endif; ?>
 
