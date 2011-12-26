@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-26 12:40:22
+<?php /* Smarty version 2.6.7, created on 2011-12-26 22:38:29
          compiled from user/left_pan.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 12, false),array('function', 'get_mod', 'user/left_pan.tpl.html', 46, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = 'd0a4538ca092e7760a9726db7d8c02ea';  if ($_SESSION['id_user']): ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 12, false),array('function', 'get_mod', 'user/left_pan.tpl.html', 44, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = '7b3ab3367411438a1a9f9f9cc5a31e72';  if ($_SESSION['id_user']): ?>
 <table style="margin-top:0px" >
     <tr>
 		<td valign="top">
@@ -27,11 +27,10 @@ unset($_smarty_tpl_vars);
 		<td><b>
 		
 				<span id="ranking_number">Rank #<?php if ($_SESSION['exp_rank']):  echo $_SESSION['exp_rank'];  else: ?>N/A<?php endif; ?></span>
-		 <span id="total_xp" style="font-size:7px">(<?php if ($_SESSION['exp_point']):  echo $_SESSION['exp_point']; ?>
+		 <span id="total_xp" style="font-size:7px"><?php if ($_SESSION['exp_point']): ?>(<?php echo $_SESSION['exp_point']; ?>
  XP)<?php endif; ?></span></b>
 		 <br/>
-				<?php if ($_SESSION['one_less_user']): ?>
-		<span id="trailing_all">
+				<span id="trailing_all">
 		 <b><span id="trailing_ranking_number" style="font-size:10px"> Rank #<?php echo $_SESSION['one_less_rank']; ?>
 </span></b>
 		<b><span id="trailing_exp" style="font-size:7px">(<?php echo $_SESSION['one_less_exp']; ?>
@@ -39,7 +38,6 @@ unset($_smarty_tpl_vars);
 		 <span id="trailing_user"><?php echo $_SESSION['one_less_user']; ?>
 </span> 
 		 </span>
-		 <?php endif; ?>
 		 
 		</td>
     </tr>
@@ -52,7 +50,7 @@ unset($_smarty_tpl_vars);
     <tr>
 		<td>
 			<div id="badge_list" >
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:d0a4538ca092e7760a9726db7d8c02ea#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'achievements','mgr' => 'achievements','choice' => 'badge_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:d0a4538ca092e7760a9726db7d8c02ea#0}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:7b3ab3367411438a1a9f9f9cc5a31e72#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'achievements','mgr' => 'achievements','choice' => 'badge_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:7b3ab3367411438a1a9f9f9cc5a31e72#0}';}?>
 
 			</div>
 		</td>
@@ -60,7 +58,7 @@ unset($_smarty_tpl_vars);
     <tr>
 		<td>
 		<div id="my_meme_list" >
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:d0a4538ca092e7760a9726db7d8c02ea#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:d0a4538ca092e7760a9726db7d8c02ea#1}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:7b3ab3367411438a1a9f9f9cc5a31e72#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:7b3ab3367411438a1a9f9f9cc5a31e72#1}';}?>
 
 		</div>
 		</td>
@@ -68,7 +66,7 @@ unset($_smarty_tpl_vars);
 	<tr>
 		<td>
 		<div id="my_favorites" >
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:d0a4538ca092e7760a9726db7d8c02ea#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:d0a4538ca092e7760a9726db7d8c02ea#2}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:7b3ab3367411438a1a9f9f9cc5a31e72#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:7b3ab3367411438a1a9f9f9cc5a31e72#2}';}?>
 
 		</div>
 		</td>
@@ -76,7 +74,7 @@ unset($_smarty_tpl_vars);
 	<tr>
 		<td>
 		<div id="tagged_meme" >
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:d0a4538ca092e7760a9726db7d8c02ea#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_meme','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:d0a4538ca092e7760a9726db7d8c02ea#3}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:7b3ab3367411438a1a9f9f9cc5a31e72#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_meme','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:7b3ab3367411438a1a9f9f9cc5a31e72#3}';}?>
 
 		</div>
 		</td>

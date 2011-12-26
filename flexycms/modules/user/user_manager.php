@@ -1077,7 +1077,7 @@ class user_manager extends mod_manager {
 	    
 	    if(!$res){
 	    	// Could not find user's exp rank
-			exit("no update");
+			exit("no rank");
 		}
 		
 		// Has Rank Changed? No		
@@ -1120,12 +1120,12 @@ class user_manager extends mod_manager {
 	    	if ($_SESSION['exp_rank'] > $res['POSITION']) {
 	    		$_SESSION['exp_rank'] = $res['POSITION'];
 	    		
-	    		exit("BA".','.$res['POSITION'].",".$res_other['exp_point'].",".$res_other['username'].",".$less_one_user_updated_rank);
+	    		exit("BA".','.$res['POSITION'].",".$res_updated_other['exp_point'].",".$res_updated_other['username'].",".$less_one_user_updated_rank);
 	    	
 	    	// Which direction has rank changed? Rank deproved (higher)
 	    	} else {
 	    		$_SESSION['exp_rank'] = $res['POSITION'];
-	    		exit("BB".','.$res['POSITION'].",".$res_other['exp_point'].",".$res_other['username'].",".$less_one_user_updated_rank);
+	    		exit("BB".','.$res['POSITION'].",".$res_updated_other['exp_point'].",".$res_updated_other['username'].",".$less_one_user_updated_rank);
 	    	}
 	    	
 	    }

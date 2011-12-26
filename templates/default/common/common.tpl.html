@@ -116,11 +116,11 @@
 	    });
 
 	    if(idu!="" && chc!='addMeme'){
-			setInterval("getall_notification()",3000);
+			setInterval("getall_notification()",7000);
 
 	    /* For popup bar */
 			setInterval("popup_expbar()", 2000); 	// Pati orig set timer to 6000
-			setInterval("live_ranking()", 10000);
+			setInterval("live_ranking()", 11000);
 	    }
 
 	    /* TOS Fancybox Popup on First Login */
@@ -184,7 +184,7 @@
 		console.log(ranking_data);
 		
 		
-		if (ranking_data.trim() == "no update"){
+		if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
 			//console.log('no update yet');
 			return false;
 		} else {
