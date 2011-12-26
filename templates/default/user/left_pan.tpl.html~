@@ -15,7 +15,10 @@
 		<td>({if $smarty.session.username}{$smarty.session.username}{/if})</td>
 	</tr>
     <tr>
-		<td>Rank #<b><span id="ranking_number">{if $smarty.session.achv_rank}{$smarty.session.achv_rank}{else}N/A{/if}</b></td>
+		<td><b>
+		<span id="ranking_number">{if $smarty.session.exp_rank}{$smarty.session.exp_rank}{else}N/A{/if}</span>
+		 <span id="total_xp" style="font-size:7px">({if $smarty.session.exp_point}{$smarty.session.exp_point} XP){/if}</span>
+		</b></td>
     </tr>
     <tr>
 		<td><a href="javascript:void(0);">Account Setting</a></td>

@@ -220,11 +220,11 @@ class user_manager extends mod_manager {
 						$_SESSION['xp_to_level'] = (int)$results_xp['xp_to_level'];
 						$_SESSION['previous_xp_to_level'] = (int)$results_previous_xp['xp_to_level'];
 						
-						// Achievement Rank
+						// Experience Points Rank
 						$sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE id_user=".$_SESSION['id_user'];
 						$res_ach=getsingleindexrow($sql_ach);
 						
-						$_SESSION['achv_rank']=$res_ach['POSITION'];
+						$_SESSION['exp_rank']=$res_ach['POSITION'];
 						
 						// End
 						$_SESSION['raise_message']['global'] = "Successfully logged in";
@@ -1061,15 +1061,21 @@ class user_manager extends mod_manager {
 	    $res=getsingleindexrow($sql_ach);
 	    
 	    if(!$res){
-	    	// Could not find exp_point in MySQL database for user
-			exit("2");
+	    	// Could not find user's exp rank
+			exit("no update");
 		}
 				
-		if($_SESSION['achv_rank'] == $res['POSITION']){
-			exit("3");
+		if($_SESSION['exp_rank'] == $res['POSITION']){
+			exit("no update");
 	    } else {
-	    	$_SESSION['achv_rank'] = $res['POSITION'];
-	    	exit($res['POSITION']);
+	    	// Rank has improved (lower is better)
+	    	if ($_SESSION['exp_rank'] > $res['POSITION']) {
+	    		$_SESSION['exp_rank'] = $res['POSITION'];
+	    		exit($res['POSITION'].','.'1');
+	    	} else {
+	    		$_SESSION['exp_rank'] = $res['POSITION'];
+	    		exit($res['POSITION'].','.'0');
+	    	}
 	    	
 	    }
 	
