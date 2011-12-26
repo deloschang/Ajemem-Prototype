@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-26 11:40:42
+<?php /* Smarty version 2.6.7, created on 2011-12-26 12:40:22
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -149,9 +149,7 @@
     function common_fun(id,color_code){
 	    $("#meme"+id).css("background",color_code);
 	    $("#meme"+id).animate( { "opacity" : 0.4  }, 700, function() {
-<!--	    $("#meme"+id).fadeOut(600,function(){-->
 			$("#meme"+id).css("background","white");
-<!--		$("#meme"+id).fadeIn(0);-->
 			$("#meme"+id).animate( { "opacity" : 1  }, 300)
 	     });
      }
@@ -212,12 +210,12 @@
      }
 
 /* JS call after Agree/Disagree button is pressed */
-    function set_tot_adaggr(id,con){
+    function set_tot_adaggr(id,con,id_user){
 	var url = "http://localhost/meme/set_adaggr";
 	
 	/* Added by Delos to check if user is logged in */
 	if (logged_in) {
-		$.post(url,{id_meme:id,ce:0,con:con },function(res){
+		$.post(url,{id_meme:id,ce:0,con:con,id_user_creator:id_user },function(res){
 
 	    	/* If user has not voted */
 	    	if(res[0]!=0){
@@ -265,7 +263,8 @@
 <!--			//$.fancybox(res,{-->
 <!--			//	title : title-->
 <!--			// });-->
-<!--		 }-->
+<!--		 }
+-->
      }
     function flagging(id_meme){
 	var flaged_bfr=0;

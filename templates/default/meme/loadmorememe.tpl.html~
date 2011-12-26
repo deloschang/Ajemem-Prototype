@@ -50,7 +50,7 @@
 	<!-- end of gallery class-->
 			
 			<span style="font-size:12px">  by {$sm.uinfo[$x.id_user].username} </span>
-			<span style="font-size:9px"> L{$sm.uinfo[$x.id_user].level}</span>
+			<span style="font-size:8px"> L{$sm.uinfo[$x.id_user].level}</span>
 	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
 
 <!-- Caption shows below image -->
@@ -75,13 +75,13 @@
 			    
 			    	{* Added by Delos: highlights according to agree/disagree *}
 			    	{if $smarty.session.id_user}
-			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
+			    		{if substr_count($x.honour_id_user, cat:$smarty.session.id_user)}
 				    		style="color: green; cursor: default"
 				    	{elseif substr_count($x.dishonour_id_user, $smarty.session.id_user)}
 				    		style="color: gray; cursor: default"
 				    	{/if}
 				    {/if}
-			    onclick="set_tot_adaggr('{$x.id_meme}','A');">Honor{*$x.honour_id_user*}</a>&emsp;
+			    onclick="set_tot_adaggr('{$x.id_meme}','A','{$x.id_user}');">Honor{*$x.honour_id_user*}</a>&emsp;
 
 <!-- Dishonor -->
 			    <label id="disaggr{$x.id_meme}">{if $x.tot_dishonour != 0}{$x.tot_dishonour}{/if}</label>&nbsp;<a href="javascript:void(0);" id="disagr_link{$x.id_meme}" 

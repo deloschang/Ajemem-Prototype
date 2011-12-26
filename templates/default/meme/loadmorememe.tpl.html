@@ -81,7 +81,7 @@
 				    		style="color: gray; cursor: default"
 				    	{/if}
 				    {/if}
-			    onclick="set_tot_adaggr('{$x.id_meme}','A');">Honor{*$x.honour_id_user*}</a>&emsp;
+			    onclick="set_tot_adaggr('{$x.id_meme}','A','{$x.id_user}');">Honor{*$x.honour_id_user*}</a>&emsp;
 
 <!-- Dishonor -->
 			    <label id="disaggr{$x.id_meme}">{if $x.tot_dishonour != 0}{$x.tot_dishonour}{/if}</label>&nbsp;<a href="javascript:void(0);" id="disagr_link{$x.id_meme}" 
