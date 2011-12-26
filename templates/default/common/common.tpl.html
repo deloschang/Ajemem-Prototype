@@ -120,6 +120,7 @@
 
 	    /* For popup bar */
 			setInterval("popup_expbar()", 2000); 	// Pati orig set timer to 6000
+			setInterval("live_ranking()", 10000);
 	    }
 
 	    /* TOS Fancybox Popup on First Login */
@@ -166,6 +167,37 @@
 			$(".inner").html(data);
 			$(".not_txt").hide();
 	    });
+	}
+	
+	function live_ranking() {
+		var ranking_data;
+		var url="##LBL_SITE_URL##user/live_ranking/ce/0/chk/1";
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open('POST', url, false);
+		
+		httpRequest.send();
+		
+		if (httpRequest.status == 200) {
+			ranking_data = httpRequest.responseText;
+		}
+		
+		console.log(ranking_data);
+		
+		
+		if (parseInt(ranking_data) == 3 || parseInt(ranking_data) == 2){
+			console.log('no update yet');
+			return false;
+		} else {
+			$("#ranking_number").html(parseInt(ranking_data));
+		
+			// Level has a "live feed like flash"
+			$("#ranking_number").css("background", '#1BE0A5');
+	    	$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
+				$("#ranking_number").css("background","white");
+				$("#ranking_number").animate( { "opacity" : 1 }, 300)
+			});
+		
+		}
 	}
 	
 	function popup_expbar(){

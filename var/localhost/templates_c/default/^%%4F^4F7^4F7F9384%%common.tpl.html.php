@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-26 07:15:50
+<?php /* Smarty version 2.6.7, created on 2011-12-26 08:23:14
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 502, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'da8d91d3344e375af882b14318a6d69e'; ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 534, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '42363fabcf4ee9740ce22f5eb3cfb89b'; ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -123,6 +123,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 
 	    /* For popup bar */
 			setInterval("popup_expbar()", 2000); 	// Pati orig set timer to 6000
+			setInterval("live_ranking()", 10000);
 	     }
 
 	    /* TOS Fancybox Popup on First Login */
@@ -169,6 +170,37 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			$(".inner").html(data);
 			$(".not_txt").hide();
 	     });
+	 }
+	
+	function live_ranking() {
+		var ranking_data;
+		var url="http://localhost/user/live_ranking/ce/0/chk/1";
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open(\'POST\', url, false);
+		
+		httpRequest.send();
+		
+		if (httpRequest.status == 200) {
+			ranking_data = httpRequest.responseText;
+		 }
+		
+		console.log(ranking_data);
+		
+		
+		if (parseInt(ranking_data) == 3 || parseInt(ranking_data) == 2){
+			console.log(\'no update yet\');
+			return false;
+		 } else {
+			$("#ranking_number").html(parseInt(ranking_data));
+		
+			// Level has a "live feed like flash"
+			$("#ranking_number").css("background", \'#1BE0A5\');
+	    	$("#ranking_number").animate( { "opacity" : 0.4  }, 700, function() {
+				$("#ranking_number").css("background","white");
+				$("#ranking_number").animate( { "opacity" : 1  }, 300)
+			 });
+		
+		 }
 	 }
 	
 	function popup_expbar(){
@@ -524,7 +556,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:da8d91d3344e375af882b14318a6d69e#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:da8d91d3344e375af882b14318a6d69e#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:42363fabcf4ee9740ce22f5eb3cfb89b#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:42363fabcf4ee9740ce22f5eb3cfb89b#0}';}?>
 <br>
 				<?php endif; ?>
 

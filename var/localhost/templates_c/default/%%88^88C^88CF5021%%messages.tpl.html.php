@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-26 07:15:50
+<?php /* Smarty version 2.6.7, created on 2011-12-26 08:23:14
          compiled from common/messages.tpl.html */ ?>
 
-<!-- Template: common/messages.tpl.html Start 26/12/2011 07:15:50 --> 
+<!-- Template: common/messages.tpl.html Start 26/12/2011 08:23:14 --> 
  <!-- messages set by all modules shown here -->
 <?php if ($_SESSION['raise_message'][$this->_tpl_vars['module']]): ?>
     <div class="alert" align="center"><?php echo $_SESSION['raise_message'][$this->_tpl_vars['module']]; ?>

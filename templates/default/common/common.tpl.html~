@@ -116,12 +116,11 @@
 	    });
 
 	    if(idu!="" && chc!='addMeme'){
-	    	setInterval("livefeed()", 3000);
-	    
 			setInterval("getall_notification()",3000);
 
 	    /* For popup bar */
 			setInterval("popup_expbar()", 2000); 	// Pati orig set timer to 6000
+			setInterval("live_ranking()", 10000);
 	    }
 
 	    /* TOS Fancybox Popup on First Login */
@@ -147,8 +146,6 @@
 	    }
 	    
 	});
-	
-	
 	function getall_notification(){
 	    var url="##LBL_SITE_URL##manage/getall_notification";
 	    $.post(url,{ce:0},function(res){
@@ -172,24 +169,34 @@
 	    });
 	}
 	
-	function livefeed(){
-		console.log("LIVE FEED CHECK FIRED");
-		var livefeeddata;
-		var url = "/flexycms/modules/additions/live_feed.php";
+	function live_ranking() {
+		var ranking_data;
+		var url="##LBL_SITE_URL##user/live_ranking/ce/0/chk/1";
 		var httpRequest = new XMLHttpRequest();
 		httpRequest.open('POST', url, false);
 		
 		httpRequest.send();
+		
 		if (httpRequest.status == 200) {
-			livefeeddata = httpRequest.responseText;
+			ranking_data = httpRequest.responseText;
 		}
 		
-		if (livefeeddata == 9099999999909 || livefeeddata == 2) {
+		console.log(ranking_data);
+		
+		
+		if (parseInt(ranking_data) == 3 || parseInt(ranking_data) == 2){
 			return false;
 		} else {
-			console.log("HONOR FIRE");
+			$("#ranking_number").html(parseInt(ranking_data));
+		
+			// Level has a "live feed like flash"
+			$("#ranking_number").css("background", '#1BE0A5');
+	    	$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
+				$("#ranking_number").css("background","white");
+				$("#ranking_number").animate( { "opacity" : 1 }, 300)
+			});
+		
 		}
-	
 	}
 	
 	function popup_expbar(){
@@ -258,16 +265,12 @@
 			
 			xp_to_level = new_xp_to_level;
 			
-			left_pan_flash();
-			
 			// Level has a "live feed like flash"
-			function left_pan_flash () {
-				$("#left_pan_level").css("background", '#81D4A2');
-	    		$("#left_pan_level").animate( { "opacity" : 0.4 }, 700, function() {
-					$("#left_pan_level").css("background","white");
-					$("#left_pan_level").animate( { "opacity" : 1 }, 300)
-				});
-			}
+			$("#left_pan_level").css("background", '#81D4A2');
+	    	$("#left_pan_level").animate( { "opacity" : 0.4 }, 700, function() {
+				$("#left_pan_level").css("background","white");
+				$("#left_pan_level").animate( { "opacity" : 1 }, 300)
+			});
 		}
 			 
 		

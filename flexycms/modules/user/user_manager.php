@@ -221,7 +221,7 @@ class user_manager extends mod_manager {
 						$_SESSION['previous_xp_to_level'] = (int)$results_previous_xp['xp_to_level'];
 						
 						// Achievement Rank
-						$sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY no_badges DESC ) t WHERE id_user=".$_SESSION['id_user'];
+						$sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE id_user=".$_SESSION['id_user'];
 						$res_ach=getsingleindexrow($sql_ach);
 						
 						$_SESSION['achv_rank']=$res_ach['POSITION'];
@@ -1050,6 +1050,29 @@ class user_manager extends mod_manager {
 		   }
 		}
 		return;
+	}
+	function _live_ranking(){
+		
+		if (!$_SESSION['id_user']){
+			exit("2");
+		}
+		
+		$sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE id_user=".$_SESSION['id_user'];
+	    $res=getsingleindexrow($sql_ach);
+	    
+	    if(!$res){
+	    	// Could not find exp_point in MySQL database for user
+			exit("2");
+		}
+				
+		if($_SESSION['achv_rank'] == $res['POSITION']){
+			exit("3");
+	    } else {
+	    	$_SESSION['achv_rank'] = $res['POSITION'];
+	    	exit($res['POSITION']);
+	    	
+	    }
+	
 	}
 	
 	function _getExperience(){
