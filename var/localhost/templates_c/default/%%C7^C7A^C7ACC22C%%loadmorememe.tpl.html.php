@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-26 22:47:34
+<?php /* Smarty version 2.6.7, created on 2011-12-26 23:55:35
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 36, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 68, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 26/12/2011 22:47:34 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 26/12/2011 23:55:35 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -128,7 +128,8 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 			    	<?php endif; ?>
 			    
 			    onclick="set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-','D');">Dishonor</a>
+','D','<?php echo $this->_tpl_vars['x']['id_user']; ?>
+');">Dishonor</a>
 
 <!-- Add Caption -->
 			    <?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>

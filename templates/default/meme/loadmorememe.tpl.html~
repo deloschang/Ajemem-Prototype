@@ -75,7 +75,7 @@
 			    
 			    	{* Added by Delos: highlights according to agree/disagree *}
 			    	{if $smarty.session.id_user}
-			    		{if substr_count($x.honour_id_user, cat:$smarty.session.id_user)}
+			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
 				    		style="color: green; cursor: default"
 				    	{elseif substr_count($x.dishonour_id_user, $smarty.session.id_user)}
 				    		style="color: gray; cursor: default"

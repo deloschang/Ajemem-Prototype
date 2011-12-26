@@ -94,7 +94,7 @@
 			    		{/if}
 			    	{/if}
 			    
-			    onclick="set_tot_adaggr('{$x.id_meme}','D');">Dishonor{*$x.dishonour_id_user*}</a>
+			    onclick="set_tot_adaggr('{$x.id_meme}','D','{$x.id_user}');">Dishonor{*$x.dishonour_id_user*}</a>
 
 <!-- Add Caption -->
 			    {if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
