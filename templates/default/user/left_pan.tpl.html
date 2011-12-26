@@ -24,8 +24,8 @@
 		{*Trailing Rank, User, + XP*}
 		<span id="trailing_all">
 		 <b><span id="trailing_ranking_number" style="font-size:10px"> Rank #{$smarty.session.one_less_rank}</span></b>
-		<b><span id="trailing_exp" style="font-size:7px">({$smarty.session.one_less_exp} XP)</span></b> 	
-		 <span id="trailing_user">{$smarty.session.one_less_user}</span> 
+		<b><span id="trailing_exp" style="font-size:7px">({if $smarty.session.one_less_exp}{$smarty.session.one_less_exp}{else}0{/if} XP)</span></b> 	
+		 <span id="trailing_user">{if $smarty.session.one_less_user}{$smarty.session.one_less_user}{else}---{/if}</span> 
 		 </span>
 		 
 		</td>
