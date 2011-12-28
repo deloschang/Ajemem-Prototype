@@ -54,7 +54,7 @@
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/jquery-ui-1.8.16.custom.css"/>
 <script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
 <script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.core.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.core.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.highlight.js"></script>
 
 <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 <!--end-->
@@ -65,17 +65,21 @@
 	var chc ="{/literal}{$chc}{literal}";
 	var idu="{/literal}{$smarty.session.id_user}{literal}";
 	
-	// Variables for XP updating
-	var curr_xp = {/literal}{$smarty.session.exp_point}{literal};
-	var xp_to_level = {/literal}{$smarty.session.xp_to_level}{literal};
-	var previous_xp_to_level = {/literal}{$smarty.session.previous_xp_to_level}{literal};
+	if (idu != "") {
+		// Variables for XP updating
+		var curr_xp = {/literal}{if $smarty.session.exp_point}{$smarty.session.exp_point}{else}0{/if}{literal};
+		var xp_to_level = {/literal}{if $smarty.session.xp_to_level}{$smarty.session.xp_to_level}{else}0{/if}{literal};
+		var previous_xp_to_level = {/literal}{if $smarty.session.previous_xp_to_level}{$smarty.session.previous_xp_to_level}{else}0{/if}{literal};
 
-	var user_level = {/literal}{$smarty.session.level}{literal};
+		var user_level = {/literal}{if $smarty.session.level}{$smarty.session.level}{else}0{/if}{literal};
 
-	if (user_level == 1) {
-		var xp_percent = (curr_xp / xp_to_level) * 100;
-	} else {
-		xp_percent = ((curr_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level)) * 100;
+		if (user_level == 1) {
+			var xp_percent = (curr_xp / xp_to_level) * 100;
+		} else {
+			{/literal}{if $smarty.session.exp_point}
+				xp_percent = ((curr_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level)) * 100;
+			{else}xp_percent = 0{/if}{literal}
+		}
 	}
 	
 	$(document).ready(function(){			

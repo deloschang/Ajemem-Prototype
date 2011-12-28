@@ -9,12 +9,12 @@
 {else}
 {if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}
 {/if}
-<span>Replied by {$sm.uinfo[$i.id_user].fname} {$sm.uinfo[$i.id_user].lname} : <br><b>{$i.reply}</b></span><br/>
+<span>Replied by {$sm.uinfo[$i.id_user].username} {$sm.uinfo[$i.id_user].lname} : <br><b>{$i.reply}</b></span><br/>
 
 {/foreach}<br/>
 
 <!-- D: written in to update reply feed in live -->
-<div id="replyinsert"+{$sm.id_meme}>aaaaaaaaa</div>
+<div id="replyinsert{$sm.id_meme}"></div>
 
 <textarea id="{if !$sm.flag}rpl_con{else}rand_rpl_con{/if}{$sm.id_meme}" style="width:90%;" onclick="{if !$sm.flag}chk_forclear{else}rand_chk_forclear{/if}('{$sm.id_meme}');" ></textarea><br/>
 

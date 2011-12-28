@@ -5,6 +5,8 @@
     var x=0;
     function rand_set_tot_adaggr(id,con){
 	var url = "##LBL_SITE_URL##meme/set_adaggr";
+	
+<!--	if (logged_in) {-->
 	$.post(url,{id_meme:id,ce:0,con:con},function(res){
 	    if(res[0]!=0){
 		    if(res[1]==1){
@@ -24,6 +26,8 @@
 	    }else
 		   alert("You have already voted.");
 	},"json");
+<!--    } else {-->
+<!--    	alert("You are not logged in.");-->
     }
     function get_all_rand_replies(id){
 	var url = "##LBL_SITE_URL##meme/get_all_replies";
