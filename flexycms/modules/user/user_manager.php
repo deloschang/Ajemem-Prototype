@@ -197,8 +197,13 @@ class user_manager extends mod_manager {
 						$_SESSION['lname']=$result['lname'];
 						$_SESSION['email'] = $result['email'];
 						$_SESSION['username'] = $result['username'];
-												
-						$_SESSION['avatar']=$result['avatar'] ? $result['avatar']:($result['gender']=='M'?'memeja_male.png':'memeja_female.png');
+						
+						if ($result['fb_pic_normal']) {
+							$_SESSION['fb_pic_normal'] = $result['fb_pic_normal'];
+						} else {
+							$_SESSION['avatar'] = $result['avatar'] ? $result['avatar']:($result['gender']=='M'?'memeja_male.png':'memeja_female.png');
+						}
+						
 						$_SESSION['friends']=$result['memeje_friends'];
 						$_SESSION['gender']=$result['gender'];
 						$_SESSION['id_user'] = $result['id_user'];
@@ -977,14 +982,17 @@ class user_manager extends mod_manager {
 	function _edit_avatar(){
 	    $this->_output['tpl']="user/change_avatar";
 	}
+	
 	function _preview(){
 	    if ($_FILES['img_name']['name']){
 		    $time= strtotime("now");
 		    $rid=$time."_";
+		    
 		    $uploadDir  = APP_ROOT.$GLOBALS['conf']['IMAGE']['preview_orig'];
 		    $thumbnailDir = APP_ROOT.$GLOBALS['conf']['IMAGE']['preview_thumb'];
 		    $thumb_height = $GLOBALS['conf']['IMAGE']['thumb_height'];
 		    $thumb_width = $GLOBALS['conf']['IMAGE']['thumb_width'];
+		    
 		    $fname = $rid.convert_me($_FILES['img_name']['name']);
 		    $file_tmp=$_FILES['img_name']['tmp_name'];
 		    @copy($file_tmp, $uploadDir.$fname);
@@ -992,7 +1000,8 @@ class user_manager extends mod_manager {
 		    $this->r = new thumbnail_manager($uploadDir.$fname,$thumbnailDir.$fname);
 		    $this->r->get_container_thumb($thumb_height,$thumb_width,0,0);
 		    ob_clean();
-		    echo $fname;exit;
+		    echo $fname;
+		    exit;
 	    }
 	}
 
@@ -1060,6 +1069,11 @@ class user_manager extends mod_manager {
 		}
 		return;
 	}
+	
+	##################################################################
+	##### LIVE RANKING SYSTEM ################3
+	################ ADDED BY DELOS #########################420
+	
 	function _live_ranking(){
 		
 		if (!$_SESSION['id_user']){

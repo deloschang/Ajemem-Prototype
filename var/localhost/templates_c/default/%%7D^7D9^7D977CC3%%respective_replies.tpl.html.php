@@ -1,14 +1,25 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 09:03:01
+<?php /* Smarty version 2.6.7, created on 2011-12-28 10:17:47
          compiled from meme/respective_replies.tpl.html */ ?>
 
-<!-- Template: meme/respective_replies.tpl.html Start 28/12/2011 09:03:01 --> 
+<!-- Template: meme/respective_replies.tpl.html Start 28/12/2011 10:17:47 --> 
  <?php $this->_foreach['rep'] = array('total' => count($_from = (array)$this->_tpl_vars['sm']['reparr']), 'iteration' => 0);
 if ($this->_foreach['rep']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['i']):
         $this->_foreach['rep']['iteration']++;
 ?>
 
-<br/><span>Replied by <?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['i']['id_user']]['fname']; ?>
+<br/>
+
+<?php if ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['i']['id_user']]['fb_pic_square']): ?>
+<img src="<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['i']['id_user']]['fb_pic_square']; ?>
+">
+<?php elseif ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['i']['id_user']]['avatar']): ?>
+<img src="http://localhost/image/thumb/avatar/<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['i']['id_user']]['avatar']; ?>
+"/>
+<?php else: ?>
+<?php if ($_SESSION['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png<?php endif; ?>
+<?php endif; ?>
+<span>Replied by <?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['i']['id_user']]['fname']; ?>
  <?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['i']['id_user']]['lname']; ?>
  : <br><b><?php echo $this->_tpl_vars['i']['reply']; ?>
 </b></span><br/>

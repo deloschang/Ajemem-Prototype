@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 09:02:12
+<?php /* Smarty version 2.6.7, created on 2011-12-28 10:16:59
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 128, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 160, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 128, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 161, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 09:02:12 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 10:16:59 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -165,10 +165,11 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 </span>
 	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
 
-<!-- Caption shows below image -->
+<!-- Caption shows below image 
 			<div style="font-size: 12px; color:blue"><span id="hrc<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "><?php if ($this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption']): ?>"<?php echo $this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption']; ?>
-"<?php else:  endif; ?></span></div><br/>
+"<?php else:  endif; ?></span></div><br/>-->
+			<div></div><br/>
 
 <!-- Comment out Category
 			    Category:<b><?php echo $this->_tpl_vars['category'][$this->_tpl_vars['x']['category']]; ?>

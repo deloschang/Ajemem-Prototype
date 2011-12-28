@@ -1,7 +1,13 @@
 {assign var=img_path value=$util->get_values_from_config('IMAGE')}
 <div id="edit_photo">
 <a href="javascript:void(0);" onclick="editPhoto();">
+
+	{if $smarty.session.fb_pic_normal}
+	<img src="{$smarty.session.fb_pic_normal}">
+	{else}
     <img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"/>
+    {/if}
+    
     </a>
 </div>
 <div>
@@ -10,11 +16,19 @@
 {literal}
 <script type="text/javascript">
     function editPhoto(id){
-	var url="##LBL_SITE_URL##index.php";
-	    $.fancybox.showActivity();
-	    $.post(url,{"page":"user","choice":"edit_avatar","id":id,ce:0},function(response){
-		    $.fancybox(response);
-	    });
+		var url="##LBL_SITE_URL##index.php";
+			$.fancybox.showActivity();
+			$.post(url,{"page":"user","choice":"edit_avatar","id":id,ce:0},function(res){
+				$.fancybox(res,{
+			    	closeBtn:false,
+			    	closeClick:false,
+			    	helpers : {
+						overlay : {
+							opacity : 0.8
+						}
+					}
+				});
+			});
     }
 </script>
 {/literal}

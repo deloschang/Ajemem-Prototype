@@ -2,21 +2,23 @@
 {literal}
 <script type="text/javascript">
     function preview(){
-	var url = "##LBL_SITE_URL##user/preview/ce/0";
-	$.ajaxFileUpload({
-	    url:url,
-	    secureuri:false,
-	    fileElementId:'img',     
-	    dataType: 'json',
-	    complete: function (data, status){
-		var img_name=data.responseText;
-		var picture = "<img src = '##LBL_SITE_URL##{/literal}{$img_path.preview_thumb}{literal}"+img_name+"' height = '{/literal}{$img_path.thumb_height}{literal}px' width = '{/literal}{$img_path.thumb_width}{literal}px' />";
-		$('#getimage').html(picture);
-		$('#img_name_span').html($('#server_img').val(img_name));
-		$('#get_img_err').hide();
-	    }
-	});
-    }
+		var url = "##LBL_SITE_URL##user/preview/ce/0";
+		$.ajaxFileUpload({
+			url:url,
+			secureuri:false,
+			fileElementId:'img',     
+			dataType: 'json',
+			complete: function (data, status){
+				console.log("COMPLETE");
+				var img_name=data.responseText;
+				var picture = "<img src = '##LBL_SITE_URL##{/literal}{$img_path.preview_thumb}{literal}"+img_name+"' height = '{/literal}{$img_path.thumb_height}{literal}px' width = '{/literal}{$img_path.thumb_width}{literal}px' />";
+				$('#getimage').html(picture);
+				$('#img_name_span').html($('#server_img').val(img_name));
+				$('#get_img_err').hide();
+			}
+		});
+	}
+    
     function image_upload(){
     var url = "##LBL_SITE_URL##";
 	    if($('#server_img').val()){
