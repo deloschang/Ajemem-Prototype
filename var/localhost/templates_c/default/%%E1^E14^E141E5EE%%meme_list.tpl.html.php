@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 07:26:14
+<?php /* Smarty version 2.6.7, created on 2011-12-28 08:06:06
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -148,7 +148,7 @@
 /* Fade out color after agree/disagree */
     function common_fun(id,color_code){
 	    $("#meme"+id).css("background",color_code);
-	    $("#meme"+id).animate( { "opacity" : 0.4  }, 700, function() {
+	    $("#meme"+id).animate( { "opacity" : 0.4  }, 500, function() {
 			$("#meme"+id).css("background","white");
 			$("#meme"+id).animate( { "opacity" : 1  }, 300)
 	     });

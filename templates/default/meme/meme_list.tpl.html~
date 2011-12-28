@@ -162,7 +162,7 @@
 	    
 	    /* If caption is up, swap */
 	    if(!$("#add_caption"+id).is(":hidden"))
-		$('#add_caption'+id).slideToggle('slow');
+			$('#add_caption'+id).slideToggle('slow');
 	    $('#send_reply'+id).slideToggle('slow');
 	});
     }

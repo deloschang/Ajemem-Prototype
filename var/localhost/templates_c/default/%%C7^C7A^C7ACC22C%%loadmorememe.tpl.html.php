@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 07:26:14
+<?php /* Smarty version 2.6.7, created on 2011-12-28 08:06:06
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 117, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 149, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 120, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 152, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 07:26:14 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 08:06:06 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -28,6 +28,14 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	$(document).ready(function() {
 		setInterval("live_feed(new_ids)", 10000);	// influences flash time
 	 });
+	
+	function common_fun_extended(id,color_code){
+	    $("#meme"+id).css("background",color_code);
+	    $("#meme"+id).animate( { "opacity" : 0.4  }, 800, function() {
+			$("#meme"+id).css("background","white");
+			$("#meme"+id).animate( { "opacity" : 1  }, 1000)
+	     });
+     }
 	
 	function live_feed (new_ids) {
 		//console.log(new_ids);
@@ -75,13 +83,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 					$("#aggr"+meme_id).html(new_honor);
 		
 					// Flash green
-					//common_fun(meme_id, honour_color);
-					$("#meme"+meme_id).css("background","#33CC00");
-					$("#meme"+meme_id).animate( { "opacity" : 0.4  }, 400, function() {
-						$("#meme"+meme_id).css("background","white");
-						$("#meme"+meme_id).animate( { "opacity" : 1  }, 300)
-					 });
-					
+					common_fun_extended(meme_id, honour_color);
+				
 		
 					// 
 					console.log("Request data is "+live_feed_data_tot.trim());
@@ -94,7 +97,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 					$("#disaggr"+meme_id).html(new_dishonor);
 		
 					// Flash green
-					common_fun(meme_id, dishonour_color);
+					common_fun_extended(meme_id, dishonour_color);
 		
 					// 
 					console.log("Request data is "+live_feed_data_tot.trim());

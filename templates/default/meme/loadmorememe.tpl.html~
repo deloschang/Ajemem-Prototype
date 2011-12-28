@@ -20,8 +20,16 @@
 	});
 	
 	$(document).ready(function() {
-		setTimeout("live_feed(new_ids)", 10000);	// influences flash time
+		setInterval("live_feed(new_ids)", 10000);	// influences flash time
 	});
+	
+	function common_fun_extended(id,color_code){
+	    $("#meme"+id).css("background",color_code);
+	    $("#meme"+id).animate( { "opacity" : 0.4 }, 1000, function() {
+			$("#meme"+id).css("background","white");
+			$("#meme"+id).animate( { "opacity" : 1 }, 1000)
+	    });
+    }
 	
 	function live_feed (new_ids) {
 		//console.log(new_ids);
@@ -69,13 +77,8 @@
 					$("#aggr"+meme_id).html(new_honor);
 		
 					// Flash green
-					//common_fun(meme_id, honour_color);
-					$("#meme"+meme_id).css("background","#33CC00");
-					$("#meme"+meme_id).animate( { "opacity" : 0.4 }, 400, function() {
-						$("#meme"+meme_id).css("background","white");
-						$("#meme"+meme_id).animate( { "opacity" : 1 }, 300)
-					});
-					
+					common_fun_extended(meme_id, honour_color);
+				
 		
 					// 
 					console.log("Request data is "+live_feed_data_tot.trim());
@@ -88,7 +91,7 @@
 					$("#disaggr"+meme_id).html(new_dishonor);
 		
 					// Flash green
-					common_fun(meme_id, dishonour_color);
+					common_fun_extended(meme_id, dishonour_color);
 		
 					// 
 					console.log("Request data is "+live_feed_data_tot.trim());
