@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 03:34:57
+<?php /* Smarty version 2.6.7, created on 2011-12-28 04:03:49
          compiled from question/this_week_question.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'question/this_week_question.tpl.html', 15, false),)), $this); ?>
 
-<!-- Template: question/this_week_question.tpl.html Start 28/12/2011 03:34:57 --> 
+<!-- Template: question/this_week_question.tpl.html Start 28/12/2011 04:03:49 --> 
  <?php if ($this->_tpl_vars['sm']['week_quest']): ?>
 <table align="center" style="background-color: #B2B2B2">
     <tr style="height:50px;">

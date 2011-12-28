@@ -20,8 +20,7 @@
 	});
 	
 	$(document).ready(function() {
-		//console.log(new_ids);
-		setInterval("live_feed(new_ids)", 3000);
+		setInterval("live_feed(new_ids)", 7000);	// influences flash time
 	});
 	
 	function live_feed (new_ids) {
@@ -31,46 +30,64 @@
 		var single_id_array = new_ids.split(',');
 		var id_array_len = single_id_array.length;
 		
-		// Testing with single meme first
 		for (var i=0; i < id_array_len; i++) {
 		
-		// Grab the id_meme's honor
+			// Grab the id_meme's honor
 		
-		console.log("Currently on..."+single_id_array[i]);
-		var meme_id = single_id_array[i]
-		var meme_tot_honor = $("#aggr"+meme_id).html();	// Meme 138 with 7 honor
-			//console.log(meme_tot_honor);
+			console.log("Currently on..."+single_id_array[i]);
+			var meme_id = single_id_array[i]
+			var meme_tot_honor = $("#aggr"+meme_id).html();	
+			var meme_tot_dishonor = $("#disaggr"+meme_id).html();
 		
+			// Begin AJAX call to server
+			var live_feed_data;
+			var url="##LBL_SITE_URL##meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor+"/meme_tot_dishonor/"+meme_tot_dishonor;
 		
-		// Begin AJAX call to server
-		var live_feed_data;
-		var url="##LBL_SITE_URL##meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor;
-		
-		var httpRequest = new XMLHttpRequest();
-		httpRequest.open('POST', url, false);
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.open('POST', url, false);
 
-		httpRequest.send(); // this blocks as request is synchronous
+			httpRequest.send(); // this blocks as request is synchronous
 		
-		if (httpRequest.status == 200) {
-			live_feed_data = httpRequest.responseText;
-		}
+			if (httpRequest.status == 200) {
+				live_feed_data_tot = httpRequest.responseText;
+			}
 		
-		if (live_feed_data.trim() == "no honor change" || live_feed_data.trim() == "no meme" || live_feed_data.trim() == "no response"){
-			console.log("(no update) Request data is "+live_feed_data.trim());
-		} else {
+			if (live_feed_data_tot.trim() == "no net honor change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
+			
+				console.log("(no update) Request data is "+live_feed_data_tot.trim());
+				
+			} else {
+			
+				var live_feed_data = live_feed_data_tot.split(',');
 		
-			// Live feed tot_honor has changed...
-			new_honor = live_feed_data.trim();
+				if (live_feed_data[1] == 'honor') {
+					// Live feed tot_honor has changed...
+					new_honor = live_feed_data[0].trim();
 		
-			// Update actual number
-			console.log(meme_id);
-			$("#aggr"+meme_id).html(new_honor);
+					// Update actual number
+					console.log(meme_id);
+					$("#aggr"+meme_id).html(new_honor);
 		
-			// Flash green
-			setInterval("common_fun("+meme_id+", "+honour_color")", 1000);
+					// Flash green
+					common_fun(meme_id, honour_color);
 		
-			// 
-			console.log("Request data is "+live_feed_data.trim());
+					// 
+					console.log("Request data is "+live_feed_data_tot.trim());
+				} else if (live_feed_data[1] == dishonor) {
+					// Live feed tot_dishonor has changed...
+					new_dishonor = live_feed_data[0].trim();
+		
+					// Update actual number
+					console.log(meme_id);
+					$("#disaggr"+meme_id).html(new_dishonor);
+		
+					// Flash green
+					common_fun(meme_id, dishonour_color);
+		
+					// 
+					console.log("Request data is "+live_feed_data_tot.trim());
+				
+				}
 			}
 		}
 	}
