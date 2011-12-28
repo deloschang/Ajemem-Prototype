@@ -72,16 +72,20 @@
 	});
 	return cats;
     }
+    
+    // Called when clicking random
     function show_my_details(id_meme){
 	var url = "##LBL_SITE_URL##meme/meme_list";
 	     $('#comc_img').hide();
 	     $("#lding_rand").show();
+	     
 	     var rnd_cat = get_rand_cats();
 	     var rnd_ids=$("#rand_ids").val();
+	     
 	$.post(url, {last_id:id_meme,ce:0,cat:'rand',rand_fg:'1',rnd_ids:rnd_ids,rnd_cat:rnd_cat}, function(res){
 		    if(res){
-			$("#rand_meme").html(res);
-		    }else{
+				$("#rand_meme").html(res);
+		    } else {
 			$.post(url, {last_id:id_meme,ce:0,cat:'rand',rand_fg:'2',rnd_cat:rnd_cat}, function(data){
 				$("#rand_meme").html(data);
 				$("#rand_ids").val("");
@@ -89,16 +93,19 @@
 		    }
 	});
     }
+    
     function load_rand_meme(){
-	var url = "##LBL_SITE_URL##meme/meme_list";
-	$('#comc_img').hide();
-	$("#lding_rand").show();
-	var rnd_cat = get_rand_cats();
-	$("#rand_ids").val('');
-	$.post(url, {ce:0,cat:'rand',rnd_cat:rnd_cat,last_id:1}, function(res){
-	    $("#rand_meme").html(res);
-	});
+		var url = "##LBL_SITE_URL##meme/meme_list";
+		$('#comc_img').hide();
+		$("#lding_rand").show();
+		
+		var rnd_cat = get_rand_cats();
+		$("#rand_ids").val('');
+		$.post(url, {ce:0,cat:'rand',rnd_cat:rnd_cat,last_id:1}, function(res){
+			$("#rand_meme").html(res);
+		});
     }
+    
     function get_rand_captions(id){
 	var url = "##LBL_SITE_URL##caption/add_caption";
 	$.post(url,{id:id,ce:0,flag:'rand'}, function(res){

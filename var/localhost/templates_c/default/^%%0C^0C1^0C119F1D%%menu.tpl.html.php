@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 12:07:39
+<?php /* Smarty version 2.6.7, created on 2011-12-28 12:26:44
          compiled from common/menu.tpl.html */ ?>
 
-<!-- Template: common/menu.tpl.html Start 28/12/2011 12:07:39 --> 
+<!-- Template: common/menu.tpl.html Start 28/12/2011 12:26:44 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
@@ -12,7 +12,6 @@
 	$.post(url,{ce:0 },function(res){
 	    $("#randpgexist").val(1);
 	    $.fancybox.open(res,{
-		    centerOnScroll:true,
 		    afterClose : function (){
 				$("#randpgexist").val(0);
 		     }

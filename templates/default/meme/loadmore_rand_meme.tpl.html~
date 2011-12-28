@@ -9,21 +9,19 @@
 		    Category:<b>{$category[$x.category]}</b><br/>
 		    Title:<b>{$x.title|capitalize}</b><br/> 
 		-->
-		    On : {$x.add_date|date_format:"%m-%d-%Y"} @ {$x.add_date|date_format:"%I:%M %p"}
+<!--		    On : {$x.add_date|date_format:"%m-%d-%Y"} @ {$x.add_date|date_format:"%I:%M %p"}-->
 	    </div>
-	    <div id="lding_rand" style="display: none;" align="center"><img src="##LBL_SITE_URL##templates/images/loadingAnimation.gif" /></div>
-	    <div  onclick="show_my_details('{$x.id_meme}');" id="comc_img"><br />
-		    <img  src="##LBL_SITE_URL##image/orig/meme/{$x.image}" style="cursor:pointer;"  title="Meme" />
-	    </div>
-	    <br />
-	    <div id="randhrc{$x.id_meme}" style="font-size: 16px;color:blue;">{if $sm.hrc[$x.id_meme].caption}{$sm.hrc[$x.id_meme].caption}{else}{/if}</div>
-	    <br/>
+	    
+	    <!--	    <div id="randhrc{$x.id_meme}" style="font-size: 16px;color:blue;">{if $sm.hrc[$x.id_meme].caption}{$sm.hrc[$x.id_meme].caption}{else}{/if}</div>-->
+<!--	    -->
+<!--	    <br/>-->
+
 	    <div>
 		    <span>
 			{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
 			
-			<span id ="rand_meme_reply_id{$x.id_meme}"></span>
-			<label id="randrepl{$x.id_meme}">{$x.tot_reply}</label>&nbsp;<a href="javascript:void(0);" onclick="get_all_rand_replies('{$x.id_meme}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;
+			<span id ="rand_meme_reply_id{$x.id_meme}">
+			<label id="randrepl{$x.id_meme}">{$x.tot_reply}</label>&nbsp;<a href="javascript:void(0);" onclick="get_all_rand_replies('{$x.id_meme}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;</span>
 			{/if}
 			
 			<span id ="rand_meme_agr_id{$x.id_meme}">
@@ -64,15 +62,26 @@
 <!--			<span class="fb_btn"><fb:like href="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like></span>-->
 
 		    </span><br/>
+	</div>
+	    
+	    
+	    
+	    <div id="lding_rand" style="display: none;" align="center"><img src="##LBL_SITE_URL##templates/images/loadingAnimation.gif" /></div>
+	    
+	    <div  onclick="show_my_details('{$x.id_meme}');" id="comc_img"><br />
+		    <img  src="##LBL_SITE_URL##image/orig/meme/{$x.image}" style="cursor:pointer;"  title="Meme" />
+	    </div>
+	    
+	    <br />
 		    
 <!--		    <span ><a href="http://twitter.com/share" class="twitter-share-button" data-url="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje"  >Tweet</a></span>-->
 
-	    </div>
+
 	    <div id="randsend_reply{$x.id_meme}" style="width:60%;display: none;"></div>
-	    <div id="randadd_caption{$x.id_meme}" style="width:60%;display: none;"></div>
+<!--	    <div id="randadd_caption{$x.id_meme}" style="width:60%;display: none;"></div>-->
     </div>
 {literal}
-<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+<!--<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>-->
 <script type="text/javascript">
     $(document).ready(function(){
 	var ids = ($("#rand_ids").val())?$("#rand_ids").val()+",{/literal}{$x.id_meme}{literal}":"{/literal}{$x.id_meme}{literal}";

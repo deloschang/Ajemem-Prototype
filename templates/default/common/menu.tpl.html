@@ -8,7 +8,6 @@
 	$.post(url,{ce:0},function(res){
 	    $("#randpgexist").val(1);
 	    $.fancybox.open(res,{
-		    centerOnScroll:true,
 		    afterClose : function (){
 				$("#randpgexist").val(0);
 		    }
