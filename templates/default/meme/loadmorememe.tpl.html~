@@ -29,13 +29,17 @@
 		
 		// Explode new_ids list by ',' for single ids
 		var single_id_array = new_ids.split(',');
+		var id_array_len = single_id_array.length;
 		
 		// Testing with single meme first
+		for (var i=0; i < id_array_len; i++) {
+		
 		// Grab the id_meme's honor
 		
-		var meme_id = single_id_array[0]
+		console.log("Currently on..."+single_id_array[i]);
+		var meme_id = single_id_array[i]
 		var meme_tot_honor = $("#aggr"+meme_id).html();	// Meme 138 with 7 honor
-		console.log(meme_tot_honor);
+			//console.log(meme_tot_honor);
 		
 		
 		// Begin AJAX call to server
@@ -51,8 +55,24 @@
 			live_feed_data = httpRequest.responseText;
 		}
 		
-		console.log("Request data is "+live_feed_data);
-	
+		if (live_feed_data.trim() == "no honor change" || live_feed_data.trim() == "no meme" || live_feed_data.trim() == "no response"){
+			console.log("(no update) Request data is "+live_feed_data.trim());
+		} else {
+		
+			// Live feed tot_honor has changed...
+			new_honor = live_feed_data.trim();
+		
+			// Update actual number
+			console.log(meme_id);
+			$("#aggr"+meme_id).html(new_honor);
+		
+			// Flash green
+			setInterval("common_fun("+meme_id+", "+honour_color")", 1000);
+		
+			// 
+			console.log("Request data is "+live_feed_data.trim());
+			}
+		}
 	}
 	
 	

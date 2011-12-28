@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 02:54:48
+<?php /* Smarty version 2.6.7, created on 2011-12-28 03:34:57
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 74, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 106, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 94, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 126, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 02:54:48 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 03:34:57 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -35,13 +35,17 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		
 		// Explode new_ids list by \',\' for single ids
 		var single_id_array = new_ids.split(\',\');
+		var id_array_len = single_id_array.length;
 		
 		// Testing with single meme first
+		for (var i=0; i < id_array_len; i++) {
+		
 		// Grab the id_meme\'s honor
 		
-		var meme_id = single_id_array[0]
+		console.log("Currently on..."+single_id_array[i]);
+		var meme_id = single_id_array[i]
 		var meme_tot_honor = $("#aggr"+meme_id).html();	// Meme 138 with 7 honor
-		console.log(meme_tot_honor);
+			//console.log(meme_tot_honor);
 		
 		
 		// Begin AJAX call to server
@@ -57,8 +61,24 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			live_feed_data = httpRequest.responseText;
 		 }
 		
-		console.log("Request data is "+live_feed_data.trim());
-	
+		if (live_feed_data.trim() == "no honor change" || live_feed_data.trim() == "no meme" || live_feed_data.trim() == "no response"){
+			console.log("(no update) Request data is "+live_feed_data.trim());
+		 } else {
+		
+			// Live feed tot_honor has changed...
+			new_honor = live_feed_data.trim();
+		
+			// Update actual number
+			console.log(meme_id);
+			$("#aggr"+meme_id).html(new_honor);
+		
+			// Flash green
+			common_fun(meme_id, honour_color);
+		
+			// 
+			console.log("Request data is "+live_feed_data.trim());
+			 }
+		 }
 	 }
 	
 	
