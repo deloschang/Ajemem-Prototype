@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 10:16:59
+<?php /* Smarty version 2.6.7, created on 2011-12-28 10:31:28
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 128, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 161, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 144, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 177, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 10:16:59 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 10:31:28 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -47,9 +47,25 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			console.log("Currently on..."+single_id_array[i]);
 			var meme_id = single_id_array[i]
 			var meme_tot_honor = $("#aggr"+meme_id).html();	
+			
+			if (!meme_tot_honor) {
+				meme_tot_honor = 0;
+			 }
+			
 			var meme_tot_dishonor = $("#disaggr"+meme_id).html();
+			
+			if (!meme_tot_dishonor) {
+				meme_tot_dishonor = 0;
+			 }
+			
 			var meme_tot_reply = $("#repl"+meme_id).html();
-		
+			
+			if (!meme_tot_reply) {
+				meme_tot_reply = 0;
+			 }
+			
+			console.log("Tot reply for meme is  "+meme_tot_reply);
+			
 			// Begin AJAX call to server
 			var live_feed_data;
 			var url="http://localhost/meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor+"/meme_tot_dishonor/"+meme_tot_dishonor+"/meme_tot_reply/"+meme_tot_reply;

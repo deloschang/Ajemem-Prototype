@@ -41,9 +41,25 @@
 			console.log("Currently on..."+single_id_array[i]);
 			var meme_id = single_id_array[i]
 			var meme_tot_honor = $("#aggr"+meme_id).html();	
+			
+			if (!meme_tot_honor) {
+				meme_tot_honor = 0;
+			}
+			
 			var meme_tot_dishonor = $("#disaggr"+meme_id).html();
+			
+			if (!meme_tot_dishonor) {
+				meme_tot_dishonor = 0;
+			}
+			
 			var meme_tot_reply = $("#repl"+meme_id).html();
-		
+			
+			if (!meme_tot_reply) {
+				meme_tot_reply = 0;
+			}
+			
+			console.log("Tot reply for meme is  "+meme_tot_reply);
+			
 			// Begin AJAX call to server
 			var live_feed_data;
 			var url="##LBL_SITE_URL##meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor+"/meme_tot_dishonor/"+meme_tot_dishonor+"/meme_tot_reply/"+meme_tot_reply;
