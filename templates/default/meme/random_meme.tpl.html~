@@ -98,6 +98,7 @@
 		var url = "##LBL_SITE_URL##meme/meme_list";
 		$('#comc_img').hide();
 		$("#lding_rand").show();
+		
 		var rnd_cat = get_rand_cats();
 		$("#rand_ids").val('');
 		$.post(url, {ce:0,cat:'rand',rnd_cat:rnd_cat,last_id:1}, function(res){
@@ -144,7 +145,7 @@
 {/literal}
 
 <center>
-    <label style="font-size: 16px;font-weight:bold;">Random Meme</label>
+    <label id ="random_title" style="font-size: 16px;font-weight:bold;">Random Meme</label>
 </center>
 
 <!-- Commenting out categories 

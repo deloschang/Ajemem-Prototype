@@ -2,7 +2,8 @@
 {if $sm.res_meme.0}
 {assign var=category value=$util->get_values_from_config('CATEGORY')}
 {assign var=x value=$sm.res_meme.0}
-  <div  id="rand_meme" style="width:640px;height:auto;">
+
+  <div  id="rand_meme" style="width:640px; height:auto;">
 	    <div>
 	    <!--
 		    Posted by:{$sm.uinfo[$x.id_user].fname} {$sm.uinfo[$x.id_user].lname}<br/>
@@ -84,11 +85,14 @@
 <!--<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>-->
 <script type="text/javascript">
     $(document).ready(function(){
-	var ids = ($("#rand_ids").val())?$("#rand_ids").val()+",{/literal}{$x.id_meme}{literal}":"{/literal}{$x.id_meme}{literal}";
-	$("#rand_ids").val(ids);
+		var ids = ($("#rand_ids").val())?$("#rand_ids").val()+",{/literal}{$x.id_meme}{literal}":"{/literal}{$x.id_meme}{literal}";
+		$("#rand_ids").val(ids);
+		
+		$("#random_title").html({/literal}{$x.title|capitalize}{literal});
     });
+    
     $(".fb_btn").each(function (){
-	FB.XFBML.parse($(this).get(0));
+		FB.XFBML.parse($(this).get(0));
     });
 </script>
 {/literal}
