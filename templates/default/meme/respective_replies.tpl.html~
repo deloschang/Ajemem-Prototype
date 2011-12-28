@@ -7,7 +7,7 @@
 {/foreach}<br/>
 
 <!-- D: written in to update reply feed in live -->
-<div id="replyinsert"></div><br/>
+<div id="replyinsert"></div>
 
 <textarea id="{if !$sm.flag}rpl_con{else}rand_rpl_con{/if}{$sm.id_meme}" style="width:90%;" onclick="{if !$sm.flag}chk_forclear{else}rand_chk_forclear{/if}('{$sm.id_meme}');" ></textarea><br/>
 

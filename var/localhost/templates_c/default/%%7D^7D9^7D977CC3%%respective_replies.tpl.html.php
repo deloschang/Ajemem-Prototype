@@ -1,14 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 08:24:29
+<?php /* Smarty version 2.6.7, created on 2011-12-28 09:03:01
          compiled from meme/respective_replies.tpl.html */ ?>
 
-<!-- Template: meme/respective_replies.tpl.html Start 28/12/2011 08:24:29 --> 
+<!-- Template: meme/respective_replies.tpl.html Start 28/12/2011 09:03:01 --> 
  <?php $this->_foreach['rep'] = array('total' => count($_from = (array)$this->_tpl_vars['sm']['reparr']), 'iteration' => 0);
 if ($this->_foreach['rep']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['i']):
         $this->_foreach['rep']['iteration']++;
 ?>
-
-<!-- D: $sm values passed in from meme_manager.php. For e.g., $sm.reparr is a property defined by $this->_output['reparr'] = $replies; -->
 
 <br/><span>Replied by <?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['i']['id_user']]['fname']; ?>
  <?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['i']['id_user']]['lname']; ?>

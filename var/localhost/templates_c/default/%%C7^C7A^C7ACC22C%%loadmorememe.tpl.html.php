@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 08:27:00
+<?php /* Smarty version 2.6.7, created on 2011-12-28 09:02:12
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 116, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 148, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 128, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 160, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 08:27:00 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 09:02:12 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -48,10 +48,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			var meme_id = single_id_array[i]
 			var meme_tot_honor = $("#aggr"+meme_id).html();	
 			var meme_tot_dishonor = $("#disaggr"+meme_id).html();
+			var meme_tot_reply = $("#repl"+meme_id).html();
 		
 			// Begin AJAX call to server
 			var live_feed_data;
-			var url="http://localhost/meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor+"/meme_tot_dishonor/"+meme_tot_dishonor;
+			var url="http://localhost/meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor+"/meme_tot_dishonor/"+meme_tot_dishonor+"/meme_tot_reply/"+meme_tot_reply;
 		
 			var httpRequest = new XMLHttpRequest();
 			httpRequest.open(\'POST\', url, false);
@@ -62,7 +63,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 				live_feed_data_tot = httpRequest.responseText;
 			 }
 		
-			if (live_feed_data_tot.trim() == "no net honor change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
+			if (live_feed_data_tot.trim() == "no change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
 			
 				console.log("(no update) Request data is "+live_feed_data_tot.trim());
 				
@@ -75,7 +76,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 					new_honor = live_feed_data[0].trim();
 		
 					// Update actual number
-					console.log(meme_id);
 					$("#aggr"+meme_id).html(new_honor);
 		
 					// Flash green
@@ -89,11 +89,23 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 					new_dishonor = live_feed_data[0].trim();
 		
 					// Update actual number
-					console.log(meme_id);
 					$("#disaggr"+meme_id).html(new_dishonor);
 		
-					// Flash green
+					// Flash red
 					common_fun_extended(meme_id, dishonour_color);
+		
+					// 
+					console.log("Request data is "+live_feed_data_tot.trim());
+				
+				 } else if (live_feed_data[1] == \'reply\') {
+					// Live feed tot_dishonor has changed...
+					new_reply = live_feed_data[0].trim();
+		
+					// Update actual number
+					$("#repl"+meme_id).html(new_reply);
+		
+					// Flash yellow
+					common_fun_extended(meme_id, reply_color);
 		
 					// 
 					console.log("Request data is "+live_feed_data_tot.trim());

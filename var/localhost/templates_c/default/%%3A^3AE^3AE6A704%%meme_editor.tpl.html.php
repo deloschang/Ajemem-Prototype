@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 04:14:50
+<?php /* Smarty version 2.6.7, created on 2011-12-28 08:32:57
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 207, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 28/12/2011 04:14:50 --> 
+<!-- Template: meme/meme_editor.tpl.html Start 28/12/2011 08:32:57 --> 
  <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
 <?php echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->

@@ -42,10 +42,11 @@
 			var meme_id = single_id_array[i]
 			var meme_tot_honor = $("#aggr"+meme_id).html();	
 			var meme_tot_dishonor = $("#disaggr"+meme_id).html();
+			var meme_tot_reply = $("#repl"+meme_id).html();
 		
 			// Begin AJAX call to server
 			var live_feed_data;
-			var url="##LBL_SITE_URL##meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor+"/meme_tot_dishonor/"+meme_tot_dishonor;
+			var url="##LBL_SITE_URL##meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor+"/meme_tot_dishonor/"+meme_tot_dishonor+"/meme_tot_reply/"+meme_tot_reply;
 		
 			var httpRequest = new XMLHttpRequest();
 			httpRequest.open('POST', url, false);
@@ -56,7 +57,7 @@
 				live_feed_data_tot = httpRequest.responseText;
 			}
 		
-			if (live_feed_data_tot.trim() == "no net honor change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
+			if (live_feed_data_tot.trim() == "no change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
 			
 				console.log("(no update) Request data is "+live_feed_data_tot.trim());
 				
@@ -69,7 +70,6 @@
 					new_honor = live_feed_data[0].trim();
 		
 					// Update actual number
-					console.log(meme_id);
 					$("#aggr"+meme_id).html(new_honor);
 		
 					// Flash green
@@ -83,11 +83,23 @@
 					new_dishonor = live_feed_data[0].trim();
 		
 					// Update actual number
-					console.log(meme_id);
 					$("#disaggr"+meme_id).html(new_dishonor);
 		
 					// Flash green
 					common_fun_extended(meme_id, dishonour_color);
+		
+					// 
+					console.log("Request data is "+live_feed_data_tot.trim());
+				
+				} else if (live_feed_data[1] == 'reply') {
+					// Live feed tot_dishonor has changed...
+					new_reply = live_feed_data[0].trim();
+		
+					// Update actual number
+					$("#repl"+meme_id).html(new_reply);
+		
+					// Flash yellow
+					common_fun_extended(meme_id, reply_color);
 		
 					// 
 					console.log("Request data is "+live_feed_data_tot.trim());
