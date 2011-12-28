@@ -4,7 +4,7 @@
 
 {if $sm.uinfo[$i.id_user].fb_pic_square}
 <img src="{$sm.uinfo[$i.id_user].fb_pic_square}">
-{else if $sm.uinfo[$i.id_user].avatar}
+{elseif $sm.uinfo[$i.id_user].avatar}
 <img src="##LBL_SITE_URL##image/thumb/avatar/{$sm.uinfo[$i.id_user].avatar}"/>
 {else}
 {if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}
@@ -14,7 +14,7 @@
 {/foreach}<br/>
 
 <!-- D: written in to update reply feed in live -->
-<div id="replyinsert"></div>
+<div id="replyinsert"+{$sm.id_meme}>aaaaaaaaa</div>
 
 <textarea id="{if !$sm.flag}rpl_con{else}rand_rpl_con{/if}{$sm.id_meme}" style="width:90%;" onclick="{if !$sm.flag}chk_forclear{else}rand_chk_forclear{/if}('{$sm.id_meme}');" ></textarea><br/>
 

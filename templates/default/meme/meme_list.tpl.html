@@ -195,7 +195,7 @@
 			});
 		
 			/* Added by Delos for live reply */
-			$("#replyinsert").html("Replied by {/literal}{$smarty.session.fname} {$smarty.session.lname}{literal} :<b>"+$("#rpl_con"+id).val()+"</b>")
+			$("#replyinsert"+id).html("Replied by {/literal}{$smarty.session.fname} {$smarty.session.lname}{literal} :<b>"+$("#rpl_con"+id).val()+"</b>")
 		
     	} else {
     		alert("Please log in to reply.");

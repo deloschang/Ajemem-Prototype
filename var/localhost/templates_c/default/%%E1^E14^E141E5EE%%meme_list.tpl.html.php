@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 10:31:28
+<?php /* Smarty version 2.6.7, created on 2011-12-28 10:43:13
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -196,7 +196,7 @@
 			 });
 		
 			/* Added by Delos for live reply */
-			$("#replyinsert").html("Replied by ';  echo $_SESSION['fname']; ?>
+			$("#replyinsert"+id).html("Replied by ';  echo $_SESSION['fname']; ?>
  <?php echo $_SESSION['lname'];  echo ' :<b>"+$("#rpl_con"+id).val()+"</b>")
 		
     	 } else {
