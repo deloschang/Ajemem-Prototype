@@ -24,11 +24,7 @@
 	});
 	
 	function common_fun_extended(id,color_code){
-	    $("#meme"+id).css("background",color_code);
-	    $("#meme"+id).animate( { "opacity" : 0.4 }, 800, function() {
-			$("#meme"+id).css("background","white");
-			$("#meme"+id).animate( { "opacity" : 1 }, 1000)
-	    });
+	    $("#meme"+id).effect("highlight", {color:color_code}, 2600);
     }
 	
 	function live_feed (new_ids) {

@@ -1,4 +1,3 @@
-
 {*notag*}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -54,6 +53,9 @@
 <!-- XP Bar CSS + JS-->
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/jquery-ui-1.8.16.custom.css"/>
 <script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.core.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.core.js"></script>
+
 <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 <!--end-->
 

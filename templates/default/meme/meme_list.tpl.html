@@ -146,11 +146,7 @@
 
 /* Fade out color after agree/disagree */
     function common_fun(id,color_code){
-	    $("#meme"+id).css("background",color_code);
-	    $("#meme"+id).animate( { "opacity" : 0.4 }, 500, function() {
-			$("#meme"+id).css("background","white");
-			$("#meme"+id).animate( { "opacity" : 1 }, 300)
-	    });
+		$("#meme"+id).effect("highlight", {color:color_code}, 1500);
     }
 
 /* Expand replies after reply button is pressed on the meme */

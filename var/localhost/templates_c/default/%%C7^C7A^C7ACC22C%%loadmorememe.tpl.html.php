@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 08:06:06
+<?php /* Smarty version 2.6.7, created on 2011-12-28 08:27:00
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 120, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 152, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 116, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 148, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 08:06:06 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 08:27:00 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -30,11 +30,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	 });
 	
 	function common_fun_extended(id,color_code){
-	    $("#meme"+id).css("background",color_code);
-	    $("#meme"+id).animate( { "opacity" : 0.4  }, 800, function() {
-			$("#meme"+id).css("background","white");
-			$("#meme"+id).animate( { "opacity" : 1  }, 1000)
-	     });
+	    $("#meme"+id).effect("highlight", {color:color_code }, 2600);
      }
 	
 	function live_feed (new_ids) {
