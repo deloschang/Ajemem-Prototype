@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-16 05:59:27
+<?php /* Smarty version 2.6.7, created on 2011-12-27 05:15:59
          compiled from leaderboard/exp_list.tpl.html */ ?>
 <div id="leaderboard_lb_exp_point">
 <div class="box box-75 altbox">

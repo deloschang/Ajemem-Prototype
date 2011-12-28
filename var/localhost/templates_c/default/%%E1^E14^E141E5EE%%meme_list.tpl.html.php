@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-26 23:55:35
+<?php /* Smarty version 2.6.7, created on 2011-12-28 02:54:48
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -156,20 +156,18 @@
 
 /* Expand replies after reply button is pressed on the meme */
     function get_all_replies(id){
-    
-    /* D: Strangely...URL seems to be respective_replies in /meme/ */
-    
-    /* _get_all_replies is a priv function in meme_manager.php that links to respective_replies */
+        
 	var url = "http://localhost/meme/get_all_replies";
 	$.post(url,{id:id,ce:0 }, function(res){
 	    $("#send_reply"+id).html(res);
 	    
 	    /* If caption is up, swap */
 	    if(!$("#add_caption"+id).is(":hidden"))
-		$(\'#add_caption\'+id).slideToggle(\'slow\');
+			$(\'#add_caption\'+id).slideToggle(\'slow\');
 	    $(\'#send_reply\'+id).slideToggle(\'slow\');
 	 });
      }
+    
     function get_captions(id){
 	var url = "http://localhost/caption/add_caption";
 	$.post(url,{id:id,ce:0 }, function(res){
@@ -179,6 +177,7 @@
 		$(\'#add_caption\'+id).slideToggle(\'slow\');
 	 });
      }
+    
     function chk_forclear(id){
 	if($(\'#rpl_con\'+id).val() == "Reply with answer.")
 	    $(\'#rpl_con\'+id).val(\'\');

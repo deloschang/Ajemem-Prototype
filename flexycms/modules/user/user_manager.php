@@ -1139,11 +1139,7 @@ class user_manager extends mod_manager {
 	    	// No users
 			exit("2");
 	    }
-	    
-	    ###### OLD TOTAL XP 
-	    	##$tot_points=2500;
-	    #####
-	    
+	    	    
 	    $sql="SELECT exp_point FROM ".TABLE_PREFIX."user WHERE id_user=".$_SESSION['id_user']." LIMIT 1";
 	    $res=mysqli_fetch_assoc(mysqli_query($link,$sql));
 	    

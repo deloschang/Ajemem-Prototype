@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-26 23:55:35
+<?php /* Smarty version 2.6.7, created on 2011-12-28 02:54:48
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 36, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 68, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 74, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 106, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 26/12/2011 23:55:35 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 02:54:48 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -24,6 +24,44 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	$(".fb_btn").each(function (){
 	    FB.XFBML.parse($(this).get(0));
 	 });
+	
+	$(document).ready(function() {
+		//console.log(new_ids);
+		setInterval("live_feed(new_ids)", 3000);
+	 });
+	
+	function live_feed (new_ids) {
+		console.log(new_ids);
+		
+		// Explode new_ids list by \',\' for single ids
+		var single_id_array = new_ids.split(\',\');
+		
+		// Testing with single meme first
+		// Grab the id_meme\'s honor
+		
+		var meme_id = single_id_array[0]
+		var meme_tot_honor = $("#aggr"+meme_id).html();	// Meme 138 with 7 honor
+		console.log(meme_tot_honor);
+		
+		
+		// Begin AJAX call to server
+		var live_feed_data;
+		var url="http://localhost/meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor;
+		
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open(\'POST\', url, false);
+
+		httpRequest.send(); // this blocks as request is synchronous
+		
+		if (httpRequest.status == 200) {
+			live_feed_data = httpRequest.responseText;
+		 }
+		
+		console.log("Request data is "+live_feed_data.trim());
+	
+	 }
+	
+	
 </script>
 '; ?>
 

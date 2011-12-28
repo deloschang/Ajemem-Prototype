@@ -18,6 +18,44 @@
 	$(".fb_btn").each(function (){
 	    FB.XFBML.parse($(this).get(0));
 	});
+	
+	$(document).ready(function() {
+		//console.log(new_ids);
+		setInterval("live_feed(new_ids)", 3000);
+	});
+	
+	function live_feed (new_ids) {
+		console.log(new_ids);
+		
+		// Explode new_ids list by ',' for single ids
+		var single_id_array = new_ids.split(',');
+		
+		// Testing with single meme first
+		// Grab the id_meme's honor
+		
+		var meme_id = single_id_array[0]
+		var meme_tot_honor = $("#aggr"+meme_id).html();	// Meme 138 with 7 honor
+		console.log(meme_tot_honor);
+		
+		
+		// Begin AJAX call to server
+		var live_feed_data;
+		var url="##LBL_SITE_URL##meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor;
+		
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open('POST', url, false);
+
+		httpRequest.send(); // this blocks as request is synchronous
+		
+		if (httpRequest.status == 200) {
+			live_feed_data = httpRequest.responseText;
+		}
+		
+		console.log("Request data is "+live_feed_data);
+	
+	}
+	
+	
 </script>
 {/literal}
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
@@ -94,7 +132,7 @@
 			    		{/if}
 			    	{/if}
 			    
-			    onclick="set_tot_adaggr('{$x.id_meme}','D');">Dishonor{*$x.dishonour_id_user*}</a>
+			    onclick="set_tot_adaggr('{$x.id_meme}','D','{$x.id_user}');">Dishonor{*$x.dishonour_id_user*}</a>
 
 <!-- Add Caption -->
 			    {if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
