@@ -396,4 +396,4 @@
 <div id="loadingmeme_img" style="display:none;">
     <img src="##LBL_SITE_URL##templates/images/loading.gif" />
 </div>
-<div id="signupmemes" style="display:none;">To see more memes, sign up!</div>
+<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
