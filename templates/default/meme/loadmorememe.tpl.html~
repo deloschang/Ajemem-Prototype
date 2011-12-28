@@ -6,6 +6,9 @@
 	var id = "{/literal}{$sm.last_idmeme}{literal}";
 	var new_ids = "{/literal}{$sm.id_memes}{literal}";
 	
+	// Explode new_ids list by ',' for single ids
+	var single_id_array = new_ids.split(',');	
+	
 	if(id!=''){
 	    $("#last_id_meme_cur_page").val(id);
 	    var id_memes = $("#rand_id_memes").val();
@@ -21,17 +24,37 @@
 	
 	$(document).ready(function() {
 		setInterval("live_feed(new_ids)", 10000);	// influences flash time
+		setInterval("live_meme()", 5000);
 	});
 	
 	function common_fun_extended(id,color_code){
 	    $("#meme"+id).effect("highlight", {color:color_code}, 2600);
     }
 	
+	function live_meme () {
+		var top_meme_id = single_id_array[0] 
+	
+		console.log(top_meme_id);		// 137
+		
+		var live_meme_data;
+		var url="##LBL_SITE_URL##meme/live_meme/ce/0/chk/1/top_meme_id/"+top_meme_id;
+	
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open('POST', url, false);
+
+		httpRequest.send(); // this blocks as request is synchronous
+	
+		if (httpRequest.status == 200) {
+			live_meme_data = httpRequest.responseText;
+		}
+		
+		console.log("Data is "+live_meme_data
+		
+	}
+	
 	function live_feed (new_ids) {
 		//console.log(new_ids);
 		
-		// Explode new_ids list by ',' for single ids
-		var single_id_array = new_ids.split(',');
 		var id_array_len = single_id_array.length;
 		
 		for (var i=0; i < id_array_len; i++) {
@@ -55,10 +78,10 @@
 			var meme_tot_reply = $("#repl"+meme_id).html();
 			
 			if (!meme_tot_reply) {
-				meme_tot_dishonor = 0;
+				meme_tot_reply = 0;
 			}
 			
-			console.log("Tot reply for meme is  "+meme_tot_reply);
+			//console.log("Tot reply for meme is  "+meme_tot_reply);
 			
 			// Begin AJAX call to server
 			var live_feed_data;

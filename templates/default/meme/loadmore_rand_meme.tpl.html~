@@ -88,7 +88,18 @@
 		var ids = ($("#rand_ids").val())?$("#rand_ids").val()+",{/literal}{$x.id_meme}{literal}":"{/literal}{$x.id_meme}{literal}";
 		$("#rand_ids").val(ids);
 		
-		$("#random_title").html({/literal}{$x.title|capitalize}{literal});
+		// Set Title of Meme
+		$("#random_title").html("{/literal}{$x.title|capitalize}{literal}");
+		
+		// Hotkeys for RG
+		$(document).keypress(function (e) {
+			console.log("space bar fired");
+		  if(e.which == 32){
+		  		alert("You pressed space bar");
+		   }
+		  });
+		
+		
     });
     
     $(".fb_btn").each(function (){

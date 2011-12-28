@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 13:06:09
+<?php /* Smarty version 2.6.7, created on 2011-12-29 00:32:23
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 144, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 177, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 167, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 200, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 13:06:09 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 29/12/2011 00:32:23 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -11,6 +11,9 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <script type="text/javascript">
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
+	
+	// Explode new_ids list by \',\' for single ids
+	var single_id_array = new_ids.split(\',\');	
 	
 	if(id!=\'\'){
 	    $("#last_id_meme_cur_page").val(id);
@@ -27,17 +30,37 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	
 	$(document).ready(function() {
 		setInterval("live_feed(new_ids)", 10000);	// influences flash time
+		setInterval("live_meme()", 5000);
 	 });
 	
 	function common_fun_extended(id,color_code){
 	    $("#meme"+id).effect("highlight", {color:color_code }, 2600);
      }
 	
+	function live_meme () {
+		var top_meme_id = single_id_array[0] 
+	
+		console.log(top_meme_id);		// 137
+		
+		var live_meme_data;
+		var url="http://localhost/meme/live_meme/ce/0/chk/1/top_meme_id/"+top_meme_id;
+	
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open(\'POST\', url, false);
+
+		httpRequest.send(); // this blocks as request is synchronous
+	
+		if (httpRequest.status == 200) {
+			live_meme_data = httpRequest.responseText;
+		 }
+		
+		console.log("Data is "+live_meme_data);
+		
+	 }
+	
 	function live_feed (new_ids) {
 		//console.log(new_ids);
 		
-		// Explode new_ids list by \',\' for single ids
-		var single_id_array = new_ids.split(\',\');
 		var id_array_len = single_id_array.length;
 		
 		for (var i=0; i < id_array_len; i++) {
@@ -64,7 +87,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 				meme_tot_reply = 0;
 			 }
 			
-			console.log("Tot reply for meme is  "+meme_tot_reply);
+			//console.log("Tot reply for meme is  "+meme_tot_reply);
 			
 			// Begin AJAX call to server
 			var live_feed_data;
