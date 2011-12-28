@@ -47,19 +47,24 @@
 		$("#last_id_meme_cur_page").val("{/literal}{$sm.last_idmeme}{literal}");
 	    	get_all_flag_details(1);
 	    	setInterval("get_all_flag_details()",4000);
-	    	
+	    
 		$(window).scroll(function(){
-			if  ($(window).scrollTop() == $(document).height() - $(window).height()){
-				var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
-				var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
+			if ($(window).scrollTop() == $(document).height() - $(window).height()){
 				
-				if ($("#last_id_meme_cur_page").val() != "") {
-			      	console.log("last_id_meme fired");
-				  	if ($("#chk_me").val()!=1) {
-				      backup_last_id_meme = $("#last_id_meme_cur_page").val();
-				      loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
-				      $("#last_id_meme_cur_page").val("");
-			  		}
+				if (logged_in) {
+					var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
+					var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
+				
+					if ($("#last_id_meme_cur_page").val() != "") {
+					  	console.log("last_id_meme fired");
+					  	if ($("#chk_me").val()!=1) {
+						  backup_last_id_meme = $("#last_id_meme_cur_page").val();
+						  loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
+						  $("#last_id_meme_cur_page").val("");
+				  		}
+				  	}
+		      	} else {
+		      		$("#signupmemes").fadeIn('slow');
 		      	}
 			}
 	 	});
@@ -195,7 +200,7 @@
 			});
 		
 			/* Added by Delos for live reply */
-			$("#replyinsert").html("Replied by {/literal}{$smarty.session.fname} {$smarty.session.lname}{literal} :<b>"+$("#rpl_con"+id).val()+"</b>")
+			$("#replyinsert"+id).html("Replied by {/literal}{$smarty.session.fname} {$smarty.session.lname}{literal} :<b>"+$("#rpl_con"+id).val()+"</b>")
 		
     	} else {
     		alert("Please log in to reply.");
@@ -391,3 +396,4 @@
 <div id="loadingmeme_img" style="display:none;">
     <img src="##LBL_SITE_URL##templates/images/loading.gif" />
 </div>
+<div id="signupmemes" style="display:none;">To see more memes, sign up!</div>

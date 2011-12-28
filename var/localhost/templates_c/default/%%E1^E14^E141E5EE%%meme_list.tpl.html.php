@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 11:25:13
+<?php /* Smarty version 2.6.7, created on 2011-12-28 11:40:01
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -48,19 +48,24 @@
 		$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
 	    	get_all_flag_details(1);
 	    	setInterval("get_all_flag_details()",4000);
-	    	
+	    
 		$(window).scroll(function(){
-			if  ($(window).scrollTop() == $(document).height() - $(window).height()){
-				var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
-				var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
+			if ($(window).scrollTop() == $(document).height() - $(window).height()){
 				
-				if ($("#last_id_meme_cur_page").val() != "") {
-			      	console.log("last_id_meme fired");
-				  	if ($("#chk_me").val()!=1) {
-				      backup_last_id_meme = $("#last_id_meme_cur_page").val();
-				      loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
-				      $("#last_id_meme_cur_page").val("");
-			  		 }
+				if (logged_in) {
+					var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
+					var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
+				
+					if ($("#last_id_meme_cur_page").val() != "") {
+					  	console.log("last_id_meme fired");
+					  	if ($("#chk_me").val()!=1) {
+						  backup_last_id_meme = $("#last_id_meme_cur_page").val();
+						  loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
+						  $("#last_id_meme_cur_page").val("");
+				  		 }
+				  	 }
+		      	 } else {
+		      		$("#signupmemes").fadeIn(\'slow\');
 		      	 }
 			 }
 	 	 });
@@ -399,4 +404,5 @@ unset($_smarty_tpl_vars);
 </div>
 <div id="loadingmeme_img" style="display:none;">
     <img src="http://localhost/templates/images/loading.gif" />
-</div>
+</div>
+<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
