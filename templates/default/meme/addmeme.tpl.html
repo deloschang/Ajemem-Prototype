@@ -1,4 +1,9 @@
-<div id="showmodal" class="showmodal">Loading the Memeja Editor.</div>
+<!-- 
+     Commented by Muaz :D
+	 This is the main HTML for the Memeja Editor.
+-->
+
+<div id="showmodal" class="showmodal"><em><strong><center>ENTER MEMEJA DOJO</center></strong></em></div>
 <script type="text/javascript">
     var last_comic="##LBL_SITE_URL##spad/workspace/{$smarty.session.id_user}_img.png";
     var LBL_SITE_URL="##LBL_SITE_URL##";
@@ -8,10 +13,13 @@
 <script type="text/javascript" src="##LBL_SITE_URL##spad/scratchpad.js"></script>
 <script type="text/javascript" src="##LBL_SITE_URL##spad/jquery.jqDock.min.js"></script>
 <script type="text/javascript" src="##LBL_SITE_URL##spad/color/colorpicker.js"></script>
+<script type="text/javascript" src="jquery.lionbars.0.3.min.js"></script>
+<script type="text/javascript" src="jquery.lionbars.0.3.js"></script>
 
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" />
 <link type="text/css" href="##LBL_SITE_URL##spad/css/colorpicker.css" rel="stylesheet" />
 <link rel="stylesheet" href="##LBL_SITE_URL##spad/css/spad.css" type="text/css"/>
+<link rel="stylesheet" href="##LBL_SITE_URL##templates/default/meme/lionbars.css" type="text/css"/>
 <script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/js/jquery.multiautocomplete.js"></script>
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/multiautocomplete.css"/>
 {assign var=category value=$util->get_values_from_config('CATEGORY')}
@@ -52,7 +60,7 @@
             return false;
         }else{
 		if(!$("#tag").val()){
-			var conf=confirm("Are you sure you do not want to tag any of your friends?");
+			var conf=confirm("Are you sure you don't want to tag your friends?");
 			if(conf){
 				submit_memeje();
 			}else{
@@ -64,6 +72,11 @@
         }
     }
 
+</script>
+<script type="text/javascript">
+    $(window).bind('beforeunload', function() {
+            return 'Oh NO! Your meme has not been submitted!!';
+    }); 
 </script>
 {/literal}
 {if $sm.idq}
@@ -88,28 +101,29 @@
         <div id="edtr">
 	{include file="meme/meme_editor"}
 
-            <div class='right_pos_abs'>
-                <table>
+            <div class="right_pos_abs">
+                <table><!--
+				    <tr>
+                        <td valign='top'><b>Tag your friends:</b></td>
+                        <td><select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select></td>
+                    </tr>
                     <tr>
-                        <td valign='top'><b>Visibility:</b></td>
-                        <td>
+                        <td valign='baseline'><b>Visibility:</b>
                             <select id="see_fr" name="meme[can_all_view]">
-                                <option value="">--Select--</option>
-                                <option value="1">All</option>
-                                <option value="0">Friends</option>
+                                <option value="1" selected = "selected">Everyone</option>
+                                <option value="0">Friends Only</option>
                             </select>
                         </td>
-                    </tr>
-                    <tr>
-                        <td valign='top'><b>Who comments:</b></td>
-                        <td>
+					</tr>
+					<tr>
+                        <td valign='baseline' ><b>Who Comments:</b>
                             <select id="friends" name="meme[can_all_comment]">
-                                <option value="">--Select--</option>
-                                <option value="1">All</option>
-                                <option value="0">Friends</option>
+                                <option value="1" selected = "selected">Everyone</option>
+                                <option value="0">Friends Only</option>
                             </select>
                         </td>
                     </tr>
+					<!-- Commented out since we are contemplating having categories
                     <tr>
                         <td valign='top'><b>Meme Category:</b></td>
                         <td>
@@ -119,12 +133,10 @@
                             </select>
                         </td>
                     </tr>
+					-->
 					<tr>
-                        <td valign='top'><b>Tag your friends:</b></td>
-                        <td><select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select></td>
-                    </tr>
-                    <tr>
-                        <td colspan='2' align='center'><input type="button" value="Submit" onclick="validate_me();"/> &nbsp; <input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/></td>
+                        <td align='center'><input type="button" value="Submit" onclick="validate_me();"/> &nbsp; <!--<input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/> -->
+						</td>
                     </tr>
                 </table>
             </div>

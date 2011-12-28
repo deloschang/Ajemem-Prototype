@@ -1,10 +1,15 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 00:37:42
+<?php /* Smarty version 2.6.7, created on 2011-12-28 04:07:57
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 120, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 134, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 28/12/2011 00:37:42 --> 
- <div id="showmodal" class="showmodal">Loading the Memeja Editor.</div>
+<!-- Template: meme/addmeme.tpl.html Start 28/12/2011 04:07:57 --> 
+ <!-- 
+     Commented by Muaz :D
+	 This is the main HTML for the Memeja Editor.
+-->
+
+<div id="showmodal" class="showmodal"><em><strong><center>ENTER MEMEJA DOJO</center></strong></em></div>
 <script type="text/javascript">
     var last_comic="http://localhost/spad/workspace/<?php echo $_SESSION['id_user']; ?>
 _img.png";
@@ -15,10 +20,13 @@ _img.png";
 <script type="text/javascript" src="http://localhost/spad/scratchpad.js"></script>
 <script type="text/javascript" src="http://localhost/spad/jquery.jqDock.min.js"></script>
 <script type="text/javascript" src="http://localhost/spad/color/colorpicker.js"></script>
+<script type="text/javascript" src="jquery.lionbars.0.3.min.js"></script>
+<script type="text/javascript" src="jquery.lionbars.0.3.js"></script>
 
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" />
 <link type="text/css" href="http://localhost/spad/css/colorpicker.css" rel="stylesheet" />
 <link rel="stylesheet" href="http://localhost/spad/css/spad.css" type="text/css"/>
+<link rel="stylesheet" href="http://localhost/templates/default/meme/lionbars.css" type="text/css"/>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/multiautocomplete.css"/>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
@@ -59,7 +67,7 @@ _img.png";
             return false;
          }else{
 		if(!$("#tag").val()){
-			var conf=confirm("Are you sure you do not want to tag any of your friends?");
+			var conf=confirm("Are you sure you don\'t want to tag your friends?");
 			if(conf){
 				submit_memeje();
 			 }else{
@@ -71,6 +79,11 @@ _img.png";
          }
      }
 
+</script>
+<script type="text/javascript">
+    $(window).bind(\'beforeunload\', function() {
+            return \'Oh NO! Your meme has not been submitted!!\';
+     }); 
 </script>
 '; ?>
 
@@ -103,28 +116,29 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 
-            <div class='right_pos_abs'>
-                <table>
+            <div class="right_pos_abs">
+                <table><!--
+				    <tr>
+                        <td valign='top'><b>Tag your friends:</b></td>
+                        <td><select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select></td>
+                    </tr>
                     <tr>
-                        <td valign='top'><b>Visibility:</b></td>
-                        <td>
+                        <td valign='baseline'><b>Visibility:</b>
                             <select id="see_fr" name="meme[can_all_view]">
-                                <option value="">--Select--</option>
-                                <option value="1">All</option>
-                                <option value="0">Friends</option>
+                                <option value="1" selected = "selected">Everyone</option>
+                                <option value="0">Friends Only</option>
                             </select>
                         </td>
-                    </tr>
-                    <tr>
-                        <td valign='top'><b>Who comments:</b></td>
-                        <td>
+					</tr>
+					<tr>
+                        <td valign='baseline' ><b>Who Comments:</b>
                             <select id="friends" name="meme[can_all_comment]">
-                                <option value="">--Select--</option>
-                                <option value="1">All</option>
-                                <option value="0">Friends</option>
+                                <option value="1" selected = "selected">Everyone</option>
+                                <option value="0">Friends Only</option>
                             </select>
                         </td>
                     </tr>
+					<!-- Commented out since we are contemplating having categories
                     <tr>
                         <td valign='top'><b>Meme Category:</b></td>
                         <td>
@@ -135,12 +149,10 @@ unset($_smarty_tpl_vars);
                             </select>
                         </td>
                     </tr>
+					-->
 					<tr>
-                        <td valign='top'><b>Tag your friends:</b></td>
-                        <td><select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select></td>
-                    </tr>
-                    <tr>
-                        <td colspan='2' align='center'><input type="button" value="Submit" onclick="validate_me();"/> &nbsp; <input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/></td>
+                        <td align='center'><input type="button" value="Submit" onclick="validate_me();"/> &nbsp; <!--<input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/> -->
+						</td>
                     </tr>
                 </table>
             </div>

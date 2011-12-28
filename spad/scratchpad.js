@@ -1,14 +1,32 @@
+/*
+   Muaz-
+   This is the main Memeja Editor, we have most of the functionalities in here.
+   This is called in addmeme.tpl which contains the html/php for this stuff
+   I am commenting every little thing...
+*/
+
+// Location of all the images for the tools, very easy to change the look of the toolbox
 var SITE_IMAGE_PATH=LBL_SITE_URL+'spad/site_image/';
+
+// Cursor has the sizes for the brushes (from 1-25)
 var CURSOR_PATH=LBL_SITE_URL+'spad/cursor/';
 var SAVE_IMG_PATH=LBL_SITE_URL+"meme/save_meme/ce/0";
 var SET_OFFLEFT=8;
 var SET_OFFTOP=158;
 var SET_EDITOR_HEIGHT=23;
 var DEGREE_ROTATE=2;
+
+// The var last_comic comes from addmeme.tpl and refers to the last comic the user was working on
 var preloadImage=last_comic;
 
+// Keeps track of the new images added
 var newimgid = 1;
 var newtextid = 1;
+
+// Keeps track of if there should be gridlines or not.
+var grid = true;
+
+// Stacks which hold the actions done 
 var img_rotate = [];
 var undoPoints = [];
 var undoheight = [];
@@ -16,8 +34,23 @@ var undowidth = [];
 var redoPoints = [];
 var redoheight = [];
 var redowidth = [];
+
+// Stacks to hold actions specific to panel problem
+var undoPanel = [];
+var undoPanelHeight = [];
+var undoPanelWidth = [];
+
+// Stack that holds all the Image boxes created
+var images =[];
+var numImages = 0;
+
+// Canvas objects
 var mycanvas, cntx;
+
+// Keeps track of # of saves
 var lastimgdrawn = 1;
+
+// Default settings for the Memeja Editor, called in the jQuery Plugin
 var settings = {
     'width': 380,
     'height': 380,
@@ -31,11 +64,19 @@ var settings = {
     'type':'line',
     'panel':2
 };
+
+/*
+   This is a Jquery Plugin that Pati's Team wrote for our Memeja Editor.
+   This Plugin detects the user's window settings and adjusts the above (var settings) accordingly.
+   It also detects events and changes setting accordingly.   
+*/
 (function ($) {
+    //Code below just provides several options for the settings of this plugin.
     $.fn.scratchpad = function (options) {
         if (options) {
             $.extend(settings, options);
         }
+		// Check to see if a 2D canvas is supported by user.
         var supports_canvas = function () {
             return true;
             var iscompat = false;
@@ -46,13 +87,19 @@ var settings = {
             }
             return this.iscompat;
         }
+		//If user is drawing on the editor (draw !=0)
         var draw = 0;
+		//Detects if the user is drawing on the canvas (jitter!=0)
         var jitter = 0;
+		
+		// Variables for canvas start and end
         var startX, startY, endX, endY;
         
         $(window).resize(function() {
             setleftmargin();
         });
+		
+		// Detects browser settings and set the left margin for the window
         function setleftmargin() {
             var winW = 630;
             if (document.body && document.body.offsetWidth) {
@@ -68,6 +115,8 @@ var settings = {
             }
             settings.offsetLeft = (winW/2) - (mycanvas.width/2) - SET_OFFLEFT ;
         }
+		
+		// Adjusts the size of the cursor from 1-25
         function adjustfontsize(mysize) {
             $('#fontsize').val(mysize);
             $('#line_size').text('Size-'+mysize);
@@ -76,7 +125,15 @@ var settings = {
 			mycanvas.style.cursor = 'url('+cc+'), none';
             $( "#vs" ).slider( "option", "value", mysize );
         }
+		
+		/* 
+		   Checks to see if HTML 5 is enabled, else it gives an error message.
+		   Main bulk of the plugin
+		*/
         if (supports_canvas() == true) {
+		
+		// The code below was commented out by Pati
+		
 /*            var canvasElem = $('<canvas>').attr({
                 'width': settings.width.toString()+"px",
                 'height': settings.height.toString()+"px",
@@ -88,6 +145,7 @@ var settings = {
             });
             $(this).append(canvasElem);
             mycanvas = $('canvas')[0];*/
+			
 			mycanvas = document.getElementById('mycid');
 			cntx = mycanvas.getContext("2d");
 			mycanvas.width = settings.width;
@@ -95,7 +153,11 @@ var settings = {
 			mycanvas.style.border = settings.borderWidth + 'px solid ' + settings.borderColor;
 //            mycanvas.style.background-color = settings.backgroundColor;
             mycanvas.style.cursor = 'pointer';
-            if (preloadImage!="") {
+			
+			// If the User doesn't have a preloaded image saved in workspace it creates a new Image for them 
+			
+            /*  Get's kind of annoying, let's try (ctrl+s) 
+			if (preloadImage!="") {
                 var oImg = new Image();
                 oImg.onload = function() {
                     settings.panel = Math.round(oImg.height / (settings.height / 2));
@@ -105,30 +167,49 @@ var settings = {
                 }
                 oImg.src = preloadImage;
             }
+			*/
+			
+			// Fills the rest of the Memeja Editor with white color
             cntx.save();
             cntx.fillStyle = '#fff';
             cntx.fillRect(0, 0, cntx.canvas.width, cntx.canvas.height);
             cntx.restore();
+			
+			/*
+			   The following code will change the canvas based on events inside the canvas
+			*/
+			
+			//Adjusts coordinates after a mouseup event. Then sets the canvas context back to original state.
             $(document).mouseup(function (e) {
                 endX = e.pageX - this.offsetLeft - settings.offsetLeft;
                 endY = e.pageY - this.offsetTop - settings.offsetTop;
                 jitter = draw = 0;
+				// Why the restore is necessary - http://html5.litten.com/understanding-save-and-restore-for-the-canvas-context/
                 cntx.restore();
             });
+        
+		
+			// Detects if the user is within the canvas area
             $(this).mouseenter(function () {
                 if (jitter > 0) {
                     draw = 1;
                 }
             });
+			
+			// If the user leaves the canvas area we set draw = 0
             $(this).mouseleave(function () {
                 if (draw == 1) {
                     draw = 0;
                 }
             });
+			
+			// When the user clicks on the canvas we start drawing
             $(this).mousedown(function (e) {
-                if (settings.type=='square' || settings.type=='circle' || settings.type=='fcircle' || settings.type=='fsquare' || settings.type=='DLine'){
+			    // Anything other than a default line goes into a new "dummy canvas"
+                if (settings.type=='square' || settings.type=='circle' || settings.type=='fcircle' || settings.type=='fsquare' || settings.type=='DLine'||settings.type=='ftriangle'||settings.type=='triangle'){
                     createdummycanvas();
                 }
+				
                 saveRestorePoint();
                 cntx.save();
                 jitter = draw = 1;
@@ -150,6 +231,7 @@ var settings = {
                     cntx.moveTo(startX, startY);
                 }
             });
+			
             function createdummycanvas() {
 				if ( $.browser.msie ) {
 	                showdebug(mycanvas.width+"----"+mycanvas.height+" : IE");
@@ -157,6 +239,7 @@ var settings = {
 				}
                 var x = $('#mycid').offset();
 				cc = CURSOR_PATH+settings.lineWidth+".png";
+				// Create a new dummycanvas and add it to the body
                 var cdummy = $('<canvas>').attr({
                     'width': mycanvas.width.toString(),
                     'height': mycanvas.height.toString(),
@@ -169,6 +252,7 @@ var settings = {
 					cursor:'url('+cc+'), none'
                 });
                 cdummy.appendTo("body");
+				
 				var iddummy = document.getElementById('dummy');
                 var dummyc = iddummy.getContext("2d");
 //              var x = $('#mycid').offset();
@@ -183,6 +267,7 @@ var settings = {
 //				iddummy.style.cursor = 'url('+cc+'), none';
                 dummyc.fillStyle = "rgba(0, 0, 200, 0.5)";
                 stopdraw=1;
+				
                 $(iddummy).mousemove(function (e) {
                     if (startX=="undefined") {
                         startX=e.pageX;
@@ -205,18 +290,20 @@ var settings = {
                             case 'fsquare':
                                 dummyc.fillRect(startX,startY,endX-startX,endY-startY);
                                 break;
+							case 'ftriangle':
+                                drawTri(dummyc, startX,startY,endX,endY,true);
+                                break;	
+							case 'triangle':
+                                drawTri(dummyc, startX, startY, endX, endY, false);
+                                break;	
                             case 'square':
                                 dummyc.strokeRect(startX,startY,endX-startX,endY-startY);
                                 break;
                             case 'fcircle':
-                                dummyc.beginPath();
-                                dummyc.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-                                dummyc.fill();
+                                drawOvals(dummyc, centerX, centerY, endX-startX, endY-startY, true);
                                 break;
                             case 'circle':
-                                dummyc.beginPath();
-                                dummyc.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-                                dummyc.stroke();
+                                drawOvals(dummyc, centerX, centerY, endX-startX, endY-startY, false);
                                 break;
                             case 'DLine':
                                 dummyc.beginPath();
@@ -237,6 +324,7 @@ var settings = {
                     copytooriginal();
                 });
             }
+			
             function copytooriginal() {
                 var iddummy = document.getElementById('dummy');
                 var oImg = new Image();
@@ -294,6 +382,21 @@ var settings = {
             $('img[class=erase]').click(function () {
                 settings.type = "erase";
             });
+			$('img[class=grid]').click(function () {
+                if(grid==true)
+				{
+				  grid = false;
+				  if(undoPoints.length==0){
+				   clear_canvas();
+				  }
+				  drawpanellines(settings.panel);
+				  drawpanellines(settings.panel);
+				}else
+			    {
+				  grid = true;
+				}
+				drawpanellines(settings.panel);
+            });
             $("#color").ColorPicker({
                 color: '#0000ff',
                 onChange: function (hsb, hex, rgb) {
@@ -320,6 +423,15 @@ var settings = {
             $('img[class=redo]').click(function () {
                 redoimage();
             });
+			$('img[class=uparrow]').click(function () {
+			    moveUp();
+			})
+			$('img[class=downarrow]').click(function () {
+			    moveDown();
+			})
+			$('img[class=paintbucket]').click(function () {
+			    paintbucket();
+			})
             $('input[class=save]').click(function () {
                 window.open(getcanvasimage("mycid"));
             });
@@ -373,6 +485,7 @@ var settings = {
     };
 })(jQuery);
 
+// Removes the Meme Imagebox that is specified
 function removeMemeid(e, text) {
     if (text && typeof text == 'string') {
         id = $(e).parents("div.newtextdd").attr("id");;
@@ -381,6 +494,8 @@ function removeMemeid(e, text) {
     }
     $("#"+id).remove();
 }
+
+// Clones the Meme Face and it's settings
 function cloneme(e) {
     mydivid  = $(e).parents("div.newdd").attr("id");
     var newele = $("#"+mydivid).clone(false,false);
@@ -388,6 +503,22 @@ function cloneme(e) {
     $(newele).attr("id",newimgid);
     $(newele).find(".memejeImageContainer").css("display","none");
     $(newele).find('.ui-resizable-handle').remove();
+	memeTop = 250;
+    if(window.pageYOffset > 250) {
+        memeTop = window.pageYOffset;
+    }
+	if(newimgid % 3 == 1)
+	   memeTop+=50;
+    if(newimgid % 3 == 2)
+	   memeTop+=75;
+    if(newimgid % 6 == 3)
+	   memeTop+=100;
+    if(newimgid % 6 == 4)
+	   memeTop+=125;
+    if(newimgid % 6 == 5) 
+	   memeTop+=150;
+	$(newele).css("top", memeTop+"px");
+	
     newele.appendTo("body");
     rleft();
     rright();
@@ -410,7 +541,7 @@ function cloneme(e) {
         function() {
             $(newele).find(".memejeImageContainer").css("display","block");
             var newh = $(this).height() + SET_EDITOR_HEIGHT;
-            $(newele).find(".memejeImageContainer .icon_div").css('top',-newh+'px');
+            $(newele).find(".memejeImageContainer .icon_div").css('top',-newh+5+'px');
             showdebug("Cloned :"+this.id);
         },
         function () {
@@ -418,6 +549,8 @@ function cloneme(e) {
         }
         );
 }
+
+
 function change_attr_of_text(textId) {
     $("#"+textId).mouseover(function(e){
         $("#"+textId+" > div.memejeTextContainer").show();
@@ -436,6 +569,8 @@ function change_attr_of_text(textId) {
         'z-index':1
     });
 }
+
+// Places the text into the canvas at the appropriate spot.
 function puttextincanvas(e){
     saveRestorePoint();
 	lastimgdrawn = 1;
@@ -539,10 +674,16 @@ function rright() {
         rotateme($(this).parents("div.newdd").attr("id"), DEGREE_ROTATE);
     });
 }
+/* Makes sure the selected meme face is near the top of the canvas
+    memeTop = 250;
+    if(window.pageYOffset > 250) {
+        memeTop = window.pageYOffset;
+    }*/
 function create_Textbox(){
     var textId="text"+newtextid;
     newtextid++;
-    var html = "<div class='newtextdd' id='"+textId+"'  style='position:relative;padding-top:14px;'>"+
+    //var html = "<div class='newtextdd' id='"+textId+"'  style='position:relative;padding-top:14px; top:'"+memeTop+"px;left:150px;'>"+
+	var html = "<div class='newtextdd' id='"+textId+"'  style='position:relative;padding-top:14px;left:150px;'>"+
     "<div class='memejeTextContainer'>"+
     "<img title='Remove' src='"+SITE_IMAGE_PATH+"delete.png' onclick='removeMemeid(this,\"text\")' />"+
     "<img title='Put in Canvas' src='"+SITE_IMAGE_PATH+"shape_move_backwards.png' onclick='puttextincanvas(this)' />"+
@@ -558,8 +699,11 @@ function create_Textbox(){
     $("body").prepend(html)
     change_attr_of_text(textId);
 }
+
 function create_Imagebox(clicked_img) {
-    img_rotate[newimgid] = new Array();
+
+    // newimgid corresponds to the newest meme face we clicked
+	img_rotate[newimgid] = new Array();
     img_rotate[newimgid]['rotate'] = 0;
     img_rotate[newimgid]['x'] = 1;
     img_rotate[newimgid]['y'] = 1;
@@ -579,9 +723,32 @@ function create_Imagebox(clicked_img) {
 	if (window.innerWidth && window.innerHeight) {
 		winW = window.innerWidth;
 	}
+	
 	leftpos = Math.round((winW-img.width)/2);
+
+	// Makes sure the selected meme face is near the top of the canvas
+    memeTop = 250;
+    if(window.pageYOffset > 250) {
+        memeTop = window.pageYOffset;
+    }
+    
+    // Makes sure the next selected meme face isn't overlapping another one
+    if(newimgid % 3 == 1)
+	   memeTop+=50;
+    if(newimgid % 3 == 2)
+	   memeTop+=75;
+    if(newimgid % 6 == 3)
+	   memeTop+=100;
+    if(newimgid % 6 == 4)
+	   memeTop+=125;
+    if(newimgid % 6 == 5) 
+	   memeTop+=150;
+	   
+	// This is the image box created
     var div = $("<div id='"+newimgid+"' class='newdd'>").html("<img id='image"+newimgid+"' src='"+clicked_img+"' />").css({
-        'top':'200px',
+        
+		// Sets the position at which you see the image box
+	    'top': memeTop+"px",
         'left':leftpos+"px",
         'height':img.height+"px",
         'width':img.width+"px",
@@ -621,6 +788,7 @@ function create_Imagebox(clicked_img) {
             });
         }
         );
+			numImages++;
     $("body").prepend(div);
     $(".newdd").draggable({                    
         cursor:'pointer',
@@ -634,6 +802,7 @@ function create_Imagebox(clicked_img) {
     });
     ++newimgid;
 }
+
 function putincanvas(e) {
     saveRestorePoint();
 	lastimgdrawn = 1;
@@ -676,14 +845,19 @@ function putincanvas(e) {
         cntx.drawImage(document.getElementById("image"+mydivid), imgPosition.left, imgPosition.top, imgW, imgH);
     }
     $("#"+mydivid).remove();
+	images[mydivid]
     cntx.restore();
 }
 function submit_memeje() {
-        var wm=$("#memejimark");
+
+        /*  Commented out the watermark 
+		
+		var wm=$("#memejimark");
         var paddings=3;
         var x=mycanvas.width-wm.width()-paddings;
         var y=mycanvas.height-wm.height()-paddings;
-        cntx.drawImage(wm[0],x,y,wm.width(),wm.height());
+        cntx.drawImage(wm[0],x,y,wm.width(),wm.height()); */
+		
 	saveindisk(1);
 }
 function saveindisk(csave) {
@@ -708,16 +882,17 @@ function saveindisk(csave) {
     });
 	return false;
 }
-function addRow(number){
-	settings.panel+=number;
-	resizeCanvasSize();
-	drawpanellines(number);
-}
+
 function drawpanellines(number){
 	var panelHeight=cntx.canvas.height/settings.panel;
 	cntx.save();
-	cntx.strokeStyle=settings.mainColor;
+	if(grid==true){
+	cntx.strokeStyle="rgb(0,0,0)";
 	cntx.lineWidth=1;
+	}else{
+	cntx.strokeStyle="white";
+	cntx.lineWidth=3;
+	}
 	cntx.beginPath();
 	for(var i=0;i<=number;i++){
 		var y=((settings.panel-number+i)*panelHeight);
@@ -725,6 +900,7 @@ function drawpanellines(number){
 		cntx.moveTo(0,y);
 		cntx.lineTo(cntx.canvas.width,y);
 	}
+	
 	cntx.moveTo(1,(settings.panel-number)*panelHeight);
 	cntx.lineTo(1,cntx.canvas.height);
 	cntx.moveTo(cntx.canvas.width-1,(settings.panel-number)*panelHeight);
@@ -734,13 +910,57 @@ function drawpanellines(number){
 	cntx.stroke();
 	cntx.closePath();
 	cntx.restore();
+	//draw outerbounds
+	cntx.save();
+	cntx.strokeStyle="rgb(0,0,0)";
+	cntx.lineWidth=1;
+	cntx.beginPath();
+	cntx.moveTo(1,1);
+	cntx.lineTo(cntx.canvas.width,1);
+	cntx.lineTo(cntx.canvas.width,cntx.canvas.height);
+	cntx.lineTo(1,cntx.canvas.height);
+	cntx.lineTo(1,1);
+	cntx.stroke();
+	cntx.closePath();
+	cntx.restore();
 }
+
+// Adds two panels to the bottom
+function addRow(number){
+	settings.panel+=number;
+	resizeCanvasSize();
+	drawpanellines(number);
+	/* This portion was added to ensure that if you draw in the bottom panel and delete the panels,
+	then try to add panels again, your original image will be shown
+	*/
+	if(undoPanel[0]!= ""){
+	
+	if ( $.browser.msie ) {
+		mycanvas.innerHTML = undoPanel.pop();
+	} else {
+		var oImg = new Image();
+		oImg.onload = function() {
+			cntx.drawImage(oImg,0,0);
+		}
+		oImg.src = undoPanel.pop();
+	}
+	
+  }
+}
+
+// Removes the bottom two panels
 function removeRow(){
-	if(settings.panel>1){
+	if(settings.panel>2){
+        var imgSrc = getcanvasimage("mycid");
+        undoPanel.push(imgSrc);
+        undoPanelHeight.push(mycanvas.height);
+        undoPanelWidth.push(mycanvas.width);		
 		settings.panel-=1;
 		resizeCanvasSize();
 	}
 }
+
+// Resizes the canvas area
 function resizeCanvasSize(){
 	lastimgdrawn = 1;
 	saveRestorePoint();
@@ -748,6 +968,7 @@ function resizeCanvasSize(){
 	var panelHeight=panelWidth/1.3333;
 	mycanvas.height = panelHeight*settings.panel;
 	mycanvas.width = panelWidth*2;
+	// Done after saveRestorePoint() called to keep current image
 	if ( $.browser.msie ) {
 		mycanvas.innerHTML = undoPoints.pop();
 	} else {
@@ -757,26 +978,38 @@ function resizeCanvasSize(){
 		}
 		oImg.src = undoPoints.pop();
 	}
+	//Pop the last values off the undo stacks, because the current value has been stored in them since saveRestorePoint() was called
 	undoheight.pop();
 	undowidth.pop();
 }
+
+// Clears the Canvas
 function clear_canvas() {
 	cntx.clearRect(0, 0, cntx.canvas.width, cntx.canvas.height);
+	numImages++;
+	for(x=0;x<numImages;x++)
+	{
+    $("#"+x).remove();
+	}
 	drawpanellines(settings.panel);
 	return false;
 }
+
+// Adjust attributes of the Undo/Redo buttons. (As seen on hover)
 function showdocount() {
-	$(".undo").attr("title","undo "+undoPoints.length);
-    $(".redo").attr("title","redo "+redoPoints.length);
+	$(".undo").attr("title",undoPoints.length+ " Undo's Left (CTRL+Z)");
+    $(".redo").attr("title",redoPoints.length+ " Redo's Left (CTRL+Y)");
 }
+
+// Function for the REDO tool (ctrl+y)
 function redoimage(){
     if (redoPoints.length > 0) {
         var imgSrc = getcanvasimage("mycid");
         undoPoints.push(imgSrc);
         oh = redoheight.pop();
         ow = redowidth.pop();
-        undoheight.push(oh);
-        undowidth.push(ow);
+        undoheight.push(mycanvas.height);
+        undowidth.push(mycanvas.width);
         mycanvas.height = oh;
         mycanvas.width = ow;
 		if ( $.browser.msie ) {
@@ -791,19 +1024,40 @@ function redoimage(){
         showdocount();
     }
 }
+
+/* This function and redoToTop are for toggling the gridlines
+function undoToBottom(){
+ while(undoPoints.length>0){
+  undoimage();
+ }
+}
+
+function redoToTop(){
+  redoPoints.pop();
+  redoheight.pop();			  
+  redowidth.pop();
+ while(redoPoints.length>0){
+  redoimage();
+ }
+}
+*/
+
+// Function for the UNDO tool (ctrl+z)
 function undoimage(){
     if (undoPoints.length > 0) {
         var imgSrc = getcanvasimage("mycid");
         redoPoints.push(imgSrc);
         oh = undoheight.pop();
-        ow = undowidth.pop();
-        redoheight.push(oh);
-        redowidth.push(ow);
+        ow = undowidth.pop(); 
+        redoheight.push(mycanvas.height);
+        redowidth.push(mycanvas.width);
         mycanvas.height = oh;
         mycanvas.width = ow;
+		// For IE pops last image off of stack and sets it to current canvas 
 		if ( $.browser.msie ) {
 			mycanvas.innerHTML = undoPoints.pop();
 		} else {
+		    // All other browsers 
 			var oImg = new Image();
 			oImg.onload = function() {
 				cntx.drawImage(oImg,0,0);
@@ -813,6 +1067,67 @@ function undoimage(){
         showdocount();
     }
 }
+
+// This function allows for drawing ovals/circles filled or empty
+function drawOvals(context, centX, centY, width, height, fill)
+        {
+            context.beginPath();  
+            context.moveTo(centX, centY - height/2);
+            context.bezierCurveTo(
+                centX + width/2, centY - height/2,
+                centX + width/2, centY + height/2,
+                centX, centY + height/2);
+            context.bezierCurveTo(
+                centX - width/2, centY + height/2,
+                centX - width/2, centY - height/2,
+                centX, centY - height/2);
+            if(fill !== undefined && fill === true)
+            {
+                context.fill();
+            }
+            else 
+			{
+                context.stroke();
+            }
+            context.closePath();
+        }
+		
+// Allows for triangles on the Memeja Editor
+function drawTri(context,startX, startY, endX, endY, fill)
+{
+// Right Triangle
+context.beginPath();
+context.moveTo(startX,startY);	
+context.lineTo(endX,endY);
+if(startX>endX){
+context.lineTo(endX-Math.abs(startX-endX), startY);
+}else{	
+context.lineTo(endX+Math.abs(startX-endX), startY);
+}
+context.lineTo(startX, startY);
+
+/*
+Equilateral
+var b = Math.abs(startY-endY);
+context.beginPath();
+context.moveTo(startX,startY);	
+context.lineTo(startX+ Math.round(Math.sqrt((b*b)/3)), endY);	
+context.lineTo(startX- Math.round(Math.sqrt((b*b)/3)), endY);
+context.lineTo(startX, startY);
+*/
+if(fill !== undefined && fill === true)
+            {
+                context.fill();
+            }
+            else 
+			{
+                context.stroke();
+            }
+context.closePath();
+
+}
+
+// Saves the current image by pushing vars into stacks
 function saveRestorePoint(){
 	if (lastimgdrawn==1) {
 		var imgSrc = getcanvasimage("mycid");
@@ -828,11 +1143,114 @@ function saveRestorePoint(){
 		showdebug("nothing to save");
 	}
 }
+/*
+Under Construction
+*/
+function paintbucket()
+{
+
+pixelStack = [[startX, startY]];
+
+while(pixelStack.length)
+{
+  var newPos, x, y, pixelPos, reachLeft, reachRight;
+  newPos = pixelStack.pop();
+  x = newPos[0];
+  y = newPos[1];
+  
+  pixelPos = (y*canvasWidth + x) * 4;
+  while(y-- >= drawingBoundTop && matchStartColor(pixelPos))
+  {
+    pixelPos -= canvasWidth * 4;
+  }
+  pixelPos += canvasWidth * 4;
+  ++y;
+  reachLeft = false;
+  reachRight = false;
+  while(y++ < canvasHeight-1 && matchStartColor(pixelPos))
+  {
+    colorPixel(pixelPos);
+
+    if(x > 0)
+    {
+      if(matchStartColor(pixelPos - 4))
+      {
+        if(!reachLeft){
+          pixelStack.push([x - 1, y]);
+          reachLeft = true;
+        }
+      }
+      else if(reachLeft)
+      {
+        reachLeft = false;
+      }
+    }
+	
+    if(x < canvasWidth-1)
+    {
+      if(matchStartColor(pixelPos + 4))
+      {
+        if(!reachRight)
+        {
+          pixelStack.push([x + 1, y]);
+          reachRight = true;
+        }
+      }
+      else if(reachRight)
+      {
+        reachRight = false;
+      }
+    }
+			
+    pixelPos += canvasWidth * 4;
+  }
+}
+context.putImageData(colorLayer, 0, 0);
+}
+  
+function matchStartColor(pixelPos)
+{
+  var r = colorLayer.data[pixelPos];	
+  var g = colorLayer.data[pixelPos+1];	
+  var b = colorLayer.data[pixelPos+2];
+
+  return (r == startR && g == startG && b == startB);
+}
+
+
+function colorPixel(pixelPos)
+{
+  colorLayer.data[pixelPos] = fillColorR;
+  colorLayer.data[pixelPos+1] = fillColorG;
+  colorLayer.data[pixelPos+2] = fillColorB;
+  colorLayer.data[pixelPos+3] = 255;
+}
+
+// Moves the User to the top of the page
+function moveUp()
+{
+  $('html, body').animate({scrollTop:0}, 'slow');
+}
+
+// Moves the User to the bottom of the page
+function moveDown()
+{
+  var dh = document.body.scrollHeight
+  var ch = document.body.clientHeight
+  if(dh>ch){
+  var moveme=dh-ch;
+  window.scrollTo(0,moveme);
+  }
+}
+
+// Returns the filepath for the image currently on the canvas
 function getcanvasimage(imgid) {
+    //Only for IE browsers
 	if ( $.browser.msie ) {
 		var canvasid = document.getElementById(imgid);
 		return canvasid.innerHTML;
 	} else {
+	// All normal browsers
 		var canvasid = $("#"+imgid)[0];
 		return canvasid.toDataURL();
 	}
