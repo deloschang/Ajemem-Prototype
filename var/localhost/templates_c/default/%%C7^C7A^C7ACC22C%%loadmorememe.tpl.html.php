@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 04:08:00
+<?php /* Smarty version 2.6.7, created on 2011-12-28 07:26:14
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 111, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 143, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 117, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 149, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 04:08:00 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 28/12/2011 07:26:14 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -26,11 +26,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	 });
 	
 	$(document).ready(function() {
-		setInterval("live_feed(new_ids)", 7000);	// influences flash time
+		setInterval("live_feed(new_ids)", 10000);	// influences flash time
 	 });
 	
 	function live_feed (new_ids) {
-		console.log(new_ids);
+		//console.log(new_ids);
 		
 		// Explode new_ids list by \',\' for single ids
 		var single_id_array = new_ids.split(\',\');
@@ -75,7 +75,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 					$("#aggr"+meme_id).html(new_honor);
 		
 					// Flash green
-					common_fun(meme_id, honour_color);
+					//common_fun(meme_id, honour_color);
+					$("#meme"+meme_id).css("background","#33CC00");
+					$("#meme"+meme_id).animate( { "opacity" : 0.4  }, 400, function() {
+						$("#meme"+meme_id).css("background","white");
+						$("#meme"+meme_id).animate( { "opacity" : 1  }, 300)
+					 });
+					
 		
 					// 
 					console.log("Request data is "+live_feed_data_tot.trim());
@@ -206,19 +212,20 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 ','D','<?php echo $this->_tpl_vars['x']['id_user']; ?>
 ');">Dishonor</a>
 
-<!-- Add Caption -->
+<!-- Add Caption 
 			    <?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
 			    &nbsp;<label id="capt<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "><?php if ($this->_tpl_vars['x']['tot_caption'] != 0):  echo $this->_tpl_vars['x']['tot_caption'];  endif; ?></label> <a href="javascript:void(0)" onclick="get_captions('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ');" >Add Caption</a>
 			    <?php endif; ?>
+	
 
-<!-- Flag -->
+<!-- Flag 
 			    <?php if ($this->_tpl_vars['x']['id_user'] != $_SESSION['id_user']): ?>
 				 &nbsp;<a href="javascript:void(0)" onclick="flagging('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ')">Flag</a>
 			    <?php endif; ?>
-
+-->
 			</div>
 
 <!-- Twitter function commented out
@@ -233,8 +240,9 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 	    </div>
 	    <div id="send_reply<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " style="width:60%;display: none;"></div>
+<!--
 	    <div id="add_caption<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-" style="width:60%;display: none;"></div>
+" style="width:60%;display: none;"></div> -->
 	    <input type="hidden" name="is_replied" id="is_replied<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " value=''/>
 	    <input type="hidden" name="is_agreed" id="is_agreed<?php echo $this->_tpl_vars['x']['id_meme']; ?>

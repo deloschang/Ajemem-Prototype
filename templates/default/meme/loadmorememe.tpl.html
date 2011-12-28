@@ -20,11 +20,11 @@
 	});
 	
 	$(document).ready(function() {
-		setInterval("live_feed(new_ids)", 7000);	// influences flash time
+		setInterval("live_feed(new_ids)", 10000);	// influences flash time
 	});
 	
 	function live_feed (new_ids) {
-		console.log(new_ids);
+		//console.log(new_ids);
 		
 		// Explode new_ids list by ',' for single ids
 		var single_id_array = new_ids.split(',');
@@ -69,7 +69,13 @@
 					$("#aggr"+meme_id).html(new_honor);
 		
 					// Flash green
-					common_fun(meme_id, honour_color);
+					//common_fun(meme_id, honour_color);
+					$("#meme"+meme_id).css("background","#33CC00");
+					$("#meme"+meme_id).animate( { "opacity" : 0.4 }, 400, function() {
+						$("#meme"+meme_id).css("background","white");
+						$("#meme"+meme_id).animate( { "opacity" : 1 }, 300)
+					});
+					
 		
 					// 
 					console.log("Request data is "+live_feed_data_tot.trim());
@@ -171,16 +177,17 @@
 			    
 			    onclick="set_tot_adaggr('{$x.id_meme}','D','{$x.id_user}');">Dishonor{*$x.dishonour_id_user*}</a>
 
-<!-- Add Caption -->
+<!-- Add Caption 
 			    {if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
 			    &nbsp;<label id="capt{$x.id_meme}">{if $x.tot_caption != 0}{$x.tot_caption}{/if}</label> <a href="javascript:void(0)" onclick="get_captions('{$x.id_meme}');" >Add Caption</a>
 			    {/if}
+	
 
-<!-- Flag -->
+<!-- Flag 
 			    {if $x.id_user!=$smarty.session.id_user}
 				 &nbsp;<a href="javascript:void(0)" onclick="flagging('{$x.id_meme}')">Flag</a>
 			    {/if}
-
+-->
 			</div>
 
 <!-- Twitter function commented out
@@ -191,7 +198,8 @@
 -->
 	    </div>
 	    <div id="send_reply{$x.id_meme}" style="width:60%;display: none;"></div>
-	    <div id="add_caption{$x.id_meme}" style="width:60%;display: none;"></div>
+<!--
+	    <div id="add_caption{$x.id_meme}" style="width:60%;display: none;"></div> -->
 	    <input type="hidden" name="is_replied" id="is_replied{$x.id_meme}" value=''/>
 	    <input type="hidden" name="is_agreed" id="is_agreed{$x.id_meme}" value=''/>
 	    <input type="hidden" name="is_disagreed" id="is_disagreed{$x.id_meme}" value=''/>

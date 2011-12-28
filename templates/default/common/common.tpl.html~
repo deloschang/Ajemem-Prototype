@@ -184,7 +184,7 @@
 		console.log(ranking_data);
 		
 		
-		if (ranking_data.trim() == "no update" || rank_data.trim() == "no rank"){
+		if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
 			//console.log('no update yet');
 			return false;
 		} else {
