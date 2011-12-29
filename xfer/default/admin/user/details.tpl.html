@@ -1,0 +1,41 @@
+<div id="user_detail_user">
+    <div class="box box-70 altbox">
+	<div class="boxin">
+	    <div class="header">
+		<h3>
+		     Profile Details
+		</h3>
+	    </div>
+	    <div class="content">
+		<table cellspacing="0">
+		    <tr>
+			<th>Name:</th><td>{$sm.res.fname} {$sm.res.lname}</td>
+		    </tr>
+		    <tr>
+			<th>Email:</th><td><a title="Email {$sm.res.email} " href="mailto:{$sm.res.email}">{$sm.res.email}</a></td>
+		    </tr>
+		    <tr>
+			<th>Password:</th><td>{$sm.res.password}</td>
+		    </tr>
+		     <tr>
+			<th>Status:</th><td>{if $sm.res.user_status == 1}Active {else}Inactive{/if}</td>
+		    </tr>
+		    <tr>
+			<th>Dob:</th><td>{if $sm.res.dob}{$sm.res.dob|date_format:"%m-%d-%Y"}{else}N/A{/if}</td>
+		    </tr>
+		    <tr>
+			<th>Gender:</th><td>{if $sm.res.gender eq M}Male{elseif $sm.res.gender eq F}Female{else}N/A{/if}</td>
+		    </tr>
+		    <tr>
+			<th>Last Login Time:</th><td>{$sm.res.last_login|date_format:"%m-%d-%Y %H:%M:%S"}</td>
+		    </tr>
+		    <tr>
+			<th>Signup Date:</th><td>{$sm.res.add_date|date_format:"%m-%d-%Y"}</td>
+		    </tr>
+		    <tr>
+			<th>Login Ip:</th><td>{if $sm.res.ip == "" }N/A{else}{$sm.res.ip}{/if}</td>
+		    </tr>
+		</table>
+	    </div>
+	</div>
+    </div>

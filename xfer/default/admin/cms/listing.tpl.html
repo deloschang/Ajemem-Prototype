@@ -1,0 +1,135 @@
+{literal}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#searchq").autocomplete('##LBL_ADMIN_SITE_URL##cms/auto_name/ce/0',{
+				delay: 500
+		});
+	});
+	function geturl(id){
+		var url = "##LBL_ADMIN_SITE_URL##index.php";
+		$('#mymodal').load(url,{"page":"cms","choice":"geturl",ce:0,"id_content":id},function(){
+		$("#mymodal").prepend('<div align="right"><a href="javascript:void(0);" onclick="closebox();">Close</a></div>');
+		});
+		cal_position(200,400,1);
+	}
+	function closebox() {
+		$("#mymodal").html('');
+		$.unblockUI(); 
+	}
+	function cal_position(h, w) {
+		var viewportwidth;
+		var viewportheight;
+		if (typeof window.innerWidth != 'undefined') {
+			viewportwidth = window.innerWidth,
+			viewportheight = window.innerHeight
+		} else if (typeof(document.documentElement) != 'undefined' && typeof(document.documentElement.clientWidth)!='undefined' && document.documentElement.clientWidth != 0) {
+			viewportwidth = document.documentElement.clientWidth,
+			viewportheight = document.documentElement.clientHeight
+		} else {
+			viewportwidth = document.getElementsByTagName('body')[0].clientWidth,
+			viewportheight = document.getElementsByTagName('body')[0].clientHeight
+		}
+		if (viewportheight < h) {
+			var t=0;	
+			var scroll_mode = 'scroll';
+			h=viewportheight;
+		} else {
+			var t=(viewportheight-h)/2;
+			var scroll_mode = 'auto';
+		}
+		var l=(viewportwidth-w)/2;
+		$.blockUI({ message: $('#mymodal'), css: {position:'fixed', top:+t+'px', left:+l+'px', width:+w+'px', height:+h+'px', overflow:scroll_mode} });
+	}
+</script>
+{/literal}
+
+                    
+<div id="search_box" class="box box-50 altbox" style="width:350px">
+<div class="boxin">
+        <div class="header">
+            <h3>Search Content</h3>
+
+        </div>
+        <form class="fields" id="search" action="##LBL_ADMIN_SITE_URL##cms/search" method="post">
+            <fieldset>
+			<dl>
+				<dt><label for="search:">Search:</label></dt>
+                <dd><input id="searchq" class="txt" type="text" name="searchq" size="22" value="{if $sm.search_item}{$sm.search_item} {/if}" /></dd><br />
+				{html_checkboxes name="stype" options=$sm.check selected=$sm.sel separator="<br />"}
+                <label style="display: none;" class="error" generated="true" for="stype[]"><br>This field is required.</label>
+                <div class="sep">
+                    <input class="button" type="submit" value="Search" />
+                </div>
+             </dl>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{assign var=conf value=$util->get_values_from_config(LANGUAGE)}
+<div id="box1" class="box box-50 altbox" style="width:450px">
+    <div class="boxin">
+        <div class="header">
+            <h3>Content Listing</h3>
+            <a class="button" href="##LBL_ADMIN_SITE_URL##cms/add">Add New</a>
+        </div>
+        <div id="box1-tabular" class="content">
+        <div id="mymodal"></div>
+           {if $sm.list} 
+            <table cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <td class="tc">Actions</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                {section name=cur loop=$sm.list}
+                {assign var=x value=$sm.list[cur]}
+                    <tr class="first">
+                        <th>{$x.name}</th>
+                        <td class="tc">
+                        	<ul class="actions">
+                                <li>
+                                	<a class="ico" href="##LBL_ADMIN_SITE_URL##cms/edit/code/{$x.cmscode}" title="edit">
+                                    	<img src="##LBL_SITE_URL##templates/css_theme/img/led-ico/pencil.png" alt="edit" />
+                                    </a>
+                                </li>
+                                <li>
+                                	<a class="ico" href="##LBL_ADMIN_SITE_URL##cms/delete/code/{$x.cmscode}" title="delete">
+                                    	<img src="##LBL_SITE_URL##templates/css_theme/img/led-ico/delete.png" alt="delete"  onclick="return confirm('Are you sure to delete this content ?');"/>
+                                    </a>
+                                </li>
+                               <!-- <li>
+                                	<a class="ico" href="javascript:void(0);" title="geturl">
+                                    	<img src="##LBL_SITE_URL##templates/css_theme/img/led-ico/highlighter.png" alt="Get URL"  onclick="geturl('{$x.id_content}');"/>
+                                    </a>
+                                    <div id="show_url"></div>
+                                </li> -->
+<!--                                <li>
+                                	<a class="ico" href="javascript:void(0);" title="Block">
+                                    	<img src="##LBL_SITE_URL##templates/admin_images/led-ico/delete.png" alt="Block" />
+                                    </a>
+                                </li>
+-->                            </ul>
+                        </td>
+                    </tr>
+                {/section} 
+                </tbody>
+            </table>
+            {else}
+            		No Records Found...
+            {/if}
+      </div>
+    </div>
+</div>
+{literal}
+<script type="text/javascript" >
+	$('#search').validate({
+		rules:{
+			'search-q':'required',
+			'stype[]':'required'
+		}
+	});
+</script>
+{/literal}

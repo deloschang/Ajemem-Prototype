@@ -1,0 +1,128 @@
+{assign var=img_path value=$util->get_values_from_config('IMAGE')}
+<form id="form_glory" name="form_glory" action="" method="post">
+       <table style="border:2px">
+	    <tr>
+		<td></td>
+		<td class="tc"style="font-weight: bold">Add Glory Points</td>
+	    </tr>
+	    <tr>
+		<td class="tc">Points</td>
+		<td><input type="text" id="glory_pts" name="glory_points" value="" /></td> 
+	    <tr>
+		<td>Badge:</td>
+		<td><input type = "file" name="image" id="img"  value="" onchange="preview();"/>
+		</td>
+	    </tr>
+	     <tr>
+		 <td></td>
+		 <td><span id="img_name_span"> <input type="hidden" name="server_img" value="" id="server_img"/></span></td>
+		    <!--<span id="img_name_span"> <input type="hidden" name="server_img" value="" id="server_img"/></span><br>-->
+	    </tr>
+	    {if $sm.res.image}
+	    <tr>
+		<td><div id="cimg">Current image :</div></td>
+		<td><div id="cimg1">
+		       <img src="##LBL_SITE_URL##{$img_path.glory_badge_thumb}/{$sm.res.img_name}" height="70px" width="70px" />
+		       <input type="hidden" name="previmage" id="previmage" value="{$sm.res.image}" />
+		    </div>
+		</td>
+	    </tr>
+	    {/if}
+	    <tr>
+		<div id="getimage" style="width:100px;height:100px"></div><br/>
+	    </tr>
+	    <tr>
+		<td colspan="2" align="center">
+		    <input  type="button" id="btm" name="btm" value="Add" onclick="return add();"/>
+		</td>
+	    </tr>
+	</table>
+    </form>
+    {literal}
+<script type="text/javascript">
+    function add(){
+	var formval = $('#form_glory').serialize();
+	var c=validate_glory();
+	if(c){
+	    var url="##LBL_ADMIN_SITE_URL##index.php?"+formval;
+
+	    $.post(url,{"page":"manage","choice":"insert_glory_badge",ce:0}, function(res){
+		$("#manage_glory_list").html(res);
+	    });
+	    $.fancybox.close();
+	}
+    }
+    function validate_glory(){
+	var glory_points=$("#glory_pts").val();
+	var img=$("#img").val();
+	var validator=$("#form_glory").validate({
+	    rules: {
+		"glory_points": {
+		    required: true,
+		    number:true
+		},
+		 "server_img":{
+		    required:true
+		}
+	    },
+	    messages: {
+		"glory_points":{
+		    required: "<br>This field is required",
+		    minlength: "<br>At least three character"
+		},
+		"server_img":{
+		    required:"<br>Badge required"
+		}
+	    }
+	});
+	var x=validator.form();
+	if(!x){
+	    return false;
+	}else{
+		return true;
+	    }
+	
+    }
+    function preview(){
+	var url = "##LBL_ADMIN_SITE_URL##index.php/manage/preview/ce/0";
+	$.ajaxFileUpload({
+	url:url,
+	secureuri:false,
+	fileElementId:'img',
+	dataType: 'json',
+	complete: function (data, status){
+	    var img_name=data.responseText;
+	    var picture = "<td>Selected Badge:</td><td><img src = '##LBL_SITE_URL##{/literal}{$img_path.preview_thumb}{literal}"+img_name+"' height = '{/literal}{$img_path.thumb_height}{literal}px' width = '{/literal}{$img_path.thumb_width}{literal}px' /></td>";
+	    $('#getimage').html(picture);
+	    $('#img_name_span').html($('#server_img').val(img_name));
+	    $('#get_img_err').hide();
+	    $('#cimg').hide();
+	    $('#cimg1').hide();
+	}
+	});
+    }
+    function image_upload(){
+	var url = "##LBL_ADMIN_SITE_URL##index.php/";
+	if($('#server_img').val()){
+	    var formval = $('#form_glory').serialize();
+	    url += "manage/image_upload/ce/0/?"+formval;
+	    $.post(url,function(res){
+		if(res){
+		    $('#edit_photo').html("<a href='javascript:void(0);' onclick='editPhoto();'><img src='##LBL_SITE_URL##{/literal}{$img_path.avtar_thumb}{literal}"+res+"'></a>");
+		    url = "##LBL_SITE_URL##index.php/";
+		    $.fancybox.close();
+		    var msg = "<font color='red'>Updated successfully</font>";
+		    var id="upd_msg";
+		    //showmsg(id,msg);
+		}else{
+		    alert("There was some error in uploading your profile photo.Please try after some time");
+		    return false;
+		}
+	    });
+	}else{
+	    $('#get_img_err').show();
+	}
+    }
+    </script>
+    {/literal}
+

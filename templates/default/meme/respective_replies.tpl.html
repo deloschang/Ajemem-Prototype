@@ -1,0 +1,35 @@
+{foreach name=rep item=i key=k from=$sm.reparr}
+
+<br/>
+
+{if $sm.uinfo[$i.id_user].fb_pic_square}
+<img src="{$sm.uinfo[$i.id_user].fb_pic_square}">
+{elseif $sm.uinfo[$i.id_user].avatar}
+<img src="##LBL_SITE_URL##image/thumb/avatar/{$sm.uinfo[$i.id_user].avatar}"/>
+{else}
+{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}
+{/if}
+<span>Replied by {$sm.uinfo[$i.id_user].username} : <br><b>{$i.reply}</b></span><br/>
+
+{/foreach}<br/>
+
+{literal}
+<script>
+
+	// 'Enter hotkey' functionality 
+	$('#{/literal}{if !$sm.flag}rpl_con{else}rand_rpl_con{/if}{$sm.id_meme}{literal}').keypress(function(e){
+		  if(e.which == 13){
+		  		{/literal}{if !$sm.flag}post_reply{else}rand_post_reply{/if}('{$sm.id_meme}');{literal}
+		   }
+		  });
+</script>
+{/literal}
+
+<!-- D: written in to update reply feed in live -->
+<div id="replyinsert{$sm.id_meme}"></div>
+
+<textarea id="{if !$sm.flag}rpl_con{else}rand_rpl_con{/if}{$sm.id_meme}" style="width:90%;" onclick="{if !$sm.flag}chk_forclear{else}rand_chk_forclear{/if}('{$sm.id_meme}');" ></textarea><br/>
+
+<a  href="javascript:void(0);" onclick="return {if !$sm.flag}post_reply{else}rand_post_reply{/if}('{$sm.id_meme}');" style="cursor: pointer;"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a><br/>
+
+

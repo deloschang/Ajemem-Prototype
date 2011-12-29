@@ -1,0 +1,267 @@
+{if $sm.res_meme}
+{assign var=category value=$util->get_values_from_config('CATEGORY')}
+{literal}
+<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var id = "{/literal}{$sm.last_idmeme}{literal}";
+	var new_ids = "{/literal}{$sm.id_memes}{literal}";
+	
+	// Explode new_ids list by ',' for single ids
+	var single_id_array = new_ids.split(',');	
+	
+	if(id!=''){
+	    $("#last_id_meme_cur_page").val(id);
+	    var id_memes = $("#rand_id_memes").val();
+	    $("#rand_id_memes").val(id_memes+","+new_ids);
+	} else {
+	    $("#last_id_meme_cur_page").val('');
+	    $("#chk_me").val("1");
+	}
+	
+	$(".fb_btn").each(function (){
+	    FB.XFBML.parse($(this).get(0));
+	});
+	
+	$(document).ready(function() {
+		setInterval("live_feed(new_ids)", 10000);	// influences flash time
+		setInterval("live_meme()", 5000);
+	});
+	
+	function common_fun_extended(id,color_code){
+	    $("#meme"+id).effect("highlight", {color:color_code}, 2600);
+    }
+	
+	function live_meme () {
+		var top_meme_id = single_id_array[0] 
+	
+		console.log(top_meme_id);		// 137
+		
+		var live_meme_data;
+		var url="##LBL_SITE_URL##meme/live_meme/ce/0/chk/1/top_meme_id/"+top_meme_id;
+	
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open('POST', url, false);
+
+		httpRequest.send(); // this blocks as request is synchronous
+	
+		if (httpRequest.status == 200) {
+			live_meme_data = httpRequest.responseText;
+		}
+		
+		if (live_meme_data.trim() == "no meme" || live_meme_data.trim() == "no meme found in SQL" || live_meme_data.trim() == "No new meme updates") {
+			console.log('no new meme found');
+			return false; 
+		}
+		
+		var live_meme_response = live_meme_data.split(',');
+				
+		if (live_meme_response[0].trim() == "New Meme") {
+			console.log("Data is "+live_meme_response[0]+","+live_meme_response[1]);
+		}
+	}
+	
+	function live_feed (new_ids) {
+		//console.log(new_ids);
+		
+		var id_array_len = single_id_array.length;
+		
+		for (var i=0; i < id_array_len; i++) {
+		
+			// Grab the id_meme's honor
+		
+			console.log("Currently on..."+single_id_array[i]);
+			var meme_id = single_id_array[i]
+			var meme_tot_honor = $("#aggr"+meme_id).html();	
+			
+			if (!meme_tot_honor) {
+				meme_tot_honor = 0;
+			}
+			
+			var meme_tot_dishonor = $("#disaggr"+meme_id).html();
+			
+			if (!meme_tot_dishonor) {
+				meme_tot_dishonor = 0;
+			}
+			
+			var meme_tot_reply = $("#repl"+meme_id).html();
+			
+			if (!meme_tot_reply) {
+				meme_tot_reply = 0;
+			}
+			
+			//console.log("Tot reply for meme is  "+meme_tot_reply);
+			
+			// Begin AJAX call to server
+			var live_feed_data;
+			var url="##LBL_SITE_URL##meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor+"/meme_tot_dishonor/"+meme_tot_dishonor+"/meme_tot_reply/"+meme_tot_reply;
+		
+			var httpRequest = new XMLHttpRequest();
+			httpRequest.open('POST', url, false);
+
+			httpRequest.send(); // this blocks as request is synchronous
+		
+			if (httpRequest.status == 200) {
+				live_feed_data_tot = httpRequest.responseText;
+			}
+		
+			if (live_feed_data_tot.trim() == "no change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
+			
+				console.log("(no update) Request data is "+live_feed_data_tot.trim());
+				
+			} else {
+			
+				var live_feed_data = live_feed_data_tot.split(',');
+		
+				if (live_feed_data[1] == 'honor') {
+					// Live feed tot_honor has changed...
+					new_honor = live_feed_data[0].trim();
+		
+					// Update actual number
+					$("#aggr"+meme_id).html(new_honor);
+		
+					// Flash green
+					common_fun_extended(meme_id, honour_color);
+				
+		
+					// 
+					console.log("Request data is "+live_feed_data_tot.trim());
+				} else if (live_feed_data[1] == 'dishonor') {
+					// Live feed tot_dishonor has changed...
+					new_dishonor = live_feed_data[0].trim();
+		
+					// Update actual number
+					$("#disaggr"+meme_id).html(new_dishonor);
+		
+					// Flash red
+					common_fun_extended(meme_id, dishonour_color);
+		
+					// 
+					console.log("Request data is "+live_feed_data_tot.trim());
+				
+				} else if (live_feed_data[1] == 'reply') {
+					// Live feed tot_dishonor has changed...
+					new_reply = live_feed_data[0].trim();
+		
+					// Update actual number
+					$("#repl"+meme_id).html(new_reply);
+		
+					// Flash yellow
+					common_fun_extended(meme_id, reply_color);
+		
+					// 
+					console.log("Request data is "+live_feed_data_tot.trim());
+				
+				}
+			}
+		}
+	}
+	
+	
+</script>
+{/literal}
+{foreach name=cur_meme item=x key=k from=$sm.res_meme}
+<div >
+	    <div  id="meme{$x.id_meme}" class="meme">
+
+{* Height between memes *}
+		<div style="height: 90px;">
+
+<!--javascript:show_details('{$x.id_meme}');-->
+<!-- Image specs for live feed meme -->
+
+<!-- Show details updates view count -->
+			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
+<!--			<div style="vertical-align: top; font-size: 15px" style="padding-left:5px"><b>{$x.title|capitalize}</b></div>-->
+			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="cursor:pointer;width: 80px;height: 80px; 
+			{* Added by Delos: highlights if you created the meme *}
+			{if $smarty.session.id_user}
+				{if $x.id_user == $smarty.session.id_user}
+					border-style:outset; border-width:2px; border-color:#6699FF;
+				{/if}
+			{/if}
+					
+		" align="left"/>
+
+			<span style="vertical-align: top; padding-left:5px; font-size: 15px">
+			<b>
+			
+			{$x.title|capitalize}</b></span></a>
+	<!-- end of gallery class-->
+			
+			<span style="font-size:12px">  by {$sm.uinfo[$x.id_user].username} </span>
+			<span style="font-size:8px"> L{$sm.uinfo[$x.id_user].level}</span>
+	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
+
+<!-- Caption shows below image 
+			<div style="font-size: 12px; color:blue"><span id="hrc{$x.id_meme}">{if $sm.hrc[$x.id_meme].caption}"{$sm.hrc[$x.id_meme].caption}"{else}{/if}</span></div><br/>-->
+			<div></div><br/>
+
+<!-- Comment out Category
+			    Category:<b>{$category[$x.category]}</b><br/> -->
+
+<!-- Meme Author (Commented out)
+			    by {$sm.uinfo[$x.id_user].fname|capitalize} {$sm.uinfo[$x.id_user].lname|capitalize} <br/> -->
+
+<!-- Date (Commented out)
+			    On: {$x.add_date|date_format:"%m-%d-%Y"} @ {$x.add_date|date_format:"%I:%M %p"}<br/><br/>  -->
+
+<!-- Reply-->
+			    {if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
+			    <label id="repl{$x.id_meme}">{if $x.tot_reply != 0}{$x.tot_reply}{/if}</label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('{$x.id_meme}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;
+			    {/if} 
+
+<!-- Honor -->
+			    <label id="aggr{$x.id_meme}">{if $x.tot_honour != 0}{$x.tot_honour}{/if}</label>&nbsp;<a href="javascript:void(0);" id="agr_link{$x.id_meme}" 
+			    
+			    	{* Added by Delos: highlights according to agree/disagree *}
+			    	{if $smarty.session.id_user}
+			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
+				    		style="color: green; cursor: default"
+				    	{elseif substr_count($x.dishonour_id_user, $smarty.session.id_user)}
+				    		style="color: gray; cursor: default"
+				    	{/if}
+				    {/if}
+			    onclick="set_tot_adaggr('{$x.id_meme}','A','{$x.id_user}');">Honor{*$x.honour_id_user*}</a>&emsp;
+
+<!-- Dishonor -->
+			    <label id="disaggr{$x.id_meme}">{if $x.tot_dishonour != 0}{$x.tot_dishonour}{/if}</label>&nbsp;<a href="javascript:void(0);" id="disagr_link{$x.id_meme}" 
+			    	{* Added by Delos: highlights according to agree/disagree *}
+			    	{if $smarty.session.id_user}
+			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
+			    			style="color: gray; cursor: default"
+			    		{elseif substr_count($x.dishonour_id_user, $smarty.session.id_user)}
+			    			style="color: red; cursor: default"
+			    		{/if}
+			    	{/if}
+			    
+			    onclick="set_tot_adaggr('{$x.id_meme}','D','{$x.id_user}');">Dishonor{*$x.dishonour_id_user*}</a>
+
+<!-- Add Caption 
+			    {if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
+			    &nbsp;<label id="capt{$x.id_meme}">{if $x.tot_caption != 0}{$x.tot_caption}{/if}</label> <a href="javascript:void(0)" onclick="get_captions('{$x.id_meme}');" >Add Caption</a>
+			    {/if}
+	
+
+<!-- Flag 
+			    {if $x.id_user!=$smarty.session.id_user}
+				 &nbsp;<a href="javascript:void(0)" onclick="flagging('{$x.id_meme}')">Flag</a>
+			    {/if}
+-->
+			</div>
+
+<!-- Twitter function commented out
+			    <span class="fb_btn"><fb:like href="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like></span>
+			</span><br/>
+			<span ><a href="http://twitter.com/share" class="twitter-share-button" data-url="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje"  >Tweet</a></span> 
+
+-->
+	    </div>
+	    <div id="send_reply{$x.id_meme}" style="width:60%;display: none;"></div>
+<!--
+	    <div id="add_caption{$x.id_meme}" style="width:60%;display: none;"></div> -->
+	    <input type="hidden" name="is_replied" id="is_replied{$x.id_meme}" value=''/>
+	    <input type="hidden" name="is_agreed" id="is_agreed{$x.id_meme}" value=''/>
+	    <input type="hidden" name="is_disagreed" id="is_disagreed{$x.id_meme}" value=''/>
+</div><br/>
+{/foreach}
+{/if}
