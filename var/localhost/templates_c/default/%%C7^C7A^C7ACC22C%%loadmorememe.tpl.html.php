@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-29 12:38:15
+<?php /* Smarty version 2.6.7, created on 2011-12-29 14:01:10
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 195, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 228, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 211, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 244, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 29/12/2011 12:38:15 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 29/12/2011 14:01:10 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -12,8 +12,15 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
 	
-	// Explode new_ids list by \',\' for single ids
-	var single_id_array = new_ids.split(\',\');	
+	var single_id_array = new_ids.split(\',\');
+	
+	if (!top_meme_id) {
+		var top_meme_id = single_id_array[0];
+	 }
+	
+	if (!feed_count) {
+		var feed_count = 0;
+	 }
 	
 	if(id!=\'\'){
 	    $("#last_id_meme_cur_page").val(id);
@@ -38,9 +45,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
      }
 	
 	function live_meme () {
-		var top_meme_id = single_id_array[0] 
-	
-		console.log(top_meme_id);		// 137
+		console.log("List "+new_ids);
+		console.log(top_meme_id+"| feedcount: "+feed_count);
 		
 		var live_meme_data;
 		var url="http://localhost/meme/live_meme/ce/0/chk/1/top_meme_id/"+top_meme_id;
@@ -71,9 +77,18 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			
 			var load_url = "http://localhost/meme/live_feed_render";
 			$.post(load_url,{meme_id:meme_id,meme_title:meme_title,meme_picture:meme_picture,meme_user:meme_user,ce:0 }, function(res){
-				$("#live_feed").html(res);
+				$(".live_feed"+feed_count).html(res);
 			
-				$(\'#live_feed\').slideToggle(\'slow\');
+				$(\'.live_feed\'+feed_count).slideToggle(900);
+				top_meme_id = meme_id;
+				new_ids += \',\'+meme_id;
+				
+				console.log(\'New meme toggled. Current feed_count is \'+feed_count);
+				
+				feed_count_orig = feed_count;
+				feed_count += 1; 
+				
+				$(\'.live_feed\'+feed_count_orig).before(\'<div class="live_feed\'+feed_count+\'" style="display: none;"></div>\');
 			 });
 			
 			
@@ -87,14 +102,15 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	function live_feed (new_ids) {
 		//console.log(new_ids);
 		
-		var id_array_len = single_id_array.length;
+		var feed_id_array = new_ids.split(\',\');		// needs to check for new memes
+		var id_array_len = feed_id_array.length;
 		
 		for (var i=0; i < id_array_len; i++) {
 		
 			// Grab the id_meme\'s honor
 		
-			console.log("Currently on..."+single_id_array[i]);
-			var meme_id = single_id_array[i]
+			console.log("Currently on..."+feed_id_array[i]);
+			var meme_id = feed_id_array[i]
 			var meme_tot_honor = $("#aggr"+meme_id).html();	
 			
 			if (!meme_tot_honor) {
@@ -184,7 +200,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 </script>
 '; ?>
 
-<div id="live_feed" style="display: none;"></div>
+<div class="live_feed0" style="display: none;"></div>
 <?php $this->_foreach['cur_meme'] = array('total' => count($_from = (array)$this->_tpl_vars['sm']['res_meme']), 'iteration' => 0);
 if ($this->_foreach['cur_meme']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['x']):

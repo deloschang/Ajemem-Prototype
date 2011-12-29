@@ -41,23 +41,21 @@
 			    </label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('{$sm.meme_id}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;
 
 <!-- Honor -->
-			    <label id="aggr{$sm.meme_id}">
-			    </label>&nbsp;<a href="javascript:void(0);" id="agr_link{$sm.meme_id}" 
+			    <label id="aggr{$sm.meme_id}"></label>&nbsp;<a href="javascript:void(0);" id="agr_link{$sm.meme_id}" 
 
 			    	{* Server-side highlighting is needed only on refresh *}
 
 			    onclick="set_tot_adaggr('{$sm.meme_id}','A','{$sm.meme_user}');">Honor{*$x.honour_id_user*}</a>&emsp;
 
 <!-- Dishonor -->
-			    <label id="disaggr{$sm.meme_id}">
-			    </label>&nbsp;<a href="javascript:void(0);" id="disagr_link{$sm.meme_id}" 
+			    <label id="disaggr{$sm.meme_id}"></label>&nbsp;<a href="javascript:void(0);" id="disagr_link{$sm.meme_id}" 
 			    	{* Server-side highlighting is needed only on refresh *}
 			    
 			    onclick="set_tot_adaggr('{$sm.meme_id}','D','{$sm.meme_user}');">Dishonor{*$x.dishonour_id_user*}</a>
 
 <!-- Add Caption 
 			    {if in_array($smarty.session.id_user,$sm.uinfo[$sm.meme_user].friends) || $smarty.session.id_user==$sm.meme_user}
-			    &nbsp;<label id="capt{$sm.meme_id}"></label> <a href="javascript:void(0)" onclick="get_captions('{$x.id_meme}');" >Add Caption</a>
+			    &nbsp;<label id="capt{$sm.meme_id}"></label> <a href="javascript:void(0)" onclick="get_captions('{$sm.meme_id}');" >Add Caption</a>
 			    {/if}
 	
 

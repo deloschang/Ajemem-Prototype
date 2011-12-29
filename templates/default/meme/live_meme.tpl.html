@@ -37,20 +37,17 @@
 <!-- Meme Author (Commented out) -->
 
 <!-- Reply -->
-			    <label id="repl{$sm.meme_id}">
-			    </label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('{$sm.meme_id}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;
+			    <label id="repl{$sm.meme_id}"></label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('{$sm.meme_id}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;
 
 <!-- Honor -->
-			    <label id="aggr{$sm.meme_id}">
-			    </label>&nbsp;<a href="javascript:void(0);" id="agr_link{$sm.meme_id}" 
+			    <label id="aggr{$sm.meme_id}"></label>&nbsp;<a href="javascript:void(0);" id="agr_link{$sm.meme_id}" 
 
 			    	{* Server-side highlighting is needed only on refresh *}
 
 			    onclick="set_tot_adaggr('{$sm.meme_id}','A','{$sm.meme_user}');">Honor{*$x.honour_id_user*}</a>&emsp;
 
 <!-- Dishonor -->
-			    <label id="disaggr{$sm.meme_id}">
-			    </label>&nbsp;<a href="javascript:void(0);" id="disagr_link{$sm.meme_id}" 
+			    <label id="disaggr{$sm.meme_id}"></label>&nbsp;<a href="javascript:void(0);" id="disagr_link{$sm.meme_id}" 
 			    	{* Server-side highlighting is needed only on refresh *}
 			    
 			    onclick="set_tot_adaggr('{$sm.meme_id}','D','{$sm.meme_user}');">Dishonor{*$x.dishonour_id_user*}</a>

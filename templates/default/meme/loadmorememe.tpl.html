@@ -6,8 +6,15 @@
 	var id = "{/literal}{$sm.last_idmeme}{literal}";
 	var new_ids = "{/literal}{$sm.id_memes}{literal}";
 	
-	// Explode new_ids list by ',' for single ids
-	var single_id_array = new_ids.split(',');	
+	var single_id_array = new_ids.split(',');
+	
+	if (!top_meme_id) {
+		var top_meme_id = single_id_array[0];
+	}
+	
+	if (!feed_count) {
+		var feed_count = 0;
+	}
 	
 	if(id!=''){
 	    $("#last_id_meme_cur_page").val(id);
@@ -32,9 +39,8 @@
     }
 	
 	function live_meme () {
-		var top_meme_id = single_id_array[0] 
-	
-		console.log(top_meme_id);		// 137
+		console.log("List "+new_ids);
+		console.log(top_meme_id+"| feedcount: "+feed_count);
 		
 		var live_meme_data;
 		var url="##LBL_SITE_URL##meme/live_meme/ce/0/chk/1/top_meme_id/"+top_meme_id;
@@ -65,9 +71,18 @@
 			
 			var load_url = "##LBL_SITE_URL##meme/live_feed_render";
 			$.post(load_url,{meme_id:meme_id,meme_title:meme_title,meme_picture:meme_picture,meme_user:meme_user,ce:0}, function(res){
-				$("#live_feed").html(res);
+				$(".live_feed"+feed_count).html(res);
 			
-				$('#live_feed').slideToggle(900);
+				$('.live_feed'+feed_count).slideToggle(900);
+				top_meme_id = meme_id;
+				new_ids += ','+meme_id;
+				
+				console.log('New meme toggled. Current feed_count is '+feed_count);
+				
+				feed_count_orig = feed_count;
+				feed_count += 1; 
+				
+				$('.live_feed'+feed_count_orig).before('<div class="live_feed'+feed_count+'" style="display: none;"></div>');
 			});
 			
 			
@@ -81,14 +96,15 @@
 	function live_feed (new_ids) {
 		//console.log(new_ids);
 		
-		var id_array_len = single_id_array.length;
+		var feed_id_array = new_ids.split(',');		// needs to check for new memes
+		var id_array_len = feed_id_array.length;
 		
 		for (var i=0; i < id_array_len; i++) {
 		
 			// Grab the id_meme's honor
 		
-			console.log("Currently on..."+single_id_array[i]);
-			var meme_id = single_id_array[i]
+			console.log("Currently on..."+feed_id_array[i]);
+			var meme_id = feed_id_array[i]
 			var meme_tot_honor = $("#aggr"+meme_id).html();	
 			
 			if (!meme_tot_honor) {
@@ -177,7 +193,7 @@
 	
 </script>
 {/literal}
-<div id="live_feed" style="display: none;"></div>
+<div class="live_feed0" style="display: none;"></div>
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
 <div>
 	
