@@ -220,6 +220,7 @@ class manage_manager extends mod_manager {
 			$not['user_info'] = ($info['id_users']!='')?$this->get_user_info():'';
 			$not['badge_info'] = ($info['id_badges']!='')?$this->badge_info($info['id_badges']):'';
 	    }
+	    
 	    $isread["is_read"]='1';
 	    $this->obj_manage->update_this("notification", $isread, "notified_user=".$_SESSION['id_user']);
 

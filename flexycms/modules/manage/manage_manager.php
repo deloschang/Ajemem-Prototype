@@ -81,6 +81,7 @@ class manage_manager extends mod_manager {
 	    $hst_rtd_cap = getindexrows($sql, "id_meme");
 	    return $hst_rtd_cap;
 	}
+	
 	function _my_favorites(){
 	    check_session();
 	    global $link;
