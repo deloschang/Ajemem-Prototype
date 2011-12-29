@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 00:22:06
+<?php /* Smarty version 2.6.7, created on 2011-12-30 00:31:20
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 44, false),)), $this); ?>
@@ -29,7 +29,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	    <legend>
 		<b>
 		    <?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
-		    Recently Liked Memes
+		    Recently Honored Memes
 		    <?php elseif ($this->_tpl_vars['sm']['flg'] == 2): ?>
 		    Tagged Meme
 		    <?php else: ?>

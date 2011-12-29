@@ -51,7 +51,7 @@ class manage_manager extends mod_manager {
 	function _my_meme_list(){
 	    check_session();
 	    global $link;
-	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'];
+	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'] + 20;
 	    $comm = " id_user=".$_SESSION['id_user'];
 	    $cond = (!$this->_input['last_id'])?$comm:$comm." AND id_meme <".$this->_input['last_id'];
 	    $cond.=" ORDER BY id_meme DESC LIMIT ".$limit;
@@ -85,7 +85,7 @@ class manage_manager extends mod_manager {
 	function _my_favorites(){
 	    check_session();
 	    global $link;
-	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'];
+	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'] + 20;
 	    $comm = "FIND_IN_SET(".$_SESSION['id_user'].",honour_id_user) ";
 	    $cond = (!$this->_input['last_id'])?$comm:$comm." AND id_meme <".$this->_input['last_id'];
 	    $cond.=" ORDER BY id_meme DESC LIMIT ".$limit;
