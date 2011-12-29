@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-29 00:32:23
+<?php /* Smarty version 2.6.7, created on 2011-12-29 05:01:44
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 167, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 200, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 177, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 210, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 29/12/2011 00:32:23 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 29/12/2011 05:01:44 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -54,8 +54,18 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			live_meme_data = httpRequest.responseText;
 		 }
 		
-		console.log("Data is "+live_meme_data);
+		if (live_meme_data.trim() == "no meme" || live_meme_data.trim() == "no meme found in SQL" || live_meme_data.trim() == "No new meme updates") {
+			console.log(\'no new meme found\');
+			return false; 
+		 }
 		
+		var live_meme_response = live_meme_data.split(\',\');
+		
+		console.log(live_meme_response[0]);
+		
+		if (live_meme_response[0].trim() == "New Meme") {
+			console.log("Data is "+live_meme_response[0]+","+live_meme_response[1]);
+		 }
 	 }
 	
 	function live_feed (new_ids) {

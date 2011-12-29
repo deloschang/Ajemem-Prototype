@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-29 00:31:17
+<?php /* Smarty version 2.6.7, created on 2011-12-29 05:00:55
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 134, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 142, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 29/12/2011 00:31:16 --> 
+<!-- Template: meme/addmeme.tpl.html Start 29/12/2011 05:00:55 --> 
  <!-- 
      Commented by Muaz :D
 	 This is the main HTML for the Memeja Editor.
@@ -66,14 +66,17 @@ _img.png";
             $("#meme_cat").focus();
             return false;
          }else{
+        
 		if(!$("#tag").val()){
 			var conf=confirm("Are you sure you don\'t want to tag your friends?");
 			if(conf){
+				$(window).unbind();
 				submit_memeje();
 			 }else{
 				return false;
 			 }
 		 }else{
+			$(window).unbind();
 			submit_memeje();
 		 }
          }
@@ -93,6 +96,7 @@ _img.png";
 
 <input type="hidden" name="iduser" id="iduser" value="<?php echo $_SESSION['id_user']; ?>
 "/>
+
 <form method="post" action="http://localhost/meme/meme_insert" enctype="multipart/form-data" name="ques_ans" id="ques_ans">
     <div align="center">
         <?php if ($this->_tpl_vars['sm']['idq']): ?>
@@ -128,14 +132,18 @@ unset($_smarty_tpl_vars);
                                 <option value="1" selected = "selected">Everyone</option>
                                 <option value="0">Friends Only</option>
                             </select>
+                            <!--
                         </td>
 					</tr>
 					<tr>
-                        <td valign='baseline' ><b>Who Comments:</b>
-                            <select id="friends" name="meme[can_all_comment]">
+                        <td valign='baseline' ><b>Who Comments:</b>-->
+                        <!--
+                            <select id="friends" name="meme[can_all_comment]" >
                                 <option value="1" selected = "selected">Everyone</option>
                                 <option value="0">Friends Only</option>
                             </select>
+                            -->
+                            <!--
                         </td>
                     </tr>
 					<!-- Commented out since we are contemplating having categories

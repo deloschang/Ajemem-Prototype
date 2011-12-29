@@ -48,8 +48,18 @@
 			live_meme_data = httpRequest.responseText;
 		}
 		
-		console.log("Data is "+live_meme_data
+		if (live_meme_data.trim() == "no meme" || live_meme_data.trim() == "no meme found in SQL" || live_meme_data.trim() == "No new meme updates") {
+			console.log('no new meme found');
+			return false; 
+		}
 		
+		var live_meme_response = live_meme_data.split(',');
+		
+		console.log(live_meme_response[0]);
+		
+		if (live_meme_response[0].trim() == "New Meme") {
+			console.log("Data is "+live_meme_response[0]+","+live_meme_response[1]);
+		}
 	}
 	
 	function live_feed (new_ids) {
