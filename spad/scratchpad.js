@@ -440,12 +440,13 @@ var settings = {
                 endX = endY = 0;
             });
             $(document).keyup(function(e){
-                if(e.which == 90){
-                    undoimage();
-                }
-                if(e.which == 89){
-                    redoimage();
-                }
+//                if(e.which == 90){ // 'z'
+//                	console.log('z fired');
+//                    undoimage();
+//                }
+//                if(e.which == 89){ // 'y'
+//                    redoimage();
+//                }
             /*if(e.which == 107){
                     var newvalue = Math.min($( "#vs" ).slider( "option", "value" )+1, $( "#vs" ).slider( "option", "max" ));
                     adjustfontsize(newvalue);

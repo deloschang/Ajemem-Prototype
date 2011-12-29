@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-29 05:01:44
+<?php /* Smarty version 2.6.7, created on 2011-12-29 12:38:15
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 177, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 210, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 195, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 228, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 29/12/2011 05:01:44 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 29/12/2011 12:38:15 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -60,11 +60,27 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		 }
 		
 		var live_meme_response = live_meme_data.split(\',\');
-		
-		console.log(live_meme_response[0]);
-		
+				
 		if (live_meme_response[0].trim() == "New Meme") {
-			console.log("Data is "+live_meme_response[0]+","+live_meme_response[1]);
+			console.log("Data is "+live_meme_response[1]+","+live_meme_response[2]+","+live_meme_response[3]+","+live_meme_response[4]);
+			
+			meme_id = live_meme_response[1];
+			meme_title = live_meme_response[2];
+			meme_picture = live_meme_response[3];
+			meme_user = live_meme_response[4];
+			
+			var load_url = "http://localhost/meme/live_feed_render";
+			$.post(load_url,{meme_id:meme_id,meme_title:meme_title,meme_picture:meme_picture,meme_user:meme_user,ce:0 }, function(res){
+				$("#live_feed").html(res);
+			
+				$(\'#live_feed\').slideToggle(\'slow\');
+			 });
+			
+			
+			//end
+			
+			
+			
 		 }
 	 }
 	
@@ -168,12 +184,14 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 </script>
 '; ?>
 
+<div id="live_feed" style="display: none;"></div>
 <?php $this->_foreach['cur_meme'] = array('total' => count($_from = (array)$this->_tpl_vars['sm']['res_meme']), 'iteration' => 0);
 if ($this->_foreach['cur_meme']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['x']):
         $this->_foreach['cur_meme']['iteration']++;
 ?>
-<div >
+<div>
+	
 	    <div  id="meme<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " class="meme">
 

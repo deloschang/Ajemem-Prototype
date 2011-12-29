@@ -56,7 +56,25 @@
 		var live_meme_response = live_meme_data.split(',');
 				
 		if (live_meme_response[0].trim() == "New Meme") {
-			console.log("Data is "+live_meme_response[0]+","+live_meme_response[1]);
+			console.log("Data is "+live_meme_response[1]+","+live_meme_response[2]+","+live_meme_response[3]+","+live_meme_response[4]);
+			
+			meme_id = live_meme_response[1];
+			meme_title = live_meme_response[2];
+			meme_picture = live_meme_response[3];
+			meme_user = live_meme_response[4];
+			
+			var load_url = "##LBL_SITE_URL##meme/live_feed_render";
+			$.post(load_url,{meme_id:meme_id,meme_title:meme_title,meme_picture:meme_picture,meme_user:meme_user,ce:0}, function(res){
+				$("#live_feed").html(res);
+			
+				$('#live_feed').slideToggle(900);
+			});
+			
+			
+			//end
+			
+			
+			
 		}
 	}
 	
@@ -159,8 +177,10 @@
 	
 </script>
 {/literal}
+<div id="live_feed" style="display: none;"></div>
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
-<div >
+<div>
+	
 	    <div  id="meme{$x.id_meme}" class="meme">
 
 {* Height between memes *}

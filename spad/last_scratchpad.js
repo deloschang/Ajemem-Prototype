@@ -551,7 +551,8 @@ var settings = {
                 //    settings.type='line';
                 //}
                 if(e.which == 90){
-                    undoimage();
+                	console.log('last scratchpad');
+               //     undoimage();
                 }
                 if(e.which == 89){
                     redoimage();

@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-29 05:00:55
+<?php /* Smarty version 2.6.7, created on 2011-12-29 12:37:59
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 142, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 29/12/2011 05:00:55 --> 
+<!-- Template: meme/addmeme.tpl.html Start 29/12/2011 12:37:59 --> 
  <!-- 
      Commented by Muaz :D
 	 This is the main HTML for the Memeja Editor.
@@ -67,18 +67,18 @@ _img.png";
             return false;
          }else{
         
-		if(!$("#tag").val()){
-			var conf=confirm("Are you sure you don\'t want to tag your friends?");
-			if(conf){
-				$(window).unbind();
-				submit_memeje();
-			 }else{
-				return false;
-			 }
-		 }else{
+<!--		if(!$("#tag").val()){-->
+<!--			var conf=confirm("Are you sure you don\'t want to tag your friends?");-->
+<!--			if(conf){-->
+<!--				$(window).unbind();-->
+<!--				submit_memeje();-->
+<!--			 }else{-->
+<!--				return false;-->
+<!--			 }-->
+<!--		 }else{-->
 			$(window).unbind();
 			submit_memeje();
-		 }
+<!--		 }-->
          }
      }
 
