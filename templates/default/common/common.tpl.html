@@ -42,6 +42,8 @@
 
 <script type="text/javascript" src="##JS_PATH##libsext/js/ajaxfileupload.js"></script>
 
+<script type="text/javascript" src="##JS_PATH##libsext/hotkeys/jquery.hotkeys.js"></script>
+
 
 <!--Popup (use later for badges?)-->
 <script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/jquery.bubblepopup.v2.3.1.min.js"></script>
@@ -87,6 +89,10 @@
 		console.log("XP Percent displayed is "+xp_percent);
 		
 		console.log("Previous XP To level is "+previous_xp_to_level);
+		
+		$(document).bind('keydown', 'ctrl+a', function(){
+			console.log("hotkey fired");
+		});
 		
 		
 		// User XP initial display

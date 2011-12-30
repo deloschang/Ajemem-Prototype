@@ -51,7 +51,6 @@
 			
 			onclick="rand_set_tot_adaggr('{$x.id_meme}','D');">Dishonor</a></span>
 			
-			
 			<div id="randsend_reply{$x.id_meme}" style="width:60%;display: none;"></div>
 			
 <!--			{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}-->
@@ -72,7 +71,7 @@
 	    <div id="lding_rand" style="display: none;" align="center"><img src="##LBL_SITE_URL##templates/images/loadingAnimation.gif" /></div>
 	    
 	    <div  onclick="show_my_details('{$x.id_meme}');" id="comc_img"><br />
-		    <img  src="##LBL_SITE_URL##image/orig/meme/{$x.image}" style="cursor:pointer;"  title="Meme" />
+		    <img  src="##LBL_SITE_URL##image/orig/meme/{$x.image}" style="cursor:pointer;"  title="{$x.title}" />
 	    </div>
 	    
 	    <br />
@@ -91,6 +90,19 @@
 		$("#random_title").html("{/literal}{$x.title|capitalize}{literal}");
 		$("#random_username").html('<a href="javascript:void(0)" onmouseover="hover_user(\'{/literal}{$sm.uinfo[$x.id_user].id_user}{literal}\');">{/literal}{$sm.uinfo[$x.id_user].username}{literal}</a>');
 		
+		
+		$(document).bind('keydown', 'right', function(){
+			console.log('fired');
+			show_my_details('{/literal}{$x.id_meme}{literal}');
+		});
+		
+		$(document).bind('keydown', 'up', function(){
+			rand_set_tot_adaggr('{/literal}{$x.id_meme}{literal}','A');
+		});
+		
+		$(document).bind('keydown', 'right', function(){
+			rand_set_tot_adaggr('{/literal}{$x.id_meme}{literal}','D');
+		});
 		
     });
     

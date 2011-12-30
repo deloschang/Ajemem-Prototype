@@ -3,6 +3,7 @@
 {literal}
 <script type="text/javascript">
     var x=0;
+    
     function rand_set_tot_adaggr(id,con){
 	var url = "##LBL_SITE_URL##meme/set_adaggr";
 	
@@ -29,7 +30,8 @@
 					$("#randagr_link"+id).css({"color" : "gray", "cursor" : "default"});
 		    }
 	    }else
-		   alert("You have already voted.");
+		   //alert("You have already voted.");
+		   console.log('You have already voted.');
 	},"json");
 <!--    } else {-->
 <!--    	alert("You are not logged in.");-->
