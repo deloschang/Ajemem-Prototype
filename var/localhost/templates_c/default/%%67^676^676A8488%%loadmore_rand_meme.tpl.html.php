@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 11:52:44
+<?php /* Smarty version 2.6.7, created on 2011-12-30 12:55:28
          compiled from meme/loadmore_rand_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmore_rand_meme.tpl.html', 11, false),array('modifier', 'date_format', 'meme/loadmore_rand_meme.tpl.html', 13, false),)), $this); ?>
@@ -116,6 +116,14 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <?php echo '
 <!--<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>-->
 <script type="text/javascript">
+	var notyet = 0;
+	var notagree = 0;
+	var notdisagree = 0;
+	
+	function clearTimer() {
+    	notyet = 0;   
+	 }  
+    
     $(document).ready(function(){
 		var ids = ($("#rand_ids").val())?$("#rand_ids").val()+",';  echo $this->_tpl_vars['x']['id_meme'];  echo '":"';  echo $this->_tpl_vars['x']['id_meme'];  echo '";
 		$("#rand_ids").val(ids);
@@ -124,25 +132,55 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		$("#random_title").html("';  echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '");
 		$("#random_username").html(\'<a href="javascript:void(0)" onmouseover="hover_user(\\\'';  echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user'];  echo '\\\');">';  echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username'];  echo '</a>\');
 		
-		
 		$(document).bind(\'keydown\', \'right\', function(){
-			console.log(\'fired\');
-			show_my_details(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\');
+			next_meme();
 		 });
 		
+		$(document).bind(\'keydown\', \'space\', function(){
+			next_meme();
+		 });
+			
 		$(document).bind(\'keydown\', \'up\', function(){
-			rand_set_tot_adaggr(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\',\'A\');
+			next_agree();
 		 });
 		
 		$(document).bind(\'keydown\', \'down\', function(){
-			rand_set_tot_adaggr(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\',\'D\');
+			next_disagree();
 		 });
 		
      });
     
+    function next_meme(){
+		if (notyet == 1) {
+		    return; 
+		 }  
+		notyet = 1;
+		show_my_details(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\');
+		setTimeout(\'clearTimer()\', 1000);
+     }
+    
+    function next_agree(){
+		if (notagree == 1) {
+		    return; 
+		 }  
+		notagree = 1;
+		rand_set_tot_adaggr(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\',\'A\');
+		setTimeout(\'clearTimer()\', 1000);
+     }
+    
+     function next_disagree(){
+		if (notdisagree == 1) {
+		    return; 
+		 }  
+		notdisagree = 1;
+		rand_set_tot_adaggr(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\',\'D\');
+		setTimeout(\'clearTimer()\', 1000);
+     }
+    
     $(".fb_btn").each(function (){
 		FB.XFBML.parse($(this).get(0));
      });
+    
 </script>
 '; ?>
 

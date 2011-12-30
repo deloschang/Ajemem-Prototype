@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 11:52:34
+<?php /* Smarty version 2.6.7, created on 2011-12-30 12:55:18
          compiled from common/header.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/header.tpl.html', 10, false),)), $this); ?>
 
-<!-- Template: common/header.tpl.html Start 30/12/2011 11:52:34 --> 
+<!-- Template: common/header.tpl.html Start 30/12/2011 12:55:18 --> 
  <div id="xpbar"></div>
 <div id="user_level"></div>
 <div id="xpbar_status"></div>
