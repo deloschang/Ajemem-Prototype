@@ -1,19 +1,49 @@
-<div id="xpbar"></div>
-<div id="user_level"></div>
-<div id="xpbar_status"></div>
-<!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="D8ZSHD3LGRXHJ">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>-->
+{assign var=category value=$util->get_values_from_config('CATEGORY')}
+{literal}
+<script type="text/javascript">
+    function get_random_meme(){
+	var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
+	//$.fancybox.showActivity();
+	$.fancybox.showLoading();
+	$.post(url,{ce:0},function(res){
+	    $("#randpgexist").val(1);
+	    $.fancybox.open(res,{
+		    afterClose : function (){
+				$("#randpgexist").val(0);
+		    }
+	    });
+	    $.fancybox.update();
+	});
+    }
+</script>
+{/literal}
 <div id="header">
+    <table>
+	<tr>
+	<td>
 	<h1><a href="##LBL_SITE_URL##">Memeja</a></h1>
+	</td>
+	<!-- 
+	
+	   Move next to exp bar
+	
 	<center>
 	    {if $smarty.session.id_user}
 		 Welcome {$smarty.session.fname|capitalize}
 	    {/if}
-	</center>
+	</center>-->
+	<td>
+	{if $smarty.request.page == 'meme' && $smarty.request.choice == 'addMeme'}class="current"{/if}>
+		<a href="##LBL_SITE_URL##meme/addMeme">Make-A-Meme</a>
+	</td>
+	<td>
+	<a href="javascript:void(0);" onclick="get_random_meme();">Random Generator</a>
+	</td>
+	<td>
+	<a href="##LBL_SITE_URL##achievements/whatisMemeja">What is Memeja</a>
+	</td>
+	<!--
+	    Move this next to Exp Bar
 	<div class="fltrht" style="margin-top:0px;">
 		{if $smarty.session.id_admin || $smarty.session.id_user}
 			<a href ="javascript:void(0);" onclick="fb_logout();">Logout</a>
@@ -28,8 +58,11 @@
 		{/if}
 		
 		<br/><a href="##LBL_SITE_URL##cms/show/code/aboutus">About Us</a>
-		<!--<br/><a href="##LBL_SITE_URL##cms/show/code/memeja">What is Memeja</a>-->
+		<!--<br/><a href="##LBL_SITE_URL##cms/show/code/memeja">What is Memeja</a>
 		<br/><a href="##LBL_SITE_URL##achievements/whatisMemeja">What is Memeja</a>
-		<!--<br/><a href="##LBL_SITE_URL##leaderboard/leaderboard">Leaderboard</a>-->
+		<br/><a href="##LBL_SITE_URL##leaderboard/leaderboard">Leaderboard</a>
+		-->
 	</div>
+	</tr>
+	</table>
 </div>

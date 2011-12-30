@@ -15,14 +15,38 @@
 	    $.fancybox.update();
 	});
     }
+	$(document).ready(function(){
+	$(window).scroll(function(e){
+		var scrollTop = $(window).scrollTop();
+		console.log(scrollTop);
+		if(scrollTop > 1){
+			var x = $('#xpbar').offset();
+			$('#xpbar').css({
+			    position:'fixed',
+			    top:'0px',
+	            left: '74px',
+	            right: '75px',
+			});
+		}else{
+			$('#xpbar').css({
+			    position:'absolute',
+			    top:'0px',
+				left: '74px',
+	            right: '75px',
+			});
+		}
+	});
+});
 </script>
 {/literal}
+<div id="xpbar"></div>
+<div id="user_level"></div>
+<div id="xpbar_status"></div>
+<!--
 <div id="navigation">
     <div class="menu-header">
 	<ul class="menu">
-	    <!--<li {if $smarty.request.page == 'user' && $smarty.request.choice == 'user_home'}class="current"{/if}>
-		<a href="##LBL_SITE_URL##user/user_home">Home</a>
-	    </li>-->
+
 	    <li {if $smarty.request.page == 'meme' && $smarty.request.choice == 'meme_list' && ($smarty.request.cat=='main_feed' || $smarty.request.cat=='network_feed')}class="current"{/if}>
 		<a href="##LBL_SITE_URL##meme/meme_list/cat/main_feed">Home</a>
 	    </li>
@@ -30,9 +54,11 @@
 		<a href="##LBL_SITE_URL##meme/addMeme">Make-A-Meme</a>
 	    </li>
 
-	    <li {if $smarty.request.page == 'meme' && $smarty.request.choice == 'meme_list' && $smarty.request.cat=='top'}class="current"{/if}>
+	   <!-- 
+	     No top memes in v1
+		 <li {if $smarty.request.page == 'meme' && $smarty.request.choice == 'meme_list' && $smarty.request.cat=='top'}class="current"{/if}>
 		<a href="##LBL_SITE_URL##meme/meme_list/cat/top">Top Memes</a>
-	    </li>
+	    </li> -->
 
 <!-- CATEGORIES COMMENTED OUT
 	    {foreach key=key item=item from=$category}
@@ -41,7 +67,7 @@
 		</li>
 	    {/foreach}
 	     <li {if $smarty.request.page == 'meme' && $smarty.request.choice == 'meme_list' && $smarty.request.cat=='rand'}class="current"{/if}>
-!-->
+
 
 		<a href="javascript:void(0);" onclick="get_random_meme();">Random Generator</a>
 	    </li>
@@ -61,3 +87,4 @@
 
 </style>
 {/literal}
+-->

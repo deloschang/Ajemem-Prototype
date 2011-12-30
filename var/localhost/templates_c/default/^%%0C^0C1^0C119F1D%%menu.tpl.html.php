@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 00:48:48
+<?php /* Smarty version 2.6.7, created on 2011-12-30 06:34:57
          compiled from common/menu.tpl.html */ ?>
 
-<!-- Template: common/menu.tpl.html Start 30/12/2011 00:48:48 --> 
+<!-- Template: common/menu.tpl.html Start 30/12/2011 06:34:57 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
@@ -19,15 +19,39 @@
 	    $.fancybox.update();
 	 });
      }
+	$(document).ready(function(){
+	$(window).scroll(function(e){
+		var scrollTop = $(window).scrollTop();
+		console.log(scrollTop);
+		if(scrollTop > 1){
+			var x = $(\'#xpbar\').offset();
+			$(\'#xpbar\').css({
+			    position:\'fixed\',
+			    top:\'0px\',
+	            left: \'74px\',
+	            right: \'75px\',
+			 });
+		 }else{
+			$(\'#xpbar\').css({
+			    position:\'absolute\',
+			    top:\'0px\',
+				left: \'74px\',
+	            right: \'75px\',
+			 });
+		 }
+	 });
+ });
 </script>
 '; ?>
 
+<div id="xpbar"></div>
+<div id="user_level"></div>
+<div id="xpbar_status"></div>
+<!--
 <div id="navigation">
     <div class="menu-header">
 	<ul class="menu">
-	    <!--<li <?php if ($_REQUEST['page'] == 'user' && $_REQUEST['choice'] == 'user_home'): ?>class="current"<?php endif; ?>>
-		<a href="http://localhost/user/user_home">Home</a>
-	    </li>-->
+
 	    <li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'meme_list' && ( $_REQUEST['cat'] == 'main_feed' || $_REQUEST['cat'] == 'network_feed' )): ?>class="current"<?php endif; ?>>
 		<a href="http://localhost/meme/meme_list/cat/main_feed">Home</a>
 	    </li>
@@ -35,9 +59,11 @@
 		<a href="http://localhost/meme/addMeme">Make-A-Meme</a>
 	    </li>
 
-	    <li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'meme_list' && $_REQUEST['cat'] == 'top'): ?>class="current"<?php endif; ?>>
+	   <!-- 
+	     No top memes in v1
+		 <li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'meme_list' && $_REQUEST['cat'] == 'top'): ?>class="current"<?php endif; ?>>
 		<a href="http://localhost/meme/meme_list/cat/top">Top Memes</a>
-	    </li>
+	    </li> -->
 
 <!-- CATEGORIES COMMENTED OUT
 	    <?php if (count($_from = (array)$this->_tpl_vars['category'])):
@@ -50,7 +76,7 @@
 		</li>
 	    <?php endforeach; endif; unset($_from); ?>
 	     <li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'meme_list' && $_REQUEST['cat'] == 'rand'): ?>class="current"<?php endif; ?>>
-!-->
+
 
 		<a href="javascript:void(0);" onclick="get_random_meme();">Random Generator</a>
 	    </li>
@@ -71,5 +97,5 @@
 </style>
 '; ?>
 
-
+-->
 <!-- Template: common/menu.tpl.html End --> 

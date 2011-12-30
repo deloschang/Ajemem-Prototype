@@ -1,7 +1,8 @@
 {assign var=premade_category value=$util->get_values_from_config('PREMADE_CATEGORY')}
 {literal}
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
-<script type='text/javascript' src="jquery.lionbars.0.3.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##/spad/jquery.lionbars.0.3.js"></script>
+<link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##/spad/lionbars.css" media="screen" />
 <script type="text/javascript">
 
 
@@ -134,6 +135,7 @@ $(document).ready(function(){
 		}
 	});
 	$("#page").show();
+	$("#loadimg").lionbars();
 });
 </script>
 {/literal}

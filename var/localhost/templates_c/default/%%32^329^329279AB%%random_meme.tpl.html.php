@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-22 13:27:14
+<?php /* Smarty version 2.6.7, created on 2011-12-30 02:52:33
          compiled from meme/random_meme.tpl.html */ ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -6,18 +6,34 @@
     var x=0;
     function rand_set_tot_adaggr(id,con){
 	var url = "http://localhost/meme/set_adaggr";
+	
+<!--	if (logged_in) {-->
 	$.post(url,{id_meme:id,ce:0,con:con },function(res){
 	    if(res[0]!=0){
 		    if(res[1]==1){
-			$("#aggr"+id).html(res[0]);
-			$("#is_agreed"+id).val(\'1\');
+				$("#randaggr"+id).html(res[0]);
+				$("#is_agreed"+id).val(\'1\');
+				
+				$("#rand_meme_agr_id"+id).effect("highlight", {color:"green" }, 1500);
+				
+				/* After voting, Highlight Agree + Grey out Disagree */					
+					$("#randagr_link"+id).css({"color" : "green", "cursor" : "default" });
+					$("#randdisagr_link"+id).css({"color" : "gray", "cursor" : "default" });
 		     }else{
-			$("#disaggr"+id).html(res[0]);
-			$("#is_disagreed"+id).val(\'1\');
+				$("#randdisaggr"+id).html(res[0]);
+				$("#is_disagreed"+id).val(\'1\');
+				
+				$("#rand_meme_disagr_id"+id).effect("highlight", {color:"red" }, 1500);
+				
+				/* After voting, Highlight Disagree + Grey out Agree */
+					$("#randdisagr_link"+id).css({"color" : "red", "cursor" : "default" });
+					$("#randagr_link"+id).css({"color" : "gray", "cursor" : "default" });
 		     }
 	     }else
 		   alert("You have already voted.");
 	 },"json");
+<!--     } else {-->
+<!--    	alert("You are not logged in.");-->
      }
     function get_all_rand_replies(id){
 	var url = "http://localhost/meme/get_all_replies";
@@ -28,21 +44,25 @@
 	    $(\'#randsend_reply\'+id).slideToggle(\'slow\');
 	 });
      }
+        
     function rand_chk_forclear(id){
 	if($(\'#rand_rpl_con\'+id).val() == "Reply with answer.")
 	    $(\'#rand_rpl_con\'+id).val(\'\');
      }
 
     function rand_post_reply(id){
-	if($("#rand_rpl_con"+id).val()=="" || $("#rand_rpl_con"+id).val()=="Reply with answer."){
-	     $("#rand_rpl_con"+id).val("Reply with answer.");
-	     return false;
-	 }
-	$("#randsend_reply"+id).hide("slow",function(){ });
-	var url = "http://localhost/meme/answer_to_meme";
-	$.post(url,{answer:$("#rand_rpl_con"+id).val(),id:id,ce:0 },function(res){
-	    $("#randrepl"+id).html(res);
-	 });
+		if($("#rand_rpl_con"+id).val()=="" || $("#rand_rpl_con"+id).val()=="Reply with answer."){
+			 $("#rand_rpl_con"+id).val("Reply with answer.");
+			 return false;
+		 }
+		
+		$("#rand_meme_reply_id"+id).effect("highlight", {color:"yellow" }, 1500);
+		$("#randsend_reply"+id).hide("slow",function(){ });
+		
+		var url = "http://localhost/meme/answer_to_meme";
+		$.post(url,{answer:$("#rand_rpl_con"+id).val(),id:id,ce:0 },function(res){
+			$("#randrepl"+id).html(res);
+		 });
      }
     function get_rand_cats(){
 	var cats = \'\';
@@ -53,16 +73,20 @@
 	 });
 	return cats;
      }
+    
+    // Called when clicking random
     function show_my_details(id_meme){
 	var url = "http://localhost/meme/meme_list";
 	     $(\'#comc_img\').hide();
 	     $("#lding_rand").show();
+	     
 	     var rnd_cat = get_rand_cats();
 	     var rnd_ids=$("#rand_ids").val();
+	     
 	$.post(url, {last_id:id_meme,ce:0,cat:\'rand\',rand_fg:\'1\',rnd_ids:rnd_ids,rnd_cat:rnd_cat }, function(res){
 		    if(res){
-			$("#rand_meme").html(res);
-		     }else{
+				$("#rand_meme").html(res);
+		     } else {
 			$.post(url, {last_id:id_meme,ce:0,cat:\'rand\',rand_fg:\'2\',rnd_cat:rnd_cat }, function(data){
 				$("#rand_meme").html(data);
 				$("#rand_ids").val("");
@@ -70,16 +94,19 @@
 		     }
 	 });
      }
+    
     function load_rand_meme(){
-	var url = "http://localhost/meme/meme_list";
-	$(\'#comc_img\').hide();
-	$("#lding_rand").show();
-	var rnd_cat = get_rand_cats();
-	$("#rand_ids").val(\'\');
-	$.post(url, {ce:0,cat:\'rand\',rnd_cat:rnd_cat,last_id:1 }, function(res){
-	    $("#rand_meme").html(res);
-	 });
+		var url = "http://localhost/meme/meme_list";
+		$(\'#comc_img\').hide();
+		$("#lding_rand").show();
+		
+		var rnd_cat = get_rand_cats();
+		$("#rand_ids").val(\'\');
+		$.post(url, {ce:0,cat:\'rand\',rnd_cat:rnd_cat,last_id:1 }, function(res){
+			$("#rand_meme").html(res);
+		 });
      }
+    
     function get_rand_captions(id){
 	var url = "http://localhost/caption/add_caption";
 	$.post(url,{id:id,ce:0,flag:\'rand\' }, function(res){
@@ -120,7 +147,7 @@
 
 
 <center>
-    <label style="font-size: 16px;font-weight:bold;">Random Meme</label>
+    <label id="random_title" style="font-size: 16px;font-weight:bold;">Random Meme</label>
 </center>
 
 <!-- Commenting out categories 

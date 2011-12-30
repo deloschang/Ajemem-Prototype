@@ -63,7 +63,7 @@ label.error	{
 #header	{
 	background:#4D79A6;
 	color:#FFF;
-	height:75px;
+	height:50px;
 	padding:0px 10px;
 }
 #header h1	{
@@ -512,119 +512,9 @@ table.userinfo input.fields:focus	{
 	border:1px solid black;
 	padding-top:15px;
 	font-size:16px;
-	color:#000;
+	color:#FFF;
 	background:#111;
 	-moz-border-radius : 10px 10px 10px 10px;
 	-webkit-border-radius : 10px 10px 10px 10px;
 	z-index:99999999;
 }
-
-body {
-	background-color:#EAEAEA;
-}
-
-#xpbar {
-	position: fixed;
-	top: 0px;
-	left: 74px;
-	right: 75px;
-	z-index: 99998;
-}
-
-#user_level{
-	position: fixed;
-	
-	font-size: 10px;
-	font: Verdana;
-	color: white;
-	
-	cursor: default;
-	
-	top: 2px;
-	left: 9%;
-	z-index: 999999;
-
-}
-
-#xpbar_status {
-	position: fixed;
-	
-	font-size: 10px;
-	font: Verdana;
-	color: white;
-	
-	display: none;
-	cursor: default;
-	
-	top: 2px;
-	left: 45%;
-	z-index: 99999;
-}
-
-/* Exp Bar Tab */
-.expbar{
-	position:fixed;
-	bottom:15px;
-	left:7px;
-	border-radius:5px;
-}
-.exp_fix1{
-	position:fixed!important;
-	top:485px!important;
-}
-.notify {
-	cursor: pointer;
-	position:fixed;
-	bottom:15px;
-	left:100px;
-	border-radius:5px;
-}
-.not_txt{
-	cursor: pointer;
-	background-color: red;
-	position:fixed;
-	left: 155px;
-	bottom: 20px;
-	width:13px;
-	height:16px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	border-radius:5px;
-	display:none;
-}
-.leftpan_img{
-	 background:url(##LBL_SITE_URL##templates/images/m_previous_btn.png) no-repeat;
-	 width:11px;
-	 height:71px;
-         position:absolute;
-         position:fixed;
-	 left:5px;
-         top:400px;
-	 z-index: 5;
-}
-.rightpan_img{
-	background:url(##LBL_SITE_URL##templates/images/m_next_btn.png) no-repeat;
-	 width:11px;
-	 height:71px;
-         position:absolute;
-         position:fixed;
-         right:5px;
-         top:400px;
-	 z-index: 5;
-}
-
-/* Notification pop-up */
-.inner{
-	outline:1px solid #000;
-	background-color:wheat;
-
-}
-
-/* Location of Notification pop-up */
-.slide .inner {
-	position: fixed;
-	left: 102px;
-	bottom: 33px;
-	z-index:9999999;
-}
-

@@ -1,26 +1,57 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 00:48:47
+<?php /* Smarty version 2.6.7, created on 2011-12-30 06:34:57
          compiled from common/header.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/header.tpl.html', 16, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/header.tpl.html', 34, false),)), $this); ?>
 
-<!-- Template: common/header.tpl.html Start 30/12/2011 00:48:47 --> 
- <div id="xpbar"></div>
-<div id="user_level"></div>
-<div id="xpbar_status"></div>
-<!--<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="D8ZSHD3LGRXHJ">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>-->
+<!-- Template: common/header.tpl.html Start 30/12/2011 06:34:57 --> 
+ <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
+<script type="text/javascript">
+    function get_random_meme(){
+	var url = "http://localhost/meme/meme_list/cat/rand";
+	//$.fancybox.showActivity();
+	$.fancybox.showLoading();
+	$.post(url,{ce:0 },function(res){
+	    $("#randpgexist").val(1);
+	    $.fancybox.open(res,{
+		    afterClose : function (){
+				$("#randpgexist").val(0);
+		     }
+	     });
+	    $.fancybox.update();
+	 });
+     }
+</script>
+'; ?>
+
 <div id="header">
+    <table>
+	<tr>
+	<td>
 	<h1><a href="http://localhost/">Memeja</a></h1>
+	</td>
+	<!-- 
+	
+	   Move next to exp bar
+	
 	<center>
 	    <?php if ($_SESSION['id_user']): ?>
 		 Welcome <?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 
 	    <?php endif; ?>
-	</center>
+	</center>-->
+	<td>
+	<?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'addMeme'): ?>class="current"<?php endif; ?>>
+		<a href="http://localhost/meme/addMeme">Make-A-Meme</a>
+	</td>
+	<td>
+	<a href="javascript:void(0);" onclick="get_random_meme();">Random Generator</a>
+	</td>
+	<td>
+	<a href="http://localhost/achievements/whatisMemeja">What is Memeja</a>
+	</td>
+	<!--
+	    Move this next to Exp Bar
 	<div class="fltrht" style="margin-top:0px;">
 		<?php if ($_SESSION['id_admin'] || $_SESSION['id_user']): ?>
 			<a href ="javascript:void(0);" onclick="fb_logout();">Logout</a>
@@ -35,10 +66,12 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		<?php endif; ?>
 		
 		<br/><a href="http://localhost/cms/show/code/aboutus">About Us</a>
-		<!--<br/><a href="http://localhost/cms/show/code/memeja">What is Memeja</a>-->
+		<!--<br/><a href="http://localhost/cms/show/code/memeja">What is Memeja</a>
 		<br/><a href="http://localhost/achievements/whatisMemeja">What is Memeja</a>
-		<!--<br/><a href="http://localhost/leaderboard/leaderboard">Leaderboard</a>-->
+		<br/><a href="http://localhost/leaderboard/leaderboard">Leaderboard</a>
+		-->
 	</div>
+	</tr>
+	</table>
 </div>
-
 <!-- Template: common/header.tpl.html End --> 
