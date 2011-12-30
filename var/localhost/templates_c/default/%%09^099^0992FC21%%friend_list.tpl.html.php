@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-29 10:17:31
+<?php /* Smarty version 2.6.7, created on 2011-12-30 00:48:48
          compiled from user/friend_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/friend_list.tpl.html', 18, false),array('modifier', 'truncate', 'user/friend_list.tpl.html', 18, false),)), $this); ?>
 
-<!-- Template: user/friend_list.tpl.html Start 29/12/2011 10:17:31 --> 
+<!-- Template: user/friend_list.tpl.html Start 30/12/2011 00:48:48 --> 
  <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
 <fieldset>
   <legend>My friends(<?php echo $this->_tpl_vars['sm']['count']; ?>
