@@ -1082,7 +1082,24 @@ class user_manager extends mod_manager {
 		$sql="SELECT * FROM ".TABLE_PREFIX."user WHERE id_user=".$data['id_user']." LIMIT 1";
 	    $res=mysqli_fetch_assoc(mysqli_query($link,$sql));
 	    
-	    if(!$res){
+	    $sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE id_user=".$data['id_user'];
+	    $res_ach=getsingleindexrow($sql_ach);
+	    
+	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'] - 1;
+	    $comm = " id_user=".$data['id_user'];
+	    $cond = (!$this->_input['last_id'])?$comm:$comm." AND id_meme <".$this->_input['last_id'];
+	    $cond.=" ORDER BY id_meme DESC LIMIT ".$limit;
+	    $sql=get_search_sql("meme",$cond,"*");
+	    $res_meme = mysqli_query($link,$sql);
+	    
+	    if($res_meme){
+		while($rec = mysqli_fetch_assoc($res_meme)){
+		    $id_memes.=$rec['id_meme'].",";
+		    $arr[] = $rec;
+		}
+		}
+	    
+	    if(!$res || !$res_ach){
 	    	// Could not find user in MySQL database
 			return false;
 	    } 
@@ -1095,15 +1112,19 @@ class user_manager extends mod_manager {
 
 #	    $user_info = $this->get_userinfo();
 
+		$this->_output['res']=$arr;
+
 	    $this->_output['id_user'] = $data['id_user'];
 	    
-	    $this->_output['username'] = $data['username'];
+	    $this->_output['username'] = $res['username'];
 	    
-	    $this->_output['level'] = $data['level'];
+	    $this->_output['level'] = $res['level'];
 	    
-	    $this->_output['exp_point'] = $data['exp_point'];
+	    $this->_output['exp_point'] = $res['exp_point'];
 	    
-	    $this->_output['fb_pic_normal'] = $data['fb_pic_normal'];
+	    $this->_output['fb_pic_normal'] = $res['fb_pic_normal'];
+	    
+	    $this->_output['exp_rank'] = $res_ach['POSITION'];
 
 #	    $this->_output['meme_title'] =  $data['meme_title'];
 
