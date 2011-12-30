@@ -452,46 +452,13 @@
 
 </script>
 <style type="text/css">
-body {
-	background-color:#EAEAEA
-}
 
-#user_level{
-	position: fixed;
-	
-	font-size: 10px;
-	font: Verdana;
-	color: white;
-	
-	cursor: default;
-	
-	top: 2px;
-	left: 9%;
-	z-index: 999999;
-
-}
-
-#xpbar_status {
-	position: fixed;
-	
-	font-size: 10px;
-	font: Verdana;
-	color: white;
-	
-	display: none;
-	cursor: default;
-	
-	top: 2px;
-	left: 45%;
-	z-index: 99999;
-}
 
 /* Exp Bar Tab */
 .expbar{
 	position:fixed;
 	bottom:15px;
 	left:7px;
-	border-radius:5px;
 }
 .exp_fix1{
 	position:fixed!important;
@@ -502,7 +469,6 @@ body {
 	position:fixed;
 	bottom:15px;
 	left:100px;
-	border-radius:5px;
 }
 .not_txt{
 	cursor: pointer;
@@ -512,9 +478,6 @@ body {
 	bottom: 20px;
 	width:13px;
 	height:16px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	border-radius:5px;
 	display:none;
 }
 .leftpan_img{
@@ -597,14 +560,14 @@ body {
 		{/if}
 
 		<!-- Left/Center/Right Content -->
-		<table border="2" width="100%" id="mid_cont">
+		<table width="100%" id="mid_cont">
 		    <tr>
 			{if $smarty.request.choice !='addMeme'}
 			<td width="15%" id="leftpan" valign="top">
 			    {if $smarty.session.id_user}	
 				    {include file="user/left_pan"}
 			    {else}
-				    {include file="user/login_form"}
+				<!--    {include file="user/login_form"} -->
 			    {/if}
 			</td>
 			{/if}
@@ -645,14 +608,14 @@ body {
 <!--	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>-->
 		<!-- End -->
 		
-		<!-- For Notification button -->
+		<!-- For Notification button
 		<div id="slidebottom" class="slide">
 		      <div class='notify' style="z-index:99999; border:3px  solid #cccccc; background-color:#f2f2f2; float:left;">
 			Notification
 			<label class="not_txt"><font style="color:white;margin-left: 3px;font-weight:bold;"><span id="not_cnt"></span></font></label>
 		      </div>
 		      <div class="inner"></div>
-		</div>
+		</div>-->
 
 		{/if}
 		<div class="clear"></div>

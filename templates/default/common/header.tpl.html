@@ -18,10 +18,10 @@
 </script>
 {/literal}
 <div id="header">
-    <table>
+   <div id ="headerbtns"> <table>
 	<tr>
 	<td>
-	<h1><a href="##LBL_SITE_URL##">Memeja</a></h1>
+	<h1><a href="##LBL_SITE_URL##">MEMEJA</a></h1>
 	</td>
 	<!-- 
 	
@@ -34,13 +34,13 @@
 	</center>-->
 	<td>
 	{if $smarty.request.page == 'meme' && $smarty.request.choice == 'addMeme'}class="current"{/if}>
-		<a href="##LBL_SITE_URL##meme/addMeme">Make-A-Meme</a>
+		<a href="##LBL_SITE_URL##meme/addMeme">Make-a-Meme</a>
 	</td>
 	<td>
-	<a href="javascript:void(0);" onclick="get_random_meme();">Random Generator</a>
+	<a href="javascript:void(0);" onclick="get_random_meme();">Go Random</a>
 	</td>
 	<td>
-	<a href="##LBL_SITE_URL##achievements/whatisMemeja">What is Memeja</a>
+	<a href="##LBL_SITE_URL##achievements/whatisMemeja">What is Memeja?</a>
 	</td>
 	<!--
 	    Move this next to Exp Bar
@@ -65,4 +65,5 @@
 	</div>
 	</tr>
 	</table>
+	</div>
 </div>

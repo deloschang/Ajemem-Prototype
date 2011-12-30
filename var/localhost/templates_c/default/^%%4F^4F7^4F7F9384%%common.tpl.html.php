@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 06:34:57
+<?php /* Smarty version 2.6.7, created on 2011-12-30 13:38:12
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 616, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'd96858558cdce483d78bd6ce7d7360ab'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 579, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '163bf4d31cb1e353432415adc7f5521f'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -455,46 +455,13 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 
 </script>
 <style type="text/css">
-body {
-	background-color:#EAEAEA
- }
 
-#user_level{
-	position: fixed;
-	
-	font-size: 10px;
-	font: Verdana;
-	color: white;
-	
-	cursor: default;
-	
-	top: 2px;
-	left: 9%;
-	z-index: 999999;
-
- }
-
-#xpbar_status {
-	position: fixed;
-	
-	font-size: 10px;
-	font: Verdana;
-	color: white;
-	
-	display: none;
-	cursor: default;
-	
-	top: 2px;
-	left: 45%;
-	z-index: 99999;
- }
 
 /* Exp Bar Tab */
 .expbar{
 	position:fixed;
 	bottom:15px;
 	left:7px;
-	border-radius:5px;
  }
 .exp_fix1{
 	position:fixed!important;
@@ -505,7 +472,6 @@ body {
 	position:fixed;
 	bottom:15px;
 	left:100px;
-	border-radius:5px;
  }
 .not_txt{
 	cursor: pointer;
@@ -515,9 +481,6 @@ body {
 	bottom: 20px;
 	width:13px;
 	height:16px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	border-radius:5px;
 	display:none;
  }
 .leftpan_img{
@@ -610,7 +573,7 @@ unset($_smarty_tpl_vars);
 		<?php endif; ?>
 
 		<!-- Left/Center/Right Content -->
-		<table border="2" width="100%" id="mid_cont">
+		<table width="100%" id="mid_cont">
 		    <tr>
 			<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
 			<td width="15%" id="leftpan" valign="top">
@@ -621,11 +584,11 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 			    <?php else: ?>
-				    <?php $_smarty_tpl_vars = $this->_tpl_vars;
+				<!--    <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
- ?>
+ ?> -->
 			    <?php endif; ?>
 			</td>
 			<?php endif; ?>
@@ -638,7 +601,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:d96858558cdce483d78bd6ce7d7360ab#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:d96858558cdce483d78bd6ce7d7360ab#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:163bf4d31cb1e353432415adc7f5521f#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:163bf4d31cb1e353432415adc7f5521f#0}';}?>
 <br>
 				<?php endif; ?>
 
@@ -687,14 +650,14 @@ unset($_smarty_tpl_vars);
 <!--	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>-->
 		<!-- End -->
 		
-		<!-- For Notification button -->
+		<!-- For Notification button
 		<div id="slidebottom" class="slide">
 		      <div class='notify' style="z-index:99999; border:3px  solid #cccccc; background-color:#f2f2f2; float:left;">
 			Notification
 			<label class="not_txt"><font style="color:white;margin-left: 3px;font-weight:bold;"><span id="not_cnt"></span></font></label>
 		      </div>
 		      <div class="inner"></div>
-		</div>
+		</div>-->
 
 		<?php endif; ?>
 		<div class="clear"></div>

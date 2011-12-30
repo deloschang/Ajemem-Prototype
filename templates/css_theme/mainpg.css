@@ -46,13 +46,12 @@ label.error	{
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	margin: 0 auto -30px;
+
 }
 #footer 	{
-	background:#4D79A6;
+	background:#C8F0AA;
 	height:30px;
 	color:#FFF;
-	padding:0px 10px;
 }
 .push	{
 	height:30px;
@@ -61,12 +60,13 @@ label.error	{
 
 /* Header Section */
 #header	{
-	background:#4D79A6;
+	background:#C8F0AA;
 	color:#FFF;
 	height:50px;
 	padding:0px 10px;
 }
 #header h1	{
+    font:Garamond;
 	color:#FFF;
 	font-size:24px;
 	font-weight:bold;
@@ -78,6 +78,12 @@ label.error	{
 
 #header a	{
 	color:#FFF;
+	font-size:18px;
+}
+
+#headerbtns {
+    margin-left:75px;
+	margin-right:75px;
 }
 /* ======================================= */
 
@@ -508,13 +514,56 @@ table.userinfo input.fields:focus	{
 	position:fixed;
 	left:50%;
 	top:50%!important;
-	margin:-25px 0px 0px -200px;
-	border:1px solid black;
-	padding-top:15px;
+	border:0px solid black;
 	font-size:16px;
 	color:#FFF;
 	background:#111;
-	-moz-border-radius : 10px 10px 10px 10px;
-	-webkit-border-radius : 10px 10px 10px 10px;
 	z-index:99999999;
 }
+
+/* XP Bar */
+#xpbar {
+    position: absolute;
+	top: 30px;
+    left: 90px;
+    right: 200px;
+	width: 1000px;
+}
+
+body {
+	background-color:#FAFAFA;
+}
+
+#user_level{
+	position: fixed;
+	
+	font-size: 14px;
+	font: Verdana;
+	color: white;
+	
+	cursor: default;
+	
+	top: 32px;
+	left: 9%;
+	z-index: 999999;
+
+}
+
+#xpbar_status {
+	position: fixed;
+	
+	font-size: 14px;
+	font: Verdana;
+	color: white;
+	
+	display: none;
+	cursor: default;
+	
+	top: 32px;
+	left: 45%;
+	z-index: 99999;
+}
+
+/* The main page*/
+#maincontent {
+	margin:75px;

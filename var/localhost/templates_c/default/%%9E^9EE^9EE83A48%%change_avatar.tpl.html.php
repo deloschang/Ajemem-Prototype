@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-29 05:53:54
+<?php /* Smarty version 2.6.7, created on 2011-12-30 10:28:23
          compiled from user/change_avatar.tpl.html */ ?>
 
-<!-- Template: user/change_avatar.tpl.html Start 29/12/2011 05:53:54 --> 
+<!-- Template: user/change_avatar.tpl.html Start 30/12/2011 10:28:22 --> 
  <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
 <?php echo '
 <script type="text/javascript">

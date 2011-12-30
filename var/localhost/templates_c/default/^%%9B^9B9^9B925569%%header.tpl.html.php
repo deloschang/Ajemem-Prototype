@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 06:34:57
+<?php /* Smarty version 2.6.7, created on 2011-12-30 13:38:12
          compiled from common/header.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/header.tpl.html', 34, false),)), $this); ?>
 
-<!-- Template: common/header.tpl.html Start 30/12/2011 06:34:57 --> 
+<!-- Template: common/header.tpl.html Start 30/12/2011 13:38:12 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
@@ -25,10 +25,10 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 '; ?>
 
 <div id="header">
-    <table>
+   <div id ="headerbtns"> <table>
 	<tr>
 	<td>
-	<h1><a href="http://localhost/">Memeja</a></h1>
+	<h1><a href="http://localhost/">MEMEJA</a></h1>
 	</td>
 	<!-- 
 	
@@ -42,13 +42,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	</center>-->
 	<td>
 	<?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'addMeme'): ?>class="current"<?php endif; ?>>
-		<a href="http://localhost/meme/addMeme">Make-A-Meme</a>
+		<a href="http://localhost/meme/addMeme">Make-a-Meme</a>
 	</td>
 	<td>
-	<a href="javascript:void(0);" onclick="get_random_meme();">Random Generator</a>
+	<a href="javascript:void(0);" onclick="get_random_meme();">Go Random</a>
 	</td>
 	<td>
-	<a href="http://localhost/achievements/whatisMemeja">What is Memeja</a>
+	<a href="http://localhost/achievements/whatisMemeja">What is Memeja?</a>
 	</td>
 	<!--
 	    Move this next to Exp Bar
@@ -73,5 +73,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	</div>
 	</tr>
 	</table>
+	</div>
 </div>
 <!-- Template: common/header.tpl.html End --> 
