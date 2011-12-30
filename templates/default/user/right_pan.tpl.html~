@@ -1,5 +1,6 @@
 <br/>
 
+<span id="right_pan>
 <fieldset style="width:40%;align:center;">
     <legend><b><h3>Search meme</h3></b></legend>
     <form>
@@ -40,6 +41,7 @@
 		{*<a href="##LBL_SITE_URL##manage/suggestion">Suggestions</a>*}
     </div>
 {/if}
+</span>
 {literal}
 <script type="text/javascript">
 
@@ -58,36 +60,36 @@ function show_memeje_frnds(){
 	})
 }
 
-function invitePopup() {
-	var z;
-	var url="##LBL_SITE_URL##index.php?page=user&choice=get_sent_users&ce=0";
-	var httpRequest = new XMLHttpRequest();
-	httpRequest.open('POST', url, false);
-	httpRequest.send();
-	if (httpRequest.status == 200) {
-		z=httpRequest.responseText;
-	}
-	FB.login(function(response) {
-		if (response.session) {
-			// user successfully logged in
-			FB.ui({
-				method:'fbml.dialog',
-				fbml: (
-				'<fb:request-form method="post" action="##LBL_SITE_URL##user/invited/p/{/literal}{$smarty.request.page}/c/{$smarty.request.choice}{if $smarty.request.cat}/cat/{$smarty.request.cat}{/if}{literal}/*" type="Memeje"' +
-				'content="Share your thoughts through memes <fb:req-choice url=\'##LBL_SITE_URL##\' label=\'Accept\' />" >' +
-				'<fb:multi-friend-selector bypass="cancel" showborder="false" actiontext="Invite your friends to this network." exclude_ids="'+z+'"  max="20" rows="2" cols="3" email_invite="false" import_external_friends="false" condensed="false" uid=""/> '+
-				'</fb:request-form>'
-				),
-				size: { 'width':'485', height:480}, 'width':'485', height:480
-			});
+<!--function invitePopup() {-->
+<!--	var z;-->
+<!--	var url="##LBL_SITE_URL##index.php?page=user&choice=get_sent_users&ce=0";-->
+<!--	var httpRequest = new XMLHttpRequest();-->
+<!--	httpRequest.open('POST', url, false);-->
+<!--	httpRequest.send();-->
+<!--	if (httpRequest.status == 200) {-->
+<!--		z=httpRequest.responseText;-->
+<!--	}-->
+<!--	FB.login(function(response) {-->
+<!--		if (response.session) {-->
+<!--			// user successfully logged in-->
+<!--			FB.ui({-->
+<!--				method:'fbml.dialog',-->
+<!--				fbml: (-->
+<!--				'<fb:request-form method="post" action="##LBL_SITE_URL##user/invited/p/{/literal}{$smarty.request.page}/c/{$smarty.request.choice}{if $smarty.request.cat}/cat/{$smarty.request.cat}{/if}{literal}/*" type="Memeje"' +-->
+<!--				'content="Share your thoughts through memes <fb:req-choice url=\'##LBL_SITE_URL##\' label=\'Accept\' />" >' +-->
+<!--				'<fb:multi-friend-selector bypass="cancel" showborder="false" actiontext="Invite your friends to this network." exclude_ids="'+z+'"  max="20" rows="2" cols="3" email_invite="false" import_external_friends="false" condensed="false" uid=""/> '+-->
+<!--				'</fb:request-form>'-->
+<!--				),-->
+<!--				size: { 'width':'485', height:480}, 'width':'485', height:480-->
+<!--			});-->
 
-			$(".FB_UI_Dialog").css('width', '485px'); // 80% of window width  $(window).width()*0.65
-		} else {
-			// user cancelled login
-		}
-	});
+<!--			$(".FB_UI_Dialog").css('width', '485px'); // 80% of window width  $(window).width()*0.65-->
+<!--		} else {-->
+<!--			// user cancelled login-->
+<!--		}-->
+<!--	});-->
 
-}
+<!--}-->
 
 </script>
 {/literal}

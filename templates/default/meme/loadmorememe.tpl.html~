@@ -37,6 +37,17 @@
 	function common_fun_extended(id,color_code){
 	    $("#meme"+id).effect("highlight", {color:color_code}, 2600);
     }
+    
+    function see_user(id_user){
+    	console.log("see_user fired "+id_user);
+    	
+    	var right_pan_url = "##LBL_SITE_URL##user/see_user";
+    	
+    	$.post(right_pan_url,{id_user:id_user,ce:0}, function(res){
+    		console.log("post fired "+id_user);
+			$("#right_pan").html(res);
+    	}
+    }
 	
 	function live_meme () {
 		console.log("List "+new_ids);
@@ -103,8 +114,8 @@
 		
 			// Grab the id_meme's honor
 		
-			console.log("Currently on..."+single_id_array[i]);
-			var meme_id = single_id_array[i]
+			console.log("Currently on..."+feed_id_array[i]);
+			var meme_id = feed_id_array[i]
 			var meme_tot_honor = $("#aggr"+meme_id).html();	
 			
 			if (!meme_tot_honor) {
@@ -224,7 +235,7 @@
 			{$x.title|capitalize}</b></span></a>
 	<!-- end of gallery class-->
 			
-			<span style="font-size:12px">  by {$sm.uinfo[$x.id_user].username} </span>
+			<span style="font-size:12px">  by <a href="javascript:void(0);" onclick="see_user('{$sm.uinfo[$x.id_user].id_user}');">{$sm.uinfo[$x.id_user].username} </a></span>
 			<span style="font-size:8px"> L{$sm.uinfo[$x.id_user].level}</span>
 	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
 

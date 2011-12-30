@@ -1071,6 +1071,66 @@ class user_manager extends mod_manager {
 	}
 	
 	##################################################################
+	##### RIGHT PAN USER DISPLAY ################3
+	################ ADDED BY DELOS #########################420
+	
+	function _see_user(){
+		global $link;
+		
+		$data = $this->_input;
+		
+		$sql="SELECT * FROM ".TABLE_PREFIX."user WHERE id_user=".$data['id_user']." LIMIT 1";
+	    $res=mysqli_fetch_assoc(mysqli_query($link,$sql));
+	    
+	    if(!$res){
+	    	// Could not find user in MySQL database
+			return false;
+	    } 
+
+#	    $id = ($id_meme!='')?$id_meme:$data['id'];
+
+#	    $sql = $this->meme_bl->get_search_sql("reply"," id_meme=".$id);
+
+#	    $replies = getrows($sql, $err);
+
+#	    $user_info = $this->get_userinfo();
+
+	    $this->_output['id_user'] = $data['id_user'];
+	    
+	    $this->_output['username'] = $data['username'];
+	    
+	    $this->_output['level'] = $data['level'];
+	    
+	    $this->_output['exp_point'] = $data['exp_point'];
+	    
+	    $this->_output['fb_pic_normal'] = $data['fb_pic_normal'];
+
+#	    $this->_output['meme_title'] =  $data['meme_title'];
+
+#	    $this->_output['meme_picture'] = $data['meme_picture'];
+
+#	    $this->_output['meme_user'] = $data['meme_user'];
+	    
+#	    $this->_output['feed_count'] = $data['feed_count'];
+	   
+#	    $this->_output['uinfo'] = $user_info;
+
+#	    if($id_meme!=''){
+
+#			$arr[0] = $replies;
+
+#			$arr[1] = $user_info;
+
+#			return $arr;
+
+#	    }else{
+
+		$this->_output['tpl']="manage/right_pan_user";
+
+		
+	}
+	
+	##################################################################
 	##### LIVE RANKING SYSTEM ################3
 	################ ADDED BY DELOS #########################420
 	
