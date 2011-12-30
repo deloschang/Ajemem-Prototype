@@ -1071,6 +1071,14 @@ class user_manager extends mod_manager {
 	}
 	
 	##################################################################
+	##### LOG IN MESSAGE DISPLAY ################3
+	################ ADDED BY DELOS #########################420
+	function _log_in_reminder(){
+		$this->_output['tpl']="user/login_form";
+	}
+
+	
+	##################################################################
 	##### RIGHT PAN USER DISPLAY ################3
 	################ ADDED BY DELOS #########################420
 	

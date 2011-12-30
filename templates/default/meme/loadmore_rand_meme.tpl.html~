@@ -52,6 +52,8 @@
 			onclick="rand_set_tot_adaggr('{$x.id_meme}','D');">Dishonor</a></span>
 			
 			
+			<div id="randsend_reply{$x.id_meme}" style="width:60%;display: none;"></div>
+			
 <!--			{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}-->
 <!--			&nbsp;<label id="rand_capt{$x.id_meme}">{$x.tot_caption} </label> <a href="javascript:void(0)" onclick="get_rand_captions('{$x.id_meme}');" >Add Caption</a>-->
 <!--			{/if}-->
@@ -76,9 +78,6 @@
 	    <br />
 		    
 <!--		    <span ><a href="http://twitter.com/share" class="twitter-share-button" data-url="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje"  >Tweet</a></span>-->
-
-
-	    <div id="randsend_reply{$x.id_meme}" style="width:60%;display: none;"></div>
 <!--	    <div id="randadd_caption{$x.id_meme}" style="width:60%;display: none;"></div>-->
     </div>
 {literal}
@@ -90,14 +89,7 @@
 		
 		// Set Title of Meme
 		$("#random_title").html("{/literal}{$x.title|capitalize}{literal}");
-		
-		// Hotkeys for RG
-		$(document).keypress(function (e) {
-			console.log("space bar fired");
-		  if(e.which == 32){
-		  		alert("You pressed space bar");
-		   }
-		  });
+		$("#random_username").html('<a href="javascript:void(0)" onmouseover="hover_user(\'{/literal}{$sm.uinfo[$x.id_user].id_user}{literal}\');">{/literal}{$sm.uinfo[$x.id_user].username}{literal}</a>');
 		
 		
     });

@@ -150,6 +150,15 @@
 	    }
 	    
 	});
+	
+	function log_in_reminder(){
+		 var url="##LBL_SITE_URL##user/log_in_reminder";
+		 
+		$.post(url,{ce:0}, function(res){
+			$.fancybox(res);
+    	});
+	}
+	
 	function getall_notification(){
 	    var url="##LBL_SITE_URL##manage/getall_notification";
 	    $.post(url,{ce:0},function(res){

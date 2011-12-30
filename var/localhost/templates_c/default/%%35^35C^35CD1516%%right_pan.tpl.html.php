@@ -1,10 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 09:10:47
+<?php /* Smarty version 2.6.7, created on 2011-12-30 11:28:20
          compiled from user/right_pan.tpl.html */ ?>
 
-<!-- Template: user/right_pan.tpl.html Start 30/12/2011 09:10:47 --> 
+<!-- Template: user/right_pan.tpl.html Start 30/12/2011 11:28:20 --> 
  <br/>
 
 <span id="right_pan">
+
+<?php if ($_SESSION['id_user']): ?>
 <fieldset style="width:40%;align:center;">
     <legend><b><h3>Search meme</h3></b></legend>
     <form>
@@ -23,6 +25,7 @@
 	<input type="submit" value="Search"/>
     </form>
 </fieldset>
+<?php endif; ?>
 
 </br/>
 <?php if ($_SESSION['id_user']): ?>  <!-- If not logged in, then don't show -->

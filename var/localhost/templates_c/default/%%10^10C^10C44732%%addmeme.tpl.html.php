@@ -1,14 +1,10 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 08:05:52
+<?php /* Smarty version 2.6.7, created on 2011-12-30 10:08:54
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 142, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 136, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 30/12/2011 08:05:52 --> 
- <!-- 
-     Commented by Muaz :D
-	 This is the main HTML for the Memeja Editor.
--->
-
+<!-- Template: meme/addmeme.tpl.html Start 30/12/2011 10:08:54 --> 
+ 
 <div id="showmodal" class="showmodal"><em><strong><center>ENTER MEMEJA DOJO</center></strong></em></div>
 <script type="text/javascript">
     var last_comic="http://localhost/spad/workspace/<?php echo $_SESSION['id_user']; ?>
@@ -22,8 +18,6 @@ _img.png";
 <script type="text/javascript" src="http://localhost/spad/color/colorpicker.js"></script>
 <script type="text/javascript" src="jquery.lionbars.0.3.min.js"></script>
 <script type="text/javascript" src="jquery.lionbars.0.3.js"></script>
-
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" />
 <link type="text/css" href="http://localhost/spad/css/colorpicker.css" rel="stylesheet" />
 <link rel="stylesheet" href="http://localhost/spad/css/spad.css" type="text/css"/>
 <link rel="stylesheet" href="http://localhost/templates/default/meme/lionbars.css" type="text/css"/>

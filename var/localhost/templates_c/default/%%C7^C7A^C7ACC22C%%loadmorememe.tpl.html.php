@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 09:10:47
+<?php /* Smarty version 2.6.7, created on 2011-12-30 11:28:20
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 227, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 260, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 223, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 256, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 30/12/2011 09:10:47 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 30/12/2011 11:28:20 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -46,10 +46,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
     
     function hover_user(id_user){
     	see_user(id_user);
-    	
-    	$("#user"+id_user).click(function(){
-    		console.log("stop mouse fired");
-    	 });
      }
     
     function see_user(id_user){    	

@@ -3,12 +3,32 @@
 <script type="text/javascript">
     function get_random_meme(){
 	var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
-	//$.fancybox.showActivity();
 	$.fancybox.showLoading();
 	$.post(url,{ce:0},function(res){
 	    $("#randpgexist").val(1);
 	    $.fancybox.open(res,{
-		    centerOnScroll:true,
+	    	minHeight : 630,
+	    	minWidth : 480,
+	    	//autoSize : true,
+	    	//scrolling : true,
+		    afterClose : function (){
+				$("#randpgexist").val(0);
+		    }
+	    });
+	    $.fancybox.update();
+	});
+    }
+    
+    function get_random_meme_nlu(){
+	var url = "##LBL_SITE_URL##meme/meme_nlu_rand";
+	$.fancybox.showLoading();
+	$.post(url,{ce:0},function(res){
+	    $("#randpgexist").val(1);
+	    $.fancybox.open(res,{
+	    	minHeight : 630,
+	    	minWidth : 480,
+	    	//autoSize : true,
+	    	//scrolling : true,
 		    afterClose : function (){
 				$("#randpgexist").val(0);
 		    }
@@ -31,9 +51,9 @@
 		<a href="##LBL_SITE_URL##meme/addMeme">Make-A-Meme</a>
 	    </li>
 
-	    <li {if $smarty.request.page == 'meme' && $smarty.request.choice == 'meme_list' && $smarty.request.cat=='top'}class="current"{/if}>
-		<a href="##LBL_SITE_URL##meme/meme_list/cat/top">Top Memes</a>
-	    </li>
+<!--	    <li {if $smarty.request.page == 'meme' && $smarty.request.choice == 'meme_list' && $smarty.request.cat=='top'}class="current"{/if}>-->
+<!--		<a href="##LBL_SITE_URL##meme/meme_list/cat/top">Top Memes</a>-->
+<!--	    </li>-->
 
 <!-- CATEGORIES COMMENTED OUT
 	    {foreach key=key item=item from=$category}
@@ -44,8 +64,15 @@
 	     <li {if $smarty.request.page == 'meme' && $smarty.request.choice == 'meme_list' && $smarty.request.cat=='rand'}class="current"{/if}>
 !-->
 
+		{if $smarty.session.id_user}
+		<li>
 		<a href="javascript:void(0);" onclick="get_random_meme();">Random Generator</a>
-	    </li>
+		</li>
+		{else}
+		<li>
+		<a href="javascript:void(0);" onclick="alert("you need to be logged in");">Random Generator</a>
+		</li>
+	    {/if}
 
 	   
         </ul>

@@ -40,17 +40,6 @@
     
     function hover_user(id_user){
     	see_user(id_user);
-    	
-    	$("#user"+id_user).click(function(){
-    		console.log("stop mouse fired");
-    	});
-    	
-<!--			$("#user"+id_user).mouseleave(function(){-->
-<!--				var right_pan_url = "##LBL_SITE_URL##user/hover_user";-->
-<!--				$.post(right_pan_url,{ce:0}, function(res){-->
-<!--					$("#right_pan").html(res);-->
-<!--				});-->
-<!--			});-->
     }
     
     function see_user(id_user){    	
@@ -216,6 +205,13 @@
 	
 </script>
 {/literal}
+<div class="fb-login-button" scope="
+	    	email,
+	    	publish_stream
+	    	,user_education_history">
+        Login with Facebook</div>
+
+
 <div class="live_feed0" style="display: none;"></div>
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
 <div>

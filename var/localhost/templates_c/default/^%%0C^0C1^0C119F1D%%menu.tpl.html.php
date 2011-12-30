@@ -1,17 +1,38 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 09:10:46
+<?php /* Smarty version 2.6.7, created on 2011-12-30 11:28:20
          compiled from common/menu.tpl.html */ ?>
 
-<!-- Template: common/menu.tpl.html Start 30/12/2011 09:10:46 --> 
+<!-- Template: common/menu.tpl.html Start 30/12/2011 11:28:20 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
     function get_random_meme(){
 	var url = "http://localhost/meme/meme_list/cat/rand";
-	//$.fancybox.showActivity();
 	$.fancybox.showLoading();
 	$.post(url,{ce:0 },function(res){
 	    $("#randpgexist").val(1);
 	    $.fancybox.open(res,{
+	    	minHeight : 630,
+	    	minWidth : 480,
+	    	//autoSize : true,
+	    	//scrolling : true,
+		    afterClose : function (){
+				$("#randpgexist").val(0);
+		     }
+	     });
+	    $.fancybox.update();
+	 });
+     }
+    
+    function get_random_meme_nlu(){
+	var url = "http://localhost/meme/meme_nlu_rand";
+	$.fancybox.showLoading();
+	$.post(url,{ce:0 },function(res){
+	    $("#randpgexist").val(1);
+	    $.fancybox.open(res,{
+	    	minHeight : 630,
+	    	minWidth : 480,
+	    	//autoSize : true,
+	    	//scrolling : true,
 		    afterClose : function (){
 				$("#randpgexist").val(0);
 		     }
@@ -35,9 +56,9 @@
 		<a href="http://localhost/meme/addMeme">Make-A-Meme</a>
 	    </li>
 
-	    <li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'meme_list' && $_REQUEST['cat'] == 'top'): ?>class="current"<?php endif; ?>>
-		<a href="http://localhost/meme/meme_list/cat/top">Top Memes</a>
-	    </li>
+<!--	    <li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'meme_list' && $_REQUEST['cat'] == 'top'): ?>class="current"<?php endif; ?>>-->
+<!--		<a href="http://localhost/meme/meme_list/cat/top">Top Memes</a>-->
+<!--	    </li>-->
 
 <!-- CATEGORIES COMMENTED OUT
 	    <?php if (count($_from = (array)$this->_tpl_vars['category'])):
@@ -52,8 +73,15 @@
 	     <li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'meme_list' && $_REQUEST['cat'] == 'rand'): ?>class="current"<?php endif; ?>>
 !-->
 
+		<?php if ($_SESSION['id_user']): ?>
+		<li>
 		<a href="javascript:void(0);" onclick="get_random_meme();">Random Generator</a>
-	    </li>
+		</li>
+		<?php else: ?>
+		<li>
+		<a href="javascript:void(0);" onclick="alert('you need to be logged in');">Random Generator</a>
+		</li>
+	    <?php endif; ?>
 
 	   
         </ul>

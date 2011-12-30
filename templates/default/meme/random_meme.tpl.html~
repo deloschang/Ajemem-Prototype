@@ -145,7 +145,8 @@
 {/literal}
 
 <center>
-    <label id ="random_title" style="font-size: 16px;font-weight:bold;">Random Meme</label>
+    <label id="random_title" style="font-size: 16px;font-weight:bold;"></label>
+    by <span id="random_username"></span>
 </center>
 
 <!-- Commenting out categories 
