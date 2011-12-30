@@ -1089,7 +1089,7 @@ class user_manager extends mod_manager {
 	    $comm = " id_user=".$data['id_user'];
 	    $cond = (!$this->_input['last_id'])?$comm:$comm." AND id_meme <".$this->_input['last_id'];
 	    $cond.=" ORDER BY id_meme DESC LIMIT ".$limit;
-	    $sql=$this->get_search_sql("meme",$cond,"*");
+	    $sql=get_search_sql("meme",$cond,"*");
 	    $res_meme = mysqli_query($link,$sql);
 	    
 	    if($res_meme){
@@ -1099,10 +1099,22 @@ class user_manager extends mod_manager {
 		}
 		}
 	    
-	    if(!$res || !$res_ach){
+	    if(!$res){
 	    	// Could not find user in MySQL database
 			return false;
 	    } 
+	    
+	    $limit_favorite = $GLOBALS['conf']['PAGINATE']['rec_per_page'] - 1;
+	    $comm_favorite = "FIND_IN_SET(".$data['id_user'].",honour_id_user) ";
+	    $cond_favorite  = (!$this->_input['last_id'])?$comm_favorite :$comm_favorite ." AND id_meme <".$this->_input['last_id'];
+	    $cond_favorite .=" ORDER BY id_meme DESC LIMIT ".$limit_favorite ;
+	    $sql_favorite =get_search_sql("meme",$cond_favorite ,"*");
+	    $res_favorite  = mysqli_query($link,$sql_favorite );
+	    if($res_favorite ){
+		while($rec_favorite  = mysqli_fetch_assoc($res_favorite )){
+		    $id_memes_favorite .=$rec_favorite ['id_meme'].",";
+		    $arr_favorite[] = $rec_favorite;
+		}
 
 #	    $id = ($id_meme!='')?$id_meme:$data['id'];
 
@@ -1113,6 +1125,8 @@ class user_manager extends mod_manager {
 #	    $user_info = $this->get_userinfo();
 
 		$this->_output['res']=$arr;
+		
+		$this->_output['res_favorite'] = $arr_favorite;
 
 	    $this->_output['id_user'] = $data['id_user'];
 	    
@@ -1123,6 +1137,10 @@ class user_manager extends mod_manager {
 	    $this->_output['exp_point'] = $res['exp_point'];
 	    
 	    $this->_output['fb_pic_normal'] = $res['fb_pic_normal'];
+	    
+	    $this->_output['avatar'] = $res['avatar'];
+	    
+	    $this->_output['gender'] = $res['gender'];
 	    
 	    $this->_output['exp_rank'] = $res_ach['POSITION'];
 
@@ -1149,6 +1167,10 @@ class user_manager extends mod_manager {
 		$this->_output['tpl']="manage/right_pan_user";
 
 		
+	}
+	
+	function _hover_user(){
+		$this->_output['tpl']="user/right_pan";
 	}
 	
 	##################################################################

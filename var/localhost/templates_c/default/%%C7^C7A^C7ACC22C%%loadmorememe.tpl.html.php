@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 08:02:52
+<?php /* Smarty version 2.6.7, created on 2011-12-30 09:10:47
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 222, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 255, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 227, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 260, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 30/12/2011 08:02:52 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 30/12/2011 09:10:47 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -44,13 +44,18 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	    $("#meme"+id).effect("highlight", {color:color_code }, 2600);
      }
     
-    function see_user(id_user){
-    	console.log("see_user fired "+id_user);
+    function hover_user(id_user){
+    	see_user(id_user);
     	
+    	$("#user"+id_user).click(function(){
+    		console.log("stop mouse fired");
+    	 });
+     }
+    
+    function see_user(id_user){    	
     	var right_pan_url = "http://localhost/user/see_user";
     	
     	$.post(right_pan_url,{id_user:id_user,ce:0 }, function(res){
-    		console.log("post fired "+id_user);
 			$("#right_pan").html(res);
     	 });
      }
@@ -253,11 +258,12 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 </b></span></a>
 	<!-- end of gallery class-->
 			
-			<span style="font-size:12px">  by <a href="javascript:void(0);" onclick="see_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
+			<span style="font-size:12px">  by <b><span id="user<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
+"><a href="javascript:void(0);" onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
 ');"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
- </a></span>
+ </a></span></span>
 			<span style="font-size:8px"> L<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['level']; ?>
-</span>
+</span></b>
 	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
 
 <!-- Caption shows below image 
