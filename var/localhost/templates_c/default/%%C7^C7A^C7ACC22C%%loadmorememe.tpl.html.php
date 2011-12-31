@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 13:40:21
+<?php /* Smarty version 2.6.7, created on 2011-12-31 13:56:28
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 223, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 260, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 31/12/2011 13:40:20 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 31/12/2011 13:56:28 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -100,7 +100,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 				feed_count_orig = feed_count;
 				feed_count += 1; 
 				
-				$(\'.live_feed\'+feed_count_orig).before(\'<div class="live_feed\'+feed_count+\'" style="display: none;"></div>\');
+				$(\'.live_feed\'+feed_count_orig).before(\'<div class="live_feed\'+feed_count+\'" style="display: none; padding-top:20px;"></div>\');
 			 });
 			
 			
@@ -212,7 +212,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 </script>
 '; ?>
 
-<div class="live_feed0" style="display: none;"></div>
+<div class="live_feed0" style="display: none; padding-top:20px;"></div>
 <?php $this->_foreach['cur_meme'] = array('total' => count($_from = (array)$this->_tpl_vars['sm']['res_meme']), 'iteration' => 0);
 if ($this->_foreach['cur_meme']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['x']):

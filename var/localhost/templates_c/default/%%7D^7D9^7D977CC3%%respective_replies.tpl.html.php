@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 13:40:31
+<?php /* Smarty version 2.6.7, created on 2011-12-31 13:43:54
          compiled from meme/respective_replies.tpl.html */ ?>
 
-<!-- Template: meme/respective_replies.tpl.html Start 31/12/2011 13:40:31 --> 
+<!-- Template: meme/respective_replies.tpl.html Start 31/12/2011 13:43:54 --> 
  <?php $this->_foreach['rep'] = array('total' => count($_from = (array)$this->_tpl_vars['sm']['reparr']), 'iteration' => 0);
 if ($this->_foreach['rep']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['i']):
@@ -72,10 +72,6 @@ if ($this->_foreach['rep']['total'] > 0):
 </script>
 '; ?>
 
-
-<!-- D: written in to update reply feed in live -->
-<div id="replyinsert<?php echo $this->_tpl_vars['sm']['id_meme']; ?>
-"></div>
 
 <textarea id="<?php if (! $this->_tpl_vars['sm']['flag']): ?>rpl_con<?php else: ?>rand_rpl_con<?php endif;  echo $this->_tpl_vars['sm']['id_meme']; ?>
 " style="width:90%;" onclick="<?php if (! $this->_tpl_vars['sm']['flag']): ?>chk_forclear<?php else: ?>rand_chk_forclear<?php endif; ?>('<?php echo $this->_tpl_vars['sm']['id_meme']; ?>

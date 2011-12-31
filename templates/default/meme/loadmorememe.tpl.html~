@@ -205,7 +205,7 @@
 	
 </script>
 {/literal}
-<div class="live_feed0" style="display: none;"></div>
+<div class="live_feed0" style="display: none; padding-top:20px;"></div>
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
 <div>
 	
@@ -329,7 +329,7 @@
 
 -->
 	    </div>
-	    <div id="send_reply{$x.id_meme}" style="width:75%; padding:-20px 0 30px 120px; display: none;"></div>
+	    <div id="send_reply{$x.id_meme}" style="width:75%; margin:-20px 0 30px 120px; display: none;"></div>
 <!--
 	    <div id="add_caption{$x.id_meme}" style="width:60%;display: none;"></div> -->
 	    <input type="hidden" name="is_replied" id="is_replied{$x.id_meme}" value=''/>

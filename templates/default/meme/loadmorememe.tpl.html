@@ -94,7 +94,7 @@
 				feed_count_orig = feed_count;
 				feed_count += 1; 
 				
-				$('.live_feed'+feed_count_orig).before('<div class="live_feed'+feed_count+'" style="display: none;"></div>');
+				$('.live_feed'+feed_count_orig).before('<div class="live_feed'+feed_count+'" style="display: none; padding-top:20px;"></div>');
 			});
 			
 			
@@ -205,7 +205,7 @@
 	
 </script>
 {/literal}
-<div class="live_feed0" style="display: none;"></div>
+<div class="live_feed0" style="display: none; padding-top:20px;"></div>
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
 <div>
 	
