@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 11:22:12
+<?php /* Smarty version 2.6.7, created on 2011-12-31 01:59:32
          compiled from meme/live_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/live_meme.tpl.html', 13, false),)), $this); ?>
 
-<!-- Template: meme/live_meme.tpl.html Start 30/12/2011 11:22:12 --> 
+<!-- Template: meme/live_meme.tpl.html Start 31/12/2011 01:59:32 --> 
  <div>
 	    <div  id="meme<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
 " class="meme">
@@ -40,10 +40,12 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 </b></span></a>
 	<!-- end of gallery class-->
 			
-			<span style="font-size:12px">  by <?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['sm']['meme_user']]['username']; ?>
- </span>
+			<span style="font-size:12px">  by <b><span id="user<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['sm']['meme_user']]['id_user']; ?>
+"><a href="javascript:void(0);" onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['sm']['meme_user']]['id_user']; ?>
+');"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['sm']['meme_user']]['username']; ?>
+ </a></span></span>
 			<span style="font-size:8px"> L<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['sm']['meme_user']]['level']; ?>
-</span>
+</span></b>
 	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
 
 <!-- Caption shows below image -->

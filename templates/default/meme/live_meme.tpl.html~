@@ -29,6 +29,9 @@
 			
 			<span style="font-size:12px">  by {$sm.uinfo[$sm.meme_user].username} </span>
 			<span style="font-size:8px"> L{$sm.uinfo[$sm.meme_user].level}</span>
+			
+			<span style="font-size:12px">  by <b><span id="user{$sm.uinfo[$sm.meme_user].id_user}"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$sm.meme_user].id_user}');">{$sm.uinfo[$sm.meme_user].username} </a></span></span>
+			<span style="font-size:8px"> L{$sm.uinfo[$sm.meme_user].level}</span></b>
 	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
 
 <!-- Caption shows below image -->
@@ -37,8 +40,7 @@
 <!-- Meme Author (Commented out) -->
 
 <!-- Reply -->
-			    <label id="repl{$sm.meme_id}">
-			    </label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('{$sm.meme_id}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;
+			    <label id="repl{$sm.meme_id}"></label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('{$sm.meme_id}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;
 
 <!-- Honor -->
 			    <label id="aggr{$sm.meme_id}"></label>&nbsp;<a href="javascript:void(0);" id="agr_link{$sm.meme_id}" 
