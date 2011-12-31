@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 11:32:08
+<?php /* Smarty version 2.6.7, created on 2011-12-31 15:26:59
          compiled from common/menu.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/menu.tpl.html', 79, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/menu.tpl.html', 80, false),)), $this); ?>
 
-<!-- Template: common/menu.tpl.html Start 31/12/2011 11:32:08 --> 
+<!-- Template: common/menu.tpl.html Start 31/12/2011 15:26:59 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
@@ -46,7 +46,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	$(window).scroll(function(e){
 		var scrollTop = $(window).scrollTop();
 		console.log(scrollTop);
-		if(scrollTop > 35){
+		if(scrollTop > 85){
 			   $(\'#xpbar\').css({
 			    position:\'fixed\',
 			    top:\'0px\',
@@ -63,15 +63,15 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		 }else{
 			$(\'#xpbar\').css({
 			    position:\'absolute\',
-			    top:\'30px\',
+			    top:\'80px\',
 			 });
 			$(\'#xpbar_status\').css({
 			    position:\'absolute\',
-			    top:\'32px\',
+			    top:\'82px\',
 			 });
 			$(\'#user_level\').css({
 			    position:\'absolute\',
-			    top:\'32px\',
+			    top:\'82px\',
 			 });
 		 }
 	 });
@@ -80,6 +80,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 '; ?>
 
 <div id="xpbar"></div>
+<!--
 <?php if ($_SESSION['id_user']): ?>	
 	    Welcome <?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
  !
@@ -88,6 +89,10 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
         Login with Facebook
       </div>
 <?php endif; ?>	  
+<?php if ($_SESSION['id_admin'] || $_SESSION['id_user']): ?>
+			<a href ="javascript:void(0);" onclick="fb_logout();">Logout</a>
+	    <?php endif; ?>
+		-->
 <div id="user_level"></div>
 <div id="xpbar_status"></div>
 <div class="clear"></div>

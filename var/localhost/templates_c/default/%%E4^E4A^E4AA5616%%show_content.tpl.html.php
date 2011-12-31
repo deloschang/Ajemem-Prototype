@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 11:25:45
+<?php /* Smarty version 2.6.7, created on 2011-12-31 14:38:20
          compiled from static/show_content.tpl.html */ ?>
 
-<!-- Template: static/show_content.tpl.html Start 31/12/2011 11:25:45 --> 
+<!-- Template: static/show_content.tpl.html Start 31/12/2011 14:38:20 --> 
  <title><?php echo $this->_tpl_vars['sm']['data']['title']; ?>
 </title>
 <meta name="keywords" content="<?php echo $this->_tpl_vars['sm']['data']['meta_keywords']; ?>

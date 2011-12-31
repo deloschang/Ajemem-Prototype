@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 11:32:08
+<?php /* Smarty version 2.6.7, created on 2011-12-31 15:26:59
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 529, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '9c893ecab61636113a02f5c4a7f15b5e'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '8803a2b24b0ce700f0598c6576915e19'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -503,7 +503,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 
 
   <input type="hidden" id="tst" value="2">
-    <div id="page1">
+    <div id="mainpage">
 		<div id="mymodal"></div>
 	    	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "common/header.tpl.html", 'smarty_include_vars' => array()));
@@ -551,7 +551,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9c893ecab61636113a02f5c4a7f15b5e#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9c893ecab61636113a02f5c4a7f15b5e#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:8803a2b24b0ce700f0598c6576915e19#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:8803a2b24b0ce700f0598c6576915e19#0}';}?>
 <br>
 				<?php endif; ?>
 
@@ -595,20 +595,7 @@ unset($_smarty_tpl_vars);
 		</table>
 
 		<?php if ($_SESSION['id_user']): ?>
-
-		<!-- For Experience button -->
-<!--	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>-->
-		<!-- End -->
 		
-		<!-- For Notification button -->
-		<!--<div id="slidebottom" class="slide">
-		      <div class='notify' style="z-index:99999; border:3px  solid #cccccc; background-color:#f2f2f2; float:left;">
-			Notification
-			<label class="not_txt"><font style="color:white;margin-left: 3px;font-weight:bold;"><span id="not_cnt"></span></font></label>
-		      </div>
-		      <div class="inner"></div>
-		</div>-->
-
 		<?php endif; ?>
 		<div class="clear"></div>
 		<div class="push"></div>

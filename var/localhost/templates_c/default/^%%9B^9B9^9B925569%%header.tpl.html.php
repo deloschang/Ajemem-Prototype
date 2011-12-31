@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 11:32:08
+<?php /* Smarty version 2.6.7, created on 2011-12-31 15:26:59
          compiled from common/header.tpl.html */ ?>
 
-<!-- Template: common/header.tpl.html Start 31/12/2011 11:32:08 --> 
+<!-- Template: common/header.tpl.html Start 31/12/2011 15:26:59 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
     function get_random_meme(){
@@ -18,56 +18,28 @@
 	    $.fancybox.update();
 	 });
      }
+	
 </script>
 '; ?>
 
 <div id= "logoc">
-<a href="http://localhost/"> <img src="http://localhost/templates/images/wmemejalogo.png" width="280px"  height="200px" id="logo"></a>
+<a href="http://localhost/"> <img src="http://localhost/templates/images/rmemejalogo.png" width="280px"  height="200px" id="logo"></a>
 </div>
 <div id="header">
-   <div id ="headerbtns"> <table>
-	<tr>
-	<td>
-	<?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'addMeme'): ?>class="current"<?php endif; ?>>
-		<a href="http://localhost/meme/addMeme">Make-a-Meme</a>
-	</td>
-	<td>
+   <div id ="headerbtns"> 
+      <img src="http://localhost/templates/images/joinmemeja.png" id="joinmemeja" onclick="$('#fblogin').slideToggle();" style="margin:-2px;">
+		<a href="http://localhost/meme/addMeme"><img src="http://localhost/templates/images/create.png" id="create"style="margin:-2px;"></a>
 	<?php if ($_SESSION['id_user']): ?>
-		<li>
-		<a href="javascript:void(0);" onclick="get_random_meme();">Go Random</a>
-		</li>
+		<a href="javascript:void(0);" onclick="get_random_meme();"><img src="http://localhost/templates/images/random.png"style="margin:-2px;"></a>
 		<?php else: ?>
-		<li>
-		<a href="javascript:void(0);" onclick="alert('you need to be logged in');">Go Random</a>
-		</li>
-	    <?php endif; ?>
-	</td>
-	<td>
-	<a href="http://localhost/achievements/whatisMemeja">What is Memeja?</a>
-	</td>
-	<!--
-	    Move this next to Exp Bar
-	<div class="fltrht" style="margin-top:0px;">
-		<?php if ($_SESSION['id_admin'] || $_SESSION['id_user']): ?>
-			<a href ="javascript:void(0);" onclick="fb_logout();">Logout</a>
-	    <?php endif; ?>
-	    
-		<?php if ($_SESSION['id_admin']): ?>
-			<br/><a href="http://localhost/flexyadmin/">Return to Admin Site</a>
-		<?php endif; ?>
-		
-		<?php if (! $_SESSION['id_user']): ?>
-		    <br/><a href="http://localhost/">Login</a>
-		<?php endif; ?>
-		
-		<br/><a href="http://localhost/cms/show/code/aboutus">About Us</a>
-		<!--<br/><a href="http://localhost/cms/show/code/memeja">What is Memeja</a>
-		<br/><a href="http://localhost/achievements/whatisMemeja">What is Memeja</a>
-		<br/><a href="http://localhost/leaderboard/leaderboard">Leaderboard</a>
-		-->
+		<a href="javascript:void(0);" onclick="alert('you need to be logged in');"><img src="http://localhost/templates/images/random.png"style="margin:-2px;"></a>
+	    <?php endif; ?>	
+		<a href="http://localhost/achievements/whatisMemeja"><img src="http://localhost/templates/images/help.png"style="margin:-2px;"></a>
 	</div>
-	</tr>
-	</table>
 	</div>
 </div>
+<div id="fblogin" style="display:none;"width="50px;"><div class="fb-login-button" scope="email, publish_stream ,user_education_history 	">
+              Login with Facebook
+          </div>
+		  </div>
 <!-- Template: common/header.tpl.html End --> 

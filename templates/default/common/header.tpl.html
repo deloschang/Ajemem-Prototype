@@ -15,54 +15,26 @@
 	    $.fancybox.update();
 	});
     }
+	
 </script>
 {/literal}
 <div id= "logoc">
-<a href="##LBL_SITE_URL##"> <img src="##LBL_SITE_URL##templates/images/wmemejalogo.png" width="280px"  height="200px" id="logo"></a>
+<a href="##LBL_SITE_URL##"> <img src="##LBL_SITE_URL##templates/images/rmemejalogo.png" width="280px"  height="200px" id="logo"></a>
 </div>
 <div id="header">
-   <div id ="headerbtns"> <table>
-	<tr>
-	<td>
-	{if $smarty.request.page == 'meme' && $smarty.request.choice == 'addMeme'}class="current"{/if}>
-		<a href="##LBL_SITE_URL##meme/addMeme">Make-a-Meme</a>
-	</td>
-	<td>
+   <div id ="headerbtns"> 
+      <img src="##LBL_SITE_URL##templates/images/joinmemeja.png" id="joinmemeja" onclick="$('#fblogin').slideToggle();" style="margin:-2px;">
+		<a href="##LBL_SITE_URL##meme/addMeme"><img src="##LBL_SITE_URL##templates/images/create.png" id="create"style="margin:-2px;"></a>
 	{if $smarty.session.id_user}
-		<li>
-		<a href="javascript:void(0);" onclick="get_random_meme();">Go Random</a>
-		</li>
+		<a href="javascript:void(0);" onclick="get_random_meme();"><img src="##LBL_SITE_URL##templates/images/random.png"style="margin:-2px;"></a>
 		{else}
-		<li>
-		<a href="javascript:void(0);" onclick="alert('you need to be logged in');">Go Random</a>
-		</li>
-	    {/if}
-	</td>
-	<td>
-	<a href="##LBL_SITE_URL##achievements/whatisMemeja">What is Memeja?</a>
-	</td>
-	<!--
-	    Move this next to Exp Bar
-	<div class="fltrht" style="margin-top:0px;">
-		{if $smarty.session.id_admin || $smarty.session.id_user}
-			<a href ="javascript:void(0);" onclick="fb_logout();">Logout</a>
-	    {/if}
-	    
-		{if $smarty.session.id_admin}
-			<br/><a href="##LBL_ADMIN_SITE_URL##">Return to Admin Site</a>
-		{/if}
-		
-		{if !$smarty.session.id_user}
-		    <br/><a href="##LBL_SITE_URL##">Login</a>
-		{/if}
-		
-		<br/><a href="##LBL_SITE_URL##cms/show/code/aboutus">About Us</a>
-		<!--<br/><a href="##LBL_SITE_URL##cms/show/code/memeja">What is Memeja</a>
-		<br/><a href="##LBL_SITE_URL##achievements/whatisMemeja">What is Memeja</a>
-		<br/><a href="##LBL_SITE_URL##leaderboard/leaderboard">Leaderboard</a>
-		-->
+		<a href="javascript:void(0);" onclick="alert('you need to be logged in');"><img src="##LBL_SITE_URL##templates/images/random.png"style="margin:-2px;"></a>
+	    {/if}	
+		<a href="##LBL_SITE_URL##achievements/whatisMemeja"><img src="##LBL_SITE_URL##templates/images/help.png"style="margin:-2px;"></a>
 	</div>
-	</tr>
-	</table>
 	</div>
 </div>
+<div id="fblogin" style="display:none;"width="50px;"><div class="fb-login-button" scope="email, publish_stream ,user_education_history {*,user_birthday*}	{* Uncomment to enable *}">
+              Login with Facebook
+          </div>
+		  </div>

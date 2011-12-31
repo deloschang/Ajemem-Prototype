@@ -1,12 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 11:32:08
+<?php /* Smarty version 2.6.7, created on 2011-12-31 15:26:59
          compiled from common/common.tpl.html */
 
-$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '9c893ecab61636113a02f5c4a7f15b5e';
+$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '8803a2b24b0ce700f0598c6576915e19';
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 529, false),)), $this); ?>
 <?php
-function _smarty_tplfunc_9c893ecab61636113a02f5c4a7f15b5e_0(&$_smarty)
+function _smarty_tplfunc_8803a2b24b0ce700f0598c6576915e19_0(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $_smarty);
 }

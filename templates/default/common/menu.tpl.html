@@ -40,7 +40,7 @@
 	$(window).scroll(function(e){
 		var scrollTop = $(window).scrollTop();
 		console.log(scrollTop);
-		if(scrollTop > 35){
+		if(scrollTop > 85){
 			   $('#xpbar').css({
 			    position:'fixed',
 			    top:'0px',
@@ -57,15 +57,15 @@
 		}else{
 			$('#xpbar').css({
 			    position:'absolute',
-			    top:'30px',
+			    top:'80px',
 			});
 			$('#xpbar_status').css({
 			    position:'absolute',
-			    top:'32px',
+			    top:'82px',
 			});
 			$('#user_level').css({
 			    position:'absolute',
-			    top:'32px',
+			    top:'82px',
 			});
 		}
 	});
@@ -73,6 +73,7 @@
 </script>
 {/literal}
 <div id="xpbar"></div>
+<!--
 {if $smarty.session.id_user}	
 	    Welcome {$smarty.session.fname|capitalize} !
 	{else}
@@ -80,6 +81,10 @@
         Login with Facebook
       </div>
 {/if}	  
+{if $smarty.session.id_admin || $smarty.session.id_user}
+			<a href ="javascript:void(0);" onclick="fb_logout();">Logout</a>
+	    {/if}
+		-->
 <div id="user_level"></div>
 <div id="xpbar_status"></div>
 <div class="clear"></div>
