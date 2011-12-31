@@ -3,11 +3,32 @@
 <script type="text/javascript">
     function get_random_meme(){
 	var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
-	//$.fancybox.showActivity();
 	$.fancybox.showLoading();
 	$.post(url,{ce:0},function(res){
 	    $("#randpgexist").val(1);
 	    $.fancybox.open(res,{
+	    	minHeight : 630,
+	    	minWidth : 480,
+	    	//autoSize : true,
+	    	//scrolling : true,
+		    afterClose : function (){
+				$("#randpgexist").val(0);
+		    }
+	    });
+	    $.fancybox.update();
+	});
+    }
+    
+    function get_random_meme_nlu(){
+	var url = "##LBL_SITE_URL##meme/meme_nlu_rand";
+	$.fancybox.showLoading();
+	$.post(url,{ce:0},function(res){
+	    $("#randpgexist").val(1);
+	    $.fancybox.open(res,{
+	    	minHeight : 630,
+	    	minWidth : 480,
+	    	//autoSize : true,
+	    	//scrolling : true,
 		    afterClose : function (){
 				$("#randpgexist").val(0);
 		    }
@@ -51,7 +72,6 @@
 });
 </script>
 {/literal}
-
 <table>
 <tr><td>
 <div id="xpbar">

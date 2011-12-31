@@ -37,7 +37,15 @@
 		<a href="##LBL_SITE_URL##meme/addMeme">Make-a-Meme</a>
 	</td>
 	<td>
-	<a href="javascript:void(0);" onclick="get_random_meme();">Go Random</a>
+	{if $smarty.session.id_user}
+		<li>
+		<a href="javascript:void(0);" onclick="get_random_meme();">Go Random</a>
+		</li>
+		{else}
+		<li>
+		<a href="javascript:void(0);" onclick="alert('you need to be logged in');">Go Random</a>
+		</li>
+	    {/if}
 	</td>
 	<td>
 	<a href="##LBL_SITE_URL##achievements/whatisMemeja">What is Memeja?</a>

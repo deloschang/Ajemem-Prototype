@@ -42,6 +42,8 @@
 
 <script type="text/javascript" src="##JS_PATH##libsext/js/ajaxfileupload.js"></script>
 
+<script type="text/javascript" src="##JS_PATH##libsext/hotkeys/jquery.hotkeys.js"></script>
+
 
 <!--Popup (use later for badges?)-->
 <script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/jquery.bubblepopup.v2.3.1.min.js"></script>
@@ -65,7 +67,6 @@
 	var chc ="{/literal}{$chc}{literal}";
 	var idu="{/literal}{$smarty.session.id_user}{literal}";
 	
-	if (idu != "") {
 		// Variables for XP updating
 		var curr_xp = {/literal}{if $smarty.session.exp_point}{$smarty.session.exp_point}{else}0{/if}{literal};
 		var xp_to_level = {/literal}{if $smarty.session.xp_to_level}{$smarty.session.xp_to_level}{else}0{/if}{literal};
@@ -80,7 +81,6 @@
 				xp_percent = ((curr_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level)) * 100;
 			{else}xp_percent = 0{/if}{literal}
 		}
-	}
 	
 	$(document).ready(function(){			
 		console.log("User level is "+user_level);
@@ -89,6 +89,10 @@
 		console.log("XP Percent displayed is "+xp_percent);
 		
 		console.log("Previous XP To level is "+previous_xp_to_level);
+		
+		$(document).bind('keydown', 'ctrl+a', function(){
+		console.log("hotkey fired");
+	});
 		
 		
 		// User XP initial display
@@ -152,6 +156,15 @@
 	    }
 	    
 	});
+	
+	function log_in_reminder(){
+		 var url="##LBL_SITE_URL##user/log_in_reminder";
+		 
+		$.post(url,{ce:0}, function(res){
+			$.fancybox(res);
+    	});
+	}
+	
 	function getall_notification(){
 	    var url="##LBL_SITE_URL##manage/getall_notification";
 	    $.post(url,{ce:0},function(res){

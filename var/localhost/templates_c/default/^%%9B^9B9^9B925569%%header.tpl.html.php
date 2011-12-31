@@ -1,11 +1,10 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 13:38:12
+<?php /* Smarty version 2.6.7, created on 2011-12-31 01:23:11
          compiled from common/header.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/header.tpl.html', 34, false),)), $this); ?>
 
-<!-- Template: common/header.tpl.html Start 30/12/2011 13:38:12 --> 
- <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
-<?php echo '
+<!-- Template: common/header.tpl.html Start 31/12/2011 01:23:11 --> 
+ <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
     function get_random_meme(){
 	var url = "http://localhost/meme/meme_list/cat/rand";
@@ -45,7 +44,15 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		<a href="http://localhost/meme/addMeme">Make-a-Meme</a>
 	</td>
 	<td>
-	<a href="javascript:void(0);" onclick="get_random_meme();">Go Random</a>
+	<?php if ($_SESSION['id_user']): ?>
+		<li>
+		<a href="javascript:void(0);" onclick="get_random_meme();">Go Random</a>
+		</li>
+		<?php else: ?>
+		<li>
+		<a href="javascript:void(0);" onclick="alert('you need to be logged in');">Go Random</a>
+		</li>
+	    <?php endif; ?>
 	</td>
 	<td>
 	<a href="http://localhost/achievements/whatisMemeja">What is Memeja?</a>

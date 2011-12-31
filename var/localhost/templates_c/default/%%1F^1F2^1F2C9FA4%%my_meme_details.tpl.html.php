@@ -1,11 +1,11 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 08:48:07
+<?php /* Smarty version 2.6.7, created on 2011-12-30 01:56:14
          compiled from manage/my_meme_details.tpl.html */ ?>
 
-<!-- Template: manage/my_meme_details.tpl.html Start 28/12/2011 08:48:07 --> 
+<!-- Template: manage/my_meme_details.tpl.html Start 30/12/2011 01:56:14 --> 
  <?php echo '
 <style type="text/css">
 .meme{
-	background: gainsboro;
+	background: white;
 	width:60%;
 	height:auto;
  }

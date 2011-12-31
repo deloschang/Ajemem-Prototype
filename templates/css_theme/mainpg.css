@@ -567,3 +567,68 @@ body {
 /* The main page*/
 #maincontent {
 	margin:75px;
+	}
+	
+	
+/* Exp Bar Tab */
+.expbar{
+	position:fixed;
+	bottom:15px;
+	left:7px;
+}
+.exp_fix1{
+	position:fixed!important;
+	top:485px!important;
+}
+.notify {
+	cursor: pointer;
+	position:fixed;
+	bottom:15px;
+	left:100px;
+}
+.not_txt{
+	cursor: pointer;
+	background-color: red;
+	position:fixed;
+	left: 155px;
+	bottom: 20px;
+	width:13px;
+	height:16px;
+	display:none;
+}
+.leftpan_img{
+	 background:url(##LBL_SITE_URL##templates/images/m_previous_btn.png) no-repeat;
+	 width:11px;
+	 height:71px;
+         position:absolute;
+         position:fixed;
+	 left:5px;
+         top:400px;
+	 z-index: 5;
+}
+.rightpan_img{
+	background:url(##LBL_SITE_URL##templates/images/m_next_btn.png) no-repeat;
+	 width:11px;
+	 height:71px;
+         position:absolute;
+         position:fixed;
+         right:5px;
+         top:400px;
+	 z-index: 5;
+}
+
+/* Notification pop-up */
+.inner{
+	outline:1px solid #000;
+	background-color:wheat;
+
+}
+
+/* Location of Notification pop-up */
+.slide .inner {
+	position: fixed;
+	left: 102px;
+	bottom: 33px;
+	z-index:9999999;
+}
+	

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 06:42:47
+<?php /* Smarty version 2.6.7, created on 2011-12-31 01:17:51
          compiled from meme/loadmore_rand_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmore_rand_meme.tpl.html', 11, false),array('modifier', 'date_format', 'meme/loadmore_rand_meme.tpl.html', 13, false),)), $this); ?>
@@ -73,6 +73,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			onclick="rand_set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ','D');">Dishonor</a></span>
 			
+			<div id="randsend_reply<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+" style="width:60%;display: none;"></div>
 			
 <!--			<?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>-->
 <!--			&nbsp;<label id="rand_capt<?php echo $this->_tpl_vars['x']['id_meme']; ?>
@@ -99,7 +101,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	    <div  onclick="show_my_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ');" id="comc_img"><br />
 		    <img  src="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
-" style="cursor:pointer;"  title="Meme" />
+" style="cursor:pointer;"  title="<?php echo $this->_tpl_vars['x']['title']; ?>
+" />
 	    </div>
 	    
 	    <br />
@@ -107,29 +110,77 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <!--		    <span ><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://localhost/meme/meme_details/id/<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " data-text="<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 " data-count="none" data-via="memeje"  >Tweet</a></span>-->
-
-
-	    <div id="randsend_reply<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-" style="width:60%;display: none;"></div>
 <!--	    <div id="randadd_caption<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " style="width:60%;display: none;"></div>-->
     </div>
 <?php echo '
 <!--<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>-->
 <script type="text/javascript">
+	var notyet = 0;
+	var notagree = 0;
+	var notdisagree = 0;
+	
+	function clearTimer() {
+    	notyet = 0;   
+	 }  
+    
     $(document).ready(function(){
 		var ids = ($("#rand_ids").val())?$("#rand_ids").val()+",';  echo $this->_tpl_vars['x']['id_meme'];  echo '":"';  echo $this->_tpl_vars['x']['id_meme'];  echo '";
 		$("#rand_ids").val(ids);
 		
 		// Set Title of Meme
 		$("#random_title").html("';  echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '");
+		$("#random_username").html(\'<a href="javascript:void(0)" onmouseover="hover_user(\\\'';  echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user'];  echo '\\\');">';  echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username'];  echo '</a>\');
 		
+		$(document).bind(\'keydown\', \'right\', function(){
+			next_meme();
+		 });
+		
+		$(document).bind(\'keydown\', \'space\', function(){
+			next_meme();
+		 });
+			
+		$(document).bind(\'keydown\', \'up\', function(){
+			next_agree();
+		 });
+		
+		$(document).bind(\'keydown\', \'down\', function(){
+			next_disagree();
+		 });
 		
      });
+    
+    function next_meme(){
+		if (notyet == 1) {
+		    return; 
+		 }  
+		notyet = 1;
+		show_my_details(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\');
+		setTimeout(\'clearTimer()\', 1000);
+     }
+    
+    function next_agree(){
+		if (notagree == 1) {
+		    return; 
+		 }  
+		notagree = 1;
+		rand_set_tot_adaggr(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\',\'A\');
+		setTimeout(\'clearTimer()\', 1000);
+     }
+    
+     function next_disagree(){
+		if (notdisagree == 1) {
+		    return; 
+		 }  
+		notdisagree = 1;
+		rand_set_tot_adaggr(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\',\'D\');
+		setTimeout(\'clearTimer()\', 1000);
+     }
     
     $(".fb_btn").each(function (){
 		FB.XFBML.parse($(this).get(0));
      });
+    
 </script>
 '; ?>
 

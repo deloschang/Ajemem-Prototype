@@ -1,5 +1,5 @@
-<div id="xpbar"></div>
-<div id="level"></div>
+<!--<div id="xpbar"></div>-->
+<div id="user_level"></div>
 <div id="xpbar_status"></div>
 <div id="header">
 	<h1><a href="##LBL_SITE_URL##">Memeja logo here</a></h1>

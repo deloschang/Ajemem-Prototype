@@ -42,6 +42,8 @@
 
 <script type="text/javascript" src="##JS_PATH##libsext/js/ajaxfileupload.js"></script>
 
+<script type="text/javascript" src="##JS_PATH##libsext/hotkeys/jquery.hotkeys.js"></script>
+
 
 <!--Popup (use later for badges?)-->
 <script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/jquery.bubblepopup.v2.3.1.min.js"></script>
@@ -87,6 +89,10 @@
 		console.log("XP Percent displayed is "+xp_percent);
 		
 		console.log("Previous XP To level is "+previous_xp_to_level);
+		
+		$(document).bind('keydown', 'ctrl+a', function(){
+			console.log("hotkey fired");
+		});
 		
 		
 		// User XP initial display
@@ -150,6 +156,15 @@
 	    }
 	    
 	});
+	
+	function log_in_reminder(){
+		 var url="##LBL_SITE_URL##user/log_in_reminder";
+		 
+		$.post(url,{ce:0}, function(res){
+			$.fancybox(res);
+    	});
+	}
+	
 	function getall_notification(){
 	    var url="##LBL_SITE_URL##manage/getall_notification";
 	    $.post(url,{ce:0},function(res){
@@ -451,71 +466,6 @@
 		}
 
 </script>
-<style type="text/css">
-
-
-/* Exp Bar Tab */
-.expbar{
-	position:fixed;
-	bottom:15px;
-	left:7px;
-}
-.exp_fix1{
-	position:fixed!important;
-	top:485px!important;
-}
-.notify {
-	cursor: pointer;
-	position:fixed;
-	bottom:15px;
-	left:100px;
-}
-.not_txt{
-	cursor: pointer;
-	background-color: red;
-	position:fixed;
-	left: 155px;
-	bottom: 20px;
-	width:13px;
-	height:16px;
-	display:none;
-}
-.leftpan_img{
-	 background:url(##LBL_SITE_URL##templates/images/m_previous_btn.png) no-repeat;
-	 width:11px;
-	 height:71px;
-         position:absolute;
-         position:fixed;
-	 left:5px;
-         top:400px;
-	 z-index: 5;
-}
-.rightpan_img{
-	background:url(##LBL_SITE_URL##templates/images/m_next_btn.png) no-repeat;
-	 width:11px;
-	 height:71px;
-         position:absolute;
-         position:fixed;
-         right:5px;
-         top:400px;
-	 z-index: 5;
-}
-
-/* Notification pop-up */
-.inner{
-	outline:1px solid #000;
-	background-color:wheat;
-
-}
-
-/* Location of Notification pop-up */
-.slide .inner {
-	position: fixed;
-	left: 102px;
-	bottom: 33px;
-	z-index:9999999;
-}
-</style>
 {/literal}
 </head>
 <body>
@@ -567,7 +517,7 @@
 			    {if $smarty.session.id_user}	
 				    {include file="user/left_pan"}
 			    {else}
-				<!--    {include file="user/login_form"} -->
+				    {include file="user/login_form"}
 			    {/if}
 			</td>
 			{/if}
@@ -608,8 +558,8 @@
 <!--	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>-->
 		<!-- End -->
 		
-		<!-- For Notification button
-		<div id="slidebottom" class="slide">
+		<!-- For Notification button -->
+		<!--<div id="slidebottom" class="slide">
 		      <div class='notify' style="z-index:99999; border:3px  solid #cccccc; background-color:#f2f2f2; float:left;">
 			Notification
 			<label class="not_txt"><font style="color:white;margin-left: 3px;font-weight:bold;"><span id="not_cnt"></span></font></label>

@@ -3,6 +3,7 @@
 {literal}
 <script type="text/javascript">
     var x=0;
+    
     function rand_set_tot_adaggr(id,con){
 	var url = "##LBL_SITE_URL##meme/set_adaggr";
 	
@@ -30,6 +31,7 @@
 		    }
 	    }else
 		   alert("You have already voted.");
+		   console.log('You have already voted.');
 	},"json");
 <!--    } else {-->
 <!--    	alert("You are not logged in.");-->
@@ -145,7 +147,8 @@
 {/literal}
 
 <center>
-    <label id ="random_title" style="font-size: 16px;font-weight:bold;">Random Meme</label>
+    <label id="random_title" style="font-size: 16px;font-weight:bold;"></label>
+    <div>by <span id="random_username"></span></div>
 </center>
 
 <!-- Commenting out categories 

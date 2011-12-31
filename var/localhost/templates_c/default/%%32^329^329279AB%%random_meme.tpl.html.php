@@ -1,9 +1,10 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 06:42:47
+<?php /* Smarty version 2.6.7, created on 2011-12-31 01:17:43
          compiled from meme/random_meme.tpl.html */ ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
     var x=0;
+    
     function rand_set_tot_adaggr(id,con){
 	var url = "http://localhost/meme/set_adaggr";
 	
@@ -30,7 +31,8 @@
 					$("#randagr_link"+id).css({"color" : "gray", "cursor" : "default" });
 		     }
 	     }else
-		   alert("You have already voted.");
+		   //alert("You have already voted.");
+		   console.log(\'You have already voted.\');
 	 },"json");
 <!--     } else {-->
 <!--    	alert("You are not logged in.");-->
@@ -147,7 +149,8 @@
 
 
 <center>
-    <label id="random_title" style="font-size: 16px;font-weight:bold;">Random Meme</label>
+    <label id="random_title" style="font-size: 16px;font-weight:bold;"></label>
+    <div>by <span id="random_username"></span></div>
 </center>
 
 <!-- Commenting out categories 

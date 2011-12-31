@@ -1,19 +1,40 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 13:38:12
+<?php /* Smarty version 2.6.7, created on 2011-12-31 01:23:11
          compiled from common/menu.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/menu.tpl.html', 62, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/menu.tpl.html', 82, false),)), $this); ?>
 
-<!-- Template: common/menu.tpl.html Start 30/12/2011 13:38:12 --> 
+<!-- Template: common/menu.tpl.html Start 31/12/2011 01:23:11 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
     function get_random_meme(){
 	var url = "http://localhost/meme/meme_list/cat/rand";
-	//$.fancybox.showActivity();
 	$.fancybox.showLoading();
 	$.post(url,{ce:0 },function(res){
 	    $("#randpgexist").val(1);
 	    $.fancybox.open(res,{
+	    	minHeight : 630,
+	    	minWidth : 480,
+	    	//autoSize : true,
+	    	//scrolling : true,
+		    afterClose : function (){
+				$("#randpgexist").val(0);
+		     }
+	     });
+	    $.fancybox.update();
+	 });
+     }
+    
+    function get_random_meme_nlu(){
+	var url = "http://localhost/meme/meme_nlu_rand";
+	$.fancybox.showLoading();
+	$.post(url,{ce:0 },function(res){
+	    $("#randpgexist").val(1);
+	    $.fancybox.open(res,{
+	    	minHeight : 630,
+	    	minWidth : 480,
+	    	//autoSize : true,
+	    	//scrolling : true,
 		    afterClose : function (){
 				$("#randpgexist").val(0);
 		     }
@@ -57,7 +78,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
  });
 </script>
 '; ?>
-
 
 <table>
 <tr><td>

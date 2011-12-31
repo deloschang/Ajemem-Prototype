@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 13:38:12
+<?php /* Smarty version 2.6.7, created on 2011-12-31 01:23:11
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 579, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '163bf4d31cb1e353432415adc7f5521f'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 529, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '191de86da1a3cb9c5edb48c3f7866652'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -44,6 +44,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 <script type="text/javascript" src="http://localhost/libsext/js/ui.datepicker.js"></script>
 
 <script type="text/javascript" src="http://localhost/libsext/js/ajaxfileupload.js"></script>
+
+<script type="text/javascript" src="http://localhost/libsext/hotkeys/jquery.hotkeys.js"></script>
 
 
 <!--Popup (use later for badges?)-->
@@ -90,6 +92,10 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		console.log("XP Percent displayed is "+xp_percent);
 		
 		console.log("Previous XP To level is "+previous_xp_to_level);
+		
+		$(document).bind(\'keydown\', \'ctrl+a\', function(){
+			console.log("hotkey fired");
+		 });
 		
 		
 		// User XP initial display
@@ -153,6 +159,15 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	     }
 	    
 	 });
+	
+	function log_in_reminder(){
+		 var url="http://localhost/user/log_in_reminder";
+		 
+		$.post(url,{ce:0 }, function(res){
+			$.fancybox(res);
+    	 });
+	 }
+	
 	function getall_notification(){
 	    var url="http://localhost/manage/getall_notification";
 	    $.post(url,{ce:0 },function(res){
@@ -454,71 +469,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		 }
 
 </script>
-<style type="text/css">
-
-
-/* Exp Bar Tab */
-.expbar{
-	position:fixed;
-	bottom:15px;
-	left:7px;
- }
-.exp_fix1{
-	position:fixed!important;
-	top:485px!important;
- }
-.notify {
-	cursor: pointer;
-	position:fixed;
-	bottom:15px;
-	left:100px;
- }
-.not_txt{
-	cursor: pointer;
-	background-color: red;
-	position:fixed;
-	left: 155px;
-	bottom: 20px;
-	width:13px;
-	height:16px;
-	display:none;
- }
-.leftpan_img{
-	 background:url(http://localhost/templates/images/m_previous_btn.png) no-repeat;
-	 width:11px;
-	 height:71px;
-         position:absolute;
-         position:fixed;
-	 left:5px;
-         top:400px;
-	 z-index: 5;
- }
-.rightpan_img{
-	background:url(http://localhost/templates/images/m_next_btn.png) no-repeat;
-	 width:11px;
-	 height:71px;
-         position:absolute;
-         position:fixed;
-         right:5px;
-         top:400px;
-	 z-index: 5;
- }
-
-/* Notification pop-up */
-.inner{
-	outline:1px solid #000;
-	background-color:wheat;
-
- }
-
-/* Location of Notification pop-up */
-.slide .inner {
-	position: fixed;
-	left: 102px;
-	bottom: 33px;
-	z-index:9999999;
- }
-</style>
 '; ?>
 
 </head>
@@ -584,11 +534,11 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 			    <?php else: ?>
-				<!--    <?php $_smarty_tpl_vars = $this->_tpl_vars;
+				    <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
- ?> -->
+ ?>
 			    <?php endif; ?>
 			</td>
 			<?php endif; ?>
@@ -601,7 +551,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:163bf4d31cb1e353432415adc7f5521f#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:163bf4d31cb1e353432415adc7f5521f#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:191de86da1a3cb9c5edb48c3f7866652#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:191de86da1a3cb9c5edb48c3f7866652#0}';}?>
 <br>
 				<?php endif; ?>
 
@@ -650,8 +600,8 @@ unset($_smarty_tpl_vars);
 <!--	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>-->
 		<!-- End -->
 		
-		<!-- For Notification button
-		<div id="slidebottom" class="slide">
+		<!-- For Notification button -->
+		<!--<div id="slidebottom" class="slide">
 		      <div class='notify' style="z-index:99999; border:3px  solid #cccccc; background-color:#f2f2f2; float:left;">
 			Notification
 			<label class="not_txt"><font style="color:white;margin-left: 3px;font-weight:bold;"><span id="not_cnt"></span></font></label>
