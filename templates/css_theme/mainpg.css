@@ -528,7 +528,8 @@ table.userinfo input.fields:focus	{
 	top: 30px;
     left: 90px;
     right: 200px;
-	width: 1000px;
+	width: 700px;
+	z-index:99999999;
 }
 
 body {
@@ -565,11 +566,6 @@ body {
 	z-index: 99999;
 }
 
-/* The main page*/
-#maincontent {
-	margin:75px;
-	}
-	
 	
 /* Exp Bar Tab */
 .expbar{
@@ -632,4 +628,9 @@ body {
 	bottom: 33px;
 	z-index:9999999;
 }
-	
+
+/* Maincontent */
+#mid_cont {
+   margin-left:75px;
+   margin-right:75px;
+}

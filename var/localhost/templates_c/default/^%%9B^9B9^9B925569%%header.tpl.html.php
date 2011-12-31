@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 03:35:30
+<?php /* Smarty version 2.6.7, created on 2011-12-31 10:21:16
          compiled from common/header.tpl.html */ ?>
 
-<!-- Template: common/header.tpl.html Start 31/12/2011 03:35:30 --> 
+<!-- Template: common/header.tpl.html Start 31/12/2011 10:21:16 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
     function get_random_meme(){
@@ -25,7 +25,7 @@
    <div id ="headerbtns"> <table>
 	<tr>
 	<td>
-	<h1><a href="http://localhost/">MEMEJA</a></h1>
+	<img src="http://localhost/templates/images/memejalogo.png" width="140px"  height="100px" id="logo" href="http://localhost/">
 	</td>
 	<td>
 	<?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'addMeme'): ?>class="current"<?php endif; ?>>
