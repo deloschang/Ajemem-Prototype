@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 13:30:22
+<?php /* Smarty version 2.6.7, created on 2011-12-31 13:40:20
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -210,8 +210,13 @@
 			 });
 		
 			/* Added by Delos for live reply */
-			$("#replyinsert"+id).html("Replied by ';  echo $_SESSION['fname']; ?>
- <?php echo $_SESSION['lname'];  echo ' :<b>"+$("#rpl_con"+id).val()+"</b>")
+			/*$("#replyinsert"+id).html("Replied by ';  echo $_SESSION['fname']; ?>
+ <?php echo $_SESSION['lname'];  echo ' :<b>"+$("#rpl_con"+id).val()+"</b>")*/
+			var url = "http://localhost/meme/get_all_replies";
+			$.post(url,{id:id,ce:0 }, function(res){
+				$("#send_reply"+id).html(res);
+			 });
+			
 		
     	 } else {
     		alert("Please log in to reply.");

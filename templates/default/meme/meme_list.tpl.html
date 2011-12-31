@@ -209,7 +209,12 @@
 			});
 		
 			/* Added by Delos for live reply */
-			$("#replyinsert"+id).html("Replied by {/literal}{$smarty.session.fname} {$smarty.session.lname}{literal} :<b>"+$("#rpl_con"+id).val()+"</b>")
+			/*$("#replyinsert"+id).html("Replied by {/literal}{$smarty.session.fname} {$smarty.session.lname}{literal} :<b>"+$("#rpl_con"+id).val()+"</b>")*/
+			var url = "##LBL_SITE_URL##meme/get_all_replies";
+			$.post(url,{id:id,ce:0}, function(res){
+				$("#send_reply"+id).html(res);
+			});
+			
 		
     	} else {
     		alert("Please log in to reply.");
