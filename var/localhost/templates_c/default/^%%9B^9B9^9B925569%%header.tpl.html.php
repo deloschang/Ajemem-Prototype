@@ -1,9 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 01:23:11
+<?php /* Smarty version 2.6.7, created on 2011-12-31 03:35:30
          compiled from common/header.tpl.html */ ?>
-<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/header.tpl.html', 34, false),)), $this); ?>
 
-<!-- Template: common/header.tpl.html Start 31/12/2011 01:23:11 --> 
+<!-- Template: common/header.tpl.html Start 31/12/2011 03:35:30 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
     function get_random_meme(){
@@ -29,16 +27,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	<td>
 	<h1><a href="http://localhost/">MEMEJA</a></h1>
 	</td>
-	<!-- 
-	
-	   Move next to exp bar
-	
-	<center>
-	    <?php if ($_SESSION['id_user']): ?>
-		 Welcome <?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
-
-	    <?php endif; ?>
-	</center>-->
 	<td>
 	<?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'addMeme'): ?>class="current"<?php endif; ?>>
 		<a href="http://localhost/meme/addMeme">Make-a-Meme</a>

@@ -49,7 +49,7 @@ label.error	{
 
 }
 #footer 	{
-	background:#C8F0AA;
+	background:#87C8F0;
 	height:30px;
 	color:#FFF;
 }
@@ -58,9 +58,10 @@ label.error	{
 }
 /* ======================================= */
 
-/* Header Section */
+/* Header Section
+   Vimeo Blue:87C8F0 */
 #header	{
-	background:#C8F0AA;
+	background:#87C8F0;
 	color:#FFF;
 	height:50px;
 	padding:0px 10px;

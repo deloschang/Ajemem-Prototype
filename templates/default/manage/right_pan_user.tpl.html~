@@ -1,0 +1,114 @@
+{*notag*}
+<table style="margin-top:0px" >
+    <tr>
+		<td valign="top">
+			<div id="changePhoto" style="margin-top:1px">
+				{if $sm.fb_pic_normal}
+				<img src="{$sm.fb_pic_normal}">
+				
+				{else}
+				<img src="##LBL_SITE_URL##image/thumb/avatar/{if $sm.avatar}{$sm.avatar}{else}{if $sm.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"/>
+				{/if}
+				
+			</div>
+		</td>
+    </tr>
+    
+    <tr>
+		<td><b>{$sm.username|capitalize} <span id="left_pan_level">L{$sm.level}</b></span></td>
+    </tr>
+    
+    <tr>
+		<td>
+		<b>
+		{*User Rank + XP*}
+		<span id="ranking_number">Rank #{$sm.exp_rank}</span>
+		 <span id="total_xp" style="font-size:7px">({$sm.exp_point} XP)</span>
+		 </b>		 
+		</td>
+    </tr>
+
+	<br/>
+
+    <tr>
+		<td>
+		<div id="my_meme_list" >
+			<fieldset style=" background-color:#CAD8F3;width: 200px;margin-left:0px" >
+			
+	    <legend>
+		<b>My Memes</b>
+	    </legend>
+	    
+	    <table>
+		<tr>
+		    <td>
+		    {if $sm.res}
+			{section name=cur loop=$sm.res}
+			{assign var=x value=$sm.res[cur]}
+			
+			<a class="meme_gallery" data-fancybox-group="other_user_meme" id="other_user_meme{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
+			
+			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="width: 60px;height: 60px;cursor: pointer;"/></a>
+			
+			{if (($smarty.section.cur.iteration % 3) == 0)}
+		    </td>
+		</tr>
+		<tr>
+		    <td>
+			{/if}
+			
+			{/section}
+			
+			
+			{else}
+			No meme found
+			{/if}
+		    </td>
+		</tr>
+	    </table>
+	    
+</fieldset>
+		</div>
+		</td>
+    </tr>
+    
+    <tr>
+    	<td>
+    <fieldset style=" background-color:#CAD8F3;width: 200px;margin-left:0px" >
+	    <legend>
+		<b>
+		    Recently Honored Memes
+		</b>
+	    </legend>
+	    <table>
+		<tr>
+		    <td>
+			{if $sm.res_favorite}
+			{section name=cur loop=$sm.res_favorite}
+			{assign var=x value=$sm.res_favorite[cur]}
+			
+			<a class="meme_gallery" data-fancybox-group="fav_meme" id="meme_fav_image{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
+			
+			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="width: 60px;height: 60px;cursor: pointer;"/></a>
+			
+			{if (($smarty.section.cur.iteration % 3) == 0)}
+		    </td>
+		</tr>
+		<tr>
+		    <td>
+			{/if}
+			
+			{/section}
+			{else}
+			No meme found
+			{/if}
+		    </td>
+		</tr>
+	    </table>
+</fieldset>
+</td>
+</tr>	
+   
+	
+</table>
+
