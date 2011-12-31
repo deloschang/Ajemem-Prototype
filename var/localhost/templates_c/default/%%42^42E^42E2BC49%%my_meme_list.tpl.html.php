@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 00:10:19
+<?php /* Smarty version 2.6.7, created on 2012-01-01 00:32:26
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 44, false),)), $this); ?>
@@ -25,7 +25,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 '; ?>
 
 <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
-<fieldset style=" background-color:#CAD8F3;width: 200px;margin-left:0px" >
+<fieldset style=" background-color:#CAD8F3; width: 200px; margin-left:0px" >
 	    <legend>
 		<b>
 		    <?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
@@ -103,13 +103,13 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 		</tr>
 		<?php if ($this->_tpl_vars['sm']['res']): ?>
 		    <?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
-			<tr><td align="right"><a href="http://localhost/manage/my_favorites/">See more</a></td></tr>
+			<tr><td align="right"><a href="http://localhost/manage/my_favorites/"></a></td></tr>
 		    <?php elseif ($this->_tpl_vars['sm']['flg'] == 2): ?>
 			<tr><td align="right"><a href="http://localhost/manage/tagged_meme/">View all</a></td></tr>
 		    <?php elseif ($this->_tpl_vars['sm']['flg'] == 3): ?>
 			<tr><td align="right"><a href="http://localhost/manage/dueled_meme/">View all</a></td></tr>
 		    <?php else: ?>
-			<tr><td align="right"><a href="http://localhost/manage/my_meme_list/">See more</a></td></tr>
+			<tr><td align="right"><a href="http://localhost/manage/my_meme_list/"></a></td></tr>
 		    <?php endif; ?>
 		<?php endif; ?>
 	    </table>

@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 00:10:19
+<?php /* Smarty version 2.6.7, created on 2012-01-01 00:32:26
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 665, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '6e475f6a9e7ae02e5f0adf7754b1c975'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '39e7e4ab6278d01f6d2074fcb64c75dc'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -218,11 +218,11 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			if (ajax_response_exp[0].trim() == "AAB"){
 				console.log("Trailing User XP changed");
 				
-				$("#trailing_exp").html(\'(\'+ajax_response_exp[1]+\' XP)\');
+				$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');
 
 				$("#trailing_exp").css("background", \'#AAF2DC\');
 				$("#trailing_exp").animate( { "opacity" : 0.4  }, 700, function() {
-					$("#trailing_exp").css("background","white");
+					$("#trailing_exp").css("background","#aad450");
 					$("#trailing_exp").animate( { "opacity" : 1  }, 300)
 				 });
 			
@@ -393,7 +393,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		
 		
 		// Static XP marker
-		$("#total_xp").html(new_xp);
+		$("#total_xp").html(new_xp+\'<span style="font-size:8px; position:relative; bottom:5px;"> XP</span>\');
 		$("#total_xp").css("background", \'#4EFEEB\');
     	$("#total_xp").animate( { "opacity" : 0.4  }, 400, function() {
 			$("#total_xp").css("background","#4ebaff");
@@ -687,7 +687,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:6e475f6a9e7ae02e5f0adf7754b1c975#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:6e475f6a9e7ae02e5f0adf7754b1c975#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:39e7e4ab6278d01f6d2074fcb64c75dc#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:39e7e4ab6278d01f6d2074fcb64c75dc#0}';}?>
 <br>
 				<?php endif; ?>
 				

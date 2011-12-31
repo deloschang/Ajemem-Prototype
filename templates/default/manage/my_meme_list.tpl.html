@@ -21,7 +21,7 @@
 </script>
 {/literal}
 {assign var=img_path value=$util->get_values_from_config('IMAGE')}
-<fieldset style=" background-color:#CAD8F3;width: 200px;margin-left:0px" >
+<fieldset style=" background-color:#CAD8F3; width: 200px; margin-left:0px" >
 	    <legend>
 		<b>
 		    {if $sm.flg==1}
@@ -66,13 +66,13 @@
 		</tr>
 		{if $sm.res}
 		    {if $sm.flg==1}
-			<tr><td align="right"><a href="##LBL_SITE_URL##manage/my_favorites/">See more</a></td></tr>
+			<tr><td align="right"><a href="##LBL_SITE_URL##manage/my_favorites/"></a></td></tr>
 		    {elseif $sm.flg==2}
 			<tr><td align="right"><a href="##LBL_SITE_URL##manage/tagged_meme/">View all</a></td></tr>
 		    {elseif $sm.flg==3}
 			<tr><td align="right"><a href="##LBL_SITE_URL##manage/dueled_meme/">View all</a></td></tr>
 		    {else}
-			<tr><td align="right"><a href="##LBL_SITE_URL##manage/my_meme_list/">See more</a></td></tr>
+			<tr><td align="right"><a href="##LBL_SITE_URL##manage/my_meme_list/"></a></td></tr>
 		    {/if}
 		{/if}
 	    </table>

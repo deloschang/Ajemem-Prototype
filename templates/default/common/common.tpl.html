@@ -215,11 +215,11 @@
 			if (ajax_response_exp[0].trim() == "AAB"){
 				console.log("Trailing User XP changed");
 				
-				$("#trailing_exp").html('('+ajax_response_exp[1]+' XP)');
+				$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');
 
 				$("#trailing_exp").css("background", '#AAF2DC');
 				$("#trailing_exp").animate( { "opacity" : 0.4 }, 700, function() {
-					$("#trailing_exp").css("background","white");
+					$("#trailing_exp").css("background","#aad450");
 					$("#trailing_exp").animate( { "opacity" : 1 }, 300)
 				});
 			
@@ -390,7 +390,7 @@
 		
 		
 		// Static XP marker
-		$("#total_xp").html(new_xp);
+		$("#total_xp").html(new_xp+'<span style="font-size:8px; position:relative; bottom:5px;"> XP</span>');
 		$("#total_xp").css("background", '#4EFEEB');
     	$("#total_xp").animate( { "opacity" : 0.4 }, 400, function() {
 			$("#total_xp").css("background","#4ebaff");
