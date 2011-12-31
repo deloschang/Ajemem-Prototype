@@ -1,6 +1,11 @@
 {*notag*}
 {if $smarty.session.id_user}
 <table style="margin-top:0px" >
+<tr>
+		<td><span style="font-weight:bold; font-size:24px; padding-top:5px;">{$smarty.session.username|capitalize}</span>
+		<span id="left_pan_level" style="font-size:14px; color:#ACACA5; margin-left:2px;"> L{$smarty.session.level}</span></td>
+    </tr>
+    
     <tr>
 		<td valign="top">
 			<div id="changePhoto" style="margin-top:1px">
@@ -8,22 +13,28 @@
 			</div>
 		</td>
     </tr>
-     <tr>
-		<td><b>{$smarty.session.username|capitalize}<span id="left_pan_level">L{$smarty.session.level}</span></b></td>
-    </tr>
+     
     <tr>
 		<td><b>
 		
 		{*User Rank + XP*}
-		<span id="ranking_number">Rank #{if $smarty.session.exp_rank}{$smarty.session.exp_rank}{else}N/A{/if}</span>
-		 <span id="total_xp" style="font-size:7px">{if $smarty.session.exp_point}({$smarty.session.exp_point} XP){/if}</span></b>
-		 <br/>
+			
+		<div style="background-color: #4ebaff; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; font-family:Verdana;  color:white; width:90px;height:72px; margin-top:10px; text-align:center;" >
+		<span id="ranking_number" style="font-family:Verdana; font-size:48px; ">{if $smarty.session.exp_rank}{$smarty.session.exp_rank}{else}N/A{/if}</span>
+		
+		 <div id="total_xp" style="font-size:14px; margin-left:12px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; position:relative; bottom:3px;">{if $smarty.session.exp_point}{$smarty.session.exp_point}{/if}
+		 <span style="font-size:8px; position:relative; right:2px; bottom:5px;">XP</span></div>
+		 </div>
+		 
 		{*Trailing Rank, User, + XP*}
+		<div class="softcorner native num_videos" style="background-color: #aad450; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; width:90px;height:70px; text-align:center; font-family:Verdana; color:white; position:relative; left:100px;bottom:70px;" >
 		<span id="trailing_all">
-		 <b><span id="trailing_ranking_number" style="font-size:10px"> Rank #{$smarty.session.one_less_rank}</span></b>
-		<b><span id="trailing_exp" style="font-size:7px">({if $smarty.session.one_less_exp}{$smarty.session.one_less_exp}{else}0{/if} XP)</span></b> 	
-		 <span id="trailing_user">{if $smarty.session.one_less_user}{$smarty.session.one_less_user}{else}---{/if}</span> 
-		 </span>
+		 <span id="trailing_ranking_number" style="font-family:Verdana; font-size:40px;">{$smarty.session.one_less_rank}</span>
+		<div id="trailing_exp" style="-moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; font-size:12px; position:relative; bottom:4px; margin-left:12px;">{if $smarty.session.one_less_exp}{$smarty.session.one_less_exp}{else}0{/if}
+		 <span style="font-size:8px; position:relative;right:3px; bottom:3px;">XP</span></div>
+		 <div id="trailing_user" style="font-size:8px;">{if $smarty.session.one_less_user}{$smarty.session.one_less_user}{else}---{/if}</div> 
+		 </div>
+		 
 		 
 		</td>
     </tr>

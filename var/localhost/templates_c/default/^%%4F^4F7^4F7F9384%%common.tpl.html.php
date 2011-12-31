@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 13:56:28
+<?php /* Smarty version 2.6.7, created on 2012-01-01 00:10:19
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 665, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '874a962fa51bea535ff0d79f51e8a8fc'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '6e475f6a9e7ae02e5f0adf7754b1c975'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -370,8 +370,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			xp_to_level = new_xp_to_level;
 			
 			// Level has a "live feed like flash"
-			$("#left_pan_level").css("background", \'#FFFF73\');
-	    	$("#left_pan_level").animate( { "opacity" : 0.4  }, 700, function() {
+			$("#left_pan_level").css("background", \'#B9FE4E\');
+	    	$("#left_pan_level").animate( { "opacity" : 0.4  }, 500, function() {
 				$("#left_pan_level").css("background","white");
 				$("#left_pan_level").animate( { "opacity" : 1  }, 300)
 			 });
@@ -393,10 +393,10 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		
 		
 		// Static XP marker
-		$("#total_xp").html(\'(\'+new_xp+\' XP)\');
-		$("#total_xp").css("background", \'#AAF2DC\');
-    	$("#total_xp").animate( { "opacity" : 0.4  }, 700, function() {
-			$("#total_xp").css("background","white");
+		$("#total_xp").html(new_xp);
+		$("#total_xp").css("background", \'#4EFEEB\');
+    	$("#total_xp").animate( { "opacity" : 0.4  }, 400, function() {
+			$("#total_xp").css("background","#4ebaff");
 			$("#total_xp").animate( { "opacity" : 1  }, 300)
 		 });
 		
@@ -687,7 +687,7 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:874a962fa51bea535ff0d79f51e8a8fc#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:874a962fa51bea535ff0d79f51e8a8fc#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:6e475f6a9e7ae02e5f0adf7754b1c975#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:6e475f6a9e7ae02e5f0adf7754b1c975#0}';}?>
 <br>
 				<?php endif; ?>
 				

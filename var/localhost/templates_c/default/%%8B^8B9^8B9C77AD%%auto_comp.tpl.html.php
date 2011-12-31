@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 13:43:38
+<?php /* Smarty version 2.6.7, created on 2011-12-31 13:59:50
          compiled from meme/auto_comp.tpl.html */ ?>
     <?php $this->_foreach['f1'] = array('total' => count($_from = (array)$this->_tpl_vars['sm']['res']), 'iteration' => 0);
 if ($this->_foreach['f1']['total'] > 0):
