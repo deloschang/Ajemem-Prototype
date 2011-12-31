@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 10:21:16
+<?php /* Smarty version 2.6.7, created on 2011-12-31 11:32:08
          compiled from common/menu.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/menu.tpl.html', 82, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/menu.tpl.html', 79, false),)), $this); ?>
 
-<!-- Template: common/menu.tpl.html Start 31/12/2011 10:21:16 --> 
+<!-- Template: common/menu.tpl.html Start 31/12/2011 11:32:08 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
@@ -79,10 +79,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 </script>
 '; ?>
 
-<table>
-<tr><td>
-<div id="xpbar">
-</td><td>
+<div id="xpbar"></div>
 <?php if ($_SESSION['id_user']): ?>	
 	    Welcome <?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
  !
@@ -91,11 +88,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
         Login with Facebook
       </div>
 <?php endif; ?>	  
-</td></tr>
 <div id="user_level"></div>
 <div id="xpbar_status"></div>
-</div>
-
 <div class="clear"></div>
 
 <!-- Template: common/menu.tpl.html End --> 

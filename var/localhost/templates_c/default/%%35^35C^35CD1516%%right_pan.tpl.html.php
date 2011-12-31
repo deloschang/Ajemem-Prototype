@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 10:21:17
+<?php /* Smarty version 2.6.7, created on 2011-12-31 11:32:08
          compiled from user/right_pan.tpl.html */ ?>
 
-<!-- Template: user/right_pan.tpl.html Start 31/12/2011 10:21:17 --> 
+<!-- Template: user/right_pan.tpl.html Start 31/12/2011 11:32:08 --> 
  <br/>
 
 <span id="right_pan">

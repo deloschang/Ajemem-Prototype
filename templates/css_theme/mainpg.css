@@ -58,36 +58,6 @@ label.error	{
 }
 /* ======================================= */
 
-/* Header Section
-   Vimeo Blue:87C8F0 */
-#header	{
-	background:#87C8F0;
-	color:#FFF;
-	height:50px;
-	padding:0px 10px;
-}
-#header h1	{
-    font:Garamond;
-	color:#FFF;
-	font-size:24px;
-	font-weight:bold;
-	float:left;
-}
-#header h1 a	{
-	text-decoration:none;
-}
-
-#header a	{
-	color:#FFF;
-	font-size:18px;
-}
-
-#headerbtns {
-    margin-left:75px;
-	margin-right:75px;
-}
-/* ======================================= */
-
 /* Navigation Section */
 #navigation {
 	background: #000;
@@ -522,6 +492,52 @@ table.userinfo input.fields:focus	{
 	z-index:99999999;
 }
 
+/******************************Main Page Styling*******************************/
+#mainpage {
+ color:#FFF;
+}
+/* Memeja Logo */
+#logo {
+ position:absolute;
+ left:10%;
+}
+/*Feed Contents*/
+#mid_cont {
+   width:80%;
+   background:#FFF;
+   margin-left: 10%;
+   margin-right: 10%;
+}
+
+/* Header Section
+   Vimeo Blue:87C8F0 */
+#header	{
+	background:#87C8F0;
+	color:#FFF;
+	height:100px;
+	padding:0px 10px;
+}
+#header h1	{
+    font:Garamond;
+	color:#FFF;
+	font-size:24px;
+	font-weight:bold;
+	float:left;
+}
+#header h1 a	{
+	text-decoration:none;
+}
+
+#header a	{
+	color:#FFF;
+	font-size:18px;
+}
+
+#headerbtns {
+    margin-left:75px;
+	margin-right:75px;
+}
+
 /* XP Bar */
 #xpbar {
     position: absolute;
@@ -533,7 +549,7 @@ table.userinfo input.fields:focus	{
 }
 
 body {
-	background-color:#FAFAFA;
+	background-color:#87C8F0;
 }
 
 #user_level{
@@ -629,8 +645,3 @@ body {
 	z-index:9999999;
 }
 
-/* Maincontent */
-#mid_cont {
-   margin-left:75px;
-   margin-right:75px;
-}
