@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 09:52:28
+<?php /* Smarty version 2.6.7, created on 2011-12-31 01:26:59
          compiled from user/change_avatar.tpl.html */ ?>
 
-<!-- Template: user/change_avatar.tpl.html Start 28/12/2011 09:52:28 --> 
+<!-- Template: user/change_avatar.tpl.html Start 31/12/2011 01:26:59 --> 
  <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
 <?php echo '
 <script type="text/javascript">
@@ -13,12 +13,12 @@
 			fileElementId:\'img\',     
 			dataType: \'json\',
 			complete: function (data, status){
-			console.log("COMPLETE");
-			var img_name=data.responseText;
-			var picture = "<img src = \'http://localhost/';  echo $this->_tpl_vars['img_path']['preview_thumb'];  echo '"+img_name+"\' height = \'';  echo $this->_tpl_vars['img_path']['thumb_height'];  echo 'px\' width = \'';  echo $this->_tpl_vars['img_path']['thumb_width'];  echo 'px\' />";
-			$(\'#getimage\').html(picture);
-			$(\'#img_name_span\').html($(\'#server_img\').val(img_name));
-			$(\'#get_img_err\').hide();
+				console.log("COMPLETE");
+				var img_name=data.responseText;
+				var picture = "<img src = \'http://localhost/';  echo $this->_tpl_vars['img_path']['preview_thumb'];  echo '"+img_name+"\' height = \'';  echo $this->_tpl_vars['img_path']['thumb_height'];  echo 'px\' width = \'';  echo $this->_tpl_vars['img_path']['thumb_width'];  echo 'px\' />";
+				$(\'#getimage\').html(picture);
+				$(\'#img_name_span\').html($(\'#server_img\').val(img_name));
+				$(\'#get_img_err\').hide();
 			 }
 		 });
 	 }
