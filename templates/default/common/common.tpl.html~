@@ -91,8 +91,8 @@
 		console.log("Previous XP To level is "+previous_xp_to_level);
 		
 		$(document).bind('keydown', 'ctrl+a', function(){
-		console.log("hotkey fired");
-	});
+			console.log("hotkey fired");
+		});
 		
 		
 		// User XP initial display
@@ -472,7 +472,28 @@ body {
 	margin-left:75px;
 	margin-right:75px;
 	margin-top:1.5em;
+	background-color:white;
 }
+
+/* Outer div to live feed */
+#meme_content{
+	background-color:#e6e6dc;
+	-moz-border-radius-topright: 15px; -webkit-border-top-right-radius: 15px; border-top-right-radius: 15px; -moz-border-radius-bottomright: 15px; -webkit-border-bottom-right-radius: 15px; border-bottom-right-radius: 15px; -moz-border-radius-bottomleft: 15px; -webkit-border-bottom-left-radius: 15px; border-bottom-left-radius: 15px; 
+	
+	-moz-border-radius-topleft: 10px; -webkit-border-top-left-radius: 10px; border-top-left-radius: 10px; 
+}
+
+/* Inner div to live feed */
+#meme_organs{
+ position: relative;
+ top:30px;
+ margin-left: 20px;
+ margin-right: 20px;
+ background-color: #ffffff; 
+ -moz-border-radius: 10px; 
+ -webkit-border-radius: 10px; 
+ border-radius: 10px;
+}/
 
 #xpbar {
 	position: fixed;
@@ -642,9 +663,13 @@ body {
 				{if $smarty.session.id_user && $smarty.request.choice !='answer_to_ques' && $smarty.request.choice !='addMeme' && $smarty.request.choice !='meme_details'}
 				    {get_mod mod=question mgr=question choice=get_this_week_question}<br>
 				{/if}
-
+				
+				<div id="meme_content">
+					<div id="meme_organs">
 		<!-- Content in middle of page (Live Feed/Editor) -->
 				{include file=$content}
+					</div>
+				</div>
 
 		<!-- Login form if user not logged in -->
 			<!-- switched from user/login_form -->

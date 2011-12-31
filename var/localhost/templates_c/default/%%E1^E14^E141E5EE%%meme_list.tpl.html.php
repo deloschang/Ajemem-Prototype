@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 02:07:16
+<?php /* Smarty version 2.6.7, created on 2011-12-31 11:23:37
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -314,15 +314,47 @@
 </script>
 <style type="text/css">
     a{
-	text-decoration: none;
-	cursor: pointer;
+		text-decoration: none;
+		cursor: pointer;
      }
     .meme{
-	padding-left: 50px;
-	background: white;  /* background for meme color */
-	width:90%;
-	height:auto;
+		position: relative;
+		top:-25px;
+	   	margin-left: 15px;
+		padding-left: 10px;
+		padding-top: 10px;
+		padding-bottom: 5px;
+		background: white;  /* background for meme color */
+		width:95%;
+		height:auto;
+	
+		-moz-border-radius-topright: 6px; -webkit-border-top-right-radius: 6px; border-top-right-radius: 6px; -moz-border-radius-bottomright: 6px; -webkit-border-bottom-right-radius: 6px; border-bottom-right-radius: 6px; -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; border-bottom-left-radius: 6px; 
+	
+		-moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; border-top-left-radius: 6px;
+	
+		 border-bottom: 1px dotted #e6e6dc;
+	
      }
+    
+    /* Inner formatting of live feed meme */
+	img.avatar_thumb_fb, 
+	img.avatar_thumb_regular {
+		width: 40px;
+		height: 40px;
+	 }
+	
+	#meme_title {
+		position:relative;
+		bottom:6px;
+		padding-left:10px; 
+		font-size: 23px; 
+		font-weight: bold;
+	 }
+	
+	.meme_reproductive_system{
+		position:relative; 
+		left:55px;
+	 }
 
 {* CSS for \'Search meme\' on live feed * }
     .dec{			

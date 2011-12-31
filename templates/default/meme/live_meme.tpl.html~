@@ -27,10 +27,7 @@
 			{$sm.meme_title|capitalize}</b></span></a>
 	<!-- end of gallery class-->
 			
-			<span style="font-size:12px">  by {$sm.uinfo[$sm.meme_user].username} </span>
-			<span style="font-size:8px"> L{$sm.uinfo[$sm.meme_user].level}</span>
-			
-			<span style="font-size:12px">  by <b><span id="user{$sm.uinfo[$sm.meme_user].id_user}"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$sm.meme_user].id_user}');">{$sm.uinfo[$sm.meme_user].username} </a></span></span>
+			<span style="font-size:12px">  from <b><span id="user{$sm.uinfo[$sm.meme_user].id_user}"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$sm.meme_user].id_user}');">{$sm.uinfo[$sm.meme_user].username} </a></span></span>
 			<span style="font-size:8px"> L{$sm.uinfo[$sm.meme_user].level}</span></b>
 	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
 

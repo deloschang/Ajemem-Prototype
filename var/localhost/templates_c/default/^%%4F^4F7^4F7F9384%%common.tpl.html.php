@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 02:07:16
+<?php /* Smarty version 2.6.7, created on 2011-12-31 11:23:36
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 643, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '9f040ebb76bb54b443ef92069285b301'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 664, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'e3aa2a2098b8ab36ba7a09d385ae2be9'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -475,6 +475,27 @@ body {
 	margin-left:75px;
 	margin-right:75px;
 	margin-top:1.5em;
+	background-color:white;
+ }
+
+/* Outer div to live feed */
+#meme_content{
+	background-color:#e6e6dc;
+	-moz-border-radius-topright: 15px; -webkit-border-top-right-radius: 15px; border-top-right-radius: 15px; -moz-border-radius-bottomright: 15px; -webkit-border-bottom-right-radius: 15px; border-bottom-right-radius: 15px; -moz-border-radius-bottomleft: 15px; -webkit-border-bottom-left-radius: 15px; border-bottom-left-radius: 15px; 
+	
+	-moz-border-radius-topleft: 10px; -webkit-border-top-left-radius: 10px; border-top-left-radius: 10px; 
+ }
+
+/* Inner div to live feed */
+#meme_organs{
+ position: relative;
+ top:30px;
+ margin-left: 20px;
+ margin-right: 20px;
+ background-color: #ffffff; 
+ -moz-border-radius: 10px; 
+ -webkit-border-radius: 10px; 
+ border-radius: 10px;
  }
 
 #xpbar {
@@ -665,16 +686,20 @@ unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9f040ebb76bb54b443ef92069285b301#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9f040ebb76bb54b443ef92069285b301#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:e3aa2a2098b8ab36ba7a09d385ae2be9#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:e3aa2a2098b8ab36ba7a09d385ae2be9#0}';}?>
 <br>
 				<?php endif; ?>
-
+				
+				<div id="meme_content">
+					<div id="meme_organs">
 		<!-- Content in middle of page (Live Feed/Editor) -->
 				<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['content'], 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+					</div>
+				</div>
 
 		<!-- Login form if user not logged in -->
 			<!-- switched from user/login_form -->
