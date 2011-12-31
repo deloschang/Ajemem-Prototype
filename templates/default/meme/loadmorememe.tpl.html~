@@ -293,14 +293,17 @@
 			    onclick="set_tot_adaggr('{$x.id_meme}','D','{$x.id_user}');"><span style="font-size:15px;">Dishonor</span></a>
 			    <span> 
 			    &emsp;
-				{if $x.tot_honour > 0}
-					<img src="##LBL_SITE_URL##image/orig/premade_images/14_46_EWBTE.png" title="Good job! The First Honor!" style="width:17px; height:17px"/>
-				{/if}
 				{if $x.tot_honour > 1}
-					<img src="##LBL_SITE_URL##image/orig/premade_images/27_59_ExcitedTroll.png" title="Excited Troll is excited! 2 Honors!" style="width:17px; height:17px"/>
+					<img src="##LBL_SITE_URL##image/orig/premade_images/14_46_EWBTE.png" title="Good job! The 2nd Honor!" style="width:17px; height:17px"/>
 				{/if}
 				{if $x.tot_honour > 2}
-					<img src="##LBL_SITE_URL##image/orig/premade_images/13_45_LOL.png" title="LOL! 3 Honors!" style="width:17px; height:17px"/>
+					<img src="##LBL_SITE_URL##image/orig/premade_images/27_59_ExcitedTroll.png" title="Excited Troll is excited! 2 Honors!" style="width:17px; height:17px"/>
+				{/if}
+				{if $x.tot_honour > 3}
+					<img src="##LBL_SITE_URL##image/orig/premade_images/13_45_LOL.png" title="L0L! 3 Honors!" style="width:17px; height:17px"/>
+				{/if}
+				{if $x.tot_honour > 4}
+					<img src="##LBL_SITE_URL##image/orig/premade_images/3_35_NotBad.png" title="Obama says this meme is NOT BAD!" style="width:17px; height:17px"/>
 				{/if}
 				</span>
 			    
@@ -326,7 +329,7 @@
 
 -->
 	    </div>
-	    <div id="send_reply{$x.id_meme}" style="width:60%;display: none;"></div>
+	    <div id="send_reply{$x.id_meme}" style="width:75%; padding:-20px 0 30px 120px; display: none;"></div>
 <!--
 	    <div id="add_caption{$x.id_meme}" style="width:60%;display: none;"></div> -->
 	    <input type="hidden" name="is_replied" id="is_replied{$x.id_meme}" value=''/>

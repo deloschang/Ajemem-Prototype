@@ -477,6 +477,7 @@ body {
 
 /* Outer div to live feed */
 #meme_content{
+	width:800px;
 	background-color:#e6e6dc;
 	-moz-border-radius-topright: 15px; -webkit-border-top-right-radius: 15px; border-top-right-radius: 15px; -moz-border-radius-bottomright: 15px; -webkit-border-bottom-right-radius: 15px; border-bottom-right-radius: 15px; -moz-border-radius-bottomleft: 15px; -webkit-border-bottom-left-radius: 15px; border-bottom-left-radius: 15px; 
 	
@@ -493,7 +494,7 @@ body {
  -moz-border-radius: 10px; 
  -webkit-border-radius: 10px; 
  border-radius: 10px;
-}/
+}
 
 #xpbar {
 	position: fixed;

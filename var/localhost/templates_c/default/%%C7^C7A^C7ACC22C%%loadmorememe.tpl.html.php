@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 11:23:37
+<?php /* Smarty version 2.6.7, created on 2011-12-31 12:41:47
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 223, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 260, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 31/12/2011 11:23:37 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 31/12/2011 12:41:47 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -332,14 +332,17 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 ');"><span style="font-size:15px;">Dishonor</span></a>
 			    <span> 
 			    &emsp;
-				<?php if ($this->_tpl_vars['x']['tot_honour'] > 0): ?>
-					<img src="http://localhost/image/orig/premade_images/14_46_EWBTE.png" title="Good job! The First Honor!" style="width:17px; height:17px"/>
-				<?php endif; ?>
 				<?php if ($this->_tpl_vars['x']['tot_honour'] > 1): ?>
-					<img src="http://localhost/image/orig/premade_images/27_59_ExcitedTroll.png" title="Excited Troll is excited! 2 Honors!" style="width:17px; height:17px"/>
+					<img src="http://localhost/image/orig/premade_images/14_46_EWBTE.png" title="Good job! The 2nd Honor!" style="width:17px; height:17px"/>
 				<?php endif; ?>
 				<?php if ($this->_tpl_vars['x']['tot_honour'] > 2): ?>
+					<img src="http://localhost/image/orig/premade_images/27_59_ExcitedTroll.png" title="Excited Troll is excited! 2 Honors!" style="width:17px; height:17px"/>
+				<?php endif; ?>
+				<?php if ($this->_tpl_vars['x']['tot_honour'] > 3): ?>
 					<img src="http://localhost/image/orig/premade_images/13_45_LOL.png" title="L0L! 3 Honors!" style="width:17px; height:17px"/>
+				<?php endif; ?>
+				<?php if ($this->_tpl_vars['x']['tot_honour'] > 4): ?>
+					<img src="http://localhost/image/orig/premade_images/3_35_NotBad.png" title="Obama says this meme is NOT BAD!" style="width:17px; height:17px"/>
 				<?php endif; ?>
 				</span>
 			    
@@ -372,7 +375,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 -->
 	    </div>
 	    <div id="send_reply<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-" style="width:60%;display: none;"></div>
+" style="width:75%; margin:-20px 0 30px 120px; display: none;"></div>
 <!--
 	    <div id="add_caption<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " style="width:60%;display: none;"></div> -->
