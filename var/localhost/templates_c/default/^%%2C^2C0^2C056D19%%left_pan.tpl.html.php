@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 00:32:26
+<?php /* Smarty version 2.6.7, created on 2012-01-01 00:53:25
          compiled from user/left_pan.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 5, false),array('function', 'get_mod', 'user/left_pan.tpl.html', 52, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = '350f02200aa633cd4e129114f8167448';  if ($_SESSION['id_user']): ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = '89179717741659b030889e0f420bcdc5';  if ($_SESSION['id_user']): ?>
 <table style="margin-top:0px; margin-left:5px;" >
 <tr>
 		<td><span style="font-weight:bold; font-size:33px; padding-top:5px;"><?php echo ((is_array($_tmp=$_SESSION['username'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
@@ -27,14 +27,14 @@ unset($_smarty_tpl_vars);
 		<td>
 		
 					
-		<div style="background-color: #4ebaff; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; font-family:Verdana; font-weight:bold; color:white; width:90px;height:72px; margin-top:10px; margin-left:5px; text-align:center;" >
+		<div id="user_ranking_info" style="background-color: #4ebaff; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; font-family:Verdana; font-weight:bold; color:white; width:90px;height:72px; margin-top:10px; margin-left:5px; text-align:center;" >
 		<span id="ranking_number" style="font-family:Verdana; font-size:48px; "><?php if ($_SESSION['exp_rank']):  echo $_SESSION['exp_rank'];  else: ?>N/A<?php endif; ?></span>
 		
 		 <div id="total_xp" style="font-size:14px; margin-left:12px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; position:relative; bottom:3px;"><?php if ($_SESSION['exp_point']):  echo $_SESSION['exp_point'];  endif; ?>
 		 <span style="font-size:8px; position:relative; bottom:5px;">XP</span></div>
 		 </div>
 		 
-				<div class="softcorner native num_videos" style="background-color: #aad450; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; width:90px;height:70px; text-align:center; font-family:Verdana; font-weight:bold; color:white; position:relative; left:100px;bottom:70px;" >
+				<div id="other_user_ranking_info" class="softcorner native num_videos" style="background-color: #aad450; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; width:90px;height:70px; text-align:center; font-family:Verdana; font-weight:bold; color:white; position:relative; left:100px;bottom:70px;" >
 		<span id="trailing_all">
 		 <span id="trailing_ranking_number" style="font-family:Verdana; font-size:40px;"><?php echo $_SESSION['one_less_rank']; ?>
 </span>
@@ -56,7 +56,7 @@ unset($_smarty_tpl_vars);
     <tr>
 		<td>
 		<div id="my_meme_list" style="margin-top:-60px;">
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:350f02200aa633cd4e129114f8167448#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:350f02200aa633cd4e129114f8167448#0}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:89179717741659b030889e0f420bcdc5#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:89179717741659b030889e0f420bcdc5#0}';}?>
 
 		</div>
 		</td>
@@ -64,7 +64,7 @@ unset($_smarty_tpl_vars);
 	<tr>
 		<td>
 		<div id="my_favorites" >
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:350f02200aa633cd4e129114f8167448#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:350f02200aa633cd4e129114f8167448#1}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:89179717741659b030889e0f420bcdc5#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:89179717741659b030889e0f420bcdc5#1}';}?>
 
 		</div>
 		</td>
