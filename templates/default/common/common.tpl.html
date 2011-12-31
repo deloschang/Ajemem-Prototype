@@ -516,8 +516,6 @@
 			<td width="15%" id="leftpan" valign="top">
 			    {if $smarty.session.id_user}	
 				    {include file="user/left_pan"}
-			    {else}
-				    {include file="user/login_form"}
 			    {/if}
 			</td>
 			{/if}
@@ -525,6 +523,11 @@
 			<td align="left" valign="top">
 			    <div><font color="#FF0000">{myinclude file="common/messages" module="global"}</font></div>
 			    <div id="container">
+				<div id="openingmsg">
+			     <a href="##LBL_SITE_URL##">Two Me's One Meme! We met the DEADLINE!! FUCK YEAH GUYS!!! 2012 THE BIRTH OF MEMEJA!!!!</a>
+				 </br></br>
+				</div>
+				
 				{if $smarty.session.id_user && $smarty.request.choice !='answer_to_ques' && $smarty.request.choice !='addMeme' && $smarty.request.choice !='meme_details'}
 				    {get_mod mod=question mgr=question choice=get_this_week_question}<br>
 				{/if}
@@ -535,7 +538,7 @@
 		<!-- Login form if user not logged in -->
 			<!-- switched from user/login_form -->
 				{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
-			    </div>
+				</div>
 			</td>
 
 			{if $smarty.request.choice !='addMeme'}
@@ -560,7 +563,7 @@
 		<input type="hidden" id="user_ids" value=""/>
 		<input type="hidden" id="id_badges" />
 	</div>
-	<div id="footer">&copy; Copyrights. All Rights Reserved. 2011</div>
+	<div id="footer"><center>&copy; Copyrights. All Rights Reserved. 2012 <a href="##LBL_SITE_URL##achievements/whatisMemeja">About Us</a></center></div>
 </body>
 </html>
 

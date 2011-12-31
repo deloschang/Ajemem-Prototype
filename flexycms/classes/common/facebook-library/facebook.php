@@ -91,5 +91,3 @@ class Facebook extends BaseFacebook
                               $key));
   }
 }
-
-$loginUrl   = $facebook->getLoginUrl();

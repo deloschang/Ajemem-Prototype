@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 15:26:59
+<?php /* Smarty version 2.6.7, created on 2011-12-31 18:19:50
          compiled from common/menu.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/menu.tpl.html', 80, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/menu.tpl.html', 81, false),)), $this); ?>
 
-<!-- Template: common/menu.tpl.html Start 31/12/2011 15:26:59 --> 
+<!-- Template: common/menu.tpl.html Start 31/12/2011 18:19:50 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
@@ -79,20 +79,19 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 </script>
 '; ?>
 
+<div id="follower">
 <div id="xpbar"></div>
-<!--
+<div id="fbstuff">
 <?php if ($_SESSION['id_user']): ?>	
-	    Welcome <?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
- !
+	    <a href ="javascript:void(0);" onclick="fb_logout();">Welcome <?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+ !</a>
 	<?php else: ?>
 	<div class="fb-login-button" scope="email, publish_stream ,user_education_history 	">
-        Login with Facebook
+        Memebook
       </div>
 <?php endif; ?>	  
-<?php if ($_SESSION['id_admin'] || $_SESSION['id_user']): ?>
-			<a href ="javascript:void(0);" onclick="fb_logout();">Logout</a>
-	    <?php endif; ?>
-		-->
+</div>
+</div>	
 <div id="user_level"></div>
 <div id="xpbar_status"></div>
 <div class="clear"></div>

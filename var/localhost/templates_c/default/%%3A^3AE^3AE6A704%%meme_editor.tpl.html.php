@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 13:40:37
+<?php /* Smarty version 2.6.7, created on 2011-12-31 16:00:10
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 209, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 211, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 31/12/2011 13:40:37 --> 
+<!-- Template: meme/meme_editor.tpl.html Start 31/12/2011 16:00:10 --> 
  <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
 <?php echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
@@ -20,7 +20,7 @@ function loadcanvas() {
 		var debugDiv = $(\'<div>\').attr({\'id\':\'debug\' }).css({ \'overflow\':\'scroll\',\'position\':\'fixed\',\'width\':\'300px\',\'height\':\'400px\',\'border\':\'1px solid #ccc\',\'top\':\'350px\',\'right\':\'0px\' });
 		debugDiv.appendTo("body");;
 	 }
-
+	
 	/* Highlights tool once clicked */
 	$(\'#hilight\').find(\'img\').click(function(){
 		$(\'#hilight\').find(\'img\').removeClass(\'active\');
@@ -127,6 +127,7 @@ $(document).ready(function(){
 			 });*/
 			$(\'#main\').css({
 			    position:\'fixed\',
+				top:\'40px\',
 			    left : y.left+\'px\'
 			 });
 		 }else{
@@ -136,6 +137,7 @@ $(document).ready(function(){
 			 });*/
 			$(\'#main\').css({
 			    position:\'absolute\',
+				top:\'20px\',
 			    left :\'-10px\'
 			 });
 		 }
@@ -151,12 +153,12 @@ $(document).ready(function(){
         <table width='100%' class="smil_tabl_fixed" border="0">
             <tr>
                 <td align='right'>
-                    <input type="file" name="updimage" id="updimage" size="10" />
-                    <input type="button" onClick="show_image();" value="Upload" style="width:60px;" /><br />
-                    URL: <input type="text" name="imgurl" id="imgurl" size="31" />
+                    <input type="file" name="updimage" id="updimage" size="5" />
+                    <input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
+                    URL: <input type="text" name="imgurl" id="imgurl" size="27" />
                     <input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
+					<div id="prev_image" class="prev_image"></div>
                 </td>
-                <td width="120px"><div id="prev_image" class="prev_image"></div></td>
             </tr>
         </table>
         <div class='main_smiley_loading'style="top:100px;">

@@ -14,7 +14,7 @@ function loadcanvas() {
 		var debugDiv = $('<div>').attr({'id':'debug'}).css({ 'overflow':'scroll','position':'fixed','width':'300px','height':'400px','border':'1px solid #ccc','top':'350px','right':'0px'});
 		debugDiv.appendTo("body");;
 	}
-
+	
 	/* Highlights tool once clicked */
 	$('#hilight').find('img').click(function(){
 		$('#hilight').find('img').removeClass('active');
@@ -121,6 +121,7 @@ $(document).ready(function(){
 			});*/
 			$('#main').css({
 			    position:'fixed',
+				top:'40px',
 			    left : y.left+'px'
 			});
 		}else{
@@ -130,6 +131,7 @@ $(document).ready(function(){
 			});*/
 			$('#main').css({
 			    position:'absolute',
+				top:'20px',
 			    left :'-10px'
 			});
 		}
@@ -144,12 +146,12 @@ $(document).ready(function(){
         <table width='100%' class="smil_tabl_fixed" border="0">
             <tr>
                 <td align='right'>
-                    <input type="file" name="updimage" id="updimage" size="10" />
-                    <input type="button" onClick="show_image();" value="Upload" style="width:60px;" /><br />
-                    URL: <input type="text" name="imgurl" id="imgurl" size="31" />
+                    <input type="file" name="updimage" id="updimage" size="5" />
+                    <input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
+                    URL: <input type="text" name="imgurl" id="imgurl" size="27" />
                     <input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
+					<div id="prev_image" class="prev_image"></div>
                 </td>
-                <td width="120px"><div id="prev_image" class="prev_image"></div></td>
             </tr>
         </table>
         <div class='main_smiley_loading'style="top:100px;">

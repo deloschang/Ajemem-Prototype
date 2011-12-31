@@ -79,11 +79,11 @@
 	overflow-x:hidden;
 	overflow-y:auto;
 	width: 140px;
-	height: 500px;
+	height: 475px;
 	margin:0px;
 	position:fixed;
 	top:110px;
-	left:83.5%;
+	left:79%;
 }
 #vs	{
 	position:absolute;
@@ -163,8 +163,9 @@ span.icon_div img{
     overflow: visible;
 }
 .smil_tabl_fixed{
-	width:640px;
+	width:400px;
 	position:fixed;
+	left:10px;
 	top:380px;
 	height:105px;
 }

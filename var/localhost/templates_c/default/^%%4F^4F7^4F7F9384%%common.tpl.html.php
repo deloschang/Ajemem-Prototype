@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 15:26:59
+<?php /* Smarty version 2.6.7, created on 2011-12-31 18:19:50
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 529, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '8803a2b24b0ce700f0598c6576915e19'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 532, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '792b83e0c95e96f0611140f976d8946a'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -533,12 +533,6 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "user/left_pan.tpl.htm
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-			    <?php else: ?>
-				    <?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form.tpl.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?>
 			    <?php endif; ?>
 			</td>
 			<?php endif; ?>
@@ -550,8 +544,13 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
+				<div id="openingmsg">
+			     <a href="http://localhost/">Two Me's One Meme! We met the DEADLINE!! FUCK YEAH GUYS!!! 2012 THE BIRTH OF MEMEJA!!!!</a>
+				 </br></br>
+				</div>
+				
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:8803a2b24b0ce700f0598c6576915e19#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:8803a2b24b0ce700f0598c6576915e19#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:792b83e0c95e96f0611140f976d8946a#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:792b83e0c95e96f0611140f976d8946a#0}';}?>
 <br>
 				<?php endif; ?>
 
@@ -569,7 +568,7 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
   endif; ?> 
-			    </div>
+				</div>
 			</td>
 
 			<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
@@ -602,7 +601,7 @@ unset($_smarty_tpl_vars);
 		<input type="hidden" id="user_ids" value=""/>
 		<input type="hidden" id="id_badges" />
 	</div>
-	<div id="footer">&copy; Copyrights. All Rights Reserved. 2011</div>
+	<div id="footer"><center>&copy; Copyrights. All Rights Reserved. 2012 <a href="http://localhost/achievements/whatisMemeja">About Us</a></center></div>
 </body>
 </html>
 

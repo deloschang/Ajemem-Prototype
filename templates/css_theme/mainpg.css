@@ -548,11 +548,47 @@ body {
 
 #headerbtns {
   position:absolute;
-  left:50%;
-  width:40%;
+  left:46.5%;
+  width:30%;
   cursor:pointer;
 }
+/*Under Join Memeja*/
+#fblogin {
+  display:none;
+  position:absolute;
+  top:48px;
+  left:635px;
+}
+/* Next to xpbar */
+#fbstuff{
+  position:absolute;
+  left:81.5%;
+  top:78px;
+  moz-border-radius: 20px;
+   webkit-border-radius: 20px;
+   khtml-border-radius: 20px;
+   border-radius: 20px;
+}
 
+#fbstuff a{
+  margin:-2px;
+  color:#FFF;
+  font-size: 14px;
+  font:Lucide Console;
+}
+
+#follower{
+background:#4C4C4C;
+moz-border-radius: 10px;
+   webkit-border-radius: 10px;
+   khtml-border-radius: 10px;
+   border-radius: 10px;
+}
+
+#openingmsg {
+  font-size:25px;
+  color:#000;
+}
 /* XP Bar */
 #xpbar {
     position: absolute;
@@ -589,7 +625,7 @@ body {
 	cursor: default;
 	
 	top: 82px;
-	left: 55%;
+	left: 40%;
 	z-index: 999999;
 }
 

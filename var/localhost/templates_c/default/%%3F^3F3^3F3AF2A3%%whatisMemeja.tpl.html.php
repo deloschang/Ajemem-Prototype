@@ -1,13 +1,13 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 14:38:20
+<?php /* Smarty version 2.6.7, created on 2011-12-31 18:19:47
          compiled from achievements/whatisMemeja.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'achievements/whatisMemeja.tpl.html', 6, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\%%3F^3F3^3F3AF2A3%%whatisMemeja.tpl.html.inc'] = '3a3b9b58fe27bf69ae91ce022238280a'; ?>
-<!-- Template: achievements/whatisMemeja.tpl.html Start 31/12/2011 14:38:20 --> 
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\%%3F^3F3^3F3AF2A3%%whatisMemeja.tpl.html.inc'] = 'a3877dfd1f089df4779c5c5c5e84faaf'; ?>
+<!-- Template: achievements/whatisMemeja.tpl.html Start 31/12/2011 18:19:47 --> 
  <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
 <div style="font-size:20px;width:300px;">How to get achivement</div>
 <div style="width:300px;">
-<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:3a3b9b58fe27bf69ae91ce022238280a#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'cms','mgr' => 'cms','choice' => 'show','code' => 'howtogetachievement'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:3a3b9b58fe27bf69ae91ce022238280a#0}';}?>
+<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:a3877dfd1f089df4779c5c5c5e84faaf#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'cms','mgr' => 'cms','choice' => 'show','code' => 'howtogetachievement'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:a3877dfd1f089df4779c5c5c5e84faaf#0}';}?>
 
 </div></br>
 <div style="font-size:16px;width:300px;">Example</div>

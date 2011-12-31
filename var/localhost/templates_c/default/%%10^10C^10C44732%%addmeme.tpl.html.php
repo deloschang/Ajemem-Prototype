@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 13:40:37
+<?php /* Smarty version 2.6.7, created on 2011-12-31 16:00:10
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 141, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 31/12/2011 13:40:37 --> 
+<!-- Template: meme/addmeme.tpl.html Start 31/12/2011 16:00:10 --> 
  <!-- 
      Commented by Muaz :D
 	 This is the main HTML for the Memeja Editor.
