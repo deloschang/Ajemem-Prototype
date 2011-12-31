@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 13:06:42
+<?php /* Smarty version 2.6.7, created on 2011-12-31 13:30:23
          compiled from meme/respective_replies.tpl.html */ ?>
 
-<!-- Template: meme/respective_replies.tpl.html Start 31/12/2011 13:06:42 --> 
+<!-- Template: meme/respective_replies.tpl.html Start 31/12/2011 13:30:23 --> 
  <?php $this->_foreach['rep'] = array('total' => count($_from = (array)$this->_tpl_vars['sm']['reparr']), 'iteration' => 0);
 if ($this->_foreach['rep']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['i']):
@@ -34,6 +34,33 @@ if ($this->_foreach['rep']['total'] > 0):
 
 <?php echo '
 <script>
+	$(document).ready(function(){
+		// min chars for username
+		var min_chars = 10;
+			
+		var validateCharacter = $(\'#validateCharacter\');
+		var text_input = $(\'#';  if (! $this->_tpl_vars['sm']['flag']): ?>rpl_con<?php else: ?>rand_rpl_con<?php endif;  echo $this->_tpl_vars['sm']['id_meme'];  echo '\');
+				
+		text_input.keyup(function() {
+			var text_input_words = text_input.val();
+			var text_length = text_input_words.length;
+			var remaining = min_chars - text_length
+		
+		// No username
+			if (!text_input_words) {
+				validateCharacter.html(\'10 min characters remaining...\');
+							
+			 } else {
+		
+				if (this.value != this.lastValue && text_length < min_chars) {
+						validateCharacter.html(remaining+" min characters remaining...");
+					 } else {
+						validateCharacter.html(\'\');
+					 }
+				 }
+		 });
+	 });
+
 
 	// \'Enter hotkey\' functionality 
 	$(\'#';  if (! $this->_tpl_vars['sm']['flag']): ?>rpl_con<?php else: ?>rand_rpl_con<?php endif;  echo $this->_tpl_vars['sm']['id_meme'];  echo '\').keypress(function(e){
@@ -54,9 +81,9 @@ if ($this->_foreach['rep']['total'] > 0):
 " style="width:90%;" onclick="<?php if (! $this->_tpl_vars['sm']['flag']): ?>chk_forclear<?php else: ?>rand_chk_forclear<?php endif; ?>('<?php echo $this->_tpl_vars['sm']['id_meme']; ?>
 ');" ></textarea><br/>
 
-<a  href="javascript:void(0);" onclick="return <?php if (! $this->_tpl_vars['sm']['flag']): ?>post_reply<?php else: ?>rand_post_reply<?php endif; ?>('<?php echo $this->_tpl_vars['sm']['id_meme']; ?>
+<a href="javascript:void(0);" onclick="return <?php if (! $this->_tpl_vars['sm']['flag']): ?>post_reply<?php else: ?>rand_post_reply<?php endif; ?>('<?php echo $this->_tpl_vars['sm']['id_meme']; ?>
 ');" style="cursor: pointer;"><img src="http://localhost/templates/images/reply.gif "style="width:15px;height:15px"/><span style="font-size:13px;">Reply</span></a>
 
-
+<span id="validateCharacter" style="color:#e6e6dc"></span>
 
 <!-- Template: meme/respective_replies.tpl.html End --> 
