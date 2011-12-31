@@ -111,7 +111,7 @@
 		});
 		
 		$(document).bind('keydown', 'down', function(){
-			not_disagree();
+			next_disagree();
 		});
 		
     });
