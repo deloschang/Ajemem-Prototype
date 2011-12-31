@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 12:51:34
+<?php /* Smarty version 2.6.7, created on 2011-12-31 13:06:31
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -184,6 +184,13 @@
 	    $(\'#rpl_con\'+id).val(\'\');
      }
 
+	function strip(html)
+	{
+	   var tmp = document.createElement("DIV");
+	   tmp.innerHTML = html;
+	   return tmp.textContent||tmp.innerText;
+	 }
+
     function post_reply(id){
 		if($("#rpl_con"+id).val()=="" || $("#rpl_con"+id).val()=="Reply with answer."){
 	    	 $("#rpl_con"+id).val("Reply with answer.");
@@ -193,7 +200,9 @@
 	   if (logged_in) { 
 			/* $("#send_reply"+id).hide("slow",function(){ }); */
 			var url = "http://localhost/meme/answer_to_meme";
-			$.post(url,{answer:$("#rpl_con"+id).val(),id:id,ce:0 },function(res){
+			var reply = strip(($("#rpl_con"+id).val()).trim());
+			
+			$.post(url,{answer:reply,id:id,ce:0 },function(res){
 			    $("#rpl_con"+id).val(\'\'); /* clears form text space */
 			    $("#is_replied"+id).val(\'1\'); 
 			    $("#repl"+id).html(res);

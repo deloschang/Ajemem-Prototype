@@ -183,6 +183,13 @@
 	    $('#rpl_con'+id).val('');
     }
 
+	function strip(html)
+	{
+	   var tmp = document.createElement("DIV");
+	   tmp.innerHTML = html;
+	   return tmp.textContent||tmp.innerText;
+	}
+
     function post_reply(id){
 		if($("#rpl_con"+id).val()=="" || $("#rpl_con"+id).val()=="Reply with answer."){
 	    	 $("#rpl_con"+id).val("Reply with answer.");
@@ -192,7 +199,9 @@
 	   if (logged_in) { 
 			/* $("#send_reply"+id).hide("slow",function(){}); */
 			var url = "##LBL_SITE_URL##meme/answer_to_meme";
-			$.post(url,{answer:$("#rpl_con"+id).val(),id:id,ce:0},function(res){
+			var reply = strip(($("#rpl_con"+id).val()).trim());
+			
+			$.post(url,{answer:reply,id:id,ce:0},function(res){
 			    $("#rpl_con"+id).val(''); /* clears form text space */
 			    $("#is_replied"+id).val('1'); 
 			    $("#repl"+id).html(res);
@@ -351,7 +360,7 @@
 	
 	.meme_reproductive_system{
 		position:relative; 
-		left:60px;
+		left:55px;
 	}
 
 {* CSS for 'Search meme' on live feed *}
