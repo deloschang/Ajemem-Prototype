@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 22:21:24
+<?php /* Smarty version 2.6.7, created on 2012-01-01 02:37:55
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 136, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 31/12/2011 22:21:23 --> 
+<!-- Template: meme/addmeme.tpl.html Start 01/01/2012 02:37:55 --> 
  
 <div id="showmodal" class="showmodal"><em><strong><center>ENTER MEMEJA DOJO</center></strong></em></div>
 <script type="text/javascript">

