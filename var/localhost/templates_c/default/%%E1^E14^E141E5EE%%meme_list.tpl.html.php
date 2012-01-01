@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 18:19:51
+<?php /* Smarty version 2.6.7, created on 2012-01-01 02:53:06
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -184,6 +184,13 @@
 	    $(\'#rpl_con\'+id).val(\'\');
      }
 
+	function strip(html)
+	{
+	   var tmp = document.createElement("DIV");
+	   tmp.innerHTML = html;
+	   return tmp.textContent||tmp.innerText;
+	 }
+
     function post_reply(id){
 		if($("#rpl_con"+id).val()=="" || $("#rpl_con"+id).val()=="Reply with answer."){
 	    	 $("#rpl_con"+id).val("Reply with answer.");
@@ -193,7 +200,9 @@
 	   if (logged_in) { 
 			/* $("#send_reply"+id).hide("slow",function(){ }); */
 			var url = "http://localhost/meme/answer_to_meme";
-			$.post(url,{answer:$("#rpl_con"+id).val(),id:id,ce:0 },function(res){
+			var reply = strip(($("#rpl_con"+id).val()).trim());
+			
+			$.post(url,{answer:reply,id:id,ce:0 },function(res){
 			    $("#rpl_con"+id).val(\'\'); /* clears form text space */
 			    $("#is_replied"+id).val(\'1\'); 
 			    $("#repl"+id).html(res);
@@ -201,8 +210,13 @@
 			 });
 		
 			/* Added by Delos for live reply */
-			$("#replyinsert"+id).html("Replied by ';  echo $_SESSION['fname']; ?>
- <?php echo $_SESSION['lname'];  echo ' :<b>"+$("#rpl_con"+id).val()+"</b>")
+			/*$("#replyinsert"+id).html("Replied by ';  echo $_SESSION['fname']; ?>
+ <?php echo $_SESSION['lname'];  echo ' :<b>"+$("#rpl_con"+id).val()+"</b>")*/
+			var url = "http://localhost/meme/get_all_replies";
+			$.post(url,{id:id,ce:0 }, function(res){
+				$("#send_reply"+id).html(res);
+			 });
+			
 		
     	 } else {
     		alert("Please log in to reply.");
@@ -314,15 +328,47 @@
 </script>
 <style type="text/css">
     a{
-	text-decoration: none;
-	cursor: pointer;
+		text-decoration: none;
+		cursor: pointer;
      }
     .meme{
-	padding-left: 50px;
-	background: white;  /* background for meme color */
-	width:90%;
-	height:auto;
+		position: relative;
+		top:-25px;
+	   	margin-left: 15px;
+		padding-left: 10px;
+		padding-top: 10px;
+		padding-bottom: 5px;
+		background: white;  /* background for meme color */
+		width:95%;
+		height:auto;
+	
+		-moz-border-radius-topright: 6px; -webkit-border-top-right-radius: 6px; border-top-right-radius: 6px; -moz-border-radius-bottomright: 6px; -webkit-border-bottom-right-radius: 6px; border-bottom-right-radius: 6px; -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; border-bottom-left-radius: 6px; 
+	
+		-moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; border-top-left-radius: 6px;
+	
+		 border-bottom: 1px dotted #e6e6dc;
+	
      }
+    
+    /* Inner formatting of live feed meme */
+	img.avatar_thumb_fb, 
+	img.avatar_thumb_regular {
+		width: 40px;
+		height: 40px;
+	 }
+	
+	#meme_title {
+		position:relative;
+		bottom:6px;
+		padding-left:10px; 
+		font-size: 23px; 
+		font-weight: bold;
+	 }
+	
+	.meme_reproductive_system{
+		position:relative; 
+		left:55px;
+	 }
 
 {* CSS for \'Search meme\' on live feed * }
     .dec{			

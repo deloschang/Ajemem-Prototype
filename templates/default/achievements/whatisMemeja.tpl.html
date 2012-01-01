@@ -1,25 +1,6 @@
-{assign var=img_path value=$util->get_values_from_config('IMAGE')}
-<div style="font-size:20px;width:300px;">How to get achivement</div>
-<div style="width:300px;">
-{get_mod mod=cms mgr=cms choice=show code=howtogetachievement}
-</div></br>
-<div style="font-size:16px;width:300px;">Example</div>
-<div>
-{if $sm.res}
-	<table> 
-		<tr>
-		{section name=cur loop=$sm.res}
-		{assign var=x value=$sm.res[cur]}
-			<td>
-				<img src="##LBL_SITE_URL##{$img_path.badge_thumb}{$x.id_badge}_{$x.image_badge}"  style="height:80px; width:80px" title="{$x.desc_badge}" />
-				{if ($smarty.section.cur.iteration % 3) == 0}
-					
-			</td>
-		</tr>
-		<tr>
-				{/if}
-		{/section}
-		</tr>
-	</table>
-{/if}
-</div>
+
+<div style="font-size:14px">Welcome to Memeja Beta! Happy 2012!
+                                         <br>
+										 We would like to give a special thanks to T for all his support!
+										 -Delos Chang, Muaz Siddiqui </div>
+

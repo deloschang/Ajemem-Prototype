@@ -44,7 +44,6 @@
 			<a class="meme_gallery" data-fancybox-group="fav_meme" id="meme_fav_image{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
 			
 			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="width: 60px;height: 60px;cursor: pointer;"/></a>
-			<div>a
 			
 			{elseif $sm.flg == 2}{else}
 			<a class="meme_gallery" data-fancybox-group="my_meme" id="my_meme_image{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
@@ -67,13 +66,13 @@
 		</tr>
 		{if $sm.res}
 		    {if $sm.flg==1}
-			<tr><td align="right"><a href="##LBL_SITE_URL##manage/my_favorites/">See more</a></td></tr>
+			<tr><td align="right"><a href="##LBL_SITE_URL##manage/my_favorites/"></a></td></tr>
 		    {elseif $sm.flg==2}
 			<tr><td align="right"><a href="##LBL_SITE_URL##manage/tagged_meme/">View all</a></td></tr>
 		    {elseif $sm.flg==3}
 			<tr><td align="right"><a href="##LBL_SITE_URL##manage/dueled_meme/">View all</a></td></tr>
 		    {else}
-			<tr><td align="right"><a href="##LBL_SITE_URL##manage/my_meme_list/">See more</a></td></tr>
+			<tr><td align="right"><a href="##LBL_SITE_URL##manage/my_meme_list/"></a></td></tr>
 		    {/if}
 		{/if}
 	    </table>

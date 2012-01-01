@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 18:19:50
+<?php /* Smarty version 2.6.7, created on 2012-01-01 02:53:06
          compiled from common/menu.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/menu.tpl.html', 81, false),)), $this); ?>
 
-<!-- Template: common/menu.tpl.html Start 31/12/2011 18:19:50 --> 
+<!-- Template: common/menu.tpl.html Start 01/01/2012 02:53:06 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
@@ -42,7 +42,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	    $.fancybox.update();
 	 });
      }
-	$(document).ready(function(){
+	/*$(document).ready(function(){
 	$(window).scroll(function(e){
 		var scrollTop = $(window).scrollTop();
 		console.log(scrollTop);
@@ -75,7 +75,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			 });
 		 }
 	 });
- });
+ });*/
 </script>
 '; ?>
 
@@ -83,7 +83,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <div id="xpbar"></div>
 <div id="fbstuff">
 <?php if ($_SESSION['id_user']): ?>	
-	    <a href ="javascript:void(0);" onclick="fb_logout();">Welcome <?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+	    <a href ="http://localhost/">Welcome <?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
  !</a>
 	<?php else: ?>
 	<div class="fb-login-button" scope="email, publish_stream ,user_education_history 	">

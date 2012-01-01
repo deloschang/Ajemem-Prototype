@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 18:19:50
+<?php /* Smarty version 2.6.7, created on 2012-01-01 02:53:06
          compiled from common/header.tpl.html */ ?>
 
-<!-- Template: common/header.tpl.html Start 31/12/2011 18:19:50 --> 
+<!-- Template: common/header.tpl.html Start 01/01/2012 02:53:06 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
     function get_random_meme(){
@@ -33,7 +33,6 @@
 </script>
 '; ?>
 
-
 <!-- Memeja Logo -->
 <div id= "logoc">
 <a href="http://localhost/"> <img src="http://localhost/templates/images/rmemejalogo.png" width="280px"  height="200px" id="logo"></a>
@@ -42,7 +41,11 @@
 <!-- Memeja Top Bar -->
 <div id="header">
    <div id ="headerbtns"> 
+   <?php if (! $_SESSION['id_user']): ?>
       <img src="http://localhost/templates/images/joinmemeja.png" id="joinmemeja" onclick="$('#fblogin').slideToggle();" style="margin:-2px;">
+   <?php else: ?>
+      <img src="http://localhost/templates/images/logout.png" id="logout" onclick="fb_logout();" style="margin:-2px;">
+   <?php endif; ?>
 		<a href="http://localhost/meme/addMeme"><img src="http://localhost/templates/images/create.png" id="create"style="margin:-2px;"></a>
 	<?php if ($_SESSION['id_user']): ?>
 		<a href="javascript:void(0);" onclick="get_random_meme();"><img src="http://localhost/templates/images/random.png"style="margin:-2px;"></a>

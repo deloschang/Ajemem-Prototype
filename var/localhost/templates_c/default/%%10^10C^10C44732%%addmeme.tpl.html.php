@@ -1,12 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 16:00:10
+<?php /* Smarty version 2.6.7, created on 2012-01-01 01:37:25
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 141, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 139, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 31/12/2011 16:00:10 --> 
+<!-- Template: meme/addmeme.tpl.html Start 01/01/2012 01:37:25 --> 
  <!-- 
      Commented by Muaz :D
-	 This is the main HTML for the Memeja Editor.
+	 Presenting the Memeja Editor
 -->
 
 <div id="showmodal" class="showmodal"><em><strong><center>ENTER MEMEJA DOJO</center></strong></em></div>
@@ -80,17 +80,15 @@ _img.png";
 		 }
          }
      }
-
-</script>
-<script type="text/javascript">
-    $(window).bind(\'beforeunload\', function() {
+	$(window).bind(\'beforeunload\', function() {
             return \'Oh NO! Your meme has not been submitted!!\';
      }); 
+
 </script>
 '; ?>
 
 <?php if ($this->_tpl_vars['sm']['idq']): ?>
-<center><b>Answering to the Question.</b></center><br/>
+<center><b>Answering to the Question</b></center><br/>
 <?php endif; ?>
 
 <input type="hidden" name="iduser" id="iduser" value="<?php echo $_SESSION['id_user']; ?>
@@ -158,12 +156,12 @@ unset($_smarty_tpl_vars);
                     </tr>
 					-->
 					<tr>
-                        <td align='center'><input type="button" value="Submit" onclick="validate_me();"/> &nbsp; <!--<input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/> -->
+                        <td align='center'>&nbsp; <!--<input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/> -->
 						</td>
                     </tr>
                 </table>
             </div>
-
+          <div style="position:fixed;bottom:35px;left:700px"><input type="button" value="Submit" onclick="validate_me();"/></div>
         </div>
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>
 _draw.png"/>

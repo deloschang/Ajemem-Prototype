@@ -1,8 +1,16 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 18:05:28
+<?php /* Smarty version 2.6.7, created on 2012-01-01 02:32:45
          compiled from manage/right_pan_user.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/right_pan_user.tpl.html', 18, false),)), $this); ?>
-<table style="margin-top:0px" >
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/right_pan_user.tpl.html', 5, false),)), $this); ?>
+<?php if ($_SESSION['id_user']): ?>
+<table style="margin-top:0px; margin-left:5px;" >
+<tr>
+		<td><span style="font-weight:bold; font-size:28px; padding-top:5px;"><?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['username'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+</span>
+		<span id="left_pan_level" style="font-size:14px; color:#ACACA5; margin-left:2px;"> L<?php echo $_SESSION['level']; ?>
+</span></td>
+    </tr>
+    
     <tr>
 		<td valign="top">
 			<div id="changePhoto" style="margin-top:1px">
@@ -17,26 +25,20 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			</div>
 		</td>
     </tr>
-    
-    <tr>
-		<td><b><?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['username'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
- <span id="left_pan_level">L<?php echo $this->_tpl_vars['sm']['level']; ?>
-</b></span></td>
-    </tr>
-    
+     
     <tr>
 		<td>
-		<b>
-				<span id="ranking_number">Rank #<?php echo $this->_tpl_vars['sm']['exp_rank']; ?>
-</span>
-		 <span id="total_xp" style="font-size:7px">(<?php echo $this->_tpl_vars['sm']['exp_point']; ?>
- XP)</span>
-		 </b>		 
+		
+					
+		<div id="user_ranking_info" style="background-color: #4ebaff; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; font-family:Verdana; font-weight:bold; color:white; width:90px;height:72px; margin-top:10px; margin-left:5px; text-align:center;" >
+		<span id="ranking_number" style="font-family:Verdana; font-size:48px; "><?php if ($this->_tpl_vars['sm']['exp_rank']):  echo $this->_tpl_vars['sm']['exp_rank'];  else: ?>N/A<?php endif; ?></span>
+		
+		 <div id="total_xp" style="font-size:14px; margin-left:12px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; position:relative; bottom:3px;"><?php if ($this->_tpl_vars['sm']['exp_point']):  echo $this->_tpl_vars['sm']['exp_point'];  endif; ?>
+		 <span style="font-size:8px; position:relative; bottom:5px;">XP</span></div>
+		 </div>
 		</td>
     </tr>
-
-	<br/>
-
+    
     <tr>
 		<td>
 		<div id="my_meme_list" >
@@ -88,6 +90,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 			<?php if (( ( $this->_sections['cur']['iteration'] % 3 ) == 0 )): ?>
 		    </td>
 		</tr>
+		
 		<tr>
 		    <td>
 			<?php endif; ?>
@@ -100,14 +103,9 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 			<?php endif; ?>
 		    </td>
 		</tr>
-	    </table>
-	    
-</fieldset>
-		</div>
-		</td>
-    </tr>
-    
-    <tr>
+		</table>
+		
+	<tr>
     	<td>
     <fieldset style=" background-color:#CAD8F3;width: 200px;margin-left:0px" >
 	    <legend>
@@ -167,10 +165,6 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 			<?php endif; ?>
 		    </td>
 		</tr>
-	    </table>
-</fieldset>
-</td>
-</tr>	
-   
 	
 </table>
+<?php endif; ?>

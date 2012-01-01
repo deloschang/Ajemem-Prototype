@@ -36,7 +36,7 @@
 	    $.fancybox.update();
 	});
     }
-	$(document).ready(function(){
+	/*$(document).ready(function(){
 	$(window).scroll(function(e){
 		var scrollTop = $(window).scrollTop();
 		console.log(scrollTop);
@@ -69,14 +69,14 @@
 			});
 		}
 	});
-});
+});*/
 </script>
 {/literal}
 <div id="follower">
 <div id="xpbar"></div>
 <div id="fbstuff">
 {if $smarty.session.id_user}	
-	    <a href ="javascript:void(0);" onclick="fb_logout();">Welcome {$smarty.session.fname|capitalize} !</a>
+	    <a href ="##LBL_SITE_URL##">Welcome {$smarty.session.fname|capitalize} !</a>
 	{else}
 	<div class="fb-login-button" scope="email, publish_stream ,user_education_history {*,user_birthday*}	{* Uncomment to enable *}">
         Memebook

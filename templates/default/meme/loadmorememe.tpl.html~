@@ -205,14 +205,7 @@
 	
 </script>
 {/literal}
-<div class="fb-login-button" scope="
-	    	email,
-	    	publish_stream
-	    	,user_education_history">
-        Login with Facebook</div>
-
-
-<div class="live_feed0" style="display: none;"></div>
+<div class="live_feed0" style="display: none; padding-top:20px;"></div>
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
 <div>
 	
@@ -226,8 +219,7 @@
 
 <!-- Show details updates view count -->
 			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
-<!--			<div style="vertical-align: top; font-size: 15px" style="padding-left:5px"><b>{$x.title|capitalize}</b></div>-->
-			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="cursor:pointer;width: 80px;height: 80px; 
+			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="cursor:pointer;width: 95px; height: 85px; 
 			{* Added by Delos: highlights if you created the meme *}
 			{if $smarty.session.id_user}
 				{if $x.id_user == $smarty.session.id_user}
@@ -236,20 +228,25 @@
 			{/if}
 					
 		" align="left"/>
-
-			<span style="vertical-align: top; padding-left:5px; font-size: 15px">
-			<b>
+				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');">
+				{if $sm.uinfo[$x.id_user].fb_pic_square}
+					<img src="{$sm.uinfo[$x.id_user].fb_pic_square}" class="avatar_thumb_fb" >
+				{elseif $sm.uinfo[$x.id_user].avatar}
+					<img src="##LBL_SITE_URL##image/thumb/avatar/{$sm.uinfo[$x.id_user].avatar}" class="avatar_thumb_regular"/>
+				{else}
+				{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}
+				{/if}			
+			</span>
+			<span id="meme_title">{$x.title|capitalize}</span></a>
 			
-			{$x.title|capitalize}</b></span></a>
 	<!-- end of gallery class-->
 			
-			<span style="font-size:12px">  by <b><span id="user{$sm.uinfo[$x.id_user].id_user}"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');">{$sm.uinfo[$x.id_user].username} </a></span></span>
-			<span style="font-size:8px"> L{$sm.uinfo[$x.id_user].level}</span></b>
-	<!-- Note: Create a Javascript fall-back page if JS not enabled -->
+			<div style="position:relative; left:20px; bottom:4px; font-size:17px; color:#ACACA5;">  by 
+			<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:17px;"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');">{$sm.uinfo[$x.id_user].username} </a></span>
+			<span style="font-size:13px; color:#ACACA5;"> L{$sm.uinfo[$x.id_user].level}</span></div>
 
 <!-- Caption shows below image 
 			<div style="font-size: 12px; color:blue"><span id="hrc{$x.id_meme}">{if $sm.hrc[$x.id_meme].caption}"{$sm.hrc[$x.id_meme].caption}"{else}{/if}</span></div><br/>-->
-			<div></div><br/>
 
 <!-- Comment out Category
 			    Category:<b>{$category[$x.category]}</b><br/> -->
@@ -259,10 +256,14 @@
 
 <!-- Date (Commented out)
 			    On: {$x.add_date|date_format:"%m-%d-%Y"} @ {$x.add_date|date_format:"%I:%M %p"}<br/><br/>  -->
+<!--	<div class="meme_gen_info" style="position:relative; left: 13px; bottom:2px; font-size:13px; color:#ACACA5;">born 24 min ago</div>-->
 
+<br/>
 <!-- Reply-->
+
+<div class="meme_reproductive_system">
 			    {if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
-			    <label id="repl{$x.id_meme}">{if $x.tot_reply != 0}{$x.tot_reply}{/if}</label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('{$x.id_meme}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;
+			    <label id="repl{$x.id_meme}">{if $x.tot_reply != 0}{$x.tot_reply}{/if}</label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('{$x.id_meme}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" style="width:17px;height:17px"/><span style="font-size:15px;">Reply</span></a>&emsp;
 			    {/if} 
 
 <!-- Honor -->
@@ -276,7 +277,7 @@
 				    		style="color: gray; cursor: default"
 				    	{/if}
 				    {/if}
-			    onclick="set_tot_adaggr('{$x.id_meme}','A','{$x.id_user}');">Honor{*$x.honour_id_user*}</a>&emsp;
+			    onclick="set_tot_adaggr('{$x.id_meme}','A','{$x.id_user}');"><span style="font-size:15px;">Honor</span></a>&emsp;
 
 <!-- Dishonor -->
 			    <label id="disaggr{$x.id_meme}">{if $x.tot_dishonour != 0}{$x.tot_dishonour}{/if}</label>&nbsp;<a href="javascript:void(0);" id="disagr_link{$x.id_meme}" 
@@ -289,7 +290,24 @@
 			    		{/if}
 			    	{/if}
 			    
-			    onclick="set_tot_adaggr('{$x.id_meme}','D','{$x.id_user}');">Dishonor{*$x.dishonour_id_user*}</a>
+			    onclick="set_tot_adaggr('{$x.id_meme}','D','{$x.id_user}');"><span style="font-size:15px;">Dishonor</span></a>
+			    <span> 
+			    &emsp;
+				{if $x.tot_honour > 1}
+					<img src="##LBL_SITE_URL##image/orig/premade_images/14_46_EWBTE.png" title="Good job! The 2nd Honor!" style="width:17px; height:17px"/>
+				{/if}
+				{if $x.tot_honour > 2}
+					<img src="##LBL_SITE_URL##image/orig/premade_images/27_59_ExcitedTroll.png" title="Excited Troll is excited! 2 Honors!" style="width:17px; height:17px"/>
+				{/if}
+				{if $x.tot_honour > 3}
+					<img src="##LBL_SITE_URL##image/orig/premade_images/13_45_LOL.png" title="L0L! 3 Honors!" style="width:17px; height:17px"/>
+				{/if}
+				{if $x.tot_honour > 4}
+					<img src="##LBL_SITE_URL##image/orig/premade_images/3_35_NotBad.png" title="Obama says this meme is NOT BAD!" style="width:17px; height:17px"/>
+				{/if}
+				</span>
+			    
+			    </div>
 
 <!-- Add Caption 
 			    {if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
@@ -311,12 +329,12 @@
 
 -->
 	    </div>
-	    <div id="send_reply{$x.id_meme}" style="width:60%;display: none;"></div>
+	    <div id="send_reply{$x.id_meme}" style="width:75%; margin:-20px 0 30px 120px; display: none;"></div>
 <!--
 	    <div id="add_caption{$x.id_meme}" style="width:60%;display: none;"></div> -->
 	    <input type="hidden" name="is_replied" id="is_replied{$x.id_meme}" value=''/>
 	    <input type="hidden" name="is_agreed" id="is_agreed{$x.id_meme}" value=''/>
 	    <input type="hidden" name="is_disagreed" id="is_disagreed{$x.id_meme}" value=''/>
-</div><br/>
+</div>
 {/foreach}
 {/if}

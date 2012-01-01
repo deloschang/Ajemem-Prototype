@@ -114,21 +114,12 @@ $(document).ready(function(){
 		console.log(scrollTop);
 		if(scrollTop > 155){
 			var y = $('#main').offset();
-			var x = $('.right_pos_abs').offset();
-			/*$('.right_pos_abs').css({
-			    position:'fixed',
-			    //left : 'px'
-			});*/
 			$('#main').css({
 			    position:'fixed',
-				top:'40px',
+				top:'40px!important',
 			    left : y.left+'px'
 			});
 		}else{
-			/*$('.right_pos_abs').css({
-			    position:'absolute',
-			    left :'820px'
-			});*/
 			$('#main').css({
 			    position:'absolute',
 				top:'20px',
@@ -137,7 +128,6 @@ $(document).ready(function(){
 		}
 	});
 	$("#page").show();
-	$("#loadimg").lionbars();
 });
 </script>
 {/literal}
@@ -146,11 +136,11 @@ $(document).ready(function(){
         <table width='100%' class="smil_tabl_fixed" border="0">
             <tr>
                 <td align='right'>
-                    <input type="file" name="updimage" id="updimage" size="5" />
+                  <!--  <input type="file" name="updimage" id="updimage" size="5" />
                     <input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
                     URL: <input type="text" name="imgurl" id="imgurl" size="27" />
                     <input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
-					<div id="prev_image" class="prev_image"></div>
+					<div id="prev_image" class="prev_image"></div>-->
                 </td>
             </tr>
         </table>
