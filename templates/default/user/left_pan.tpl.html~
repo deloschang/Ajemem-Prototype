@@ -27,7 +27,7 @@
 		 </div>
 		 
 		{*Trailing Rank, User, + XP*}
-		<div class="softcorner native num_videos" style="background-color: #aad450; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; width:90px;height:70px; text-align:center; font-family:Verdana; font-weight:bold; color:white; position:relative; left:100px;bottom:70px;" >
+		<div id="other_user_ranking_info" class="softcorner native num_videos" style="background-color: #aad450; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; width:90px;height:70px; text-align:center; font-family:Verdana; font-weight:bold; color:white; position:relative; left:100px;bottom:70px;" >
 		<span id="trailing_all">
 		 <span id="trailing_ranking_number" style="font-family:Verdana; font-size:40px;">{$smarty.session.one_less_rank}</span>
 		<div id="trailing_exp" style="-moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; font-size:12px; position:relative; bottom:4px; margin-left:12px;">{if $smarty.session.one_less_exp}{$smarty.session.one_less_exp}{else}0{/if}

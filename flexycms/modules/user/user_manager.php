@@ -1093,7 +1093,7 @@ class user_manager extends mod_manager {
 	    $sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE id_user=".$data['id_user'];
 	    $res_ach=getsingleindexrow($sql_ach);
 	    
-	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'] - 1;
+	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'] - 7;
 	    $comm = " id_user=".$data['id_user'];
 	    $cond = (!$this->_input['last_id'])?$comm:$comm." AND id_meme <".$this->_input['last_id'];
 	    $cond.=" ORDER BY id_meme DESC LIMIT ".$limit;
@@ -1112,7 +1112,7 @@ class user_manager extends mod_manager {
 			return false;
 	    } 
 	    
-	    $limit_favorite = $GLOBALS['conf']['PAGINATE']['rec_per_page'] - 1;
+	    $limit_favorite = $GLOBALS['conf']['PAGINATE']['rec_per_page'] - 7;
 	    $comm_favorite = "FIND_IN_SET(".$data['id_user'].",honour_id_user) ";
 	    $cond_favorite  = (!$this->_input['last_id'])?$comm_favorite :$comm_favorite ." AND id_meme <".$this->_input['last_id'];
 	    $cond_favorite .=" ORDER BY id_meme DESC LIMIT ".$limit_favorite ;
