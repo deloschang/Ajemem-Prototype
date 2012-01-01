@@ -1,10 +1,14 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 02:37:55
+<?php /* Smarty version 2.6.7, created on 2012-01-01 01:37:25
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 136, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 139, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 01/01/2012 02:37:55 --> 
- 
+<!-- Template: meme/addmeme.tpl.html Start 01/01/2012 01:37:25 --> 
+ <!-- 
+     Commented by Muaz :D
+	 Presenting the Memeja Editor
+-->
+
 <div id="showmodal" class="showmodal"><em><strong><center>ENTER MEMEJA DOJO</center></strong></em></div>
 <script type="text/javascript">
     var last_comic="http://localhost/spad/workspace/<?php echo $_SESSION['id_user']; ?>
@@ -18,6 +22,7 @@ _img.png";
 <script type="text/javascript" src="http://localhost/spad/color/colorpicker.js"></script>
 <script type="text/javascript" src="jquery.lionbars.0.3.min.js"></script>
 <script type="text/javascript" src="jquery.lionbars.0.3.js"></script>
+
 <link type="text/css" href="http://localhost/spad/css/colorpicker.css" rel="stylesheet" />
 <link rel="stylesheet" href="http://localhost/spad/css/spad.css" type="text/css"/>
 <link rel="stylesheet" href="http://localhost/templates/default/meme/lionbars.css" type="text/css"/>
@@ -61,31 +66,29 @@ _img.png";
             return false;
          }else{
         
-<!--		if(!$("#tag").val()){-->
-<!--			var conf=confirm("Are you sure you don\'t want to tag your friends?");-->
-<!--			if(conf){-->
-<!--				$(window).unbind();-->
-<!--				submit_memeje();-->
-<!--			 }else{-->
-<!--				return false;-->
-<!--			 }-->
-<!--		 }else{-->
+		if(!$("#tag").val()){
+			var conf=confirm("Are you sure you don\'t want to tag your friends?");
+			if(conf){
+				$(window).unbind();
+				submit_memeje();
+			 }else{
+				return false;
+			 }
+		 }else{
 			$(window).unbind();
 			submit_memeje();
-<!--		 }-->
+		 }
          }
      }
-
-</script>
-<script type="text/javascript">
-    $(window).bind(\'beforeunload\', function() {
+	$(window).bind(\'beforeunload\', function() {
             return \'Oh NO! Your meme has not been submitted!!\';
      }); 
+
 </script>
 '; ?>
 
 <?php if ($this->_tpl_vars['sm']['idq']): ?>
-<center><b>Answering to the Question.</b></center><br/>
+<center><b>Answering to the Question</b></center><br/>
 <?php endif; ?>
 
 <input type="hidden" name="iduser" id="iduser" value="<?php echo $_SESSION['id_user']; ?>
@@ -153,12 +156,12 @@ unset($_smarty_tpl_vars);
                     </tr>
 					-->
 					<tr>
-                        <td align='center'><input type="button" value="Submit" onclick="validate_me();"/> &nbsp; <!--<input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/> -->
+                        <td align='center'>&nbsp; <!--<input type="button" value="Cancel" id="cancel" onclick="cancel_meme();"/> -->
 						</td>
                     </tr>
                 </table>
             </div>
-
+          <div style="position:fixed;bottom:35px;left:700px"><input type="button" value="Submit" onclick="validate_me();"/></div>
         </div>
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>
 _draw.png"/>

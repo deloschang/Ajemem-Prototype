@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 01:56:14
+<?php /* Smarty version 2.6.7, created on 2011-12-31 02:26:49
          compiled from manage/my_meme_details.tpl.html */ ?>
 
-<!-- Template: manage/my_meme_details.tpl.html Start 30/12/2011 01:56:14 --> 
+<!-- Template: manage/my_meme_details.tpl.html Start 31/12/2011 02:26:49 --> 
  <?php echo '
 <style type="text/css">
 .meme{

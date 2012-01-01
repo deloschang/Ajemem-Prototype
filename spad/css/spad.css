@@ -79,11 +79,11 @@
 	overflow-x:hidden;
 	overflow-y:auto;
 	width: 140px;
-	height: 500px;
+	height: 475px;
 	margin:0px;
 	position:fixed;
 	top:110px;
-	left:83.5%;
+	left:79%;
 }
 #vs	{
 	position:absolute;
@@ -115,13 +115,14 @@ input[type='button']	{
 	width:60px;
 	line-height:24px;
 	text-align:center;
-	background:#F5F5F5;
+	background:#FAFAFA;
 	padding:0px 3px;
 	border-radius:12px;
 	-moz-border-radius:12px;
 	-webkit-border-radius:12px;
 	-o-border-radius:12px;
-	border:1px solid #F0F0F0;
+	border:1px solid #DCDCDC;
+	z-index:9999999;
 }
 html > body .toolbar {
 	*left:0px;
@@ -163,8 +164,9 @@ span.icon_div img{
     overflow: visible;
 }
 .smil_tabl_fixed{
-	width:640px;
+	width:400px;
 	position:fixed;
+	left:10px;
 	top:380px;
 	height:105px;
 }

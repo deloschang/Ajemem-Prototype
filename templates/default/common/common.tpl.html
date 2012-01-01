@@ -460,144 +460,8 @@
 
 	       })
 		}
-
+	
 </script>
-<style type="text/css">
-
-body {
-	margin-left:75px;
-	margin-right:75px;
-	margin-top:1.5em;
-	background-color:white;
-}
-
-/* Outer div to live feed */
-#meme_content{
-	width:700px;
-	background-color:#e6e6dc;
-	-moz-border-radius-topright: 15px; -webkit-border-top-right-radius: 15px; border-top-right-radius: 15px; -moz-border-radius-bottomright: 15px; -webkit-border-bottom-right-radius: 15px; border-bottom-right-radius: 15px; -moz-border-radius-bottomleft: 15px; -webkit-border-bottom-left-radius: 15px; border-bottom-left-radius: 15px; 
-	
-	-moz-border-radius-topleft: 10px; -webkit-border-top-left-radius: 10px; border-top-left-radius: 10px; 
-}
-
-/* Inner div to live feed */
-#meme_organs{
- position: relative;
- top:30px;
- margin-left: 20px;
- margin-right: 20px;
- background-color: #ffffff; 
- -moz-border-radius: 10px; 
- -webkit-border-radius: 10px; 
- border-radius: 10px;
-}
-
-#xpbar {
-	position: fixed;
-	top: 0px;
-	left: 74px;
-	right: 75px;
-	z-index: 99998;
-}
-
-#user_level{
-	position: fixed;
-	
-	font-size: 10px;
-	font: Verdana;
-	color: white;
-	
-	cursor: default;
-	
-	top: 2px;
-	left: 9%;
-	z-index: 999999;
-
-}
-
-#xpbar_status {
-	position: fixed;
-	
-	font-size: 10px;
-	font: Verdana;
-	color: white;
-	
-	display: none;
-	cursor: default;
-	
-	top: 2px;
-	left: 45%;
-	z-index: 99999;
-}
-
-/* Exp Bar Tab */
-.expbar{
-	position:fixed;
-	bottom:15px;
-	left:7px;
-	border-radius:5px;
-}
-.exp_fix1{
-	position:fixed!important;
-	top:485px!important;
-}
-.notify {
-	cursor: pointer;
-	position:fixed;
-	bottom:15px;
-	left:100px;
-	border-radius:5px;
-}
-.not_txt{
-	cursor: pointer;
-	background-color: red;
-	position:fixed;
-	left: 155px;
-	bottom: 20px;
-	width:13px;
-	height:16px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	border-radius:5px;
-	display:none;
-}
-.leftpan_img{
-	 background:url(##LBL_SITE_URL##templates/images/m_previous_btn.png) no-repeat;
-	 width:11px;
-	 height:71px;
-         position:absolute;
-         position:fixed;
-	 left:5px;
-         top:400px;
-	 z-index: 5;
-}
-.rightpan_img{
-	background:url(##LBL_SITE_URL##templates/images/m_next_btn.png) no-repeat;
-	 width:11px;
-	 height:71px;
-         position:absolute;
-         position:fixed;
-         right:5px;
-         top:400px;
-	 z-index: 5;
-}
-
-/* Notification pop-up */
-.inner{
-	outline:1px solid #000;
-	background-color:wheat;
-
-}
-
-/* Location of Notification pop-up */
-.slide .inner {
-	position: fixed;
-	left: 102px;
-	bottom: 33px;
-	z-index:9999999;
-}
-
-</style>
 {/literal}
 </head>
 <body>
@@ -630,7 +494,7 @@ body {
 {/literal}
 
   <input type="hidden" id="tst" value="2">
-    <div id="page1">
+    <div id="mainpage">
 		<div id="mymodal"></div>
 	    	{include file='common/header'}
 
@@ -642,14 +506,12 @@ body {
 		{/if}
 
 		<!-- Left/Center/Right Content -->
-		<table border="2" width="100%" id="mid_cont">
+		<table width="100%" id="mid_cont">
 		    <tr>
 			{if $smarty.request.choice !='addMeme'}
 			<td width="15%" id="leftpan" valign="top">
 			    {if $smarty.session.id_user}	
 				    {include file="user/left_pan"}
-			    {else}
-				    {include file="user/login_form"}
 			    {/if}
 			</td>
 			{/if}
@@ -657,21 +519,21 @@ body {
 			<td align="left" valign="top">
 			    <div><font color="#FF0000">{myinclude file="common/messages" module="global"}</font></div>
 			    <div id="container">
+				{if $smarty.request.choice !='addMeme'}
+				
+				</div>
+				{/if}
 				{if $smarty.session.id_user && $smarty.request.choice !='answer_to_ques' && $smarty.request.choice !='addMeme' && $smarty.request.choice !='meme_details'}
 				    {get_mod mod=question mgr=question choice=get_this_week_question}<br>
 				{/if}
-				
-				<div id="meme_content">
-					<div id="meme_organs">
+
 		<!-- Content in middle of page (Live Feed/Editor) -->
 				{include file=$content}
-					</div>
-				</div>
 
 		<!-- Login form if user not logged in -->
 			<!-- switched from user/login_form -->
 				{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
-			    </div>
+				</div>
 			</td>
 
 			{if $smarty.request.choice !='addMeme'}
@@ -689,27 +551,14 @@ body {
 		</table>
 
 		{if $smarty.session.id_user}
-
-		<!-- For Experience button -->
-<!--	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>-->
-		<!-- End -->
 		
-		<!-- For Notification button -->
-		<div id="slidebottom" class="slide">
-		      <div class='notify' style="z-index:99999; border:3px  solid #cccccc; background-color:#f2f2f2; float:left;">
-			Notification
-			<label class="not_txt"><font style="color:white;margin-left: 3px;font-weight:bold;"><span id="not_cnt"></span></font></label>
-		      </div>
-		      <div class="inner"></div>
-		</div>
-
 		{/if}
 		<div class="clear"></div>
 		<div class="push"></div>
 		<input type="hidden" id="user_ids" value=""/>
 		<input type="hidden" id="id_badges" />
 	</div>
-	<div id="footer">&copy; Copyrights. All Rights Reserved. 2011</div>
+	<div id="footer"><center>&copy; Copyrights. All Rights Reserved. 2012 <a href="##LBL_SITE_URL##achievements/whatisMemeja">About Us</a></center></div>
 </body>
 </html>
 

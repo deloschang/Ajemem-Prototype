@@ -1,15 +1,14 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 02:37:59
+<?php /* Smarty version 2.6.7, created on 2012-01-01 03:00:27
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 661, false),)), $this); ?>
-<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '589fe8fceefab7a002f2bfeddbecf8c3'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 527, false),)), $this); ?>
+<?php $this->_cache_serials['/opt/lampp/htdocs/flexycms/../var/localhost/templates_c/default/^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'a3fcaeeb5b09e41f624c4450060be962'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Memeja: 2 Me's; 1 Meme</title>
-<?php $this->assign('appid', $this->_tpl_vars['util']->get_values_from_config('FACEBOOK')); ?>
-<?php $this->assign('chc', $_REQUEST['choice']); ?>
+<?php $this->assign('appid', $this->_tpl_vars['util']->get_values_from_config('FACEBOOK'));  $this->assign('chc', $_REQUEST['choice']); ?>
 
 <script type="text/javascript" src="http://localhost/libsext/jquery/jquery.js"></script>
 <script type="text/javascript" src="http://localhost/libsext/jquery/jquery-1.4.2.min.js"></script>
@@ -463,144 +462,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 
 	        })
 		 }
-
+	
 </script>
-<style type="text/css">
-
-body {
-	margin-left:75px;
-	margin-right:75px;
-	margin-top:1.5em;
-	background-color:white;
- }
-
-/* Outer div to live feed */
-#meme_content{
-	width:700px;
-	background-color:#e6e6dc;
-	-moz-border-radius-topright: 15px; -webkit-border-top-right-radius: 15px; border-top-right-radius: 15px; -moz-border-radius-bottomright: 15px; -webkit-border-bottom-right-radius: 15px; border-bottom-right-radius: 15px; -moz-border-radius-bottomleft: 15px; -webkit-border-bottom-left-radius: 15px; border-bottom-left-radius: 15px; 
-	
-	-moz-border-radius-topleft: 10px; -webkit-border-top-left-radius: 10px; border-top-left-radius: 10px; 
- }
-
-/* Inner div to live feed */
-#meme_organs{
- position: relative;
- top:30px;
- margin-left: 20px;
- margin-right: 20px;
- background-color: #ffffff; 
- -moz-border-radius: 10px; 
- -webkit-border-radius: 10px; 
- border-radius: 10px;
- }
-
-#xpbar {
-	position: fixed;
-	top: 0px;
-	left: 74px;
-	right: 75px;
-	z-index: 99998;
- }
-
-#user_level{
-	position: fixed;
-	
-	font-size: 10px;
-	font: Verdana;
-	color: white;
-	
-	cursor: default;
-	
-	top: 2px;
-	left: 9%;
-	z-index: 999999;
-
- }
-
-#xpbar_status {
-	position: fixed;
-	
-	font-size: 10px;
-	font: Verdana;
-	color: white;
-	
-	display: none;
-	cursor: default;
-	
-	top: 2px;
-	left: 45%;
-	z-index: 99999;
- }
-
-/* Exp Bar Tab */
-.expbar{
-	position:fixed;
-	bottom:15px;
-	left:7px;
-	border-radius:5px;
- }
-.exp_fix1{
-	position:fixed!important;
-	top:485px!important;
- }
-.notify {
-	cursor: pointer;
-	position:fixed;
-	bottom:15px;
-	left:100px;
-	border-radius:5px;
- }
-.not_txt{
-	cursor: pointer;
-	background-color: red;
-	position:fixed;
-	left: 155px;
-	bottom: 20px;
-	width:13px;
-	height:16px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	border-radius:5px;
-	display:none;
- }
-.leftpan_img{
-	 background:url(http://localhost/templates/images/m_previous_btn.png) no-repeat;
-	 width:11px;
-	 height:71px;
-         position:absolute;
-         position:fixed;
-	 left:5px;
-         top:400px;
-	 z-index: 5;
- }
-.rightpan_img{
-	background:url(http://localhost/templates/images/m_next_btn.png) no-repeat;
-	 width:11px;
-	 height:71px;
-         position:absolute;
-         position:fixed;
-         right:5px;
-         top:400px;
-	 z-index: 5;
- }
-
-/* Notification pop-up */
-.inner{
-	outline:1px solid #000;
-	background-color:wheat;
-
- }
-
-/* Location of Notification pop-up */
-.slide .inner {
-	position: fixed;
-	left: 102px;
-	bottom: 33px;
-	z-index:9999999;
- }
-
-</style>
 '; ?>
 
 </head>
@@ -635,7 +498,7 @@ body {
 
 
   <input type="hidden" id="tst" value="2">
-    <div id="page1">
+    <div id="mainpage">
 		<div id="mymodal"></div>
 	    	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "common/header.tpl.html", 'smarty_include_vars' => array()));
@@ -655,19 +518,13 @@ unset($_smarty_tpl_vars);
 		<?php endif; ?>
 
 		<!-- Left/Center/Right Content -->
-		<table border="2" width="100%" id="mid_cont">
+		<table width="100%" id="mid_cont">
 		    <tr>
 			<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
 			<td width="15%" id="leftpan" valign="top">
 			    <?php if ($_SESSION['id_user']): ?>	
 				    <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/left_pan.tpl.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?>
-			    <?php else: ?>
-				    <?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
@@ -682,21 +539,21 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?></font></div>
 			    <div id="container">
+				<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
+				
+				</div>
+				<?php endif; ?>
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:589fe8fceefab7a002f2bfeddbecf8c3#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:589fe8fceefab7a002f2bfeddbecf8c3#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:a3fcaeeb5b09e41f624c4450060be962#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:a3fcaeeb5b09e41f624c4450060be962#0}';}?>
 <br>
 				<?php endif; ?>
-				
-				<div id="meme_content">
-					<div id="meme_organs">
+
 		<!-- Content in middle of page (Live Feed/Editor) -->
 				<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['content'], 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-					</div>
-				</div>
 
 		<!-- Login form if user not logged in -->
 			<!-- switched from user/login_form -->
@@ -705,7 +562,7 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
   endif; ?> 
-			    </div>
+				</div>
 			</td>
 
 			<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
@@ -731,27 +588,13 @@ unset($_smarty_tpl_vars);
 		</table>
 
 		<?php if ($_SESSION['id_user']): ?>
-
-		<!-- For Experience button -->
-<!--	        <div class='expbar' id='expbar' style="z-index:99999;border:3px  solid #cccccc;background-color:#f2f2f2;">Experience Bar</div>-->
-		<!-- End -->
 		
-		<!-- For Notification button -->
-		<div id="slidebottom" class="slide">
-		      <div class='notify' style="z-index:99999; border:3px  solid #cccccc; background-color:#f2f2f2; float:left;">
-			Notification
-			<label class="not_txt"><font style="color:white;margin-left: 3px;font-weight:bold;"><span id="not_cnt"></span></font></label>
-		      </div>
-		      <div class="inner"></div>
-		</div>
-
 		<?php endif; ?>
 		<div class="clear"></div>
 		<div class="push"></div>
 		<input type="hidden" id="user_ids" value=""/>
 		<input type="hidden" id="id_badges" />
 	</div>
-	<div id="footer">&copy; Copyrights. All Rights Reserved. 2011</div>
+	<div id="footer"><center>&copy; Copyrights. All Rights Reserved. 2012 <a href="http://localhost/achievements/whatisMemeja">About Us</a></center></div>
 </body>
 </html>
-

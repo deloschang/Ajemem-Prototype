@@ -426,6 +426,12 @@ var settings = {
 			$('img[class=uparrow]').click(function () {
 			    moveUp();
 			})
+			$('img[class=clear]').click(function () {
+			    clear_canvas();
+			})
+			$('img[class=size]').click(function () {
+			    clear_canvas();
+			})
 			$('img[class=downarrow]').click(function () {
 			    moveDown();
 			})
@@ -440,13 +446,12 @@ var settings = {
                 endX = endY = 0;
             });
             $(document).keyup(function(e){
-//                if(e.which == 90){ // 'z'
-//                	console.log('z fired');
-//                    undoimage();
-//                }
-//                if(e.which == 89){ // 'y'
-//                    redoimage();
-//                }
+                if(e.which == 90){
+                    undoimage();
+                }
+                if(e.which == 89){
+                    redoimage();
+                }
             /*if(e.which == 107){
                     var newvalue = Math.min($( "#vs" ).slider( "option", "value" )+1, $( "#vs" ).slider( "option", "max" ));
                     adjustfontsize(newvalue);

@@ -46,38 +46,15 @@ label.error	{
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
-	margin: 0 auto -30px;
+
 }
 #footer 	{
-	background:#4D79A6;
+	background:#87C8F0;
 	height:30px;
 	color:#FFF;
-	padding:0px 10px;
 }
 .push	{
 	height:30px;
-}
-/* ======================================= */
-
-/* Header Section */
-#header	{
-	background:#4D79A6;
-	color:#FFF;
-	height:75px;
-	padding:0px 10px;
-}
-#header h1	{
-	color:#FFF;
-	font-size:24px;
-	font-weight:bold;
-	float:left;
-}
-#header h1 a	{
-	text-decoration:none;
-}
-
-#header a	{
-	color:#FFF;
 }
 /* ======================================= */
 
@@ -508,13 +485,235 @@ table.userinfo input.fields:focus	{
 	position:fixed;
 	left:50%;
 	top:50%!important;
-	margin:-25px 0px 0px -200px;
-	border:1px solid black;
-	padding-top:15px;
+	border:0px solid black;
 	font-size:16px;
 	color:#FFF;
 	background:#111;
-	-moz-border-radius : 10px 10px 10px 10px;
-	-webkit-border-radius : 10px 10px 10px 10px;
 	z-index:99999999;
 }
+
+/******************************Main Page Styling*******************************/
+
+body {
+	background-color:#87C8F0;
+}
+
+#mainpage {
+ color:#FFF;
+}
+
+/* Memeja Logo */
+#logo {
+ position:absolute;
+ left:10%;
+ top:-35px;
+}
+
+
+/*Feed Contents*/
+#mid_cont {
+   width:80%;
+   background:#FFF;
+   margin-left: 10%;
+   margin-right: 10%;
+   moz-border-radius: 20px;
+   webkit-border-radius: 20px;
+   khtml-border-radius: 20px;
+   border-radius: 20px;
+}
+
+/* Header Section
+   Vimeo Blue:87C8F0 */
+#header	{
+	background:#87C8F0;
+	color:#FFF;
+	height:100px;
+	padding:0px 10px;
+}
+#header h1	{
+    font:Garamond;
+	color:#FFF;
+	font-size:24px;
+	font-weight:bold;
+	float:left;
+}
+#header h1 a	{
+	text-decoration:none;
+}
+
+#header a	{
+	color:#FFF;
+	font-size:18px;
+}
+
+#headerbtns {
+  top:30px;
+  position:absolute;
+  left:46.5%;
+  width:30%;
+  cursor:pointer;
+}
+/*Under Join Memeja*/
+#fblogin {
+  display:none;
+  position:absolute;
+  top:48px;
+  left:635px;
+}
+/* Next to xpbar */
+#fbstuff{
+  position:fixed;
+  left:81.5%;
+  top:0px;
+  padding:5px;
+  font-weight:bold;
+  font:Lucida Console;
+  moz-border-radius: 20px;
+   webkit-border-radius: 20px;
+   khtml-border-radius: 20px;
+   border-radius: 20px;
+}
+
+#fbstuff a{
+  margin:-2px;
+  color:#FFF;
+  font-size: 14px;
+  font:Lucide Console;
+}
+
+#follower{
+background:#4C4C4C;
+moz-border-radius: 10px;
+   webkit-border-radius: 10px;
+   khtml-border-radius: 10px;
+   border-radius: 10px;
+}
+
+#openingmsg {
+  font-size:25px;
+  color:#000;
+}
+/* XP Bar */
+#xpbar {
+    position:fixed;
+	top: 0px;
+    left: 11%;
+    right: 20%;
+	width: 70%;
+	z-index:999998;
+}
+
+#user_level{
+	position: fixed;
+	
+	font-size: 14px;
+	font: Lucida Console;
+	color: white;
+	
+	cursor: default;
+	
+	top: 2px;
+	left: 12%;
+	z-index: 999999;
+
+}
+
+#xpbar_status {
+	position: fixed;
+	
+	font-size: 14px;
+	font: Lucida Console;
+	color: white;
+	
+	display: none;
+	cursor: default;
+	
+	top: 2px;
+	left: 40%;
+	z-index: 999999;
+}
+
+	
+/* Exp Bar Tab */
+.expbar{
+	position:fixed;
+	bottom:15px;
+	left:7px;
+}
+.exp_fix1{
+	position:fixed!important;
+	top:485px!important;
+}
+.notify {
+	cursor: pointer;
+	position:fixed;
+	bottom:15px;
+	left:100px;
+}
+.not_txt{
+	cursor: pointer;
+	background-color: red;
+	position:fixed;
+	left: 155px;
+	bottom: 20px;
+	width:13px;
+	height:16px;
+	display:none;
+}
+.leftpan_img{
+	 background:url(##LBL_SITE_URL##templates/images/m_previous_btn.png) no-repeat;
+	 width:11px;
+	 height:71px;
+         position:absolute;
+         position:fixed;
+	 left:5px;
+         top:400px;
+	 z-index: 5;
+}
+.rightpan_img{
+	background:url(##LBL_SITE_URL##templates/images/m_next_btn.png) no-repeat;
+	 width:11px;
+	 height:71px;
+         position:absolute;
+         position:fixed;
+         right:5px;
+         top:400px;
+	 z-index: 5;
+}
+
+/* Notification pop-up */
+.inner{
+	outline:1px solid #000;
+	background-color:wheat;
+
+}
+
+/* Location of Notification pop-up */
+.slide .inner {
+	position: fixed;
+	left: 102px;
+	bottom: 33px;
+	z-index:9999999;
+}
+
+/* Outer div to live feed */
+#meme_content{
+	width:700px;
+	background-color:#e6e6dc;
+	-moz-border-radius-topright: 15px; -webkit-border-top-right-radius: 15px; border-top-right-radius: 15px; -moz-border-radius-bottomright: 15px; -webkit-border-bottom-right-radius: 15px; border-bottom-right-radius: 15px; -moz-border-radius-bottomleft: 15px; -webkit-border-bottom-left-radius: 15px; border-bottom-left-radius: 15px; 
+	
+	-moz-border-radius-topleft: 10px; -webkit-border-top-left-radius: 10px; border-top-left-radius: 10px; 
+}
+
+/* Inner div to live feed */
+#meme_organs{
+ position: relative;
+ top:30px;
+ margin-left: 20px;
+ margin-right: 20px;
+ background-color: #ffffff; 
+ -moz-border-radius: 10px; 
+ -webkit-border-radius: 10px; 
+ border-radius: 10px;
+}
+

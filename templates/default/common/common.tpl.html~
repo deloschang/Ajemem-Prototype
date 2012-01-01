@@ -91,8 +91,8 @@
 		console.log("Previous XP To level is "+previous_xp_to_level);
 		
 		$(document).bind('keydown', 'ctrl+a', function(){
-			console.log("hotkey fired");
-		});
+		console.log("hotkey fired");
+	});
 		
 		
 		// User XP initial display
@@ -215,19 +215,25 @@
 			if (ajax_response_exp[0].trim() == "AAB"){
 				console.log("Trailing User XP changed");
 				
-				$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');
+				$("#trailing_exp").html('('+ajax_response_exp[1]+' XP)');
 
-				$("#other_user_ranking_info").css("background", '#AAF2DC');
-				$("#other_user_ranking_info").animate( { "opacity" : 0.4 }, 700, function() {
-					$("#other_user_ranking_info").css("background","#aad450");
-					$("#other_user_ranking_info").animate( { "opacity" : 1 }, 300)
+				$("#trailing_exp").css("background", '#AAF2DC');
+				$("#trailing_exp").animate( { "opacity" : 0.4 }, 700, function() {
+					$("#trailing_exp").css("background","white");
+					$("#trailing_exp").animate( { "opacity" : 1 }, 300)
 				});
 			
 			// Rank? No 1- User? Yes.
 			} else if (ajax_response_exp[0].trim() == "AB") {
 				console.log("Trailing User changed");
 				$("#trailing_user").html(ajax_response_exp[2]);
-				$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
+				$("#trailing_exp").html('('+ajax_response_exp[1]+' XP)');	
+				
+				$("#trailing_all").css("background", '#FFE303');	
+				$("#trailing_all").animate( { "opacity" : 0.4 }, 700, function() {
+					$("#trailing_all").css("background","white");
+					$("#trailing_all").animate( { "opacity" : 1 }, 300)
+				});
 					
 			// Rank? Yes. Improvement? Yes.
 			} else if (ajax_response_exp[0].trim() == "BA") {
@@ -237,26 +243,25 @@
 				trailing_user = ajax_response_exp[3];
 				trailing_rank = ajax_response_exp[4];
 				
-				$("#ranking_number").html(new_rank);
+				$("#ranking_number").html('Rank #'+parseInt(new_rank));
 				
 				// Green flash
-				$("#user_ranking_info").css("background", '#B9FE4E');
-				$("#user_ranking_info").animate( { "opacity" : 0.4 }, 700, function() {
-					$("#user_ranking_info").css("background","#4ebaff");
-					$("#user_ranking_info").animate( { "opacity" : 1 }, 300)
+				$("#ranking_number").css("background", '#33CC00');
+				$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
+					$("#ranking_number").css("background","white");
+					$("#ranking_number").animate( { "opacity" : 1 }, 300)
 				});
 				
 				if (trailing_user) {
 				
-					$("#trailing_ranking_number").html(trailing_rank);
-					$("#trailing_exp").html(trailing_xp+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
+					$("#trailing_ranking_number").html(' Rank #'+parseInt(trailing_rank));
+					$("#trailing_exp").html('('+trailing_xp+' XP)');	
 						
 					$("#trailing_user").html(trailing_user);
-					
-					$("#other_user_ranking_info").css("background", '#FE4EB9');
-					$("#other_user_ranking_info").animate( { "opacity" : 0.4 }, 700, function() {
-						$("#other_user_ranking_info").css("background","#aad450");
-						$("#other_user_ranking_info").animate( { "opacity" : 1 }, 300)
+					$("#trailing_all").css("background", '#FFE303');	
+					$("#trailing_all").animate( { "opacity" : 0.4 }, 700, function() {
+						$("#trailing_all").css("background","white");
+						$("#trailing_all").animate( { "opacity" : 1 }, 300)
 					});
 				
 				}
@@ -271,20 +276,25 @@
 				trailing_user = ajax_response_exp[3];
 				trailing_rank = ajax_response_exp[4];
 				
-				$("#ranking_number").html(new_rank);
+				$("#ranking_number").html('Rank #'+parseInt(new_rank));
 						
 				// Red flash
-				$("#user_ranking_info").css("background", '#FE4EB9');
-				$("#user_ranking_info").animate( { "opacity" : 0.4 }, 700, function() {
-					$("#user_ranking_info").css("background","#4ebaff");
-					$("#user_ranking_info").animate( { "opacity" : 1 }, 300)
+				$("#ranking_number").css("background", '#FF0000');
+				$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
+					$("#ranking_number").css("background","white");
+					$("#ranking_number").animate( { "opacity" : 1 }, 300)
 				});
 				
 				if (trailing_user) {
-					$("#trailing_ranking_number").html(trailing_rank);
-					$("#trailing_exp").html(trailing_xp+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
+					$("#trailing_ranking_number").html(' Rank #'+parseInt(trailing_rank));
+					$("#trailing_exp").html('('+trailing_xp+' XP)');	
 							
 					$("#trailing_user").html(trailing_user);
+					$("#trailing_all").css("background", '#FFE303');	
+					$("#trailing_all").animate( { "opacity" : 0.4 }, 700, function() {
+						$("#trailing_all").css("background","white");
+						$("#trailing_all").animate( { "opacity" : 1 }, 300)
+					});
 				}
 			}
 		}
@@ -357,8 +367,8 @@
 			xp_to_level = new_xp_to_level;
 			
 			// Level has a "live feed like flash"
-			$("#left_pan_level").css("background", '#B9FE4E');
-	    	$("#left_pan_level").animate( { "opacity" : 0.4 }, 500, function() {
+			$("#left_pan_level").css("background", '#FFFF73');
+	    	$("#left_pan_level").animate( { "opacity" : 0.4 }, 700, function() {
 				$("#left_pan_level").css("background","white");
 				$("#left_pan_level").animate( { "opacity" : 1 }, 300)
 			});
@@ -380,11 +390,11 @@
 		
 		
 		// Static XP marker
-		$("#total_xp").html(new_xp+'<span style="font-size:8px; position:relative; bottom:5px;"> XP</span>');
-		$("#user_ranking_info").css("background", '#4EFEEB');
-    	$("#user_ranking_info").animate( { "opacity" : 0.4 }, 400, function() {
-			$("#user_ranking_info").css("background","#4ebaff");
-			$("#user_ranking_info").animate( { "opacity" : 1 }, 300)
+		$("#total_xp").html('('+new_xp+' XP)');
+		$("#total_xp").css("background", '#AAF2DC');
+    	$("#total_xp").animate( { "opacity" : 0.4 }, 700, function() {
+			$("#total_xp").css("background","white");
+			$("#total_xp").animate( { "opacity" : 1 }, 300)
 		});
 		
 	}
@@ -462,28 +472,6 @@ body {
 	margin-left:75px;
 	margin-right:75px;
 	margin-top:1.5em;
-	background-color:white;
-}
-
-/* Outer div to live feed */
-#meme_content{
-	width:700px;
-	background-color:#e6e6dc;
-	-moz-border-radius-topright: 15px; -webkit-border-top-right-radius: 15px; border-top-right-radius: 15px; -moz-border-radius-bottomright: 15px; -webkit-border-bottom-right-radius: 15px; border-bottom-right-radius: 15px; -moz-border-radius-bottomleft: 15px; -webkit-border-bottom-left-radius: 15px; border-bottom-left-radius: 15px; 
-	
-	-moz-border-radius-topleft: 10px; -webkit-border-top-left-radius: 10px; border-top-left-radius: 10px; 
-}
-
-/* Inner div to live feed */
-#meme_organs{
- position: relative;
- top:30px;
- margin-left: 20px;
- margin-right: 20px;
- background-color: #ffffff; 
- -moz-border-radius: 10px; 
- -webkit-border-radius: 10px; 
- border-radius: 10px;
 }
 
 #xpbar {
@@ -654,13 +642,9 @@ body {
 				{if $smarty.session.id_user && $smarty.request.choice !='answer_to_ques' && $smarty.request.choice !='addMeme' && $smarty.request.choice !='meme_details'}
 				    {get_mod mod=question mgr=question choice=get_this_week_question}<br>
 				{/if}
-				
-				<div id="meme_content">
-					<div id="meme_organs">
+
 		<!-- Content in middle of page (Live Feed/Editor) -->
 				{include file=$content}
-					</div>
-				</div>
 
 		<!-- Login form if user not logged in -->
 			<!-- switched from user/login_form -->

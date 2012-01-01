@@ -1,11 +1,11 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 02:38:00
+<?php /* Smarty version 2.6.7, created on 2012-01-01 03:00:27
          compiled from user/right_pan.tpl.html */ ?>
 
-<!-- Template: user/right_pan.tpl.html Start 01/01/2012 02:38:00 --> 
+<!-- Template: user/right_pan.tpl.html Start 01/01/2012 03:00:27 --> 
  <br/>
 
 <span id="right_pan">
-
+<!--
 <?php if ($_SESSION['id_user']): ?>
 <fieldset style="width:40%;align:center;">
     <legend><b><h3>Search meme</h3></b></legend>
@@ -27,11 +27,11 @@
 </fieldset>
 <?php endif; ?>
 
-</br/>
+</br/>-->
 <?php if ($_SESSION['id_user']): ?>  <!-- If not logged in, then don't show -->
-	<div class="fbfrnd">
+	<!--<div class="fbfrnd">
 		<a href="javascript:void(0);" onclick="invitePopup();" class="facebook">Invite Facebook Friends </a>
-	</div>
+	</div>-->
 <br/>
 <?php endif; ?>
 

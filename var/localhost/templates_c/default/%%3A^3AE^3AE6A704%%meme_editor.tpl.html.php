@@ -1,13 +1,14 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 02:37:55
+<?php /* Smarty version 2.6.7, created on 2012-01-01 01:37:25
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 207, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 201, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 01/01/2012 02:37:55 --> 
+<!-- Template: meme/meme_editor.tpl.html Start 01/01/2012 01:37:25 --> 
  <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
 <?php echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
-<script type=\'text/javascript\' src="jquery.lionbars.0.3.js"></script>
+<script type="text/javascript" src="http://localhost//spad/jquery.lionbars.0.3.js"></script>
+<link rel="stylesheet" type="text/css" href="http://localhost//spad/lionbars.css" media="screen" />
 <script type="text/javascript">
 
 
@@ -19,7 +20,7 @@ function loadcanvas() {
 		var debugDiv = $(\'<div>\').attr({\'id\':\'debug\' }).css({ \'overflow\':\'scroll\',\'position\':\'fixed\',\'width\':\'300px\',\'height\':\'400px\',\'border\':\'1px solid #ccc\',\'top\':\'350px\',\'right\':\'0px\' });
 		debugDiv.appendTo("body");;
 	 }
-
+	
 	/* Highlights tool once clicked */
 	$(\'#hilight\').find(\'img\').click(function(){
 		$(\'#hilight\').find(\'img\').removeClass(\'active\');
@@ -119,22 +120,15 @@ $(document).ready(function(){
 		console.log(scrollTop);
 		if(scrollTop > 155){
 			var y = $(\'#main\').offset();
-			var x = $(\'.right_pos_abs\').offset();
-			/*$(\'.right_pos_abs\').css({
-			    position:\'fixed\',
-			    //left : \'px\'
-			 });*/
 			$(\'#main\').css({
 			    position:\'fixed\',
+				top:\'40px!important\',
 			    left : y.left+\'px\'
 			 });
 		 }else{
-			/*$(\'.right_pos_abs\').css({
-			    position:\'absolute\',
-			    left :\'820px\'
-			 });*/
 			$(\'#main\').css({
 			    position:\'absolute\',
+				top:\'20px\',
 			    left :\'-10px\'
 			 });
 		 }
@@ -149,12 +143,12 @@ $(document).ready(function(){
         <table width='100%' class="smil_tabl_fixed" border="0">
             <tr>
                 <td align='right'>
-                    <input type="file" name="updimage" id="updimage" size="10" />
-                    <input type="button" onClick="show_image();" value="Upload" style="width:60px;" /><br />
-                    URL: <input type="text" name="imgurl" id="imgurl" size="31" />
+                  <!--  <input type="file" name="updimage" id="updimage" size="5" />
+                    <input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
+                    URL: <input type="text" name="imgurl" id="imgurl" size="27" />
                     <input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
+					<div id="prev_image" class="prev_image"></div>-->
                 </td>
-                <td width="120px"><div id="prev_image" class="prev_image"></div></td>
             </tr>
         </table>
         <div class='main_smiley_loading'style="top:100px;">
@@ -171,25 +165,25 @@ $(document).ready(function(){
 		<!-- The following is the Line Size Slider Button-->
 		<table border="0;">
 		<tr>
-        <td><button id="line_size" class="memeje_button" onclick="return false;">Size</button></td>
+        <td><img src="http://localhost/spad/site_image/size.png" width="20" height="20" class="changesize" id="line_size" title="Brush Size" alt="Brush Size" /></td>
         <td><input type="hidden" id="fontsize" class="ls" value="1" style="width:25px" ></td>
-        <td><img src="http://localhost/spad/site_image/color_wheel.png" width="16" height="16" alt="Pick Color" title="Pick Color" id="color" /><br /></td>
+        <td><img src="http://localhost/spad/site_image/color_wheel.png" width="20" height="20" alt="Pick Color" title="Pick Color" id="color" /><br /></td>
         <span id="hilight">
-		    <td><img src="http://localhost/spad/site_image/grid.png" width="16" height="16" class="grid" title="Gridlines" alt="Gridlines Toggle" /></td>
-		    <td><img src="http://localhost/spad/site_image/uparrow.png" width="16" height="16" class="uparrow" title="Scroll Up" alt="Up Arrow" /></td>
-			<td><img src="http://localhost/spad/site_image/downarrow.png" width="16" height="16" class="downarrow" title="Scroll Bottom" alt="Down Arrow" /></td>
+		    <td><img src="http://localhost/spad/site_image/grid.png" width="20" height="20" class="grid" title="Gridlines" alt="Gridlines Toggle" /></td>
+		    <td><img src="http://localhost/spad/site_image/uparrow.png" width="20" height="20" class="uparrow" title="Scroll Up" alt="Up Arrow" /></td>
+			<td><img src="http://localhost/spad/site_image/downarrow.png" width="20" height="20" class="downarrow" title="Scroll Bottom" alt="Down Arrow" /></td>
 			<!--<td><img src="http://localhost/spad/site_image/paintbucket.png" width="16" height="16" class="paintbucket" title="Paintbucket" alt="Paintbucket" /></td>-->
-            <td><img src="http://localhost/spad/site_image/erase.png" width="14" height="11" class="erase" title="Erase" alt="Erase" /></td>
-            <td><img src="http://localhost/spad/site_image/line.png" width="9" height="15" class="size" title="Pencil" id="line" alt="Pencil" /></td>
-			<td><img src="http://localhost/spad/site_image/spray.png" width="13" height="13" class="size" id="spray" title="Spray" alt="Spray" /></td>
-            <td><img src="http://localhost/spad/site_image/dline.png" width="16" height="18" class="size" id="DLine" title="Draw line" alt="Draw line" /></td>
+            <td><img src="http://localhost/spad/site_image/erase.png" width="20" height="20" class="erase" title="Erase" alt="Erase" /></td>
+            <td><img src="http://localhost/spad/site_image/line.png" width="20" height="20" class="size" title="Pencil" id="line" alt="Pencil" /></td>
+			<td><img src="http://localhost/spad/site_image/spray.png" width="20" height="20" class="size" id="spray" title="Spray" alt="Spray" /></td>
+            <td><img src="http://localhost/spad/site_image/dline.png" width="20" height="20" class="size" id="DLine" title="Draw line" alt="Draw line" /></td>
             <td><img src="http://localhost/spad/site_image/text.png" class="size" id="text" title="Text" onclick="create_Textbox();" /></td>
-            <td><img src="http://localhost/spad/site_image/triangle.png" width="17" height="17" class="size" id="triangle" title="Triangle"  alt="Triangle" /></td>			
-            <td><img src="http://localhost/spad/site_image/ftriangle.png" width="17" height="17" class="size" id="ftriangle" title="Fill Triangle"  alt="Fill Triangle" /></td>			
-			<td><img src="http://localhost/spad/site_image/square.png" width="17" height="13" class="size" id="square" title="Square"  alt="Square" /></td>
-            <td><img src="http://localhost/spad/site_image/fsquare.png" width="14" height="14" class="size" id="fsquare" title="Fill Square" alt="Fill Square" /></td>
-            <td><img src="http://localhost/spad/site_image/circle.png" width="14" height="14" class="size" id="circle" title="Circle" alt="Circle" /></td>
-            <td><img src="http://localhost/spad/site_image/fcircle.png" width="13" height="13" class="size" id="fcircle" title="Fill Circle" alt="Fill Circle" /></td>
+            <td><img src="http://localhost/spad/site_image/triangle.png" width="16" height="16" class="size" id="triangle" title="Triangle"  alt="Triangle" /></td>			
+            <td><img src="http://localhost/spad/site_image/ftriangle.png" width="16" height="16" class="size" id="ftriangle" title="Fill Triangle"  alt="Fill Triangle" /></td>			
+			<td><img src="http://localhost/spad/site_image/square.png" width="16" height="16" class="size" id="square" title="Square"  alt="Square" /></td>
+            <td><img src="http://localhost/spad/site_image/fsquare.png" width="16" height="16" class="size" id="fsquare" title="Fill Square" alt="Fill Square" /></td>
+            <td><img src="http://localhost/spad/site_image/circle.png" width="16" height="16" class="size" id="circle" title="Circle" alt="Circle" /></td>
+            <td><img src="http://localhost/spad/site_image/fcircle.png" width="16" height="16" class="size" id="fcircle" title="Fill Circle" alt="Fill Circle" /></td>
             <span class="text_div" style="display:none">
                 <select name="font" id="font" style="font-size:10px">
                     <option>Arial</option>
@@ -207,7 +201,7 @@ $(document).ready(function(){
         <td><img src="http://localhost/spad/site_image/redo.png" width="19" height="16" class="redo" id="redo" title="Redo" alt="Redo" /></td>
         <td><img src="http://localhost/spad/site_image/increase_panel.png" class="addpanel" title="Increase Height" alt="Add Panel" width="16" height="16" /></td>
         <td><img src="http://localhost/spad/site_image/decrease_panel.png" class="removepanel" title="Decrease Height" alt="Remove Panel" width="16" height="16" /></td>
-		<td><button title="clear" class="memeje_button" onclick="return clear_canvas();">Clear</button></td>
+		<td><img src="http://localhost/spad/site_image/clear.png" class="clear" title="Clear Canvas" alt="Clear" width="16" height="16" /></td>
 		<td><select id="img_dpw" onChange="setOptions(this);">
                         <?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['premade_category']), $this);?>
 

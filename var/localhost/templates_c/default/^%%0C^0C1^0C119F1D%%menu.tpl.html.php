@@ -1,9 +1,10 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 02:37:59
+<?php /* Smarty version 2.6.7, created on 2012-01-01 03:00:27
          compiled from common/menu.tpl.html */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/menu.tpl.html', 81, false),)), $this); ?>
 
-<!-- Template: common/menu.tpl.html Start 01/01/2012 02:37:59 --> 
- <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
-<?php echo '
+<!-- Template: common/menu.tpl.html Start 01/01/2012 03:00:27 --> 
+ <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
     function get_random_meme(){
 	var url = "http://localhost/meme/meme_list/cat/rand";
@@ -40,64 +41,58 @@
 	    $.fancybox.update();
 	 });
      }
+	/*$(document).ready(function(){
+	$(window).scroll(function(e){
+		var scrollTop = $(window).scrollTop();
+		console.log(scrollTop);
+		if(scrollTop > 85){
+			   $(\'#xpbar\').css({
+			    position:\'fixed\',
+			    top:\'0px\',
+			 });
+			$(\'#xpbar_status\').css({
+			    position:\'fixed\',
+			    top:\'2px\',
+			 });
+			$(\'#user_level\').css({
+			    position:\'fixed\',
+			    top:\'2px\',
+			 });
+			
+		 }else{
+			$(\'#xpbar\').css({
+			    position:\'absolute\',
+			    top:\'80px\',
+			 });
+			$(\'#xpbar_status\').css({
+			    position:\'absolute\',
+			    top:\'82px\',
+			 });
+			$(\'#user_level\').css({
+			    position:\'absolute\',
+			    top:\'82px\',
+			 });
+		 }
+	 });
+ });*/
 </script>
 '; ?>
 
-<div id="navigation">
-    <div class="menu-header">
-	<ul class="menu">
-	    <!--<li <?php if ($_REQUEST['page'] == 'user' && $_REQUEST['choice'] == 'user_home'): ?>class="current"<?php endif; ?>>
-		<a href="http://localhost/user/user_home">Home</a>
-	    </li>-->
-	    <li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'meme_list' && ( $_REQUEST['cat'] == 'main_feed' || $_REQUEST['cat'] == 'network_feed' )): ?>class="current"<?php endif; ?>>
-		<a href="http://localhost/meme/meme_list/cat/main_feed">Home</a>
-	    </li>
-	    <li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'addMeme'): ?>class="current"<?php endif; ?>>
-		<a href="http://localhost/meme/addMeme">Make-A-Meme</a>
-	    </li>
-
-<!--	    <li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'meme_list' && $_REQUEST['cat'] == 'top'): ?>class="current"<?php endif; ?>>-->
-<!--		<a href="http://localhost/meme/meme_list/cat/top">Top Memes</a>-->
-<!--	    </li>-->
-
-<!-- CATEGORIES COMMENTED OUT
-	    <?php if (count($_from = (array)$this->_tpl_vars['category'])):
-    foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
-?>
-		<li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'meme_list' && $_REQUEST['cat'] == $this->_tpl_vars['key']): ?>class="current"<?php endif; ?>>
-		    <a href="http://localhost/meme/meme_list/cat/<?php echo $this->_tpl_vars['key']; ?>
-"><?php echo $this->_tpl_vars['item']; ?>
-</a>
-		</li>
-	    <?php endforeach; endif; unset($_from); ?>
-	     <li <?php if ($_REQUEST['page'] == 'meme' && $_REQUEST['choice'] == 'meme_list' && $_REQUEST['cat'] == 'rand'): ?>class="current"<?php endif; ?>>
-!-->
-
-		<?php if ($_SESSION['id_user']): ?>
-		<li>
-		<a href="javascript:void(0);" onclick="get_random_meme();">Random Generator</a>
-		</li>
-		<?php else: ?>
-		<li>
-		<a href="javascript:void(0);" onclick="alert('you need to be logged in');">Random Generator</a>
-		</li>
-	    <?php endif; ?>
-
-	   
-        </ul>
-    </div>
+<div id="follower">
+<div id="xpbar"></div>
+<div id="fbstuff">
+<?php if ($_SESSION['id_user']): ?>	
+	    <a href ="http://localhost/">Welcome <?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+ !</a>
+	<?php else: ?>
+	<div class="fb-login-button" scope="email, publish_stream ,user_education_history 	">
+        Memebook
+      </div>
+<?php endif; ?>	  
 </div>
+</div>	
+<div id="user_level"></div>
+<div id="xpbar_status"></div>
 <div class="clear"></div>
-<?php echo '
-<style type="text/css">
-.position_fixed {
-    position:fixed;
-    top:30px;
-    right:5px;
- }
-
-</style>
-'; ?>
-
 
 <!-- Template: common/menu.tpl.html End --> 

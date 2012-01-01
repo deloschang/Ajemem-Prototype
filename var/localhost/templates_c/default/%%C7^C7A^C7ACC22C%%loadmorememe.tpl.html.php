@@ -1,12 +1,10 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 02:38:00
+<?php /* Smarty version 2.6.7, created on 2012-01-01 03:00:27
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 223, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 260, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 01/01/2012 02:38:00 --> 
- <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
-<?php echo '
+<!-- Template: meme/loadmorememe.tpl.html Start 01/01/2012 03:00:27 --> 
+ <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script type="text/javascript">
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";
@@ -386,7 +384,6 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 	    <input type="hidden" name="is_disagreed" id="is_disagreed<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " value=''/>
 </div>
-<?php endforeach; endif; unset($_from); ?>
-<?php endif; ?>
+<?php endforeach; endif; unset($_from);  endif; ?>
 
 <!-- Template: meme/loadmorememe.tpl.html End --> 
