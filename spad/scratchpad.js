@@ -429,9 +429,6 @@ var settings = {
 			$('img[class=clear]').click(function () {
 			    clear_canvas();
 			})
-			$('img[class=size]').click(function () {
-			    clear_canvas();
-			})
 			$('img[class=downarrow]').click(function () {
 			    moveDown();
 			})

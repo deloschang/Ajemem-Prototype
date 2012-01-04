@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 02:53:06
+<?php /* Smarty version 2.6.7, created on 2012-01-05 00:00:07
          compiled from common/menu.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/menu.tpl.html', 81, false),)), $this); ?>
 
-<!-- Template: common/menu.tpl.html Start 01/01/2012 02:53:06 --> 
+<!-- Template: common/menu.tpl.html Start 05/01/2012 00:00:07 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
