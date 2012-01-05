@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-05 00:00:07
+<?php /* Smarty version 2.6.7, created on 2012-01-05 03:02:15
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 223, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 260, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 05/01/2012 00:00:07 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 05/01/2012 03:02:15 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '

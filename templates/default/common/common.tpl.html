@@ -470,7 +470,7 @@
       <script>
         window.fbAsyncInit = function() {
           FB.init({
-            appId      : '219049284838691',
+            appId      : '149577201819272',
             status     : true, 
             cookie     : true,
             xfbml      : true,
@@ -512,6 +512,8 @@
 			<td width="15%" id="leftpan" valign="top">
 			    {if $smarty.session.id_user}	
 				    {include file="user/left_pan"}
+				{else}
+				{include file="user/login_form"}
 			    {/if}
 			</td>
 			{/if}
