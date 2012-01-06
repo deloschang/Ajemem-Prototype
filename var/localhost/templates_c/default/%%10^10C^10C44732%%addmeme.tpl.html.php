@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 01:37:25
+<?php /* Smarty version 2.6.7, created on 2012-01-01 23:53:46
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 139, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 01/01/2012 01:37:25 --> 
+<!-- Template: meme/addmeme.tpl.html Start 01/01/2012 23:53:46 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
@@ -28,8 +28,7 @@ _img.png";
 <link rel="stylesheet" href="http://localhost/templates/default/meme/lionbars.css" type="text/css"/>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/multiautocomplete.css"/>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
-<?php echo '
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
     function cancel_meme(){
 	window.location="http://localhost/user/user_home";

@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 03:05:06
+<?php /* Smarty version 2.6.7, created on 2012-01-05 22:25:38
          compiled from common/menu.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/menu.tpl.html', 81, false),)), $this); ?>
 
-<!-- Template: common/menu.tpl.html Start 01/01/2012 03:05:06 --> 
+<!-- Template: common/menu.tpl.html Start 05/01/2012 22:25:38 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
     function get_random_meme(){
