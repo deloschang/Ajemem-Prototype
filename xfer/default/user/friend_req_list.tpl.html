@@ -1,0 +1,40 @@
+{assign var=img_path value=$util->get_values_from_config('IMAGE')}
+<div id="user_friend_req_list">
+    <table >
+    {section name=cur loop=$sm.res}
+	    {assign var=x value=$sm.res[cur]}
+	    <tr>
+		<td>
+		    <img src="##LBL_SITE_URL##{$img_path.avtar_thumb}{$x.avatar}" />
+		</td>
+		<td valign="top">
+		   {$x.fname} {$x.mname} {$x.lname}
+		</td>
+		<td align="right" valign="top">
+		    <input type="button" value="Confirm" name="confirm" onclick="confirm('{$x.id_user}')" style="cursor:pointer;"/>
+		    <input type="button" value="Not Now" name="not_now" onclick="not_now('{$x.id_user}')" style="cursor:pointer;"/>
+		    
+		</td>
+	    </tr>
+     {sectionelse}
+		<tr><td colspan="3">No friend request found.</td></tr>
+     {/section}
+    </table>
+</div>
+
+{literal}
+<script type="text/javascript">
+   function confirm(id){
+       var url="##LBL_SITE_URL##index.php";
+       $.post(url,{"page":"user","choice":"conf_frnd_request","id":id,"ce":0},function(res){
+	   window.location.reload();
+       });
+   }
+   function not_now(id){
+      var url="##LBL_SITE_URL##index.php";
+       $.post(url,{"page":"user","choice":"rej_frnd_request","id":id,"ce":0},function(res){
+	   window.location.reload();
+       });
+   }
+</script>
+{/literal}

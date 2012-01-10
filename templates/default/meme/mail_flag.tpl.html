@@ -1,0 +1,28 @@
+Hi Admin,
+<br><br><b>{$smarty.session.fname}{if $smarty.session.mname} {$smarty.session.mname}{/if} {$smarty.session.lname}</b> has flagged to below meme : <br><br>
+<table>
+	<tr>
+		<td colspan="2"><img src="##LBL_SITE_URL##image/orig/meme/{$sm.image}" alt="No image available"></td>
+	</tr>
+	<tr>
+		<td>
+			<table>
+				<tr>
+					<td><b>User email:</b></td>
+					<td>{$smarty.session.email}</td>
+				</tr>
+				<tr>
+					<td><b>Title:</b></td>
+					<td>{$sm.title}</td>
+				</tr>
+				<tr>
+					<td><b>Category:</b></td>
+					<td>{$cat}</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<br><br><br><br>
+Regards,<br>
+Admin
