@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-11 00:15:27
+<?php /* Smarty version 2.6.7, created on 2012-01-11 08:45:29
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 191, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 183, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 11/01/2012 00:15:27 --> 
+<!-- Template: meme/addmeme.tpl.html Start 11/01/2012 08:45:29 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
@@ -127,14 +127,6 @@ _img.png";
             return \'Oh NO! Your meme has not been submitted!\';
      }); 
 
-	$(\'watermark\').click(function(event) 
-	{   
-		console.log("watermark checked");
-		if(this.checked) 
-		{
-			alert("hello!");
-		 }
-	 });
 </script>
 '; ?>
 

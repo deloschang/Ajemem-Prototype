@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-04 08:06:06
+<?php /* Smarty version 2.6.7, created on 2012-01-11 06:52:29
          compiled from user/right_pan.tpl.html */ ?>
 
-<!-- Template: user/right_pan.tpl.html Start 04/01/2012 08:06:06 --> 
+<!-- Template: user/right_pan.tpl.html Start 11/01/2012 06:52:29 --> 
  <br/>
 
 <span id="right_pan">
@@ -39,7 +39,11 @@
             
     <div>
 		<br>
-		    </div>
+				</br>
+	</div>
+	    
+	
+
 <?php endif; ?>
 </span>
 <?php echo '

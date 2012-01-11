@@ -48,8 +48,6 @@
 			$("#right_pan").html(res);
     	});
     }
-
-
 	
 	function live_meme () {
 		console.log("List "+new_ids);
@@ -230,7 +228,7 @@
 			{/if}
 					
 		" align="left"/>
-				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="see_user('{$sm.uinfo[$x.id_user].id_user}')" onmouseout ="$('#right_pan').removeAttr('mouseover');" >
+				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');" onmouseout ="$('#right_pan').removeAttr('mouseover');" >
 				{if $sm.uinfo[$x.id_user].fb_pic_square}
 					<img src="{$sm.uinfo[$x.id_user].fb_pic_square}" class="avatar_thumb_fb" >
 				{elseif $sm.uinfo[$x.id_user].avatar}
@@ -244,7 +242,7 @@
 	<!-- end of gallery class-->
 			
 			<div style="position:relative; left:20px; bottom:4px; font-size:17px; color:#ACACA5;">  by 
-			<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:17px;"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');">{$sm.uinfo[$x.id_user].username} </a></span>
+			<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:17px;"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');" onmouseout ="$('#right_pan').removeAttr('mouseover');>{$sm.uinfo[$x.id_user].username} </a></span>
 			<span style="font-size:13px; color:#ACACA5;"> L{$sm.uinfo[$x.id_user].level} on </span></div>
 
 <!-- Caption shows below image 

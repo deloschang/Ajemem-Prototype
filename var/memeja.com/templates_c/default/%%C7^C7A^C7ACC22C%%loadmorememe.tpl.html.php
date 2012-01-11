@@ -1,15 +1,16 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-10 10:08:04
+<?php /* Smarty version 2.6.7, created on 2012-01-11 07:43:26
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 232, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 269, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 225, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 262, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 10/01/2012 10:08:04 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 11/01/2012 07:43:26 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script type="text/javascript">
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
-	
+	var right_pan_url = "http://memeja.com/user/see_user";
+    	
 	var single_id_array = new_ids.split(\',\');
 	
 	if (!top_meme_id) {
@@ -47,19 +48,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
      }
     
     function see_user(id_user){    	
-    	var right_pan_url = "http://memeja.com/user/see_user";
-    	
-    	var img = $.post(right_pan_url,{id_user:id_user,ce:0 }, function(res){
+    	$.post(right_pan_url,{id_user:id_user,ce:0 }, function(res){
 			$("#right_pan").html(res);
     	 });
-		return img;
      }
-	function hover_user_remove(){
-    	window.hover_user = function() {
-		return false;
-		 }
-		alert("hey!");
-     }
+
 
 	
 	function live_meme () {
@@ -252,7 +245,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 					
 		" align="left"/>
 				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="see_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-');return true" onmouseout ="right_pan_url=''" >
+')" onmouseout ="$('#right_pan').removeAttr('mouseover');" >
 				<?php if ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']): ?>
 					<img src="<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']; ?>
 " class="avatar_thumb_fb" >

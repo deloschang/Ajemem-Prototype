@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-11 00:15:31
+<?php /* Smarty version 2.6.7, created on 2012-01-11 08:46:27
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 225, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 262, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 223, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 260, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 11/01/2012 00:15:31 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 11/01/2012 08:46:27 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script type="text/javascript">
@@ -52,8 +52,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			$("#right_pan").html(res);
     	 });
      }
-
-
 	
 	function live_meme () {
 		console.log("List "+new_ids);
@@ -244,8 +242,8 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 			<?php endif; ?>
 					
 		" align="left"/>
-				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="see_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-')" onmouseout ="$('#right_pan').removeAttr('mouseover');" >
+				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
+');" onmouseout ="$('#right_pan').removeAttr('mouseover');" >
 				<?php if ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']): ?>
 					<img src="<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']; ?>
 " class="avatar_thumb_fb" >
@@ -264,7 +262,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 			<div style="position:relative; left:20px; bottom:4px; font-size:17px; color:#ACACA5;">  by 
 			<span id="user<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
 " style="font-size:17px;"><a href="javascript:void(0);" onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-');"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
+');" onmouseout ="$('#right_pan').removeAttr('mouseover');><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
  </a></span>
 			<span style="font-size:13px; color:#ACACA5;"> L<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['level']; ?>
  on </span></div>
