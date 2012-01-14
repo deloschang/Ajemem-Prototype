@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-11 21:49:09
+<?php /* Smarty version 2.6.7, created on 2012-01-14 09:56:55
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 183, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 11/01/2012 21:49:09 --> 
+<!-- Template: meme/addmeme.tpl.html Start 14/01/2012 09:56:55 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
@@ -78,7 +78,7 @@ _img.png";
             $(obj.title).focus();
             return false;
          }
-		if($(obj.title).val().length>1)
+		if($(obj.title).val().length>75)
 		{
             alert("Enter a shorter title");
             return false;

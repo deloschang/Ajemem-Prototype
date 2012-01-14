@@ -40,6 +40,10 @@
     
     function hover_user(id_user){
     	see_user(id_user);
+        //see_user(0);
+    }
+    function unhover_user(id_user) {
+        see_user(0);
     }
     
     function see_user(id_user){    	
@@ -228,7 +232,10 @@
 			{/if}
 					
 		" align="left"/>
+                        <!--
 				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');" onmouseout ="$('#right_pan').removeAttr('mouseover');">
+                        -->
+				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');" onmouseout ="unhover_user('{$sm.uinfo[$x.id_user].id_user}');">
 				{if $sm.uinfo[$x.id_user].fb_pic_square}
 					<img src="{$sm.uinfo[$x.id_user].fb_pic_square}" class="avatar_thumb_fb" >
 				{elseif $sm.uinfo[$x.id_user].avatar}
@@ -241,8 +248,11 @@
 
 	<!-- end of gallery class-->
 
-			<div style="position:relative; left:20px; bottom:4px; font-size:17px; color:#ACACA5;">  by 
+			<div style="position:relative; left:20px; bottom:4px; font-size:17px; color:#ACACA5;">  by
+                            <!--
 			<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:17px;"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');" onmouseout ="$('#right_pan').removeAttr('mouseover');">{$sm.uinfo[$x.id_user].username} </a></span>
+                            -->
+			<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:17px;"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');" onmouseout ="unhover_user('{$sm.uinfo[$x.id_user].id_user}');">{$sm.uinfo[$x.id_user].username} </a></span>
 			<span style="font-size:13px; color:#ACACA5;"> L{$sm.uinfo[$x.id_user].level}</span></div>
 
 <!-- Caption shows below image 

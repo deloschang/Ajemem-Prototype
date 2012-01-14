@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-11 21:49:14
+<?php /* Smarty version 2.6.7, created on 2012-01-14 10:18:01
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -358,9 +358,9 @@
 	
 	#meme_title {
 		position:relative;
-		bottom:6px;
+		bottom:10px;
 		padding-left:10px; 
-		font-size: 18px; 
+		font-size: 19px; 
 		font-weight: bold;
 	 }
 	
