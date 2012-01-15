@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-15 13:31:01
+<?php /* Smarty version 2.6.7, created on 2012-01-15 22:39:01
          compiled from common/header.tpl.html */ ?>
 
-<!-- Template: common/header.tpl.html Start 15/01/2012 13:31:01 --> 
+<!-- Template: common/header.tpl.html Start 15/01/2012 22:39:01 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
