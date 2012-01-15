@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-15 22:39:02
+<?php /* Smarty version 2.6.7, created on 2012-01-15 22:58:04
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 235, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 272, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 15/01/2012 22:39:02 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 15/01/2012 22:58:04 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -160,7 +160,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			var url="http://localhost/meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor+"/meme_tot_dishonor/"+meme_tot_dishonor+"/meme_tot_reply/"+meme_tot_reply;
 		
 			var httpRequest = new getHttpObject();
-			httpRequest.open(\'GET\', url, true);
+			httpRequest.open(\'GET\', url, false);
 
 			httpRequest.send(); // this blocks as request is synchronous
 		
