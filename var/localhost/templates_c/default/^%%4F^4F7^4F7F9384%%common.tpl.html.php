@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-05 03:02:15
+<?php /* Smarty version 2.6.7, created on 2012-01-15 13:31:01
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 529, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'dbd72f3d30d2aeffe986b0391b3d519d'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 530, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '63baab5b204979292b27c8c7e9900961'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -60,7 +60,9 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 <script type="text/javascript" src="http://localhost/libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
 <script type="text/javascript" src="http://localhost/libsext/xpbar/jquery.effects.core.js"></script>
 <script type="text/javascript" src="http://localhost/libsext/xpbar/jquery.effects.highlight.js"></script>
-
+<script type="text/javascript" src="http://localhost/libsext/xpbar/jquery.effects.highlight.js"></script>
+<!-- Cross Browser Support, and Viewport Functionality-->
+<script type="text/javascript" src="http://localhost/libsext/js/ajax.js"></script>
 <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 <!--end-->
 
@@ -86,15 +88,15 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		 }
 	
 	$(document).ready(function(){			
-		console.log("User level is "+user_level);
+		/*console.log("User level is "+user_level);
 		console.log("Total XP is "+curr_xp);
 		console.log("XP needed to level is "+xp_to_level);
 		console.log("XP Percent displayed is "+xp_percent);
 		
 		console.log("Previous XP To level is "+previous_xp_to_level);
-		
+		*/
 		$(document).bind(\'keydown\', \'ctrl+a\', function(){
-			console.log("hotkey fired");
+			//console.log("hotkey fired");
 		 });
 		
 		
@@ -194,8 +196,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	function live_ranking() {
 		var ranking_data;
 		var url="http://localhost/user/live_ranking/ce/0/chk/1";
-		var httpRequest = new XMLHttpRequest();
-		httpRequest.open(\'POST\', url, false);
+		var httpRequest = new getHttpObject();
+		httpRequest.open(\'GET\', url, true);
 		
 		httpRequest.send();
 		
@@ -203,7 +205,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			ranking_data = httpRequest.responseText;
 		 }
 		
-		console.log(ranking_data);
+		//console.log(ranking_data);
 		
 		
 		if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
@@ -216,7 +218,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			
 			// Rank? No. 1- User? No. 1- XP? Yes.
 			if (ajax_response_exp[0].trim() == "AAB"){
-				console.log("Trailing User XP changed");
+				//console.log("Trailing User XP changed");
 				
 				$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');
 
@@ -228,13 +230,13 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			
 			// Rank? No 1- User? Yes.
 			 } else if (ajax_response_exp[0].trim() == "AB") {
-				console.log("Trailing User changed");
+			//	console.log("Trailing User changed");
 				$("#trailing_user").html(ajax_response_exp[2]);
 				$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
 					
 			// Rank? Yes. Improvement? Yes.
 			 } else if (ajax_response_exp[0].trim() == "BA") {
-				console.log("Improvement in Rank");
+			//	console.log("Improvement in Rank");
 				new_rank = ajax_response_exp[1];
 				trailing_xp = ajax_response_exp[2];
 				trailing_user = ajax_response_exp[3];
@@ -267,7 +269,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			
 			// Rank? Yes. Improve? No.
 			 } else {
-				console.log("Loss in rank");
+				//console.log("Loss in rank");
 
 				new_rank = ajax_response_exp[1];
 				trailing_xp = ajax_response_exp[2];
@@ -303,10 +305,9 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 
 		var data;
 		var url="http://localhost/user/getExperience/ce/0/chk/1";
-		var httpRequest = new XMLHttpRequest();
-		httpRequest.open(\'POST\', url, false);
-
-		httpRequest.send(); // this blocks as request is synchronous
+		var httpRequest = new getHttpObject();
+		httpRequest.open(\'GET\', url, false);
+		httpRequest.send(null); // this blocks as request is synchronous
 		if (httpRequest.status == 200) {
 			data = httpRequest.responseText;
 		 }
@@ -325,21 +326,21 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			previous_xp_to_level = ajax_response_main[1];
 			user_level = ajax_response_main[2];
 			
-			console.log("User Level is "+user_level);
-			console.log("Previous XP to Level is "+previous_xp_to_level);
-			console.log("XP_TO_LEVEL is "+xp_to_level);
+			//console.log("User Level is "+user_level);
+			//console.log("Previous XP to Level is "+previous_xp_to_level);
+			//console.log("XP_TO_LEVEL is "+xp_to_level);
 			
 			if (user_level == 1) {
 				new_xp_percent = (new_xp / xp_to_level) * 100;
 			 } else {
-				console.log("New Total XP is "+new_xp);
-				console.log("Previous XP to Level is "+previous_xp_to_level);
+				//console.log("New Total XP is "+new_xp);
+				//console.log("Previous XP to Level is "+previous_xp_to_level);
 				new_xp_percent = (new_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
 			 }
 			
 		 } else {
 			// User level has changed; Unpack data
-			console.log("user has levelled");
+			//console.log("user has levelled");
 												
 			var ajax_response = data.split(\',\');
 			// [0] -- New XP
@@ -357,11 +358,11 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			calc_new_xp_percent = new_xp - parseInt(previous_xp_to_level);
 			new_xp_percent = calc_new_xp_percent / (new_xp_to_level - previous_xp_to_level) * 100;
 			
-			console.log("XP TO LEVEL is "+xp_to_level);
-			console.log("NEW XP TO LEVEL IS "+new_xp_to_level);
-			console.log(calc_new_xp_percent);
+			//console.log("XP TO LEVEL is "+xp_to_level);
+			//console.log("NEW XP TO LEVEL IS "+new_xp_to_level);
+			//console.log(calc_new_xp_percent);
 						
-			console.log("PREVIOUS XP TO LEVEL IS "+previous_xp_to_level);
+			//console.log("PREVIOUS XP TO LEVEL IS "+previous_xp_to_level);
 			
 			xp_to_level = new_xp_to_level;
 			
@@ -474,7 +475,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
       <script>
         window.fbAsyncInit = function() {
           FB.init({
-            appId      : \'219049284838691\',
+            appId      : \'149577201819272\',
             status     : true, 
             cookie     : true,
             xfbml      : true,
@@ -482,7 +483,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
            });
           
           FB.Event.subscribe(\'auth.login\', function (response) {
-          	console.log("FB.event.subscribe auth login fired");
+          	//console.log("FB.event.subscribe auth login fired");
           	window.location = "http://localhost/user/facebook_info";
     	   });
          };
@@ -551,7 +552,7 @@ unset($_smarty_tpl_vars);
 				</div>
 				<?php endif; ?>
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:dbd72f3d30d2aeffe986b0391b3d519d#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:dbd72f3d30d2aeffe986b0391b3d519d#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:63baab5b204979292b27c8c7e9900961#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:63baab5b204979292b27c8c7e9900961#0}';}?>
 <br>
 				<?php endif; ?>
 

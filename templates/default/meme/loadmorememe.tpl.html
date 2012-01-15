@@ -2,6 +2,8 @@
 {assign var=category value=$util->get_values_from_config('CATEGORY')}
 {literal}
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+<!-- Cross Browser Support, and Viewport Functionality-->
+<script type="text/javascript" src="##JS_PATH##libsext/js/ajax.js"></script>
 <script type="text/javascript">
 	var id = "{/literal}{$sm.last_idmeme}{literal}";
 	var new_ids = "{/literal}{$sm.id_memes}{literal}";
@@ -32,6 +34,7 @@
 	$(document).ready(function() {
 		setInterval("live_feed(new_ids)", 10000);	// influences flash time
 		setInterval("live_meme()", 5000);
+		
 	});
 	
 	function common_fun_extended(id,color_code){
@@ -51,30 +54,30 @@
     }
 	
 	function live_meme () {
-		console.log("List "+new_ids);
-		console.log(top_meme_id+"| feedcount: "+feed_count);
+		//console.log("List "+new_ids);
+		//console.log(top_meme_id+"| feedcount: "+feed_count);
 		
 		var live_meme_data;
 		var url="##LBL_SITE_URL##meme/live_meme/ce/0/chk/1/top_meme_id/"+top_meme_id;
 	
-		var httpRequest = new XMLHttpRequest();
-		httpRequest.open('POST', url, false);
+		var httpRequest = new getHttpObject();
+		httpRequest.open('GET', url, false);
 
-		httpRequest.send(); // this blocks as request is synchronous
+		httpRequest.send(null); // this blocks as request is synchronous
 	
 		if (httpRequest.status == 200) {
 			live_meme_data = httpRequest.responseText;
 		}
 		
 		if (live_meme_data.trim() == "no meme" || live_meme_data.trim() == "no meme found in SQL" || live_meme_data.trim() == "No new meme updates") {
-			console.log('no new meme found');
+		//	console.log('no new meme found');
 			return false; 
 		}
 		
 		var live_meme_response = live_meme_data.split(',');
 				
 		if (live_meme_response[0].trim() == "New Meme") {
-			console.log("Data is "+live_meme_response[1]+","+live_meme_response[2]+","+live_meme_response[3]+","+live_meme_response[4]);
+			//console.log("Data is "+live_meme_response[1]+","+live_meme_response[2]+","+live_meme_response[3]+","+live_meme_response[4]);
 			
 			meme_id = live_meme_response[1];
 			meme_title = live_meme_response[2];
@@ -89,7 +92,7 @@
 				top_meme_id = meme_id;
 				new_ids += ','+meme_id;
 				
-				console.log('New meme toggled. Current feed_count is '+feed_count);
+				//console.log('New meme toggled. Current feed_count is '+feed_count);
 				
 				feed_count_orig = feed_count;
 				feed_count += 1; 
@@ -101,22 +104,23 @@
 			//end
 			
 			
-			
 		}
 	}
 	
 	function live_feed (new_ids) {
 		//console.log(new_ids);
 		
+		/*
+		Old Code Loops through ALL MEMES WTF
 		var feed_id_array = new_ids.split(',');		// needs to check for new memes
-		var id_array_len = feed_id_array.length;
+		var id_array_len = feed_id_array.length;*/
 		
-		for (var i=0; i < id_array_len; i++) {
+		$("#memecont .meme:in-viewport").each(function() {
 		
 			// Grab the id_meme's honor
 		
-			console.log("Currently on..."+feed_id_array[i]);
-			var meme_id = feed_id_array[i]
+			//console.log("Currently on..."+feed_id_array[i]);
+			var meme_id = $(this).attr("id"); // Old Code WTF feed_id_array[i]
 			var meme_tot_honor = $("#aggr"+meme_id).html();	
 			
 			if (!meme_tot_honor) {
@@ -141,10 +145,10 @@
 			var live_feed_data;
 			var url="##LBL_SITE_URL##meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor+"/meme_tot_dishonor/"+meme_tot_dishonor+"/meme_tot_reply/"+meme_tot_reply;
 		
-			var httpRequest = new XMLHttpRequest();
-			httpRequest.open('POST', url, false);
+			var httpRequest = new getHttpObject();
+			httpRequest.open('GET', url, false);
 
-			httpRequest.send(); // this blocks as request is synchronous
+			httpRequest.send(null); // this blocks as request is synchronous
 		
 			if (httpRequest.status == 200) {
 				live_feed_data_tot = httpRequest.responseText;
@@ -152,7 +156,7 @@
 		
 			if (live_feed_data_tot.trim() == "no change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
 			
-				console.log("(no update) Request data is "+live_feed_data_tot.trim());
+			//	console.log("(no update) Request data is "+live_feed_data_tot.trim());
 				
 			} else {
 			
@@ -170,7 +174,7 @@
 				
 		
 					// 
-					console.log("Request data is "+live_feed_data_tot.trim());
+				//	console.log("Request data is "+live_feed_data_tot.trim());
 				} else if (live_feed_data[1] == 'dishonor') {
 					// Live feed tot_dishonor has changed...
 					new_dishonor = live_feed_data[0].trim();
@@ -182,7 +186,7 @@
 					common_fun_extended(meme_id, dishonour_color);
 		
 					// 
-					console.log("Request data is "+live_feed_data_tot.trim());
+				//	console.log("Request data is "+live_feed_data_tot.trim());
 				
 				} else if (live_feed_data[1] == 'reply') {
 					// Live feed tot_dishonor has changed...
@@ -195,11 +199,11 @@
 					common_fun_extended(meme_id, reply_color);
 		
 					// 
-					console.log("Request data is "+live_feed_data_tot.trim());
+				//	console.log("Request data is "+live_feed_data_tot.trim());
 				
 				}
 			}
-		}
+		});
 	}
 	
 	
@@ -207,14 +211,14 @@
 {/literal}
 <div class="live_feed0" style="display: none; padding-top:20px;"></div>
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
-<div>
+<div id="memecont">
 	
-	    <div  id="meme{$x.id_meme}" class="meme">
+	    <div  id="{$x.id_meme}" class="meme">
 
 {* Height between memes *}
 		<div style="height: 90px;">
 
-<!--javascript:show_details('{$x.id_meme}');-->
+<!-- javascript:show_details('{$x.id_meme}'); -->
 <!-- Image specs for live feed meme -->
 
 <!-- Show details updates view count -->

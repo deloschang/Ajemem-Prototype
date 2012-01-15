@@ -144,10 +144,10 @@
     function show_details(id_meme){
 	$.fancybox.showActivity();
 	var url="##LBL_SITE_URL##meme/meme_details/ce/0/id/"+id_meme;
-	var httpRequest = new XMLHttpRequest();
-	httpRequest.open('POST', url, false);
+	var httpRequest = new getHttpObject();
+	httpRequest.open('GET', url, true);
 
-	httpRequest.send(); // this blocks as request is synchronous
+	httpRequest.send(null); // this blocks as request is synchronous
 	if (httpRequest.status == 200) {
 		res=httpRequest.responseText;
 		$.fancybox(res,{

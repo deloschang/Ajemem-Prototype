@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-05 03:02:15
+<?php /* Smarty version 2.6.7, created on 2012-01-15 13:31:02
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -57,7 +57,7 @@
 					var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
 				
 					if ($("#last_id_meme_cur_page").val() != "") {
-					  	console.log("last_id_meme fired");
+					//  	console.log("last_id_meme fired");
 					  	if ($("#chk_me").val()!=1) {
 						  backup_last_id_meme = $("#last_id_meme_cur_page").val();
 						  loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
@@ -265,10 +265,10 @@
     function show_details(id_meme){
 		var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
 				
-		var httpRequest = new XMLHttpRequest();
-		httpRequest.open(\'POST\', url, false); // why is this synchronous?
+		var httpRequest = new getHttpObject();
+		httpRequest.open(\'GET\', url, true); // why is this synchronous?
 
-		httpRequest.send(); // this blocks as request is synchronous
+		httpRequest.send(null); // this blocks as request is synchronous
 <!--		if (httpRequest.status == 200) {-->
 <!--			res = httpRequest.responseText;-->
 <!--			console.log(res);-->

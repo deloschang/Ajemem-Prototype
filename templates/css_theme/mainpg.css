@@ -512,7 +512,7 @@ body {
 
 /*Feed Contents*/
 #mid_cont {
-   width:80%;
+   width:1100px;
    background:#FFF;
    margin-left: 10%;
    margin-right: 10%;
@@ -549,8 +549,8 @@ body {
 #headerbtns {
   top:30px;
   position:absolute;
-  left:46.5%;
-  width:30%;
+  left:650px;
+  width:600px;
   cursor:pointer;
 }
 /*Under Join Memeja*/

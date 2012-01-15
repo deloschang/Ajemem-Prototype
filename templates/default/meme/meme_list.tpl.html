@@ -56,7 +56,7 @@
 					var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
 				
 					if ($("#last_id_meme_cur_page").val() != "") {
-					  	console.log("last_id_meme fired");
+					//  	console.log("last_id_meme fired");
 					  	if ($("#chk_me").val()!=1) {
 						  backup_last_id_meme = $("#last_id_meme_cur_page").val();
 						  loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
@@ -263,10 +263,10 @@
     function show_details(id_meme){
 		var url="##LBL_SITE_URL##meme/meme_details/ce/0/id/"+id_meme;
 				
-		var httpRequest = new XMLHttpRequest();
-		httpRequest.open('POST', url, false); // why is this synchronous?
+		var httpRequest = new getHttpObject();
+		httpRequest.open('GET', url, true); // why is this synchronous?
 
-		httpRequest.send(); // this blocks as request is synchronous
+		httpRequest.send(null); // this blocks as request is synchronous
 <!--		if (httpRequest.status == 200) {-->
 <!--			res = httpRequest.responseText;-->
 <!--			console.log(res);-->
