@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-15 22:58:04
+<?php /* Smarty version 2.6.7, created on 2012-01-17 02:00:38
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 235, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 272, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 15/01/2012 22:58:04 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 17/01/2012 02:00:38 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -41,7 +41,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	$(document).ready(function() {
 
 		setInterval("live_feed(new_ids)", 10000);	// influences flash time
-		setInterval("live_meme()", 5000);
+		setInterval("live_meme()", 10000);
 		
 	 });
 	
