@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 10:36:43
+<?php /* Smarty version 2.6.7, created on 2012-01-05 08:32:28
          compiled from user/register.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 231, false),array('function', 'html_checkboxes', 'user/register.tpl.html', 240, false),array('function', 'html_select_date', 'user/register.tpl.html', 260, false),)), $this); ?>
 
-<!-- Template: user/register.tpl.html Start 30/12/2011 10:36:43 --> 
+<!-- Template: user/register.tpl.html Start 05/01/2012 08:32:28 --> 
  <?php echo '
 	<script type="text/javascript">
 		$.validator.addMethod("username", function(value) {

@@ -94,6 +94,6 @@ if($page =='user' || file_exists($file_test)) {
 		unset ($_SESSION['CACHE_OUTPUT']);
 	}
 }else{
-	$_SESSION['raise_message']['global'] = "<h2>The requested page is not available.</h2>";
+//	$_SESSION['raise_message']['global'] = "<h2>The requested page is not available.</h2>";
 	redirect(LBL_ADMIN_SITE_URL);
 }

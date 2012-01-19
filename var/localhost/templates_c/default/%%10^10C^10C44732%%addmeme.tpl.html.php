@@ -1,15 +1,15 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 01:37:25
+<?php /* Smarty version 2.6.7, created on 2012-01-15 23:00:55
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 139, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 183, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 01/01/2012 01:37:25 --> 
+<!-- Template: meme/addmeme.tpl.html Start 15/01/2012 23:00:55 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
 -->
-
 <div id="showmodal" class="showmodal"><em><strong><center>ENTER MEMEJA DOJO</center></strong></em></div>
+
 <script type="text/javascript">
     var last_comic="http://localhost/spad/workspace/<?php echo $_SESSION['id_user']; ?>
 _img.png";
@@ -20,17 +20,24 @@ _img.png";
 <script type="text/javascript" src="http://localhost/spad/scratchpad.js"></script>
 <script type="text/javascript" src="http://localhost/spad/jquery.jqDock.min.js"></script>
 <script type="text/javascript" src="http://localhost/spad/color/colorpicker.js"></script>
-<script type="text/javascript" src="jquery.lionbars.0.3.min.js"></script>
-<script type="text/javascript" src="jquery.lionbars.0.3.js"></script>
 
+
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" />
 <link type="text/css" href="http://localhost/spad/css/colorpicker.css" rel="stylesheet" />
 <link rel="stylesheet" href="http://localhost/spad/css/spad.css" type="text/css"/>
-<link rel="stylesheet" href="http://localhost/templates/default/meme/lionbars.css" type="text/css"/>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/multiautocomplete.css"/>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
-<?php echo '
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
+
+	var mycanvas, cntx;
+	var count = 0;
+        	
+	function title_focus() {
+        b_titlefocus = true;
+     }
+    function title_blur() { b_titlefocus = false;  }
+    
     function cancel_meme(){
 	window.location="http://localhost/user/user_home";
      }
@@ -43,11 +50,37 @@ _img.png";
             $("#premade_img").html(res);
          });
      }
+	function insertMark()
+	{
+		//var jg = new jsGraphics("memejimark");    // Use the "Canvas" div for drawing 
+		//jg.setColor("white");
+		//var ctx = document.getElementById("memejimark").canvas.getContext("2d");
+				
+		var wm=$("#memejimark");
+        var paddings=2.5;
+		var x=mycanvas.width-wm.width()-paddings;
+        var y=mycanvas.height-wm.height()-paddings;
+		count++;
+		if(count % 2 == 1)
+			cntx.drawImage(wm[0],x,y,wm.width(),wm.height());
+		else
+		{
+			var ctx = document.getElementById(\'removewater\');
+			cntx.drawImage(ctx,x,y,wm.width(),wm.height())
+		 }
+	 }
+
     function validate_me(){
         obj=document.getElementById(\'ques_ans\');
-        if($(obj.title).val()==\'\'){
+        if($(obj.title).val()==\'\')
+		{
             alert("Enter The Title");
             $(obj.title).focus();
+            return false;
+         }
+		if($(obj.title).val().length>80)
+		{
+            alert("Enter a shorter title");
             return false;
          }
         if($(obj.see_fr).val()==""){
@@ -66,22 +99,32 @@ _img.png";
             return false;
          }else{
         
-		if(!$("#tag").val()){
-			var conf=confirm("Are you sure you don\'t want to tag your friends?");
-			if(conf){
+		if(!$("#tag").val())
+		{
+			/* Godzilla: Uncomment and comment out var conf=true once the tagging system is implemented. 
+				Allows users to submit memes without choosing if they have to tag a friend or not. 
+			*/
+			
+			//var conf=confirm("Are you sure you don\'t want to tag your friends?");
+			var conf=true;
+			if(conf)
+			{
 				$(window).unbind();
 				submit_memeje();
-			 }else{
+			 }
+			else
+			{
 				return false;
 			 }
-		 }else{
+		 }
+		else{
 			$(window).unbind();
 			submit_memeje();
 		 }
          }
      }
 	$(window).bind(\'beforeunload\', function() {
-            return \'Oh NO! Your meme has not been submitted!!\';
+            return \'Oh NO! Your meme has not been submitted!\';
      }); 
 
 </script>
@@ -90,9 +133,9 @@ _img.png";
 <?php if ($this->_tpl_vars['sm']['idq']): ?>
 <center><b>Answering to the Question</b></center><br/>
 <?php endif; ?>
-
 <input type="hidden" name="iduser" id="iduser" value="<?php echo $_SESSION['id_user']; ?>
 "/>
+<img src="http://localhost/spad/Memeja Watermark2.png" id="removewater" style="display:none">
 
 <form method="post" action="http://localhost/meme/meme_insert" enctype="multipart/form-data" name="ques_ans" id="ques_ans">
     <div align="center">
@@ -107,7 +150,7 @@ _img.png";
         <div>
             <span><b>Title:</b></span>
             <span>
-                <input type="text" name="meme[title]" id="title" size="50"/>
+                <input type="text" name="meme[title]" id="title" size="50" onfocus="title_focus()" onblur="title_blur()"/>
             </span>
         </div><br/>
         <div id="edtr">
@@ -162,7 +205,13 @@ unset($_smarty_tpl_vars);
                 </table>
             </div>
           <div style="position:fixed;bottom:35px;left:700px"><input type="button" value="Submit" onclick="validate_me();"/></div>
-        </div>
+        <script language = "Javascript">
+		
+		</script>
+		
+		<div style="position:fixed;bottom:35px; left:800px"><input type="checkbox" name="memejimark" value="" onclick="insertMark();"/> Watermark</div>
+				
+		</div>
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>
 _draw.png"/>
 </form>
@@ -172,9 +221,8 @@ _draw.png"/>
 		var url = "http://localhost/index.php?page=user&choice=getfriends4tag&flg=1&ce=0";
 			$("#tag").autocomplete({json_url:url,height:6 });
 		 });
-	
+
 	</script>
 '; ?>
-
 
 <!-- Template: meme/addmeme.tpl.html End --> 

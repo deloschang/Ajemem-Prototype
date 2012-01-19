@@ -1,15 +1,14 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 02:53:06
+<?php /* Smarty version 2.6.7, created on 2012-01-15 23:32:35
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 527, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '146d3e4bfd10b83f4f0346711587f37e'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 526, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '4fafb13ecb3625a3d5c3a43ba9426378'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Memeja: 2 Me's; 1 Meme</title>
-<?php $this->assign('appid', $this->_tpl_vars['util']->get_values_from_config('FACEBOOK')); ?>
-<?php $this->assign('chc', $_REQUEST['choice']); ?>
+<?php $this->assign('appid', $this->_tpl_vars['util']->get_values_from_config('FACEBOOK'));  $this->assign('chc', $_REQUEST['choice']); ?>
 
 <script type="text/javascript" src="http://localhost/libsext/jquery/jquery.js"></script>
 <script type="text/javascript" src="http://localhost/libsext/jquery/jquery-1.4.2.min.js"></script>
@@ -17,9 +16,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 
 
 <!-- JQuery Library for New Fancybox -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 <script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
-
 
 	<!-- Add fancyBox -->
 <link rel="stylesheet" href="http://localhost/templates/css_theme/fancybox/jquery.fancybox.css?v=2.0.4" type="text/css" media="screen" />
@@ -545,7 +543,7 @@ unset($_smarty_tpl_vars);
 				</div>
 				<?php endif; ?>
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:146d3e4bfd10b83f4f0346711587f37e#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:146d3e4bfd10b83f4f0346711587f37e#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:4fafb13ecb3625a3d5c3a43ba9426378#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:4fafb13ecb3625a3d5c3a43ba9426378#0}';}?>
 <br>
 				<?php endif; ?>
 
@@ -599,4 +597,3 @@ unset($_smarty_tpl_vars);
 	<div id="footer"><center>&copy; Copyrights. All Rights Reserved. 2012 <a href="http://localhost/achievements/whatisMemeja">About Us</a></center></div>
 </body>
 </html>
-

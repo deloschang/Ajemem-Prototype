@@ -1,10 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 02:23:31
+<?php /* Smarty version 2.6.7, created on 2012-01-14 06:19:19
          compiled from meme/loadmore_rand_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmore_rand_meme.tpl.html', 11, false),array('modifier', 'date_format', 'meme/loadmore_rand_meme.tpl.html', 13, false),)), $this); ?>
-<?php if ($this->_tpl_vars['sm']['res_meme']['0']): ?>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
-<?php $this->assign('x', $this->_tpl_vars['sm']['res_meme']['0']); ?>
+<?php if ($this->_tpl_vars['sm']['res_meme']['0']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  $this->assign('x', $this->_tpl_vars['sm']['res_meme']['0']); ?>
 
   <div  id="rand_meme" style="width:640px; height:auto;">
 	    <div>
@@ -186,4 +184,4 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 
 <?php elseif (! $this->_tpl_vars['sm']['rand_fg'] && ! $this->_tpl_vars['sm']['res_meme']['0']): ?>
 No meme found.
-<?php endif; ?>
+<?php endif; ?>

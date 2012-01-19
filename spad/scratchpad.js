@@ -5,6 +5,8 @@
    I am commenting every little thing...
 */
 
+var putCanvasCounter = 0;
+
 // Location of all the images for the tools, very easy to change the look of the toolbox
 var SITE_IMAGE_PATH=LBL_SITE_URL+'spad/site_image/';
 
@@ -91,14 +93,14 @@ var settings = {
         var draw = 0;
 		//Detects if the user is drawing on the canvas (jitter!=0)
         var jitter = 0;
-		
+
 		// Variables for canvas start and end
         var startX, startY, endX, endY;
         
         $(window).resize(function() {
             setleftmargin();
         });
-		
+
 		// Detects browser settings and set the left margin for the window
         function setleftmargin() {
             var winW = 630;
@@ -115,7 +117,7 @@ var settings = {
             }
             settings.offsetLeft = (winW/2) - (mycanvas.width/2) - SET_OFFLEFT ;
         }
-		
+
 		// Adjusts the size of the cursor from 1-25
         function adjustfontsize(mysize) {
             $('#fontsize').val(mysize);
@@ -125,15 +127,15 @@ var settings = {
 			mycanvas.style.cursor = 'url('+cc+'), none';
             $( "#vs" ).slider( "option", "value", mysize );
         }
-		
+
 		/* 
 		   Checks to see if HTML 5 is enabled, else it gives an error message.
 		   Main bulk of the plugin
 		*/
         if (supports_canvas() == true) {
-		
+
 		// The code below was commented out by Pati
-		
+
 /*            var canvasElem = $('<canvas>').attr({
                 'width': settings.width.toString()+"px",
                 'height': settings.height.toString()+"px",
@@ -145,7 +147,7 @@ var settings = {
             });
             $(this).append(canvasElem);
             mycanvas = $('canvas')[0];*/
-			
+
 			mycanvas = document.getElementById('mycid');
 			cntx = mycanvas.getContext("2d");
 			mycanvas.width = settings.width;
@@ -153,9 +155,9 @@ var settings = {
 			mycanvas.style.border = settings.borderWidth + 'px solid ' + settings.borderColor;
 //            mycanvas.style.background-color = settings.backgroundColor;
             mycanvas.style.cursor = 'pointer';
-			
+
 			// If the User doesn't have a preloaded image saved in workspace it creates a new Image for them 
-			
+
             /*  Get's kind of annoying, let's try (ctrl+s) 
 			if (preloadImage!="") {
                 var oImg = new Image();
@@ -168,17 +170,17 @@ var settings = {
                 oImg.src = preloadImage;
             }
 			*/
-			
+
 			// Fills the rest of the Memeja Editor with white color
             cntx.save();
             cntx.fillStyle = '#fff';
             cntx.fillRect(0, 0, cntx.canvas.width, cntx.canvas.height);
             cntx.restore();
-			
+
 			/*
 			   The following code will change the canvas based on events inside the canvas
 			*/
-			
+
 			//Adjusts coordinates after a mouseup event. Then sets the canvas context back to original state.
             $(document).mouseup(function (e) {
                 endX = e.pageX - this.offsetLeft - settings.offsetLeft;
@@ -188,28 +190,28 @@ var settings = {
                 cntx.restore();
             });
         
-		
+
 			// Detects if the user is within the canvas area
             $(this).mouseenter(function () {
                 if (jitter > 0) {
                     draw = 1;
                 }
             });
-			
+
 			// If the user leaves the canvas area we set draw = 0
             $(this).mouseleave(function () {
                 if (draw == 1) {
                     draw = 0;
                 }
             });
-			
+
 			// When the user clicks on the canvas we start drawing
             $(this).mousedown(function (e) {
 			    // Anything other than a default line goes into a new "dummy canvas"
                 if (settings.type=='square' || settings.type=='circle' || settings.type=='fcircle' || settings.type=='fsquare' || settings.type=='DLine'||settings.type=='ftriangle'||settings.type=='triangle'){
                     createdummycanvas();
                 }
-				
+
                 saveRestorePoint();
                 cntx.save();
                 jitter = draw = 1;
@@ -231,7 +233,7 @@ var settings = {
                     cntx.moveTo(startX, startY);
                 }
             });
-			
+
             function createdummycanvas() {
 				if ( $.browser.msie ) {
 	                showdebug(mycanvas.width+"----"+mycanvas.height+" : IE");
@@ -252,7 +254,7 @@ var settings = {
 					cursor:'url('+cc+'), none'
                 });
                 cdummy.appendTo("body");
-				
+
 				var iddummy = document.getElementById('dummy');
                 var dummyc = iddummy.getContext("2d");
 //              var x = $('#mycid').offset();
@@ -267,7 +269,7 @@ var settings = {
 //				iddummy.style.cursor = 'url('+cc+'), none';
                 dummyc.fillStyle = "rgba(0, 0, 200, 0.5)";
                 stopdraw=1;
-				
+
                 $(iddummy).mousemove(function (e) {
                     if (startX=="undefined") {
                         startX=e.pageX;
@@ -324,7 +326,7 @@ var settings = {
                     copytooriginal();
                 });
             }
-			
+
             function copytooriginal() {
                 var iddummy = document.getElementById('dummy');
                 var oImg = new Image();
@@ -386,9 +388,11 @@ var settings = {
                 if(grid==true)
 				{
 				  grid = false;
+				/*  
 				  if(undoPoints.length==0){
 				   clear_canvas();
 				  }
+				 */
 				  drawpanellines(settings.panel);
 				  drawpanellines(settings.panel);
 				}else
@@ -429,9 +433,6 @@ var settings = {
 			$('img[class=clear]').click(function () {
 			    clear_canvas();
 			})
-			$('img[class=size]').click(function () {
-			    clear_canvas();
-			})
 			$('img[class=downarrow]').click(function () {
 			    moveDown();
 			})
@@ -447,10 +448,14 @@ var settings = {
             });
             $(document).keyup(function(e){
                 if(e.which == 90){
-                    undoimage();
+                    if(typeof(b_titlefocus) == 'undefined' || b_titlefocus == false) {
+                        undoimage();
+                    }
                 }
                 if(e.which == 89){
-                    redoimage();
+                    if(typeof(b_titlefocus) == 'undefined' || b_titlefocus===false) {
+                        redoimage();
+                    }
                 }
             /*if(e.which == 107){
                     var newvalue = Math.min($( "#vs" ).slider( "option", "value" )+1, $( "#vs" ).slider( "option", "max" ));
@@ -496,13 +501,19 @@ function removeMemeid(e, text) {
     if (text && typeof text == 'string') {
         id = $(e).parents("div.newtextdd").attr("id");;
     } else {
-        id = $(e).parents("div.newdd").attr("id");
-    }
+		id = $(e).parents("div.newdd").attr("id");
+		putCanvasCounter--;
+		//alert(putCanvasCounter);
+	}
     $("#"+id).remove();
+	
 }
 
 // Clones the Meme Face and it's settings
-function cloneme(e) {
+function cloneme(e) 
+{
+	putCanvasCounter++;
+	//alert(putCanvasCounter);
     mydivid  = $(e).parents("div.newdd").attr("id");
     var newele = $("#"+mydivid).clone(false,false);
     $(newele).children('img').attr('id', "image"+newimgid);
@@ -524,7 +535,7 @@ function cloneme(e) {
     if(newimgid % 6 == 5) 
 	   memeTop+=150;
 	$(newele).css("top", memeTop+"px");
-	
+
     newele.appendTo("body");
     rleft();
     rright();
@@ -689,7 +700,7 @@ function create_Textbox(){
     var textId="text"+newtextid;
     newtextid++;
     //var html = "<div class='newtextdd' id='"+textId+"'  style='position:relative;padding-top:14px; top:'"+memeTop+"px;left:150px;'>"+
-	var html = "<div class='newtextdd' id='"+textId+"'  style='position:relative;padding-top:14px;left:150px;'>"+
+    var html = "<div class='newtextdd' id='"+textId+"'  style='position:relative;padding-top:14px;left:150px;'>"+
     "<div class='memejeTextContainer'>"+
     "<img title='Remove' src='"+SITE_IMAGE_PATH+"delete.png' onclick='removeMemeid(this,\"text\")' />"+
     "<img title='Put in Canvas' src='"+SITE_IMAGE_PATH+"shape_move_backwards.png' onclick='puttextincanvas(this)' />"+
@@ -700,13 +711,16 @@ function create_Textbox(){
     "<img title='Clone text' src='"+SITE_IMAGE_PATH+"shape_clone.png' onclick='clonetext(this)' />" ;
     html += "<select onchange='changeFontFamily(this)'><option>Arial</option><option>Courier</option><option>Helvetica</option><option>sans-serif</option><option>Georgia1f</option>"+
     "</select><img title='Drag this' src='"+SITE_IMAGE_PATH+"hand.png' />";
-    html += "</div><textarea style='font-size: 12px;width:228px;' spellcheck='false' id='TextBox"+textId+"'>This is a test Line.</textarea>"+
+
+    html += "</div><textarea style='font-size: 12px;width:228px;' spellcheck='false' onfocus='title_focus()' onblur='title_blur()' id='TextBox"+textId+"'>This is a test Line.</textarea>"+
     "</div>";
+    
     $("body").prepend(html)
     change_attr_of_text(textId);
 }
 
-function create_Imagebox(clicked_img) {
+function create_Imagebox(clicked_img) 
+{
 
     // newimgid corresponds to the newest meme face we clicked
 	img_rotate[newimgid] = new Array();
@@ -719,7 +733,7 @@ function create_Imagebox(clicked_img) {
     img.src=clicked_img;
     var str=clicked_img;
     $("#edited_img").val(str.substr(str.lastIndexOf('/')+1));
-	
+
 	if (document.body && document.body.offsetWidth) {
 		winW = document.body.offsetWidth;
 	}
@@ -729,7 +743,7 @@ function create_Imagebox(clicked_img) {
 	if (window.innerWidth && window.innerHeight) {
 		winW = window.innerWidth;
 	}
-	
+
 	leftpos = Math.round((winW-img.width)/2);
 
 	// Makes sure the selected meme face is near the top of the canvas
@@ -749,7 +763,7 @@ function create_Imagebox(clicked_img) {
 	   memeTop+=125;
     if(newimgid % 6 == 5) 
 	   memeTop+=150;
-	   
+
 	// This is the image box created
     var div = $("<div id='"+newimgid+"' class='newdd'>").html("<img id='image"+newimgid+"' src='"+clicked_img+"' />").css({
         
@@ -760,7 +774,8 @@ function create_Imagebox(clicked_img) {
         'width':img.width+"px",
         'z-index':1
     }).hover(
-        function () {
+        function () 
+		{
             var mydivid = this.id;
             showdebug("Orig:"+mydivid);
             newh = $(this).height() + SET_EDITOR_HEIGHT;
@@ -786,22 +801,29 @@ function create_Imagebox(clicked_img) {
             rleft();
             rright();
         }, 
-        function () {
+        function () 
+		{
             $(this).find("span:last").remove();
-            $('.memejeImageContainer').each(function(){
+            $('.memejeImageContainer').each(function()
+			{
                 if($(this).html()=='')
                     $(this).remove();
             });
         }
         );
 			numImages++;
+			putCanvasCounter++;
+		//	alert(putCanvasCounter);
     $("body").prepend(div);
-    $(".newdd").draggable({                    
+    $(".newdd").draggable(
+	{                    
         cursor:'pointer',
         containment:"#mycid"
     });
-    $(".newdd").resizable({
-        resize : function(){
+    $(".newdd").resizable(
+	{
+        resize : function()
+		{
             $(this).find("span:last").remove();
         },
         aspectRatio: true
@@ -809,7 +831,9 @@ function create_Imagebox(clicked_img) {
     ++newimgid;
 }
 
-function putincanvas(e) {
+function putincanvas(e) 
+{
+
     saveRestorePoint();
 	lastimgdrawn = 1;
     mydivid = $(e).parents("div.newdd").attr("id");
@@ -851,8 +875,11 @@ function putincanvas(e) {
         cntx.drawImage(document.getElementById("image"+mydivid), imgPosition.left, imgPosition.top, imgW, imgH);
     }
     $("#"+mydivid).remove();
+	putCanvasCounter--;
+	//alert(putCanvasCounter);
 	images[mydivid]
     cntx.restore();
+	
 }
 function submit_memeje() {
 
@@ -863,24 +890,29 @@ function submit_memeje() {
         var x=mycanvas.width-wm.width()-paddings;
         var y=mycanvas.height-wm.height()-paddings;
         cntx.drawImage(wm[0],x,y,wm.width(),wm.height()); */
-		
-	saveindisk(1);
+		saveindisk(1);
 }
-function saveindisk(csave) {
-    var canvasData = getcanvasimage("mycid");
+function saveindisk(csave) 
+{
+	var canvasData = getcanvasimage("mycid");
     var url = SAVE_IMG_PATH+'/id_user/'+$("#iduser").val(); // extra added
-    $.ajax({
+    $.ajax(
+	{
         type: 'POST',
         url: url,
         contentType: 'application/upload;', 
         cache: false,
         data: canvasData,
-        success: function(html){
-            if (csave==1){
+        success: function(html)
+		{
+            if (csave==1 && putCanvasCounter==0)
+			{
                 document.ques_ans.submit();                
-            } else {
-                alert(html);
             }
+			else
+			{
+				alert("Please set all images to the canvas");
+			}
         },
         error: function(xhr, errorMessage, thrownError) {
             alert(xhr.statusText+" error occured while saving the image");
@@ -906,7 +938,7 @@ function drawpanellines(number){
 		cntx.moveTo(0,y);
 		cntx.lineTo(cntx.canvas.width,y);
 	}
-	
+
 	cntx.moveTo(1,(settings.panel-number)*panelHeight);
 	cntx.lineTo(1,cntx.canvas.height);
 	cntx.moveTo(cntx.canvas.width-1,(settings.panel-number)*panelHeight);
@@ -940,7 +972,7 @@ function addRow(number){
 	then try to add panels again, your original image will be shown
 	*/
 	if(undoPanel[0]!= ""){
-	
+
 	if ( $.browser.msie ) {
 		mycanvas.innerHTML = undoPanel.pop();
 	} else {
@@ -950,7 +982,7 @@ function addRow(number){
 		}
 		oImg.src = undoPanel.pop();
 	}
-	
+
   }
 }
 
@@ -993,6 +1025,8 @@ function resizeCanvasSize(){
 function clear_canvas() {
 	cntx.clearRect(0, 0, cntx.canvas.width, cntx.canvas.height);
 	numImages++;
+	putCanvasCounter = 0;
+	//alert(putCanvasCounter);
 	for(x=0;x<numImages;x++)
 	{
     $("#"+x).remove();
@@ -1097,7 +1131,7 @@ function drawOvals(context, centX, centY, width, height, fill)
             }
             context.closePath();
         }
-		
+
 // Allows for triangles on the Memeja Editor
 function drawTri(context,startX, startY, endX, endY, fill)
 {
@@ -1191,7 +1225,7 @@ while(pixelStack.length)
         reachLeft = false;
       }
     }
-	
+
     if(x < canvasWidth-1)
     {
       if(matchStartColor(pixelPos + 4))
@@ -1207,7 +1241,7 @@ while(pixelStack.length)
         reachRight = false;
       }
     }
-			
+
     pixelPos += canvasWidth * 4;
   }
 }

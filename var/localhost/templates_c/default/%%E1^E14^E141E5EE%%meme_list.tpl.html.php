@@ -1,7 +1,6 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-01 02:53:06
+<?php /* Smarty version 2.6.7, created on 2012-01-15 23:32:37
          compiled from meme/meme_list.tpl.html */ ?>
-<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
-<?php echo '
+<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script type="text/javascript">
     var reply_color = "';  echo $this->_tpl_vars['x']['reply'];  echo '";
@@ -337,7 +336,7 @@
 	   	margin-left: 15px;
 		padding-left: 10px;
 		padding-top: 10px;
-		padding-bottom: 5px;
+		padding-bottom: 10px;
 		background: white;  /* background for meme color */
 		width:95%;
 		height:auto;
@@ -361,7 +360,7 @@
 		position:relative;
 		bottom:6px;
 		padding-left:10px; 
-		font-size: 23px; 
+		font-size: 19px; 
 		font-weight: bold;
 	 }
 	
@@ -452,4 +451,4 @@ unset($_smarty_tpl_vars);
 <div id="loadingmeme_img" style="display:none;">
     <img src="http://localhost/templates/images/loading.gif" />
 </div>
-<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
+<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
