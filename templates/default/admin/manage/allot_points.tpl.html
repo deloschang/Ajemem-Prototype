@@ -1,0 +1,103 @@
+{assign var=allot_points value=$util->get_values_from_config('ALLOT_POINTS')}
+<div class="box box-75 altbox" id="dt" >
+    <div class="boxin" >
+    <div class="header" id ="to_replace">
+        <h3>Allot Point</h3>
+	    </div>
+        <div class="content">
+	    <form name="addpoints"  id="add_points"  action=" "method="post">
+		<table cellspacing="0">
+		    <tbody>
+			<tr>
+			    <td> Point Type:</td>
+			    <td>
+				<select id="point_type" name="point_type" {if $sm.res}disabled="disabled"{/if}>
+				    <option value="">--select--</option>
+				    {html_options options=$allot_points selected=$sm.res.point_type}
+				</select>
+			    </td>
+			</tr>
+			<tr>
+			    <td>Points:</td>
+			    <td>
+				<input type="text" name="points" id="point" value="{$sm.res.points}" />
+			    </td>
+			</tr>
+			<tr>
+			    <td colspan="2" align="right">
+				<input type="button" name="send" value="{if $sm.res}Update{else}Allot{/if}" {if $sm.res}onclick="update_point('{$sm.res.id_allot}');"{else}onclick="add();"{/if}/>
+			    </td>
+			</tr>
+
+		    </tbody>
+		</table>
+	    </form>
+        </div>
+    </div>
+</div>
+
+{literal}
+    <script type="text/javascript">
+	function add(){
+	    var formval = $('#add_points').serialize();
+	    var url="##LBL_ADMIN_SITE_URL##index.php?"+formval;
+	    var c=valid_point();
+	    if(c){
+		$.post(url,{"page":"manage","choice":"insert_points","ce":0},function(res){
+		    if(res == 0){
+			 alert("Point type already exist\n Please edit or select another point type");
+			 $("#point_type").val("");
+			 $('#point').val("");
+			 return false;
+		    }else{
+			$("#manage_show_points").html(res);
+			$.fancybox.close();
+		    }
+		});
+	    }
+	}
+	function update_point(id){
+	    var formval = $('#add_points').serialize();
+	    var c=valid_point();
+	    if(c){
+		var url="##LBL_ADMIN_SITE_URL##index.php?"+formval;
+		$.post(url,{"page":"manage","choice":"update_point","id":id,ce:0}, function(res){
+		    $("#manage_show_points").html(res);
+		});
+		$.fancybox.close();
+	    }
+	 }
+    function valid_point(){
+	var validator=$("#add_points").validate({
+	    rules: {
+		"point_type":{
+		  required:true  
+		},
+		"points": {
+		    required: true,
+		    number:true,
+		    minlength: 1
+		}
+	    },
+	    messages: {
+		"point_type":{
+		  required:"<br>Please select point type " 
+		},
+		"points":{
+		    required: "<br>Enter  valid number",
+		    number:"<br> Only Number",
+		    minlength: "<br>At least one number"
+		}
+	    }
+	});
+	var x=validator.form();
+	if(!x){
+	    return false;
+	}else{
+		return true;
+	    }
+	}
+  
+     </script>
+
+{/literal}
