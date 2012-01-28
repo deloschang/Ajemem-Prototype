@@ -1,0 +1,172 @@
+{* notag *}
+{assign var=category value=$util->get_values_from_config('PREMADE_CATEGORY')}
+{assign var=img_path value=$util->get_values_from_config('IMAGE')}
+<div id="dv1">
+<div class="box box-75 altbox">
+    <div class="boxin">
+        <div class="header">
+            <h3>Premade ImageList ({$sm.next_prev->total})</h3>
+            <a class="button" href="javascript:void(0);" onclick="add_images();">Add Images</a>
+	   {if $sm.list} <input type="button" class="button" name="delImg" value="Delete"onclick="deleteAll('chkbox_image','');"/>{/if}
+        </div>
+	 <input type="hidden" name="htot" id="rtot" value='{$sm.next_prev->total}'/>
+        <input type="hidden" id="qstart" value="{$sm.qstart}"/>
+        <div class="content">
+            <table cellspacing="0">
+            <thead>
+	    <th>&nbsp;&nbsp;&nbsp;<input type="checkbox" name="chk_all" id="chk_all" onclick="checkUncheck('chkbox_image');" title="Check to select all images"/></th>
+            	<th>Image</th>
+                <th>Category</th>
+		<th>Add Date</th>
+		<th>Action</th>
+            </thead>
+            <tbody>
+
+            {section name=cur loop=$sm.list}
+            {assign var=x value=$sm.list[cur]}
+		 <tr>
+		    <td>
+			  <input type="checkbox" name="chk_box" id="chk{$x.id_premade_image}" value="{$x.id_premade_image}" class="chkbox_image"/>
+		    </td>
+		    <td>
+			{assign var=pth value=$img_path.premade_image}
+			{assign var=thumb_path value=$img_path.premade_image_thumb}
+			{assign var=imgnm value="<img src='##LBL_SITE_URL##$pth/$x.img_name' height='110px' width='110px'/>"}
+
+			<img src="##LBL_SITE_URL##{$thumb_path}/{$x.img_name}" height="70px" width="70px" onmouseover='return overlib("<img src=##LBL_SITE_URL##{$pth}/{$x.img_name}>");' onmouseout="return nd();"/><br>{$x.image}
+		    </td>
+		    <td>{$category[$x.id_category]}</td>
+		    <td>{$x.add_date|date_format:"%m-%d-%Y"}</td>
+		    <td>
+			<img src="##LBL_SITE_URL##templates/css_theme/img/led-ico/pencil.png" alt="edit" title="Edit" onclick="edit_premadeImages('{$x.id_premade_image}');" style="cursor:pointer;"/>
+			<!--<img src="##LBL_SITE_URL##templates/css_theme/img/led-ico/delete.png" alt="delete" title="Delete" onclick="delete_premadeImages('{$x.id_premade_image}','{$x.image}','{$sm.list|@count}');"/>-->
+		    </td>
+		</tr>
+            {sectionelse}
+		<tr>
+		    <td colspan="5">
+		    No Images Found.
+		    </td>
+		</tr>
+            {/section}
+            </tbody>
+            </table>
+		{if $sm.type=='advance'}
+	    <div class="pagination_adv">
+	        {$sm.next_prev->generateadv()}
+	    </div>
+	{elseif $sm.type=='box'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='normal'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='nextprev'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->onlynextprev()}</div>
+	    </div>
+	{elseif $sm.type=='extra'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generateextra()}</div>
+	    </div>
+	{else}
+	    {if $sm.type!='no'}
+	        <div>
+	            <div align="center">{$sm.next_prev->generate()}</div>
+	        </div>
+	    {/if}
+	{/if}
+        </div>
+    </div>
+</div>
+</div>
+{literal}
+<script type="text/javascript">
+	function add_images(){
+	     var url="##LBL_ADMIN_SITE_URL##index.php";
+	    $.fancybox.showActivity();
+	    $.post(url,{"page":"meme","choice":"addImages",ce:0},function(response){
+		    $.fancybox(response);
+	    });
+	}
+	function edit_premadeImages(id){
+	    qstart=$('#qstart').val();
+	    var url="##LBL_ADMIN_SITE_URL##index.php";
+	    $.fancybox.showActivity();
+	    $.post(url,{"page":"meme","choice":"edit_premadeImages","id":id,"qstart":qstart,ce:0},function(response){
+		    $.fancybox(response);
+	    });
+	}
+	function delete_premadeImages(id_premade_image,image,no){
+	    var q=$('#qstart').val();
+	    var url="##LBL_ADMIN_SITE_URL##index.php/";
+	    var conf=confirm('Are you sure to delete this record?');
+	    if(conf){
+		var limit = '{/literal}{$sm.limit}{literal}';
+		if($('#qstart').val()!=''){
+		    var q = $('#qstart').val();
+		}else{
+		    var q = 0;
+		}
+		$.post(url,{"page":"meme","choice":"delete_premadeImages",ce:0,"id_premade_image":id_premade_image,"image":image,"qstart":q,"limit":limit,no:no},function(res){
+		    $("#meme_list_premadeImages").html(res);
+		});
+	    }else
+		return false;
+	}
+	
+	function checkUncheck(cls){
+	    if(document.getElementById("chk_all").checked==true){
+		$('.'+cls).each(function(){
+		    $(this).attr('checked','checked');
+		});
+	    }else{
+		$('.'+cls).each(function(){
+		    $(this).removeAttr('checked');
+		});
+	    }
+	}
+	
+	function deleteAll(cls,chc){
+	    var rshow=parseInt('{/literal}{$sm.limit}{literal}');
+	    var qstrt=parseInt('{/literal}{$sm.qstart}{literal}');
+	    var keys='';
+	    var i=0;
+	    $('.'+cls).each(function(){
+		if($(this).is(':checked')){
+		    keys +=","+$(this).val();
+		    i++;
+		}
+	    });
+	    keys=keys.substr(1);
+	    var rtot = parseInt($("#rtot").val()) - i;
+	    if(rtot){
+		var qs = (rtot%rshow)!=0 || (qstrt!=rtot) || (qstrt==0 && rtot==0) ? '': parseInt(Math.floor((rtot-1))/rshow)*rshow;
+	    }	
+	    if(qs===""){
+		qs=qstrt;
+	    }//alert(qs);return false;
+	    if(!keys){
+		alert("Select atleast one checkbox.");
+		return false;
+	    }else{if(chc==''){
+		    chc=confirm("Are you sure want to delete selected Image(s) ?","deleteAll",cls);
+		}
+		if(chc){
+		    list_premadeImages('for_del','',keys,qs);return true;
+		}else{
+		    return false;
+		}
+	    }
+	    
+	}
+	function list_premadeImages(fordel,x,keys,qs){
+	    var url="##LBL_ADMIN_SITE_URL##index.php";
+	    $.post(url,{"page":"meme","choice":"deleteAll",ce:0,"id_premade_image":keys,qstart:qs},function(res){
+		    $("#meme_list_premadeImages").html(res);
+		});
+	}
+</script>
+{/literal}

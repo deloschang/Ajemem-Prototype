@@ -1,0 +1,14 @@
+			{if $sm.list}
+<table>
+	<tr><td><b>USER NAME</b></td></tr>
+	{section name=cur loop=$sm.list}
+	{assign var=comp value=$sm.list[cur]}
+		<tr>
+			<td>{$comp.name}</td>
+		</tr>
+	{/section}
+</table>
+	{else}
+	<center><b>No search result found</b></center>
+	{/if}
+	 {$sm.next_prev->generate()}

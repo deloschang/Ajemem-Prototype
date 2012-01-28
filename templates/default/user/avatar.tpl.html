@@ -1,0 +1,34 @@
+{assign var=img_path value=$util->get_values_from_config('IMAGE')}
+<div id="edit_photo">
+<!-- orig onclick editPhoto; -->
+
+	{if $smarty.session.fb_pic_normal}
+	<img src="{$smarty.session.fb_pic_normal}" style="width:200px;height:auto; padding-top:5px;">
+	{else}
+    <img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:140px;height:auto;"/>
+    {/if}
+    
+</div>
+<!--
+<div>
+ <a href="javascript:void(0);" onclick="editPhoto('{$smarty.session.id_user}');">Change Photo</a>
+</div>
+-->
+{literal}
+<script type="text/javascript">
+    function editPhoto(id){
+		var url="##LBL_SITE_URL##index.php";
+			$.post(url,{"page":"user","choice":"edit_avatar","id":id,ce:0},function(res){
+				$.fancybox(res,{
+			    	closeBtn:false,
+			    	closeClick:false,
+			    	helpers : {
+						overlay : {
+							opacity : 0.8
+						}
+					}
+				});
+			});
+    }
+</script>
+{/literal}

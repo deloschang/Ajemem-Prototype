@@ -1,0 +1,23 @@
+pre { font-family: monospace;}
+#result {
+	background-color: white;
+	-webkit-border-radius: 10px;
+	padding: 10px;
+}
+.hovered {
+  background-color: lightblue;
+  color: #666;
+}
+input[type='checkbox'].tick_chkbox{
+	position:absolute;
+	bottom :0px;
+	left:0px;
+}
+.photo_container	{
+	position:relative;
+	height:60px;
+}
+.frend_name	{
+	vertical-align:top;
+	text-transform:capitalize;
+}
