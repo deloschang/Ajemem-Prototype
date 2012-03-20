@@ -1,0 +1,94 @@
+<div class="box box-60 altbox" id="ipblock">
+    <div class="boxin">
+        <div class="header">
+            <h3>Blocked IP List</h3>
+            {if $sm.blockedip}
+            <a class="button" href="javascript:void(0);" onclick="unblockip();">Unblock IP</a>
+             {/if}
+			 <a class="button" href="javascript:void(0);" onclick="blockip();">Block IP</a>
+			<!--<a class="button" href="javascript:void(0);" onclick="blockipinterval();">Block IP Interval</a>-->
+        </div>
+        <div class="content">
+       <form>
+            <table border="1">
+            {if $sm.blockedip}
+                <thead>
+                	<th>
+                    	<input type="checkbox" id="chkall" name="chkall"/>Select All
+                    </th>
+                    <th>Username</th>
+                    <th>IP Address</th>
+                    <th>Time</th>
+                    <th>Reason</th>
+                </thead>
+             {/if}
+                <tbody>
+            {foreach from=$sm.blockedip item=item}
+                <tr>
+                	<td><input type="checkbox" id="id_chk{$item.id_block}" value="'{$item.ip}'" name="chk[]" onclick="unSelect()"/></td>
+                    <td>{$item.username|default:"Not Entered"}</td>
+                    <td>{$item.ip}</td>
+                    <td>{$item.time_fail|date_format:"%m/%d/%Y %r"}</td>
+                    <td>{$item.reason}</td>
+                </tr>
+            {foreachelse}
+                <tr>
+                    <td colspan="2">No record found.</td>
+                </tr>
+            {/foreach}
+            </tbody>
+            </table>
+          </form>
+    </div>
+<div id="showerr">{$sm.failmsg}</div>
+</div>
+</div>
+{literal}
+<script type="text/javascript">
+	function unSelect() {
+		$("input[id^=id_chk]:unchecked").each(function(){
+				$('#chkall').removeAttr('checked');
+		});
+	}
+	function unblockip() {
+		var choice=confirm('Do you want to unblock this?');
+		if(choice){
+			var x='';
+			$("input[id^=id_chk]:checked").each(function(){
+				x=x+','+$(this).val();
+			});
+			var url="##LBL_ADMIN_SITE_URL##index.php";
+			$.post(url,{"page":"ipblocking","choice":"deleteblockip",ce:0,ipid:x},function(res){
+				if(res) {
+					$('#ipblock').html(res);
+				}
+			});
+		}
+	}
+
+	$("#chkall").click(function()
+		{
+			var checked_status = this.checked;
+			$("input[id^=id_chk]").each(function()
+				{
+					this.checked = checked_status;
+				});
+		});
+		
+	function blockip() {
+		var url="##LBL_ADMIN_SITE_URL##index.php";
+			$.fancybox.showActivity();
+			$.post(url,{"page":"ipblocking","choice":"blockip",ce:0},function(res){
+					$.fancybox(res);
+			});
+	}
+	/*function blockipinterval() {
+		var url="##LBL_ADMIN_SITE_URL##index.php/page-ipblocking-choice-ipblocking";
+			$.post(url,{ce:0},function(res){
+					//alert(res);return;
+					$("#mymodal").html(res);
+					cal_position(310,480);
+			});
+	}*/
+</script>
+{/literal}

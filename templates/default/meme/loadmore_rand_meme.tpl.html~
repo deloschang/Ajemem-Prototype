@@ -1,0 +1,154 @@
+{*notag*}
+{if $sm.res_meme.0}
+{assign var=category value=$util->get_values_from_config('CATEGORY')}
+{assign var=x value=$sm.res_meme.0}
+
+  <div  id="rand_meme" style="width:640px; height:auto;">
+	    <div>
+	    <!--
+		    Posted by:{$sm.uinfo[$x.id_user].fname} {$sm.uinfo[$x.id_user].lname}<br/>
+		    Category:<b>{$category[$x.category]}</b><br/>
+		    Title:<b>{$x.title|capitalize}</b><br/> 
+		-->
+<!--		    On : {$x.add_date|date_format:"%m-%d-%Y"} @ {$x.add_date|date_format:"%I:%M %p"}-->
+	    </div>
+	    
+	    <!--	    <div id="randhrc{$x.id_meme}" style="font-size: 16px;color:blue;">{if $sm.hrc[$x.id_meme].caption}{$sm.hrc[$x.id_meme].caption}{else}{/if}</div>-->
+<!--	    -->
+<!--	    <br/>-->
+
+	    <div>
+		    <span>
+			{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
+			
+			<span id ="rand_meme_reply_id{$x.id_meme}">
+			<label id="randrepl{$x.id_meme}">{$x.tot_reply}</label>&nbsp;<a href="javascript:void(0);" onclick="get_all_rand_replies('{$x.id_meme}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;</span>
+			{/if}
+			
+			<span id ="rand_meme_agr_id{$x.id_meme}">
+			<label id="randaggr{$x.id_meme}">{$x.tot_honour}</label>&nbsp;<a href="javascript:void(0);" id="randagr_link{$x.id_meme}" 
+			{* Added by Delos: highlights according to agree/disagree *}
+			    	{if $smarty.session.id_user}
+			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
+				    		style="color: green; cursor: default"
+				    	{elseif substr_count($x.dishonour_id_user, $smarty.session.id_user)}
+				    		style="color: gray; cursor: default"
+				    	{/if}
+				    {/if}
+			
+			onclick="rand_set_tot_adaggr('{$x.id_meme}','A');">Honor</a></span>&emsp;
+			
+			<span id ="rand_meme_disagr_id{$x.id_meme}">
+			<label id="randdisaggr{$x.id_meme}">{$x.tot_dishonour}</label>&nbsp;<a href="javascript:void(0);" id="randdisagr_link{$x.id_meme}" 
+			{* Added by Delos: highlights according to agree/disagree *}
+			    	{if $smarty.session.id_user}
+			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
+			    			style="color: gray; cursor: default"
+			    		{elseif substr_count($x.dishonour_id_user, $smarty.session.id_user)}
+			    			style="color: red; cursor: default"
+			    		{/if}
+			    	{/if}
+			
+			onclick="rand_set_tot_adaggr('{$x.id_meme}','D');">Dishonor</a></span>
+			
+			<div id="randsend_reply{$x.id_meme}" style="width:60%;display: none;"></div>
+			
+<!--			{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}-->
+<!--			&nbsp;<label id="rand_capt{$x.id_meme}">{$x.tot_caption} </label> <a href="javascript:void(0)" onclick="get_rand_captions('{$x.id_meme}');" >Add Caption</a>-->
+<!--			{/if}-->
+<!--			&nbsp;-->
+<!--			{if $x.id_user!=$smarty.session.id_user}-->
+<!--				 &nbsp;<a href="javascript:void(0)" onclick="rand_flagging('{$x.id_meme}')">Flag</a>-->
+<!--			{/if}-->
+<!--			<br/>-->
+<!--			<span class="fb_btn"><fb:like href="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like></span>-->
+
+		    </span><br/>
+	</div>
+	    
+	    
+	    
+	    <div id="lding_rand" style="display: none;" align="center"><img src="##LBL_SITE_URL##templates/images/loadingAnimation.gif" /></div>
+	    
+	    <div  onclick="show_my_details('{$x.id_meme}');" id="comc_img"><br />
+		    <img  src="##LBL_SITE_URL##image/orig/meme/{$x.image}" style="cursor:pointer;"  title="{$x.title}" />
+	    </div>
+	    
+	    <br />
+		    
+<!--		    <span ><a href="http://twitter.com/share" class="twitter-share-button" data-url="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje"  >Tweet</a></span>-->
+<!--	    <div id="randadd_caption{$x.id_meme}" style="width:60%;display: none;"></div>-->
+    </div>
+{literal}
+<!--<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>-->
+<script type="text/javascript">
+	var notyet = 0;
+	var notagree = 0;
+	var notdisagree = 0;
+	
+	function clearTimer() {
+    	notyet = 0;   
+	}  
+    
+    $(document).ready(function(){
+		var ids = ($("#rand_ids").val())?$("#rand_ids").val()+",{/literal}{$x.id_meme}{literal}":"{/literal}{$x.id_meme}{literal}";
+		$("#rand_ids").val(ids);
+		
+		// Set Title of Meme
+		$("#random_title").html("{/literal}{$x.title|capitalize}{literal}");
+		$("#random_username").html('<a href="javascript:void(0)" onmouseover="hover_user(\'{/literal}{$sm.uinfo[$x.id_user].id_user}{literal}\');">{/literal}{$sm.uinfo[$x.id_user].username}{literal}</a>');
+		
+		$(document).bind('keydown', 'right', function(){
+			next_meme();
+		});
+		
+		$(document).bind('keydown', 'space', function(){
+			next_meme();
+		});
+			
+		$(document).bind('keydown', 'up', function(){
+			next_agree();
+		});
+		
+		$(document).bind('keydown', 'down', function(){
+			next_disagree();
+		});
+		
+    });
+    
+    function next_meme(){
+		if (notyet == 1) {
+		    return; 
+		}  
+		notyet = 1;
+		show_my_details('{/literal}{$x.id_meme}{literal}');
+		setTimeout('clearTimer()', 1000);
+    }
+    
+    function next_agree(){
+		if (notagree == 1) {
+		    return; 
+		}  
+		notagree = 1;
+		rand_set_tot_adaggr('{/literal}{$x.id_meme}{literal}','A');
+		setTimeout('clearTimer()', 1000);
+    }
+    
+     function next_disagree(){
+		if (notdisagree == 1) {
+		    return; 
+		}  
+		notdisagree = 1;
+		rand_set_tot_adaggr('{/literal}{$x.id_meme}{literal}','D');
+		setTimeout('clearTimer()', 1000);
+    }
+    
+    $(".fb_btn").each(function (){
+		FB.XFBML.parse($(this).get(0));
+    });
+    
+</script>
+{/literal}
+{elseif !$sm.rand_fg && !$sm.res_meme.0}
+No meme found.
+{/if}

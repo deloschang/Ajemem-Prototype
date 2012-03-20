@@ -1,0 +1,152 @@
+{assign var=img_path value=$util->get_values_from_config('IMAGE')}
+<div id="ques">
+<div class="box box-75 altbox" style="width:1000px">
+    <div class="boxin">
+	<div class="header">
+            <h3>Question List</h3>
+            <a class="button" href="javascript:void(0);" onclick="add_que();">Add Question</a>
+	    <a class="button" href="javascript:void(0);" onclick="del_que();">Delete</a>
+	  </div>
+	   <input type="hidden" id="qstart" value="{$sm.qstart}"/>
+	   <input type="hidden" id="count" value="{$sm.list|@count}"/>
+	   <input type="hidden" id="limit" value="{$sm.limit}"/>
+        <div class="content">
+            <table cellspacing="0">
+            <thead>
+		<th><input type="checkbox"  id="0" onclick="checkall(this);"/></th>
+		<th>Image</th>
+            	<th>Question</th>
+                <th>Title</th>
+		<th>Quiz Start</th>
+		<th>Quiz End</th>
+		<th>Edit</th>
+            </thead>
+            <tbody>
+            {section name=cur loop=$sm.list}
+            {assign var=x value=$sm.list[cur]}
+            <tr>
+            	<td><input type="checkbox" id="{$x.id_question}" onclick="check(this)" /></td>
+            	<td>
+		    <img src="##LBL_SITE_URL##{$img_path.ques_thumb}/{$x.img_name}" height="70px" width="70px" />
+		</td>
+                <td>{$x.question}</td>
+		<td>{$x.title}</td>
+		<td>{$x.start_date|date_format:"%m-%d-%Y"}</td>
+		<td>{$x.end_date|date_format:"%m-%d-%Y"}</td>
+		<td>
+                    <img src="##LBL_SITE_URL##templates/css_theme/img/led-ico/pencil.png" alt="edit" title="Edit" onclick="edit_que('{$x.id_question}');" style="cursor: pointer;"/>
+                </td>
+            </tr>
+            {sectionelse}
+            <tr>
+                <td colspan="5">
+		    No question Found.
+                </td>
+            </tr>
+            {/section}
+            </tbody>
+            </table>
+		{if $sm.type=='advance'}
+	    <div class="pagination_adv">
+	        {$sm.next_prev->generateadv()}
+	    </div>
+	{elseif $sm.type=='box'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='normal'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='nextprev'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->onlynextprev()}</div>
+	    </div>
+	{elseif $sm.type=='extra'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generateextra()}</div>
+	    </div>
+	{else}
+	    {if $sm.type!='no'}
+	        <div>
+	            <div align="center">{$sm.next_prev->generate()}</div>
+	        </div>
+	    {/if}
+	{/if}
+        </div>
+    </div>
+</div>
+</div>
+{literal}
+    <script type="text/javascript">
+	var id_s="";
+	function add_que(){
+	    //var url="##LBL_ADMIN_SITE_URL##question/add";
+	    var url="##LBL_ADMIN_SITE_URL##index.php";
+	    $.fancybox.showActivity();
+	    $.post(url,{"page":"question","choice":"add","ce":"0"},function(res){
+		show_fancybox(res);
+	    });
+	}
+	function checkall(obj){
+	    if($('#count').val()==0){
+		document.getElementById('0').checked=false;
+		alert("No More record to select");
+		return false;
+	    }
+	    id_s ="";
+	    var checked = obj.checked;
+	    var col = document.getElementsByTagName("INPUT");
+	    for (var i=0;i<col.length;i++) {
+		if(col[i].getAttribute('type')=="checkbox"){
+		    col[i].checked= checked;
+		    if(col[i].checked){
+			id_s += col[i].getAttribute('id') + ",";
+		    }else{
+			id_s ="";
+		    }
+		}
+	    }
+	}
+	function check(obj){
+	    if(obj.checked){
+	     id_s += obj.getAttribute('id') + ",";
+	    }else{
+	     document.getElementById('0').checked=false;
+	     id_s = id_s.replace(obj.getAttribute('id') + ",","");
+	    }
+	}
+	function edit_que(id){
+	    var qstart=$('#qstart').val();
+	    var url="##LBL_ADMIN_SITE_URL##index.php";
+	    $.fancybox.showActivity();
+	    $.post(url,{"page":"question","choice":"edit_que","id":id,"qstart":qstart,ce:0},function(response){
+		show_fancybox(response);
+	    });
+	}
+	function del_que(){
+	    var qstart=$('#qstart').val();
+	    var count=$('#count').val();
+	    var limit=$('#limit').val();
+	    var url="##LBL_ADMIN_SITE_URL##index.php";
+	    if(id_s==""){
+		var msg=confirm('Please select record to delete');
+		return false;
+	    }
+	    var conf=confirm('Are you sure to delete ?');
+	    if(conf){
+		var limit = '{/literal}{$sm.limit}{literal}';
+		if($('#qstart').val()!=''){
+		    qstart = $('#qstart').val();
+		}else{
+		    qstart = 0;
+		}
+		$.post(url,{"page":"question","choice":"del_que","id":id_s,"limit":limit,"count":count,"qstart":qstart,ce:0},function(response){
+		$("#ques").html(response);
+		});
+	     }else{
+		return false;
+	     }
+	   }
+    </script>
+{/literal}
