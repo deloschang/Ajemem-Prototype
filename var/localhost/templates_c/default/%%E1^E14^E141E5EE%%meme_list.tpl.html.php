@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-21 22:48:52
+<?php /* Smarty version 2.6.7, created on 2012-03-21 23:10:54
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -262,22 +262,9 @@
     
     function show_details(id_meme){
 		var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
-				
-		var httpRequest = new XMLHttpRequest();
-		httpRequest.open(\'POST\', url, false); // why is this synchronous?
-
-		httpRequest.send(); // this blocks as request is synchronous
-<!--		if (httpRequest.status == 200) {-->
-<!--			res = httpRequest.responseText;-->
-<!--			console.log(res);-->
-<!--			-->
-<!--			//return res-->
-<!--			//$.fancybox(res,{-->
-<!--			//	title : title-->
-<!--			// });-->
-<!--		 }
--->
+		$.post(url,{meme:meme_details,ce:0,id:id_meme });
      }
+	
     function flagging(id_meme){
 	var flaged_bfr=0;
 	var url = "http://localhost/meme/flagging_meme";

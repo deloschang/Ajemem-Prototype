@@ -261,22 +261,9 @@
     
     function show_details(id_meme){
 		var url="##LBL_SITE_URL##meme/meme_details/ce/0/id/"+id_meme;
-				
-		var httpRequest = new XMLHttpRequest();
-		httpRequest.open('POST', url, false); // why is this synchronous?
-
-		httpRequest.send(); // this blocks as request is synchronous
-<!--		if (httpRequest.status == 200) {-->
-<!--			res = httpRequest.responseText;-->
-<!--			console.log(res);-->
-<!--			-->
-<!--			//return res-->
-<!--			//$.fancybox(res,{-->
-<!--			//	title : title-->
-<!--			//});-->
-<!--		}
--->
+		$.post(url,{meme:meme_details,ce:0,id:id_meme});
     }
+	
     function flagging(id_meme){
 	var flaged_bfr=0;
 	var url = "##LBL_SITE_URL##meme/flagging_meme";
