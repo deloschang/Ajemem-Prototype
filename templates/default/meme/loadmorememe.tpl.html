@@ -3,10 +3,11 @@
 {literal}
 <script type="text/javascript">
 	var see_user_old = 0;
-	var id = "{/literal}{$sm.last_idmeme}{literal}";
+	var id = "{/literal}{$sm.last_idmeme}{literal}";	//lowest id
 	var new_ids = "{/literal}{$sm.id_memes}{literal}";
 
 	var single_id_array = new_ids.split(',');
+	var id_array_len = single_id_array.length;
 
 	if (!top_meme_id) {
 		var top_meme_id = single_id_array[0];
@@ -30,7 +31,7 @@
 	});
 
 	$(document).ready(function() {
-		//setInterval("live_feed(new_ids)", 10000);	// influences flash time
+		setTimeout("live_feed(0)", 1000);	
 		setInterval("live_meme()", 5000);
 	});
 
@@ -90,95 +91,95 @@
 			}
 		});		
 	}
-
-	function live_feed (new_ids) {
-		//console.log(new_ids);
-
-		var feed_id_array = new_ids.split(',');		// needs to check for new memes
-		var id_array_len = feed_id_array.length;
-
-		for (var i=0; i < id_array_len; i++) {
-
-			console.log("Currently on..."+feed_id_array[i]);
+	
+	function live_feed (i) {
+		//for (var i=0; i < id_array_len; i++) {
+		
+		console.log("Currently on..."+single_id_array[i]);
 			
-			// Grab meme id then honor
-			var meme_id = feed_id_array[i]
-			var meme_tot_honor = $("#aggr"+meme_id).html();	
+		// Grab meme id then honor
+		var meme_id = single_id_array[i]
+		var meme_tot_honor = $("#aggr"+meme_id).html();	
 
-			if (!meme_tot_honor) {
-				meme_tot_honor = 0;
-			}
-
-			var meme_tot_dishonor = $("#disaggr"+meme_id).html();
-
-			if (!meme_tot_dishonor) {
-				meme_tot_dishonor = 0;
-			}
-
-			var meme_tot_reply = $("#repl"+meme_id).html();
-
-			if (!meme_tot_reply) {
-				meme_tot_reply = 0;
-			}
-
-			//console.log("Tot reply for meme is  "+meme_tot_reply);
-
-			// Begin AJAX call to server
-			var live_feed_data;
-			var url="##LBL_SITE_URL##meme/live_feed/";
-			
-			$.post(url,{ce:0,chk:1,meme_id:meme_id,meme_tot_honor:meme_tot_honor,meme_tot_dishonor:meme_tot_dishonor,meme_tot_reply:meme_tot_reply}, function(live_feed_data_tot){
-				console.log('Meme_id'+meme_id);
-				console.log('Serv Response'+live_feed_data_tot);
-				if (live_feed_data_tot.trim() == "no change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
-
-					console.log("(no update) Request data is "+live_feed_data_tot.trim());
-
-				} else {
-
-					var live_feed_data = live_feed_data_tot.split(',');
-
-					if (live_feed_data[1] == 'honor') {
-						// Live feed tot_honor has changed...
-						new_honor = live_feed_data[0].trim();
-
-						// Update actual number
-						$("#aggr"+meme_id).html(new_honor);
-
-						// Flash green
-						common_fun_extended(meme_id, honour_color);
-
-						console.log("Request data is "+live_feed_data_tot.trim());
-					} else if (live_feed_data[1] == 'dishonor') {
-						// Live feed tot_dishonor has changed...
-						new_dishonor = live_feed_data[0].trim();
-
-						// Update actual number
-						$("#disaggr"+meme_id).html(new_dishonor);
-
-						// Flash red
-						common_fun_extended(meme_id, dishonour_color);
-
-						// 
-						console.log("Request data is "+live_feed_data_tot.trim());
-
-					} else if (live_feed_data[1] == 'reply') {
-						// Live feed tot_dishonor has changed...
-						new_reply = live_feed_data[0].trim();
-
-						// Update actual number
-						$("#repl"+meme_id).html(new_reply);
-
-						// Flash yellow
-						common_fun_extended(meme_id, reply_color);
-
-						// 
-						console.log("Request data is "+live_feed_data_tot.trim());
-
-					}
-				}
-			});
+		if (!meme_tot_honor) {
+			meme_tot_honor = 0;
 		}
+
+		var meme_tot_dishonor = $("#disaggr"+meme_id).html();
+
+		if (!meme_tot_dishonor) {
+			meme_tot_dishonor = 0;
+		}
+
+		var meme_tot_reply = $("#repl"+meme_id).html();
+
+		if (!meme_tot_reply) {
+			meme_tot_reply = 0;
+		}
+
+		//console.log("Tot reply for meme is  "+meme_tot_reply);
+
+		var url="##LBL_SITE_URL##meme/live_feed/";
+		
+		$.post(url,{ce:0,chk:1,meme_id:meme_id,meme_tot_honor:meme_tot_honor,meme_tot_dishonor:meme_tot_dishonor,meme_tot_reply:meme_tot_reply}, function(live_feed_data_tot){
+			console.log('Meme_id'+meme_id);
+			console.log('Serv Response'+live_feed_data_tot);
+			if (live_feed_data_tot.trim() == "no change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
+
+				console.log("(no update) Request data is "+live_feed_data_tot.trim());
+
+			} else {
+
+				var live_feed_data = live_feed_data_tot.split(',');
+
+				if (live_feed_data[1] == 'honor') {
+					// Live feed tot_honor has changed...
+					new_honor = live_feed_data[0].trim();
+
+					// Update actual number
+					$("#aggr"+meme_id).html(new_honor);
+
+					// Flash green
+					common_fun_extended(meme_id, honour_color);
+
+					console.log("Request data is "+live_feed_data_tot.trim());
+				} else if (live_feed_data[1] == 'dishonor') {
+					// Live feed tot_dishonor has changed...
+					new_dishonor = live_feed_data[0].trim();
+
+					// Update actual number
+					$("#disaggr"+meme_id).html(new_dishonor);
+
+					// Flash red
+					common_fun_extended(meme_id, dishonour_color);
+
+					// 
+					console.log("Request data is "+live_feed_data_tot.trim());
+
+				} else if (live_feed_data[1] == 'reply') {
+					// Live feed tot_dishonor has changed...
+					new_reply = live_feed_data[0].trim();
+
+					// Update actual number
+					$("#repl"+meme_id).html(new_reply);
+
+					// Flash yellow
+					common_fun_extended(meme_id, reply_color);
+
+					// 
+					console.log("Request data is "+live_feed_data_tot.trim());
+				}
+			}
+			
+			if (i < id_array_len - 1) {
+				updated_i = i + 1
+				setTimeout("live_feed(updated_i)", 1000);
+			} else {
+				setTimeout("live_feed(0)", 1000);
+			}
+		});
+		
+		
 	}
 
 
