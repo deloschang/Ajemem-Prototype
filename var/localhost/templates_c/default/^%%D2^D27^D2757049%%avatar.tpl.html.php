@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-20 23:56:14
+<?php /* Smarty version 2.6.7, created on 2012-03-21 03:15:52
          compiled from user/avatar.tpl.html */ ?>
 
-<!-- Template: user/avatar.tpl.html Start 20/03/2012 23:56:14 --> 
+<!-- Template: user/avatar.tpl.html Start 21/03/2012 03:15:52 --> 
  <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
 <div id="edit_photo">
 <!-- orig onclick editPhoto; -->

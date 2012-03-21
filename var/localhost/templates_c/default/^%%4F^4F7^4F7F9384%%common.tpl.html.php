@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-20 23:56:14
+<?php /* Smarty version 2.6.7, created on 2012-03-21 03:15:52
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 172, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'd44c6506341efc063d83d2f5feedebad'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 512, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '9af9df39479f3ea62df5bb3963f45e88'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -67,22 +67,362 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			<?php else: ?>xp_percent = 0<?php endif;  echo '
 		 }
 	
-$(document).ready(function(){console.log("User level is "+user_level);console.log("Total XP is "+curr_xp);console.log("XP needed to level is "+xp_to_level);console.log("XP Percent displayed is "+xp_percent);console.log("Previous XP To level is "+previous_xp_to_level);$("#xpbar").progressbar({value:xp_percent });$("#user_level").html("L"+user_level);$("#xpbar_status").html("("+xp_percent.toFixed(2)+"%) "+(curr_xp-previous_xp_to_level)+" / "+(xp_to_level-previous_xp_to_level));$("#xpbar, #xpbar_status").hoverIntent({interval:200,
-timeout:1E3 });$("#xpbar, #xpbar_status").hoverIntent(function(){$("#xpbar_status").delay(200).show() },function(){$("#xpbar_status").delay(1E3).fadeOut() });var a=window.screen.availHeight;$("#mid_cont").height(a/2+a/9);$(".inner").hide();$("#slidebottom div").click(function(){get_details_notification();$(this).next().slideToggle() });""!=idu&&"addMeme"!=chc&&(setInterval("popup_expbar()",6E3),setInterval("live_ranking()",11E3)) });
-function log_in_reminder(){$.post("http://localhost/user/log_in_reminder",{ce:0 },function(a){$.fancybox(a) }) }function getall_notification(){$.post("http://localhost/manage/getall_notification",{ce:0 },function(a){"-1"!=a[0]&&(0==a[2]?$(".not_txt").hide():$(".not_txt").show(),$("#user_ids").val(a[0]),$("#id_badges").val(a[1]),$("#not_cnt").html(a[2])) },"json") }
-function get_details_notification(){$.post("http://localhost//manage/get_details_notification",{id_users:$("#user_ids").val(),id_badges:$("#id_badges").val(),ce:0 },function(a){$(".inner").html(a);$(".not_txt").hide() }) }
-function live_ranking(){var a,b=new XMLHttpRequest;b.open("POST","http://localhost/user/live_ranking/ce/0/chk/1",!1);b.send();200==b.status&&(a=b.responseText);console.log(a);if("no update"==a.trim()||"no rank"==a.trim())return!1;a=a.split(",");"AAB"==a[0].trim()?(console.log("Trailing User XP changed"),$("#trailing_exp").html(a[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\'),$("#other_user_ranking_info").css("background","#AAF2DC"),$("#other_user_ranking_info").animate({opacity:0.4 },
-700,function(){$("#other_user_ranking_info").css("background","#aad450");$("#other_user_ranking_info").animate({opacity:1 },300) })):"AB"==a[0].trim()?(console.log("Trailing User changed"),$("#trailing_user").html(a[2]),$("#trailing_exp").html(a[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\')):"BA"==a[0].trim()?(console.log("Improvement in Rank"),new_rank=a[1],trailing_xp=a[2],trailing_user=a[3],trailing_rank=a[4],$("#ranking_number").html(new_rank),$("#user_ranking_info").css("background",
-"#B9FE4E"),$("#user_ranking_info").animate({opacity:0.4 },700,function(){$("#user_ranking_info").css("background","#4ebaff");$("#user_ranking_info").animate({opacity:1 },300) }),trailing_user&&($("#trailing_ranking_number").html(trailing_rank),$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\'),$("#trailing_user").html(trailing_user),$("#other_user_ranking_info").css("background","#FE4EB9"),$("#other_user_ranking_info").animate({opacity:0.4 },
-700,function(){$("#other_user_ranking_info").css("background","#aad450");$("#other_user_ranking_info").animate({opacity:1 },300) }))):(console.log("Loss in rank"),new_rank=a[1],trailing_xp=a[2],trailing_user=a[3],trailing_rank=a[4],$("#ranking_number").html(new_rank),$("#user_ranking_info").css("background","#FE4EB9"),$("#user_ranking_info").animate({opacity:0.4 },700,function(){$("#user_ranking_info").css("background","#4ebaff");$("#user_ranking_info").animate({opacity:1 },300) }),trailing_user&&($("#trailing_ranking_number").html(trailing_rank),
-$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\'),$("#trailing_user").html(trailing_user),$("#other_user_ranking_info").css("background","#B9FE4E"),$("#other_user_ranking_info").animate({opacity:0.4 },700,function(){$("#other_user_ranking_info").css("background","#aad450");$("#other_user_ranking_info").animate({opacity:1 },300) }))) }
-function popup_expbar(){var a,b=new XMLHttpRequest;b.open("POST","http://localhost/user/getExperience/ce/0/chk/1",!1);b.send();200==b.status&&(a=b.responseText);if(90999999999==a)return!1;-1==a.indexOf(",")?(console.log("user has not levelled"),a=a.split("~"),new_xp=a[0],previous_xp_to_level=a[1],user_level=a[2],console.log("User Level is "+user_level),console.log("Previous XP to Level is "+previous_xp_to_level),console.log("XP_TO_LEVEL is "+xp_to_level),1==user_level?new_xp_percent=100*(new_xp/xp_to_level):
-(console.log("New Total XP is "+new_xp),console.log("Previous XP to Level is "+previous_xp_to_level),new_xp_percent=100*((new_xp-previous_xp_to_level)/(xp_to_level-previous_xp_to_level)))):(console.log("user has levelled"),a=a.split(","),new_xp=a[0],new_level=a[1],$("#user_level").html("L"+new_level),$("#left_pan_level").html("L"+new_level),new_xp_to_level=a[2],previous_xp_to_level=xp_to_level,calc_new_xp_percent=new_xp-parseInt(previous_xp_to_level),new_xp_percent=100*(calc_new_xp_percent/(new_xp_to_level-
-previous_xp_to_level)),xp_to_level=new_xp_to_level,$("#left_pan_level").css("background","#B9FE4E"),$("#left_pan_level").animate({opacity:0.4 },500,function(){$("#left_pan_level").css("background","white");$("#left_pan_level").animate({opacity:1 },300) }));$("#xpbar").progressbar({value:new_xp_percent });$("#xpbar_status").html("("+new_xp_percent.toFixed(2)+"%) "+(new_xp-previous_xp_to_level)+" / "+(xp_to_level-previous_xp_to_level));$("#xpbar_status").show();setTimeout(\'$("#xpbar_status").fadeOut();\',
-2E3);$("#total_xp").html(new_xp+\'<span style="font-size:8px; position:relative; bottom:5px;"> XP</span>\');$("#user_ranking_info").css("background","#4EFEEB");$("#user_ranking_info").animate({opacity:0.4 },400,function(){$("#user_ranking_info").css("background","#4ebaff");$("#user_ranking_info").animate({opacity:1 },300) }) }function upd_log_time(){$.post("http://localhost/index.php",{page:"user",choice:"set_login_time",ce:0 },function(){ });setTimeout("upd_log_time()",1E4) }
-function get_next_page(a,b,d,c){document.getElementById(c)||(c="content");$("#"+c).load(a,{qstart:b,limit:d,ce:0,pg:1,chk:1 },function(){ }) }function show_fancybox(a){$.fancybox(a,{centerOnScroll:!0,hideOnOverlayClick:!1 }) }
-$(function(){$(".leftpan_img").click(function(){$("#leftpan").toggle();$("#leftpan").is(":hidden")?$(".leftpan_img").css("background","url(http://localhost/templates/images/m_next_btn.png) no-repeat"):$(".leftpan_img").css("background","url(http://localhost/templates/images/m_previous_btn.png) no-repeat") });$(".rightpan_img").click(function(){$("#rightpan").toggle();$("#rightpan").is(":hidden")?$(".rightpan_img").css("background","url(http://localhost/templates/images/m_previous_btn.png) no-repeat"):
-$(".rightpan_img").css("background","url(http://localhost/templates/images/m_next_btn.png) no-repeat") }) });
+	$(document).ready(function(){	
+		// User XP initial display
+		$("#xpbar").progressbar({
+			value: xp_percent
+		 });
+		
+		$("#user_level").html(\'L\'+user_level);
+		$("#xpbar_status").html(\'(\'+ xp_percent.toFixed(2) +\'%) \'+ (curr_xp - previous_xp_to_level) +\' / \'+ (xp_to_level - previous_xp_to_level));
+		
+		// Mouseover shows XP and %
+		$("#xpbar, #xpbar_status").hoverIntent({
+			interval: 200,
+			timeout:1000
+		 });
+		
+		$("#xpbar, #xpbar_status").hoverIntent(function(){
+			$("#xpbar_status").delay(200).show();
+		 }, function() {
+			$("#xpbar_status").delay(1000).fadeOut();
+		 });
+
+		var scrn_height = window.screen.availHeight;
+            $("#mid_cont").height(scrn_height/2 + scrn_height/9);
+
+	    /* For notification */
+	    $(".inner").hide();
+	    $(\'#slidebottom div\').click(function() {
+			get_details_notification();
+			$(this).next().slideToggle();
+	     });
+
+	    if(idu!="" && chc!=\'addMeme\'){
+			//setInterval("getall_notification()",7000); for notifications
+			
+	    /* For popup bar */
+			setInterval("popup_expbar()", 7000); 	
+			setInterval("live_ranking()", 20000);
+	     }
+
+	    /* TOS Fancybox Popup on First Login */
+	    var first_login="';  echo $_SESSION['toc'];  echo '";
+	    if(first_login==\'0\'){
+		    $.get(\'http://localhost/user/first_login_msg/ce/0\', function(res) {
+				$.fancybox(res,{
+			    	closeBtn:false,
+			    	closeClick:false,
+			    	helpers : {
+						overlay : {
+							opacity : 0.8
+						 }
+					 }
+				 });
+		     });
+	     }
+
+	    /*if (idu) {
+		    /* For updating total login time */
+		    /*upd_log_time();
+	     }  */
+	    
+	 });
+	
+	function log_in_reminder(){
+		 var url="http://localhost/user/log_in_reminder";
+		 
+		$.post(url,{ce:0 }, function(res){
+			$.fancybox(res);
+    	 });
+	 }
+	
+	function getall_notification(){
+	    var url="http://localhost/manage/getall_notification";
+	    $.post(url,{ce:0 },function(res){
+			if(res[0] != "-1"){
+				if(res[2]==0)
+			    	$(".not_txt").hide();
+				else
+			    	$(".not_txt").show();
+				$(\'#user_ids\').val(res[0]);
+				$(\'#id_badges\').val(res[1]);
+				$("#not_cnt").html(res[2]);
+			 }
+	     },\'json\');
+	 }
+	
+	function get_details_notification(){
+	    var url="http://localhost//manage/get_details_notification";
+	    $.post(url,{id_users:$(\'#user_ids\').val(),id_badges:$(\'#id_badges\').val(),ce:0 },function(data){
+			$(".inner").html(data);
+			$(".not_txt").hide();
+	     });
+	 }
+	
+	function live_ranking() {
+		var ranking_data;
+		var url="http://localhost/user/live_ranking/ce/0/chk/1";
+		var httpRequest = new XMLHttpRequest();
+		httpRequest.open(\'POST\', url, false);
+		
+		httpRequest.send();
+		
+		if (httpRequest.status == 200) {
+			ranking_data = httpRequest.responseText;
+		 }		
+		
+		if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
+			return false;
+		 } else {
+			
+			
+			var ajax_response_exp = ranking_data.split(\',\');
+			
+			// Rank? No. 1- User? No. 1- XP? Yes.
+			if (ajax_response_exp[0].trim() == "AAB"){
+				
+				$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');
+
+				$("#other_user_ranking_info").css("background", \'#AAF2DC\');
+				$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+					$("#other_user_ranking_info").css("background","#aad450");
+					$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
+				 });
+			
+			// Rank? No 1- User? Yes.
+			 } else if (ajax_response_exp[0].trim() == "AB") {
+				$("#trailing_user").html(ajax_response_exp[2]);
+				$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+					
+			// Rank? Yes. Improvement? Yes.
+			 } else if (ajax_response_exp[0].trim() == "BA") {
+				new_rank = ajax_response_exp[1];
+				trailing_xp = ajax_response_exp[2];
+				trailing_user = ajax_response_exp[3];
+				trailing_rank = ajax_response_exp[4];
+				
+				$("#ranking_number").html(new_rank);
+				
+				// Green flash
+				$("#user_ranking_info").css("background", \'#B9FE4E\');
+				$("#user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+					$("#user_ranking_info").css("background","#4ebaff");
+					$("#user_ranking_info").animate( { "opacity" : 1  }, 300)
+				 });
+				
+				if (trailing_user) {
+				
+					$("#trailing_ranking_number").html(trailing_rank);
+					$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+						
+					$("#trailing_user").html(trailing_user);
+					
+					$("#other_user_ranking_info").css("background", \'#FE4EB9\');
+					$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+						$("#other_user_ranking_info").css("background","#aad450");
+						$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
+					 });
+				
+				 }
+				
+			
+			// Rank? Yes. Improve? No.
+			 } else {
+				new_rank = ajax_response_exp[1];
+				trailing_xp = ajax_response_exp[2];
+				trailing_user = ajax_response_exp[3];
+				trailing_rank = ajax_response_exp[4];
+				
+				$("#ranking_number").html(new_rank);
+						
+				// Red flash
+				$("#user_ranking_info").css("background", \'#FE4EB9\');
+				$("#user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+					$("#user_ranking_info").css("background","#4ebaff");
+					$("#user_ranking_info").animate( { "opacity" : 1  }, 300)
+				 });
+				
+				if (trailing_user) {
+					$("#trailing_ranking_number").html(trailing_rank);
+					$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+							
+					$("#trailing_user").html(trailing_user);
+					
+					$("#other_user_ranking_info").css("background", \'#B9FE4E\');
+					$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+						$("#other_user_ranking_info").css("background","#aad450");
+						$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
+					 });
+				 }
+			 }
+		 }
+	 }
+	
+	function popup_expbar(){
+		var data;
+		var url="http://localhost/user/getExperience/ce/0/chk/1";
+		
+		var ajaxRequest;
+		
+		try{
+			// Opera 8.0+, Firefox, Safari
+			ajaxRequest = new XMLHttpRequest();
+		 } catch (e){
+			// Internet Explorer Browsers
+			try{
+				ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+			 } catch (e) {
+				try{
+					ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+				 } catch (e){
+					// Something went wrong
+					alert("Your browser does not support AJAX!");
+					return false;
+				 }
+			 }
+		 }
+		
+		ajaxRequest.onreadystatechange = function(){
+			if (ajaxRequest.readyState == 4){
+				data = ajaxRequest.responseText;
+				
+				if(data == 90999999999){
+					return false;
+				 }	
+				
+				// XP has changed
+				if (data.indexOf(",") == -1) {
+					// User has not levelled
+					
+					var ajax_response_main = data.split(\'~\');
+					new_xp = ajax_response_main[0];
+					previous_xp_to_level = ajax_response_main[1];
+					user_level = ajax_response_main[2];
+					
+					console.log("User Level is "+user_level);
+					console.log("Previous XP to Level is "+previous_xp_to_level);
+					console.log("XP_TO_LEVEL is "+xp_to_level);
+					
+					if (user_level == 1) {
+						new_xp_percent = (new_xp / xp_to_level) * 100;
+					 } else {
+						console.log("New Total XP is "+new_xp);
+						console.log("Previous XP to Level is "+previous_xp_to_level);
+						new_xp_percent = (new_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
+					 }
+					
+				 } else {
+					// User level has changed; Unpack data
+														
+					var ajax_response = data.split(\',\');
+					// [0] -- New XP
+					new_xp = ajax_response[0]; 
+					// [1] -- New level
+					new_level = ajax_response[1];
+					$("#user_level").html(\'L\'+new_level);
+					$("#left_pan_level").html(\'L\'+new_level);
+					
+					// [2] -- New XP to level
+					new_xp_to_level = ajax_response[2];
+					
+					previous_xp_to_level = xp_to_level;
+					
+					calc_new_xp_percent = new_xp - parseInt(previous_xp_to_level);
+					new_xp_percent = calc_new_xp_percent / (new_xp_to_level - previous_xp_to_level) * 100;
+					
+					//console.log("XP TO LEVEL is "+xp_to_level);
+					//console.log("NEW XP TO LEVEL IS "+new_xp_to_level);
+					//console.log(calc_new_xp_percent);
+								
+					//console.log("PREVIOUS XP TO LEVEL IS "+previous_xp_to_level);
+					
+					xp_to_level = new_xp_to_level;
+					
+					// Level has a "live feed like flash"
+					$("#left_pan_level").css("background", \'#B9FE4E\');
+					$("#left_pan_level").animate( { "opacity" : 0.4  }, 500, function() {
+						$("#left_pan_level").css("background","white");
+						$("#left_pan_level").animate( { "opacity" : 1  }, 300)
+					 });
+				 }
+					 
+				
+				//console.log("New XP is " + new_xp);
+				//console.log("New Percentage is " + new_xp_percent);
+				
+				$("#xpbar").progressbar({
+					value: new_xp_percent 
+				 });
+				
+				$("#xpbar_status").html(\'(\'+ new_xp_percent.toFixed(2) +\'%) \'+ (new_xp - previous_xp_to_level) +\' / \'+ (xp_to_level - previous_xp_to_level));
+				
+				// Status bar with XP pops up too
+				$("#xpbar_status").show();
+				setTimeout(\'$("#xpbar_status").fadeOut();\', 2000);
+				
+				
+				// Static XP marker
+				$("#total_xp").html(new_xp+\'<span style="font-size:8px; position:relative; bottom:5px;"> XP</span>\');
+				$("#user_ranking_info").css("background", \'#4EFEEB\');
+				$("#user_ranking_info").animate( { "opacity" : 0.4  }, 400, function() {
+					$("#user_ranking_info").css("background","#4ebaff");
+					$("#user_ranking_info").animate( { "opacity" : 1  }, 300)
+				 });
+				
+			 }
+		 }
+		
+		ajaxRequest.open(\'POST\', url, true);
+		ajaxRequest.send();
+		
+		//httpRequest.open(\'POST\', url, false);
+
+		//httpRequest.send(); // this blocks as request is synchronous
+		//if (httpRequest.status == 200) {
+		//	data = httpRequest.responseText;
+		// }
+		 }
+	
+	function upd_log_time() {
+		  var url="http://localhost/index.php";
+		  $.post(url,{page:"user",choice:"set_login_time",ce:0 },function(res){//alert(res);
+		   })
+		  setTimeout("upd_log_time()", 10000);
+    	 }
+    	
+	function get_next_page(url, start, limit, div_id) {
+		if (!document.getElementById(div_id)) {
+			div_id = "content";
+		 }
+		$("#"+div_id).load(url, {\'qstart\':start, \'limit\':limit, \'ce\':0,\'pg\':1,chk:1 }, function(res){
+			//css_even_odd();
+		 });
+	 }
+	
+	function show_fancybox(res){
+		$.fancybox(res,{centerOnScroll:true,hideOnOverlayClick:false });
+		//$.fancybox(res,{margin:600,hideOnOverlayClick:false });
+	 }
+	
+	$(function(){
+		$(".leftpan_img").click(function(){
+			$("#leftpan").toggle();
+			if($("#leftpan").is(":hidden"))
+			    $(".leftpan_img").css(\'background\',"url(http://localhost/templates/images/m_next_btn.png) no-repeat");
+			else
+			    $(".leftpan_img").css(\'background\',"url(http://localhost/templates/images/m_previous_btn.png) no-repeat");
+		 });
+		$(".rightpan_img").click(function(){
+			$("#rightpan").toggle();
+			if($("#rightpan").is(":hidden"))
+			    $(".rightpan_img").css(\'background\',"url(http://localhost/templates/images/m_previous_btn.png) no-repeat");
+			else
+			    $(".rightpan_img").css(\'background\',"url(http://localhost/templates/images/m_next_btn.png) no-repeat");
+
+		 });
+
+	 });
 	
 </script>
 <script type="text/javascript">
@@ -193,7 +533,7 @@ unset($_smarty_tpl_vars);
 				</div>
 				<?php endif; ?>
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:d44c6506341efc063d83d2f5feedebad#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:d44c6506341efc063d83d2f5feedebad#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9af9df39479f3ea62df5bb3963f45e88#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9af9df39479f3ea62df5bb3963f45e88#0}';}?>
 <br>
 				<?php endif; ?>
 

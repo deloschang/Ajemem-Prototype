@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-20 23:56:15
+<?php /* Smarty version 2.6.7, created on 2012-03-21 03:15:53
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -8,7 +8,6 @@
     var dishonour_color = "';  echo $this->_tpl_vars['x']['disagree'];  echo '";
     var addcaption_color = "';  echo $this->_tpl_vars['x']['add_caption'];  echo '";
     
-    // Added by Delos to detect if user is logged in
 	var logged_in="';  echo $_SESSION['id_user'];  echo '";
     
     var first_id,after_5sec=0,backup_rand_id_memes=\'\',backup_last_id_meme=\'\';
@@ -325,98 +324,6 @@
 		// End
      });
 </script>
-<style type="text/css">
-    a{
-		text-decoration: none;
-		cursor: pointer;
-     }
-    .meme{
-		position: relative;
-		top:-25px;
-	   	margin-left: 15px;
-		padding-left: 10px;
-		padding-top: 10px;
-		padding-bottom: 10px;
-		background: white;  /* background for meme color */
-		width:95%;
-		height:auto;
-	
-		-moz-border-radius-topright: 6px; -webkit-border-top-right-radius: 6px; border-top-right-radius: 6px; -moz-border-radius-bottomright: 6px; -webkit-border-bottom-right-radius: 6px; border-bottom-right-radius: 6px; -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; border-bottom-left-radius: 6px; 
-	
-		-moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; border-top-left-radius: 6px;
-	
-		 border-bottom: 1px dotted #e6e6dc;
-	
-     }
-    
-    /* Inner formatting of live feed meme */
-	img.avatar_thumb_fb, 
-	img.avatar_thumb_regular {
-		width: 40px;
-		height: 40px;
-	 }
-	
-	#meme_title {
-		position:relative;
-		bottom:6px;
-		padding-left:10px; 
-		font-size: 18.5px; 
-		font-weight: bold;
-	 }
-	
-	.meme_reproductive_system{
-		position:relative; 
-		left:55px;
-	 }
-
-{* CSS for \'Search meme\' on live feed * }
-    .dec{			
-	font-size: 12px;
-	font-weight: bold;
-     }
-</style>
-<style type="text/css">
-
-	{* Spacing between \'Main Live Feed\' and \'Network Feed * }
-	#tab div	{
-		margin-right:-20px;
-		font-weight:bold;
-	 }
-
-	{* Float of \'Main Live Feed\' and \'Network Feed\' * }
-	.fltlft	{
-		margin-left:25px;
-		float:left;
-	 }
-	.unselected	{
-		background-color:#AAD8F3;
-		width:auto;
-		height:23px;
-		text-align:center;
-		padding-top:7px;
-	 }
-	.hover	{
-		background-color:#CAD8F3;
-		height:23px;
-		width:auto;
-		text-align:center;
-		padding-top:7px;
-	 }
-	.selected	{
-		background-color:#4D79A6;
-		width:auto;
-		height:23px;
-		text-align:center;
-		padding-top:7px;
-	 }
-	a{
-		text-decoration:none;
-	 }
-	.borderyes	{
-		border:#000000 solid 1px;
-	 }
-	
-</style>
 '; ?>
 
 <input type="hidden" name="last_id_meme_cur_page" id="last_id_meme_cur_page" value=''/>
