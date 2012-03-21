@@ -1,11 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-21 21:19:25
+<?php /* Smarty version 2.6.7, created on 2012-03-21 21:47:00
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 254, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 307, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 202, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 248, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 21/03/2012 21:19:25 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 21/03/2012 21:47:00 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
+	var see_user_old = 0;
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
 
@@ -42,41 +43,26 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
      }
     
     function hover_user(id_user){
-    	see_user(id_user);
-        //see_user(0);
-     }
-    function unhover_user(id_user) {
-        see_user(0);
-     }
-    
-    function see_user(id_user){    	
     	var right_pan_url = "http://localhost/user/see_user";
     	
-    	$.post(right_pan_url,{id_user:id_user,ce:0 }, function(res){
-			$("#right_pan").html(res);
-    	 });
+		if (id_user != see_user_old) {
+			$.post(right_pan_url,{id_user:id_user,ce:0 }, function(res){
+				$("#right_pan").html(res);
+				see_user_old = id_user;
+			 });
+		 }
      }
 
 	function live_meme () {
-		console.log("List "+new_ids);
-		console.log(top_meme_id+"| feedcount: "+feed_count);
+		//console.log("List "+new_ids);
+		//console.log(top_meme_id+"| feedcount: "+feed_count);
 
 		var live_meme_data;
 		var url="http://localhost/meme/live_meme/";
-
-		//var httpRequest = new XMLHttpRequest();
-		//httpRequest.open(\'POST\', url, false);
-
-		//httpRequest.send(); // this blocks as request is synchronous
-
-		
-		//if (httpRequest.status == 200) {
-		//	live_meme_data = httpRequest.responseText;
-		// }
 		
 		$.post(url,{ce:0,chk:1,top_meme_id:top_meme_id }, function(live_meme_data){
 			if (live_meme_data.trim() == "no meme" || live_meme_data.trim() == "no meme found in SQL" || live_meme_data.trim() == "No new meme updates") {
-				console.log(\'no new meme found\');
+				//console.log(\'no new meme found\');
 				return false; 
 			 }
 
@@ -117,9 +103,9 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 
 		for (var i=0; i < id_array_len; i++) {
 
-			// Grab the id_meme\'s honor
-
 			console.log("Currently on..."+feed_id_array[i]);
+			
+			// Grab meme id then honor
 			var meme_id = feed_id_array[i]
 			var meme_tot_honor = $("#aggr"+meme_id).html();	
 
@@ -143,97 +129,59 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 
 			// Begin AJAX call to server
 			var live_feed_data;
-			var url="http://localhost/meme/live_feed/ce/0/chk/1/meme_id/"+meme_id+"/meme_tot_honor/"+meme_tot_honor+"/meme_tot_dishonor/"+meme_tot_dishonor+"/meme_tot_reply/"+meme_tot_reply;
-
-			//var httpRequest = new XMLHttpRequest();
-			//httpRequest.open(\'POST\', url, false);
-
-			//httpRequest.send(); // this blocks as request is synchronous
-
-			//if (httpRequest.status == 200) {
-			//	live_feed_data_tot = httpRequest.responseText;
-			// }
+			var url="http://localhost/meme/live_feed/";
 			
-			var ajaxRequest;
-		
-			try{
-				// Opera 8.0+, Firefox, Safari
-				ajaxRequest = new XMLHttpRequest();
-			 } catch (e){
-				// Internet Explorer Browsers
-				try{
-					ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
-				 } catch (e) {
-					try{
-						ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
-					 } catch (e){
-						// Something went wrong
-						alert("Your browser does not support AJAX!");
-						return false;
+			$.post(url,{ce:0,chk:1,meme_id:meme_id,meme_tot_honor:meme_tot_honor,meme_tot_dishonor:meme_tot_dishonor,meme_tot_reply:meme_tot_reply }, function(live_feed_data_tot){
+				console.log(\'Meme_id\'+meme_id);
+				console.log(\'Serv Response\'+live_feed_data_tot);
+				if (live_feed_data_tot.trim() == "no change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
+
+					console.log("(no update) Request data is "+live_feed_data_tot.trim());
+
+				 } else {
+
+					var live_feed_data = live_feed_data_tot.split(\',\');
+
+					if (live_feed_data[1] == \'honor\') {
+						// Live feed tot_honor has changed...
+						new_honor = live_feed_data[0].trim();
+
+						// Update actual number
+						$("#aggr"+meme_id).html(new_honor);
+
+						// Flash green
+						common_fun_extended(meme_id, honour_color);
+
+						console.log("Request data is "+live_feed_data_tot.trim());
+					 } else if (live_feed_data[1] == \'dishonor\') {
+						// Live feed tot_dishonor has changed...
+						new_dishonor = live_feed_data[0].trim();
+
+						// Update actual number
+						$("#disaggr"+meme_id).html(new_dishonor);
+
+						// Flash red
+						common_fun_extended(meme_id, dishonour_color);
+
+						// 
+						console.log("Request data is "+live_feed_data_tot.trim());
+
+					 } else if (live_feed_data[1] == \'reply\') {
+						// Live feed tot_dishonor has changed...
+						new_reply = live_feed_data[0].trim();
+
+						// Update actual number
+						$("#repl"+meme_id).html(new_reply);
+
+						// Flash yellow
+						common_fun_extended(meme_id, reply_color);
+
+						// 
+						console.log("Request data is "+live_feed_data_tot.trim());
+
 					 }
 				 }
-			 }
-
-			ajaxRequest.onreadystatechange = function(){
-				if (ajaxRequest.readystate == 4){
-					live_feed_data_tot = ajaxRequest.responseText;
-					console.log(\'Meme_id\'+meme_id);
-					console.log(\'Serv Response\'+live_feed_data_tot);
-					if (live_feed_data_tot.trim() == "no change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
-
-						console.log("(no update) Request data is "+live_feed_data_tot.trim());
-
-					 } else {
-
-						var live_feed_data = live_feed_data_tot.split(\',\');
-
-						if (live_feed_data[1] == \'honor\') {
-							// Live feed tot_honor has changed...
-							new_honor = live_feed_data[0].trim();
-
-							// Update actual number
-							$("#aggr"+meme_id).html(new_honor);
-
-							// Flash green
-							common_fun_extended(meme_id, honour_color);
-
-							console.log("Request data is "+live_feed_data_tot.trim());
-						 } else if (live_feed_data[1] == \'dishonor\') {
-							// Live feed tot_dishonor has changed...
-							new_dishonor = live_feed_data[0].trim();
-
-							// Update actual number
-							$("#disaggr"+meme_id).html(new_dishonor);
-
-							// Flash red
-							common_fun_extended(meme_id, dishonour_color);
-
-							// 
-							console.log("Request data is "+live_feed_data_tot.trim());
-
-						 } else if (live_feed_data[1] == \'reply\') {
-							// Live feed tot_dishonor has changed...
-							new_reply = live_feed_data[0].trim();
-
-							// Update actual number
-							$("#repl"+meme_id).html(new_reply);
-
-							// Flash yellow
-							common_fun_extended(meme_id, reply_color);
-
-							// 
-							console.log("Request data is "+live_feed_data_tot.trim());
-
-						 }
-					 }
-				 }
-			 }
-			
-			ajaxRequest.open(\'POST\', url, true);
-			ajaxRequest.send();
-			
-			console.log(\'ajax request sent\');
-		
+			 });
 		 }
 	 }
 
@@ -273,17 +221,8 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 			<?php endif; ?>
 					
 		" align="left"/>
-                        <!--
-				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-');" onmouseout ="$('#right_pan').removeAttr('mouseover');">
-                        -->
 				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
 ');">
-				
-				<!--
-				onmouseout ="unhover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-');"
-				-->
 				
 				<?php if ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']): ?>
 					<img src="<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']; ?>
