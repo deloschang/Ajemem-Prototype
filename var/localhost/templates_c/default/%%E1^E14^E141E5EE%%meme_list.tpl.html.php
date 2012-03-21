@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-21 03:15:53
+<?php /* Smarty version 2.6.7, created on 2012-03-21 04:28:05
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -45,7 +45,7 @@
 		$("#rand_id_memes").val("';  echo $this->_tpl_vars['sm']['id_memes'];  echo '");
 		$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
 	    	get_all_flag_details(1);
-	    	setInterval("get_all_flag_details()",15000);
+	    	setInterval("get_all_flag_details()",6000);
 	    
 		$(window).scroll(function(){
 			if ($(window).scrollTop() == $(document).height() - $(window).height()){

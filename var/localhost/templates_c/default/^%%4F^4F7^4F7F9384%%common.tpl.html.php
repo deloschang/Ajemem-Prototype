@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-21 03:15:52
+<?php /* Smarty version 2.6.7, created on 2012-03-21 04:28:04
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 512, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '9af9df39479f3ea62df5bb3963f45e88'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 540, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'e561063e2f2abe35e861d6e087203a6e'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -163,100 +163,128 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	function live_ranking() {
 		var ranking_data;
 		var url="http://localhost/user/live_ranking/ce/0/chk/1";
-		var httpRequest = new XMLHttpRequest();
-		httpRequest.open(\'POST\', url, false);
+		//var httpRequest = new XMLHttpRequest();
+		//httpRequest.open(\'POST\', url, false);
 		
-		httpRequest.send();
+		//httpRequest.send();
 		
-		if (httpRequest.status == 200) {
-			ranking_data = httpRequest.responseText;
-		 }		
-		
-		if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
-			return false;
-		 } else {
-			
-			
-			var ajax_response_exp = ranking_data.split(\',\');
-			
-			// Rank? No. 1- User? No. 1- XP? Yes.
-			if (ajax_response_exp[0].trim() == "AAB"){
-				
-				$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');
+		//if (httpRequest.status == 200) {
+		//	ranking_data = httpRequest.responseText;
+		// }
 
-				$("#other_user_ranking_info").css("background", \'#AAF2DC\');
-				$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
-					$("#other_user_ranking_info").css("background","#aad450");
-					$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
-				 });
-			
-			// Rank? No 1- User? Yes.
-			 } else if (ajax_response_exp[0].trim() == "AB") {
-				$("#trailing_user").html(ajax_response_exp[2]);
-				$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
-					
-			// Rank? Yes. Improvement? Yes.
-			 } else if (ajax_response_exp[0].trim() == "BA") {
-				new_rank = ajax_response_exp[1];
-				trailing_xp = ajax_response_exp[2];
-				trailing_user = ajax_response_exp[3];
-				trailing_rank = ajax_response_exp[4];
-				
-				$("#ranking_number").html(new_rank);
-				
-				// Green flash
-				$("#user_ranking_info").css("background", \'#B9FE4E\');
-				$("#user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
-					$("#user_ranking_info").css("background","#4ebaff");
-					$("#user_ranking_info").animate( { "opacity" : 1  }, 300)
-				 });
-				
-				if (trailing_user) {
-				
-					$("#trailing_ranking_number").html(trailing_rank);
-					$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
-						
-					$("#trailing_user").html(trailing_user);
-					
-					$("#other_user_ranking_info").css("background", \'#FE4EB9\');
-					$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
-						$("#other_user_ranking_info").css("background","#aad450");
-						$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
-					 });
-				
-				 }
-				
-			
-			// Rank? Yes. Improve? No.
-			 } else {
-				new_rank = ajax_response_exp[1];
-				trailing_xp = ajax_response_exp[2];
-				trailing_user = ajax_response_exp[3];
-				trailing_rank = ajax_response_exp[4];
-				
-				$("#ranking_number").html(new_rank);
-						
-				// Red flash
-				$("#user_ranking_info").css("background", \'#FE4EB9\');
-				$("#user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
-					$("#user_ranking_info").css("background","#4ebaff");
-					$("#user_ranking_info").animate( { "opacity" : 1  }, 300)
-				 });
-				
-				if (trailing_user) {
-					$("#trailing_ranking_number").html(trailing_rank);
-					$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
-							
-					$("#trailing_user").html(trailing_user);
-					
-					$("#other_user_ranking_info").css("background", \'#B9FE4E\');
-					$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
-						$("#other_user_ranking_info").css("background","#aad450");
-						$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
-					 });
+		var ajaxRequest;
+		
+		try{
+			// Opera 8.0+, Firefox, Safari
+			ajaxRequest = new XMLHttpRequest();
+		 } catch (e){
+			// Internet Explorer Browsers
+			try{
+				ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+			 } catch (e) {
+				try{
+					ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+				 } catch (e){
+					// Something went wrong
+					alert("Your browser does not support AJAX!");
+					return false;
 				 }
 			 }
 		 }
+		
+		ajaxRequest.onreadystatechange = function(){
+			if (ajaxRequest.readyState == 4){
+				ranking_data = ajaxRequest.responseText;
+				if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
+					return false;
+				 } else {
+					var ajax_response_exp = ranking_data.split(\',\');
+					
+					// Rank? No. 1- User? No. 1- XP? Yes.
+					if (ajax_response_exp[0].trim() == "AAB"){
+						
+						$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');
+
+						$("#other_user_ranking_info").css("background", \'#AAF2DC\');
+						$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+							$("#other_user_ranking_info").css("background","#aad450");
+							$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
+						 });
+					
+					// Rank? No 1- User? Yes.
+					 } else if (ajax_response_exp[0].trim() == "AB") {
+						$("#trailing_user").html(ajax_response_exp[2]);
+						$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+							
+					// Rank? Yes. Improvement? Yes.
+					 } else if (ajax_response_exp[0].trim() == "BA") {
+						new_rank = ajax_response_exp[1];
+						trailing_xp = ajax_response_exp[2];
+						trailing_user = ajax_response_exp[3];
+						trailing_rank = ajax_response_exp[4];
+						
+						$("#ranking_number").html(new_rank);
+						
+						// Green flash
+						$("#user_ranking_info").css("background", \'#B9FE4E\');
+						$("#user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+							$("#user_ranking_info").css("background","#4ebaff");
+							$("#user_ranking_info").animate( { "opacity" : 1  }, 300)
+						 });
+						
+						if (trailing_user) {
+						
+							$("#trailing_ranking_number").html(trailing_rank);
+							$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+								
+							$("#trailing_user").html(trailing_user);
+							
+							$("#other_user_ranking_info").css("background", \'#FE4EB9\');
+							$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+								$("#other_user_ranking_info").css("background","#aad450");
+								$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
+							 });
+						
+						 }
+						
+					
+					// Rank? Yes. Improve? No.
+					 } else {
+						new_rank = ajax_response_exp[1];
+						trailing_xp = ajax_response_exp[2];
+						trailing_user = ajax_response_exp[3];
+						trailing_rank = ajax_response_exp[4];
+						
+						$("#ranking_number").html(new_rank);
+								
+						// Red flash
+						$("#user_ranking_info").css("background", \'#FE4EB9\');
+						$("#user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+							$("#user_ranking_info").css("background","#4ebaff");
+							$("#user_ranking_info").animate( { "opacity" : 1  }, 300)
+						 });
+						
+						if (trailing_user) {
+							$("#trailing_ranking_number").html(trailing_rank);
+							$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+									
+							$("#trailing_user").html(trailing_user);
+							
+							$("#other_user_ranking_info").css("background", \'#B9FE4E\');
+							$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+								$("#other_user_ranking_info").css("background","#aad450");
+								$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
+							 });
+						 }
+					 }
+				 }
+			
+			
+		     }
+		 }
+		
+		ajaxRequest.open(\'POST\', url, true);
+		ajaxRequest.send();
 	 }
 	
 	function popup_expbar(){
@@ -533,7 +561,7 @@ unset($_smarty_tpl_vars);
 				</div>
 				<?php endif; ?>
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9af9df39479f3ea62df5bb3963f45e88#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9af9df39479f3ea62df5bb3963f45e88#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:e561063e2f2abe35e861d6e087203a6e#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:e561063e2f2abe35e861d6e087203a6e#0}';}?>
 <br>
 				<?php endif; ?>
 
