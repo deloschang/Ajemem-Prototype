@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-21 04:28:04
+<?php /* Smarty version 2.6.7, created on 2012-03-21 21:19:28
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 540, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'e561063e2f2abe35e861d6e087203a6e'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 472, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '67c75472b7021e0965e7fd7570bd4ca3'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -162,255 +162,187 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	
 	function live_ranking() {
 		var ranking_data;
-		var url="http://localhost/user/live_ranking/ce/0/chk/1";
-		//var httpRequest = new XMLHttpRequest();
-		//httpRequest.open(\'POST\', url, false);
+		var url="http://localhost/user/live_ranking/";
 		
-		//httpRequest.send();
-		
-		//if (httpRequest.status == 200) {
-		//	ranking_data = httpRequest.responseText;
-		// }
-
-		var ajaxRequest;
-		
-		try{
-			// Opera 8.0+, Firefox, Safari
-			ajaxRequest = new XMLHttpRequest();
-		 } catch (e){
-			// Internet Explorer Browsers
-			try{
-				ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
-			 } catch (e) {
-				try{
-					ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
-				 } catch (e){
-					// Something went wrong
-					alert("Your browser does not support AJAX!");
-					return false;
-				 }
-			 }
-		 }
-		
-		ajaxRequest.onreadystatechange = function(){
-			if (ajaxRequest.readyState == 4){
-				ranking_data = ajaxRequest.responseText;
-				if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
-					return false;
-				 } else {
-					var ajax_response_exp = ranking_data.split(\',\');
+		$.post(url,{ce:0,chk:1 }, function(ranking_data){
+			if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
+				return false;
+			 } else {
+				var ajax_response_exp = ranking_data.split(\',\');
+				
+				// Rank? No. 1- User? No. 1- XP? Yes.
+				if (ajax_response_exp[0].trim() == "AAB"){
 					
-					// Rank? No. 1- User? No. 1- XP? Yes.
-					if (ajax_response_exp[0].trim() == "AAB"){
-						
-						$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');
+					$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');
 
-						$("#other_user_ranking_info").css("background", \'#AAF2DC\');
+					$("#other_user_ranking_info").css("background", \'#AAF2DC\');
+					$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+						$("#other_user_ranking_info").css("background","#aad450");
+						$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
+					 });
+				
+				// Rank? No 1- User? Yes.
+				 } else if (ajax_response_exp[0].trim() == "AB") {
+					$("#trailing_user").html(ajax_response_exp[2]);
+					$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+						
+				// Rank? Yes. Improvement? Yes.
+				 } else if (ajax_response_exp[0].trim() == "BA") {
+					new_rank = ajax_response_exp[1];
+					trailing_xp = ajax_response_exp[2];
+					trailing_user = ajax_response_exp[3];
+					trailing_rank = ajax_response_exp[4];
+					
+					$("#ranking_number").html(new_rank);
+					
+					// Green flash
+					$("#user_ranking_info").css("background", \'#B9FE4E\');
+					$("#user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+						$("#user_ranking_info").css("background","#4ebaff");
+						$("#user_ranking_info").animate( { "opacity" : 1  }, 300)
+					 });
+					
+					if (trailing_user) {
+					
+						$("#trailing_ranking_number").html(trailing_rank);
+						$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+							
+						$("#trailing_user").html(trailing_user);
+						
+						$("#other_user_ranking_info").css("background", \'#FE4EB9\');
 						$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
 							$("#other_user_ranking_info").css("background","#aad450");
 							$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
 						 });
 					
-					// Rank? No 1- User? Yes.
-					 } else if (ajax_response_exp[0].trim() == "AB") {
-						$("#trailing_user").html(ajax_response_exp[2]);
-						$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
-							
-					// Rank? Yes. Improvement? Yes.
-					 } else if (ajax_response_exp[0].trim() == "BA") {
-						new_rank = ajax_response_exp[1];
-						trailing_xp = ajax_response_exp[2];
-						trailing_user = ajax_response_exp[3];
-						trailing_rank = ajax_response_exp[4];
-						
-						$("#ranking_number").html(new_rank);
-						
-						// Green flash
-						$("#user_ranking_info").css("background", \'#B9FE4E\');
-						$("#user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
-							$("#user_ranking_info").css("background","#4ebaff");
-							$("#user_ranking_info").animate( { "opacity" : 1  }, 300)
-						 });
-						
-						if (trailing_user) {
-						
-							$("#trailing_ranking_number").html(trailing_rank);
-							$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
-								
-							$("#trailing_user").html(trailing_user);
-							
-							$("#other_user_ranking_info").css("background", \'#FE4EB9\');
-							$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
-								$("#other_user_ranking_info").css("background","#aad450");
-								$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
-							 });
-						
-						 }
-						
+					 }
 					
-					// Rank? Yes. Improve? No.
-					 } else {
-						new_rank = ajax_response_exp[1];
-						trailing_xp = ajax_response_exp[2];
-						trailing_user = ajax_response_exp[3];
-						trailing_rank = ajax_response_exp[4];
-						
-						$("#ranking_number").html(new_rank);
-								
-						// Red flash
-						$("#user_ranking_info").css("background", \'#FE4EB9\');
-						$("#user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
-							$("#user_ranking_info").css("background","#4ebaff");
-							$("#user_ranking_info").animate( { "opacity" : 1  }, 300)
-						 });
-						
-						if (trailing_user) {
-							$("#trailing_ranking_number").html(trailing_rank);
-							$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
-									
-							$("#trailing_user").html(trailing_user);
+				
+				// Rank? Yes. Improve? No.
+				 } else {
+					new_rank = ajax_response_exp[1];
+					trailing_xp = ajax_response_exp[2];
+					trailing_user = ajax_response_exp[3];
+					trailing_rank = ajax_response_exp[4];
+					
+					$("#ranking_number").html(new_rank);
 							
-							$("#other_user_ranking_info").css("background", \'#B9FE4E\');
-							$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
-								$("#other_user_ranking_info").css("background","#aad450");
-								$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
-							 });
-						 }
+					// Red flash
+					$("#user_ranking_info").css("background", \'#FE4EB9\');
+					$("#user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+						$("#user_ranking_info").css("background","#4ebaff");
+						$("#user_ranking_info").animate( { "opacity" : 1  }, 300)
+					 });
+					
+					if (trailing_user) {
+						$("#trailing_ranking_number").html(trailing_rank);
+						$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+								
+						$("#trailing_user").html(trailing_user);
+						
+						$("#other_user_ranking_info").css("background", \'#B9FE4E\');
+						$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
+							$("#other_user_ranking_info").css("background","#aad450");
+							$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
+						 });
 					 }
 				 }
+			 }
 			
 			
-		     }
-		 }
-		
-		ajaxRequest.open(\'POST\', url, true);
-		ajaxRequest.send();
+		 });
 	 }
 	
 	function popup_expbar(){
 		var data;
-		var url="http://localhost/user/getExperience/ce/0/chk/1";
+		var url="http://localhost/user/getExperience/";
 		
-		var ajaxRequest;
-		
-		try{
-			// Opera 8.0+, Firefox, Safari
-			ajaxRequest = new XMLHttpRequest();
-		 } catch (e){
-			// Internet Explorer Browsers
-			try{
-				ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
-			 } catch (e) {
-				try{
-					ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
-				 } catch (e){
-					// Something went wrong
-					alert("Your browser does not support AJAX!");
-					return false;
-				 }
-			 }
-		 }
-		
-		ajaxRequest.onreadystatechange = function(){
-			if (ajaxRequest.readyState == 4){
-				data = ajaxRequest.responseText;
+		$.post(url,{ce:0,chk:1 }, function(data){
+			if(data == 90999999999){
+				return false;
+			 }	
 				
-				if(data == 90999999999){
-					return false;
-				 }	
+			// XP has changed
+			if (data.indexOf(",") == -1) {
+				// User has not levelled
 				
-				// XP has changed
-				if (data.indexOf(",") == -1) {
-					// User has not levelled
-					
-					var ajax_response_main = data.split(\'~\');
-					new_xp = ajax_response_main[0];
-					previous_xp_to_level = ajax_response_main[1];
-					user_level = ajax_response_main[2];
-					
-					console.log("User Level is "+user_level);
-					console.log("Previous XP to Level is "+previous_xp_to_level);
-					console.log("XP_TO_LEVEL is "+xp_to_level);
-					
-					if (user_level == 1) {
-						new_xp_percent = (new_xp / xp_to_level) * 100;
-					 } else {
-						console.log("New Total XP is "+new_xp);
-						console.log("Previous XP to Level is "+previous_xp_to_level);
-						new_xp_percent = (new_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
-					 }
-					
+				var ajax_response_main = data.split(\'~\');
+				new_xp = ajax_response_main[0];
+				previous_xp_to_level = ajax_response_main[1];
+				user_level = ajax_response_main[2];
+				
+				console.log("User Level is "+user_level);
+				console.log("Previous XP to Level is "+previous_xp_to_level);
+				console.log("XP_TO_LEVEL is "+xp_to_level);
+				
+				if (user_level == 1) {
+					new_xp_percent = (new_xp / xp_to_level) * 100;
 				 } else {
-					// User level has changed; Unpack data
-														
-					var ajax_response = data.split(\',\');
-					// [0] -- New XP
-					new_xp = ajax_response[0]; 
-					// [1] -- New level
-					new_level = ajax_response[1];
-					$("#user_level").html(\'L\'+new_level);
-					$("#left_pan_level").html(\'L\'+new_level);
-					
-					// [2] -- New XP to level
-					new_xp_to_level = ajax_response[2];
-					
-					previous_xp_to_level = xp_to_level;
-					
-					calc_new_xp_percent = new_xp - parseInt(previous_xp_to_level);
-					new_xp_percent = calc_new_xp_percent / (new_xp_to_level - previous_xp_to_level) * 100;
-					
-					//console.log("XP TO LEVEL is "+xp_to_level);
-					//console.log("NEW XP TO LEVEL IS "+new_xp_to_level);
-					//console.log(calc_new_xp_percent);
-								
-					//console.log("PREVIOUS XP TO LEVEL IS "+previous_xp_to_level);
-					
-					xp_to_level = new_xp_to_level;
-					
-					// Level has a "live feed like flash"
-					$("#left_pan_level").css("background", \'#B9FE4E\');
-					$("#left_pan_level").animate( { "opacity" : 0.4  }, 500, function() {
-						$("#left_pan_level").css("background","white");
-						$("#left_pan_level").animate( { "opacity" : 1  }, 300)
-					 });
+					console.log("New Total XP is "+new_xp);
+					console.log("Previous XP to Level is "+previous_xp_to_level);
+					new_xp_percent = (new_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
 				 }
+				
+			 } else {
+				// User level has changed; Unpack data
+													
+				var ajax_response = data.split(\',\');
+				// [0] -- New XP
+				new_xp = ajax_response[0]; 
+				// [1] -- New level
+				new_level = ajax_response[1];
+				$("#user_level").html(\'L\'+new_level);
+				$("#left_pan_level").html(\'L\'+new_level);
+				
+				// [2] -- New XP to level
+				new_xp_to_level = ajax_response[2];
+				
+				previous_xp_to_level = xp_to_level;
+				
+				calc_new_xp_percent = new_xp - parseInt(previous_xp_to_level);
+				new_xp_percent = calc_new_xp_percent / (new_xp_to_level - previous_xp_to_level) * 100;
+				
+				//console.log("XP TO LEVEL is "+xp_to_level);
+				//console.log("NEW XP TO LEVEL IS "+new_xp_to_level);
+				//console.log(calc_new_xp_percent);
+							
+				//console.log("PREVIOUS XP TO LEVEL IS "+previous_xp_to_level);
+				
+				xp_to_level = new_xp_to_level;
+				
+				// Level has a "live feed like flash"
+				$("#left_pan_level").css("background", \'#B9FE4E\');
+				$("#left_pan_level").animate( { "opacity" : 0.4  }, 500, function() {
+					$("#left_pan_level").css("background","white");
+					$("#left_pan_level").animate( { "opacity" : 1  }, 300)
+				 });
+			 }
 					 
 				
-				//console.log("New XP is " + new_xp);
-				//console.log("New Percentage is " + new_xp_percent);
+			//console.log("New XP is " + new_xp);
+			//console.log("New Percentage is " + new_xp_percent);
+			
+			$("#xpbar").progressbar({
+				value: new_xp_percent 
+			 });
+			
+			$("#xpbar_status").html(\'(\'+ new_xp_percent.toFixed(2) +\'%) \'+ (new_xp - previous_xp_to_level) +\' / \'+ (xp_to_level - previous_xp_to_level));
+			
+			// Status bar with XP pops up too
+			$("#xpbar_status").show();
+			setTimeout(\'$("#xpbar_status").fadeOut();\', 2000);
+			
+			
+			// Static XP marker
+			$("#total_xp").html(new_xp+\'<span style="font-size:8px; position:relative; bottom:5px;"> XP</span>\');
+			$("#user_ranking_info").css("background", \'#4EFEEB\');
+			$("#user_ranking_info").animate( { "opacity" : 0.4  }, 400, function() {
+				$("#user_ranking_info").css("background","#4ebaff");
+				$("#user_ranking_info").animate( { "opacity" : 1  }, 300)
+			 });
 				
-				$("#xpbar").progressbar({
-					value: new_xp_percent 
-				 });
-				
-				$("#xpbar_status").html(\'(\'+ new_xp_percent.toFixed(2) +\'%) \'+ (new_xp - previous_xp_to_level) +\' / \'+ (xp_to_level - previous_xp_to_level));
-				
-				// Status bar with XP pops up too
-				$("#xpbar_status").show();
-				setTimeout(\'$("#xpbar_status").fadeOut();\', 2000);
-				
-				
-				// Static XP marker
-				$("#total_xp").html(new_xp+\'<span style="font-size:8px; position:relative; bottom:5px;"> XP</span>\');
-				$("#user_ranking_info").css("background", \'#4EFEEB\');
-				$("#user_ranking_info").animate( { "opacity" : 0.4  }, 400, function() {
-					$("#user_ranking_info").css("background","#4ebaff");
-					$("#user_ranking_info").animate( { "opacity" : 1  }, 300)
-				 });
-				
-			 }
-		 }
-		
-		ajaxRequest.open(\'POST\', url, true);
-		ajaxRequest.send();
-		
-		//httpRequest.open(\'POST\', url, false);
-
-		//httpRequest.send(); // this blocks as request is synchronous
-		//if (httpRequest.status == 200) {
-		//	data = httpRequest.responseText;
-		// }
-		 }
+		 });
+	 }
 	
 	function upd_log_time() {
 		  var url="http://localhost/index.php";
@@ -561,7 +493,7 @@ unset($_smarty_tpl_vars);
 				</div>
 				<?php endif; ?>
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:e561063e2f2abe35e861d6e087203a6e#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:e561063e2f2abe35e861d6e087203a6e#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:67c75472b7021e0965e7fd7570bd4ca3#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:67c75472b7021e0965e7fd7570bd4ca3#0}';}?>
 <br>
 				<?php endif; ?>
 
