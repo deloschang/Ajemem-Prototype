@@ -1,12 +1,14 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-21 23:10:54
+<?php /* Smarty version 2.6.7, created on 2012-03-22 01:09:51
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 203, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 249, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 211, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 257, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 21/03/2012 23:10:54 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 22/03/2012 01:09:51 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
 	var see_user_old = 0;
+	var live_meme_wait = 15000;
+	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
 
@@ -36,7 +38,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 
 	$(document).ready(function() {
 		setTimeout("live_feed(0)", 1000);	
-		setInterval("live_meme()", 5000);
+		setTimeout("live_meme()", 10000);
 	 });
 
 	function common_fun_extended(id,color_code){
@@ -63,7 +65,10 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		
 		$.post(url,{ce:0,chk:1,top_meme_id:top_meme_id }, function(live_meme_data){
 			if (live_meme_data.trim() == "no meme" || live_meme_data.trim() == "no meme found in SQL" || live_meme_data.trim() == "No new meme updates") {
-				//console.log(\'no new meme found\');
+				setTimeout("live_meme()", live_meme_wait);
+				live_meme_wait *= 1.5;
+				
+				console.log(\'Wait time is\'+live_meme_wait);
 				return false; 
 			 }
 
@@ -93,6 +98,9 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 					$(\'.live_feed\'+feed_count_orig).before(\'<div class="live_feed\'+feed_count+\'" style="display: none; padding-top:20px;"></div>\');
 				 });
 			 }
+			
+			setTimeout("live_meme", 10000);
+			live_meme_wait = 15000;
 		 });		
 	 }
 	
@@ -177,9 +185,9 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			
 			if (i < id_array_len - 1) {
 				updated_i = i + 1
-				setTimeout("live_feed(updated_i)", 1000);
+				setTimeout("live_feed(updated_i)", 1500);
 			 } else {
-				setTimeout("live_feed(0)", 1000);
+				setTimeout("live_feed(0)", 1500);
 			 }
 		 });
 		

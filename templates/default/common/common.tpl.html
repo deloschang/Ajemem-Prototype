@@ -64,6 +64,9 @@
 				xp_percent = (curr_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
 			{else}xp_percent = 0{/if}{literal}
 		}
+		
+		var rank_wait = 40000;
+		var xp_wait = 8000;
 	
 	$(document).ready(function(){	
 		// User XP initial display
@@ -100,8 +103,8 @@
 			//setInterval("getall_notification()",7000); for notifications
 			
 	    /* For popup bar */
-			setInterval("popup_expbar()", 7000); 	
-			setInterval("live_ranking()", 20000);
+			setTimeout("popup_expbar()", 7000); 	
+			setTimeout("live_ranking()", 20000);
 	    }
 
 	    /* TOS Fancybox Popup on First Login */
@@ -164,6 +167,8 @@
 		
 		$.post(url,{ce:0,chk:1}, function(ranking_data){
 			if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
+				setTimeout("live_ranking()", rank_wait);
+				rank_wait *= 1.5
 				return false;
 			} else {
 				var ajax_response_exp = ranking_data.split(',');
@@ -245,6 +250,9 @@
 						});
 					}
 				}
+				
+				setTimeout("live_ranking()", 20000);
+				rank_wait = 40000;
 			}
 			
 			
@@ -257,6 +265,8 @@
 		
 		$.post(url,{ce:0,chk:1}, function(data){
 			if(data == 90999999999){
+				setTimeout("popup_expbar()", xp_wait);
+				xp_wait *= 1.2
 				return false;
 			}	
 				
@@ -338,7 +348,9 @@
 				$("#user_ranking_info").css("background","#4ebaff");
 				$("#user_ranking_info").animate( { "opacity" : 1 }, 300)
 			});
-				
+			
+			setTimeout("popup_expbar()", 7000);	
+			xp_wait = 8000;
 		});
 	}
 	

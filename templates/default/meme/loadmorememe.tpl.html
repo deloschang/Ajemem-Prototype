@@ -3,6 +3,8 @@
 {literal}
 <script type="text/javascript">
 	var see_user_old = 0;
+	var live_meme_wait = 15000;
+	
 	var id = "{/literal}{$sm.last_idmeme}{literal}";	//lowest id
 	var new_ids = "{/literal}{$sm.id_memes}{literal}";
 
@@ -32,7 +34,7 @@
 
 	$(document).ready(function() {
 		setTimeout("live_feed(0)", 1000);	
-		setInterval("live_meme()", 5000);
+		setTimeout("live_meme()", 10000);
 	});
 
 	function common_fun_extended(id,color_code){
@@ -59,7 +61,10 @@
 		
 		$.post(url,{ce:0,chk:1,top_meme_id:top_meme_id}, function(live_meme_data){
 			if (live_meme_data.trim() == "no meme" || live_meme_data.trim() == "no meme found in SQL" || live_meme_data.trim() == "No new meme updates") {
-				//console.log('no new meme found');
+				setTimeout("live_meme()", live_meme_wait);
+				live_meme_wait *= 1.5;
+				
+				console.log('Wait time is'+live_meme_wait);
 				return false; 
 			}
 
@@ -89,6 +94,9 @@
 					$('.live_feed'+feed_count_orig).before('<div class="live_feed'+feed_count+'" style="display: none; padding-top:20px;"></div>');
 				});
 			}
+			
+			setTimeout("live_meme", 10000);
+			live_meme_wait = 15000;
 		});		
 	}
 	
@@ -173,9 +181,9 @@
 			
 			if (i < id_array_len - 1) {
 				updated_i = i + 1
-				setTimeout("live_feed(updated_i)", 1000);
+				setTimeout("live_feed(updated_i)", 1500);
 			} else {
-				setTimeout("live_feed(0)", 1000);
+				setTimeout("live_feed(0)", 1500);
 			}
 		});
 		
