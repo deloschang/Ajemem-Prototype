@@ -560,6 +560,7 @@ body {
   top:48px;
   left:635px;
 }
+
 /* Next to xpbar */
 #fbstuff{
   position:fixed;
@@ -593,6 +594,7 @@ moz-border-radius: 10px;
   font-size:25px;
   color:#000;
 }
+
 /* XP Bar */
 #xpbar {
     position:fixed;

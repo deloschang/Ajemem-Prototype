@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-22 01:09:51
+<?php /* Smarty version 2.6.7, created on 2012-03-22 17:54:27
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 211, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 257, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 211, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 264, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 22/03/2012 01:09:51 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 22/03/2012 17:54:27 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
 	var see_user_old = 0;
@@ -230,8 +230,11 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 			<?php endif; ?>
 					
 		" align="left"/>
-				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-');">
+				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" 
+				<?php if ($_SESSION['id_user']): ?>
+					onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
+');"
+				<?php endif; ?>>
 				
 				<?php if ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']): ?>
 					<img src="<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']; ?>
@@ -256,8 +259,12 @@ if ($this->_foreach['cur_meme']['total'] > 0):
  </a></span>
                             -->
 			<span id="user<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-" style="font-size:17px;"><a href="javascript:void(0);" onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-');"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
+" style="font-size:17px;"><a href="javascript:void(0);" 
+			<?php if ($_SESSION['id_user']): ?>
+				onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
+');"
+			<?php endif; ?>
+			><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
  </a></span>
 
 <!--

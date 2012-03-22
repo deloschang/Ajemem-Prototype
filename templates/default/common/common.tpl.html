@@ -419,6 +419,7 @@
 </script>
 {/literal}
 </head>
+
 <body>
 <div id="fb-root"></div>
       {literal}
@@ -464,25 +465,29 @@
 		<table width="100%" id="mid_cont">
 		    <tr>
 			{if $smarty.request.choice !='addMeme'}
-			<td width="15%" id="leftpan" valign="top">
-			    {if $smarty.session.id_user}	
-				    {include file="user/left_pan"}
-				{else} 
-				    {include file=user/login_form"}
-			    {/if}
-			</td>
+				<td width="15%" id="leftpan" valign="top">
+					{if $smarty.session.id_user}	
+						{include file="user/left_pan"}
+					{else} 
+						{include file=user/login_form"}
+					{/if}
+				</td>
 			{/if}
 
 			<td align="left" valign="top">
-			    <div><font color="#FF0000">{myinclude file="common/messages" module="global"}</font></div>
+			    <div>
+					<font color="#FF0000">{myinclude file="common/messages" module="global"}</font>
+				</div>
+				
 			    <div id="container">
 				{if $smarty.request.choice !='addMeme'}
-				
-				</div>
+					</div>
 				{/if}
+				
 				{if $smarty.session.id_user && $smarty.request.choice !='answer_to_ques' && $smarty.request.choice !='addMeme' && $smarty.request.choice !='meme_details'}
 				    {get_mod mod=question mgr=question choice=get_this_week_question}<br>
 				{/if}
+			
 
 		<!-- Content in middle of page (Live Feed/Editor) -->
 				{include file=$content}
@@ -504,14 +509,16 @@
 			    {/if}
 			</td>
 			{/if}
+			
 		    </tr>
 		</table>
+		
 		<div class="clear"></div>
 		<div class="push"></div>
 		<input type="hidden" id="user_ids" value=""/>
 		<input type="hidden" id="id_badges" />
 	</div>
-	<div id="footer">Copyrights. All Rights Reserved. 2012 </div>
+	<div id="footer"><center>Copyrights. All Rights Reserved. 2012</center></div>
 </body>
 </html>
 

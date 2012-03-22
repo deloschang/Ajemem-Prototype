@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-22 01:09:52
+<?php /* Smarty version 2.6.7, created on 2012-03-22 17:54:29
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 484, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '5cf5d42df8b84b155ec62f04c2aaf058'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 488, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'aeacc5c54552b78d3c4b1fd78d0f4f4c'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -67,7 +67,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 			<?php else: ?>xp_percent = 0<?php endif;  echo '
 		 }
 		
-		var rank_wait = 30000;
+		var rank_wait = 40000;
 		var xp_wait = 8000;
 	
 	$(document).ready(function(){	
@@ -254,7 +254,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 				 }
 				
 				setTimeout("live_ranking()", 20000);
-				rank_wait = 30000;
+				rank_wait = 40000;
 			 }
 			
 			
@@ -422,6 +422,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 '; ?>
 
 </head>
+
 <body>
 <div id="fb-root"></div>
       <?php echo '
@@ -476,38 +477,42 @@ unset($_smarty_tpl_vars);
 		<table width="100%" id="mid_cont">
 		    <tr>
 			<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
-			<td width="15%" id="leftpan" valign="top">
-			    <?php if ($_SESSION['id_user']): ?>	
-				    <?php $_smarty_tpl_vars = $this->_tpl_vars;
+				<td width="15%" id="leftpan" valign="top">
+					<?php if ($_SESSION['id_user']): ?>	
+						<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/left_pan.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-				<?php else: ?> 
-				    <?php $_smarty_tpl_vars = $this->_tpl_vars;
+					<?php else: ?> 
+						<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-			    <?php endif; ?>
-			</td>
+					<?php endif; ?>
+				</td>
 			<?php endif; ?>
 
 			<td align="left" valign="top">
-			    <div><font color="#FF0000"><?php $_smarty_tpl_vars = $this->_tpl_vars;
+			    <div>
+					<font color="#FF0000"><?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "common/messages.tpl.html", 'smarty_include_vars' => array('module' => 'global')));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
- ?></font></div>
+ ?></font>
+				</div>
+				
 			    <div id="container">
 				<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
-				
-				</div>
+					</div>
 				<?php endif; ?>
+				
 				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:5cf5d42df8b84b155ec62f04c2aaf058#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:5cf5d42df8b84b155ec62f04c2aaf058#0}';}?>
+				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:aeacc5c54552b78d3c4b1fd78d0f4f4c#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:aeacc5c54552b78d3c4b1fd78d0f4f4c#0}';}?>
 <br>
 				<?php endif; ?>
+			
 
 		<!-- Content in middle of page (Live Feed/Editor) -->
 				<?php $_smarty_tpl_vars = $this->_tpl_vars;
@@ -545,13 +550,15 @@ unset($_smarty_tpl_vars);
 			    <?php endif; ?>
 			</td>
 			<?php endif; ?>
+			
 		    </tr>
 		</table>
+		
 		<div class="clear"></div>
 		<div class="push"></div>
 		<input type="hidden" id="user_ids" value=""/>
 		<input type="hidden" id="id_badges" />
 	</div>
-	<div id="footer">Copyrights. All Rights Reserved. 2012 </div>
+	<div id="footer"><center>Copyrights. All Rights Reserved. 2012</center></div>
 </body>
 </html>

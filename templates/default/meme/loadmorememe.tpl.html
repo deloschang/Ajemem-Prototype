@@ -216,7 +216,10 @@
 			{/if}
 					
 		" align="left"/>
-				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');">
+				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" 
+				{if $smarty.session.id_user}
+					onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');"
+				{/if}>
 				
 				{if $sm.uinfo[$x.id_user].fb_pic_square}
 					<img src="{$sm.uinfo[$x.id_user].fb_pic_square}" class="avatar_thumb_fb" >
@@ -234,7 +237,11 @@
                             <!--
 			<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:17px;"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');" onmouseout ="$('#right_pan').removeAttr('mouseover');">{$sm.uinfo[$x.id_user].username} </a></span>
                             -->
-			<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:17px;"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');">{$sm.uinfo[$x.id_user].username} </a></span>
+			<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:17px;"><a href="javascript:void(0);" 
+			{if $smarty.session.id_user}
+				onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');"
+			{/if}
+			>{$sm.uinfo[$x.id_user].username} </a></span>
 
 <!--
 onmouseout ="unhover_user('{$sm.uinfo[$x.id_user].id_user}');"

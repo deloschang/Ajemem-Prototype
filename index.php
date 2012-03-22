@@ -93,7 +93,7 @@ if($page =='user' || file_exists($file_test)) {
 
 	// Error handling because file does not exist
 	if(!($page =='templates' || $page =='image')){
-		$_SESSION['raise_message']['global'] = "<h2>The requested page is not available.<h2>";
+		$_SESSION['raise_message']['global'] = "<h2>Herp a derp?<h2>";
 		redirect(LBL_SITE_URL);
 	}else{
 		return;

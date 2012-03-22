@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-22 01:09:53
+<?php /* Smarty version 2.6.7, created on 2012-03-22 17:54:30
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -55,7 +55,6 @@
 					var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
 				
 					if ($("#last_id_meme_cur_page").val() != "") {
-					  	console.log("last_id_meme fired");
 					  	if ($("#chk_me").val()!=1) {
 						  backup_last_id_meme = $("#last_id_meme_cur_page").val();
 						  loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
@@ -71,14 +70,14 @@
      });
     
     function loadmorememe(cat,last_id,srch_uname,srch_title){
-	$("#loadingmeme_img").show();
-	var ext = "';  echo $_REQUEST['ext'];  echo '";
-	var url = "http://localhost/meme/meme_list";
-	$.post(url,{cat:cat,ce:0,last_id:last_id,muname:srch_uname,mtitle:srch_title,ext:ext }, function(res){
-	    $("#loadingmeme_img").hide();
-	    if(res!="")
-		$("#all_memes").append(res);
-	 });
+		$("#loadingmeme_img").show();
+		var ext = "';  echo $_REQUEST['ext'];  echo '";
+		var url = "http://localhost/meme/meme_list";
+		$.post(url,{cat:cat,ce:0,last_id:last_id,muname:srch_uname,mtitle:srch_title,ext:ext }, function(res){
+			$("#loadingmeme_img").hide();
+			if(res!="")
+				$("#all_memes").append(res);
+		 });
      }
     
     function get_all_flag_details(timer){
@@ -155,16 +154,16 @@
 
 /* Expand replies after reply button is pressed on the meme */
     function get_all_replies(id){
-        
-	var url = "http://localhost/meme/get_all_replies";
-	$.post(url,{id:id,ce:0 }, function(res){
-	    $("#send_reply"+id).html(res);
-	    
-	    /* If caption is up, swap */
-	    if(!$("#add_caption"+id).is(":hidden"))
-			$(\'#add_caption\'+id).slideToggle(\'slow\');
-	    $(\'#send_reply\'+id).slideToggle(\'slow\');
-	 });
+  
+		var url = "http://localhost/meme/get_all_replies";
+		$.post(url,{id:id,ce:0 }, function(res){
+			$("#send_reply"+id).html(res);
+			
+			/* If caption is up, swap */
+			if(!$("#add_caption"+id).is(":hidden"))
+				$(\'#add_caption\'+id).slideToggle(\'slow\');
+			$(\'#send_reply\'+id).slideToggle(\'slow\');
+		 });
      }
     
     function get_captions(id){
@@ -191,10 +190,15 @@
 
     function post_reply(id){
 		if($("#rpl_con"+id).val()=="" || $("#rpl_con"+id).val()=="Reply with answer."){
-	    	 $("#rpl_con"+id).val("Reply with answer.");
+	    	 $("#rpl_con"+id).val("Derppp (write a reply)");
 	    	 return false;
 		 }
 	    
+		if($("#rpl_con"+id).val().length < 10){
+			$("#validateCharacter"+id).html(\'Herp Derp\');
+			return false;
+		 }
+		
 	   if (logged_in) { 
 			/* $("#send_reply"+id).hide("slow",function(){ }); */
 			var url = "http://localhost/meme/answer_to_meme";
