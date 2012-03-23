@@ -4,6 +4,8 @@
 <script type="text/javascript">
 	var see_user_old = 0;
 	var live_meme_wait = 15000;
+	var meme_timer;
+	var meme_timer_new;
 	
 	var id = "{/literal}{$sm.last_idmeme}{literal}";	//lowest id
 	var new_ids = "{/literal}{$sm.id_memes}{literal}";
@@ -19,7 +21,7 @@
 		var feed_count = 0;
 	}
 
-	if(id!=''){
+	if(id != ''){
 	    $("#last_id_meme_cur_page").val(id);
 	    var id_memes = $("#rand_id_memes").val();
 	    $("#rand_id_memes").val(id_memes+","+new_ids);
@@ -33,8 +35,11 @@
 	});
 
 	$(document).ready(function() {
-		setTimeout("live_feed(0)", 1000);	
-		setTimeout("live_meme()", 10000);
+		clearTimeout(meme_timer);
+		clearTimeout(meme_timer_new);
+		
+		meme_timer = window.setTimeout("live_feed(0)", 1000);	
+		meme_timer_new = window.setTimeout("live_meme()", 10000);
 	});
 
 	function common_fun_extended(id,color_code){
@@ -61,10 +66,9 @@
 		
 		$.post(url,{ce:0,chk:1,top_meme_id:top_meme_id}, function(live_meme_data){
 			if (live_meme_data.trim() == "no meme" || live_meme_data.trim() == "no meme found in SQL" || live_meme_data.trim() == "No new meme updates") {
-				setTimeout("live_meme()", live_meme_wait);
+				meme_timer_new = setTimeout("live_meme()", live_meme_wait);
 				live_meme_wait *= 1.5;
 				
-				console.log('Wait time is'+live_meme_wait);
 				return false; 
 			}
 
@@ -95,14 +99,12 @@
 				});
 			}
 			
-			setTimeout("live_meme", 10000);
+			meme_timer_new = window.setTimeout("live_meme", 10000);
 			live_meme_wait = 15000;
 		});		
 	}
 	
-	function live_feed (i) {
-		//for (var i=0; i < id_array_len; i++) {
-		
+	function live_feed (i) {		
 		console.log("Currently on..."+single_id_array[i]);
 			
 		// Grab meme id then honor
@@ -130,11 +132,11 @@
 		var url="##LBL_SITE_URL##meme/live_feed/";
 		
 		$.post(url,{ce:0,chk:1,meme_id:meme_id,meme_tot_honor:meme_tot_honor,meme_tot_dishonor:meme_tot_dishonor,meme_tot_reply:meme_tot_reply}, function(live_feed_data_tot){
-			console.log('Meme_id'+meme_id);
-			console.log('Serv Response'+live_feed_data_tot);
+			//console.log('Meme_id'+meme_id);
+			//console.log('Serv Response'+live_feed_data_tot);
 			if (live_feed_data_tot.trim() == "no change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
 
-				console.log("(no update) Request data is "+live_feed_data_tot.trim());
+				console.log("(no update)");
 
 			} else {
 
@@ -181,9 +183,9 @@
 			
 			if (i < id_array_len - 1) {
 				updated_i = i + 1
-				setTimeout("live_feed(updated_i)", 1500);
+				meme_timer = window.setTimeout("live_feed(updated_i)", 2700);
 			} else {
-				setTimeout("live_feed(0)", 1500);
+				meme_timer = window.setTimeout("live_feed(0)", 2700);
 			}
 		});
 		

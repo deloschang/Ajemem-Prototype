@@ -1,13 +1,15 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-22 17:54:27
+<?php /* Smarty version 2.6.7, created on 2012-03-23 02:28:14
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 211, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 264, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 213, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 266, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 22/03/2012 17:54:27 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 23/03/2012 02:28:14 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
 	var see_user_old = 0;
 	var live_meme_wait = 15000;
+	var meme_timer;
+	var meme_timer_new;
 	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
@@ -23,7 +25,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		var feed_count = 0;
 	 }
 
-	if(id!=\'\'){
+	if(id != \'\'){
 	    $("#last_id_meme_cur_page").val(id);
 	    var id_memes = $("#rand_id_memes").val();
 	    $("#rand_id_memes").val(id_memes+","+new_ids);
@@ -37,8 +39,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	 });
 
 	$(document).ready(function() {
-		setTimeout("live_feed(0)", 1000);	
-		setTimeout("live_meme()", 10000);
+		clearTimeout(meme_timer);
+		clearTimeout(meme_timer_new);
+		
+		meme_timer = window.setTimeout("live_feed(0)", 1000);	
+		meme_timer_new = window.setTimeout("live_meme()", 10000);
 	 });
 
 	function common_fun_extended(id,color_code){
@@ -65,10 +70,9 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		
 		$.post(url,{ce:0,chk:1,top_meme_id:top_meme_id }, function(live_meme_data){
 			if (live_meme_data.trim() == "no meme" || live_meme_data.trim() == "no meme found in SQL" || live_meme_data.trim() == "No new meme updates") {
-				setTimeout("live_meme()", live_meme_wait);
+				meme_timer_new = setTimeout("live_meme()", live_meme_wait);
 				live_meme_wait *= 1.5;
 				
-				console.log(\'Wait time is\'+live_meme_wait);
 				return false; 
 			 }
 
@@ -99,14 +103,12 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 				 });
 			 }
 			
-			setTimeout("live_meme", 10000);
+			meme_timer_new = window.setTimeout("live_meme", 10000);
 			live_meme_wait = 15000;
 		 });		
 	 }
 	
-	function live_feed (i) {
-		//for (var i=0; i < id_array_len; i++) {
-		
+	function live_feed (i) {		
 		console.log("Currently on..."+single_id_array[i]);
 			
 		// Grab meme id then honor
@@ -134,11 +136,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		var url="http://localhost/meme/live_feed/";
 		
 		$.post(url,{ce:0,chk:1,meme_id:meme_id,meme_tot_honor:meme_tot_honor,meme_tot_dishonor:meme_tot_dishonor,meme_tot_reply:meme_tot_reply }, function(live_feed_data_tot){
-			console.log(\'Meme_id\'+meme_id);
-			console.log(\'Serv Response\'+live_feed_data_tot);
+			//console.log(\'Meme_id\'+meme_id);
+			//console.log(\'Serv Response\'+live_feed_data_tot);
 			if (live_feed_data_tot.trim() == "no change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
 
-				console.log("(no update) Request data is "+live_feed_data_tot.trim());
+				console.log("(no update)");
 
 			 } else {
 
@@ -185,9 +187,9 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			
 			if (i < id_array_len - 1) {
 				updated_i = i + 1
-				setTimeout("live_feed(updated_i)", 1500);
+				meme_timer = window.setTimeout("live_feed(updated_i)", 2700);
 			 } else {
-				setTimeout("live_feed(0)", 1500);
+				meme_timer = window.setTimeout("live_feed(0)", 2700);
 			 }
 		 });
 		

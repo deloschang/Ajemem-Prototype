@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-22 17:54:30
+<?php /* Smarty version 2.6.7, created on 2012-03-23 02:27:55
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -10,7 +10,9 @@
     
 	var logged_in="';  echo $_SESSION['id_user'];  echo '";
     
-    var first_id,after_5sec=0,backup_rand_id_memes=\'\',backup_last_id_meme=\'\';
+    var first_id, after_5sec=0, backup_rand_id_memes=\'\', backup_last_id_meme=\'\';
+	var backup_page_no;
+	
     $(document).ready(function(){	
     
 			$(\'.meme_gallery\').fancybox({
@@ -43,32 +45,112 @@
 		$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
 		var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
 		$("#rand_id_memes").val("';  echo $this->_tpl_vars['sm']['id_memes'];  echo '");
+		
 		$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
 	    	get_all_flag_details(1);
 	    	setInterval("get_all_flag_details()",6000);
+		
+		var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
+		var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
+		
+		// ';  echo $this->_tpl_vars['sm']['page_row'];  echo '
+		for(var i = 1; i < 8; i++) {
+			$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
+		 }
+		
+		$(\'#pagenext\').html(\'<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>\');
+		
+		$("#page"+1).css({\'font-weight\' : \'bolder\' });
+		backup_page_no = 1;
+		
 	    
-		$(window).scroll(function(){
-			if ($(window).scrollTop() == $(document).height() - $(window).height()){
+		//$(window).scroll(function(){
+		//	if ($(window).scrollTop() == $(document).height() - $(window).height()){
 				
-				if (logged_in) {
-					var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
-					var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
+		//		if (logged_in) {
+		//			var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
+		//			var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
 				
-					if ($("#last_id_meme_cur_page").val() != "") {
-					  	if ($("#chk_me").val()!=1) {
-						  backup_last_id_meme = $("#last_id_meme_cur_page").val();
-						  loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
-						  $("#last_id_meme_cur_page").val("");
-				  		 }
-				  	 }
-		      	 } else {
-		      		$("#signupmemes").fadeIn(\'slow\');
-		      	 }
-			 }
-	 	 });
+		//			if ($("#last_id_meme_cur_page").val() != "") {
+		//			  	if ($("#chk_me").val()!=1) {
+		//				  backup_last_id_meme = $("#last_id_meme_cur_page").val();
+		//				  loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
+		//				  $("#last_id_meme_cur_page").val("");
+		//		  		 }
+		//		  	 }
+		//      	 } else {
+		//      		$("#signupmemes").fadeIn(\'slow\');
+		//      	 }
+		//	 }
+	 	// });
 	 	
      });
     
+	function paging_func(page_no){
+		var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
+		var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
+		
+		if ($("#last_id_meme_cur_page").val() != "") {
+			if ($("#chk_me").val()!=1) {
+				last_id = $("#last_id_meme_cur_page").val();
+				
+				var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
+				var ext = "';  echo $_REQUEST['ext'];  echo '";
+				var url = "http://localhost/meme/meme_list";
+				
+				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,muname:srch_uname,mtitle:srch_title,ext:ext }, function(res){
+					if(res!="")
+						$("#all_memes").html(res);
+				 });
+			  
+				$("#last_id_meme_cur_page").val("");
+				
+				clearTimeout(meme_timer);
+				clearTimeout(meme_timer_new);
+			 }
+		 }	
+		
+		if (page_no != 1){
+			if (page_no > 4){
+				$("#pagingcount").html(\'\');
+				
+				if (page_no + 4 < ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
+					for(var i = page_no - 3; i < page_no + 4; i++) {
+						$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
+					 }
+				 } else {
+					for(var i = page_no - 3; i < ';  echo $this->_tpl_vars['sm']['page_row'];  echo ' + 1; i++) {
+						$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
+					 }
+				 }
+			 }
+			
+			if (page_no < 5 && backup_page_no > 4){
+				$("#pagingcount").html(\'\');
+				for(var i = 1; i < 8; i++) {
+					$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
+				 }
+			 }
+			
+			$(\'#pageprev\').html(\'<a href="javascript:void(0);" onclick="paging_func(-1);">Prev</a>  \');
+		 } else {
+			$(\'#pageprev\').html(\'\');
+		 }
+		
+		if (page_no == ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
+			$(\'#pagenext\').html(\'\');
+		 }
+		
+		if (backup_page_no == ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
+			$(\'#pagenext\').html(\'<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>\');
+		 }
+		
+		$("#page"+backup_page_no).css({\'font-weight\' : \'normal\' });
+		$("#page"+page_no).css({\'font-weight\' : \'bolder\' });
+		
+		backup_page_no = page_no;
+	 }
+	
     function loadmorememe(cat,last_id,srch_uname,srch_title){
 		$("#loadingmeme_img").show();
 		var ext = "';  echo $_REQUEST['ext'];  echo '";
@@ -190,7 +272,7 @@
 
     function post_reply(id){
 		if($("#rpl_con"+id).val()=="" || $("#rpl_con"+id).val()=="Reply with answer."){
-	    	 $("#rpl_con"+id).val("Derppp (write a reply)");
+	    	 $("#rpl_con"+id).val("If an empty reply is posted but no one is around to see it, did it ever exist at all?");
 	    	 return false;
 		 }
 	    
@@ -205,23 +287,19 @@
 			var reply = strip(($("#rpl_con"+id).val()).trim());
 			
 			$.post(url,{answer:reply,id:id,ce:0 },function(res){
-			    $("#rpl_con"+id).val(\'\'); /* clears form text space */
+			    $("#rpl_con"+id).val(\'\'); 
 			    $("#is_replied"+id).val(\'1\'); 
 			    $("#repl"+id).html(res);
 			    common_fun(id,reply_color);
 			 });
 		
-			/* Added by Delos for live reply */
-			/*$("#replyinsert"+id).html("Replied by ';  echo $_SESSION['fname']; ?>
- <?php echo $_SESSION['lname'];  echo ' :<b>"+$("#rpl_con"+id).val()+"</b>")*/
 			var url = "http://localhost/meme/get_all_replies";
 			$.post(url,{id:id,ce:0 }, function(res){
 				$("#send_reply"+id).html(res);
 			 });
-			
 		
     	 } else {
-    		alert("Please log in to reply.");
+    		alert("Sorry! Please log in to reply.");
     	 }
      }
 
@@ -303,16 +381,15 @@
 		 });
 
 		// jQuery CSS change for Live and Network feed
-		$(\'#tab div\').mouseover(function(){
-			if($(this).hasClass(\'selected\'));
-			else
-				$(this).removeClass(\'unselected\').addClass(\'hover\');
-		 }).mouseout(function(){
-			if($(this).hasClass(\'selected\'));
-			else
-			$(this).removeClass(\'hover\').addClass(\'unselected\');
-		 });
-		// End
+		//$(\'#tab div\').mouseover(function(){
+		//	if($(this).hasClass(\'selected\'));
+		//	else
+		//		$(this).removeClass(\'unselected\').addClass(\'hover\');
+		// }).mouseout(function(){
+		//	if($(this).hasClass(\'selected\'));
+		//	else
+		//	$(this).removeClass(\'hover\').addClass(\'unselected\');
+		// });
      });
 </script>
 '; ?>
@@ -343,10 +420,15 @@ unset($_smarty_tpl_vars);
  ?>
     <?php else: ?>
 	<input type="hidden" id="msgexist" value="1">
-	No meme found.
+		OMG, you've reached the edge of Memeja!
     <?php endif; ?>
 </div>
-<div id="loadingmeme_img" style="display:none;">
+<!--<div id="loadingmeme_img" style="display:none;">
     <img src="http://localhost/templates/images/loading.gif" />
-</div>
+</div>-->
+
+<span id="pageprev"></span>
+<span id="pagingcount" ></span>
+<span id="pagenext"></span>
+
 <div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
