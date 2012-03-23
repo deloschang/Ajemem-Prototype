@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-23 02:27:55
+<?php /* Smarty version 2.6.7, created on 2012-03-23 02:46:21
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -53,7 +53,6 @@
 		var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
 		var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
 		
-		// ';  echo $this->_tpl_vars['sm']['page_row'];  echo '
 		for(var i = 1; i < 8; i++) {
 			$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
 		 }
@@ -98,11 +97,13 @@
 				var ext = "';  echo $_REQUEST['ext'];  echo '";
 				var url = "http://localhost/meme/meme_list";
 				
+				$("#loadingmeme_img").show();
 				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,muname:srch_uname,mtitle:srch_title,ext:ext }, function(res){
 					if(res!="")
 						$("#all_memes").html(res);
+						$("#loadingmeme_img").hide();
 				 });
-			  
+				
 				$("#last_id_meme_cur_page").val("");
 				
 				clearTimeout(meme_timer);
@@ -143,6 +144,14 @@
 		
 		if (backup_page_no == ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
 			$(\'#pagenext\').html(\'<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>\');
+		 }
+		
+		if (page_no == -2) {
+			page_no = backup_page_no + 1
+		 }
+		
+		if (page_no == -1) {
+			page_no = backup_page_no - 1
 		 }
 		
 		$("#page"+backup_page_no).css({\'font-weight\' : \'normal\' });
@@ -423,12 +432,13 @@ unset($_smarty_tpl_vars);
 		OMG, you've reached the edge of Memeja!
     <?php endif; ?>
 </div>
-<!--<div id="loadingmeme_img" style="display:none;">
-    <img src="http://localhost/templates/images/loading.gif" />
-</div>-->
 
 <span id="pageprev"></span>
 <span id="pagingcount" ></span>
 <span id="pagenext"></span>
+
+<div id="loadingmeme_img" style="display:none;">
+    <img src="http://localhost/templates/images/loading.gif" />
+</div>
 
 <div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>

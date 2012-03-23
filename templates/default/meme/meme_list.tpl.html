@@ -53,7 +53,6 @@
 		var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
 		var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
 		
-		// {/literal}{$sm.page_row}{literal}
 		for(var i = 1; i < 8; i++) {
 			$('#pagingcount').append('<span id="page'+i+'"><a href="javascript:void(0);" onclick="paging_func('+i+');">'+i+'</a></span> ');
 		}
@@ -98,11 +97,13 @@
 				var ext = "{/literal}{$smarty.request.ext}{literal}";
 				var url = "##LBL_SITE_URL##meme/meme_list";
 				
+				$("#loadingmeme_img").show();
 				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,muname:srch_uname,mtitle:srch_title,ext:ext}, function(res){
 					if(res!="")
 						$("#all_memes").html(res);
+						$("#loadingmeme_img").hide();
 				});
-			  
+				
 				$("#last_id_meme_cur_page").val("");
 				
 				clearTimeout(meme_timer);
@@ -143,6 +144,14 @@
 		
 		if (backup_page_no == {/literal}{$sm.page_row}{literal}){
 			$('#pagenext').html('<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>');
+		}
+		
+		if (page_no == -2) {
+			page_no = backup_page_no + 1
+		}
+		
+		if (page_no == -1) {
+			page_no = backup_page_no - 1
 		}
 		
 		$("#page"+backup_page_no).css({'font-weight' : 'normal'});
@@ -416,12 +425,13 @@
 		OMG, you've reached the edge of Memeja!
     {/if}
 </div>
-<!--<div id="loadingmeme_img" style="display:none;">
-    <img src="##LBL_SITE_URL##templates/images/loading.gif" />
-</div>-->
 
 <span id="pageprev"></span>
 <span id="pagingcount" ></span>
 <span id="pagenext"></span>
+
+<div id="loadingmeme_img" style="display:none;">
+    <img src="##LBL_SITE_URL##templates/images/loading.gif" />
+</div>
 
 <div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
