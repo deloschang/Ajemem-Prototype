@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-23 02:46:21
+<?php /* Smarty version 2.6.7, created on 2012-03-23 03:44:16
          compiled from common/header.tpl.html */ ?>
 
-<!-- Template: common/header.tpl.html Start 23/03/2012 02:46:20 --> 
+<!-- Template: common/header.tpl.html Start 23/03/2012 03:44:16 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
     function get_random_meme(){

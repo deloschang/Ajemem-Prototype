@@ -17,6 +17,8 @@
     
 			$('.meme_gallery').fancybox({
 				padding: 0,
+				
+				fitToView: false,
 			
 				openEffect : 'elastic',
 				openSpeed  : 150,
@@ -111,6 +113,14 @@
 			}
 		}	
 		
+		if (page_no == -2) {
+			page_no = backup_page_no + 1
+		}
+		
+		if (page_no == -1) {
+			page_no = backup_page_no - 1
+		}
+		
 		if (page_no != 1){
 			if (page_no > 4){
 				$("#pagingcount").html('');
@@ -144,14 +154,6 @@
 		
 		if (backup_page_no == {/literal}{$sm.page_row}{literal}){
 			$('#pagenext').html('<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>');
-		}
-		
-		if (page_no == -2) {
-			page_no = backup_page_no + 1
-		}
-		
-		if (page_no == -1) {
-			page_no = backup_page_no - 1
 		}
 		
 		$("#page"+backup_page_no).css({'font-weight' : 'normal'});

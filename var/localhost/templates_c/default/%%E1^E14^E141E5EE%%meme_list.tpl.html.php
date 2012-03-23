@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-23 02:46:21
+<?php /* Smarty version 2.6.7, created on 2012-03-23 03:44:17
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -17,6 +17,8 @@
     
 			$(\'.meme_gallery\').fancybox({
 				padding: 0,
+				
+				fitToView: false,
 			
 				openEffect : \'elastic\',
 				openSpeed  : 150,
@@ -111,6 +113,14 @@
 			 }
 		 }	
 		
+		if (page_no == -2) {
+			page_no = backup_page_no + 1
+		 }
+		
+		if (page_no == -1) {
+			page_no = backup_page_no - 1
+		 }
+		
 		if (page_no != 1){
 			if (page_no > 4){
 				$("#pagingcount").html(\'\');
@@ -144,14 +154,6 @@
 		
 		if (backup_page_no == ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
 			$(\'#pagenext\').html(\'<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>\');
-		 }
-		
-		if (page_no == -2) {
-			page_no = backup_page_no + 1
-		 }
-		
-		if (page_no == -1) {
-			page_no = backup_page_no - 1
 		 }
 		
 		$("#page"+backup_page_no).css({\'font-weight\' : \'normal\' });

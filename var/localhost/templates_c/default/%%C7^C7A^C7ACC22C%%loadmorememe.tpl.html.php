@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-23 02:46:39
+<?php /* Smarty version 2.6.7, created on 2012-03-23 03:44:17
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 213, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 266, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 218, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 271, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 23/03/2012 02:46:39 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 23/03/2012 03:44:17 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
 	var see_user_old = 0;
@@ -50,6 +50,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	    $("#meme"+id).effect("highlight", {color:color_code }, 2600);
      }
     
+	function show_details(id_meme){
+		var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
+		$.post(url,{meme:meme_details,ce:0,id:id_meme });
+     }
+	
     function hover_user(id_user){
     	var right_pan_url = "http://localhost/user/see_user";
     	
