@@ -1,9 +1,10 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-23 03:44:16
+<?php /* Smarty version 2.6.7, created on 2012-03-24 22:01:32
          compiled from common/header.tpl.html */ ?>
 
-<!-- Template: common/header.tpl.html Start 23/03/2012 03:44:16 --> 
+<!-- Template: common/header.tpl.html Start 24/03/2012 22:01:32 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
+	
     function get_random_meme(){
 		//$(window).scrollBy(0,5);
 		//$(window).scroll(function(e){
@@ -13,18 +14,17 @@
 		//	 });
 		// }
 		
-	var url = "http://localhost/meme/meme_list/cat/rand";
-	//$.fancybox.showActivity();
-	$.fancybox.showLoading();
-	$.post(url,{ce:0 },function(res){
-	    $("#randpgexist").val(1);
-	    $.fancybox.open(res,{
-		    afterClose : function (){
-				$("#randpgexist").val(0);
-		     }
-	     });
-	    $.fancybox.update();
-	 });
+		var url = "http://localhost/meme/meme_list/cat/rand";
+		$.fancybox.showLoading();
+		$.post(url,{ce:0 },function(res){
+			$("#randpgexist").val(1);
+			$.fancybox.open(res,{
+				afterClose : function (){
+					$("#randpgexist").val(0);
+				 }
+			 });
+			$.fancybox.update();
+		 });
      }
 	
 	function submit() {
@@ -57,12 +57,12 @@
 		<?php endif; ?>	
 	
 		<a href="http://localhost/achievements/whatisMemeja"><img src="http://localhost/templates/images/help.png"style="margin:-2px;"></a>
+		
 		<img src="http://localhost/templates/images/searchend.png"style="margin:-2px;position:absolute;left:375px;z-index:99;" onclick="submit();">
 		
 		<div style="position:absolute; top:8px; left:385px;z-index:100;">
 			<form id ="searches">
-				<input type="text" name="mtitle" id="mtitle" value="<?php echo $_REQUEST['mtitle']; ?>
-" onUnfocus="submit();"/>
+				<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title."/>
 			</form>
 		</div>
 	</div>

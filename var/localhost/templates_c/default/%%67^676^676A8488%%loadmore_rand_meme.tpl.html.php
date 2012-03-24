@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-23 03:15:27
+<?php /* Smarty version 2.6.7, created on 2012-03-23 07:30:16
          compiled from meme/loadmore_rand_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmore_rand_meme.tpl.html', 11, false),array('modifier', 'date_format', 'meme/loadmore_rand_meme.tpl.html', 13, false),)), $this); ?>
@@ -118,6 +118,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	var notagree = 0;
 	var notdisagree = 0;
 	
+	var notreply = 0;
+	
 	function clearTimer() {
     	notyet = 0;   
 	 }  
@@ -138,7 +140,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			next_meme();
 		 });
 			
-		$(document).bind(\'keydown\', \'a\', function(){
+		$(document).bind(\'keydown\', \'h\', function(){
 			next_agree();
 		 });
 		
@@ -146,8 +148,21 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			next_disagree();
 		 });
 		
+		$(document).bind(\'keydown\', \'r\', function(){
+			next_reply();
+		 });
+		
      });
     
+	function next_reply(){
+		if (notreply == 1) {
+			return;
+		 }
+		notreply = 1;
+		get_all_rand_replies(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\');
+		setTimeout(\'clearTimer()\', 1000);
+	 }
+	
     function next_meme(){
 		if (notyet == 1) {
 		    return; 

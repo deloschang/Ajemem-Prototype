@@ -1,12 +1,7 @@
 {if $sm.res_meme}
 {assign var=category value=$util->get_values_from_config('CATEGORY')}
 {literal}
-<script type="text/javascript">
-	var see_user_old = 0;
-	var live_meme_wait = 15000;
-	var meme_timer;
-	var meme_timer_new;
-	
+<script type="text/javascript">	
 	var id = "{/literal}{$sm.last_idmeme}{literal}";	//lowest id
 	var new_ids = "{/literal}{$sm.id_memes}{literal}";
 
@@ -34,12 +29,16 @@
 	    FB.XFBML.parse($(this).get(0));
 	});
 
-	$(document).ready(function() {
+	$(document).ready(function() {	
+		// prevents stacking w/ pagination
 		clearTimeout(meme_timer);
 		clearTimeout(meme_timer_new);
 		
-		meme_timer = window.setTimeout("live_feed(0)", 1000);	
-		meme_timer_new = window.setTimeout("live_meme()", 10000);
+		meme_timer = window.setTimeout("live_feed(0)", 1000);
+		
+		if (global_page_no == 1 && is_search != 1) {
+			meme_timer_new = window.setTimeout("live_meme()", 10000);
+		}
 	});
 
 	function common_fun_extended(id,color_code){
@@ -65,11 +64,14 @@
 		var live_meme_data;
 		var url="##LBL_SITE_URL##meme/live_meme/";
 		
+		top_meme_id = single_id_array[0] 
+		
 		$.post(url,{ce:0,chk:1,top_meme_id:top_meme_id}, function(live_meme_data){
 			if (live_meme_data.trim() == "no meme" || live_meme_data.trim() == "no meme found in SQL" || live_meme_data.trim() == "No new meme updates") {
 				meme_timer_new = setTimeout("live_meme()", live_meme_wait);
 				live_meme_wait *= 1.5;
 				
+				console.log('no new meme');
 				return false; 
 			}
 

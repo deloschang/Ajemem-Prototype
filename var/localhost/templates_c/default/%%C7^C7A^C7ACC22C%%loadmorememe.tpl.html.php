@@ -1,16 +1,11 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-23 03:44:17
+<?php /* Smarty version 2.6.7, created on 2012-03-24 22:01:31
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 218, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 271, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 216, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 269, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 23/03/2012 03:44:17 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 24/03/2012 22:01:31 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
-<script type="text/javascript">
-	var see_user_old = 0;
-	var live_meme_wait = 15000;
-	var meme_timer;
-	var meme_timer_new;
-	
+<script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
 
@@ -38,22 +33,22 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	    FB.XFBML.parse($(this).get(0));
 	 });
 
-	$(document).ready(function() {
+	$(document).ready(function() {	
+		// prevents stacking w/ pagination
 		clearTimeout(meme_timer);
 		clearTimeout(meme_timer_new);
 		
-		meme_timer = window.setTimeout("live_feed(0)", 1000);	
-		meme_timer_new = window.setTimeout("live_meme()", 10000);
+		meme_timer = window.setTimeout("live_feed(0)", 1000);
+		
+		if (global_page_no == 1 && is_search != 1) {
+			meme_timer_new = window.setTimeout("live_meme()", 10000);
+		 }
 	 });
 
 	function common_fun_extended(id,color_code){
 	    $("#meme"+id).effect("highlight", {color:color_code }, 2600);
      }
     
-	function show_details(id_meme){
-		var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
-		$.post(url,{meme:meme_details,ce:0,id:id_meme });
-     }
 	
     function hover_user(id_user){
     	var right_pan_url = "http://localhost/user/see_user";
@@ -73,11 +68,14 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		var live_meme_data;
 		var url="http://localhost/meme/live_meme/";
 		
+		top_meme_id = single_id_array[0] 
+		
 		$.post(url,{ce:0,chk:1,top_meme_id:top_meme_id }, function(live_meme_data){
 			if (live_meme_data.trim() == "no meme" || live_meme_data.trim() == "no meme found in SQL" || live_meme_data.trim() == "No new meme updates") {
 				meme_timer_new = setTimeout("live_meme()", live_meme_wait);
 				live_meme_wait *= 1.5;
 				
+				console.log(\'no new meme\');
 				return false; 
 			 }
 

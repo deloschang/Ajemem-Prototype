@@ -9,9 +9,19 @@
     var addcaption_color = "{/literal}{$x.add_caption}{literal}";
     
 	var logged_in="{/literal}{$smarty.session.id_user}{literal}";
+	
+	var is_search="{/literal}{$sm.is_search}{literal}";
     
     var first_id, after_5sec=0, backup_rand_id_memes='', backup_last_id_meme='';
+	
+	var global_page_no = 1;
 	var backup_page_no;
+	
+	var see_user_old = 0;
+	var live_meme_wait = 15000;
+	
+	var meme_timer;
+	var meme_timer_new;
 	
     $(document).ready(function(){	
     
@@ -64,33 +74,21 @@
 		$("#page"+1).css({'font-weight' : 'bolder'});
 		backup_page_no = 1;
 		
-	    
-		//$(window).scroll(function(){
-		//	if ($(window).scrollTop() == $(document).height() - $(window).height()){
-				
-		//		if (logged_in) {
-		//			var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
-		//			var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
-				
-		//			if ($("#last_id_meme_cur_page").val() != "") {
-		//			  	if ($("#chk_me").val()!=1) {
-		//				  backup_last_id_meme = $("#last_id_meme_cur_page").val();
-		//				  loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
-		//				  $("#last_id_meme_cur_page").val("");
-		//		  		}
-		//		  	}
-		//      	} else {
-		//      		$("#signupmemes").fadeIn('slow');
-		//      	}
-		//	}
-	 	//});
-	 	
+		// Self-describing for search
+	    var describedClass = 'self-described';
+		$('.self-describing').focus(function(){
+			if (this.value==this.title) this.value="";
+			$(this).css("color","black");
+		}).blur(function(){
+			if (!this.value || this.value==this.title){
+				this.value=this.title;
+				$(this).css("color","grey");
+			}
+		}).blur();	 	
     });
     
-	function paging_func(page_no){
-		var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
-		var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
-		
+	function paging_func(page_no){		
+		global_page_no = page_no;
 		if ($("#last_id_meme_cur_page").val() != "") {
 			if ($("#chk_me").val()!=1) {
 				last_id = $("#last_id_meme_cur_page").val();
@@ -100,7 +98,7 @@
 				var url = "##LBL_SITE_URL##meme/meme_list";
 				
 				$("#loadingmeme_img").show();
-				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,muname:srch_uname,mtitle:srch_title,ext:ext}, function(res){
+				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,ext:ext}, function(res){
 					if(res!="")
 						$("#all_memes").html(res);
 						$("#loadingmeme_img").hide();
@@ -161,17 +159,6 @@
 		
 		backup_page_no = page_no;
 	}
-	
-    function loadmorememe(cat,last_id,srch_uname,srch_title){
-		$("#loadingmeme_img").show();
-		var ext = "{/literal}{$smarty.request.ext}{literal}";
-		var url = "##LBL_SITE_URL##meme/meme_list";
-		$.post(url,{cat:cat,ce:0,last_id:last_id,muname:srch_uname,mtitle:srch_title,ext:ext}, function(res){
-			$("#loadingmeme_img").hide();
-			if(res!="")
-				$("#all_memes").append(res);
-		});
-    }
     
     function get_all_flag_details(timer){
 		var last_id_page ;
@@ -247,7 +234,6 @@
 
 /* Expand replies after reply button is pressed on the meme */
     function get_all_replies(id){
-  
 		var url = "##LBL_SITE_URL##meme/get_all_replies";
 		$.post(url,{id:id,ce:0}, function(res){
 			$("#send_reply"+id).html(res);
@@ -283,7 +269,7 @@
 
     function post_reply(id){
 		if($("#rpl_con"+id).val()=="" || $("#rpl_con"+id).val()=="Reply with answer."){
-	    	 $("#rpl_con"+id).val("If an empty reply is posted but no one is around to see it, did it ever exist at all?");
+	    	 $("#rpl_con"+id).val("If an empty reply is posted but no one is around to see it, did it ever exist?");
 	    	 return false;
 		}
 	    
@@ -384,9 +370,9 @@
     }
     $(document).ready(function(){
     	// Search function
-		$("#muname").autocomplete('##LBL_SITE_URL##index.php?page=meme&choice=auto_comp&ce=0',{
-		    delay: 500
-		});
+		//$("#muname").autocomplete('##LBL_SITE_URL##index.php?page=meme&choice=auto_comp&ce=0',{
+		//    delay: 500
+		//});
 		$("#mtitle").autocomplete('##LBL_SITE_URL##index.php?page=meme&choice=auto_comp&flg=1&ce=0',{
 		    delay: 500
 		});
@@ -405,6 +391,7 @@
 </script>
 {/literal}
 <input type="hidden" name="last_id_meme_cur_page" id="last_id_meme_cur_page" value=''/>
+
 <input type="hidden" name="rand_id_memes" id="rand_id_memes" value=''/>
 <input type="hidden" name="chk_me" id="chk_me" value=''/>
 <input type="hidden" name="last_id_meme" id="last_id_meme" value=''/>
@@ -428,9 +415,11 @@
     {/if}
 </div>
 
+{if !$sm.is_search}
 <span id="pageprev"></span>
 <span id="pagingcount" ></span>
 <span id="pagenext"></span>
+{/if}
 
 <div id="loadingmeme_img" style="display:none;">
     <img src="##LBL_SITE_URL##templates/images/loading.gif" />

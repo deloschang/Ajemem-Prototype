@@ -1,6 +1,7 @@
 {assign var=category value=$util->get_values_from_config('CATEGORY')}
 {literal}
 <script type="text/javascript">
+	
     function get_random_meme(){
 		//$(window).scrollBy(0,5);
 		//$(window).scroll(function(e){
@@ -10,18 +11,17 @@
 		//	});
 		//}
 		
-	var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
-	//$.fancybox.showActivity();
-	$.fancybox.showLoading();
-	$.post(url,{ce:0},function(res){
-	    $("#randpgexist").val(1);
-	    $.fancybox.open(res,{
-		    afterClose : function (){
-				$("#randpgexist").val(0);
-		    }
-	    });
-	    $.fancybox.update();
-	});
+		var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
+		$.fancybox.showLoading();
+		$.post(url,{ce:0},function(res){
+			$("#randpgexist").val(1);
+			$.fancybox.open(res,{
+				afterClose : function (){
+					$("#randpgexist").val(0);
+				}
+			});
+			$.fancybox.update();
+		});
     }
 	
 	function submit() {
@@ -53,11 +53,12 @@
 		{/if}	
 	
 		<a href="##LBL_SITE_URL##achievements/whatisMemeja"><img src="##LBL_SITE_URL##templates/images/help.png"style="margin:-2px;"></a>
+		
 		<img src="##LBL_SITE_URL##templates/images/searchend.png"style="margin:-2px;position:absolute;left:375px;z-index:99;" onclick="submit();">
 		
 		<div style="position:absolute; top:8px; left:385px;z-index:100;">
 			<form id ="searches">
-				<input type="text" name="mtitle" id="mtitle" value="{$smarty.request.mtitle}" onUnfocus="submit();"/>
+				<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title."/>
 			</form>
 		</div>
 	</div>
