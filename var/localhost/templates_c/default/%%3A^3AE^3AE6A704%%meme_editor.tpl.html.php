@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-24 20:36:41
+<?php /* Smarty version 2.6.7, created on 2012-04-06 01:31:21
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 202, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 200, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 24/03/2012 20:36:41 --> 
+<!-- Template: meme/meme_editor.tpl.html Start 06/04/2012 01:31:21 --> 
  <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY'));  echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
 <script type="text/javascript" src="http://localhost//spad/jquery.lionbars.0.3.js"></script>
@@ -116,7 +116,7 @@ $(document).ready(function(){
 	var main_ofst = $(\'#main\').offset();
 	$(window).scroll(function(e){
 		var scrollTop = $(window).scrollTop();
-		console.log(scrollTop);
+		//console.log(scrollTop);
 		if(scrollTop > 155){
 			var y = $(\'#main\').offset();
 			$(\'#main\').css({
@@ -139,14 +139,11 @@ $(document).ready(function(){
 
 <img src="http://localhost/spad/Memeja Watermark.png" id="memejimark" style="display:none">
 
+
 <div style="position:fixed; bottom:-10px; left:-120px;">
         <table width='100%' class="smil_tabl_fixed" border="0">
             <tr>
                 <td align='right'>
-                    <input type="file" name="updimage" id="updimage" size="5" />
-                    <input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
-                    URL: <input type="text" name="imgurl" id="imgurl" size="27" />
-                    <input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
 					<div id="prev_image" class="prev_image"></div>
                 </td>
             </tr>
@@ -157,6 +154,7 @@ $(document).ready(function(){
             </div>
         </div>
     </div>
+
 <div id="page" style="display:none; left:60px;">
 	<canvas id="dummy1" style="display:none;"></canvas>
 	<div id="sp" style="position:relative;"><canvas id="mycid" style="border:1px solid red"></canvas></div>

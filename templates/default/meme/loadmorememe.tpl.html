@@ -231,7 +231,8 @@
 				{elseif $sm.uinfo[$x.id_user].avatar}
 					<img src="##LBL_SITE_URL##image/thumb/avatar/{$sm.uinfo[$x.id_user].avatar}" class="avatar_thumb_regular"/>
 				{else}
-				{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}
+				{if $smarty.session.gender=='M'}
+					<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_male.png" class="avatar_thumb_regular"/>{else}memeja_female.png{/if}
 				{/if}			
 			</span>
 			<span id="meme_title">{$x.title|capitalize}</span></a>

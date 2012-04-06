@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-24 22:01:31
+<?php /* Smarty version 2.6.7, created on 2012-04-06 05:02:22
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 216, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 269, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 216, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 270, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 24/03/2012 22:01:31 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 06/04/2012 05:02:22 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
@@ -248,7 +248,8 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 					<img src="http://localhost/image/thumb/avatar/<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['avatar']; ?>
 " class="avatar_thumb_regular"/>
 				<?php else: ?>
-				<?php if ($_SESSION['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png<?php endif; ?>
+				<?php if ($_SESSION['gender'] == 'M'): ?>
+					<img src="http://localhost/image/thumb/avatar/memeja_male.png" class="avatar_thumb_regular"/><?php else: ?>memeja_female.png<?php endif; ?>
 				<?php endif; ?>			
 			</span>
 			<span id="meme_title"><?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>

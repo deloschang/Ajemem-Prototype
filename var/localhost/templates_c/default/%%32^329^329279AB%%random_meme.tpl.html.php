@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-23 07:30:10
+<?php /* Smarty version 2.6.7, created on 2012-04-05 20:47:20
          compiled from meme/random_meme.tpl.html */ ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
