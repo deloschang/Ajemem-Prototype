@@ -111,7 +111,7 @@ $(document).ready(function(){
 	var main_ofst = $('#main').offset();
 	$(window).scroll(function(e){
 		var scrollTop = $(window).scrollTop();
-		//console.log(scrollTop);
+		console.log(scrollTop);
 		if(scrollTop > 155){
 			var y = $('#main').offset();
 			$('#main').css({
@@ -133,23 +133,20 @@ $(document).ready(function(){
 {/literal}
 <img src="##LBL_SITE_URL##spad/Memeja Watermark.png" id="memejimark" style="display:none">
 
-
-<div style="position:fixed; bottom:-10px; left:-120px;">
-        <table width='100%' class="smil_tabl_fixed" border="0">
-            <tr>
-                <td align='right'>
-					<div id="prev_image" class="prev_image"></div>
-                </td>
-            </tr>
-        </table>
+<div id="uploader">
+	<input type="file" name="updimage" id="updimage" size="5" />
+	<input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
+	URL: <input type="text" name="imgurl" id="imgurl" size="27" />
+	<input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
+	<div id="prev_image" class="prev_image"></div>
+</div>
+             
         <div class='main_smiley_loading'style="top:100px;">
             <div class="smileys_in_small_size">
                 <div id="loadimg" ></div>
             </div>
         </div>
-    </div>
-
-<div id="page" style="display:none; left:60px;">
+<div id="page" style="display:none; left:-160px;">
 	<canvas id="dummy1" style="display:none;"></canvas>
 	<div id="sp" style="position:relative;"><canvas id="mycid" style="border:1px solid red"></canvas></div>
     <div id="main" style="width:660px;left:-10px;">

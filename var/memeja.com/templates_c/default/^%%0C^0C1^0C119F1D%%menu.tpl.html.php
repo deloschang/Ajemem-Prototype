@@ -1,13 +1,14 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-14 07:08:49
+<?php /* Smarty version 2.6.7, created on 2012-04-01 08:49:19
          compiled from common/menu.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/menu.tpl.html', 81, false),)), $this); ?>
 
-<!-- Template: common/menu.tpl.html Start 14/01/2012 07:08:49 --> 
- <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<!-- Template: common/menu.tpl.html Start 01/04/2012 08:49:19 --> 
+ <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
 <script type="text/javascript">
     function get_random_meme(){
-	var url = "http://memeja.com/meme/meme_list/cat/rand";
+	var url = "http://www.memeja.com/meme/meme_list/cat/rand";
 	$.fancybox.showLoading();
 	$.post(url,{ce:0 },function(res){
 	    $("#randpgexist").val(1);
@@ -25,7 +26,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
      }
     
     function get_random_meme_nlu(){
-	var url = "http://memeja.com/meme/meme_nlu_rand";
+	var url = "http://www.memeja.com/meme/meme_nlu_rand";
 	$.fancybox.showLoading();
 	$.post(url,{ce:0 },function(res){
 	    $("#randpgexist").val(1);
@@ -82,7 +83,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <div id="xpbar"></div>
 <div id="fbstuff">
 <?php if ($_SESSION['id_user']): ?>	
-	    <a href ="http://memeja.com/">Welcome <?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+	    <a href ="http://www.memeja.com/">Welcome <?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
  !</a>
 	<?php else: ?>
 	<div class="fb-login-button" scope="email, publish_stream ,user_education_history 	">

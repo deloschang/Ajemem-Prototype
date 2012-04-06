@@ -21,10 +21,10 @@ reply = "Replies"
 exp_point = "Experience point"
 ques_week_won = "Question of the week won"
 duels_won = "Duels won"
-id_meme = "NO of meme post"
+id_meme = "No of meme post"
 
 [CATEGORY]
-1 = "Funny"
+1 = "Funny1"
 2 = "Love"
 3 = "Trees"
 4 = "Everyday"
@@ -38,9 +38,9 @@ image_display = "/waf_content/images/"
 company_logo = "/var/www/html/waf_res/logo/thumb/"
 
 [FACEBOOK]
-api_key = "219049284838691"
-secret_key = "0b378365e966491e3e3b1d12bbc65afa"
-app_id = "219049284838691"
+api_key = "326419970737515"
+secret_key = "378d077c279f8634da1603f3f6425cc2"
+app_id = "326419970737515"
 
 [FLAGGING_ACTION]
 1 = "Approve"
@@ -124,7 +124,7 @@ USE_PROXY = "FALSE,USE_PROXY: Set this variable to TRUE to route all the API req
 PROXY_HOST = "127.0.0.1,PROXY_HOST: Set the host name or the IP address of proxy server."
 PROXY_PORT = "808,PROXY_PORT: Set proxy port.NOTE : PROXY_HOST and PROXY_PORT will be read only if USE_PROXY is set to TRUE."
 VERSION = "58.0,Version: this is the API version in the request.It is a mandatory parameter for each API request."
-paypal_mode = 
+paypal_mode = "a"
 currency_code = "USD"
 paymentaction = "Sale,This is to be set for instant payment through credit card.(Other values are Authorization and Order)"
 maxfailedpayments = "1,The number of scheduled payments that can fail before the profile is automatically suspended."
@@ -134,6 +134,7 @@ initamt = "0,Initial non-recurring payment amount due immediately upon profile c
 description = "Your recurring payment description,Description about transaction."
 
 [PREMADE_CATEGORY]
+0 = "Select Category"
 33 = "2-panel"
 38 = "Accessories"
 1 = "Angry"

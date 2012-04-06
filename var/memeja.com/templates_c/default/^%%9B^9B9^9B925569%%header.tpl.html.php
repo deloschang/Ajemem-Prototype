@@ -1,8 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-14 07:08:49
+<?php /* Smarty version 2.6.7, created on 2012-04-01 08:49:19
          compiled from common/header.tpl.html */ ?>
 
-<!-- Template: common/header.tpl.html Start 14/01/2012 07:08:49 --> 
- <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<!-- Template: common/header.tpl.html Start 01/04/2012 08:49:19 --> 
+ <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
 <script type="text/javascript">
     function get_random_meme(){
 	$(window).scrollBy(0,5);
@@ -12,7 +13,7 @@
 			    top:\'0px!important!\',
 			 });
 	 }
-	var url = "http://memeja.com/meme/meme_list/cat/rand";
+	var url = "http://www.memeja.com/meme/meme_list/cat/rand";
 	//$.fancybox.showActivity();
 	$.fancybox.showLoading();
 	$.post(url,{ce:0 },function(res){
@@ -35,25 +36,26 @@
 
 <!-- Memeja Logo -->
 <div id= "logoc">
-<a href="http://memeja.com/"> <img src="http://memeja.com/templates/images/rmemejalogo.png" width="280px"  height="200px" id="logo"></a>
+<a href="http://www.memeja.com/"> <img src="http://www.memeja.com/templates/images/rmemejalogo.png" width="280px"  height="200px" id="logo"></a>
 </div>
 
 <!-- Memeja Top Bar -->
 <div id="header">
    <div id ="headerbtns"> 
    <?php if (! $_SESSION['id_user']): ?>
-      <img src="http://memeja.com/templates/images/joinmemeja.png" id="joinmemeja" onclick="$('#fblogin').slideToggle();" style="margin:-2px;">
+      <img src="http://www.memeja.com/templates/images/joinmemeja.png" id="joinmemeja" onclick="$('#fblogin').slideToggle();" style="margin:-2px;">
    <?php else: ?>
-      <img src="http://memeja.com/templates/images/logout.png" id="logout" onclick="fb_logout();" style="margin:-2px;">
+      <img src="http://www.memeja.com/templates/images/logout.png" id="logout" onclick="fb_logout();" style="margin:-2px;">
    <?php endif; ?>
-		<a href="http://memeja.com/meme/addMeme"><img src="http://memeja.com/templates/images/create.png" id="create"style="margin:-2px;"></a>
+		<a href="http://www.memeja.com/meme/addMeme"><img src="http://www.memeja.com/templates/images/create.png" id="create"style="margin:-2px;"></a>
 	<?php if ($_SESSION['id_user']): ?>
-		<a href="javascript:void(0);" onclick="get_random_meme();"><img src="http://memeja.com/templates/images/random.png"style="margin:-2px;"></a>
+		<a href="javascript:void(0);" onclick="get_random_meme();"><img src="http://www.memeja.com/templates/images/random.png"style="margin:-2px;"></a>
 		<?php else: ?>
-		<a href="javascript:void(0);" onclick="alert('you need to be logged in');"><img src="http://memeja.com/templates/images/random.png"style="margin:-2px;"></a>
-	    <?php endif; ?>	
-		<a href="http://memeja.com/achievements/whatisMemeja"><img src="http://memeja.com/templates/images/help.png"style="margin:-2px;"></a>
-		<img src="http://memeja.com/templates/images/searchend.png"style="margin:-2px;position:absolute;left:375px;z-index:99;" onclick="submit();">
+		<a href="javascript:void(0);" onclick="alert('you need to be logged in');"><img src="http://www.memeja.com/templates/images/random.png"style="margin:-2px;"></a>
+	    <?php endif; ?>
+		<a href="http://www.memeja.com/achievements/whatisMemeja"><img src="http://www.memeja.com/templates/images/help.png"style="margin:-2px;"></a>
+		<!--<a href="http://www.memeja.com/leaderboard/leaderboard">Leaderboard</a> -->
+		<img src="http://www.memeja.com/templates/images/searchend.png"style="margin:-2px;position:absolute;left:375px;z-index:99;" onclick="submit();">
 		<div style="position:absolute; top:8px; left:385px;z-index:100;">
 		<form id ="searches">
 		<input type="text" name="mtitle" id="mtitle" value="<?php echo $_REQUEST['mtitle']; ?>

@@ -1,37 +1,37 @@
-<script type="text/javascript" src="jquery.js"></script>
-<canvas id="can" width="600px" height="600px" border="1px red solid" style="cursor: pointer" >
-</canvas>
-
-
-<script type="text/javascript">
-    var mycanvas = document.getElementById('can');
-    var context = mycanvas.getContext('2d');
-    startX=startY=0;
-    plot = 0;
-    $(mycanvas).mousedown(function (e) {
-        startX=e.pageX;
-        startY=e.pageY;
-        plot = 1;
-    });
-    $(mycanvas).mousemove(function (e) {
-        if (plot==1){
-            context.fillStyle = '#fff';
-            context.fillRect(0, 0, context.canvas.width, context.canvas.height);
-        
-            endX = e.pageX;
-            endY = e.pageY; 
-            var centerX =  startX + ((endX-startX)/2);
-            var centerY = startY + ((endY-startY)/2);
-            var radius = Math.pow((Math.pow(endY-startY, 2)+Math.pow(endX-startX, 2)),.5)/2;
-            context.beginPath();
-            context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
-            context.stroke();
-        }
-    });
-    $(mycanvas).mouseout(function (e) {
-        plot=0;
-    });
-     $(mycanvas).mouseup(function (e) {
-        plot = 0    ;
-    });
+<script type="text/javascript" src="jquery.js"></script>
+<canvas id="can" width="600px" height="600px" border="1px red solid" style="cursor: pointer" >
+</canvas>
+
+
+<script type="text/javascript">
+    var mycanvas = document.getElementById('can');
+    var context = mycanvas.getContext('2d');
+    startX=startY=0;
+    plot = 0;
+    $(mycanvas).mousedown(function (e) {
+        startX=e.pageX;
+        startY=e.pageY;
+        plot = 1;
+    });
+    $(mycanvas).mousemove(function (e) {
+        if (plot==1){
+            context.fillStyle = '#fff';
+            context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+        
+            endX = e.pageX;
+            endY = e.pageY; 
+            var centerX =  startX + ((endX-startX)/2);
+            var centerY = startY + ((endY-startY)/2);
+            var radius = Math.pow((Math.pow(endY-startY, 2)+Math.pow(endX-startX, 2)),.5)/2;
+            context.beginPath();
+            context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+            context.stroke();
+        }
+    });
+    $(mycanvas).mouseout(function (e) {
+        plot=0;
+    });
+     $(mycanvas).mouseup(function (e) {
+        plot = 0    ;
+    });
 </script>

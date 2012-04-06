@@ -1,13 +1,14 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-06 01:31:21
+<?php /* Smarty version 2.6.7, created on 2012-04-05 10:44:13
          compiled from meme/addmeme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 183, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/addmeme.tpl.html', 218, false),)), $this); ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 06/04/2012 01:31:21 --> 
+<!-- Template: meme/addmeme.tpl.html Start 05/04/2012 10:44:13 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
 -->
+<?php $this->assign('macromeme_category', $this->_tpl_vars['util']->get_values_from_config('MACROMEME_CATEGORY')); ?>
 <div id="showmodal" class="showmodal"><em><strong><center>ENTER MEMEJA DOJO</center></strong></em></div>
 
 <script type="text/javascript">
@@ -27,12 +28,14 @@ _img.png";
 <link rel="stylesheet" href="http://localhost/spad/css/spad.css" type="text/css"/>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/multiautocomplete.css"/>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
 <script type="text/javascript">
 
 	var mycanvas, cntx;
 	var count = 0;
-        	
+
+
 	function title_focus() {
         b_titlefocus = true;
      }
@@ -50,7 +53,29 @@ _img.png";
             $("#premade_img").html(res);
          });
      }
-	function insertMark()
+
+        var macroMemeOptions = {
+            \'option_macromeme\' : \'Select Macromeme\',
+            \'forever_alone\' : \'Forever Alone\',
+            \'futurama_fry\' : \'Futurama Fry\',
+            \'good_guy_greg\' : \'Good Guy Greg\',
+            \'i_dont_always\' : \'I Dont Always\',
+            \'insanity_wolf\' : \'Insanity Wolf\'
+         };
+    function selectMacromeme()
+    {
+        console.log("Inside selectMacromeme...");
+     }
+    function showMacromemeEditor()
+    {
+		var macromeme_checked = document.getElementById(\'macromeme_checkbox\').checked;
+		hideShow("macromeme_select");
+        hideShow("img_dpw");
+		if(macromeme_checked == true)
+			confirm("WARNING: Your current meme creation will be lost. Is that okay?");
+     }
+
+        function insertMark()
 	{
 		//var jg = new jsGraphics("memejimark");    // Use the "Canvas" div for drawing 
 		//jg.setColor("white");
@@ -69,6 +94,17 @@ _img.png";
 			cntx.drawImage(ctx,x,y,wm.width(),wm.height())
 		 }
 	 }
+
+    function hideShow(id)
+    {
+        var es;
+        if ( document.getElementById
+            && (es = document.getElementById(id))
+            && (es = es.style))
+        {
+            es.display = (\'none\' == es.display)? \'\' : \'none\';
+         }
+     }
 
     function validate_me(){
         obj=document.getElementById(\'ques_ans\');
@@ -101,7 +137,7 @@ _img.png";
         
 		if(!$("#tag").val())
 		{
-			/* Godzilla: Uncomment and comment out var conf=true once the tagging system is implemented. 
+			/* Godzilla: Uncomment var conf=true once the tagging system is implemented. 
 				Allows users to submit memes without choosing if they have to tag a friend or not. 
 			*/
 			
@@ -126,7 +162,7 @@ _img.png";
 	$(window).bind(\'beforeunload\', function() {
             return \'Oh NO! Your meme has not been submitted!\';
      }); 
-
+	
 </script>
 '; ?>
 
@@ -152,7 +188,7 @@ _img.png";
             <span>
                 <input type="text" name="meme[title]" id="title" size="50" onfocus="title_focus()" onblur="title_blur()"/>
             </span>
-        </div><br/>
+        </div></br>
         <div id="edtr">
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/meme_editor.tpl.html", 'smarty_include_vars' => array()));
@@ -204,13 +240,26 @@ unset($_smarty_tpl_vars);
                     </tr>
                 </table>
             </div>
+
+
+       <!-- <div style="position:fixed;bottom:35px; left:400px"><input type="checkbox" id="macromeme_checkbox" name="macromeme_checkbox" value="" onclick="showMacromemeEditor();"/> Click Here to Make a Macromeme!</div>
+        -->
+		<div style="position:fixed;bottom:35px;left:500px">
+            <select id="macromeme_select" style="display:none" onChange="setOptions(this);">
+                <?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['macromeme_category']), $this);?>
+
+            </select>
+        </div>
+
+
           <div style="position:fixed;bottom:35px;left:700px"><input type="button" value="Submit" onclick="validate_me();"/></div>
         <script language = "Javascript">
 		
 		</script>
 		
 		<div style="position:fixed;bottom:35px; left:800px"><input type="checkbox" name="memejimark" value="" onclick="insertMark();"/> Watermark</div>
-				
+		<!--<div style="position:fixed;bottom:35px; left:200px"><input type="button" value="Click to Make Macromemes!" onClick="validate_me();"/> -->
+		<!-- onClick="validate_me();" -->
 		</div>
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>
 _draw.png"/>
