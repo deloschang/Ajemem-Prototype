@@ -1,7 +1,6 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-01 08:49:20
+<?php /* Smarty version 2.6.7, created on 2012-04-07 17:13:12
          compiled from meme/meme_list.tpl.html */ ?>
-<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
-<?php echo '
+<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script type="text/javascript">
     var reply_color = "';  echo $this->_tpl_vars['x']['reply'];  echo '";
@@ -9,15 +8,27 @@
     var dishonour_color = "';  echo $this->_tpl_vars['x']['disagree'];  echo '";
     var addcaption_color = "';  echo $this->_tpl_vars['x']['add_caption'];  echo '";
     
-    // Added by Delos to detect if user is logged in
 	var logged_in="';  echo $_SESSION['id_user'];  echo '";
+	
+	var is_search="';  echo $this->_tpl_vars['sm']['is_search'];  echo '";
     
-    var first_id,after_5sec=0,backup_rand_id_memes=\'\',backup_last_id_meme=\'\';
-    var current_page = 1;
+    var first_id, after_5sec=0, backup_rand_id_memes=\'\', backup_last_id_meme=\'\';
+	
+	var global_page_no = 1;
+	var backup_page_no;
+	
+	var see_user_old = 0;
+	var live_meme_wait = 15000;
+	
+	var meme_timer;
+	var meme_timer_new;
+	
     $(document).ready(function(){	
     
 			$(\'.meme_gallery\').fancybox({
 				padding: 0,
+				
+				fitToView: false,
 			
 				openEffect : \'elastic\',
 				openSpeed  : 150,
@@ -46,65 +57,108 @@
 		$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
 		var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
 		$("#rand_id_memes").val("';  echo $this->_tpl_vars['sm']['id_memes'];  echo '");
+		
 		$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
 	    	get_all_flag_details(1);
-	    	setInterval("get_all_flag_details()",4000);
-	    
-		$(window).scroll(function(){
-			if ($(window).scrollTop() == $(document).height() - $(window).height()){
-				
-				if (logged_in) {
-					var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
-					var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
-				
-					if ($("#last_id_meme_cur_page").val() != "") {
-					  	console.log("last_id_meme fired");
-					  	if ($("#chk_me").val()!=1) {
-						  backup_last_id_meme = $("#last_id_meme_cur_page").val();
-						  loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
-						  $("#last_id_meme_cur_page").val("");
-				  		 }
-				  	 }
-		      	 } else {
-		      		$("#signupmemes").fadeIn(\'slow\');
-		      	 }
+	    	setInterval("get_all_flag_details()",6000);
+		
+		var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
+		var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
+		
+		for(var i = 1; i < 8; i++) {
+			$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
+		 }
+		
+		$(\'#pagenext\').html(\'<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>\');
+		
+		$("#page"+1).css({\'font-weight\' : \'bolder\' });
+		backup_page_no = 1;
+		
+		// Self-describing for search
+	    var describedClass = \'self-described\';
+		$(\'.self-describing\').focus(function(){
+			if (this.value==this.title) this.value="";
+			$(this).css("color","black");
+		 }).blur(function(){
+			if (!this.value || this.value==this.title){
+				this.value=this.title;
+				$(this).css("color","grey");
 			 }
-	 	 });
-        /***/
-         $("#next_page").click(function () {
-             console.log("NEXT PRESSED!!!");
-             current_page += 1;
-             var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
-            var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
-            if ($("#last_id_meme_cur_page").val() != "") {
-              }
-             console.log("LAST MEME ID ON CURRENT PAGE: " + $("#last_id_meme_cur_page").val());
-             //if ($("#last_id_meme_cur_page").val() != "") {
-             //    console.log("YAHOOOOOOO");
-             // }
-          });
-         $("#prev_page").click(function () {
-             console.log("PREV PRESSED!!!");
-             if(current_page > 1){ current_page = current_page - 1;  }
-             //if(current_page > 1){
-             //    current_page -= 1;
-             // }
-          });
-         /***/
-
+		 }).blur();	 	
      });
     
-    function loadmorememe(cat,last_id,srch_uname,srch_title){
-	$("#loadingmeme_img").show();
-	var ext = "';  echo $_REQUEST['ext'];  echo '";
-	var url = "http://www.memeja.com/meme/meme_list";
-        console.log("LAST ID: " + last_id);
-	$.post(url,{cat:cat,ce:0,last_id:last_id,muname:srch_uname,mtitle:srch_title,ext:ext }, function(res){
-	    $("#loadingmeme_img").hide();
-	    if(res!="")
-		$("#all_memes").append(res);
-	 });
-     }
+	function paging_func(page_no){		
+		global_page_no = page_no;
+		if ($("#last_id_meme_cur_page").val() != "") {
+			if ($("#chk_me").val()!=1) {
+				last_id = $("#last_id_meme_cur_page").val();
+				
+				var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
+				var ext = "';  echo $_REQUEST['ext'];  echo '";
+				var url = "http://memeja.com/meme/meme_list";
+				
+				$("#loadingmeme_img").show();
+				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,ext:ext }, function(res){
+					if(res!="")
+						$("#all_memes").html(res);
+						$("#loadingmeme_img").hide();
+				 });
+				
+				$("#last_id_meme_cur_page").val("");
+				
+				clearTimeout(meme_timer);
+				clearTimeout(meme_timer_new);
+			 }
+		 }	
+		
+		if (page_no == -2) {
+			page_no = backup_page_no + 1
+		 }
+		
+		if (page_no == -1) {
+			page_no = backup_page_no - 1
+		 }
+		
+		if (page_no != 1){
+			if (page_no > 4){
+				$("#pagingcount").html(\'\');
+				
+				if (page_no + 4 < ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
+					for(var i = page_no - 3; i < page_no + 4; i++) {
+						$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
+					 }
+				 } else {
+					for(var i = page_no - 3; i < ';  echo $this->_tpl_vars['sm']['page_row'];  echo ' + 1; i++) {
+						$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
+					 }
+				 }
+			 }
+			
+			if (page_no < 5 && backup_page_no > 4){
+				$("#pagingcount").html(\'\');
+				for(var i = 1; i < 8; i++) {
+					$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
+				 }
+			 }
+			
+			$(\'#pageprev\').html(\'<a href="javascript:void(0);" onclick="paging_func(-1);">Prev</a>  \');
+		 } else {
+			$(\'#pageprev\').html(\'\');
+		 }
+		
+		if (page_no == ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
+			$(\'#pagenext\').html(\'\');
+		 }
+		
+		if (backup_page_no == ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
+			$(\'#pagenext\').html(\'<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>\');
+		 }
+		
+		$("#page"+backup_page_no).css({\'font-weight\' : \'normal\' });
+		$("#page"+page_no).css({\'font-weight\' : \'bolder\' });
+		
+		backup_page_no = page_no;
+	 }
     
     function get_all_flag_details(timer){
 		var last_id_page ;
@@ -113,7 +167,7 @@
 		var last_id = $("#last_id_meme").val();
 		last_id_page = $("#last_id_meme_cur_page").val();
 		var page_ids = $("#rand_id_memes").val(); 
-		var url = "http://www.memeja.com/meme/get_all_flag_details";
+		var url = "http://memeja.com/meme/get_all_flag_details";
 		$.post(url, {ce:0,last_id:last_id_page,cat:cat,lid:last_id,page_ids:page_ids,ext:ext }, function (res){
 		    if(res){
 			if(timer==1){
@@ -180,21 +234,19 @@
 
 /* Expand replies after reply button is pressed on the meme */
     function get_all_replies(id){
-        
-	var url = "http://www.memeja.com/meme/get_all_replies";
-	$.post(url,{id:id,ce:0 }, function(res)
-	{
-	    $("#send_reply"+id).html(res);
-			    
-	    /* If caption is up, swap */
-	    if(!$("#add_caption"+id).is(":hidden"))
-			$(\'#add_caption\'+id).slideToggle(\'slow\');
-	    $(\'#send_reply\'+id).slideToggle(\'slow\');
-	 });
+		var url = "http://memeja.com/meme/get_all_replies";
+		$.post(url,{id:id,ce:0 }, function(res){
+			$("#send_reply"+id).html(res);
+			
+			/* If caption is up, swap */
+			if(!$("#add_caption"+id).is(":hidden"))
+				$(\'#add_caption\'+id).slideToggle(\'slow\');
+			$(\'#send_reply\'+id).slideToggle(\'slow\');
+		 });
      }
     
     function get_captions(id){
-	var url = "http://www.memeja.com/caption/add_caption";
+	var url = "http://memeja.com/caption/add_caption";
 	$.post(url,{id:id,ce:0 }, function(res){
 	        $("#add_caption"+id).html(res);
 	    if(!$("#send_reply"+id).is(":hidden"))
@@ -217,39 +269,40 @@
 
     function post_reply(id){
 		if($("#rpl_con"+id).val()=="" || $("#rpl_con"+id).val()=="Reply with answer."){
-	    	 $("#rpl_con"+id).val("Reply with answer.");
+	    	 $("#rpl_con"+id).val("If an empty reply is posted but no one is around to see it, did it ever exist?");
 	    	 return false;
 		 }
 	    
+		if($("#rpl_con"+id).val().length < 10){
+			$("#validateCharacter"+id).html(\'Herp Derp\');
+			return false;
+		 }
+		
 	   if (logged_in) { 
 			/* $("#send_reply"+id).hide("slow",function(){ }); */
-			var url = "http://www.memeja.com/meme/answer_to_meme";
+			var url = "http://memeja.com/meme/answer_to_meme";
 			var reply = strip(($("#rpl_con"+id).val()).trim());
 			
 			$.post(url,{answer:reply,id:id,ce:0 },function(res){
-			    $("#rpl_con"+id).val(\'\'); /* clears form text space */
+			    $("#rpl_con"+id).val(\'\'); 
 			    $("#is_replied"+id).val(\'1\'); 
 			    $("#repl"+id).html(res);
 			    common_fun(id,reply_color);
 			 });
 		
-			/* Added by Delos for live reply */
-			/*$("#replyinsert"+id).html("Replied by ';  echo $_SESSION['fname']; ?>
- <?php echo $_SESSION['lname'];  echo ' :<b>"+$("#rpl_con"+id).val()+"</b>")*/
-			var url = "http://www.memeja.com/meme/get_all_replies";
+			var url = "http://memeja.com/meme/get_all_replies";
 			$.post(url,{id:id,ce:0 }, function(res){
 				$("#send_reply"+id).html(res);
 			 });
-			
 		
     	 } else {
-    		alert("Please log in to reply.");
+    		alert("Sorry! Please log in to reply.");
     	 }
      }
 
 /* JS call after Agree/Disagree button is pressed */
     function set_tot_adaggr(id,con,id_user){
-	var url = "http://www.memeja.com/meme/set_adaggr";
+	var url = "http://memeja.com/meme/set_adaggr";
 	
 	/* Added by Delos to check if user is logged in */
 	if (logged_in) {
@@ -287,26 +340,13 @@
      }
     
     function show_details(id_meme){
-		var url="http://www.memeja.com/meme/meme_details/ce/0/id/"+id_meme;
-				
-		var httpRequest = new XMLHttpRequest();
-		httpRequest.open(\'POST\', url, false); // why is this synchronous?
-
-		httpRequest.send(); // this blocks as request is synchronous
-<!--		if (httpRequest.status == 200) {-->
-<!--			res = httpRequest.responseText;-->
-<!--			console.log(res);-->
-<!--			-->
-<!--			//return res-->
-<!--			//$.fancybox(res,{-->
-<!--			//	title : title-->
-<!--			// });-->
-<!--		 }
--->
+		var url="http://memeja.com/meme/meme_details/ce/0/id/"+id_meme;
+		$.post(url,{meme:meme_details,ce:0,id:id_meme });
      }
+	
     function flagging(id_meme){
 	var flaged_bfr=0;
-	var url = "http://www.memeja.com/meme/flagging_meme";
+	var url = "http://memeja.com/meme/flagging_meme";
 	$.ajax({
 	    type: "POST",
 	    url: url,
@@ -330,162 +370,66 @@
      }
     $(document).ready(function(){
     	// Search function
-		$("#muname").autocomplete(\'http://www.memeja.com/index.php?page=meme&choice=auto_comp&ce=0\',{
-		    delay: 500
-		 });
-		$("#mtitle").autocomplete(\'http://www.memeja.com/index.php?page=meme&choice=auto_comp&flg=1&ce=0\',{
+		//$("#muname").autocomplete(\'http://memeja.com/index.php?page=meme&choice=auto_comp&ce=0\',{
+		//    delay: 500
+		// });
+		$("#mtitle").autocomplete(\'http://memeja.com/index.php?page=meme&choice=auto_comp&flg=1&ce=0\',{
 		    delay: 500
 		 });
 
 		// jQuery CSS change for Live and Network feed
-		$(\'#tab div\').mouseover(function(){
-			if($(this).hasClass(\'selected\'));
-			else
-				$(this).removeClass(\'unselected\').addClass(\'hover\');
-		 }).mouseout(function(){
-			if($(this).hasClass(\'selected\'));
-			else
-			$(this).removeClass(\'hover\').addClass(\'unselected\');
-		 });
-		// End
+		//$(\'#tab div\').mouseover(function(){
+		//	if($(this).hasClass(\'selected\'));
+		//	else
+		//		$(this).removeClass(\'unselected\').addClass(\'hover\');
+		// }).mouseout(function(){
+		//	if($(this).hasClass(\'selected\'));
+		//	else
+		//	$(this).removeClass(\'hover\').addClass(\'unselected\');
+		// });
      });
 </script>
-<style type="text/css">
-    a{
-		text-decoration: none;
-		cursor: pointer;
-     }
-    .meme{
-		position: relative;
-		top:-25px;
-	   	margin-left: 15px;
-		padding-left: 10px;
-		padding-top: 10px;
-		padding-bottom: 10px;
-		background: white;  /* background for meme color */
-		width:95%;
-		height:auto;
-	
-		-moz-border-radius-topright: 6px; -webkit-border-top-right-radius: 6px; border-top-right-radius: 6px; -moz-border-radius-bottomright: 6px; -webkit-border-bottom-right-radius: 6px; border-bottom-right-radius: 6px; -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; border-bottom-left-radius: 6px; 
-	
-		-moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; border-top-left-radius: 6px;
-	
-		 border-bottom: 1px dotted #e6e6dc;
-	
-     }
-    
-    /* Inner formatting of live feed meme */
-	img.avatar_thumb_fb, 
-	img.avatar_thumb_regular {
-		width: 40px;
-		height: 40px;
-	 }
-	
-	#meme_title {
-		position:relative;
-		bottom:6px;
-		padding-left:10px; 
-		font-size: 18.5px; 
-		font-weight: bold;
-	 }
-	
-	.meme_reproductive_system{
-		position:relative; 
-		left:55px;
-	 }
-
-{* CSS for \'Search meme\' on live feed * }
-    .dec{			
-	font-size: 12px;
-	font-weight: bold;
-     }
-</style>
-<style type="text/css">
-
-	{* Spacing between \'Main Live Feed\' and \'Network Feed * }
-	#tab div	{
-		margin-right:-20px;
-		font-weight:bold;
-	 }
-
-	{* Float of \'Main Live Feed\' and \'Network Feed\' * }
-	.fltlft	{
-		margin-left:25px;
-		float:left;
-	 }
-	.unselected	{
-		background-color:#AAD8F3;
-		width:auto;
-		height:23px;
-		text-align:center;
-		padding-top:7px;
-	 }
-	.hover	{
-		background-color:#CAD8F3;
-		height:23px;
-		width:auto;
-		text-align:center;
-		padding-top:7px;
-	 }
-	.selected	{
-		background-color:#4D79A6;
-		width:auto;
-		height:23px;
-		text-align:center;
-		padding-top:7px;
-	 }
-	a{
-		text-decoration:none;
-	 }
-	.borderyes	{
-		border:#000000 solid 1px;
-	 }
-
-    #next_page {
-        float:right
-     }
-    #prev_page {
-        float:right
-     }
-
-</style>
 '; ?>
 
 <input type="hidden" name="last_id_meme_cur_page" id="last_id_meme_cur_page" value=''/>
+
 <input type="hidden" name="rand_id_memes" id="rand_id_memes" value=''/>
 <input type="hidden" name="chk_me" id="chk_me" value=''/>
 <input type="hidden" name="last_id_meme" id="last_id_meme" value=''/>
-
-<!--
-<button type="button" id="likebutton">Like</button>
-<button type="button" id="likebutton">Dislike</button>
-
-<button type="button" name="next_page" id="next_page">>> Next</button>
-<button type="button" name="prev_page" id="prev_page"><< Prev</button>
--->
-
 <!--<?php if ($_SESSION['id_user']): ?>-->
 <!--<div class="fltlft" id="tab">-->
 <!--	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>unselected<?php else: ?>selected<?php endif; ?>">-->
-<!--		<a href="http://www.memeja.com/meme/meme_list/cat/<?php echo $this->_tpl_vars['sm']['cat']; ?>
+<!--		<a href="http://memeja.com/meme/meme_list/cat/<?php echo $this->_tpl_vars['sm']['cat']; ?>
 " >MAIN LIVE FEED</a>-->
 <!--	</div>-->
 <!--	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>selected<?php else: ?>unselected<?php endif; ?>">-->
-<!--		<a href="http://www.memeja.com/meme/meme_list/cat/<?php echo $this->_tpl_vars['sm']['cat']; ?>
+<!--		<a href="http://memeja.com/meme/meme_list/cat/<?php echo $this->_tpl_vars['sm']['cat']; ?>
 /ext/1" >NETWORK FEED</a>-->
 <!--	</div>-->
 <!--</div>-->
 <!--<?php endif; ?>-->
 <br><br><br>
 <div id="all_memes">
-    <?php $_smarty_tpl_vars = $this->_tpl_vars;
+    <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
+	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmorememe.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-    
+    <?php else: ?>
+	<input type="hidden" id="msgexist" value="1">
+		OMG, you've reached the edge of Memeja!
+    <?php endif; ?>
 </div>
+
+<?php if (! $this->_tpl_vars['sm']['is_search']): ?>
+<span id="pageprev"></span>
+<span id="pagingcount" ></span>
+<span id="pagenext"></span>
+<?php endif; ?>
+
 <div id="loadingmeme_img" style="display:none;">
-    <img src="http://www.memeja.com/templates/images/loading.gif" />
+    <img src="http://memeja.com/templates/images/loading.gif" />
 </div>
-<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
+
+<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>

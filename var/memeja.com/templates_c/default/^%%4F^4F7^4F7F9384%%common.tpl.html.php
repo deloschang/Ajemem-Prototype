@@ -1,70 +1,51 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-01 08:49:19
+<?php /* Smarty version 2.6.7, created on 2012-04-07 17:13:12
          compiled from common/common.tpl.html */ ?>
-<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 528, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/memeja.com/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '830fd49bdf83c2965b03279888ff3184'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Memeja: You Know What I Meme?</title>
-<?php $this->assign('appid', $this->_tpl_vars['util']->get_values_from_config('FACEBOOK')); ?>
-<?php $this->assign('chc', $_REQUEST['choice']); ?>
+<title>Memeja: 2 Me's; 1 Meme</title>
+<?php $this->assign('appid', $this->_tpl_vars['util']->get_values_from_config('FACEBOOK'));  $this->assign('chc', $_REQUEST['choice']); ?>
 
-<script type="text/javascript" src="http://www.memeja.com/libsext/jquery/jquery.js"></script>
-<script type="text/javascript" src="http://www.memeja.com/libsext/jquery/jquery-1.4.2.min.js"></script>
-
-
+<script type="text/javascript" src="http://memeja.com/libsext/jquery/jquery.js"></script>
 
 <!-- JQuery Library for New Fancybox -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-<script type="text/javascript" src="http://www.memeja.com/libsext/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
+<script type="text/javascript" src="http://memeja.com/libsext/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
 
-	<!-- Add fancyBox -->
-<link rel="stylesheet" href="http://www.memeja.com/templates/css_theme/fancybox/jquery.fancybox.css?v=2.0.4" type="text/css" media="screen" />
-<script type="text/javascript" src="http://www.memeja.com/libsext/fancybox/jquery.fancybox.pack.js?v=2.0.4"></script>
+<!-- Add fancyBox -->
+<link rel="stylesheet" href="http://memeja.com/templates/css_theme/fancybox/jquery.fancybox.css?v=2.0.4" type="text/css" media="screen" />
+<script type="text/javascript" src="http://memeja.com/libsext/fancybox/jquery.fancybox.pack.js?v=2.0.4"></script>
 
-	<!-- Optionally add button and/or thumbnail helpers -->
-<link rel="stylesheet" href="http://www.memeja.com/templates/css_theme/fancybox/jquery.fancybox-buttons.css?v=2.0.4" type="text/css" media="screen" />
+<!-- Optionally add button and/or thumbnail helpers -->
+<link rel="stylesheet" href="http://memeja.com/templates/css_theme/fancybox/jquery.fancybox-buttons.css?v=2.0.4" type="text/css" media="screen" />
+<script type="text/javascript" src="http://memeja.com/libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.4"></script>
+<link rel="stylesheet" href="http://memeja.com/templates/css_theme/fancybox/jquery.fancybox-thumbs.css?v=2.0.4" type="text/css" media="screen" />
+<script type="text/javascript" src="http://memeja.com/libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.4"></script>
 
-<script type="text/javascript" src="http://www.memeja.com/libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.4"></script>
+<script type="text/javascript" src="http://memeja.com/templates/flexyjs/flexymessage.js"></script>
+<script type="text/javascript" src="http://memeja.com/libsext/js/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="http://memeja.com/libsext/js/ui.datepicker.js"></script>
 
+<script type="text/javascript" src="http://memeja.com/libsext/js/ajaxfileupload.js"></script>
 
-<link rel="stylesheet" href="http://www.memeja.com/templates/css_theme/fancybox/jquery.fancybox-thumbs.css?v=2.0.4" type="text/css" media="screen" />
-<script type="text/javascript" src="http://www.memeja.com/libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.4"></script>
-
-
-<!-- Removed bc of conflicts with Fancybox
-<script type="text/javascript" src="http://www.memeja.com/libsext/js/jquery.validate.js"></script>
--->
-
-<script type="text/javascript" src="http://www.memeja.com/templates/flexyjs/flexymessage.js"></script>
-<script type="text/javascript" src="http://www.memeja.com/libsext/js/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="http://www.memeja.com/libsext/js/ui.datepicker.js"></script>
-
-<script type="text/javascript" src="http://www.memeja.com/libsext/js/ajaxfileupload.js"></script>
-
-<script type="text/javascript" src="http://www.memeja.com/libsext/hotkeys/jquery.hotkeys.js"></script>
-
-
-<!--Popup (use later for badges?)-->
-<script type="text/javascript" src="http://www.memeja.com/templates/flexyjs/jquery.bubblepopup.v2.3.1.min.js"></script>
-<link rel="stylesheet" type="text/css" href="http://www.memeja.com/templates/css_theme/jquery.bubblepopup.v2.3.1.css"/>
+<script type="text/javascript" src="http://memeja.com/libsext/hotkeys/jquery.hotkeys.js"></script>
 
 <!-- Hover Intent -->
-<script type="text/javascript" src="http://www.memeja.com/libsext/hoverintent/jquery.hoverIntent.js"></script>
+<script type="text/javascript" src="http://memeja.com/libsext/hoverintent/jquery.hoverIntent.js"></script>
 
 <!-- XP Bar CSS + JS-->
-<link rel="stylesheet" type="text/css" href="http://www.memeja.com/templates/css_theme/jquery-ui-1.8.16.custom.css"/>
-<script type="text/javascript" src="http://www.memeja.com/libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="http://www.memeja.com/libsext/xpbar/jquery.effects.core.js"></script>
-<script type="text/javascript" src="http://www.memeja.com/libsext/xpbar/jquery.effects.highlight.js"></script>
+<link rel="stylesheet" type="text/css" href="http://memeja.com/templates/css_theme/jquery-ui-1.8.16.custom.css"/>
+<script type="text/javascript" src="http://memeja.com/libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="http://memeja.com/libsext/xpbar/jquery.effects.core.js"></script>
+<script type="text/javascript" src="http://memeja.com/libsext/xpbar/jquery.effects.highlight.js"></script>
 
-<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-<!--end-->
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="http://www.memeja.com/templates/css_theme/mainpg.css"/>
+<link rel="stylesheet" type="text/css" href="http://memeja.com/templates/css_theme/mainpg.css"/>
 <?php echo '
+
 <script type="text/javascript">
 	var chc ="';  echo $this->_tpl_vars['chc'];  echo '";
 	var idu="';  echo $_SESSION['id_user'];  echo '";
@@ -138,7 +119,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	    /* TOS Fancybox Popup on First Login */
 	    var first_login="';  echo $_SESSION['toc'];  echo '";
 	    if(first_login==\'0\'){
-		    $.get(\'http://www.memeja.com/user/first_login_msg/ce/0\', function(res) {
+		    $.get(\'http://memeja.com/user/first_login_msg/ce/0\', function(res) {
 				$.fancybox(res,{
 			    	closeBtn:false,
 			    	closeClick:false,
@@ -160,7 +141,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	 });
 
 	function log_in_reminder(){
-		 var url="http://www.memeja.com/user/log_in_reminder";
+		 var url="http://memeja.com/user/log_in_reminder";
 
 		$.post(url,{ce:0 }, function(res){
 			$.fancybox(res);
@@ -168,7 +149,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	 }
 
 	function getall_notification(){
-	    var url="http://www.memeja.com/manage/getall_notification";
+	    var url="http://memeja.com/manage/getall_notification";
 	    $.post(url,{ce:0 },function(res){
 			if(res[0] != "-1"){
 				if(res[2]==0)
@@ -183,7 +164,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	 }
 
 	function get_details_notification(){
-	    var url="http://www.memeja.com//manage/get_details_notification";
+	    var url="http://memeja.com//manage/get_details_notification";
 	    $.post(url,{id_users:$(\'#user_ids\').val(),id_badges:$(\'#id_badges\').val(),ce:0 },function(data){
 			$(".inner").html(data);
 			$(".not_txt").hide();
@@ -192,7 +173,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 
 	function live_ranking() {
 		var ranking_data;
-		var url="http://www.memeja.com/user/live_ranking/ce/0/chk/1";
+		var url="http://memeja.com/user/live_ranking/ce/0/chk/1";
 		var httpRequest = new XMLHttpRequest();
 		httpRequest.open(\'POST\', url, false);
 
@@ -301,7 +282,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	function popup_expbar(){
 
 		var data;
-		var url="http://www.memeja.com/user/getExperience/ce/0/chk/1";
+		var url="http://memeja.com/user/getExperience/ce/0/chk/1";
 		var httpRequest = new XMLHttpRequest();
 		httpRequest.open(\'POST\', url, false);
 
@@ -398,7 +379,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 	 }
 
 	function upd_log_time() {
-		  var url="http://www.memeja.com/index.php";
+		  var url="http://memeja.com/index.php";
 		  $.post(url,{page:"user",choice:"set_login_time",ce:0 },function(res){//alert(res);
 		   })
 		  setTimeout("upd_log_time()", 10000);
@@ -422,16 +403,16 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		$(".leftpan_img").click(function(){
 			$("#leftpan").toggle();
 			if($("#leftpan").is(":hidden"))
-			    $(".leftpan_img").css(\'background\',"url(http://www.memeja.com/templates/images/m_next_btn.png) no-repeat");
+			    $(".leftpan_img").css(\'background\',"url(http://memeja.com/templates/images/m_next_btn.png) no-repeat");
 			else
-			    $(".leftpan_img").css(\'background\',"url(http://www.memeja.com/templates/images/m_previous_btn.png) no-repeat");
+			    $(".leftpan_img").css(\'background\',"url(http://memeja.com/templates/images/m_previous_btn.png) no-repeat");
 		 });
 		$(".rightpan_img").click(function(){
 			$("#rightpan").toggle();
 			if($("#rightpan").is(":hidden"))
-			    $(".rightpan_img").css(\'background\',"url(http://www.memeja.com/templates/images/m_previous_btn.png) no-repeat");
+			    $(".rightpan_img").css(\'background\',"url(http://memeja.com/templates/images/m_previous_btn.png) no-repeat");
 			else
-			    $(".rightpan_img").css(\'background\',"url(http://www.memeja.com/templates/images/m_next_btn.png) no-repeat");
+			    $(".rightpan_img").css(\'background\',"url(http://memeja.com/templates/images/m_next_btn.png) no-repeat");
 
 		 });
 
@@ -444,14 +425,14 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 </script>
 <script type="text/javascript">
 	    function fb_logout(){
-	       url="http://www.memeja.com/";
+	       url="http://memeja.com/";
 	       $.post(url,{page:"user",choice:"check_fb_session",ce:0 },function(res){
 		if(res==\'-1\'){
 		       window.location.href = url+"user/logout";
 		 } else {
 				// First try logging out normal user
 				window.location.href = url+"user/logout";
-
+				
 				// Then try FB logout
 				if (idu) {
 		       		FB.logout(function(response) {
@@ -462,18 +443,19 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 
 	        })
 		 }
-
+	
 </script>
 '; ?>
 
 </head>
+
 <body>
 <div id="fb-root"></div>
       <?php echo '
       <script>
         window.fbAsyncInit = function() {
           FB.init({
-            appId      : \'219049284838691\',
+            appId      : \'326419970737515\',
             status     : true, 
             cookie     : true,
             xfbml      : true,
@@ -482,7 +464,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
           
           FB.Event.subscribe(\'auth.login\', function (response) {
           	console.log("FB.event.subscribe auth login fired");
-          	window.location = "http://www.memeja.com/user/facebook_info";
+          	window.location = "http://memeja.com/user/facebook_info";
     	   });
          };
         
@@ -496,64 +478,151 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
       </script>       
 '; ?>
 
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<script type="text/javascript">
+	
+    function get_random_meme(){
+		
+		var url = "http://memeja.com/meme/meme_list/cat/rand";
+		$.fancybox.showLoading();
+		$.post(url,{ce:0 },function(res){
+			$("#randpgexist").val(1);
+			$.fancybox.open(res,{
+				afterClose : function (){
+					$("#randpgexist").val(0);
+				 }
+			 });
+			$.fancybox.update();
+		 });
+     }
+	
+	function submit() {
+		$(\'#searches\').submit();
+	 }
+	
+</script>
+'; ?>
 
-  <input type="hidden" id="tst" value="2">
-    <div id="mainpage">
-		<div id="mymodal"></div>
-	    	<?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "common/header.tpl.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?>
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<script type="text/javascript">
+    function get_random_meme(){
+		var url = "http://memeja.com/meme/meme_list/cat/rand";
+		$.fancybox.showLoading();
+		$.post(url,{ce:0 },function(res){
+			$("#randpgexist").val(1);
+			$.fancybox.open(res,{
+				minHeight : 630,
+				minWidth : 480,
+				//autoSize : true,
+				//scrolling : true,
+				afterClose : function (){
+					$("#randpgexist").val(0);
+				 }
+			 });
+			$.fancybox.update();
+		 });
+     }
+    
+    function get_random_meme_nlu(){
+		var url = "http://memeja.com/meme/meme_nlu_rand";
+		$.fancybox.showLoading();
+		$.post(url,{ce:0 },function(res){
+			$("#randpgexist").val(1);
+			$.fancybox.open(res,{
+				minHeight : 630,
+				minWidth : 480,
+				//autoSize : true,
+				//scrolling : true,
+				afterClose : function (){
+					$("#randpgexist").val(0);
+				 }
+			 });
+			$.fancybox.update();
+		 });
+     }
+</script>
+'; ?>
 
-	    	<?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "common/menu.tpl.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?>
 
-		<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'addMeme'): ?>
-	    	<div class="leftpan_img"></div>
-	    	<div class="rightpan_img"></div>
-		<?php endif; ?>
+<!-- Masthead is the Header which contains the Logo and the Navigation Buttons-->
+<div id="masthead">
+		
+		<!-- Memeja Logo -->
+		<div id= "logoc">
+		<a href="http://memeja.com/"><img src="http://memeja.com/templates/images/rmemejalogo.png" width="280px" id="logo"></a>
+		</div>
 
-		<!-- Left/Center/Right Content -->
-		<table width="100%" id="mid_cont">
-		    <tr>
-			<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
-			<td width="15%" id="leftpan" valign="top">
-			    <?php if ($_SESSION['id_user']): ?>	
-				    <?php $_smarty_tpl_vars = $this->_tpl_vars;
+		<!-- Memeja Top Bar -->
+	   <div id ="headerbtns"> 
+	   
+	    <!-- Login/Logout Buttons -->
+			<?php if (! $_SESSION['id_user']): ?>
+				<img src="http://memeja.com/templates/images/joinmemeja.png" id="joinmemeja" onclick="$('#fblogin').slideToggle();" style="margin:-2px;">
+			<?php else: ?>
+				<img src="http://memeja.com/templates/images/logout.png" id="logout" onclick="fb_logout();" style="margin:-2px;">
+			<?php endif; ?>
+			
+	    <!-- Image Editor Button -->
+			<a href="http://memeja.com/meme/addMeme"><img src="http://memeja.com/templates/images/create.png" id="create"style="margin:-2px;"></a>
+		
+	    <!-- Random Generator Button -->
+			<?php if ($_SESSION['id_user']): ?>
+				<a href="javascript:void(0);" onclick="get_random_meme();"><img src="http://memeja.com/templates/images/random.png"style="margin:-2px;"></a>
+			<?php else: ?>
+				<a href="javascript:void(0);" onclick="alert('you need to be logged in');"><img src="http://memeja.com/templates/images/random.png"style="margin:-2px;"></a>
+			<?php endif; ?>	
+		
+	    <!-- About Us Button -->
+			<a href="http://memeja.com/achievements/whatisMemeja"><img src="http://memeja.com/templates/images/help.png"style="margin:-2px;"></a>
+			
+		<!-- Search Feature -->	
+			<a href=#><img src="http://memeja.com/templates/images/searchend.png" style="margin:-2px;" onclick="submit();"></a>
+			
+				<form id ="searches">
+					<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title."/>
+				</form>
+		</div>
+
+		<!-- FB LOGIN Button -->
+		<div id="fblogin" style="display:none;"width="50px;">
+			<div class="fb-login-button" scope="email, publish_stream ,user_education_history ">
+						  Login with Facebook
+			</div>
+		</div>
+		
+	<?php if ($_SESSION['id_user']): ?>
+	<div id="follower">
+		<div id="xpbar"></div>
+	</div>	
+	<div id="user_level"></div>
+	<div id="xpbar_status"></div>
+        <?php endif; ?>
+	</div>
+	
+<div class="clear"></div>
+<div id="contained">
+
+<!-- Sidebar_A is Your Profile Information(Logged in) / Login Form(Not Logged in) -->		
+
+				<div id="sidebar_a">
+					<?php if ($_SESSION['id_user']): ?>	
+						<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/left_pan.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-				<?php else: ?> 
-				    <?php $_smarty_tpl_vars = $this->_tpl_vars;
+					<?php else: ?> 
+						<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-			    <?php endif; ?>
-			</td>
-			<?php endif; ?>
-
-			<td align="left" valign="top">
-			    <div><font color="#FF0000"><?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "common/messages.tpl.html", 'smarty_include_vars' => array('module' => 'global')));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?></font></div>
-			    <div id="container">
-				<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
-
+					<?php endif; ?>
 				</div>
-				<?php endif; ?>
-				<?php if ($_SESSION['id_user'] && $_REQUEST['choice'] != 'answer_to_ques' && $_REQUEST['choice'] != 'addMeme' && $_REQUEST['choice'] != 'meme_details'): ?>
-				    <?php if ($this->caching && !$this->_cache_including) { echo '{nocache:830fd49bdf83c2965b03279888ff3184#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:830fd49bdf83c2965b03279888ff3184#0}';}?>
-<br>
-				<?php endif; ?>
-
+			
+			
+<!-- This is the main container which contains the Live Feed/Image Editor -->				
+			    <div id="content">
 		<!-- Content in middle of page (Live Feed/Editor) -->
 				<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['content'], 'smarty_include_vars' => array()));
@@ -561,46 +630,27 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 
-		<!-- Login form if user not logged in -->
-			<!-- switched from user/login_form -->
-				<?php if (! $_SESSION['id_user'] && ! $_REQUEST['page']):  $_smarty_tpl_vars = $this->_tpl_vars;
+				<!--<?php if (! $_SESSION['id_user'] && ! $_REQUEST['page']):  $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
-  endif; ?> 
-				</div>
-			</td>
-
-			<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
-			<td width="15%" id="rightpan" align="center" valign="top" >
-			    <?php if ($_SESSION['id_user']): ?>	
-				    <?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "user/right_pan.tpl.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?>
-			    <?php else: ?>
-
-			    	<!-- Only shows Search meme w/o login -->
-				    <?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "user/right_pan.tpl.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?>
-			    <?php endif; ?>
-			</td>
-			<?php endif; ?>
-		    </tr>
-		</table>
-
-		<?php if ($_SESSION['id_user']): ?>
-
-		<?php endif; ?>
-		<div class="clear"></div>
-		<div class="push"></div>
-		<input type="hidden" id="user_ids" value=""/>
-		<input type="hidden" id="id_badges" />
+  endif; ?> -->
+	
 	</div>
-	<div id="footer"><center>&copy; Copyrights. All Rights Reserved. 2012 <a href="http://www.memeja.com/achievements/whatisMemeja">About Us</a></center></div>
+	
+	<!-- Sidebar_B is for Ads/Search_Bar/Displays the Other Profile Info -->				
+			<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
+			<div id="sidebar_b">
+				    <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "user/right_pan.tpl.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+			</div>
+			<?php endif; ?>
+
+</div>		
+<!-- Keeping the Footer at the Bottom -->		
+	<div id="footer"><center>Copyrights. All Rights Reserved. 2012</center></div>
 </body>
 </html>
