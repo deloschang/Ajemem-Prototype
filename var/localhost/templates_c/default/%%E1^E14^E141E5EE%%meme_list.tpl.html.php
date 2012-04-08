@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-08 00:17:40
+<?php /* Smarty version 2.6.7, created on 2012-04-09 00:58:50
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -11,6 +11,7 @@
 	var logged_in="';  echo $_SESSION['id_user'];  echo '";
 	
 	var is_search="';  echo $this->_tpl_vars['sm']['is_search'];  echo '";
+	var page_row=';  echo $this->_tpl_vars['sm']['page_row'];  echo ';
     
     var first_id, after_5sec=0, backup_rand_id_memes=\'\', backup_last_id_meme=\'\';
 	
@@ -65,7 +66,9 @@
 		var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
 		var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
 		
-		for(var i = 1; i < 8; i++) {
+		console.log(page_row);
+		
+		for(var i = 1; i < page_row + 1; i++) {
 			$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
 		 }
 		
@@ -146,11 +149,11 @@
 			$(\'#pageprev\').html(\'\');
 		 }
 		
-		if (page_no == ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
+		if (page_no == page_row){
 			$(\'#pagenext\').html(\'\');
 		 }
 		
-		if (backup_page_no == ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
+		if (backup_page_no == page_row){
 			$(\'#pagenext\').html(\'<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>\');
 		 }
 		

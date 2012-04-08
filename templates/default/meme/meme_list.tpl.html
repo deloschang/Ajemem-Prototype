@@ -11,6 +11,7 @@
 	var logged_in="{/literal}{$smarty.session.id_user}{literal}";
 	
 	var is_search="{/literal}{$sm.is_search}{literal}";
+	var page_row={/literal}{$sm.page_row}{literal};
     
     var first_id, after_5sec=0, backup_rand_id_memes='', backup_last_id_meme='';
 	
@@ -65,7 +66,9 @@
 		var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
 		var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
 		
-		for(var i = 1; i < 8; i++) {
+		console.log(page_row);
+		
+		for(var i = 1; i < page_row + 1; i++) {
 			$('#pagingcount').append('<span id="page'+i+'"><a href="javascript:void(0);" onclick="paging_func('+i+');">'+i+'</a></span> ');
 		}
 		
@@ -146,11 +149,11 @@
 			$('#pageprev').html('');
 		}
 		
-		if (page_no == {/literal}{$sm.page_row}{literal}){
+		if (page_no == page_row){
 			$('#pagenext').html('');
 		}
 		
-		if (backup_page_no == {/literal}{$sm.page_row}{literal}){
+		if (backup_page_no == page_row){
 			$('#pagenext').html('<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>');
 		}
 		
