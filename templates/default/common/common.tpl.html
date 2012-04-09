@@ -394,6 +394,10 @@
 
 	});
 	
+	function submit() {
+		$('#searches').submit();
+	}
+	
 </script>
 <script type="text/javascript">
 	    function fb_logout(){
@@ -415,6 +419,8 @@
 
 	       })
 		}
+		
+		
 	
 </script>
 {/literal}
@@ -481,7 +487,7 @@
 			<a href="##LBL_SITE_URL##achievements/whatisMemeja"><img src="##LBL_SITE_URL##templates/images/help.png"style="margin:-2px;"></a>
 			
 		<!-- Search Feature -->	
-			<a href=#><img src="##LBL_SITE_URL##templates/images/searchend.png" style="margin:-2px;" onclick="submit();"></a>
+			<a href="javascript:void(0);"><img src="##LBL_SITE_URL##templates/images/searchend.png" style="margin:-2px;" onclick="submit();"></a>
 			
 				<form id ="searches">
 					<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title."/>

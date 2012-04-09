@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-09 17:24:15
+<?php /* Smarty version 2.6.7, created on 2012-04-09 21:35:08
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -394,6 +394,10 @@
 
 	 });
 	
+	function submit() {
+		$(\'#searches\').submit();
+	 }
+	
 </script>
 <script type="text/javascript">
 	    function fb_logout(){
@@ -415,6 +419,8 @@
 
 	        })
 		 }
+		
+		
 	
 </script>
 '; ?>
@@ -483,7 +489,7 @@
 			<a href="http://localhost/achievements/whatisMemeja"><img src="http://localhost/templates/images/help.png"style="margin:-2px;"></a>
 			
 		<!-- Search Feature -->	
-			<a href=#><img src="http://localhost/templates/images/searchend.png" style="margin:-2px;" onclick="submit();"></a>
+			<a href="javascript:void(0);"><img src="http://localhost/templates/images/searchend.png" style="margin:-2px;" onclick="submit();"></a>
 			
 				<form id ="searches">
 					<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title."/>
