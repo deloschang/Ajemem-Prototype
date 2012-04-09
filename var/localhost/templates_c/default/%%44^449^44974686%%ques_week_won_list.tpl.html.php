@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-24 08:59:10
+<?php /* Smarty version 2.6.7, created on 2012-03-25 14:03:40
          compiled from leaderboard/ques_week_won_list.tpl.html */ ?>
 <div id="leaderboard_lb_ques_won">
 <div class="box box-75 altbox">
@@ -50,7 +50,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 ">
 			    <td><?php echo $this->_sections['cur']['iteration']+$this->_tpl_vars['sm']['qstart']; ?>
 </td>
-			    <td><?php echo $this->_tpl_vars['x']['email']; ?>
+			    <td><?php echo $this->_tpl_vars['x']['username']; ?>
 </td>
 			    <td><?php echo $this->_tpl_vars['x']['ques_week_won']; ?>
 </td>

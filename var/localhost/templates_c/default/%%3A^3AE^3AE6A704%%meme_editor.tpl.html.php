@@ -1,11 +1,10 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-16 00:38:17
+<?php /* Smarty version 2.6.7, created on 2012-04-08 22:12:11
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 200, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 197, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 16/01/2012 00:38:17 --> 
- <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
-<?php echo '
+<!-- Template: meme/meme_editor.tpl.html Start 08/04/2012 22:12:11 --> 
+ <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY'));  echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
 <script type="text/javascript" src="http://localhost//spad/jquery.lionbars.0.3.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost//spad/lionbars.css" media="screen" />
@@ -117,6 +116,7 @@ $(document).ready(function(){
 	var main_ofst = $(\'#main\').offset();
 	$(window).scroll(function(e){
 		var scrollTop = $(window).scrollTop();
+		console.log(scrollTop);
 		if(scrollTop > 155){
 			var y = $(\'#main\').offset();
 			$(\'#main\').css({
@@ -137,26 +137,22 @@ $(document).ready(function(){
 </script>
 '; ?>
 
-<img src="http://localhost/spad/watermark.png" id="memejimark" style="display:none">
-<div style="position:fixed; bottom:-10px; left:-120px;">
-        <table width='100%' class="smil_tabl_fixed" border="0">
-            <tr>
-                <td align='right'>
-                    <input type="file" name="updimage" id="updimage" size="5" />
-                    <input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
-                    URL: <input type="text" name="imgurl" id="imgurl" size="27" />
-                    <input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
-					<div id="prev_image" class="prev_image"></div>
-                </td>
-            </tr>
-        </table>
+<img src="http://localhost/spad/Memeja Watermark.png" id="memejimark" style="display:none">
+
+<div id="uploader">
+	<input type="file" name="updimage" id="updimage" size="5" />
+	<input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
+	URL: <input type="text" name="imgurl" id="imgurl" size="27" />
+	<input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
+	<div id="prev_image" class="prev_image"></div>
+</div>
+             
         <div class='main_smiley_loading'style="top:100px;">
             <div class="smileys_in_small_size">
                 <div id="loadimg" ></div>
             </div>
         </div>
-    </div>
-<div id="page" style="display:none; left:60px;">
+<div id="page" style="display:none; left:-160px;">
 	<canvas id="dummy1" style="display:none;"></canvas>
 	<div id="sp" style="position:relative;"><canvas id="mycid" style="border:1px solid red"></canvas></div>
     <div id="main" style="width:660px;left:-10px;">

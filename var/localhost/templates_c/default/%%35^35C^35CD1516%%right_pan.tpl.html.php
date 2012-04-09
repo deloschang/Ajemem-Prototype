@@ -1,10 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-17 02:00:39
+<?php /* Smarty version 2.6.7, created on 2012-04-08 22:24:15
          compiled from user/right_pan.tpl.html */ ?>
 
-<!-- Template: user/right_pan.tpl.html Start 17/01/2012 02:00:39 --> 
- <br/>
-
-<span id="right_pan">
+<!-- Template: user/right_pan.tpl.html Start 08/04/2012 22:24:15 --> 
+ 
+<div id="right_pan">
 <!--
 <?php if ($_SESSION['id_user']): ?>
 <fieldset style="width:40%;align:center;">
@@ -32,16 +31,17 @@
 	<!--<div class="fbfrnd">
 		<a href="javascript:void(0);" onclick="invitePopup();" class="facebook">Invite Facebook Friends </a>
 	</div>-->
-<br/>
 <?php endif; ?>
 
 <?php if ($_SESSION['id_user']): ?>
             
     <div>
-		<br>
-		    </div>
+			</div>
+	    
+	
+
 <?php endif; ?>
-</span>
+</div>
 <?php echo '
 <script type="text/javascript">
 

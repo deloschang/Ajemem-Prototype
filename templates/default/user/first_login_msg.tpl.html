@@ -1,7 +1,6 @@
 {literal}
 <script type="text/javascript">
 	function checkbox_validate() {
-		//console.log($('#submittext').val());
 		if ($('#submittext').val() == 1 && ($("#toc").is(":checked"))  ) {
 			$("#submit").attr("disabled", false);
 		} else {
@@ -88,7 +87,7 @@
 	
 </script>
 {/literal}
-<h2>Almost there! Please create a Username</h2>
+<h2>Almost There! Please Enter Your Username</h2>
 
 <form name="form1" method="post" action="##LBL_SITE_URL##user/create_username">
 	<fieldset>
@@ -101,7 +100,7 @@
 
 		<label for="toc">
 		<input type="checkbox" name="toc" id="toc" value="0" onclick="checkbox_validate();"/>
-		I agree to the Terms and Conditions
+		I agree to the <a href="##LBL_SITE_URL##templates/default/user/termsandconditions.html" target="_blank">Terms and Conditions</a>
 		</label>
 
 	</fieldset>

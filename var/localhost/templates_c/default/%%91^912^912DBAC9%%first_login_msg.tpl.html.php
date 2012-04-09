@@ -1,11 +1,10 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-28 11:49:19
+<?php /* Smarty version 2.6.7, created on 2012-03-29 07:54:21
          compiled from user/first_login_msg.tpl.html */ ?>
 
-<!-- Template: user/first_login_msg.tpl.html Start 28/12/2011 11:49:19 --> 
+<!-- Template: user/first_login_msg.tpl.html Start 29/03/2012 07:54:21 --> 
  <?php echo '
 <script type="text/javascript">
 	function checkbox_validate() {
-		//console.log($(\'#submittext\').val());
 		if ($(\'#submittext\').val() == 1 && ($("#toc").is(":checked"))  ) {
 			$("#submit").attr("disabled", false);
 		 } else {
@@ -93,7 +92,7 @@
 </script>
 '; ?>
 
-<h2>Almost there! Please create a Username</h2>
+<h2>Almost There! Please Enter Your Username</h2>
 
 <form name="form1" method="post" action="http://localhost/user/create_username">
 	<fieldset>
@@ -106,7 +105,7 @@
 
 		<label for="toc">
 		<input type="checkbox" name="toc" id="toc" value="0" onclick="checkbox_validate();"/>
-		I agree to the Terms and Conditions
+		I agree to the <a href="http://localhost/templates/default/user/termsandconditions.html" target="_blank">Terms and Conditions</a>
 		</label>
 
 	</fieldset>
