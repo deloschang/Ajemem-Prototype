@@ -9,10 +9,9 @@
 	html,body {
 		font-family: Trebuchet, Helvetica, sans-serif;
 		font-size:0.8em;
-		margin:10px 3% 10px 4%;
+		margin:10px 0% 10px 4%;
 		background-color:#87C8F0;
-		width: 1200px;
-		height: 1200px;
+		width: 1000px;
 	}
 
 /* =p Define paragraph text size */
@@ -78,53 +77,12 @@
 	
 /* Main Container with the middle column and the sidebars */
 	#contained {
-		width: 1200px;
-		height:200px;
+		position: absolute;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
 	    border-radius: 20px;
 		
-	}
-	
-		
-/* Sidebar B - For Other's Profile Information */
-	#sidebar_b {
-	    position:relative;
-		top:-1180px;
-		left:-50px;
-		float:right;
-		padding:10px;
-		width:220px;
-	    background:#FFF;
-		moz-border-radius: 20px;
-	    webkit-border-radius: 20px;
-	    khtml-border-radius: 20px;
-	    border-radius: 20px;
-		voice-family:"\"}\"";
-		voice-family:inherit;
-		width:220px;
-	}
-	html>body #sidebar_a {
-		width:220px;
-	}
-	
-	/* Sidebar A - For Your Profile Information */
-	#sidebar_a {
-		float:left;
-		padding:10px;
-		width:220px;
-	    background:#FFF;
-		moz-border-radius: 20px;
-	    webkit-border-radius: 20px;
-	    khtml-border-radius: 20px;
-	    border-radius: 20px;
-		voice-family:"\"}\"";
-		voice-family:inherit;
-		width:220px;
-	}
-	html>body #sidebar_a {
-		width:220px;
 	}
 
 /* Middle Column for Live Feed and Meme Editor */
@@ -147,15 +105,52 @@
 	    width:580px;
 	}
 	
+/* Sidebar A - For Your Profile Information */
+	#sidebar_a {
+		float:left;
+		padding:10px;
+		width:220px;
+	    background:#FFF;
+		moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;
+		voice-family:"\"}\"";
+		voice-family:inherit;
+		width:220px;
+	}
+	html>body #sidebar_a {
+		width:220px;
+	}
 	
+/* Sidebar B - For Other's Profile Information */
+	#sidebar_b {
+	    position:absolute;
+		top:0px;
+		left:910px;
+		float:left;
+		padding:10px;
+		moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;
+		width:220px;
+		background:#FFF;
+	    voice-family:"\"}\"";
+		voice-family:inherit;
+		width:220px;
+	}
+	html>body #sidebar_b {
+	    width:220px;
+	}
 
 /* Footer with Copyright Stuff (might add About us there) */	
 	#footer 	{
 		background:#87C8F0;
 		height:30px;
-		color:#FFF;
+		color:#000;
 		clear:both;
-		width:1200px;
+		width:738px;
 		padding:10px;
 	}
 
@@ -182,7 +177,7 @@
   display:none;
   position:absolute;
   top:48px;
-  left:515px;
+  left:595px;
 }
 
 /* Next to xpbar */

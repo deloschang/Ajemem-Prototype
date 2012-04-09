@@ -1,7 +1,6 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-09 16:57:48
+<?php /* Smarty version 2.6.7, created on 2012-04-09 17:24:16
          compiled from meme/meme_list.tpl.html */ ?>
-<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
-<?php echo '
+<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script type="text/javascript">
     var reply_color = "';  echo $this->_tpl_vars['x']['reply'];  echo '";
@@ -12,7 +11,6 @@
 	var logged_in="';  echo $_SESSION['id_user'];  echo '";
 	
 	var is_search="';  echo $this->_tpl_vars['sm']['is_search'];  echo '";
-	var page_row=';  echo $this->_tpl_vars['sm']['page_row'];  echo ';
     
     var first_id, after_5sec=0, backup_rand_id_memes=\'\', backup_last_id_meme=\'\';
 	
@@ -44,13 +42,6 @@
 				arrows    : true,
 				nextClick : true,
 				
-				modal: true,
-				keys: {
-					next: [13], // enter, space, page down, right arrow, down arrow
-					prev: [8, 33, 37], // backspace, page up, left arrow, up arrow
-					close: [27] // escape key
-				 },
-
 				helpers : { 
 					thumbs : {
 						width  : 50,
@@ -74,9 +65,7 @@
 		var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
 		var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
 		
-		console.log(page_row);
-		
-		for(var i = 1; i < page_row + 1; i++) {
+		for(var i = 1; i < 8; i++) {
 			$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
 		 }
 		
@@ -157,11 +146,11 @@
 			$(\'#pageprev\').html(\'\');
 		 }
 		
-		if (page_no == page_row){
+		if (page_no == ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
 			$(\'#pagenext\').html(\'\');
 		 }
 		
-		if (backup_page_no == page_row){
+		if (backup_page_no == ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
 			$(\'#pagenext\').html(\'<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>\');
 		 }
 		
@@ -443,4 +432,4 @@ unset($_smarty_tpl_vars);
     <img src="http://localhost/templates/images/loading.gif" />
 </div>
 
-<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
+<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>

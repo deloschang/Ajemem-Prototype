@@ -1,16 +1,16 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-07 16:13:59
+<?php /* Smarty version 2.6.7, created on 2011-10-15 11:20:14
          compiled from common/home.tpl.html */
 
-$this->_cache_serials['/home/bobeveal/public_html/memeja.com/flexycms/../var/memeja.com/templates_c/default/%%45^454^45452386%%home.tpl.html.inc'] = 'b2d2b460320cf6e4a2c4a4b36718bdc2';
+$this->_cache_serials['/home/bobeveal/public_html/memeja.com/flexycms/../var/memeja.com/templates_c/default/%%45^454^45452386%%home.tpl.html.inc'] = 'a4a50d14766bb0d41e02b113ef6c77cd';
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/home.tpl.html', 2, false),)), $this); ?>
-<?php
-function _smarty_tplfunc_b2d2b460320cf6e4a2c4a4b36718bdc2_0(&$_smarty)
-{
-echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user'), $_smarty);
-}
-
+<?php
+function _smarty_tplfunc_a4a50d14766bb0d41e02b113ef6c77cd_0(&$_smarty)
+{
+echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user'), $_smarty);
+}
+
 
 
 ?>

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+<?php /* Smarty version 2.6.7, created on 2011-10-24 08:59:12
+=======
 <?php /* Smarty version 2.6.7, created on 2012-03-25 14:03:41
+>>>>>>> test2
          compiled from leaderboard/achievements_list.tpl.html */ ?>
 <div id="leaderboard_lb_achievements">
 <div class="box box-75 altbox">
@@ -53,7 +57,11 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 			    <!--<td><?php echo $this->_tpl_vars['x']['fname']; ?>
  <?php echo $this->_tpl_vars['x']['lname']; ?>
 </td>-->
+<<<<<<< HEAD
+			    <td><?php echo $this->_tpl_vars['x']['email']; ?>
+=======
 			    <td><?php echo $this->_tpl_vars['x']['username']; ?>
+>>>>>>> test2
 </td>
 			    <td><?php echo $this->_tpl_vars['x']['no_badges']; ?>
 </td>
