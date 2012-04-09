@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-09 00:58:50
+<?php /* Smarty version 2.6.7, created on 2012-04-09 03:49:22
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -6,7 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Memeja: 2 Me's; 1 Meme</title>
-<?php $this->assign('appid', $this->_tpl_vars['util']->get_values_from_config('FACEBOOK'));  $this->assign('chc', $_REQUEST['choice']); ?>
+<?php $this->assign('appid', $this->_tpl_vars['util']->get_values_from_config('FACEBOOK')); ?>
+<?php $this->assign('chc', $_REQUEST['choice']); ?>
 
 <script type="text/javascript" src="http://localhost/libsext/jquery/jquery.js"></script>
 
@@ -478,7 +479,8 @@
       </script>       
 '; ?>
 
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
 <script type="text/javascript">
 	
     function get_random_meme(){
@@ -503,7 +505,8 @@
 </script>
 '; ?>
 
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
 <script type="text/javascript">
     function get_random_meme(){
 		var url = "http://localhost/meme/meme_list/cat/rand";
@@ -623,18 +626,20 @@ unset($_smarty_tpl_vars);
 			
 <!-- This is the main container which contains the Live Feed/Image Editor -->				
 			    <div id="content">
+					<div>hello</div>
 		<!-- Content in middle of page (Live Feed/Editor) -->
+				<?php if (! $_SESSION['id_user'] && ! $_REQUEST['page']):  $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+  endif; ?>
 				<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['content'], 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 
-				<!--<?php if (! $_SESSION['id_user'] && ! $_REQUEST['page']):  $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
-  endif; ?> -->
+				
 	
 	</div>
 	
@@ -654,3 +659,4 @@ unset($_smarty_tpl_vars);
 	<div id="footer"><center>Copyrights. All Rights Reserved. 2012</center></div>
 </body>
 </html>
+

@@ -613,10 +613,12 @@
 			
 <!-- This is the main container which contains the Live Feed/Image Editor -->				
 			    <div id="content">
+					<div>hello</div>
 		<!-- Content in middle of page (Live Feed/Editor) -->
+				{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if}
 				{include file=$content}
 
-				<!--{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} -->
+				
 	
 	</div>
 	

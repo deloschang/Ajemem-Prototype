@@ -1,6 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-09 00:58:50
+<?php /* Smarty version 2.6.7, created on 2012-04-09 03:49:22
          compiled from meme/meme_list.tpl.html */ ?>
-<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
+<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
+<?php echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script type="text/javascript">
     var reply_color = "';  echo $this->_tpl_vars['x']['reply'];  echo '";
@@ -435,4 +436,4 @@ unset($_smarty_tpl_vars);
     <img src="http://localhost/templates/images/loading.gif" />
 </div>
 
-<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
+<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
