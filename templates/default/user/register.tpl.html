@@ -1,9 +1,20 @@
 {literal}
+	<script type="text/javascript" src="colorBckg.js"></script>
 	<script type="text/javascript">
+
 		$.validator.addMethod("username", function(value) {
 			return /^[a-z0-9]([a-z0-9_.]+)?$/i.test(value);
 			},'<br>Please enter a valid username'
 		);
+		function validateCheck() {
+		if ($("#toc").click) 
+		{
+			$("#register").attr('disabled', '');
+		} else 
+		{
+			$("#register").attr('disabled', 'disabled');
+		}
+	}
 		function checkvalidate() {
 			var validator=$("#signupform").validate({
 			   	rules: {
@@ -34,9 +45,6 @@
 						equalTo:'#pwd'
 					},
 					"gender":{
-						required: true
-					},
-					"user[address]":{
 						required: true
 					},
 					"dob_Month":{
@@ -78,9 +86,6 @@
 					"gender" :{
 						required: flexymsg.required
 					},
-					"user[address]" :{
-						required: flexymsg.required
-					},
 					"dob_Month" :{
 						required: flexymsg.required_dob
 					},
@@ -100,20 +105,40 @@
 		}
 		function show_username_exist() {
 			var username=document.getElementById('username').value;
+			var pass = document.getElementById('pwd').value;
 			var url="##LBL_SITE_URL##index.php";
-			$.post(url,{"page":"user","choice":"check_username",ce:0,"username":username},function(res){
+		/**
+			if(username.length < 6)
+				$('#add_user_msg').html("<center><font color=red>Must enter a longer username</font></center>");
+			else if(pass.length < 6)
+				$('#add_user_msg').html("<center><font color=red>Must enter a longer password</font></center>");
+			else if(username.length < 6 && pass.length >= 6)
+				$('#add_user_msg').html("<center><font color=red>Must enter a longer username</font></center>");
+			else if(username.length >= 6 && pass.length < 6)
+				$('#add_user_msg').html("<center><font color=red>Must enter a longer password</font></center>");
+			//if(username.length < 6 || pass.length < 6)
+			//	$("#register").attr('disabled', 'disabled');
+			if(username.length >= 6 && pass.length >= 6 && ("#toc").click) {
+				$("#register").attr('disabled', '');
+				$('#add_user_msg').html('');
+			}
+			else
+				$("#register").attr('disabled', 'disabled');
+			*/
+		$.post(url,{"page":"user","choice":"check_username",ce:0,"username":username},function(res){
 			
 				if(res!=0 && username!=""){
 					$('#add_user_msg').html("<center><font color=red>This Username Already Exist.</font></center>");
 					$('#username').val("");
 					return false;
 				 }else{
-					$('#add_user_msg').html('');
+					//$('#add_user_msg').html('');
 					return true;
 				 }
 			});
 		}
 		function checkpassword() {
+			
 			var text=document.getElementById('pwd').value;
 			var i,s,color,width;
 			var n_o_small_char=0;
@@ -121,6 +146,26 @@
 			var n_o_spe_char=0;
 			var n_o_dig=0;
 			var point=0;
+		/**
+			if(username.length < 6)
+				$('#add_user_msg').html("<center><font color=red>Must enter a longer username</font></center>");
+			else if(text.length < 6)
+				$('#add_user_msg').html("<center><font color=red>Must enter a longer password</font></center>");
+			else if(username.length < 6 && text.length >= 6)
+				$('#add_user_msg').html("<center><font color=red>Must enter a longer username</font></center>");
+			else if(username.length >= 6 && text.length < 6)
+				$('#add_user_msg').html("<center><font color=red>Must enter a longer password</font></center>");
+			//if(username.length < 6 || text.length < 6)
+			//	$("#register").attr('disabled', 'disabled');
+			if(username.length >= 6 && text.length >= 6 && ("#toc").click) {
+				$("#register").attr('disabled', '');
+				$('#add_user_msg').html('');
+			}
+			else
+				$("#register").attr('disabled', 'disabled');
+			*/
+			
+			
 			for(i=0;i<text.length;i++){
 				if(97<=text.charCodeAt(i) && text.charCodeAt(i)<=122) {
 					point++;
@@ -233,21 +278,6 @@
         </tr>
        
         <tr>
-            <td align="right">Hobbies : </td>
-            <td align="left">
-            {html_checkboxes name=hobbies options=$sm.hobbies selected=$sm.res.hobbies}
-				 <span id="err6">{$sm.err.hobbies}</span>
-                        <br />
-            </td>
-        </tr>
-        <tr>
-            <td valign="top" align="right">Address : </td>
-            <td align="left">
-            	<textarea name="user[address]" id="address" cols="16" rows="3" >{$sm.res.address}</textarea>
-				 <span id="err7">{$sm.err.address}</span>
-            </td>
-        </tr>
-        <tr>
             <td align="right">Date of Birth : </td>
             <td align="left">
             {if $sm.res.dob}
@@ -259,9 +289,13 @@
 				 <span id="err8">{$sm.err.dob}</span>
             </td>
         </tr>
+		<tr>
+			<td align="right"><a href="##LBL_SITE_URL##templates/default/user/termsandconditions.html" target="_blank">Terms and Conditions</a>
+			<input type="checkbox" name="toc" id="toc" value="0" onclick="validateCheck();"/></td>
+		</tr>
         <tr>
         	<td>&nbsp;</td>
-            <td><input type="submit" value="{if $sm.flag}Update{else}Register{/if}" class="btn" /></td>
+            <td><input type="submit" id = "register" disabled = '' 	value="{if $sm.flag}Update{else}Register{/if}" class="btn" /></td>
         </tr>
     </table>
 </form>

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-20 05:42:05
+<?php /* Smarty version 2.6.7, created on 2012-04-09 03:08:56
          compiled from common/header.tpl.html */ ?>
 
-<!-- Template: common/header.tpl.html Start 20/01/2012 05:42:05 --> 
+<!-- Template: common/header.tpl.html Start 09/04/2012 03:08:56 --> 
  <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
@@ -52,8 +52,9 @@
 		<a href="javascript:void(0);" onclick="get_random_meme();"><img src="http://localhost/templates/images/random.png"style="margin:-2px;"></a>
 		<?php else: ?>
 		<a href="javascript:void(0);" onclick="alert('you need to be logged in');"><img src="http://localhost/templates/images/random.png"style="margin:-2px;"></a>
-	    <?php endif; ?>	
+	    <?php endif; ?>
 		<a href="http://localhost/achievements/whatisMemeja"><img src="http://localhost/templates/images/help.png"style="margin:-2px;"></a>
+		<!--<a href="http://localhost/leaderboard/leaderboard">Leaderboard</a> -->
 		<img src="http://localhost/templates/images/searchend.png"style="margin:-2px;position:absolute;left:375px;z-index:99;" onclick="submit();">
 		<div style="position:absolute; top:8px; left:385px;z-index:100;">
 		<form id ="searches">

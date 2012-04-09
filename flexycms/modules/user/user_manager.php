@@ -120,14 +120,16 @@ class user_manager extends mod_manager {
 ##################################################
 ##################### SET LOGIN ##################
 ##################################################
-	function _set_login($name="",$pass="") {
-		if($name && $pass) {
-			$uname = strtolower($name);
-			$pwd = $pass;
-		}else {
-			$uname = strtolower($this->_input['username']);
-			$pwd = $this->_input['password'];
-		}
+    function _set_login($name="",$pass="")
+    {
+        if($name && $pass) {
+            $uname = strtolower($name);
+            $pwd = $pass;
+        }
+        else {
+            $uname = strtolower($this->_input['username']);
+            $pwd = $this->_input['password'];
+        }
 		/*if($uname == 'afixi' &&  $pwd == "memeja"){
 			$_SESSION['id_user'] = 99;
 			$_SESSION['username'] = "developer";
@@ -136,50 +138,54 @@ class user_manager extends mod_manager {
 			$_SESSION['raise_message']['global'] = "Successfully logged in";
 			redirect(LBL_ADMIN_SITE_URL);
 		}*/
-		$rem = $this->_input['rem'];
-		$admin_url =  $this->_input['admin_st'];
-		if (empty($uname)||empty($pwd)){
-			$_SESSION['raise_message']['global']=  "<center>". "Please enter a username  & password";
-			if($admin_url) {
-				redirect(LBL_ADMIN_SITE_URL);
-			}else {
-				redirect(LBL_SITE_URL);
-			}
-		}
+        $rem = $this->_input['rem'];
+        $admin_url =  $this->_input['admin_st'];
+        if (empty($uname)||empty($pwd)){
+            $_SESSION['raise_message']['global']=  "<center>". "Please enter a username  & password";
+            if($admin_url) {
+                redirect(LBL_ADMIN_SITE_URL);
+            }
+            else {
+                redirect(LBL_SITE_URL);
+            }
+        }
 
-		$logincount=$_SESSION['login_count'];
-		$result= $this->check_login($uname);
-		if($result !=0){
-			if(($uname==$result['email'] || $uname==$result['username']) && $pwd==$result['password']) {
-				if($result['random_num']=='0') {
-					if($result['flag']==1) {
-					    if($result['user_status']==1){
-						$arr['id_user']=$result['id_user'];
-						$arr['email']=$result['email'];
-						$arr['ip']=$_SERVER['REMOTE_ADDR'];
-						$id=$this->obj_user->insert_all("login",$arr,1,'date_login');
+        $logincount=$_SESSION['login_count'];
+        $result= $this->check_login($uname);
+        if($result !=0)
+        {
+            //if(($uname==$result['email'] || $uname==$result['username']) && $pwd==$result['password'])
+            if((strcasecmp($uname,$result['email'])==0 || strcasecmp($uname,$result['username'])==0) && $pwd==$result['password'])
+            {
+                if($result['random_num']=='0') {
+                    if($result['flag']==1) {
+                        if($result['user_status']==1){
+                            $arr['id_user']=$result['id_user'];
+                            $arr['email']=$result['email'];
+                            $arr['ip']=$_SERVER['REMOTE_ADDR'];
+                            $id=$this->obj_user->insert_all("login",$arr,1,'date_login');
 
-						$user_arr['no_of_logs'] = "no_of_logs+1";
-						$sql_login=$this->obj_user->update_this("user",$user_arr," id_user=".$result['id_user'],1);
+                            $user_arr['no_of_logs'] = "no_of_logs+1";
+                            $sql_login=$this->obj_user->update_this("user",$user_arr," id_user=".$result['id_user'],1);
 
-						$info = array('autologin' => 1,'id_user' => $result['id_user'],
-							'username' => $result['username'],
-							'email' => $result['email'],
-							'password' => $result['password']);
+                            $info = array('autologin' => 1,'id_user' => $result['id_user'],
+                                'username' => $result['username'],
+                                'email' => $result['email'],
+                                'password' => $result['password']);
 							
-						if($rem){
-							$this->set_auto_login($info);
-						}
+                            if($rem){
+                                $this->set_auto_login($info);
+                            }
 						
-						if($result['id_admin'] == $result['id_user']) {
-							$_SESSION['admin']=isset($this->_input['admin'])?$this->_input['admin']:1;
-							if($_SESSION['admin']==1){
-								$_SESSION['id_admin'] = $result['id_user'];
-							}
-						}
+                            if($result['id_admin'] == $result['id_user']) {
+                                $_SESSION['admin']=isset($this->_input['admin'])?$this->_input['admin']:1;
+                                if($_SESSION['admin']==1){
+                                    $_SESSION['id_admin'] = $result['id_user'];
+                                }
+                            }
 						
-						$dconf=array_flip($GLOBALS['conf']['USER_TYPE']);
-						if($result['email'] == "developer") {
+                            $dconf=array_flip($GLOBALS['conf']['USER_TYPE']);
+                            if($result['email'] == "developer") {
 							$_SESSION['id_developer'] = $result['id_user'];
 							$_SESSION['id_admin'] = $result['id_user'];
 							$_SESSION['username'] = "developer";
@@ -187,100 +193,109 @@ class user_manager extends mod_manager {
 							$_SESSION['raise_message']['global'] = "Successfully logged in";
 							redirect(LBL_ADMIN_SITE_URL);
 
-						}
+                            }
 						
-						if($result['toc']=='0'){
-						    $_SESSION['toc']='0';
-						}
+                            if($result['toc']=='0'){
+                                $_SESSION['toc']='0';
+                            }
 
-						$_SESSION['fname']=$result['fname'];
-						$_SESSION['lname']=$result['lname'];
-						$_SESSION['email'] = $result['email'];
-						$_SESSION['username'] = $result['username'];
+                            $_SESSION['fname']=$result['fname'];
+                            $_SESSION['lname']=$result['lname'];
+                            $_SESSION['email'] = $result['email'];
+                            $_SESSION['username'] = $result['username'];
 						
-						if ($result['fb_pic_normal']) {
-							$_SESSION['fb_pic_normal'] = $result['fb_pic_normal'];
-						} else {
-							$_SESSION['avatar'] = $result['avatar'] ? $result['avatar']:($result['gender']=='M'?'memeja_male.png':'memeja_female.png');
-						}
+                            if ($result['fb_pic_normal']) {
+                                $_SESSION['fb_pic_normal'] = $result['fb_pic_normal'];
+                            }
+                            else {
+                                $_SESSION['avatar'] = $result['avatar'] ? $result['avatar']:($result['gender']=='M'?'memeja_male.png':'memeja_female.png');
+                            }
 						
-						$_SESSION['friends']=$result['memeje_friends'];
-						$_SESSION['gender']=$result['gender'];
-						$_SESSION['id_user'] = $result['id_user'];
+                            $_SESSION['friends']=$result['memeje_friends'];
+                            $_SESSION['gender']=$result['gender'];
+                            $_SESSION['id_user'] = $result['id_user'];
 						
-						// User Level
-						$_SESSION['exp_point'] = $result['exp_point'];
-						$_SESSION['level'] = $result['level'];
-						$previous_level = $result['level'] - 1;
+                            // User Level
+                            $_SESSION['exp_point'] = $result['exp_point'];
+                            $_SESSION['level'] = $result['level'];
+                            $previous_level = $result['level'] - 1;
 						
-						// Find XP to Next Level
-						$sql_xp = "SELECT * FROM ".TABLE_PREFIX."level WHERE level=".$_SESSION['level'];
-						$sql_previous_xp = "SELECT * FROM ".TABLE_PREFIX."level WHERE level=".$previous_level;
+                            // Find XP to Next Level
+                            $sql_xp = "SELECT * FROM ".TABLE_PREFIX."level WHERE level=".$_SESSION['level'];
+                            $sql_previous_xp = "SELECT * FROM ".TABLE_PREFIX."level WHERE level=".$previous_level;
 						
-	   					$results_xp = getsingleindexrow($sql_xp);
-	   					$results_previous_xp = getsingleindexrow($sql_previous_xp);
+                            $results_xp = getsingleindexrow($sql_xp);
+                            $results_previous_xp = getsingleindexrow($sql_previous_xp);
 	   					
-	   					//var_dump((int)$results_xp['xp_to_level']);
-	   					//exit();
-						$_SESSION['xp_to_level'] = (int)$results_xp['xp_to_level'];
-						$_SESSION['previous_xp_to_level'] = (int)$results_previous_xp['xp_to_level'];
+                            //var_dump((int)$results_xp['xp_to_level']);
+                            //exit();
+                            $_SESSION['xp_to_level'] = (int)$results_xp['xp_to_level'];
+                            $_SESSION['previous_xp_to_level'] = (int)$results_previous_xp['xp_to_level'];
 						
-						// Experience Points Rank
-						$sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE id_user=".$_SESSION['id_user'];
-						$res_ach=getsingleindexrow($sql_ach);
+                            // Experience Points Rank
+                            $sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE id_user=".$_SESSION['id_user'];
+                            $res_ach=getsingleindexrow($sql_ach);
 						
-						$_SESSION['exp_rank']=$res_ach['POSITION'];
-						$one_less_rank = $_SESSION['exp_rank'] + 1;
+                            $_SESSION['exp_rank']=$res_ach['POSITION'];
+                            $one_less_rank = $_SESSION['exp_rank'] + 1;
 						
-						var_dump($one_less_rank);
-						$sql_one_less="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE POSITION=".$one_less_rank;
-						$res_one_less=getsingleindexrow($sql_one_less);
+                            var_dump($one_less_rank);
+                            $sql_one_less="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE POSITION=".$one_less_rank;
+                            $res_one_less=getsingleindexrow($sql_one_less);
 						
-						$_SESSION['one_less_rank'] = $one_less_rank;
-						$_SESSION['one_less_exp'] = $res_one_less['exp_point'];
-						$_SESSION['one_less_user'] = $res_one_less['username'];
+                            $_SESSION['one_less_rank'] = $one_less_rank;
+                            $_SESSION['one_less_exp'] = $res_one_less['exp_point'];
+                            $_SESSION['one_less_user'] = $res_one_less['username'];
 						
-						// End
-						$_SESSION['raise_message']['global'] = "Successfully logged in";
-						$_SESSION['login_count']=0;
-						$page['id_user']=$result['id_user'];
-						//$id_page=$this->obj_user->insert_all("page",$page);
-						$_SESSION['id_page']='';//$id_page;
-						if($_SESSION['id_admin']){
-							redirect(LBL_ADMIN_SITE_URL);
-						}else{
-							redirect(LBL_SITE_URL."meme/meme_list/cat/main_feed");
-						}
-					    }else{
-						$_SESSION['raise_message']['global'] = "You are blocked.<br>Please contact admin.";
-						redirect(LBL_SITE_URL);
-					    }
+                            // End
+                            $_SESSION['raise_message']['global'] = "Successfully logged in";
+                            $_SESSION['login_count']=0;
+                            $page['id_user']=$result['id_user'];
+                            //$id_page=$this->obj_user->insert_all("page",$page);
+                            $_SESSION['id_page']='';//$id_page;
+                            if($_SESSION['id_admin']){
+                                redirect(LBL_ADMIN_SITE_URL);
+                            }else{
+                                redirect(LBL_SITE_URL."meme/meme_list/cat/main_feed");
+                            }
+                        }
+                        else
+                        {
+                            $_SESSION['raise_message']['global'] = "You are blocked.<br>Please contact admin.";
+                            redirect(LBL_SITE_URL);
+                        }
 
-					}else {
-						$_SESSION['raise_message']['global'] = "You are blocked.<br>Please contact admin.";
-						redirect(LBL_SITE_URL);
-					}
-				}else {
-					$_SESSION['raise_message']['global'] = "Please confirm your email.";
-					redirect(LBL_SITE_URL);
-				}
-			}else {
-				$_SESSION['raise_message']['global'] = "Incorrect user and pass. Please try again.";
-				if($admin_url) {
-					redirect(LBL_ADMIN_SITE_URL);
-				}else {
-					redirect(LBL_SITE_URL);
-				}
-			}
-		}else {
-			$_SESSION['raise_message']['global'] = "Incorrect user and pass. Please try again.";
-			if($admin_url) {
-				redirect(LBL_ADMIN_SITE_URL);
-			}else {
-				redirect(LBL_SITE_URL);
-			}
-		}
-	}
+                    }
+                    else {
+                        $_SESSION['raise_message']['global'] = "You are blocked.<br>Please contact admin.";
+                        redirect(LBL_SITE_URL);
+                    }
+                }
+                else {
+                    $_SESSION['raise_message']['global'] = "Please confirm your email.";
+                    redirect(LBL_SITE_URL);
+                }
+            }
+            else {
+                $_SESSION['raise_message']['global'] = "Incorrect username and password. Please try again.";
+                if($admin_url) {
+                    redirect(LBL_ADMIN_SITE_URL);
+                }
+                else {
+                    redirect(LBL_SITE_URL);
+                }
+            }
+        }
+        else {
+            $_SESSION['raise_message']['global'] = "Login error - Incorrect user and password. Please try again.";
+            if($admin_url) {
+                redirect(LBL_ADMIN_SITE_URL);
+            }
+            else {
+                redirect(LBL_SITE_URL);
+            }
+        }
+    }
 ##################################################
 ##################### REMEMBER ME ################
 ##################################################
@@ -445,95 +460,91 @@ class user_manager extends mod_manager {
 ##################################################
 #################### INSERT DETAILS ##############
 ##################################################
-	function _insert() {
-		$confirm_code= md5(uniqid(rand(),true));
-		$user = $this->_input['user'];
-		$name=$user['username'];
-		$user['username'] = strtolower($user['username']);
-		$user['gender'] = $this->_input['gender'];
-		if($this->_input['hobbies']) {
-			$hobbies=implode(',',$this->_input['hobbies']);
-			$user['hobbies']=$hobbies;
-		}
-		$conf_pass=$this->_input['cpwd'];
-		$user['dob']=$this->_input['dob_Year']."-".$this->_input['dob_Month']."-".$this->_input['dob_Day'];
-		$sql =get_search_sql("user","username='".$name."'");
-		$result=getrows($sql,$err);
-		if(count($result)>0){
-				$this->_output['hobbies']=$GLOBALS['conf']['HOBBIES'];
-				$this->_output['gender']=$GLOBALS['conf']['GENDER'];
-				$user['hobbies']=$this->_input['hobbies'];
-				$this->_output['res'] = $user;
-				$this->_output['d_name'] = "This username already exist.";
-				$this->_output['conf_pwd'] = $conf_pass;
-				$this->_output['tpl'] = "user/register";
+    function _insert() {
+        $confirm_code = md5(uniqid(rand(), true));
+        $user = $this->_input['user'];
+        $name = $user['username'];
+        $user['username'] = strtolower($user['username']);
+        $user['gender'] = $this->_input['gender'];
+        if ($this->_input['hobbies']) {
+            $hobbies = implode(',', $this->_input['hobbies']);
+            $user['hobbies'] = $hobbies;
+        }
+        $conf_pass = $this->_input['cpwd'];
+        $user['dob'] = $this->_input['dob_Year'] . "-" . $this->_input['dob_Month'] . "-" . $this->_input['dob_Day'];
+        $sql = get_search_sql("user", "username='" . $name . "'");
+        $result = getrows($sql, $err);
+        if (count($result) > 0) {
+            $this->_output['hobbies'] = $GLOBALS['conf']['HOBBIES'];
+            $this->_output['gender'] = $GLOBALS['conf']['GENDER'];
+            $user['hobbies'] = $this->_input['hobbies'];
+            $this->_output['res'] = $user;
+            $this->_output['d_name'] = "This username already exist.";
+            $this->_output['conf_pwd'] = $conf_pass;
+            $this->_output['tpl'] = "user/register";
+        } else {
+            $user['random_num'] = $confirm_code;
+            // DSC
+            // $user['random_num']='0';
+            $err = $this->obj_user->validate($user, $conf_pass);
+            if ($err) {
+                $this->_output['err'] = $err;
+                $this->_output['hobbies'] = $GLOBALS['conf']['HOBBIES'];
+                $this->_output['gender'] = $GLOBALS['conf']['GENDER'];
+                $user['hobbies'] = $this->_input['hobbies'];
+                $this->_output['res'] = $user;
+                $this->_output['conf_pwd'] = $conf_pass;
+                $this->_output['tpl'] = "user/register";
+            } else {
 
-		}else {
-			$user['random_num']=$confirm_code;
-			$err = $this->obj_user->validate($user,$conf_pass);
-			if($err){
-				$this->_output['err'] = $err;
-				$this->_output['hobbies']=$GLOBALS['conf']['HOBBIES'];
-				$this->_output['gender']=$GLOBALS['conf']['GENDER'];
-				$user['hobbies']=$this->_input['hobbies'];
-				$this->_output['res'] = $user;
-				$this->_output['conf_pwd'] = $conf_pass;
-				$this->_output['tpl'] = "user/register";
-			}else{
+                if ($GLOBALS['conf']['FORGOT_PASSWORD']['password_type'] == 1) {
+                    $user['password'] = md5($user['password']);
+                }
+                $val = $this->obj_user->insert($user);
+                if ($val) {
+                    $_SESSION['raise_message']['global'] = "You have successfully registered. Check your email to activate your account!";
 
-				if($GLOBALS['conf']['FORGOT_PASSWORD']['password_type']==1){
-					$user['password'] = md5($user['password']);
-				}
-				$val = $this->obj_user->insert($user);
-				if($val){
-					$_SESSION['raise_message']['global'] = "You have successfully registered.Check Your mail for login into your account.";
+                    $id = $val;
+                    $activate_link = LBL_SITE_URL . "user/check_user/confirm/" . $confirm_code;
 
-					$id=$val;
-					$activate_link=LBL_SITE_URL."user/check_user/confirm/".$confirm_code;
+                    //$from = $GLOBALS['conf']['SITE_ADMIN']['email'];
+                    //$to = $user['email'];
+                    //$subject = "Account Activation";
+                    //$info['activate_link'] = $activate_link;
+                    //$info['first_name']=$user['first_name'];
+                    //$tpl= "user/account_activate";
+                    //$this->smarty->assign('sm',$info);
+                    //$body = $this->smarty->fetch($this->smarty->add_theme_to_template($tpl));
+                    //$msg=sendmail($to,$subject,$body,$from);// also u can pass  $cc,$bcc
 
-					//$from = $GLOBALS['conf']['SITE_ADMIN']['email'];
-					//$to = $user['email'];
-					//$subject = "Account Activation";
+                    $from = $GLOBALS['conf']['SITE_ADMIN']['email'];
+                    $_output['http_host'] = $_SERVER['HTTP_HOST'];
+                    $headers = "MIME-Version: 1.0\r\n";
+                    $headers .= "From: $from\r\n";
+                    $headers .= "Content-type: text/html";
+                    $_output['MAIL'][0]['header'] = $headers;
+                    $_output['MAIL'][0]['to'] = $user['email'];
+                    $_output['MAIL'][0]['subject'] = "Account Activation";
+                    $_output['activate_link'] = $activate_link;
+                    $_output['first_name'] = $user['first_name'];
 
-					//$info['activate_link'] = $activate_link;
-					//$info['first_name']=$user['first_name'];
-
-
-					//$tpl= "user/account_activate";
-
-					//$this->smarty->assign('sm',$info);
-					//$body = $this->smarty->fetch($this->smarty->add_theme_to_template($tpl));
-
-					//$msg=sendmail($to,$subject,$body,$from);// also u can pass  $cc,$bcc
-
-					    $from = $GLOBALS['conf']['SITE_ADMIN']['email'];
-					    $_output['http_host']    = $_SERVER['HTTP_HOST'];
-					    $headers = "MIME-Version: 1.0\r\n";
-					    $headers .= "From: $from\r\n";
-					    $headers .= "Content-type: text/html";
-					    $_output['MAIL'][0]['header'] = $headers;
-					    $_output['MAIL'][0]['to'] = $user['email'];
-					    $_output['MAIL'][0]['subject'] = "Account Activation";
-					    $_output['activate_link'] = $activate_link;
-					    $_output['first_name'] = $user['first_name'];
-
-					    $_output['MAIL'][0]['tpl'] = "user/account_activate";
-					    $_output['MAIL'][0]['sm'] = $_output;
-					    $this->smarty->assign('sm',$_output['MAIL'][0]['sm']);
-					    $mail_message = $this->smarty->fetch($this->smarty->add_theme_to_template($_output['MAIL'][0]['tpl']));
-					    $r=sendmail($_output['MAIL'][0]['to'],$_output['MAIL'][0]['subject'],$mail_message,$GLOBALS['conf']['SITE_ADMIN']['email']);
+                    $_output['MAIL'][0]['tpl'] = "user/account_activate";
+                    $_output['MAIL'][0]['sm'] = $_output;
+                    $this->smarty->assign('sm', $_output['MAIL'][0]['sm']);
+                    $mail_message = $this->smarty->fetch($this->smarty->add_theme_to_template($_output['MAIL'][0]['tpl']));
+					logToFile("Sending mail to:".$_output['MAIL'][0]['to']);
+                    $r = sendmail($_output['MAIL'][0]['to'], $_output['MAIL'][0]['subject'], $mail_message, $GLOBALS['conf']['SITE_ADMIN']['email']);
 
 
 
-					redirect(LBL_SITE_URL);
-				}else {
-					$_SESSION['raise_message']['global'] = "Registration failed";
-					redirect(LBL_SITE_URL);
-				}
-			}
-		}
-
-	}
+                    redirect(LBL_SITE_URL);
+                } else {
+                    $_SESSION['raise_message']['global'] = "Registration failed";
+                    redirect(LBL_SITE_URL);
+                }
+            }
+        }
+    }
 
 ##################################################
 ################## CONFIRM USER  #################
@@ -560,24 +571,38 @@ class user_manager extends mod_manager {
 ##################################################
 ################## CHECK_USER()###################
 ##################################################
-	function _check_user(){
+    function _check_user(){
+      $link = mysql_connect(DB_HOST,DB_USER,DB_PASS,DB_DB) or die("Could not connect to db: ".mysql_error());
+      mysql_select_db ("demos4clients_com_db") or die("Could not select database : ".mysql_error());
+      $sql = get_search_sql("user","random_num='".$this->_input['confirm']."' LIMIT 1");
 
-		$sql = get_search_sql("user","random_num='".$this->_input['confirm']."' LIMIT 1");
+      $query = mysql_query($sql);
+      if($query == FALSE) {
+          die("Could not send a mysql query to db. Error: ".mysql_error());
+      }
+      $res  = mysql_fetch_assoc($query);
+      if($res == FALSE) {
+          logToFile("Could not fetch a result row as an associative array. Error: ".mysql_error());
+      }
 
-		$query = mysql_query($sql);
-		$res  = mysql_fetch_assoc($query);
+      if($res){
+          $sql_update="UPDATE ".TABLE_PREFIX."user SET random_num='0', user_status='1', toc='1', flag='1' WHERE id_user='".$res['id_user']."'";
+          execute($sql_update,$err);
+          $name = $res['username'];
+          $pass = $res['password'];
+          $this->_set_login($name,$pass);
 
-		if($res){
-			$sql_update="UPDATE ".TABLE_PREFIX."user SET random_num='0' WHERE id_user=".$res['id_user'];
-			execute($sql_update,$err);
-			$name = $res['username'];
-			$pass = $res['password'];
-			$this->_set_login($name,$pass);
-		}else{
-			$_SESSION['raise_message']['global']=  "You have already confirmed.<br/>You can login now.";
-			redirect(LBL_SITE_URL);
-		}
-	}
+          $_SESSION['toc'] = '1';
+          $_SESSION['username'] = $name;
+          ##### Redirect user out #####
+          // Insert static landing page here? //
+          redirect(LBL_SITE_URL . "meme/meme_list/cat/main_feed");
+      }
+      else{
+          $_SESSION['raise_message']['global']=  "You have already confirmed.<br/>You can login now.";
+          redirect(LBL_SITE_URL);
+      }
+    }
 ##################################################
 #################### FORGOT PASSWORD #############
 ##################################################
@@ -1344,45 +1369,43 @@ class user_manager extends mod_manager {
 	    }
 	}
 		
-	function _create_username(){
-		global $link;
-		
-		if (isset($this->_input['username'])){
-			// Setup query to see if username is already taken
-			$myusername = mysql_real_escape_string(stripslashes($this->_input['username']));
+    function _create_username() {
+        global $link;
 
-			$check_table="SELECT COUNT(*) FROM ".TABLE_PREFIX."user WHERE username='".$myusername."'";
-			//var_dump($check_table);			
-			$result = mysqli_query($link, $check_table) or die(mysqli_error());
-			
-			$row = mysqli_fetch_assoc($result); 
-			
-			//var_dump($row['COUNT(*)']);
-		
-			
-			if ( $row['COUNT(*)'] != 0 ) {
-		    	echo 'This user already exists';
-			} else {
-				##### Updating database with new username #####
-				//var_dump($myusername);
-				$sql="UPDATE ".TABLE_PREFIX."user SET username= '".$myusername."' WHERE id_user=".$_SESSION['id_user'];
-				$result = mysqli_query($link,$sql);
-				//var_dump($result);
-				
-				##### Update TOC session to 1, username selected ######
-				$sql="UPDATE ".TABLE_PREFIX."user SET toc=1 WHERE id_user=".$_SESSION['id_user'];
-				mysqli_query($link,$sql);
-				$_SESSION['toc']='1';
-				$_SESSION['username']=$myusername;
-				
-				##### Redirect user out #####
-				// Insert static landing page here? //
-				redirect(LBL_SITE_URL."meme/meme_list/cat/main_feed");
-			}
-		} 
-	}
-	
-	#### Deprecated with Submit and other functions
+        if (isset($this->_input['username'])) {
+            // Setup query to see if username is already taken
+            $myusername = mysql_real_escape_string(stripslashes($this->_input['username']));
+
+            $check_table = "SELECT COUNT(*) FROM " . TABLE_PREFIX . "user WHERE username='" . $myusername . "'";
+            //var_dump($check_table);
+            $result = mysqli_query($link, $check_table) or die(mysqli_error());
+
+            $row = mysqli_fetch_assoc($result);
+
+            //var_dump($row['COUNT(*)']);
+
+            if ($row['COUNT(*)'] != 0) {
+                echo 'This user already exists';
+            } else {
+                ##### Updating database with new username #####
+                //var_dump($myusername);
+                $sql = "UPDATE " . TABLE_PREFIX . "user SET username= '" . $myusername . "' WHERE id_user=" . $_SESSION['id_user'];
+                $result = mysqli_query($link, $sql);
+                //var_dump($result);
+                ##### Update TOC session to 1, username selected ######
+                $sql = "UPDATE " . TABLE_PREFIX . "user SET toc=1 WHERE id_user=" . $_SESSION['id_user'];
+                mysqli_query($link, $sql);
+                $_SESSION['toc'] = '1';
+                $_SESSION['username'] = $myusername;
+
+                ##### Redirect user out #####
+                // Insert static landing page here? //
+                redirect(LBL_SITE_URL . "meme/meme_list/cat/main_feed");
+            }
+        }
+    }
+
+    #### Deprecated with Submit and other functions
 	function _first_login_msg(){
 	    global $link;
 	    if($this->_input['pass']=='pass'){

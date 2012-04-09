@@ -43,7 +43,7 @@
         //see_user(0);
     }
     function unhover_user(id_user) {
-        see_user(0);
+		setInterval("see_user(0)", 7000);
     }
     
     function see_user(id_user){    	
@@ -119,7 +119,7 @@
 
 			// Grab the id_meme's honor
 
-			console.log("Currently on..."+feed_id_array[i]);
+			//console.log("Currently on..."+feed_id_array[i]);
 			var meme_id = feed_id_array[i]
 			var meme_tot_honor = $("#aggr"+meme_id).html();	
 
@@ -156,7 +156,7 @@
 
 			if (live_feed_data_tot.trim() == "no change" || live_feed_data_tot.trim() == "no meme" || live_feed_data_tot.trim() == "no response"){
 
-				console.log("(no update) Request data is "+live_feed_data_tot.trim());
+				//console.log("(no update) Request data is "+live_feed_data_tot.trim());
 
 			} else {
 
@@ -209,8 +209,11 @@
 
 </script>
 {/literal}
+
 <div class="live_feed0" style="display: none; padding-top:20px;"></div>
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
+
+
 <div>
 
 	    <div  id="meme{$x.id_meme}" class="meme">
@@ -235,13 +238,18 @@
                         <!--
 				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');" onmouseout ="$('#right_pan').removeAttr('mouseover');">
                         -->
-				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');" onmouseout ="unhover_user('{$sm.uinfo[$x.id_user].id_user}');">
+				<span id="user_avatar_thumb" style="vertical-align: top; padding-left: 10px; float: left;" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');"onmouseout ="unhover_user('{$sm.uinfo[$x.id_user].id_user}');">
+
+				<!--
+				onmouseout ="unhover_user('{$sm.uinfo[$x.id_user].id_user}');"
+				-->
+
 				{if $sm.uinfo[$x.id_user].fb_pic_square}
 					<img src="{$sm.uinfo[$x.id_user].fb_pic_square}" class="avatar_thumb_fb" >
 				{elseif $sm.uinfo[$x.id_user].avatar}
 					<img src="##LBL_SITE_URL##image/thumb/avatar/{$sm.uinfo[$x.id_user].avatar}" class="avatar_thumb_regular"/>
 				{else}
-				{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}
+				{if $smarty.session.gender=='M'} {else} {/if}
 				{/if}			
 			</span>
 			<span id="meme_title">{$x.title|capitalize}</span></a>
@@ -253,6 +261,11 @@
 			<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:17px;"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');" onmouseout ="$('#right_pan').removeAttr('mouseover');">{$sm.uinfo[$x.id_user].username} </a></span>
                             -->
 			<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:17px;"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');" onmouseout ="unhover_user('{$sm.uinfo[$x.id_user].id_user}');">{$sm.uinfo[$x.id_user].username} </a></span>
+
+<!--
+onmouseout ="unhover_user('{$sm.uinfo[$x.id_user].id_user}');"
+-->			
+
 			<span style="font-size:13px; color:#ACACA5;"> L{$sm.uinfo[$x.id_user].level}</span></div>
 
 <!-- Caption shows below image 
@@ -337,6 +350,15 @@
 			</span><br/>
 			<span ><a href="http://twitter.com/share" class="twitter-share-button" data-url="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje"  >Tweet</a></span> 
 
+-->
+<!--
+{if $smarty.session.id_user == $x.id_user}
+<a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /> </a>
+</span><br/>
+<span class="fb_btn"><fb:like href="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like></span>
+</span><br/>
+<span ><a href="http://twitter.com/share" class="twitter-share-button" data-url="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje"  >Tweet</a></span>
+{/if}
 -->
 	    </div>
 	    <div id="send_reply{$x.id_meme}" style="width:75%; margin:-20px 0 30px 120px; display: none;"></div>

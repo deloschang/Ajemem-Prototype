@@ -4,7 +4,6 @@
    This is called in addmeme.tpl which contains the html/php for this stuff
    I am commenting every little thing...
 */
-
 var putCanvasCounter = 0;
 
 // Location of all the images for the tools, very easy to change the look of the toolbox
@@ -28,7 +27,7 @@ var newtextid = 1;
 // Keeps track of if there should be gridlines or not.
 var grid = true;
 
-// Stacks which hold the actions done 
+// Stacks which hold the actions done
 var img_rotate = [];
 var undoPoints = [];
 var undoheight = [];
@@ -70,7 +69,7 @@ var settings = {
 /*
    This is a Jquery Plugin that Pati's Team wrote for our Memeja Editor.
    This Plugin detects the user's window settings and adjusts the above (var settings) accordingly.
-   It also detects events and changes setting accordingly.   
+   It also detects events and changes setting accordingly.
 */
 (function ($) {
     //Code below just provides several options for the settings of this plugin.
@@ -96,7 +95,7 @@ var settings = {
 
 		// Variables for canvas start and end
         var startX, startY, endX, endY;
-        
+
         $(window).resize(function() {
             setleftmargin();
         });
@@ -128,7 +127,7 @@ var settings = {
             $( "#vs" ).slider( "option", "value", mysize );
         }
 
-		/* 
+		/*
 		   Checks to see if HTML 5 is enabled, else it gives an error message.
 		   Main bulk of the plugin
 		*/
@@ -152,13 +151,17 @@ var settings = {
 			cntx = mycanvas.getContext("2d");
 			mycanvas.width = settings.width;
 			mycanvas.height = settings.height;
+
+			//mycanvas.width = 500;
+			//mycanvas.height = 500;
+
 			mycanvas.style.border = settings.borderWidth + 'px solid ' + settings.borderColor;
 //            mycanvas.style.background-color = settings.backgroundColor;
             mycanvas.style.cursor = 'pointer';
 
-			// If the User doesn't have a preloaded image saved in workspace it creates a new Image for them 
+			// If the User doesn't have a preloaded image saved in workspace it creates a new Image for them
 
-            /*  Get's kind of annoying, let's try (ctrl+s) 
+            /*  Get's kind of annoying, let's try (ctrl+s)
 			if (preloadImage!="") {
                 var oImg = new Image();
                 oImg.onload = function() {
@@ -189,7 +192,7 @@ var settings = {
 				// Why the restore is necessary - http://html5.litten.com/understanding-save-and-restore-for-the-canvas-context/
                 cntx.restore();
             });
-        
+
 
 			// Detects if the user is within the canvas area
             $(this).mouseenter(function () {
@@ -248,8 +251,8 @@ var settings = {
                     'id': "dummy"
                 }).css({
                     border:'none',
-                    position:"absolute", 
-                    top:x.top+"px", 
+                    position:"absolute",
+                    top:x.top+"px",
                     left:x.left+"px",
 					cursor:'url('+cc+'), none'
                 });
@@ -294,10 +297,10 @@ var settings = {
                                 break;
 							case 'ftriangle':
                                 drawTri(dummyc, startX,startY,endX,endY,true);
-                                break;	
+                                break;
 							case 'triangle':
                                 drawTri(dummyc, startX, startY, endX, endY, false);
-                                break;	
+                                break;
                             case 'square':
                                 dummyc.strokeRect(startX,startY,endX-startX,endY-startY);
                                 break;
@@ -370,7 +373,7 @@ var settings = {
                     y: Math.sin(randomAngle) * randomRadius
                 };
             }
-            
+
             $('input[class=ls]').blur(function () {
                 settings.lineWidth = $(this).val();
             });
@@ -388,7 +391,7 @@ var settings = {
                 if(grid==true)
 				{
 				  grid = false;
-				/*  
+				/*
 				  if(undoPoints.length==0){
 				   clear_canvas();
 				  }
@@ -420,7 +423,7 @@ var settings = {
                 saveRestorePoint();
                 removeRow();
             });
-            
+
             $('img[class=undo]').click(function () {
                 undoimage();
             });
@@ -498,19 +501,19 @@ var settings = {
 
 // Removes the Meme Imagebox that is specified
 function removeMemeid(e, text) {
+	putCanvasCounter--;
     if (text && typeof text == 'string') {
         id = $(e).parents("div.newtextdd").attr("id");;
     } else {
 		id = $(e).parents("div.newdd").attr("id");
-		putCanvasCounter--;
 		//alert(putCanvasCounter);
 	}
     $("#"+id).remove();
-	
+
 }
 
 // Clones the Meme Face and it's settings
-function cloneme(e) 
+function cloneme(e)
 {
 	putCanvasCounter++;
 	//alert(putCanvasCounter);
@@ -532,7 +535,7 @@ function cloneme(e)
 	   memeTop+=100;
     if(newimgid % 6 == 4)
 	   memeTop+=125;
-    if(newimgid % 6 == 5) 
+    if(newimgid % 6 == 5)
 	   memeTop+=150;
 	$(newele).css("top", memeTop+"px");
 
@@ -545,7 +548,7 @@ function cloneme(e)
     img_rotate[newimgid]['y'] = img_rotate[mydivid]['y'];
     img_rotate[newimgid]['src'] = img_rotate[mydivid]['src'];
     ++newimgid;
-    $(newele).draggable({                    
+    $(newele).draggable({
         cursor:'pointer',
         containment:"#mycid"
     }).resizable({
@@ -568,7 +571,21 @@ function cloneme(e)
 }
 
 
-function change_attr_of_text(textId) {
+function change_attr_of_text(textId, top, left)
+{
+    if(!top)
+    {
+        top = 200;
+    }
+    if(!left)
+    {
+        left = 500;
+    }
+    else if(left > 750)
+    {
+        left = 350;
+    }
+
     $("#"+textId).mouseover(function(e){
         $("#"+textId+" > div.memejeTextContainer").show();
     });
@@ -576,20 +593,61 @@ function change_attr_of_text(textId) {
         if (e.target.tagName!="SELECT")
             $("#"+textId+" > div.memejeTextContainer").hide();
     });
-    $("#"+textId).draggable({                    
+    $("#"+textId).draggable({
         cursor:'pointer',
         containment:"#mycid"
     }).css({
         'position':'absolute',
-        'top':200,
-        'left':500,
+        'top':top,
+        'left':left,
         'z-index':1
     });
 }
 
 // Places the text into the canvas at the appropriate spot.
+function getLines(ctx,phrase,maxPxLength) {
+    var wa=phrase.split(" "), phraseArray=[], measureofword=0, measureofphrase=0, phaseArrayIndex=0, startofline=true;
+    for(var i=0; i<wa.length; i++) {
+       if(startofline == true) {
+           measureofword = ctx.measureText(wa[i]).width;
+           if(measureofword > maxPxLength) {
+              phraseArray[phaseArrayIndex] = wa[i];
+              phaseArrayIndex += 1;
+              continue;
+           }
+       }
+       else {
+           measureofword = ctx.measureText(" " + wa[i]).width;
+       }
+       if(measureofphrase + measureofword < maxPxLength)
+       {
+           if(measureofphrase == 0)
+           {
+               phraseArray[phaseArrayIndex] = wa[i];
+      //console.log("Measure of word \"" + wa[i] + "\" is:" + measureofword + "; Add to phraseArray");
+           }
+           else {
+               startofline = false;
+               phraseArray[phaseArrayIndex] = phraseArray[phaseArrayIndex] + " " + wa[i];
+      //console.log("Measure of phrase \"" + phraseArray[phaseArrayIndex] + "\" is:" + measureofphrase + "; Add to phraseArray");
+           }
+           measureofphrase += measureofword;
+       }
+       else {
+     //console.log("Measure of \"" + phraseArray[phaseArrayIndex] + "\" is:" + measureofphrase);
+           if(i > 0) { i -= 1; }
+
+           phaseArrayIndex += 1;
+           startofline = true;
+           measureofphrase = 0;
+       }
+    }
+    return phraseArray;
+}
+// Places the text into the canvas at the appropriate spot.
 function puttextincanvas(e){
-    saveRestorePoint();
+	putCanvasCounter--;
+	saveRestorePoint();
 	lastimgdrawn = 1;
     id = $(e).parents("div.newtextdd").attr("id");
 
@@ -598,6 +656,7 @@ function puttextincanvas(e){
     var boldness=textBoxAttr.css('font-weight')=='700' || textBoxAttr.css('font-weight')=='bold'?"bold ":"";
     var italic=textBoxAttr.css('font-style')=='italic'?"italic ":"";
     var textFont=textBoxAttr.css('font-family');
+	var textAreaWidth = parseInt(textBoxAttr.css('width').replace("px",""));
 
     cntx.textBaseline="top";
     cntx.fillStyle=textBoxAttr.css('color');
@@ -612,9 +671,18 @@ function puttextincanvas(e){
         curPos.top+=2;
         curPos.left-=1;
     }
+    //var mylines = getLines(cntx, textBoxAttrSplit[0], textAreaWidth);
+    //console.log("MYLINES = "+mylines.join( "; "));
     for(var cnt=0;cnt<textBoxAttrSplit.length;cnt++){
-        cntx.fillText(textBoxAttrSplit[cnt],curPos.left,(curPos.top+(cnt*textBoxAttrSizePx)));
+        var mylines = getLines(cntx, textBoxAttrSplit[cnt], textAreaWidth);
+        for(var cnt2=0;cnt2<mylines.length;cnt2++){
+            cntx.fillText(mylines[cnt2],curPos.left,(curPos.top+((cnt+cnt2)*textBoxAttrSizePx)));
+        }
     }
+    //for(var cnt=0;cnt<textBoxAttrSplit.length;cnt++){
+    //console.log("puttextincanvas: cnt["+cnt+"] = "+textBoxAttrSplit[cnt]+"; textBoxAttrSizePx="+textBoxAttrSizePx + ";textFont="+textFont+";textAreaWidth="+textAreaWidth);
+    //    cntx.fillText(textBoxAttrSplit[cnt],curPos.left,(curPos.top+(cnt*textBoxAttrSizePx)), (mycanvas.width-curPos.left));
+    //}
     $("#"+id).remove();
 }
 function changeFontFamily(e){
@@ -625,15 +693,27 @@ function changeFontFamily(e){
 }
 function clonetext(e) {
     mydivid = $(e).parents("div.newtextdd").attr("id");
+
+    var origOffset = $("#"+mydivid).offset();
+    console.log("ORIG-OFFSET: top:"+origOffset.top+"; left:"+origOffset.left+"; C-WIDTH"+mycanvas.width+";C-HEIGHT:"+mycanvas.height);
+
     var newele = $("#"+mydivid).clone(false,false);
     $(newele).children('textarea').attr('id', "TextBoxtext"+newtextid).val($("#TextBox"+mydivid).val());
     $(newele).attr("id","text"+newtextid);
     $(newele).find('.ui-resizable-handle').remove();
     newele.appendTo("body");
-    change_attr_of_text("text"+newtextid);
+
+    change_attr_of_text("text"+newtextid, origOffset.top+30, origOffset.left+30);
+
     newtextid++;
     return false;
 }
+
+function getLeftOffsetForTextId(newtextid)
+{
+
+}
+
 function changeTextSize(e,increment){
     id = $(e).parents("div.newtextdd").attr("id");
     var textAreaControl=$("#TextBox"+id);
@@ -697,9 +777,31 @@ function rright() {
         memeTop = window.pageYOffset;
     }*/
 function create_Textbox(){
+	putCanvasCounter++;
     var textId="text"+newtextid;
+
+	// Makes sure the textbox is near the top of the canvas
+    var textTop = 250;
+    var textLeft = 500;
+
+    if(window.pageYOffset > 250) {
+        textTop = window.pageYOffset;
+    }
+
+    // Makes sure the next textbox isn't overlapping the previous one
+    if(newtextid % 3 == 1) 
+		textTop += 50;
+    if(newtextid % 3 == 2) 
+		textTop += 75;
+    if(newtextid % 6 == 3) 
+		textTop += 100;
+    if(newtextid % 6 == 4) 
+		textTop += 125;
+    if(newtextid % 6 == 5) 
+		textTop += 150;
+
     newtextid++;
-    //var html = "<div class='newtextdd' id='"+textId+"'  style='position:relative;padding-top:14px; top:'"+memeTop+"px;left:150px;'>"+
+
     var html = "<div class='newtextdd' id='"+textId+"'  style='position:relative;padding-top:14px;left:150px;'>"+
     "<div class='memejeTextContainer'>"+
     "<img title='Remove' src='"+SITE_IMAGE_PATH+"delete.png' onclick='removeMemeid(this,\"text\")' />"+
@@ -709,26 +811,25 @@ function create_Textbox(){
     "<img title='Toggle Bold' src='"+SITE_IMAGE_PATH+"bold.png' onclick='toggleTextBoldStyle(this)' />"+
     "<img title='Toggle Italic' src='"+SITE_IMAGE_PATH+"italic.png' onclick='toggleTextItalicStyle(this)' />"+
     "<img title='Clone text' src='"+SITE_IMAGE_PATH+"shape_clone.png' onclick='clonetext(this)' />" ;
-    html += "<select onchange='changeFontFamily(this)'><option>Arial</option><option>Courier</option><option>Helvetica</option><option>sans-serif</option><option>Georgia1f</option>"+
+    html += "<select onchange='changeFontFamily(this)'><option>Arial</option><option>Courier</option><option>Helvetica</option><option>sans-serif</option><option>Georgia1f</option><option>Impact</option>"+
     "</select><img title='Drag this' src='"+SITE_IMAGE_PATH+"hand.png' />";
 
-    html += "</div><textarea style='font-size: 12px;width:228px;' spellcheck='false' onfocus='title_focus()' onblur='title_blur()' id='TextBox"+textId+"'>This is a test Line.</textarea>"+
-    "</div>";
-    
+    html += "</div><textarea style='font-size: 12px;width:228px;' spellcheck='true' onfocus='title_focus()' onblur='title_blur()' id='TextBox"+textId+"'>Enter text here</textarea>"+
+	"</div>";
+
     $("body").prepend(html)
-    change_attr_of_text(textId);
+    change_attr_of_text(textId, textTop);
 }
 
-function create_Imagebox(clicked_img) 
+function create_Imagebox(clicked_img)
 {
-
     // newimgid corresponds to the newest meme face we clicked
 	img_rotate[newimgid] = new Array();
     img_rotate[newimgid]['rotate'] = 0;
     img_rotate[newimgid]['x'] = 1;
     img_rotate[newimgid]['y'] = 1;
     img_rotate[newimgid]['src'] = clicked_img;
-    
+
     var img=new Image();
     img.src=clicked_img;
     var str=clicked_img;
@@ -751,7 +852,7 @@ function create_Imagebox(clicked_img)
     if(window.pageYOffset > 250) {
         memeTop = window.pageYOffset;
     }
-    
+
     // Makes sure the next selected meme face isn't overlapping another one
     if(newimgid % 3 == 1)
 	   memeTop+=50;
@@ -761,12 +862,12 @@ function create_Imagebox(clicked_img)
 	   memeTop+=100;
     if(newimgid % 6 == 4)
 	   memeTop+=125;
-    if(newimgid % 6 == 5) 
+    if(newimgid % 6 == 5)
 	   memeTop+=150;
 
 	// This is the image box created
     var div = $("<div id='"+newimgid+"' class='newdd'>").html("<img id='image"+newimgid+"' src='"+clicked_img+"' />").css({
-        
+
 		// Sets the position at which you see the image box
 	    'top': memeTop+"px",
         'left':leftpos+"px",
@@ -774,7 +875,7 @@ function create_Imagebox(clicked_img)
         'width':img.width+"px",
         'z-index':1
     }).hover(
-        function () 
+        function ()
 		{
             var mydivid = this.id;
             showdebug("Orig:"+mydivid);
@@ -800,8 +901,8 @@ function create_Imagebox(clicked_img)
             });
             rleft();
             rright();
-        }, 
-        function () 
+        },
+        function ()
 		{
             $(this).find("span:last").remove();
             $('.memejeImageContainer').each(function()
@@ -816,7 +917,7 @@ function create_Imagebox(clicked_img)
 		//	alert(putCanvasCounter);
     $("body").prepend(div);
     $(".newdd").draggable(
-	{                    
+	{
         cursor:'pointer',
         containment:"#mycid"
     });
@@ -831,9 +932,9 @@ function create_Imagebox(clicked_img)
     ++newimgid;
 }
 
-function putincanvas(e) 
+function putincanvas(e)
 {
-
+//var is_macromeme_checked = document.getElementById('macromeme_checkbox').checked;
     saveRestorePoint();
 	lastimgdrawn = 1;
     mydivid = $(e).parents("div.newdd").attr("id");
@@ -845,12 +946,24 @@ function putincanvas(e)
     var imgPosition=$("#"+mydivid).offset();
     imgPosition.left = Math.round(imgPosition.left - canvasPos.left + 1);
     imgPosition.top = Math.round(imgPosition.top - canvasPos.top + 1);
+
+    var imgW=$(oImg).width();
+    var imgH=$(oImg).height();
+/**    if(is_macromeme_checked == true) {
+  console.log("MACROMEME CHECKBOX: imgW:"+ imgW + "; imgH:"+imgH);
+        imgPosition.left = 0;
+        imgPosition.top = 0;
+        mycanvas.width = imgW;
+        mycanvas.height = imgH;
+        //$('#fontsize').val(40);
+    }
+	*/
     if ($.browser.mozilla) {
         imgPosition.left-=1;
         //imgPosition.top-=1;
     }
-    var imgW=$(oImg).width();
-    var imgH=$(oImg).height();
+    //var imgW=$(oImg).width();
+    //var imgH=$(oImg).height();
     if (img_rotate[mydivid]['rotate']!=0) {
         cntx.translate(imgPosition.left+(imgW/2),imgPosition.top+(imgH/2));
         cntx.rotate(img_rotate[mydivid]['rotate']*(Math.PI/180));
@@ -879,12 +992,12 @@ function putincanvas(e)
 	//alert(putCanvasCounter);
 	images[mydivid]
     cntx.restore();
-	
+
 }
 function submit_memeje() {
 
-        /*  Commented out the watermark 
-		
+        /*  Commented out the watermark
+
 		var wm=$("#memejimark");
         var paddings=3;
         var x=mycanvas.width-wm.width()-paddings;
@@ -892,26 +1005,27 @@ function submit_memeje() {
         cntx.drawImage(wm[0],x,y,wm.width(),wm.height()); */
 		saveindisk(1);
 }
-function saveindisk(csave) 
+function saveindisk(csave)
 {
 	var canvasData = getcanvasimage("mycid");
+ console.log("SAVEINDISK: " + JSON.stringify(canvasData));
     var url = SAVE_IMG_PATH+'/id_user/'+$("#iduser").val(); // extra added
     $.ajax(
 	{
         type: 'POST',
         url: url,
-        contentType: 'application/upload;', 
+        contentType: 'application/upload;',
         cache: false,
         data: canvasData,
         success: function(html)
 		{
             if (csave==1 && putCanvasCounter==0)
 			{
-                document.ques_ans.submit();                
+                document.ques_ans.submit();
             }
 			else
 			{
-				alert("Please set all images to the canvas");
+				alert("Please set all images/textboxes to the canvas (second button above the image)");
 			}
         },
         error: function(xhr, errorMessage, thrownError) {
@@ -992,7 +1106,7 @@ function removeRow(){
         var imgSrc = getcanvasimage("mycid");
         undoPanel.push(imgSrc);
         undoPanelHeight.push(mycanvas.height);
-        undoPanelWidth.push(mycanvas.width);		
+        undoPanelWidth.push(mycanvas.width);
 		settings.panel-=1;
 		resizeCanvasSize();
 	}
@@ -1074,7 +1188,7 @@ function undoToBottom(){
 
 function redoToTop(){
   redoPoints.pop();
-  redoheight.pop();			  
+  redoheight.pop();
   redowidth.pop();
  while(redoPoints.length>0){
   redoimage();
@@ -1088,16 +1202,16 @@ function undoimage(){
         var imgSrc = getcanvasimage("mycid");
         redoPoints.push(imgSrc);
         oh = undoheight.pop();
-        ow = undowidth.pop(); 
+        ow = undowidth.pop();
         redoheight.push(mycanvas.height);
         redowidth.push(mycanvas.width);
         mycanvas.height = oh;
         mycanvas.width = ow;
-		// For IE pops last image off of stack and sets it to current canvas 
+		// For IE pops last image off of stack and sets it to current canvas
 		if ( $.browser.msie ) {
 			mycanvas.innerHTML = undoPoints.pop();
 		} else {
-		    // All other browsers 
+		    // All other browsers
 			var oImg = new Image();
 			oImg.onload = function() {
 				cntx.drawImage(oImg,0,0);
@@ -1111,7 +1225,7 @@ function undoimage(){
 // This function allows for drawing ovals/circles filled or empty
 function drawOvals(context, centX, centY, width, height, fill)
         {
-            context.beginPath();  
+            context.beginPath();
             context.moveTo(centX, centY - height/2);
             context.bezierCurveTo(
                 centX + width/2, centY - height/2,
@@ -1125,7 +1239,7 @@ function drawOvals(context, centX, centY, width, height, fill)
             {
                 context.fill();
             }
-            else 
+            else
 			{
                 context.stroke();
             }
@@ -1137,11 +1251,11 @@ function drawTri(context,startX, startY, endX, endY, fill)
 {
 // Right Triangle
 context.beginPath();
-context.moveTo(startX,startY);	
+context.moveTo(startX,startY);
 context.lineTo(endX,endY);
 if(startX>endX){
 context.lineTo(endX-Math.abs(startX-endX), startY);
-}else{	
+}else{
 context.lineTo(endX+Math.abs(startX-endX), startY);
 }
 context.lineTo(startX, startY);
@@ -1150,8 +1264,8 @@ context.lineTo(startX, startY);
 Equilateral
 var b = Math.abs(startY-endY);
 context.beginPath();
-context.moveTo(startX,startY);	
-context.lineTo(startX+ Math.round(Math.sqrt((b*b)/3)), endY);	
+context.moveTo(startX,startY);
+context.lineTo(startX+ Math.round(Math.sqrt((b*b)/3)), endY);
 context.lineTo(startX- Math.round(Math.sqrt((b*b)/3)), endY);
 context.lineTo(startX, startY);
 */
@@ -1159,7 +1273,7 @@ if(fill !== undefined && fill === true)
             {
                 context.fill();
             }
-            else 
+            else
 			{
                 context.stroke();
             }
@@ -1197,7 +1311,7 @@ while(pixelStack.length)
   newPos = pixelStack.pop();
   x = newPos[0];
   y = newPos[1];
-  
+
   pixelPos = (y*canvasWidth + x) * 4;
   while(y-- >= drawingBoundTop && matchStartColor(pixelPos))
   {
@@ -1247,11 +1361,11 @@ while(pixelStack.length)
 }
 context.putImageData(colorLayer, 0, 0);
 }
-  
+
 function matchStartColor(pixelPos)
 {
-  var r = colorLayer.data[pixelPos];	
-  var g = colorLayer.data[pixelPos+1];	
+  var r = colorLayer.data[pixelPos];
+  var g = colorLayer.data[pixelPos+1];
   var b = colorLayer.data[pixelPos+2];
 
   return (r == startR && g == startG && b == startB);

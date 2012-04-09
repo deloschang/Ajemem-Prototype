@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-01-20 05:42:05
+<?php /* Smarty version 2.6.7, created on 2012-04-09 03:08:56
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -13,6 +13,7 @@
 	var logged_in="';  echo $_SESSION['id_user'];  echo '";
     
     var first_id,after_5sec=0,backup_rand_id_memes=\'\',backup_last_id_meme=\'\';
+    var current_page = 1;
     $(document).ready(function(){	
     
 			$(\'.meme_gallery\').fancybox({
@@ -69,13 +70,35 @@
 		      	 }
 			 }
 	 	 });
-	 	
+        /***/
+         $("#next_page").click(function () {
+             console.log("NEXT PRESSED!!!");
+             current_page += 1;
+             var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
+            var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
+            if ($("#last_id_meme_cur_page").val() != "") {
+              }
+             console.log("LAST MEME ID ON CURRENT PAGE: " + $("#last_id_meme_cur_page").val());
+             //if ($("#last_id_meme_cur_page").val() != "") {
+             //    console.log("YAHOOOOOOO");
+             // }
+          });
+         $("#prev_page").click(function () {
+             console.log("PREV PRESSED!!!");
+             if(current_page > 1){ current_page = current_page - 1;  }
+             //if(current_page > 1){
+             //    current_page -= 1;
+             // }
+          });
+         /***/
+
      });
     
     function loadmorememe(cat,last_id,srch_uname,srch_title){
 	$("#loadingmeme_img").show();
 	var ext = "';  echo $_REQUEST['ext'];  echo '";
 	var url = "http://localhost/meme/meme_list";
+        console.log("LAST ID: " + last_id);
 	$.post(url,{cat:cat,ce:0,last_id:last_id,muname:srch_uname,mtitle:srch_title,ext:ext }, function(res){
 	    $("#loadingmeme_img").hide();
 	    if(res!="")
@@ -159,9 +182,10 @@
     function get_all_replies(id){
         
 	var url = "http://localhost/meme/get_all_replies";
-	$.post(url,{id:id,ce:0 }, function(res){
+	$.post(url,{id:id,ce:0 }, function(res)
+	{
 	    $("#send_reply"+id).html(res);
-	    
+			    
 	    /* If caption is up, swap */
 	    if(!$("#add_caption"+id).is(":hidden"))
 			$(\'#add_caption\'+id).slideToggle(\'slow\');
@@ -361,7 +385,7 @@
 		position:relative;
 		bottom:6px;
 		padding-left:10px; 
-		font-size: 19px; 
+		font-size: 18.5px; 
 		font-weight: bold;
 	 }
 	
@@ -416,7 +440,14 @@
 	.borderyes	{
 		border:#000000 solid 1px;
 	 }
-	
+
+    #next_page {
+        float:right
+     }
+    #prev_page {
+        float:right
+     }
+
 </style>
 '; ?>
 
@@ -424,6 +455,15 @@
 <input type="hidden" name="rand_id_memes" id="rand_id_memes" value=''/>
 <input type="hidden" name="chk_me" id="chk_me" value=''/>
 <input type="hidden" name="last_id_meme" id="last_id_meme" value=''/>
+
+<!--
+<button type="button" id="likebutton">Like</button>
+<button type="button" id="likebutton">Dislike</button>
+
+<button type="button" name="next_page" id="next_page">>> Next</button>
+<button type="button" name="prev_page" id="prev_page"><< Prev</button>
+-->
+
 <!--<?php if ($_SESSION['id_user']): ?>-->
 <!--<div class="fltlft" id="tab">-->
 <!--	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>unselected<?php else: ?>selected<?php endif; ?>">-->
@@ -438,16 +478,12 @@
 <!--<?php endif; ?>-->
 <br><br><br>
 <div id="all_memes">
-    <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
-	<?php $_smarty_tpl_vars = $this->_tpl_vars;
+    <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmorememe.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-    <?php else: ?>
-	<input type="hidden" id="msgexist" value="1">
-	No meme found.
-    <?php endif; ?>
+    
 </div>
 <div id="loadingmeme_img" style="display:none;">
     <img src="http://localhost/templates/images/loading.gif" />

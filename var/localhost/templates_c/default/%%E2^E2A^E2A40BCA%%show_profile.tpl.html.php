@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2011-10-24 08:59:08
+<?php /* Smarty version 2.6.7, created on 2012-04-01 01:08:58
          compiled from leaderboard/show_profile.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format', 'leaderboard/show_profile.tpl.html', 47, false),)), $this); ?>
@@ -87,8 +87,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
 	    </table>
         </div>
 </div>
-<?php if ($this->_tpl_vars['sm']['nofrndbtn'] != 1): ?>
-<?php echo '
+<?php if ($this->_tpl_vars['sm']['nofrndbtn'] != 1):  echo '
 <script type="text/javascript">
    
     function add_friend(id_user,req_status,id_frnd_request){
@@ -113,4 +112,4 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'date_format
 </script>
 '; ?>
 
-<?php endif; ?>
+<?php endif; ?>

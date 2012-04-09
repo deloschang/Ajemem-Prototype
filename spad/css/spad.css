@@ -110,8 +110,8 @@ input[type='button']	{
 }
 .toolbar,.postop0,#main{
 	position:absolute;
-	top:0px!important;
-	left:-80px;
+	top:-17px!important;
+	left:-180px;
 	width:60px;
 	line-height:24px;
 	text-align:center;
@@ -125,7 +125,7 @@ input[type='button']	{
 	z-index:9999999;
 }
 html > body .toolbar {
-	*left:0px;
+	*left:-180px;
 }
 .postop0{
 	position:fixed;
@@ -144,7 +144,7 @@ span.icon_div,.memejeTextContainer   {
     -o-border-radius:6px;
     background:#CCC;
     padding:1px;
-     position:absolute;
+    position:absolute;
 }
 .memejeTextContainer{
     width:230px;

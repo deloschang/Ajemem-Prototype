@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-22 13:18:28
+<?php /* Smarty version 2.6.7, created on 2012-04-01 08:49:20
          compiled from user/login_form.tpl.html */ ?>
 
-<!-- Template: user/login_form.tpl.html Start 22/12/2011 13:18:28 --> 
+<!-- Template: user/login_form.tpl.html Start 01/04/2012 08:49:20 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -32,17 +32,18 @@
 </script>
 '; ?>
 
+<!-- css in mainpg.css -->
 <div id="logintable">
-<!--<div id="new_user">
+<div id="new_user">
 <h1>New Users</h1>
-<div style="height:182px"><p>Text to be put here...</p></div>
-<div class="create_account"><a href="http://memeja.com/user/register">Create An Account</a></div>
+<div style="height:25px"><p>Please create a Memeja account</p></div>
+<div class="create_account"><a href="http://www.memeja.com/user/register">Create An Account</a></div>
 </div>
--->
+
 <div id="register_user">
 <h1>Registered Users</h1>
 <p>If you have an account with us, please log in.</p>
-<form id="loginform" name="loginform" action="http://memeja.com/user/set_login" method="post" onsubmit="return validate_login()">
+<form id="loginform" name="loginform" action="http://www.memeja.com/user/set_login" method="post" onsubmit="return validate_login()">
 <table class="userinfo" width="100%">
 	<tr>
 	  <td colspan="2">Username :</td>
@@ -70,14 +71,20 @@
      	<td colspan="2"></td>
     </tr>-->
     <tr>
-    	<td valign="middle"><a href="http://memeja.com/user/forgot_pwd">Forgot Your Password?</a></td>
+    	<td valign="middle"><a href="http://www.memeja.com/user/forgot_pwd">Forgot Your Password?</a></td>
         <td valign="middle" class="tr"><input type="submit" value="Login" class="inputbtn"/></td>
     </tr>
     <tr>
         <td colspan="2">
-	    <fb:login-button perms="email,user_checkins,publish_stream">
-		Login with Facebook
-	    </fb:login-button>
+        
+	    <div class="fb-login-button" scope="
+	    	email,
+	    	publish_stream
+	    	,user_education_history
+	    			    	">
+        Login with Facebook
+      </div>
+      
 	</td>
     </tr>
 </table>
@@ -85,15 +92,5 @@
 </div>
 </div>
 <div class="clear"></div>
-<div id="fb-root"></div>
-<?php echo '
-<script type="text/javascript">
-    FB.Event.subscribe(\'auth.login\', function (response) {
-          window.location = "http://memeja.com/user/facebook_info";
-     });
-
-</script>
-'; ?>
-
 
 <!-- Template: user/login_form.tpl.html End --> 
