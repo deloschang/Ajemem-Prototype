@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-10 00:03:26
+<?php /* Smarty version 2.6.7, created on 2012-04-10 00:15:23
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -395,6 +395,28 @@
 		 });
 
 	 });
+	
+	function get_random_meme(){
+		//$(window).scrollBy(0,5);
+		//$(window).scroll(function(e){
+		//	$(\'#xpbar\').css({
+		//		position:\'fixed\',
+		//		top:\'0px!important!\',
+		//	 });
+		// }
+		
+		var url = "http://localhost/meme/meme_list/cat/rand";
+		$.fancybox.showLoading();
+		$.post(url,{ce:0 },function(res){
+			$("#randpgexist").val(1);
+			$.fancybox.open(res,{
+				afterClose : function (){
+					$("#randpgexist").val(0);
+				 }
+			 });
+			$.fancybox.update();
+		 });
+     }
 	
 	function submit() {
 		$(\'#searches\').submit();

@@ -395,6 +395,28 @@
 
 	});
 	
+	function get_random_meme(){
+		//$(window).scrollBy(0,5);
+		//$(window).scroll(function(e){
+		//	$('#xpbar').css({
+		//		position:'fixed',
+		//		top:'0px!important!',
+		//	});
+		//}
+		
+		var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
+		$.fancybox.showLoading();
+		$.post(url,{ce:0},function(res){
+			$("#randpgexist").val(1);
+			$.fancybox.open(res,{
+				afterClose : function (){
+					$("#randpgexist").val(0);
+				}
+			});
+			$.fancybox.update();
+		});
+    }
+	
 	function submit() {
 		$('#searches').submit();
 	}
