@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-09 03:49:22
+<?php /* Smarty version 2.6.7, created on 2012-04-09 05:32:21
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -626,7 +626,9 @@ unset($_smarty_tpl_vars);
 			
 <!-- This is the main container which contains the Live Feed/Image Editor -->				
 			    <div id="content">
-					<div>hello</div>
+					<?php if (! $_SESSION['id_user']): ?>
+						<div>Hey, you! Everybody's got a story to tell. Whether it's ______ or _____, your story will find a home at Memeja</div>
+					<?php endif; ?>
 		<!-- Content in middle of page (Live Feed/Editor) -->
 				<?php if (! $_SESSION['id_user'] && ! $_REQUEST['page']):  $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
@@ -641,7 +643,7 @@ unset($_smarty_tpl_vars);
 
 				
 	
-	</div>
+				</div>
 	
 	<!-- Sidebar_B is for Ads/Search_Bar/Displays the Other Profile Info -->				
 			<?php if ($_REQUEST['choice'] != 'addMeme'): ?>

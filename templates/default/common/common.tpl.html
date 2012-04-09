@@ -613,14 +613,16 @@
 			
 <!-- This is the main container which contains the Live Feed/Image Editor -->				
 			    <div id="content">
-					<div>hello</div>
+					{if !$smarty.session.id_user}
+						<div>Hey, you! Everybody's got a story to tell. Whether it's ______ or _____, your story will find a home at Memeja</div>
+					{/if}
 		<!-- Content in middle of page (Live Feed/Editor) -->
 				{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if}
 				{include file=$content}
 
 				
 	
-	</div>
+				</div>
 	
 	<!-- Sidebar_B is for Ads/Search_Bar/Displays the Other Profile Info -->				
 			{if $smarty.request.choice !='addMeme'}
