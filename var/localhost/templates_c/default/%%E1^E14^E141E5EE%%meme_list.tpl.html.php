@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-09 23:30:48
+<?php /* Smarty version 2.6.7, created on 2012-04-10 00:03:26
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -44,6 +44,12 @@
 				closeBtn  : false,
 				arrows    : true,
 				nextClick : true,
+				
+				keys: {
+					next: [13, 32, 34, 39], // enter, space, page down, down arrow
+					prev: [8, 33, 37], // backspace, page up, up arrow
+					close: [27] // escape key
+				 },
 				
 				helpers : { 
 					thumbs : {
