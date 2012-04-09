@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-09 21:35:17
+<?php /* Smarty version 2.6.7, created on 2012-04-09 21:48:49
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 216, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 270, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 09/04/2012 21:35:17 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 09/04/2012 21:48:49 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
@@ -342,21 +342,7 @@ onmouseout ="unhover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tp
 			    onclick="set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ','D','<?php echo $this->_tpl_vars['x']['id_user']; ?>
 ');"><span style="font-size:15px;">Dishonor</span></a>
-			    <span> 
-			    &emsp;
-				<?php if ($this->_tpl_vars['x']['tot_honour'] > 1): ?>
-					<img src="http://localhost/image/orig/premade_images/EWBTE.png" title="Good job! The 2nd Honor!" style="width:17px; height:17px"/>
-				<?php endif; ?>
-				<?php if ($this->_tpl_vars['x']['tot_honour'] > 2): ?>
-					<img src="http://localhost/image/orig/premade_images/ExcitedTroll.png" title="Excited Troll is excited! 2 Honors!" style="width:17px; height:17px"/>
-				<?php endif; ?>
-				<?php if ($this->_tpl_vars['x']['tot_honour'] > 3): ?>
-					<img src="http://localhost/image/orig/premade_images/LOL.png" title="L0L! 3 Honors!" style="width:17px; height:17px"/>
-				<?php endif; ?>
-				<?php if ($this->_tpl_vars['x']['tot_honour'] > 4): ?>
-					<img src="http://localhost/image/orig/premade_images/Obama Not Bad.png" title="Obama says this meme is NOT BAD!" style="width:17px; height:17px"/>
-				<?php endif; ?>
-				</span>
+			    
 
 			    </div>
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-09 21:35:08
+<?php /* Smarty version 2.6.7, created on 2012-04-09 21:48:49
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -114,6 +114,7 @@
 				$.fancybox(res,{
 			    	closeBtn:false,
 			    	closeClick:false,
+					modal:true,
 			    	helpers : {
 						overlay : {
 							opacity : 0.8

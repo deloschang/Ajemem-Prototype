@@ -1,30 +1,17 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-03-28 21:12:22
-         compiled from user/register.tpl.html */ ?>
-<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 231, false),array('function', 'html_checkboxes', 'user/register.tpl.html', 240, false),array('function', 'html_select_date', 'user/register.tpl.html', 260, false),)), $this); ?>
-
-<!-- Template: user/register.tpl.html Start 28/03/2012 21:12:22 --> 
- <?php echo '
-	<script type="text/javascript">
-=======
-<?php /* Smarty version 2.6.7, created on 2012-04-09 03:08:47
+<?php /* Smarty version 2.6.7, created on 2012-04-09 21:40:12
          compiled from user/register.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 276, false),array('function', 'html_select_date', 'user/register.tpl.html', 290, false),)), $this); ?>
 
-<!-- Template: user/register.tpl.html Start 09/04/2012 03:08:47 --> 
+<!-- Template: user/register.tpl.html Start 09/04/2012 21:40:12 --> 
  <?php echo '
 	<script type="text/javascript" src="colorBckg.js"></script>
 	<script type="text/javascript">
 
->>>>>>> test2
 		$.validator.addMethod("username", function(value) {
 			return /^[a-z0-9]([a-z0-9_.]+)?$/i.test(value);
 			 },\'<br>Please enter a valid username\'
 		);
-<<<<<<< HEAD
-=======
 		function validateCheck() {
 		if ($("#toc").click) 
 		{
@@ -34,7 +21,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 			$("#register").attr(\'disabled\', \'disabled\');
 		 }
 	 }
->>>>>>> test2
 		function checkvalidate() {
 			var validator=$("#signupform").validate({
 			   	rules: {
@@ -67,12 +53,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 					"gender":{
 						required: true
 					 },
-<<<<<<< HEAD
-					"user[address]":{
-						required: true
-					 },
-=======
->>>>>>> test2
 					"dob_Month":{
 						required: true
 					 },
@@ -112,12 +92,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 					"gender" :{
 						required: flexymsg.required
 					 },
-<<<<<<< HEAD
-					"user[address]" :{
-						required: flexymsg.required
-					 },
-=======
->>>>>>> test2
 					"dob_Month" :{
 						required: flexymsg.required_dob
 					 },
@@ -137,10 +111,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 		 }
 		function show_username_exist() {
 			var username=document.getElementById(\'username\').value;
-<<<<<<< HEAD
-			var url="http://localhost/index.php";
-			$.post(url,{"page":"user","choice":"check_username",ce:0,"username":username },function(res){
-=======
 			var pass = document.getElementById(\'pwd\').value;
 			var url="http://localhost/index.php";
 		/**
@@ -162,27 +132,19 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 				$("#register").attr(\'disabled\', \'disabled\');
 			*/
 		$.post(url,{"page":"user","choice":"check_username",ce:0,"username":username },function(res){
->>>>>>> test2
 			
 				if(res!=0 && username!=""){
 					$(\'#add_user_msg\').html("<center><font color=red>This Username Already Exist.</font></center>");
 					$(\'#username\').val("");
 					return false;
 				  }else{
-<<<<<<< HEAD
-					$(\'#add_user_msg\').html(\'\');
-=======
 					//$(\'#add_user_msg\').html(\'\');
->>>>>>> test2
 					return true;
 				  }
 			 });
 		 }
 		function checkpassword() {
-<<<<<<< HEAD
-=======
 			
->>>>>>> test2
 			var text=document.getElementById(\'pwd\').value;
 			var i,s,color,width;
 			var n_o_small_char=0;
@@ -190,8 +152,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 			var n_o_spe_char=0;
 			var n_o_dig=0;
 			var point=0;
-<<<<<<< HEAD
-=======
 		/**
 			if(username.length < 6)
 				$(\'#add_user_msg\').html("<center><font color=red>Must enter a longer username</font></center>");
@@ -212,7 +172,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 			*/
 			
 			
->>>>>>> test2
 			for(i=0;i<text.length;i++){
 				if(97<=text.charCodeAt(i) && text.charCodeAt(i)<=122) {
 					point++;
@@ -339,28 +298,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
         </tr>
        
         <tr>
-<<<<<<< HEAD
-            <td align="right">Hobbies : </td>
-            <td align="left">
-            <?php echo smarty_function_html_checkboxes(array('name' => 'hobbies','options' => $this->_tpl_vars['sm']['hobbies'],'selected' => $this->_tpl_vars['sm']['res']['hobbies']), $this);?>
-
-				 <span id="err6"><?php echo $this->_tpl_vars['sm']['err']['hobbies']; ?>
-</span>
-                        <br />
-            </td>
-        </tr>
-        <tr>
-            <td valign="top" align="right">Address : </td>
-            <td align="left">
-            	<textarea name="user[address]" id="address" cols="16" rows="3" ><?php echo $this->_tpl_vars['sm']['res']['address']; ?>
-</textarea>
-				 <span id="err7"><?php echo $this->_tpl_vars['sm']['err']['address']; ?>
-</span>
-            </td>
-        </tr>
-        <tr>
-=======
->>>>>>> test2
             <td align="right">Date of Birth : </td>
             <td align="left">
             <?php if ($this->_tpl_vars['sm']['res']['dob']): ?>
@@ -374,11 +311,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 </span>
             </td>
         </tr>
-<<<<<<< HEAD
-        <tr>
-        	<td>&nbsp;</td>
-            <td><input type="submit" value="<?php if ($this->_tpl_vars['sm']['flag']): ?>Update<?php else: ?>Register<?php endif; ?>" class="btn" /></td>
-=======
 		<tr>
 			<td align="right"><a href="http://localhost/templates/default/user/termsandconditions.html" target="_blank">Terms and Conditions</a>
 			<input type="checkbox" name="toc" id="toc" value="0" onclick="validateCheck();"/></td>
@@ -386,7 +318,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
         <tr>
         	<td>&nbsp;</td>
             <td><input type="submit" id = "register" disabled = '' 	value="<?php if ($this->_tpl_vars['sm']['flag']): ?>Update<?php else: ?>Register<?php endif; ?>" class="btn" /></td>
->>>>>>> test2
         </tr>
     </table>
 </form>
