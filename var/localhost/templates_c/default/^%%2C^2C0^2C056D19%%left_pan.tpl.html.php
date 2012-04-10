@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-10 22:41:14
+<?php /* Smarty version 2.6.7, created on 2012-04-10 23:00:41
          compiled from user/left_pan.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 5, false),array('function', 'get_mod', 'user/left_pan.tpl.html', 52, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = '20a751e0b3370dbd231a9814f644b37d';  if ($_SESSION['id_user']): ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = '2c7e542b6417ea4469d5d9d3fe8fbe36';  if ($_SESSION['id_user']): ?>
 <table style="margin-top:0px; margin-left:5px;" >
 <tr>
 		<td><span style="font-weight:bold; font-size:28px; padding-top:5px;"><?php echo ((is_array($_tmp=$_SESSION['username'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
@@ -56,7 +56,7 @@ unset($_smarty_tpl_vars);
     <tr>
 		<td>
 		<div id="my_meme_list" style="margin-top:-60px;">
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:20a751e0b3370dbd231a9814f644b37d#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:20a751e0b3370dbd231a9814f644b37d#0}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:2c7e542b6417ea4469d5d9d3fe8fbe36#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:2c7e542b6417ea4469d5d9d3fe8fbe36#0}';}?>
 
 		</div>
 		</td>
@@ -64,7 +64,7 @@ unset($_smarty_tpl_vars);
 	<tr>
 		<td>
 		<div id="my_favorites" >
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:20a751e0b3370dbd231a9814f644b37d#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:20a751e0b3370dbd231a9814f644b37d#1}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:2c7e542b6417ea4469d5d9d3fe8fbe36#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:2c7e542b6417ea4469d5d9d3fe8fbe36#1}';}?>
 
 		</div>
 		<br><br> 
