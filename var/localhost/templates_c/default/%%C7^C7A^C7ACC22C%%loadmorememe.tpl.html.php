@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-10 05:44:38
+<?php /* Smarty version 2.6.7, created on 2012-04-10 22:08:18
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 216, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 270, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 215, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 269, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 10/04/2012 05:44:38 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 10/04/2012 22:08:18 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -212,7 +212,6 @@ if ($this->_foreach['cur_meme']['total'] > 0):
         $this->_foreach['cur_meme']['iteration']++;
 ?>
 <div>
-
 	    <div  id="meme<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " class="meme">
 

@@ -1,5 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-10 05:44:38
+<?php /* Smarty version 2.6.7, created on 2012-04-10 22:08:18
          compiled from meme/meme_list.tpl.html */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/meme_list.tpl.html', 430, false),)), $this); ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -427,8 +429,27 @@
 <!--</div>-->
 <!--<?php endif; ?>-->
 <br><br><br>
+
+<!-- Daily Message Added 4/10/12-->
+<?php if (! $_SESSION['id_user']): ?>
+			<div>
+			Hey, You. Everybody's got a story to share. Whether it's <a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/<?php echo $this->_tpl_vars['sm']['link_arr'][0]; ?>
+" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['msg_arr'][0])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+"><?php echo $this->_tpl_vars['sm']['msg_arr'][0]; ?>
+</a> or <a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/<?php echo $this->_tpl_vars['sm']['link_arr'][1]; ?>
+" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['msg_arr'][1])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+"><?php echo $this->_tpl_vars['sm']['msg_arr'][1]; ?>
+</a>, your story will find a home at Memeja.
+			</div>
+		<?php endif; ?>	
+	
+	
+<br><br>
+
+
 <div id="all_memes">
-    <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
+
+    <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmorememe.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
