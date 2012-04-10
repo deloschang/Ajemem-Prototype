@@ -1113,7 +1113,8 @@ class user_manager extends mod_manager {
 		$data = $this->_input;
 		
 		$sql="SELECT * FROM ".TABLE_PREFIX."user WHERE id_user=".$data['id_user']." LIMIT 1";
-	    $res=mysqli_fetch_assoc(mysqli_query($link,$sql));
+		$query=mysqli_query($link,$sql);
+	    $res=mysqli_fetch_assoc($query);
 	    
 	    $sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE id_user=".$data['id_user'];
 	    $res_ach=getsingleindexrow($sql_ach);
@@ -1126,10 +1127,10 @@ class user_manager extends mod_manager {
 	    $res_meme = mysqli_query($link,$sql);
 	    
 	    if($res_meme){
-		while($rec = mysqli_fetch_assoc($res_meme)){
-		    $id_memes.=$rec['id_meme'].",";
-		    $arr[] = $rec;
-		}
+			while($rec = mysqli_fetch_assoc($res_meme)){
+				$id_memes.=$rec['id_meme'].",";
+				$arr[] = $rec;
+			}
 		}
 	    
 	    if(!$res){
@@ -1144,10 +1145,10 @@ class user_manager extends mod_manager {
 	    $sql_favorite =get_search_sql("meme",$cond_favorite ,"*");
 	    $res_favorite  = mysqli_query($link,$sql_favorite );
 	    if($res_favorite ){
-		while($rec_favorite  = mysqli_fetch_assoc($res_favorite )){
-		    $id_memes_favorite .=$rec_favorite ['id_meme'].",";
-		    $arr_favorite[] = $rec_favorite;
-		}
+			while($rec_favorite  = mysqli_fetch_assoc($res_favorite )){
+				$id_memes_favorite .=$rec_favorite ['id_meme'].",";
+				$arr_favorite[] = $rec_favorite;
+			}
 		}
 
 #	    $id = ($id_meme!='')?$id_meme:$data['id'];
@@ -1197,7 +1198,7 @@ class user_manager extends mod_manager {
 #			return $arr;
 
 #	    }else{
-
+		
 		$this->_output['tpl']="manage/right_pan_user";
 
 		

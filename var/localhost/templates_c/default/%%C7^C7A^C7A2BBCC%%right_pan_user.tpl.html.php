@@ -1,8 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-10 23:00:38
+<?php /* Smarty version 2.6.7, created on 2012-04-10 23:38:55
          compiled from manage/right_pan_user.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/right_pan_user.tpl.html', 5, false),)), $this); ?>
-<?php if ($_SESSION['id_user']): ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/right_pan_user.tpl.html', 4, false),)), $this); ?>
 <table style="margin-top:0px; margin-left:5px;" >
 <tr>
 		<td><span style="font-weight:bold; font-size:28px; padding-top:5px;"><?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['username'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
@@ -167,5 +166,4 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 		</tr>
 	
 </table>
-<?php endif; ?>
 
