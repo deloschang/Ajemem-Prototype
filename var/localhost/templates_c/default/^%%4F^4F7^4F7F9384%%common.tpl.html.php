@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-10 22:33:18
+<?php /* Smarty version 2.6.7, created on 2012-04-10 22:42:16
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -13,7 +13,6 @@
 
 <!-- JQuery Library for New Fancybox -->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
 
 <!-- Add fancyBox -->
 <link rel="stylesheet" href="http://localhost/templates/css_theme/fancybox/jquery.fancybox.css?v=2.0.5" type="text/css" media="screen" />
