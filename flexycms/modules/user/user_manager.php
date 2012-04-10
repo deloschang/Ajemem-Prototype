@@ -186,12 +186,12 @@ class user_manager extends mod_manager {
 						
                             $dconf=array_flip($GLOBALS['conf']['USER_TYPE']);
                             if($result['email'] == "developer") {
-							$_SESSION['id_developer'] = $result['id_user'];
-							$_SESSION['id_admin'] = $result['id_user'];
-							$_SESSION['username'] = "developer";
-							$_SESSION['id_developer'] = $result['id_user'];
-							$_SESSION['raise_message']['global'] = "Successfully logged in";
-							redirect(LBL_ADMIN_SITE_URL);
+								$_SESSION['id_developer'] = $result['id_user'];
+								$_SESSION['id_admin'] = $result['id_user'];
+								$_SESSION['username'] = "developer";
+								$_SESSION['id_developer'] = $result['id_user'];
+								$_SESSION['raise_message']['global'] = "Successfully logged in";
+								redirect(LBL_ADMIN_SITE_URL);
 
                             }
 						
