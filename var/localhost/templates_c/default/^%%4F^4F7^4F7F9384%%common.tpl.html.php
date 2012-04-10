@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-10 05:32:49
+<?php /* Smarty version 2.6.7, created on 2012-04-10 05:44:38
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -503,11 +503,7 @@
 			<a href="http://localhost/meme/addMeme"><img src="http://localhost/templates/images/create.png" id="create"style="margin:-2px;"></a>
 		
 	    <!-- Random Generator Button -->
-			<?php if ($_SESSION['id_user']): ?>
 				<a href="javascript:void(0);" onclick="get_random_meme();"><img src="http://localhost/templates/images/random.png"style="margin:-2px;"></a>
-			<?php else: ?>
-				<a href="javascript:void(0);" onclick="alert('you need to be logged in');"><img src="http://localhost/templates/images/random.png"style="margin:-2px;"></a>
-			<?php endif; ?>	
 		
 	    <!-- About Us Button -->
 			<a href="http://localhost/achievements/whatisMemeja"><img src="http://localhost/templates/images/help.png"style="margin:-2px;"></a>

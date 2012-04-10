@@ -500,11 +500,7 @@
 			<a href="##LBL_SITE_URL##meme/addMeme"><img src="##LBL_SITE_URL##templates/images/create.png" id="create"style="margin:-2px;"></a>
 		
 	    <!-- Random Generator Button -->
-			{if $smarty.session.id_user}
 				<a href="javascript:void(0);" onclick="get_random_meme();"><img src="##LBL_SITE_URL##templates/images/random.png"style="margin:-2px;"></a>
-			{else}
-				<a href="javascript:void(0);" onclick="alert('you need to be logged in');"><img src="##LBL_SITE_URL##templates/images/random.png"style="margin:-2px;"></a>
-			{/if}	
 		
 	    <!-- About Us Button -->
 			<a href="##LBL_SITE_URL##achievements/whatisMemeja"><img src="##LBL_SITE_URL##templates/images/help.png"style="margin:-2px;"></a>
