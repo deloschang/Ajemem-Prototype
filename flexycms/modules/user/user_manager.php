@@ -1418,6 +1418,11 @@ class user_manager extends mod_manager {
 			$this->_output['tpl']="user/first_login_msg";
 	    }
 	}
+	
+	##### Please Login Pop-Up for NLU  4/10/12 ######
+	function _please_login(){
+		$this -> _output['tpl'] = "user/login_form";
+	}
 
 	function _check_fb_session(){
 		$arr=$this->decrypt_fb_data();

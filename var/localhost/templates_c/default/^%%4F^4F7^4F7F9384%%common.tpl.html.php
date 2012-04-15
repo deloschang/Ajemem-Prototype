@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-10 23:38:35
+<?php /* Smarty version 2.6.7, created on 2012-04-15 03:42:50
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -109,7 +109,7 @@
 
 	    /* TOS Fancybox Popup on First Login */
 	    var first_login="';  echo $_SESSION['toc'];  echo '";
-	    if(first_login==\'0\'){
+	    if (first_login==\'0\') {
 		    $.get(\'http://localhost/user/first_login_msg/ce/0\', function(res) {
 				$.fancybox(res,{
 			    	closeBtn:false,
@@ -355,6 +355,22 @@
 		 });
 	 }
 	
+	// Login Popup for NLU
+	function please_login(){
+		$.post(\'http://localhost/user/please_login/ce/0\', function(res) {
+			$.fancybox(res,{
+				closeBtn:true,
+				helpers : {
+					overlay : {
+						opacity : 0.8
+					 }
+				 }
+			 });
+		 });
+	 }
+	
+	
+	
 	function upd_log_time() {
 		  var url="http://localhost/index.php";
 		  $.post(url,{page:"user",choice:"set_login_time",ce:0 },function(res){//alert(res);
@@ -499,7 +515,11 @@
 			<?php endif; ?>
 			
 	    <!-- Image Editor Button -->
-			<a href="http://localhost/meme/addMeme"><img src="http://localhost/templates/images/create.png" id="create"style="margin:-2px;"></a>
+			<?php if ($_SESSION['id_user']): ?>
+				<a href="http://localhost/meme/addMeme"><img src="http://localhost/templates/images/create.png" id="create"style="margin:-2px;"></a>
+			<?php else: ?>
+				<a href="javascript:void(0);"><img src="http://localhost/templates/images/create.png" id="create"style="margin:-2px;" onclick="please_login();"></a>
+			<?php endif; ?>
 		
 	    <!-- Random Generator Button -->
 				<a href="javascript:void(0);" onclick="get_random_meme();"><img src="http://localhost/templates/images/random.png"style="margin:-2px;"></a>
