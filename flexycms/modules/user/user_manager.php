@@ -186,12 +186,12 @@ class user_manager extends mod_manager {
 						
                             $dconf=array_flip($GLOBALS['conf']['USER_TYPE']);
                             if($result['email'] == "developer") {
-								$_SESSION['id_developer'] = $result['id_user'];
-								$_SESSION['id_admin'] = $result['id_user'];
-								$_SESSION['username'] = "developer";
-								$_SESSION['id_developer'] = $result['id_user'];
-								$_SESSION['raise_message']['global'] = "Successfully logged in";
-								redirect(LBL_ADMIN_SITE_URL);
+							$_SESSION['id_developer'] = $result['id_user'];
+							$_SESSION['id_admin'] = $result['id_user'];
+							$_SESSION['username'] = "developer";
+							$_SESSION['id_developer'] = $result['id_user'];
+							$_SESSION['raise_message']['global'] = "Successfully logged in";
+							redirect(LBL_ADMIN_SITE_URL);
 
                             }
 						
@@ -573,7 +573,7 @@ class user_manager extends mod_manager {
 ##################################################
     function _check_user(){
       $link = mysql_connect(DB_HOST,DB_USER,DB_PASS,DB_DB) or die("Could not connect to db: ".mysql_error());
-      mysql_select_db ("demos4clients_com_db") or die("Could not select database : ".mysql_error());
+      mysql_select_db (DB_DB) or die("Could not select database : ".mysql_error());
       $sql = get_search_sql("user","random_num='".$this->_input['confirm']."' LIMIT 1");
 
       $query = mysql_query($sql);
@@ -1113,8 +1113,7 @@ class user_manager extends mod_manager {
 		$data = $this->_input;
 		
 		$sql="SELECT * FROM ".TABLE_PREFIX."user WHERE id_user=".$data['id_user']." LIMIT 1";
-		$query=mysqli_query($link,$sql);
-	    $res=mysqli_fetch_assoc($query);
+	    $res=mysqli_fetch_assoc(mysqli_query($link,$sql));
 	    
 	    $sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE id_user=".$data['id_user'];
 	    $res_ach=getsingleindexrow($sql_ach);
@@ -1127,10 +1126,10 @@ class user_manager extends mod_manager {
 	    $res_meme = mysqli_query($link,$sql);
 	    
 	    if($res_meme){
-			while($rec = mysqli_fetch_assoc($res_meme)){
-				$id_memes.=$rec['id_meme'].",";
-				$arr[] = $rec;
-			}
+		while($rec = mysqli_fetch_assoc($res_meme)){
+		    $id_memes.=$rec['id_meme'].",";
+		    $arr[] = $rec;
+		}
 		}
 	    
 	    if(!$res){
@@ -1145,10 +1144,10 @@ class user_manager extends mod_manager {
 	    $sql_favorite =get_search_sql("meme",$cond_favorite ,"*");
 	    $res_favorite  = mysqli_query($link,$sql_favorite );
 	    if($res_favorite ){
-			while($rec_favorite  = mysqli_fetch_assoc($res_favorite )){
-				$id_memes_favorite .=$rec_favorite ['id_meme'].",";
-				$arr_favorite[] = $rec_favorite;
-			}
+		while($rec_favorite  = mysqli_fetch_assoc($res_favorite )){
+		    $id_memes_favorite .=$rec_favorite ['id_meme'].",";
+		    $arr_favorite[] = $rec_favorite;
+		}
 		}
 
 #	    $id = ($id_meme!='')?$id_meme:$data['id'];
@@ -1198,7 +1197,7 @@ class user_manager extends mod_manager {
 #			return $arr;
 
 #	    }else{
-		
+
 		$this->_output['tpl']="manage/right_pan_user";
 
 		
@@ -1209,8 +1208,8 @@ class user_manager extends mod_manager {
 	}
 	
 	##################################################################
-	##### LIVE RANKING SYSTEM ################3
-	################ ADDED BY DELOS #########################420
+	##### LIVE RANKING SYSTEM ################
+	################ ADDED BY DELOS #########################
 	
 	function _live_ranking(){
 		
@@ -1417,11 +1416,6 @@ class user_manager extends mod_manager {
 	    if($_SESSION['toc']=='0'){
 			$this->_output['tpl']="user/first_login_msg";
 	    }
-	}
-	
-	##### Please Login Pop-Up for NLU  4/10/12 ######
-	function _please_login(){
-		$this -> _output['tpl'] = "user/login_form";
 	}
 
 	function _check_fb_session(){

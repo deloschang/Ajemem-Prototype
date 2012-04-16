@@ -46,12 +46,13 @@
     }
     
 	
-    function hover_user(id_user){		
+    function hover_user(id_user){
+    	var right_pan_url = "##LBL_SITE_URL##user/see_user";
+    	
 		if (id_user != see_user_old) {
-			var right_pan_url = "##LBL_SITE_URL##user/see_user";
 			$.post(right_pan_url,{id_user:id_user,ce:0}, function(res){
-				see_user_old = id_user;
 				$("#right_pan").html(res);
+				see_user_old = id_user;
 			});
 		}
     }
@@ -241,7 +242,11 @@
                             <!--
 			<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:17px;"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');" onmouseout ="$('#right_pan').removeAttr('mouseover');">{$sm.uinfo[$x.id_user].username} </a></span>
                             -->
-			<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:17px;"><a href="javascript:void(0);" onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');">{$sm.uinfo[$x.id_user].username} </a></span>
+			<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:17px;"><a href="javascript:void(0);" 
+			{if $smarty.session.id_user}
+				onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');"
+			{/if}
+			>{$sm.uinfo[$x.id_user].username} </a></span>
 
 <!--
 onmouseout ="unhover_user('{$sm.uinfo[$x.id_user].id_user}');"

@@ -881,7 +881,7 @@ function create_Imagebox(clicked_img)
             showdebug("Orig:"+mydivid);
             newh = $(this).height() + SET_EDITOR_HEIGHT;
             newh -=2;
-            newhtml = "<div style='position:relative;' class='memejeImageContainer'><span style='top:-"+newh+"px;' class='icon_div'>";
+            newhtml = "<div style='position:relative;' class='memejeImageContainer'><span style='top:-"+newh+"px;' class='icon_div' class='nohighlight'>";
             newhtml += "<img title='Remove' src='"+SITE_IMAGE_PATH+"delete.png' onclick='removeMemeid(this)'>";
             newhtml += "<img title='Put in Canvas' src='"+SITE_IMAGE_PATH+"shape_move_backwards.png' onclick='putincanvas(this)'>";
             newhtml += "<img title='Rotate Left' src='"+SITE_IMAGE_PATH+"shape_rotate_anticlockwise.png' class='rleft'>";

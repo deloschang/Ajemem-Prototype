@@ -1,18 +1,19 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-15 03:42:50
+<?php /* Smarty version 2.6.7, created on 2012-04-16 08:14:32
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Memeja: 2 Me's; 1 Meme</title>
+<title>Memeja: You Know What I Meme?</title>
+<link rel="shortcut icon" href="http://localhost/templates/images/memeja_icon.ico" >
 <?php $this->assign('appid', $this->_tpl_vars['util']->get_values_from_config('FACEBOOK')); ?>
 <?php $this->assign('chc', $_REQUEST['choice']); ?>
 
 <script type="text/javascript" src="http://localhost/libsext/jquery/jquery.js"></script>
 
 <!-- JQuery Library for New Fancybox -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
 <!-- Add fancyBox -->
 <link rel="stylesheet" href="http://localhost/templates/css_theme/fancybox/jquery.fancybox.css?v=2.0.5" type="text/css" media="screen" />
@@ -68,26 +69,28 @@
 		var rank_wait = 40000;
 		var xp_wait = 8000;
 	
-	$(document).ready(function(){	
-		// User XP initial display
-		$("#xpbar").progressbar({
-			value: xp_percent
-		 });
-		
-		$("#user_level").html(\'L\'+user_level);
-		$("#xpbar_status").html(\'(\'+ xp_percent.toFixed(2) +\'%) \'+ (curr_xp - previous_xp_to_level) +\' / \'+ (xp_to_level - previous_xp_to_level));
-		
-		// Mouseover shows XP and %
-		$("#xpbar, #xpbar_status").hoverIntent({
-			interval: 200,
-			timeout:1000
-		 });
-		
-		$("#xpbar, #xpbar_status").hoverIntent(function(){
-			$("#xpbar_status").delay(200).show();
-		 }, function() {
-			$("#xpbar_status").delay(1000).fadeOut();
-		 });
+	$(document).ready(function(){
+		if (idu) {
+			// User XP initial display
+			$("#xpbar").progressbar({
+				value: xp_percent
+			 });
+			
+			$("#user_level").html(\'L\'+user_level);
+			$("#xpbar_status").html(\'(\'+ xp_percent.toFixed(2) +\'%) \'+ (curr_xp - previous_xp_to_level) +\' / \'+ (xp_to_level - previous_xp_to_level));
+			
+			// Mouseover shows XP and %
+			$("#xpbar, #xpbar_status").hoverIntent({
+				interval: 200,
+				timeout:1000
+			 });
+			
+			$("#xpbar, #xpbar_status").hoverIntent(function(){
+				$("#xpbar_status").delay(200).show();
+			 }, function() {
+				$("#xpbar_status").delay(1000).fadeOut();
+			 });
+		 }
 
 		var scrn_height = window.screen.availHeight;
             $("#mid_cont").height(scrn_height/2 + scrn_height/9);
@@ -109,7 +112,7 @@
 
 	    /* TOS Fancybox Popup on First Login */
 	    var first_login="';  echo $_SESSION['toc'];  echo '";
-	    if (first_login==\'0\') {
+	    if(first_login==\'0\'){
 		    $.get(\'http://localhost/user/first_login_msg/ce/0\', function(res) {
 				$.fancybox(res,{
 			    	closeBtn:false,
@@ -355,22 +358,6 @@
 		 });
 	 }
 	
-	// Login Popup for NLU
-	function please_login(){
-		$.post(\'http://localhost/user/please_login/ce/0\', function(res) {
-			$.fancybox(res,{
-				closeBtn:true,
-				helpers : {
-					overlay : {
-						opacity : 0.8
-					 }
-				 }
-			 });
-		 });
-	 }
-	
-	
-	
 	function upd_log_time() {
 		  var url="http://localhost/index.php";
 		  $.post(url,{page:"user",choice:"set_login_time",ce:0 },function(res){//alert(res);
@@ -496,8 +483,83 @@
 '; ?>
 
 
+<?php if (! $_SESSION['id_user']): ?>
+<div id="nlu_masthead">
+	<!-- Memeja logo -->
+	<div id ="nlu_logoc">
+		<a href="http://localhost/"><img src="http://localhost/templates/images/rmemejalogo.png" width="280px" id="logo"></a>
+	</div>
+	<span id ="nlu_message">
+	</span>
+</div>
+
+<div id="nlu_feed">
+	<div>
+		<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['content'], 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+		<?php if (! $_SESSION['id_user'] && ! $_REQUEST['page']):  $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+  endif; ?> 
+	</div>
+	<div id ="nlu_login">
+		<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form.tpl.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+	</div>
+</div>
+
+<?php endif; ?>
+
+
+<?php if ($_SESSION['id_user']): ?>
+
+<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
 <!-- Masthead is the Header which contains the Logo and the Navigation Buttons-->
-<div id="masthead">
+<!--Not on the create page-->
+<div id="masthead" class="nohighlight">
+		
+		<!-- Memeja Logo -->
+		<div id= "logoc">
+		<a href="http://localhost/"><img src="http://localhost/templates/images/rmemejalogo.png" id="logo"></a>
+		</div>
+
+		<!-- Memeja Top Bar -->
+	   <div id ="headerbtns"> 
+	   
+	    <!-- Login/Logout Buttons -->
+			<?php if (! $_SESSION['id_user']): ?>
+				<img src="http://localhost/templates/images/joinmemeja.png" id="joinmemeja" onclick="$('#fblogin').slideToggle();" style="margin:-2px;">
+			<?php else: ?>
+				<img src="http://localhost/templates/images/logout.png" id="logout" onclick="fb_logout();" style="margin:-2px;">
+			<?php endif; ?>
+			
+	    <!-- Image Editor Button -->
+			<a href="http://localhost/meme/addMeme"><img src="http://localhost/templates/images/create.png" id="create"style="margin:-2px;"></a>
+		
+	    <!-- Random Generator Button -->
+				<a href="javascript:void(0);" onclick="get_random_meme();"><img src="http://localhost/templates/images/random.png"style="margin:-2px;"></a>
+		
+	    <!-- About Us Button -->
+			<a href="http://localhost/achievements/whatisMemeja"><img src="http://localhost/templates/images/help.png"style="margin:-2px;"></a>
+			
+		<!-- Search Feature -->	
+			<a href="javascript:void(0);"><img src="http://localhost/templates/images/searchend.png" style="margin:-2px;" onclick="submit();"></a>
+			
+				<form id ="searches">
+					<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title."/>
+				</form>
+		</div>
+</div>
+<?php else: ?>
+<!-- Header buttons on the Create Page-->
+<div id="mastheadcreate"class="nohighlight">
 		
 		<!-- Memeja Logo -->
 		<div id= "logoc">
@@ -515,11 +577,7 @@
 			<?php endif; ?>
 			
 	    <!-- Image Editor Button -->
-			<?php if ($_SESSION['id_user']): ?>
-				<a href="http://localhost/meme/addMeme"><img src="http://localhost/templates/images/create.png" id="create"style="margin:-2px;"></a>
-			<?php else: ?>
-				<a href="javascript:void(0);"><img src="http://localhost/templates/images/create.png" id="create"style="margin:-2px;" onclick="please_login();"></a>
-			<?php endif; ?>
+			<a href="http://localhost/meme/addMeme"><img src="http://localhost/templates/images/create.png" id="create"style="margin:-2px;"></a>
 		
 	    <!-- Random Generator Button -->
 				<a href="javascript:void(0);" onclick="get_random_meme();"><img src="http://localhost/templates/images/random.png"style="margin:-2px;"></a>
@@ -534,22 +592,27 @@
 					<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title."/>
 				</form>
 		</div>
+</div>
+<?php endif; ?>
+
 
 		<!-- FB LOGIN Button -->
 		<div id="fblogin" style="display:none;"width="50px;">
 			<div class="fb-login-button" scope="email, publish_stream ,user_education_history ">
 						  Login with Facebook
 			</div>
-		</div>
+		</div>		
 		
 	<?php if ($_SESSION['id_user']): ?>
+	<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
 	<div id="follower">
 		<div id="xpbar"></div>
 	</div>	
 	<div id="user_level"></div>
 	<div id="xpbar_status"></div>
         <?php endif; ?>
-	</div>
+		<?php endif; ?>
+
 	
 <div class="clear"></div>
 
@@ -557,7 +620,7 @@
 
 <!-- Sidebar_A is Your Profile Information(Logged in) / Login Form(Not Logged in) -->		
 
-				<div id="sidebar_a">
+				<div id="sidebar_a"class="nohighlight">
 					<?php if ($_SESSION['id_user']): ?>	
 						<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/left_pan.tpl.html", 'smarty_include_vars' => array()));
@@ -580,7 +643,8 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?></font>
 				</div>
-<!-- This is the main container which contains the Live Feed/Image Editor -->				
+<!-- This is the main container which contains the Live Feed/Image Editor -->	
+	<?php if ($_REQUEST['choice'] != 'addMeme'): ?>			
 			    <div id="content">
 		<!-- Content in middle of page (Live Feed/Editor) -->
 				<?php $_smarty_tpl_vars = $this->_tpl_vars;
@@ -593,12 +657,26 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
   endif; ?> 
-	
 	            </div>
+	<?php else: ?>
+			    <div id="editorcontent">
+		<!-- Content in middle of page (Live Feed/Editor) -->
+				<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['content'], 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+				<?php if (! $_SESSION['id_user'] && ! $_REQUEST['page']):  $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+  endif; ?> 
+	            </div>		
+	<?php endif; ?>
 	
 	<!-- Sidebar_B is for Ads/Search_Bar/Displays the Other Profile Info -->				
 			<?php if ($_REQUEST['choice'] != 'addMeme'): ?>
-			<div id="sidebar_b">
+			<div id="sidebar_b"class="nohighlight">
 				    <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/right_pan.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -608,9 +686,12 @@ unset($_smarty_tpl_vars);
 			<?php endif; ?>
 <div class="clear"></div>
 </div>		
+
+<?php endif; ?>
+
+
 <!-- Keeping the Footer at the Bottom -->	
 <div class="clear"></div>
-	<div id="footer"><center>Copyrights. All Rights Reserved. 2012</center></div>
+	<div id="footer"class="nohighlight"><center>Copyrights. All Rights Reserved. 2012</center></div>
 </body>
-</html>
-
+</html>

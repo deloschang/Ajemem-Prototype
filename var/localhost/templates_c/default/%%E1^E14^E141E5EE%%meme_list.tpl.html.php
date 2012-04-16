@@ -1,9 +1,6 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-15 03:42:51
+<?php /* Smarty version 2.6.7, created on 2012-04-16 08:14:32
          compiled from meme/meme_list.tpl.html */ ?>
-<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/meme_list.tpl.html', 430, false),)), $this); ?>
-<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
-<?php echo '
+<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script type="text/javascript">
     var reply_color = "';  echo $this->_tpl_vars['x']['reply'];  echo '";
@@ -27,6 +24,12 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	
 	var meme_timer;
 	var meme_timer_new;
+	
+	var message_one = \'';  echo $this->_tpl_vars['sm']['msg_arr'][0];  echo '\';
+	var link_one = \'';  echo $this->_tpl_vars['sm']['link_arr'][0];  echo '\';
+	
+	var message_two = \'';  echo $this->_tpl_vars['sm']['msg_arr'][1];  echo '\';
+	var link_two = \'';  echo $this->_tpl_vars['sm']['link_arr'][1];  echo '\';
 	
     $(document).ready(function(){	
     
@@ -63,6 +66,10 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 					 }
 				 }
 			 });
+			
+		if (!logged_in) {
+			$(\'#nlu_message\').html(\'Social Networking with shared experiences like <a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/\'+link_one+\'" title="\'+message_one+\'">\'+message_one+\'</a> or <a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/\'+link_two+\'" title="\'+message_two+\'">\'+message_two+\'</a>\');
+		 }
 			
     
 		$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
@@ -428,20 +435,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <!--	</div>-->
 <!--</div>-->
 <!--<?php endif; ?>-->
-<br><br><br>
 
-<!-- Daily Message Added 4/10/12-->
-<?php if (! $_SESSION['id_user']): ?>
-			<div>
-			Hey, You. Everybody's got a story to share. Whether it's <a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/<?php echo $this->_tpl_vars['sm']['link_arr'][0]; ?>
-" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['msg_arr'][0])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
-"><?php echo $this->_tpl_vars['sm']['msg_arr'][0]; ?>
-</a> or <a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/<?php echo $this->_tpl_vars['sm']['link_arr'][1]; ?>
-" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['msg_arr'][1])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
-"><?php echo $this->_tpl_vars['sm']['msg_arr'][1]; ?>
-</a>, your story will find a home at Memeja.
-			</div>
-		<?php endif; ?>	
 	
 	
 <br><br>
@@ -471,4 +465,4 @@ unset($_smarty_tpl_vars);
     <img src="http://localhost/templates/images/loading.gif" />
 </div>
 
-<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
+<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>

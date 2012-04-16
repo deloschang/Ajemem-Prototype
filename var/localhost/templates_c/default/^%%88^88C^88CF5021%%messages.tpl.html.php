@@ -1,14 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-15 03:42:50
+<?php /* Smarty version 2.6.7, created on 2012-04-16 05:10:38
          compiled from common/messages.tpl.html */ ?>
 
-<!-- Template: common/messages.tpl.html Start 15/04/2012 03:42:50 --> 
+<!-- Template: common/messages.tpl.html Start 16/04/2012 05:10:38 --> 
  <!-- messages set by all modules shown here -->
 <?php if ($_SESSION['raise_message'][$this->_tpl_vars['module']]): ?>
     <div class="alert" align="center"><?php echo $_SESSION['raise_message'][$this->_tpl_vars['module']]; ?>
 </div>
-<?php endif; ?>
-<?php if ($this->_tpl_vars['sm']['message']): ?>
-<?php unset($this->_sections['cur_msg']);
+<?php endif;  if ($this->_tpl_vars['sm']['message']):  unset($this->_sections['cur_msg']);
 $this->_sections['cur_msg']['name'] = 'cur_msg';
 $this->_sections['cur_msg']['loop'] = is_array($_loop=$this->_tpl_vars['sm']['message']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
 $this->_sections['cur_msg']['show'] = true;
@@ -37,7 +35,6 @@ $this->_sections['cur_msg']['last']       = ($this->_sections['cur_msg']['iterat
 <?php endfor; else: ?>
      <div class="alert" align="center"><?php echo $this->_tpl_vars['sm']['message']; ?>
 </div>
-<?php endif; ?>
-<?php endif; ?>
+<?php endif;  endif; ?>
 
 <!-- Template: common/messages.tpl.html End --> 

@@ -25,6 +25,12 @@
 	var meme_timer;
 	var meme_timer_new;
 	
+	var message_one = '{/literal}{$sm.msg_arr[0]}{literal}';
+	var link_one = '{/literal}{$sm.link_arr[0]}{literal}';
+	
+	var message_two = '{/literal}{$sm.msg_arr[1]}{literal}';
+	var link_two = '{/literal}{$sm.link_arr[1]}{literal}';
+	
     $(document).ready(function(){	
     
 			$('.meme_gallery').fancybox({
@@ -60,6 +66,10 @@
 					}
 				}
 			});
+			
+		if (!logged_in) {
+			$('#nlu_message').html('Social Networking with shared experiences like <a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##/image/orig/meme/'+link_one+'" title="'+message_one+'">'+message_one+'</a> or <a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##/image/orig/meme/'+link_two+'" title="'+message_two+'">'+message_two+'</a>');
+		}
 			
     
 		$("#last_id_meme").val("{/literal}{$sm.last_id_meme}{literal}");
@@ -422,14 +432,7 @@
 <!--	</div>-->
 <!--</div>-->
 <!--{/if}-->
-<br><br><br>
 
-<!-- Daily Message Added 4/10/12-->
-{if !$smarty.session.id_user}
-			<div>
-			Hey, You. Everybody's got a story to share. Whether it's <a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##/image/orig/meme/{$sm.link_arr[0]}" title="{$sm.msg_arr[0]|capitalize}">{$sm.msg_arr[0]}</a> or <a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##/image/orig/meme/{$sm.link_arr[1]}" title="{$sm.msg_arr[1]|capitalize}">{$sm.msg_arr[1]}</a>, your story will find a home at Memeja.
-			</div>
-		{/if}	
 	
 	
 <br><br>

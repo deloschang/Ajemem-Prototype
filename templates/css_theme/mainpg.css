@@ -44,9 +44,92 @@
 		margin:0px;
 		padding:0px;
 	}
+
+/* Highlighting Problem*/
+
+	.nohighlight {
+	-webkit-touch-callout: none;
+
+	-webkit-user-select: none;
+
+	-khtml-user-select: none;
+
+	-moz-user-select: none;
+
+	-ms-user-select: none;
+
+	user-select: none;
+	}
+	
+	
 /*++++++++++++++++++++++++++ Memeja Header ++++++++++++++++++++++++++++*/	
 
+/*++++++++++++++++++++++++ NLU Design ++++++++++++++++++*/
+
+	#nlu_masthead{
+		width:1002px;
+		margin: 124px 0 0 118px;
+	}
+	
+	#nlu_logoc {
+		left:10%;
+		top:-35px;
+		width:280px;
+		background:#FFF;
+	    moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;
+	}
+	
+	#nlu_message{
+		position: absolute;
+		height: 58px;
+		width: 400px;
+		
+		
+		left: 536px;
+		bottom: 250px;
+		
+		font-size: 20px;
+		font-weight: 300;
+		line-height: 22px;
+		text-shadow: 0 1px 2px #000000;
+		
+		background:#FFF;
+	    moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;
+	}
+
+	#nlu_feed{
+		margin-left:110px;
+		margin-right:300px;
+		margin-top:150px;
+		top: -10px;
+		padding:10px;
+		width:580px;
+		background:#FFF;
+	    moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;
+		voice-family:"\"}\"";
+		voice-family:inherit;
+	}	
+	
 	#masthead {
+		width:1002px;
+		margin:0 0 10px 0;
+		padding:10px;
+	}
+	
+	
+	
+	#mastheadcreate{
+	    position: relative;
+		top:-25px;
 		width:1002px;
 		margin:0 0 10px 0;
 		padding:10px;
@@ -55,10 +138,11 @@
 /* Memeja Logo */
 	#logoc {
 		float:left;
+		width:280px;
 		left:10%;
 		top:-35px;
-
 	}
+	
 /* The Navigation Buttons*/
 	#headerbtns {
 		float:right;
@@ -72,7 +156,6 @@
 		position: relative;
 		top:-40px;
 		left:420px;
-		z-index:9999;
 	}
 	
 /* Main Container with the middle column and the sidebars */
@@ -92,7 +175,6 @@
 		top: -10px;
 		padding:10px;
 		width:580px;
-		width:580px;
 		background:#FFF;
 	    moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
@@ -103,6 +185,10 @@
 	}
 	html>body #content {
 	    width:580px;
+	}
+	
+	#editorcontent{
+		margin-left:280px;
 	}
 	
 /* Sidebar A - For Your Profile Information */
@@ -176,8 +262,8 @@
 #fblogin {
   display:none;
   position:absolute;
-  top:48px;
-  left:595px;
+  top:45px;
+  left:508px;
 }
 
 /* Next to xpbar */
@@ -256,8 +342,9 @@ moz-border-radius: 10px;
 
 	#uploader {
 	    position:absolute;
-		top:-47px;
-	    right:250px;
+		top:-30px;
+		padding:5px;
+	    right:30px;
 		z-index:99;
 		background:#FFF;
 		moz-border-radius: 10px;
@@ -266,7 +353,19 @@ moz-border-radius: 10px;
 		border-radius: 10px;
 	}
 
+	.spacer {
+		padding:5px;
+		margin:5px;
+	}
 	
+	#editorside {
+		position:absolute;
+		background:#FFF;
+		moz-border-radius: 10px;
+		webkit-border-radius: 10px;
+		khtml-border-radius: 10px;
+		border-radius: 10px;		
+	}
 
 
 label.error	{

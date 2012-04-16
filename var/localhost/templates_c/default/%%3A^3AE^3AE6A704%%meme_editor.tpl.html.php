@@ -1,10 +1,11 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-15 03:14:35
+<?php /* Smarty version 2.6.7, created on 2012-04-16 05:07:59
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 197, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 199, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 15/04/2012 03:14:35 --> 
- <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY'));  echo '
+<!-- Template: meme/meme_editor.tpl.html Start 16/04/2012 05:07:58 --> 
+ <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
+<?php echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
 <script type="text/javascript" src="http://localhost//spad/jquery.lionbars.0.3.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost//spad/lionbars.css" media="screen" />
@@ -117,17 +118,17 @@ $(document).ready(function(){
 	$(window).scroll(function(e){
 		var scrollTop = $(window).scrollTop();
 		console.log(scrollTop);
-		if(scrollTop > 155){
+		if(scrollTop > 145){
 			var y = $(\'#main\').offset();
 			$(\'#main\').css({
 			    position:\'fixed\',
-				top:\'40px!important\',
+				top:\'0px\',
 			    left : y.left+\'px\'
 			 });
 		 }else{
 			$(\'#main\').css({
 			    position:\'absolute\',
-				top:\'20px\',
+				top:\'-30px\',
 			    left :\'-10px\'
 			 });
 		 }
@@ -139,7 +140,7 @@ $(document).ready(function(){
 
 <img src="http://localhost/spad/Memeja Watermark.png" id="memejimark" style="display:none">
 
-<div id="uploader">
+<div id="uploader"class="nohighlight">
 	<input type="file" name="updimage" id="updimage" size="5" />
 	<input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
 	URL: <input type="text" name="imgurl" id="imgurl" size="27" />
@@ -147,12 +148,14 @@ $(document).ready(function(){
 	<div id="prev_image" class="prev_image"></div>
 </div>
              
-        <div class='main_smiley_loading'style="top:100px;">
+        <div class='main_smiley_loading'class="nohighlight"style="top:100px;">
             <div class="smileys_in_small_size">
                 <div id="loadimg" ></div>
             </div>
         </div>
-<div id="page" style="display:none; left:-160px;">
+		<div class="spacer"></div>
+		<div id="editorside"></div>
+<div id="page" style="display:none; left:-160px;"class="nohighlight">
 	<canvas id="dummy1" style="display:none;"></canvas>
 	<div id="sp" style="position:relative;"><canvas id="mycid" style="border:1px solid red"></canvas></div>
     <div id="main" style="width:660px;left:-10px;">
@@ -165,8 +168,8 @@ $(document).ready(function(){
         <td><img src="http://localhost/spad/site_image/color_wheel.png" width="20" height="20" alt="Pick Color" title="Pick Color" id="color" /><br /></td>
         <span id="hilight">
 		    <td><img src="http://localhost/spad/site_image/grid.png" width="20" height="20" class="grid" title="Gridlines" alt="Gridlines Toggle" /></td>
-		    <td><img src="http://localhost/spad/site_image/uparrow.png" width="20" height="20" class="uparrow" title="Scroll Up" alt="Up Arrow" /></td>
-			<td><img src="http://localhost/spad/site_image/downarrow.png" width="20" height="20" class="downarrow" title="Scroll Bottom" alt="Down Arrow" /></td>
+		    <!--<td><img src="http://localhost/spad/site_image/uparrow.png" width="20" height="20" class="uparrow" title="Scroll Up" alt="Up Arrow" /></td>
+			<!--<td><img src="http://localhost/spad/site_image/downarrow.png" width="20" height="20" class="downarrow" title="Scroll Bottom" alt="Down Arrow" /></td>
 			<!--<td><img src="http://localhost/spad/site_image/paintbucket.png" width="16" height="16" class="paintbucket" title="Paintbucket" alt="Paintbucket" /></td>-->
             <td><img src="http://localhost/spad/site_image/erase.png" width="20" height="20" class="erase" title="Erase" alt="Erase" /></td>
             <td><img src="http://localhost/spad/site_image/line.png" width="20" height="20" class="size" title="Pencil" id="line" alt="Pencil" /></td>
