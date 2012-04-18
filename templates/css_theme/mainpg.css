@@ -67,13 +67,11 @@
 /*++++++++++++++++++++++++ NLU Design ++++++++++++++++++*/
 
 	#nlu_masthead{
-		width:1002px;
-		margin: 124px 0 0 118px;
+		margin: 100px 0 0 118px;
 	}
 	
 	#nlu_logoc {
-		left:10%;
-		top:-35px;
+		float: left;
 		width:280px;
 		background:#FFF;
 	    moz-border-radius: 20px;
@@ -83,16 +81,15 @@
 	}
 	
 	#nlu_message{
-		position: absolute;
+		float: right;
 		height: 58px;
-		width: 400px;
+		width: 450px;
 		
-		
-		left: 536px;
-		bottom: 250px;
+		left: 18px;
+		bottom: 28px;
 		
 		font-size: 20px;
-		font-weight: 300;
+		font-weight: 200;
 		line-height: 22px;
 		text-shadow: 0 1px 2px #000000;
 		
@@ -102,14 +99,74 @@
 	    khtml-border-radius: 20px;
 	    border-radius: 20px;
 	}
+	
+	#nlu_login{
+		float:left;
+		width:280px;
+		margin-top:-50px;
+		margin-left:110px;
+		
+		background:#FFF;
+	    moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;
+		voice-family:"\"}\"";
+		voice-family:inherit;
+	}
+	
+	.triangle-right {
+		position:relative;
+		padding:15px;
+		margin:1em 0 3em;
+		color:#fff;
+		background:#075698; /* default background for browsers without gradient support */
+		/* css3 */
+		background:-webkit-gradient(linear, 0 0, 0 100%, from(#2e88c4), to(#075698));
+		background:-moz-linear-gradient(#2e88c4, #075698);
+		background:-o-linear-gradient(#2e88c4, #075698);
+		background:linear-gradient(#2e88c4, #075698);
+		-webkit-border-radius:10px;
+		-moz-border-radius:10px;
+		border-radius:10px;
+	}
+	
+	.triangle-right:after {
+		content:"";
+		position:absolute;
+		bottom:-20px; /* value = - border-top-width - border-bottom-width */
+		left:50px; /* controls horizontal position */
+		border-width:20px 0 0 20px; /* vary these values to change the angle of the vertex */
+		border-style:solid;
+		border-color:#075698 transparent; 
+		/* reduce the damage in FF3.0 */
+		display:block; 
+		width:0;
+	}
+	
+	.triangle-right.left {
+		margin-left:40px;
+		background:#075698;
+	}
+	
+	.triangle-right.left:after {
+		top:46px; 
+		left:-15px; /* value = - border-left-width - border-right-width */
+		bottom:auto;
+		border-width:15px 15px 0 0; /* vary these values to change the angle of the vertex */
+		border-color:transparent #075698; 
+	}
 
 	#nlu_feed{
-		margin-left:110px;
-		margin-right:300px;
-		margin-top:150px;
+		float:right; 
+	
+		margin:-50px 0 0 10px;
+		
+		
 		top: -10px;
 		padding:10px;
 		width:580px;
+		
 		background:#FFF;
 	    moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
@@ -118,6 +175,11 @@
 		voice-family:"\"}\"";
 		voice-family:inherit;
 	}	
+	
+
+	
+	
+/*++++++++++++++++++++++++ NLU Design ++++++++++++++++++*/
 	
 	#masthead {
 		width:1002px;

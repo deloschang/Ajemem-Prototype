@@ -484,19 +484,21 @@
 <div id="nlu_masthead">
 	<!-- Memeja logo -->
 	<div id ="nlu_logoc">
-		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/rmemejalogo.png" width="280px" id="logo"></a>
+		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/rmemejalogo.png" width="400px" id="logo"></a>
 	</div>
-	<span id ="nlu_message">
-	</span>
+	<div id ="nlu_message" class="triangle-right left">
+	</div>
 </div>
 
-<div id="nlu_feed">
-	<div>
-		{include file=$content}
-		{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
-	</div>
+<div class="clear"></div>
+
+<div>
 	<div id ="nlu_login">
 		{include file=user/login_form"}
+	</div>
+	<div id="nlu_feed">
+		{include file=$content}
+		{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
 	</div>
 </div>
 
@@ -512,7 +514,7 @@
 		
 		<!-- Memeja Logo -->
 		<div id= "logoc">
-		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/rmemejalogo.png" id="logo"></a>
+		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/rmemejalogo.png" width="280px;" id="logo"></a>
 		</div>
 
 		<!-- Memeja Top Bar -->
