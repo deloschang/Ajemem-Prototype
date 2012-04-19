@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-19 00:36:30
+<?php /* Smarty version 2.6.7, created on 2012-04-19 05:06:55
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -487,7 +487,7 @@
 <div id="nlu_masthead">
 	<!-- Memeja logo -->
 	<div id ="nlu_logoc">
-		<a href="http://localhost/"><img src="http://localhost/templates/images/rmemejalogo.png" width="400px" id="logo"></a>
+		<a href="http://localhost/"><img src="http://localhost/templates/images/rmemejalogo.png" width="350px" id="logo"></a>
 	</div>
 	<div id ="nlu_message" class="triangle-right left">
 	</div>
@@ -496,13 +496,6 @@
 <div class="clear"></div>
 
 <div>
-	<div id ="nlu_login">
-		<?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form.tpl.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?>
-	</div>
 	<div id="nlu_feed">
 		<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['content'], 'smarty_include_vars' => array()));
@@ -514,6 +507,13 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
   endif; ?> 
+	</div>
+	<div id ="nlu_login">
+		<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form.tpl.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
 	</div>
 </div>
 
