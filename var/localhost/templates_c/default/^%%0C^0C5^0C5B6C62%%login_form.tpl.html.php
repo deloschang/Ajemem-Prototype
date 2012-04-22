@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-22 23:19:47
+<?php /* Smarty version 2.6.7, created on 2012-04-23 01:21:13
          compiled from user/login_form.tpl.html */ ?>
 
-<!-- Template: user/login_form.tpl.html Start 22/04/2012 23:19:47 --> 
+<!-- Template: user/login_form.tpl.html Start 23/04/2012 01:21:13 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -61,7 +61,10 @@
 		<td valign="middle" class="tr"><input type="submit" value="Sign In" class="inputbtn"/></td>
     </tr>
     <tr>
-		<td class="tl" colspan="2"><input type="checkbox" name="rem" id="rem" value="1"/>Remember Me <a href="http://localhost/user/forgot_pwd">Forgot Password?</a></td>
+		<!--
+		<td class="tl" colspan="2"><input type="checkbox" name="rem" id="rem" value="1"/>Remember Me </td>-->
+		<td>
+		<a href="http://localhost/user/forgot_pwd">Forgot Password?</a></td>
     </tr>
 	<!--
     <tr>

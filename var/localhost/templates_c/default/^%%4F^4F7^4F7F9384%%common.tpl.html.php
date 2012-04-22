@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-22 23:19:47
+<?php /* Smarty version 2.6.7, created on 2012-04-23 01:21:13
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -490,19 +490,27 @@
 		<a href="http://localhost/"><img src="http://localhost/templates/images/rmemejalogo.png" width="350px" id="logo"></a>
 	</div>
 	<div id ="nlu_message" class="triangle-right left">
-		We bring people together through shared experiences
+		Where experiences are social
 	</div>
 </div>
 
 <div class="clear"></div>
 
+
 <div>
+<div id="tabs">
+		<ul>
+			<li>
+				<div id="videos" class="softcorner native tab" onclick="tab_stream(this);" style="background-color: #f4f4ee; -moz-border-radius-topleft: 10px; -webkit-border-top-left-radius: 10px; border-top-left-radius: 10px; -moz-border-radius-topright: 10px; -webkit-border-top-right-radius: 10px; border-top-right-radius: 10px; "> Videos we like</div>
+			</li>
+		</ul>
+	</div>
+	
 	<div id ="nlu_featured">
-		<div> Hey you! Everybody's got a story to share. Whether it's...</div>
+		<div>Share your story. Tag your friends. Make a connection to the people you love.</div>
 		<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
 		<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
 		<div id="nlu_message_three"><span class="blurb" id="blurb_three"></span></div>
-		<div>...your story will fit in at Memeja</div>
 	</div>
 	<div id ="nlu_login">
 		<?php $_smarty_tpl_vars = $this->_tpl_vars;

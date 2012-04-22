@@ -82,11 +82,11 @@
 	
 	#nlu_message{
 		float: right;
-		height: 58px;
-		width: 450px;
+		height: 26px;
+		width: 440px;
 		
-		left: -60px;
 		bottom: 28px;
+		right: 70px;
 		
 		color: black;
 		font-size: 20px;
@@ -106,43 +106,54 @@
 	
 	#nlu_login{
 		float:right;
-		width:250px;
-		height:130px;
+		width: 250px;
+		height:110px;
 		margin:-60px 20px 0 0;
 		
 		background:#FFF;
-		background:-webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#DDD));
-		background:-moz-linear-gradient(#FFF, #DDD);
-		background:-o-linear-gradient(#FFF, #DDD);
-		background:linear-gradient(#FFF, #DDD);
+	    moz-border-radius: 12px;
+	    webkit-border-radius: 12px;
+	    khtml-border-radius: 12px;
+	    border-radius: 12px;
 		
-		border-bottom: 1px solid #CCCCCC;
-		border-left: 1px solid #EEEEEE;
-		border-right: 1px solid #EEEEEE;
-		border-radius: 4px 4px 4px 4px;
-		
-		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+		box-shadow: 0 0 4px 0 #555555;
 	}
 	
 	#nlu_login_register{
 		float:right;
 		width:250px;
-		height:130px;
+		height:200px;
 		margin:15px 20px 0 0;
 		
 		background:#FFF;
-		background:-webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#DDD));
-		background:-moz-linear-gradient(#FFF, #DDD);
-		background:-o-linear-gradient(#FFF, #DDD);
-		background:linear-gradient(#FFF, #DDD);
+	    moz-border-radius: 12px;
+	    webkit-border-radius: 12px;
+	    khtml-border-radius: 12px;
+	    border-radius: 12px;
 		
-		border-bottom: 1px solid #CCCCCC;
-		border-left: 1px solid #EEEEEE;
-		border-right: 1px solid #EEEEEE;
-		border-radius: 4px 4px 4px 4px;
-		
-		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+		box-shadow: 0 0 4px 0 #555555;
 	}
+	
+	#signup{
+		margin:15px 20px 20px 12px;
+	}
+	
+	#signup_text{
+		font:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size:18px;
+		font-style: bold;
+		color: #333333;
+		line-height:20px;
+		
+		margin-bottom:15px;
+	}
+	
+	#signup_explanation, #signup_alt{
+		font:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size:12px;
+		color: #666666;
+	}
+	
 	
 	.triangle-right {
 		position:relative;
@@ -205,6 +216,15 @@
 		voice-family:"\"}\"";
 		voice-family:inherit;
 	}	
+	
+	#tabs ul li {
+		position:absolute;
+		bottom:760px;
+		left:5px;
+		cursor: pointer;
+		list-style-type: none;
+		z-index:100;
+	}
 	
 	#nlu_featured{
 		float:left; 
@@ -825,8 +845,9 @@ label.error	{
 }
 #logintable	{
 	width:250px;
-	margin:20px auto;
+	margin:10px 20px 20px 5px;
 }
+
 #logintable #new_user	{
 	/*border:#06C solid 1px;*/
 	width:220px;  
@@ -845,16 +866,21 @@ label.error	{
 /* CSS for REGISTERED USERS */
 #logintable #register_user	{
 	/* border:#06C solid 1px;  */
-	width:220px;
-	height:250px;
 	float:left;
-	padding:5px 10px 0px;
+	padding:5px;
+	margin-top:-5px;
  	/*margin-left:5px */
 }
 
-/* Added by Delos to shorten field */
 #logintable #uname, #pass {
 	width:95%
+}
+
+#uname, #pass {
+	height: 20px;
+	border-radius: 3px 3px 3px 3px;
+	outline:medium none;
+	padding:4px;
 }
 
 #fgtpwdtable	{
@@ -920,10 +946,9 @@ table.userinfo input.fields:focus	{
 	line-height: 18px;
 	overflow: visible;
 	padding: 5px 10px;
+	margin-left:10px;
 
-	background-color: #019AD2;
-    background-image: -moz-linear-gradient(#33BCEF, #019AD2);
-    background-repeat: repeat-x;
+	background: none repeat scroll 0 0 rgba(52, 182, 250, 0.8);
     border-color: #057ED0;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
     color: #FFFFFF;
