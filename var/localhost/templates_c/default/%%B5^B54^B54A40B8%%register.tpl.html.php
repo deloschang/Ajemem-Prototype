@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-09 21:40:12
+<?php /* Smarty version 2.6.7, created on 2012-04-22 01:25:32
          compiled from user/register.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 276, false),array('function', 'html_select_date', 'user/register.tpl.html', 290, false),)), $this); ?>
 
-<!-- Template: user/register.tpl.html Start 09/04/2012 21:40:12 --> 
+<!-- Template: user/register.tpl.html Start 22/04/2012 01:25:32 --> 
  <?php echo '
 	<script type="text/javascript" src="colorBckg.js"></script>
 	<script type="text/javascript">

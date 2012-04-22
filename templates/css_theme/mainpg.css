@@ -67,7 +67,7 @@
 /*++++++++++++++++++++++++ NLU Design ++++++++++++++++++*/
 
 	#nlu_masthead{
-		margin: 90px 0 0 80px;
+		margin: 30px 0 0 80px;
 	}
 	
 	#nlu_logoc {
@@ -103,18 +103,42 @@
 	
 	#nlu_login{
 		float:right;
-		width:280px;
-		margin:-60px 0 0 0;
-		
-		right:100px;
+		width:250px;
+		height:130px;
+		margin:-60px 20px 0 0;
 		
 		background:#FFF;
-	    moz-border-radius: 20px;
-	    webkit-border-radius: 20px;
-	    khtml-border-radius: 20px;
-	    border-radius: 20px;
-		voice-family:"\"}\"";
-		voice-family:inherit;
+		background:-webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#DDD));
+		background:-moz-linear-gradient(#FFF, #DDD);
+		background:-o-linear-gradient(#FFF, #DDD);
+		background:linear-gradient(#FFF, #DDD);
+		
+		border-bottom: 1px solid #CCCCCC;
+		border-left: 1px solid #EEEEEE;
+		border-right: 1px solid #EEEEEE;
+		border-radius: 4px 4px 4px 4px;
+		
+		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+	}
+	
+	#nlu_login_register{
+		float:right;
+		width:250px;
+		height:130px;
+		margin:15px 20px 0 0;
+		
+		background:#FFF;
+		background:-webkit-gradient(linear, 0 0, 0 100%, from(#FFF), to(#DDD));
+		background:-moz-linear-gradient(#FFF, #DDD);
+		background:-o-linear-gradient(#FFF, #DDD);
+		background:linear-gradient(#FFF, #DDD);
+		
+		border-bottom: 1px solid #CCCCCC;
+		border-left: 1px solid #EEEEEE;
+		border-right: 1px solid #EEEEEE;
+		border-radius: 4px 4px 4px 4px;
+		
+		box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 	}
 	
 	.triangle-right {
@@ -162,7 +186,7 @@
 	#nlu_feed{
 		float:left; 
 	
-		margin:-60px 0 0 80px;
+		margin:-60px 0 0 70px;
 		
 		
 		top: -10px;
@@ -808,15 +832,35 @@ table.userinfo input.fields:focus	{
 }
 
 /* Non-Fb Login Button */
-.inputbtn	{
-	background:#F18200;
-	border:#FF0000 solid 1px;
-	padding:2px 5px;
-	text-align:center;
-	color:#FFF;
-	font-weight:bold;
-	cursor:pointer;
+.inputbtn	{	
+	box-shadow: 0 1px 0 #FFFFFF;
+	height: 30px;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 18px;
+	overflow: visible;
+	padding: 5px 10px;
+
+	background-color: #019AD2;
+    background-image: -moz-linear-gradient(#33BCEF, #019AD2);
+    background-repeat: repeat-x;
+    border-color: #057ED0;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	border-radius: 4px 4px 4px 4px;
 }
+
+.inputbtn:hover, .inputbtn:focus {
+	background-color: #0271BF;
+    background-image: -moz-linear-gradient(#2DADDC, #0271BF);
+    background-repeat: repeat-x;
+    border-color: #096EB3;
+}
+
+
 .showmodal{
 	width:400px;
 	height:35px;

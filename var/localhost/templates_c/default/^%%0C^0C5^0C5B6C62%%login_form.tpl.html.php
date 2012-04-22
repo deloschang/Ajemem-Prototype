@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-19 03:44:55
+<?php /* Smarty version 2.6.7, created on 2012-04-22 01:25:35
          compiled from user/login_form.tpl.html */ ?>
 
-<!-- Template: user/login_form.tpl.html Start 19/04/2012 03:44:55 --> 
+<!-- Template: user/login_form.tpl.html Start 22/04/2012 01:25:35 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -34,11 +34,11 @@
 
 <!-- css in mainpg.css -->
 <div id="logintable">
-<div id="new_user">
-<h1>New Users</h1>
-<div style="height:25px"><p>Please create a Memeja account</p></div>
-<div class="create_account"><a href="http://localhost/user/register">Create An Account</a></div>
-</div>
+	<div id="new_user">
+	<h1>New Users</h1>
+	<div style="height:25px"><p>Please create a Memeja account</p></div>
+	<div class="create_account"><a href="http://localhost/user/register">Create An Account</a></div>
+	</div>
 
 <div id="register_user">
 <h1>Registered Users</h1>
