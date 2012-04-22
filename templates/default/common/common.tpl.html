@@ -487,21 +487,29 @@
 		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/rmemejalogo.png" width="350px" id="logo"></a>
 	</div>
 	<div id ="nlu_message" class="triangle-right left">
+		We bring people together through shared experiences
 	</div>
 </div>
 
 <div class="clear"></div>
 
 <div>
-	<div id="nlu_feed">
-		{include file=$content}
-		{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
+	<div id ="nlu_featured">
+		<div> Hey you! Everybody's got a story to share. Whether it's...</div>
+		<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
+		<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
+		<div id="nlu_message_three"><span class="blurb" id="blurb_three"></span></div>
+		<div>...your story will fit in at Memeja</div>
 	</div>
 	<div id ="nlu_login">
 		{include file=user/login_form"}
 	</div>
 	<div id ="nlu_login_register">
 		{include file=user/login_form_register"}
+	</div>
+	<div id="nlu_feed">
+		{include file=$content}
+		{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
 	</div>
 </div>
 

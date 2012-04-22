@@ -93,12 +93,15 @@
 		font-weight: 100;
 		line-height: 22px;
 		text-shadow: 0 1px 2px #000000;
+		box-shadow: 0 0 4px 0 #555555;
 		
 		background:#FFF;
 	    moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
 	    border-radius: 20px;
+		
+		
 	}
 	
 	#nlu_login{
@@ -186,21 +189,96 @@
 	#nlu_feed{
 		float:left; 
 	
-		margin:-60px 0 0 70px;
+		margin:20px 0 0 70px;
 		
 		
 		top: -10px;
 		padding:10px;
 		width:580px;
+		box-shadow: 0 0 4px 0 #555555;
 		
 		background:#FFF;
-	    moz-border-radius: 20px;
-	    webkit-border-radius: 20px;
-	    khtml-border-radius: 20px;
-	    border-radius: 20px;
+	    moz-border-radius: 12px;
+	    webkit-border-radius: 12px;
+	    khtml-border-radius: 12px;
+	    border-radius: 12px;
 		voice-family:"\"}\"";
 		voice-family:inherit;
 	}	
+	
+	#nlu_featured{
+		float:left; 
+		margin:-60px 0 0 70px;
+		padding: 20px; 0px; 20px; 20px;
+	
+		top: -10px;
+		width:560px;
+		height:350px;
+		
+		
+		background:#FFF;
+	    moz-border-radius: 12px;
+	    webkit-border-radius: 12px;
+	    khtml-border-radius: 12px;
+	    border-radius: 12px;
+		
+		box-shadow: 0 0 4px 0 #555555;
+	}	
+	
+	#nlu_message_one{
+		position:relative;
+		float:left;
+	}
+	
+	#nlu_message_two{
+		position:relative;
+		float: left;
+		margin: 0 0 0 10px;
+	}
+	
+	#nlu_message_three{
+		position:relative;
+		float: left;
+		margin: 10px 0 0 10px;
+	}
+	
+	.blurb {
+		position:absolute;
+		background: none repeat scroll 0 0 rgba(52, 182, 250, 0.8);
+		
+		width:100%;
+		
+		padding: 10px 0 12px 0;
+		bottom:0px;
+		left:0;
+		z-index:10;
+		text-align:center;
+	}
+	
+	#blurb_one a, #blurb_two a, #blurb_three a{
+		color: #FFFFFF;
+		font-size: 18px;
+		font-weight: bold;
+		line-height: 22px;
+	}
+	
+	#blurb_two a{
+		font-size:15px;
+		font-weight: bold;
+		line-height: 17px;
+	}
+	
+	#blurb_three a{
+		font-size:15px;
+		font-weight: bold;
+		line-height: 17px;
+	}
+	
+	#blurb_one a:hover, #blurb_two a:hover, #blurb_three a:hover{
+		text-decoration:underline;
+	}
+	
+	
 	
 
 	
