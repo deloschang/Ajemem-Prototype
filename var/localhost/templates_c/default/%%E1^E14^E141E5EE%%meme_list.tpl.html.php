@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-23 01:21:14
+<?php /* Smarty version 2.6.7, created on 2012-04-26 19:14:38
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -72,15 +72,15 @@
 			 });
 			
 		if (!logged_in) {			
-			$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://localhost/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 320px; height: 350px; "/></a>\');
+			$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://localhost/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 320px; height: 350px; "/></a>\');
 			
-			$(\'#blurb_one\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/\'+link_one+\'" title="\'+message_one+\'">\'+message_one+\'</a>\');
+			$(\'#blurb_one\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'">\'+message_one+\'</a>\');
 			
-			$(\'#nlu_message_two\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/\'+link_two+\'" title="\'+message_two+\'"><img src="http://localhost/image/orig/meme/\'+link_two+\'" style="cursor:pointer; width: 210px; height: 170px; "/></a>\');
+			$(\'#nlu_message_two\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'"><img src="http://localhost/image/orig/meme/\'+link_two+\'" style="cursor:pointer; width: 210px; height: 170px; "/></a>\');
 			
-			$(\'#blurb_two\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/\'+link_two+\'" title="\'+message_two+\'">\'+message_two+\'</a>\');
+			$(\'#blurb_two\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'">\'+message_two+\'</a>\');
 			
-			$(\'#nlu_message_three\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/\'+link_three+\'" title="\'+message_three+\'"><img src="http://localhost/image/orig/meme/\'+link_three+\'" style="cursor:pointer; width: 210px; height: 170px; "/></a>\');
+			$(\'#nlu_message_three\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_three+\'" title="\'+message_three+\'"><img src="http://localhost/image/orig/meme/\'+link_three+\'" style="cursor:pointer; width: 210px; height: 170px; "/></a>\');
 			
 			$(\'#blurb_three\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/\'+link_three+\'" title="\'+message_three+\'">\'+message_three+\'</a>\');
 		 }

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-23 01:21:13
+<?php /* Smarty version 2.6.7, created on 2012-04-26 19:14:38
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -490,7 +490,7 @@
 		<a href="http://localhost/"><img src="http://localhost/templates/images/rmemejalogo.png" width="350px" id="logo"></a>
 	</div>
 	<div id ="nlu_message" class="triangle-right left">
-		Where experiences are social
+		Tagline here
 	</div>
 </div>
 
@@ -507,7 +507,6 @@
 	</div>
 	
 	<div id ="nlu_featured">
-		<div>Share your story. Tag your friends. Make a connection to the people you love.</div>
 		<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
 		<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
 		<div id="nlu_message_three"><span class="blurb" id="blurb_three"></span></div>
