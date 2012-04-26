@@ -71,7 +71,7 @@
 			});
 			
 		if (!logged_in) {			
-			$('#nlu_message_one').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'"><img src="##LBL_SITE_URL##image/orig/meme/'+link_one+'" style="cursor:pointer;width: 320px; height: 350px; "/></a>');
+			$('#nlu_message_one').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'"><img src="##LBL_SITE_URL##image/orig/meme/'+link_one+'" style="cursor:pointer;width: 300px; height: 350px; "/></a>');
 			
 			$('#blurb_one').html('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'">'+message_one+'</a>');
 			
@@ -462,12 +462,14 @@
 </div>
 
 {if !$sm.is_search}
-<span id="pageprev"></span>
-<span id="pagingcount" ></span>
-<span id="pagenext"></span>
+<div style="text-align:center">
+	<span id="pageprev"></span>
+	<span id="pagingcount" ></span>
+	<span id="pagenext"></span>
+</div>
 {/if}
 
-<div id="loadingmeme_img" style="display:none;">
+<div id="loadingmeme_img" style="margin-left: 41%; display:none;">
     <img src="##LBL_SITE_URL##templates/images/loading.gif" />
 </div>
 

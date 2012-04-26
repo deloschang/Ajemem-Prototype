@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-26 19:14:38
+<?php /* Smarty version 2.6.7, created on 2012-04-26 23:42:18
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -72,7 +72,7 @@
 			 });
 			
 		if (!logged_in) {			
-			$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://localhost/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 320px; height: 350px; "/></a>\');
+			$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://localhost/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 300px; height: 350px; "/></a>\');
 			
 			$(\'#blurb_one\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'">\'+message_one+\'</a>\');
 			
@@ -470,12 +470,14 @@ unset($_smarty_tpl_vars);
 </div>
 
 <?php if (! $this->_tpl_vars['sm']['is_search']): ?>
-<span id="pageprev"></span>
-<span id="pagingcount" ></span>
-<span id="pagenext"></span>
+<div style="text-align:center">
+	<span id="pageprev"></span>
+	<span id="pagingcount" ></span>
+	<span id="pagenext"></span>
+</div>
 <?php endif; ?>
 
-<div id="loadingmeme_img" style="display:none;">
+<div id="loadingmeme_img" style="margin-left: 41%; display:none;">
     <img src="http://localhost/templates/images/loading.gif" />
 </div>
 

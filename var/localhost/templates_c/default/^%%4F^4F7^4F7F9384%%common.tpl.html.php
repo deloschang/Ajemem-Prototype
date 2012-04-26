@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-26 19:14:38
+<?php /* Smarty version 2.6.7, created on 2012-04-26 23:42:18
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -497,19 +497,15 @@
 <div class="clear"></div>
 
 
-<div>
-<div id="tabs">
-		<ul>
-			<li>
-				<div id="videos" class="softcorner native tab" onclick="tab_stream(this);" style="background-color: #f4f4ee; -moz-border-radius-topleft: 10px; -webkit-border-top-left-radius: 10px; border-top-left-radius: 10px; -moz-border-radius-topright: 10px; -webkit-border-top-right-radius: 10px; border-top-right-radius: 10px; "> Videos we like</div>
-			</li>
-		</ul>
+<div>	
+	<div id = "nlu_main">
 	</div>
-	
 	<div id ="nlu_featured">
+		<div class="module_text" id="first_half">Whether it's...</div>
 		<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
 		<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
 		<div id="nlu_message_three"><span class="blurb" id="blurb_three"></span></div>
+		<div class="module_text" id="second_half">...your story will find its place in Memeja</div>
 	</div>
 	<div id ="nlu_login">
 		<?php $_smarty_tpl_vars = $this->_tpl_vars;

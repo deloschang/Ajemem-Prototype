@@ -108,7 +108,7 @@
 		float:right;
 		width: 250px;
 		height:110px;
-		margin:-60px 20px 0 0;
+		margin:-120px 20px 0 0;
 		
 		background:#FFF;
 	    moz-border-radius: 12px;
@@ -217,23 +217,46 @@
 		voice-family:inherit;
 	}	
 	
-	#tabs ul li {
-		position:absolute;
-		bottom:760px;
-		left:5px;
-		cursor: pointer;
-		list-style-type: none;
-		z-index:100;
+	#nlu_main{
+		float:left;
+		background:#FFF;
+	    moz-border-radius: 12px;
+	    webkit-border-radius: 12px;
+	    khtml-border-radius: 12px;
+	    border-radius: 12px;
+		
+		box-shadow: 0 0 4px 0 #555555;
+		width:600px;
+		height:150px;
+		margin: -40px 0 0 70px;
+	}
+	
+	.module_text{
+		font:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size:30px;
+		font-weight: 700;
+		line-height: 1.2em;
+		color: #003366;
+	}
+	
+	#first_half{
+		margin: 0px 0px 15px 0;
+	}
+	
+	#second_half{
+		float:right;
+		font-size:20px;
+		padding-top: 15px;
 	}
 	
 	#nlu_featured{
 		float:left; 
-		margin:-60px 0 0 70px;
+		margin:20px 0 0 70px;
 		padding: 20px; 0px; 20px; 20px;
 	
 		top: -10px;
 		width:560px;
-		height:350px;
+		height:430px;
 		
 		
 		background:#FFF;
@@ -248,6 +271,7 @@
 	#nlu_message_one{
 		position:relative;
 		float:left;
+		margin-left:15px;
 	}
 	
 	#nlu_message_two{
@@ -269,10 +293,18 @@
 		width:100%;
 		
 		padding: 10px 0 12px 0;
-		bottom:0px;
-		left:0;
 		z-index:10;
 		text-align:center;
+	}
+	
+	#blurb_one{
+		bottom:306px;
+		left:0;
+	}
+	
+	#blurb_two, #blurb_three{
+		bottom: 115px;
+		left:0;
 	}
 	
 	#blurb_one a, #blurb_two a, #blurb_three a{
