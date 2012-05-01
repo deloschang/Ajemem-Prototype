@@ -484,35 +484,29 @@
 <div id="nlu_masthead">
 	<!-- Memeja logo -->
 	<div id ="nlu_logoc">
-		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/rmemejalogo.png" width="350px" id="logo"></a>
+		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/rmemejalogo.png" width="280px" id="logo"></a>
 	</div>
+	<!--
 	<div id ="nlu_message" class="triangle-right left">
 		Tagline here
 	</div>
+	-->
 </div>
 
 <div class="clear"></div>
 
 
-<div>	
-	<div id = "nlu_main">
+<div id="nlu_container">	
+	<div id="nlu_feed">
+		{include file=$content}
+		{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
 	</div>
-	<div id ="nlu_featured">
-		<div class="module_text" id="first_half">Whether it's...</div>
-		<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
-		<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
-		<div id="nlu_message_three"><span class="blurb" id="blurb_three"></span></div>
-		<div class="module_text" id="second_half">...your story will find its place in Memeja</div>
-	</div>
+	
 	<div id ="nlu_login">
 		{include file=user/login_form"}
 	</div>
 	<div id ="nlu_login_register">
 		{include file=user/login_form_register"}
-	</div>
-	<div id="nlu_feed">
-		{include file=$content}
-		{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
 	</div>
 </div>
 
@@ -656,11 +650,9 @@
 <div class="clear"></div>
 </div>		
 
-{/if}
-
-
 <!-- Keeping the Footer at the Bottom -->	
 <div class="clear"></div>
 	<div id="footer"class="nohighlight"><center>Copyrights. All Rights Reserved. 2012</center></div>
+{/if}
 </body>
 </html>

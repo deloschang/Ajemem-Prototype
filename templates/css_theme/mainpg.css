@@ -11,7 +11,8 @@
 		font-size:0.8em;
 		margin:10px 0% 10px 4%;
 		background-color:#87C8F0;
-		width: 1000px;
+		/*width: 1000px;*/
+			/*Removed for NLU sizing */
 	}
 
 /* =p Define paragraph text size */
@@ -67,11 +68,12 @@
 /*++++++++++++++++++++++++ NLU Design ++++++++++++++++++*/
 
 	#nlu_masthead{
-		margin: 30px 0 0 80px;
+		margin: 0 0 0 0;
 	}
 	
 	#nlu_logoc {
-		float: left;
+		float:left;
+		margin-left:-30px;
 		width:280px;
 		background:#FFF;
 	    moz-border-radius: 20px;
@@ -80,35 +82,11 @@
 	    border-radius: 20px;
 	}
 	
-	#nlu_message{
-		float: right;
-		height: 26px;
-		width: 440px;
-		
-		bottom: 28px;
-		right: 70px;
-		
-		color: black;
-		font-size: 20px;
-		font-weight: 100;
-		line-height: 22px;
-		text-shadow: 0 1px 2px #000000;
-		box-shadow: 0 0 4px 0 #555555;
-		
-		background:#FFF;
-	    moz-border-radius: 20px;
-	    webkit-border-radius: 20px;
-	    khtml-border-radius: 20px;
-	    border-radius: 20px;
-		
-		
-	}
-	
 	#nlu_login{
-		float:right;
+		float:left;
 		width: 250px;
 		height:110px;
-		margin:-120px 20px 0 0;
+		margin:0 0 0 20px;
 		
 		background:#FFF;
 	    moz-border-radius: 12px;
@@ -120,10 +98,10 @@
 	}
 	
 	#nlu_login_register{
-		float:right;
+		float:left;
 		width:250px;
 		height:200px;
-		margin:15px 20px 0 0;
+		margin:20px 0 0 20px;
 		
 		background:#FFF;
 	    moz-border-radius: 12px;
@@ -154,83 +132,27 @@
 		color: #666666;
 	}
 	
-	
-	.triangle-right {
-		position:relative;
-		padding:15px;
-		margin:1em 0 3em;
-		color:#fff;
-		background:#075698; /* default background for browsers without gradient support */
-		/* css3 */
-		background:-webkit-gradient(linear, 0 0, 0 100%, from(#2e88c4), to(#075698));
-		background:-moz-linear-gradient(#2e88c4, #075698);
-		background:-o-linear-gradient(#2e88c4, #075698);
-		background:linear-gradient(#2e88c4, #075698);
-		-webkit-border-radius:10px;
-		-moz-border-radius:10px;
-		border-radius:10px;
-	}
-	
-	.triangle-right:after {
-		content:"";
-		position:absolute;
-		bottom:-20px; /* value = - border-top-width - border-bottom-width */
-		left:50px; /* controls horizontal position */
-		border-width:20px 0 0 20px; /* vary these values to change the angle of the vertex */
-		border-style:solid;
-		border-color:#075698 transparent; 
-		/* reduce the damage in FF3.0 */
-		display:block; 
-		width:0;
-	}
-	
-	.triangle-right.left {
-		margin-left:40px;
-		background:#FFF;
-	}
-	
-	.triangle-right.left:after {
-		top:25px; 
-		left:-15px; /* value = - border-left-width - border-right-width */
-		bottom:auto;
-		border-width:15px 15px 0 0; /* vary these values to change the angle of the vertex */
-		border-color:transparent #FFF; 
+	#nlu_container{
+		margin:0.5% 0 0 -3%;
 	}
 
 	#nlu_feed{
 		float:left; 
-	
-		margin:20px 0 0 70px;
+		margin:0 0 0 0;
+		padding: 15px 50px 50px 50px;
 		
-		
-		top: -10px;
-		padding:10px;
-		width:580px;
-		box-shadow: 0 0 4px 0 #555555;
+		width:860px;
+		height:420px;
 		
 		background:#FFF;
 	    moz-border-radius: 12px;
 	    webkit-border-radius: 12px;
 	    khtml-border-radius: 12px;
 	    border-radius: 12px;
-		voice-family:"\"}\"";
-		voice-family:inherit;
+		
+		box-shadow: 0 0 4px 0 #555555;
 	}	
-	
-	#nlu_main{
-		float:left;
-		background:#FFF;
-	    moz-border-radius: 12px;
-	    webkit-border-radius: 12px;
-	    khtml-border-radius: 12px;
-	    border-radius: 12px;
 		
-		box-shadow: 0 0 4px 0 #555555;
-		width:600px;
-		height:150px;
-		margin: -40px 0 0 70px;
-	}
-	
 	.module_text{
 		font:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		font-size:30px;
@@ -239,34 +161,32 @@
 		color: #003366;
 	}
 	
+	#front_card{
+		margin: 0px 0 30px 0;
+		text-align:center;
+		font-size:50px;
+	}
+	
 	#first_half{
-		margin: 0px 0px 15px 0;
+		font-size:24px;
+		margin-left:20px;
+		padding-bottom:15px;
 	}
 	
 	#second_half{
 		float:right;
+		margin-right: 20px;
 		font-size:20px;
-		padding-top: 15px;
+		padding-top: 25px;
 	}
 	
-	#nlu_featured{
-		float:left; 
-		margin:20px 0 0 70px;
-		padding: 20px; 0px; 20px; 20px;
+	#module_container{
+		text-align:center;
+	}
 	
-		top: -10px;
-		width:560px;
-		height:430px;
-		
-		
-		background:#FFF;
-	    moz-border-radius: 12px;
-	    webkit-border-radius: 12px;
-	    khtml-border-radius: 12px;
-	    border-radius: 12px;
-		
-		box-shadow: 0 0 4px 0 #555555;
-	}	
+	#message_container{
+		display:inline-block;
+	}
 	
 	#nlu_message_one{
 		position:relative;
@@ -283,7 +203,7 @@
 	#nlu_message_three{
 		position:relative;
 		float: left;
-		margin: 10px 0 0 10px;
+		margin: 0 0 0 10px;
 	}
 	
 	.blurb {
@@ -298,30 +218,18 @@
 	}
 	
 	#blurb_one{
-		bottom:306px;
+		top:0;
 		left:0;
 	}
 	
 	#blurb_two, #blurb_three{
-		bottom: 115px;
+		top:0;
 		left:0;
 	}
 	
 	#blurb_one a, #blurb_two a, #blurb_three a{
 		color: #FFFFFF;
-		font-size: 18px;
-		font-weight: bold;
-		line-height: 22px;
-	}
-	
-	#blurb_two a{
-		font-size:15px;
-		font-weight: bold;
-		line-height: 17px;
-	}
-	
-	#blurb_three a{
-		font-size:15px;
+		font-size: 15px;
 		font-weight: bold;
 		line-height: 17px;
 	}

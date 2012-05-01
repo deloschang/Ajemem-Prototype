@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-26 23:42:18
+<?php /* Smarty version 2.6.7, created on 2012-05-01 05:42:08
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -487,26 +487,32 @@
 <div id="nlu_masthead">
 	<!-- Memeja logo -->
 	<div id ="nlu_logoc">
-		<a href="http://localhost/"><img src="http://localhost/templates/images/rmemejalogo.png" width="350px" id="logo"></a>
+		<a href="http://localhost/"><img src="http://localhost/templates/images/rmemejalogo.png" width="280px" id="logo"></a>
 	</div>
+	<!--
 	<div id ="nlu_message" class="triangle-right left">
 		Tagline here
 	</div>
+	-->
 </div>
 
 <div class="clear"></div>
 
 
-<div>	
-	<div id = "nlu_main">
+<div id="nlu_container">	
+	<div id="nlu_feed">
+		<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['content'], 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+		<?php if (! $_SESSION['id_user'] && ! $_REQUEST['page']):  $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+  endif; ?> 
 	</div>
-	<div id ="nlu_featured">
-		<div class="module_text" id="first_half">Whether it's...</div>
-		<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
-		<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
-		<div id="nlu_message_three"><span class="blurb" id="blurb_three"></span></div>
-		<div class="module_text" id="second_half">...your story will find its place in Memeja</div>
-	</div>
+	
 	<div id ="nlu_login">
 		<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form.tpl.html", 'smarty_include_vars' => array()));
@@ -520,18 +526,6 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form_regis
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-	</div>
-	<div id="nlu_feed">
-		<?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['content'], 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?>
-		<?php if (! $_SESSION['id_user'] && ! $_REQUEST['page']):  $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
-  endif; ?> 
 	</div>
 </div>
 
@@ -707,11 +701,9 @@ unset($_smarty_tpl_vars);
 <div class="clear"></div>
 </div>		
 
-<?php endif; ?>
-
-
 <!-- Keeping the Footer at the Bottom -->	
 <div class="clear"></div>
 	<div id="footer"class="nohighlight"><center>Copyrights. All Rights Reserved. 2012</center></div>
+<?php endif; ?>
 </body>
 </html>

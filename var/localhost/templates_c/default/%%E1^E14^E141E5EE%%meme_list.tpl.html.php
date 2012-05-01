@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-26 23:42:18
+<?php /* Smarty version 2.6.7, created on 2012-05-01 05:42:08
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -72,7 +72,7 @@
 			 });
 			
 		if (!logged_in) {			
-			$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://localhost/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 300px; height: 350px; "/></a>\');
+			$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://localhost/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 210px; height: 170px; "/></a>\');
 			
 			$(\'#blurb_one\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'">\'+message_one+\'</a>\');
 			
@@ -455,8 +455,8 @@
 <br><br>
 
 
+<?php if ($_SESSION['id_user']): ?>
 <div id="all_memes">
-
     <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmorememe.tpl.html", 'smarty_include_vars' => array()));
@@ -481,4 +481,18 @@ unset($_smarty_tpl_vars);
     <img src="http://localhost/templates/images/loading.gif" />
 </div>
 
-<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
+<?php endif; ?>
+
+
+<?php if (! $_SESSION['id_user']): ?>
+	<div class="module_text" id="front_card">Your stories belong here.</div>
+	<div class="module_text" id="first_half">Whether it's...</div>
+	<div id="module_container">
+		<div id="message_container">
+			<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
+			<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
+			<div id="nlu_message_three"><span class="blurb" id="blurb_three">Surprise Me!</span></div>
+		</div>
+		<div class="module_text" id="second_half">...Memeja helps you share experiences with the people you care about.</div>
+	</div>
+<?php endif; ?>

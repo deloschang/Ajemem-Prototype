@@ -71,7 +71,7 @@
 			});
 			
 		if (!logged_in) {			
-			$('#nlu_message_one').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'"><img src="##LBL_SITE_URL##image/orig/meme/'+link_one+'" style="cursor:pointer;width: 300px; height: 350px; "/></a>');
+			$('#nlu_message_one').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'"><img src="##LBL_SITE_URL##image/orig/meme/'+link_one+'" style="cursor:pointer;width: 210px; height: 170px; "/></a>');
 			
 			$('#blurb_one').html('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'">'+message_one+'</a>');
 			
@@ -451,8 +451,8 @@
 <br><br>
 
 
+{if $smarty.session.id_user}
 <div id="all_memes">
-
     {if $sm.res_meme} 
 	{include file="meme/loadmorememe"}
     {else}
@@ -473,4 +473,18 @@
     <img src="##LBL_SITE_URL##templates/images/loading.gif" />
 </div>
 
-<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
+{/if}
+
+
+{if !$smarty.session.id_user}
+	<div class="module_text" id="front_card">Your stories belong here.</div>
+	<div class="module_text" id="first_half">Whether it's...</div>
+	<div id="module_container">
+		<div id="message_container">
+			<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
+			<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
+			<div id="nlu_message_three"><span class="blurb" id="blurb_three">Surprise Me!</span></div>
+		</div>
+		<div class="module_text" id="second_half">...Memeja helps you share experiences with the people you care about.</div>
+	</div>
+{/if}
