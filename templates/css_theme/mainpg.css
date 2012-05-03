@@ -143,7 +143,7 @@
 		padding: 15px 50px 50px 50px;
 		
 		width:860px;
-		height:420px;
+		height:445px;
 		
 		background:#FFF;
 	    moz-border-radius: 12px;
@@ -163,7 +163,7 @@
 	}
 	
 	#front_card{
-		margin: 0px 0 30px 0;
+		margin: 15px 0 30px 0;
 		text-align:center;
 		font-size:50px;
 	}
@@ -239,7 +239,7 @@
 		text-decoration:underline;
 	}
 	
-	#icon_0, #icon_1, #icon_2, #icon_3, #icon_4, #icon_5, #icon_6, #icon_7, #icon_8, #icon_9{
+	.front_icon{
 		position: absolute;
 	}
 	
@@ -291,6 +291,231 @@
 	#icon_9{
 		bottom: 10px;
 		right: 60px;
+	}
+	
+	#icon_10{
+		top: 10px;
+		left: 60px;
+	}	
+	
+	#icon_11{
+		bottom:10px;
+		left:60px;
+	}
+	
+	#icon_12{
+		top: 110px;
+		left: 10px;
+	}
+	
+	#icon_13{
+		bottom: 110px;
+		right: 10px;
+	}
+	
+	#icon_14 {
+		bottom: 10px;
+		right: 110px;
+	}
+	
+	#icon_15{
+		top: 10px;
+		right: 110px;
+	}
+	
+	#icon_16{
+		bottom: 10px;
+		left: 110px;
+	}
+	
+	#icon_17{
+		top: 10px;
+		left: 110px;
+	}
+	
+	#icon_18{
+		top: 110px;
+		right: 10px;
+	}
+	
+	#icon_19{
+		bottom: 110px;
+		left: 10px;
+	}
+	
+	#icon_20{
+		top: 10px;
+		left: 160px;
+	}
+	
+	#icon_21{
+		top: 10px;
+		right: 160px;
+	}
+	
+	#icon_22{
+		bottom: 160px;
+		left: 10px;
+	}
+	
+	#icon_23{
+		top: 160px;
+		right: 10px;
+	}
+	
+	#icon_24{
+		bottom: 160px;
+		left: 10px;
+	}
+	
+	#icon_25{
+		bottom: 10px;
+		left: 160px;
+	}
+	
+	#icon_26{
+		top: 160px;
+		left: 10px;
+	}
+	
+	#icon_27{
+		top: 210px;
+		left: 10px;
+	}
+	
+	#icon_28 {
+		top:260px;
+		left: 10px;
+	}
+	
+	#icon_29{
+		bottom: 10px;
+		left: 210px;
+	}
+	
+	#icon_30{
+		bottom: 10px;
+		left: 260px;
+	}
+	
+	#icon_31{
+		bottom: 10px;
+		left: 310px;
+	}
+	
+	#icon_32{
+		bottom: 10px;
+		left: 360px;
+	}
+	
+	#icon_33{
+		bottom: 10px;
+		left: 410px;
+	}
+	
+	#icon_34{
+		bottom: 10px;
+		left: 460px;
+	}
+	
+	#icon_35{
+		bottom: 10px;
+		left: 510px;
+	}
+	
+	#icon_36{
+		bottom: 10px;
+		left: 560px;
+	}
+	
+	#icon_37{
+		bottom: 10px;
+		left: 610px;
+	}
+	
+	#icon_38{
+		bottom: 10px;
+		left: 660px;
+	}
+	
+	#icon_39{
+		bottom: 10px;
+		left: 710px;
+	}
+	
+	#icon_40{
+		bottom: 10px;
+		left: 760px;
+	}
+	
+	#icon_41{
+		top: 10px;
+		left: 210px;
+	}
+	
+	#icon_42{
+		top: 10px;
+		left: 260px;
+	}
+	
+	#icon_43{
+		top: 10px;
+		left: 310px;
+	}
+	
+	#icon_44{
+		top: 10px;
+		left: 360px;
+	}
+	
+	#icon_45{
+		top: 10px;
+		left: 410px;
+	}
+	
+	#icon_46{
+		top: 10px;
+		left: 460px;
+	}
+	
+	#icon_47{
+		top: 10px;
+		left: 510px;
+	}
+	
+	#icon_48{
+		top: 10px;
+		left: 560px;
+	}
+	
+	#icon_49{
+		top: 10px;
+		left: 610px;
+	}
+	
+	#icon_50{
+		top: 10px;
+		left: 660px;
+	}
+	
+	#icon_51{
+		top: 10px;
+		left: 710px;
+	}
+	
+	#icon_52{
+		top: 210px;
+		right: 10px;
+	}
+	
+	#icon_53{
+		top: 260px;
+		right: 10px;
+	}
+	
+	#icon_54{
+		top: 310px;
+		right: 10px;
 	}
 	
 
