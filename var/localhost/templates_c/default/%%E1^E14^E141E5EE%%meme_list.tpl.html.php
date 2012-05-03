@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-05-01 05:42:08
+<?php /* Smarty version 2.6.7, created on 2012-05-03 21:14:41
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -25,15 +25,6 @@
 	
 	var meme_timer;
 	var meme_timer_new;
-	
-	var message_one = \'';  echo $this->_tpl_vars['sm']['msg_arr'][0];  echo '\';
-	var link_one = \'';  echo $this->_tpl_vars['sm']['link_arr'][0];  echo '\';
-	
-	var message_two = \'';  echo $this->_tpl_vars['sm']['msg_arr'][1];  echo '\';
-	var link_two = \'';  echo $this->_tpl_vars['sm']['link_arr'][1];  echo '\';
-	
-	var message_three = \'';  echo $this->_tpl_vars['sm']['msg_arr'][2];  echo '\';
-	var link_three = \'';  echo $this->_tpl_vars['sm']['link_arr'][2];  echo '\';
 	
     $(document).ready(function(){	
     
@@ -71,7 +62,23 @@
 				 }
 			 });
 			
-		if (!logged_in) {			
+		if (!logged_in) {	
+				
+			var message_one = \'';  echo $this->_tpl_vars['sm']['msg_arr'][0];  echo '\';
+			var link_one = \'';  echo $this->_tpl_vars['sm']['link_arr'][0];  echo '\';
+			
+			var message_two = \'';  echo $this->_tpl_vars['sm']['msg_arr'][1];  echo '\';
+			var link_two = \'';  echo $this->_tpl_vars['sm']['link_arr'][1];  echo '\';
+			
+			var message_three = \'';  echo $this->_tpl_vars['sm']['msg_arr'][2];  echo '\';
+			var link_three = \'';  echo $this->_tpl_vars['sm']['link_arr'][2];  echo '\';
+			
+			var icon_arr = new Array();
+			icon_arr = ';  echo $this->_tpl_vars['sm']['icon_arr'];  echo ';
+			
+			var title_arr = new Array();
+			title_arr = ';  echo $this->_tpl_vars['sm']['title_arr'];  echo ';
+		
 			$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://localhost/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 210px; height: 170px; "/></a>\');
 			
 			$(\'#blurb_one\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'">\'+message_one+\'</a>\');
@@ -83,6 +90,10 @@
 			$(\'#nlu_message_three\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_three+\'" title="\'+message_three+\'"><img src="http://localhost/image/orig/meme/\'+link_three+\'" style="cursor:pointer; width: 210px; height: 170px; "/></a>\');
 			
 			$(\'#blurb_three\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/\'+link_three+\'" title="\'+message_three+\'">\'+message_three+\'</a>\');
+			
+			$.each(icon_arr, function(index, value){
+				$(\'#icon_container\').append(\'<div id="icon_\'+index+\'"><a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+value+\'" title="\'+title_arr[index]+\'"><img src="http://localhost/image/orig/meme/\'+value+\'" style="cursor:pointer; width: 40px; height: 40px; "/></a></div>\');
+			 });
 		 }
 			
     
@@ -485,6 +496,7 @@ unset($_smarty_tpl_vars);
 
 
 <?php if (! $_SESSION['id_user']): ?>
+	<div id="icon_container"></div>
 	<div class="module_text" id="front_card">Your stories belong here.</div>
 	<div class="module_text" id="first_half">Whether it's...</div>
 	<div id="module_container">
