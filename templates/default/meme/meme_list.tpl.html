@@ -61,7 +61,7 @@
 				}
 			});
 			
-		if (!logged_in) {	
+		if (!logged_in){
 				
 			var message_one = '{/literal}{$sm.msg_arr[0]}{literal}';
 			var link_one = '{/literal}{$sm.link_arr[0]}{literal}';
@@ -86,9 +86,9 @@
 			
 			$('#blurb_two').html('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_two+'" title="'+message_two+'">'+message_two+'</a>');
 			
-			$('#nlu_message_three').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_three+'" title="'+message_three+'"><img src="##LBL_SITE_URL##image/orig/meme/'+link_three+'" style="cursor:pointer; width: 210px; height: 170px; "/></a>');
+			$('#nlu_message_three').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_three+'" title="'+message_three+'"><img src="##LBL_SITE_URL##image/questions.jpg" style="cursor:pointer; width: 210px; height: 170px; "/></a>');
 			
-			$('#blurb_three').html('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##/image/orig/meme/'+link_three+'" title="'+message_three+'">'+message_three+'</a>');
+			$('#blurb_three').html('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##/image/orig/meme/'+link_three+'" title="'+message_three+'">Surprise Me!</a>');
 			
 			console.log(icon_arr.length);
 			

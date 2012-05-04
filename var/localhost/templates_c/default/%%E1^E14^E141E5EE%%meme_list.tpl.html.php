@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-05-04 06:22:25
+<?php /* Smarty version 2.6.7, created on 2012-05-04 08:02:33
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -62,7 +62,7 @@
 				 }
 			 });
 			
-		if (!logged_in) {	
+		if (!logged_in){
 				
 			var message_one = \'';  echo $this->_tpl_vars['sm']['msg_arr'][0];  echo '\';
 			var link_one = \'';  echo $this->_tpl_vars['sm']['link_arr'][0];  echo '\';
@@ -87,9 +87,9 @@
 			
 			$(\'#blurb_two\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'">\'+message_two+\'</a>\');
 			
-			$(\'#nlu_message_three\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_three+\'" title="\'+message_three+\'"><img src="http://localhost/image/orig/meme/\'+link_three+\'" style="cursor:pointer; width: 210px; height: 170px; "/></a>\');
+			$(\'#nlu_message_three\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_three+\'" title="\'+message_three+\'"><img src="http://localhost/image/questions.jpg" style="cursor:pointer; width: 210px; height: 170px; "/></a>\');
 			
-			$(\'#blurb_three\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/\'+link_three+\'" title="\'+message_three+\'">\'+message_three+\'</a>\');
+			$(\'#blurb_three\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/\'+link_three+\'" title="\'+message_three+\'">Surprise Me!</a>\');
 			
 			console.log(icon_arr.length);
 			
