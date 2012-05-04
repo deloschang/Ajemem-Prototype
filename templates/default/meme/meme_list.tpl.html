@@ -93,7 +93,10 @@
 			console.log(icon_arr.length);
 			
 			$.each(icon_arr, function(index, value){
-				$('#icon_container').append('<div class="front_icon" id="icon_'+index+'"><a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+value+'" title="'+title_arr[index]+'"><img src="##LBL_SITE_URL##image/orig/meme/'+value+'" style="cursor:pointer; width: 40px; height: 40px; "/></a></div>');
+				//temporary remover 
+				if (index < 55){
+					$('#icon_container').append('<div class="front_icon" id="icon_'+index+'"><a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+value+'" title="'+title_arr[index]+'"><img src="##LBL_SITE_URL##image/orig/meme/'+value+'" style="cursor:pointer; width: 40px; height: 40px; "/></a></div>');
+				}
 			});
 		}
 			
