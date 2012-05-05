@@ -29,10 +29,14 @@
 	function basic_login(){
 		$('#signup_alt_form').show();
 	}
+	
+	function lol_promise(){
+		$('#lol_promise').slideToggle(400);
+	}
 </script>
 {/literal}
 <div id="signup">
-<div id="signup_text">New to Memeja? Sign Up</div>
+<div id="signup_text">Join Memeja Today</div>
         
 		<center>
 	   <div class="fb-login-button" scope="
@@ -45,8 +49,26 @@
       </div>
 	   </center>
 
-<div id="signup_explanation" style="padding-top:15px">Facebook helps us link you to your social network. We <strong>promise</strong> <span id="promise"><a href="#">(not plomise!)</a></span> we'll never post without your permission.</div>
+<div id="explanation_header" style="padding-top:20px">Why connect?</div>
+<div id="signup_explanation">
+
+<div> (1) Because Facebook helps us link you + your stories with your friends</div>
+<div style="padding-top:5px;"> (2) Because we <strong>promise</strong> <span id="promise"><a href="javascript:void(0);" onclick="lol_promise();">(not plomise!)</a></span> we'll never post without your permission.</div>
+
+</div>
+
+
+<div id="lol_promise" style="display:none">
+	<img src="##LBL_SITE_URL##image/white_mascot.png" id="lol_promise_mascot"/><span id="lol_promise_text">We promise.</span>
+	
+	<div>
+	<img src="##LBL_SITE_URL##image/troll_mascot.png" id="lol_plomise_mascot"/><span id="lol_plomise_text">We plomise. Twust us</span>
+	</div>
+</div>
+
+<!-- Under Construction 
 <div id="signup_alt" style="padding-top:10px"><a href="javascript:void(0);" onclick="basic_login();">I don't have a Facebook account.</a></div>
+-->
 
 <div id="signup_alt_form" style="display:none">{include file="user/register"}</div>
 </div>

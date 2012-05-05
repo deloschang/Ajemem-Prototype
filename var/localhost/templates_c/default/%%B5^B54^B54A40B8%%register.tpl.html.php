@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-05-05 21:57:00
+<?php /* Smarty version 2.6.7, created on 2012-05-05 23:49:24
          compiled from user/register.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 276, false),array('function', 'html_select_date', 'user/register.tpl.html', 290, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 274, false),array('function', 'html_select_date', 'user/register.tpl.html', 288, false),)), $this); ?>
 
-<!-- Template: user/register.tpl.html Start 05/05/2012 21:56:59 --> 
+<!-- Template: user/register.tpl.html Start 05/05/2012 23:49:24 --> 
  <?php echo '
 	<script type="text/javascript" src="colorBckg.js"></script>
 	<script type="text/javascript">
@@ -106,9 +106,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 			var x=validator.form();
 			return x;
 		 }
-		function check_date(e) {
-			
-		 }
+		
 		function show_username_exist() {
 			var username=document.getElementById(\'username\').value;
 			var pass = document.getElementById(\'pwd\').value;
