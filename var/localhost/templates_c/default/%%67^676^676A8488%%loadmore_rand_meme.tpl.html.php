@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-15 22:59:19
+<?php /* Smarty version 2.6.7, created on 2012-05-05 21:42:41
          compiled from meme/loadmore_rand_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmore_rand_meme.tpl.html', 11, false),array('modifier', 'date_format', 'meme/loadmore_rand_meme.tpl.html', 13, false),)), $this); ?>
@@ -26,6 +26,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <!--	    <br/>-->
 
 	    <div>
+			<?php if ($_SESSION['id_user']): ?>
 		    <span>
 			<?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
 			
@@ -89,7 +90,9 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <!--			<span class="fb_btn"><fb:like href="http://localhost/meme/meme_details/id/<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like></span>-->
 
-		    </span><br/>
+		    </span>
+			<br/>
+			<?php endif; ?>
 	</div>
 	    
 	    

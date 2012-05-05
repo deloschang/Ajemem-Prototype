@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-05-04 08:02:33
+<?php /* Smarty version 2.6.7, created on 2012-05-05 21:56:59
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -87,12 +87,6 @@
 			
 			$(\'#blurb_two\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'">\'+message_two+\'</a>\');
 			
-			$(\'#nlu_message_three\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_three+\'" title="\'+message_three+\'"><img src="http://localhost/image/questions.jpg" style="cursor:pointer; width: 210px; height: 170px; "/></a>\');
-			
-			$(\'#blurb_three\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost//image/orig/meme/\'+link_three+\'" title="\'+message_three+\'">Surprise Me!</a>\');
-			
-			console.log(icon_arr.length);
-			
 			$.each(icon_arr, function(index, value){
 				//temporary remover 
 				if (index < 55){
@@ -101,29 +95,35 @@
 			 });
 		 }
 			
-    
-		$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
+		if (logged_in){
 		
-		var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
+			$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
+			
+			var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
+			
+			
+			$("#rand_id_memes").val("';  echo $this->_tpl_vars['sm']['id_memes'];  echo '");
+			
+			$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
 		
 		
-		$("#rand_id_memes").val("';  echo $this->_tpl_vars['sm']['id_memes'];  echo '");
-		
-		$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
 	    	get_all_flag_details(1);
 	    	setInterval("get_all_flag_details()",6000);
-		
-		var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
-		var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
-		
-		for(var i = 1; i < page_row + 1; i++) {
-			$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
+			
+			var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
+			var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
+			
+			for(var i = 1; i < page_row + 1; i++) {
+				$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
+			 }
+			
+			$(\'#pagenext\').html(\'<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>\');
+			
+			$("#page"+1).css({\'font-weight\' : \'bolder\' });
+			backup_page_no = 1;
 		 }
 		
-		$(\'#pagenext\').html(\'<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>\');
 		
-		$("#page"+1).css({\'font-weight\' : \'bolder\' });
-		backup_page_no = 1;
 		
 		// Self-describing for search
 	    var describedClass = \'self-described\';
@@ -508,7 +508,7 @@ unset($_smarty_tpl_vars);
 		<div id="message_container">
 			<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
 			<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
-			<div id="nlu_message_three"><span class="blurb" id="blurb_three">Surprise Me!</span></div>
+			<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="http://localhost/image/questions.jpg" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
 		</div>
 		<div class="module_text" id="second_half">...Memeja helps you share experiences with the people you care about.</div>
 	</div>

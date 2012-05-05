@@ -18,6 +18,7 @@
 <!--	    <br/>-->
 
 	    <div>
+			{if $smarty.session.id_user}
 		    <span>
 			{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
 			
@@ -63,7 +64,9 @@
 <!--			<br/>-->
 <!--			<span class="fb_btn"><fb:like href="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like></span>-->
 
-		    </span><br/>
+		    </span>
+			<br/>
+			{/if}
 	</div>
 	    
 	    
