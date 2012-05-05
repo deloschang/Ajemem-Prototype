@@ -85,7 +85,6 @@
 	#nlu_login{
 		float:left;
 		width: 250px;
-		height:110px;
 		margin:0 0 0 20px;
 		
 		background:#FFF;
@@ -95,6 +94,11 @@
 	    border-radius: 12px;
 		
 		box-shadow: 0 0 4px 0 #555555;
+	}
+	
+	#forgot_pwd{
+		padding:10px 0 12px 0;
+		margin: 10px 0 0 30px;
 	}
 	
 	#nlu_login_register{
@@ -1148,7 +1152,7 @@ label.error	{
 	width:95%
 }
 
-#uname, #pass {
+#uname, #pass, #email {
 	height: 20px;
 	border-radius: 3px 3px 3px 3px;
 	outline:medium none;

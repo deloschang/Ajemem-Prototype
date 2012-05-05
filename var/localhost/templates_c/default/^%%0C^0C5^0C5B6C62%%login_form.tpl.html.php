@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-05-01 03:51:29
+<?php /* Smarty version 2.6.7, created on 2012-05-06 00:04:49
          compiled from user/login_form.tpl.html */ ?>
 
-<!-- Template: user/login_form.tpl.html Start 01/05/2012 03:51:29 --> 
+<!-- Template: user/login_form.tpl.html Start 06/05/2012 00:04:49 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -77,6 +77,13 @@
 </form>
 </div>
 </div>
+	<div id="forgot_pwd">
+		<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "user/forgot_pwd.tpl.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+	</div>
 <div class="clear"></div>
 
 <!-- Template: user/login_form.tpl.html End --> 
