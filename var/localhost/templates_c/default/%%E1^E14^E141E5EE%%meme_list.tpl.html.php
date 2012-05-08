@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-05-06 00:14:56
+<?php /* Smarty version 2.6.7, created on 2012-05-09 01:51:53
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -73,11 +73,8 @@
 			var message_three = \'';  echo $this->_tpl_vars['sm']['msg_arr'][2];  echo '\';
 			var link_three = \'';  echo $this->_tpl_vars['sm']['link_arr'][2];  echo '\';
 			
-			var icon_arr = new Array();
-			icon_arr = ';  echo $this->_tpl_vars['sm']['icon_arr'];  echo ';
-			
-			var title_arr = new Array();
-			title_arr = ';  echo $this->_tpl_vars['sm']['title_arr'];  echo ';
+			var icon_arr = ';  echo $this->_tpl_vars['sm']['icon_arr'];  echo ';
+			var title_arr = ';  echo $this->_tpl_vars['sm']['title_arr'];  echo ';
 		
 			$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://localhost/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 210px; height: 170px; "/></a>\');
 			
