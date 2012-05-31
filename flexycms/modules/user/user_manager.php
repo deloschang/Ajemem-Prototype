@@ -573,7 +573,7 @@ class user_manager extends mod_manager {
 ##################################################
     function _check_user(){
       $link = mysql_connect(DB_HOST,DB_USER,DB_PASS,DB_DB) or die("Could not connect to db: ".mysql_error());
-      mysql_select_db ("demos4clients_com_db") or die("Could not select database : ".mysql_error());
+      mysql_select_db (DB_DB) or die("Could not select database : ".mysql_error());
       $sql = get_search_sql("user","random_num='".$this->_input['confirm']."' LIMIT 1");
 
       $query = mysql_query($sql);
@@ -1208,8 +1208,8 @@ class user_manager extends mod_manager {
 	}
 	
 	##################################################################
-	##### LIVE RANKING SYSTEM ################3
-	################ ADDED BY DELOS #########################420
+	##### LIVE RANKING SYSTEM ################
+	################ ADDED BY DELOS #########################
 	
 	function _live_ranking(){
 		

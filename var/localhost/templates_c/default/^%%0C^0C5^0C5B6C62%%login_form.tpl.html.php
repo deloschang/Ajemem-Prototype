@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-08 21:57:58
+<?php /* Smarty version 2.6.7, created on 2012-05-06 00:04:49
          compiled from user/login_form.tpl.html */ ?>
 
-<!-- Template: user/login_form.tpl.html Start 08/04/2012 21:57:58 --> 
+<!-- Template: user/login_form.tpl.html Start 06/05/2012 00:04:49 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -34,63 +34,56 @@
 
 <!-- css in mainpg.css -->
 <div id="logintable">
-<div id="new_user">
-<h1>New Users</h1>
-<div style="height:25px"><p>Please create a Memeja account</p></div>
-<div class="create_account"><a href="http://localhost/user/register">Create An Account</a></div>
-</div>
+
+<!--
+	<div id="new_user">
+		<h1>New Users</h1>
+		<div style="height:25px"><p>Please create a Memeja account</p></div>
+		<div class="create_account"><a href="http://localhost/user/register">Create An Account</a></div>
+	</div>
+-->
 
 <div id="register_user">
-<h1>Registered Users</h1>
-<p>If you have an account with us, please log in.</p>
+
+<!--<h1>Registered Users</h1>-->
+
 <form id="loginform" name="loginform" action="http://localhost/user/set_login" method="post" onsubmit="return validate_login()">
 <table class="userinfo" width="100%">
 	<tr>
-	  <td colspan="2">Username :</td>
-	  </tr>
-	<tr>
     	<td colspan="2">
-    	  <input type="text" name="username" id="uname" class="fields" />
+    	  <input type="text" name="username" id="uname" class="self-describing" title="Username or email"/>
   	  </td>
         </tr>
     <tr>
-      <td colspan="2">Password :</td>
-      </tr>
+		<td colspan="1">
+		<input type="password" name="password" id="pass" class="self-describing" title="Password"/>
+		</td>
+		<td valign="middle" class="tr"><input type="submit" value="Sign In" class="inputbtn"/></td>
+    </tr>
     <tr>
-	<td colspan="2">
-	<input type="password" name="password" id="pass" class="fields" />
-	</td>
+		<!--
+		<td class="tl" colspan="2"><input type="checkbox" name="rem" id="rem" value="1"/>Remember Me </td>-->
+		<td>
+		<a href="http://localhost/user/forgot_pwd">Forgot Password?</a></td>
     </tr>
-    <!--<tr>
-	<td class="tl" colspan="2"><input type="checkbox" name="rem" id="rem" value="1"/>Remember Me</td>
-    </tr>
+	<!--
     <tr>
      	<td colspan="2"><div id="load_captcha"></div></td>
     </tr>
     <tr>
      	<td colspan="2"></td>
     </tr>-->
-    <tr>
-    	<td valign="middle"><a href="http://localhost/user/forgot_pwd">Forgot Your Password?</a></td>
-        <td valign="middle" class="tr"><input type="submit" value="Login" class="inputbtn"/></td>
-    </tr>
-    <tr>
-        <td colspan="2">
-        
-	    <div class="fb-login-button" scope="
-	    	email,
-	    	publish_stream
-	    	,user_education_history
-	    			    	">
-        Login with Facebook
-      </div>
-      
-	</td>
-    </tr>
 </table>
 </form>
 </div>
 </div>
+	<div id="forgot_pwd">
+		<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "user/forgot_pwd.tpl.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+	</div>
 <div class="clear"></div>
 
 <!-- Template: user/login_form.tpl.html End --> 

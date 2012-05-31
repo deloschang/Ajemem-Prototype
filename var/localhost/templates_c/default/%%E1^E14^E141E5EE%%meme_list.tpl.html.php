@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-08 22:24:15
+<?php /* Smarty version 2.6.7, created on 2012-05-31 05:31:31
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -11,6 +11,8 @@
 	var logged_in="';  echo $_SESSION['id_user'];  echo '";
 	
 	var is_search="';  echo $this->_tpl_vars['sm']['is_search'];  echo '";
+	
+	var page_row = ';  echo $this->_tpl_vars['sm']['page_row'];  echo ';
     
     var first_id, after_5sec=0, backup_rand_id_memes=\'\', backup_last_id_meme=\'\';
 	
@@ -42,6 +44,12 @@
 				arrows    : true,
 				nextClick : true,
 				
+				keys: {
+					next: [13, 32, 34, 39], // enter, space, page down, down arrow
+					prev: [8, 33, 37], // backspace, page up, up arrow
+					close: [27] // escape key
+				 },
+				
 				helpers : { 
 					thumbs : {
 						width  : 50,
@@ -53,26 +61,65 @@
 				 }
 			 });
 			
-    
-		$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
-		var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
-		$("#rand_id_memes").val("';  echo $this->_tpl_vars['sm']['id_memes'];  echo '");
+		if (!logged_in){
+				
+			var message_one = \'';  echo $this->_tpl_vars['sm']['msg_arr'][0];  echo '\';
+			var link_one = \'';  echo $this->_tpl_vars['sm']['link_arr'][0];  echo '\';
+			
+			var message_two = \'';  echo $this->_tpl_vars['sm']['msg_arr'][1];  echo '\';
+			var link_two = \'';  echo $this->_tpl_vars['sm']['link_arr'][1];  echo '\';
+			
+			var message_three = \'';  echo $this->_tpl_vars['sm']['msg_arr'][2];  echo '\';
+			var link_three = \'';  echo $this->_tpl_vars['sm']['link_arr'][2];  echo '\';
+			
+			var icon_arr = ';  echo $this->_tpl_vars['sm']['icon_arr'];  echo ';
+			var title_arr = ';  echo $this->_tpl_vars['sm']['title_arr'];  echo ';
 		
-		$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
+			$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://localhost/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 210px; height: 170px; "/></a>\');
+			
+			$(\'#blurb_one\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'">\'+message_one+\'</a>\');
+			
+			$(\'#nlu_message_two\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'"><img src="http://localhost/image/orig/meme/\'+link_two+\'" style="cursor:pointer; width: 210px; height: 170px; "/></a>\');
+			
+			$(\'#blurb_two\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'">\'+message_two+\'</a>\');
+			
+			$.each(icon_arr, function(index, value){
+				//temporary remover 
+				if (index < 55){
+					$(\'#icon_container\').append(\'<div class="front_icon" id="icon_\'+index+\'"><a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+value+\'" title="\'+title_arr[index]+\'"><img src="http://localhost/image/orig/meme/\'+value+\'" style="cursor:pointer; width: 40px; height: 40px; "/></a></div>\');
+				 }
+			 });
+		 }
+			
+		if (logged_in){
+		
+			$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
+			
+			var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
+			
+			
+			$("#rand_id_memes").val("';  echo $this->_tpl_vars['sm']['id_memes'];  echo '");
+			
+			$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
+		
+		
 	    	get_all_flag_details(1);
 	    	setInterval("get_all_flag_details()",6000);
-		
-		var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
-		var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
-		
-		for(var i = 1; i < 8; i++) {
-			$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
+			
+			var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
+			var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
+			
+			for(var i = 1; i < page_row + 1; i++) {
+				$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
+			 }
+			
+			$(\'#pagenext\').html(\'<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>\');
+			
+			$("#page"+1).css({\'font-weight\' : \'bolder\' });
+			backup_page_no = 1;
 		 }
 		
-		$(\'#pagenext\').html(\'<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>\');
 		
-		$("#page"+1).css({\'font-weight\' : \'bolder\' });
-		backup_page_no = 1;
 		
 		// Self-describing for search
 	    var describedClass = \'self-described\';
@@ -93,13 +140,19 @@
 			if ($("#chk_me").val()!=1) {
 				last_id = $("#last_id_meme_cur_page").val();
 				
-				var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
+				
+				if (logged_in){
+					var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
+				 } else {
+					var cat = "main_feed";
+				 }
+					
 				var ext = "';  echo $_REQUEST['ext'];  echo '";
 				var url = "http://localhost/meme/meme_list";
 				
 				$("#loadingmeme_img").show();
 				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,ext:ext }, function(res){
-					if(res!="")
+					if(res != "")
 						$("#all_memes").html(res);
 						$("#loadingmeme_img").hide();
 				 });
@@ -123,12 +176,12 @@
 			if (page_no > 4){
 				$("#pagingcount").html(\'\');
 				
-				if (page_no + 4 < ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
+				if (page_no + 4 < page_row){
 					for(var i = page_no - 3; i < page_no + 4; i++) {
 						$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
 					 }
 				 } else {
-					for(var i = page_no - 3; i < ';  echo $this->_tpl_vars['sm']['page_row'];  echo ' + 1; i++) {
+					for(var i = page_no - 3; i < page_row + 1; i++) {
 						$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
 					 }
 				 }
@@ -146,11 +199,11 @@
 			$(\'#pageprev\').html(\'\');
 		 }
 		
-		if (page_no == ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
+		if (page_no == page_row){
 			$(\'#pagenext\').html(\'\');
 		 }
 		
-		if (backup_page_no == ';  echo $this->_tpl_vars['sm']['page_row'];  echo '){
+		if (backup_page_no == page_row){
 			$(\'#pagenext\').html(\'<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>\');
 		 }
 		
@@ -408,9 +461,15 @@
 <!--	</div>-->
 <!--</div>-->
 <!--<?php endif; ?>-->
-<br><br><br>
+
+	
+	
+<br><br>
+
+
+<?php if ($_SESSION['id_user']): ?>
 <div id="all_memes">
-    <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
+    <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmorememe.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -423,13 +482,30 @@ unset($_smarty_tpl_vars);
 </div>
 
 <?php if (! $this->_tpl_vars['sm']['is_search']): ?>
-<span id="pageprev"></span>
-<span id="pagingcount" ></span>
-<span id="pagenext"></span>
+<div style="text-align:center">
+	<span id="pageprev"></span>
+	<span id="pagingcount" ></span>
+	<span id="pagenext"></span>
+</div>
 <?php endif; ?>
 
-<div id="loadingmeme_img" style="display:none;">
+<div id="loadingmeme_img" style="margin-left: 41%; display:none;">
     <img src="http://localhost/templates/images/loading.gif" />
 </div>
 
-<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
+<?php endif; ?>
+
+
+<?php if (! $_SESSION['id_user']): ?>
+	<div id="icon_container"></div>
+	<div class="module_text" id="front_card">Your stories belong here.</div>
+	<div class="module_text" id="first_half">Whether it's...</div>
+	<div id="module_container">
+		<div id="message_container">
+			<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
+			<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
+			<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="http://localhost/image/questions.jpg" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
+		</div>
+		<div class="module_text" id="second_half">...Memeja helps you share experiences with the people you care about.</div>
+	</div>
+<?php endif; ?>

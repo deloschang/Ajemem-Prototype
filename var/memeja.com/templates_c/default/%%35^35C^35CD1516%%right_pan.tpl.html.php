@@ -1,7 +1,14 @@
+<<<<<<< HEAD
+<?php /* Smarty version 2.6.7, created on 2012-01-14 07:08:49
+         compiled from user/right_pan.tpl.html */ ?>
+
+<!-- Template: user/right_pan.tpl.html Start 14/01/2012 07:08:49 --> 
+=======
 <?php /* Smarty version 2.6.7, created on 2012-04-01 08:49:20
          compiled from user/right_pan.tpl.html */ ?>
 
 <!-- Template: user/right_pan.tpl.html Start 01/04/2012 08:49:20 --> 
+>>>>>>> test2
  <br/>
 
 <span id="right_pan">
@@ -51,7 +58,11 @@
 
 // Find friends in Memeja to add
 function show_memeje_frnds(){
+<<<<<<< HEAD
+	var url="http://memeja.com/index.php";
+=======
 	var url="http://www.memeja.com/index.php";
+>>>>>>> test2
 	$.post(url,{page:"user",choice:"get_memeje_frnds",ce:0 },function(res){//alert(res);
 		//show_fancybox(res);
 		 $.fancybox(res,{
@@ -66,7 +77,11 @@ function show_memeje_frnds(){
 
 <!--function invitePopup() {-->
 <!--	var z;-->
+<<<<<<< HEAD
+<!--	var url="http://memeja.com/index.php?page=user&choice=get_sent_users&ce=0";-->
+=======
 <!--	var url="http://www.memeja.com/index.php?page=user&choice=get_sent_users&ce=0";-->
+>>>>>>> test2
 <!--	var httpRequest = new XMLHttpRequest();-->
 <!--	httpRequest.open(\'POST\', url, false);-->
 <!--	httpRequest.send();-->
@@ -79,9 +94,15 @@ function show_memeje_frnds(){
 <!--			FB.ui({-->
 <!--				method:\'fbml.dialog\',-->
 <!--				fbml: (-->
+<<<<<<< HEAD
+<!--				\'<fb:request-form method="post" action="http://memeja.com/user/invited/p/';  echo $_REQUEST['page']; ?>
+/c/<?php echo $_REQUEST['choice'];  if ($_REQUEST['cat']): ?>/cat/<?php echo $_REQUEST['cat'];  endif;  echo '/*" type="Memeje"\' +-->
+<!--				\'content="Share your thoughts through memes <fb:req-choice url=\\\'http://memeja.com/\\\' label=\\\'Accept\\\' />" >\' +-->
+=======
 <!--				\'<fb:request-form method="post" action="http://www.memeja.com/user/invited/p/';  echo $_REQUEST['page']; ?>
 /c/<?php echo $_REQUEST['choice'];  if ($_REQUEST['cat']): ?>/cat/<?php echo $_REQUEST['cat'];  endif;  echo '/*" type="Memeje"\' +-->
 <!--				\'content="Share your thoughts through memes <fb:req-choice url=\\\'http://www.memeja.com/\\\' label=\\\'Accept\\\' />" >\' +-->
+>>>>>>> test2
 <!--				\'<fb:multi-friend-selector bypass="cancel" showborder="false" actiontext="Invite your friends to this network." exclude_ids="\'+z+\'"  max="20" rows="2" cols="3" email_invite="false" import_external_friends="false" condensed="false" uid=""/> \'+-->
 <!--				\'</fb:request-form>\'-->
 <!--				),-->

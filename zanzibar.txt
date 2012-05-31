@@ -148,77 +148,17 @@ We sincerly hope you have an enjoyable experience here at Memeja. Feel free to l
 
 - Memeja Administrators
 <!-- Template: user/account_activate.tpl.html End --> 
-JAMESBOND2: sql:"INSERT INTO memeje__user (first_name,last_name,username,email,password,gender,dob,random_num,add_date,ip) VALUES('hi','hi','yoyoyo','yomamam@hotmail.com','jjjjjj','M','1997-02-18','16b3c0372f88bd7d84186a4de688d3cf',NOW(),'::1')"
-Sending mail to:yomamam@hotmail.com
-JAMES-BOND-2.1 - mail() -- to:yomamam@hotmail.com; from:afixi.upendra@gmail.com; subject:Account Activation; body:
-<!-- Template: user/account_activate.tpl.html Start 05/04/2012 09:50:43 --> 
- <b>Dear hi,</b><br /><br />
+JAMESBOND2: sql:"INSERT INTO memeje__user (first_name,last_name,username,email,password,gender,dob,random_num,add_date,ip) VALUES('Delos','Chang','deloschang','lol.i.laugh@gmail.com','delosdelos1','M','1992-04-6','c11c4b2bebc053113599062a70f9d065',NOW(),'127.0.0.1')"
+Sending mail to:lol.i.laugh@gmail.com
+JAMES-BOND-2.1 - mail() -- to:lol.i.laugh@gmail.com; from:karanchitnis92@gmail.com; subject:Account Activation; body:
+<!-- Template: user/account_activate.tpl.html Start 09/04/2012 21:40:38 --> 
+ <b>Dear Delos,</b><br /><br />
 Thank you for making an account for <b>http://localhost/</b>!<br /><br />
-<a href="http://localhost/user/check_user/confirm/16b3c0372f88bd7d84186a4de688d3cf">Please click here</a> to activate your account. <br /><br />
+<a href="http://localhost/user/check_user/confirm/c11c4b2bebc053113599062a70f9d065">Please click here</a> to activate your account. <br /><br />
 
 <i>If the above link does not work, you can copy and paste the link below into your web browser (do not add extra spaces).</i>
 <br /><br />
-<a href="http://localhost/user/check_user/confirm/16b3c0372f88bd7d84186a4de688d3cf">http://localhost/user/check_user/confirm/16b3c0372f88bd7d84186a4de688d3cf</a><br /><br />-->
-We sincerly hope you have an enjoyable experience here at Memeja. Feel free to look at our live feed of memes, rate/comment on the images you see, increase your rank in the leaderboard, and even create your own meme!
-
-- Memeja Administrators
-<!-- Template: user/account_activate.tpl.html End --> 
-JAMESBOND2: sql:"INSERT INTO memeje__user (first_name,last_name,username,email,password,gender,dob,random_num,add_date,ip) VALUES('hi','woah','superdiduper','slashet@gmail.com','jjjjjj','F','1996-04-17','8175ccb17d0178a618dc9ba43f5ea58e',NOW(),'::1')"
-Sending mail to:slashet@gmail.com
-JAMES-BOND-2.1 - mail() -- to:slashet@gmail.com; from:afixi.upendra@gmail.com; subject:Account Activation; body:
-<!-- Template: user/account_activate.tpl.html Start 05/04/2012 09:54:14 --> 
- <b>Dear hi,</b><br /><br />
-Thank you for making an account for <b>http://localhost/</b>!<br /><br />
-<a href="http://localhost/user/check_user/confirm/8175ccb17d0178a618dc9ba43f5ea58e">Please click here</a> to activate your account. <br /><br />
-
-<i>If the above link does not work, you can copy and paste the link below into your web browser (do not add extra spaces).</i>
-<br /><br />
-<a href="http://localhost/user/check_user/confirm/8175ccb17d0178a618dc9ba43f5ea58e">http://localhost/user/check_user/confirm/8175ccb17d0178a618dc9ba43f5ea58e</a><br /><br />-->
-We sincerly hope you have an enjoyable experience here at Memeja. Feel free to look at our live feed of memes, rate/comment on the images you see, increase your rank in the leaderboard, and even create your own meme!
-
-- Memeja Administrators
-<!-- Template: user/account_activate.tpl.html End --> 
-JAMESBOND2: sql:"INSERT INTO memeje__user (first_name,last_name,username,email,password,gender,dob,random_num,add_date,ip) VALUES('zippity','dood','shingersnips','shinner@gmail.com','jjjjjj','F','1974-08-10','ca87331ea3e3668743969288df39ec59',NOW(),'::1')"
-Sending mail to:shinner@gmail.com
-JAMES-BOND-2.1 - mail() -- to:shinner@gmail.com; from:afixi.upendra@gmail.com; subject:Account Activation; body:
-<!-- Template: user/account_activate.tpl.html Start 05/04/2012 09:59:06 --> 
- <b>Dear zippity,</b><br /><br />
-Thank you for making an account for <b>http://localhost/</b>!<br /><br />
-<a href="http://localhost/user/check_user/confirm/ca87331ea3e3668743969288df39ec59">Please click here</a> to activate your account. <br /><br />
-
-<i>If the above link does not work, you can copy and paste the link below into your web browser (do not add extra spaces).</i>
-<br /><br />
-<a href="http://localhost/user/check_user/confirm/ca87331ea3e3668743969288df39ec59">http://localhost/user/check_user/confirm/ca87331ea3e3668743969288df39ec59</a><br /><br />-->
-We sincerly hope you have an enjoyable experience here at Memeja. Feel free to look at our live feed of memes, rate/comment on the images you see, increase your rank in the leaderboard, and even create your own meme!
-
-- Memeja Administrators
-<!-- Template: user/account_activate.tpl.html End --> 
-JAMESBOND2: sql:"INSERT INTO memeje__user (first_name,last_name,username,email,password,gender,dob,random_num,add_date,ip) VALUES('yoy','poy','snipper','snipperstips@gmail.com','jjjjjj','F','1963-07-29','3c5f5030c01cfb7c485f44142285a073',NOW(),'::1')"
-Sending mail to:snipperstips@gmail.com
-JAMES-BOND-2.1 - mail() -- to:snipperstips@gmail.com; from:afixi.upendra@gmail.com; subject:Account Activation; body:
-<!-- Template: user/account_activate.tpl.html Start 05/04/2012 10:31:25 --> 
- <b>Dear yoy,</b><br /><br />
-Thank you for making an account for <b>http://localhost/</b>!<br /><br />
-<a href="http://localhost/user/check_user/confirm/3c5f5030c01cfb7c485f44142285a073">Please click here</a> to activate your account. <br /><br />
-
-<i>If the above link does not work, you can copy and paste the link below into your web browser (do not add extra spaces).</i>
-<br /><br />
-<a href="http://localhost/user/check_user/confirm/3c5f5030c01cfb7c485f44142285a073">http://localhost/user/check_user/confirm/3c5f5030c01cfb7c485f44142285a073</a><br /><br />-->
-We sincerly hope you have an enjoyable experience here at Memeja. Feel free to look at our live feed of memes, rate/comment on the images you see, increase your rank in the leaderboard, and even create your own meme!
-
-- Memeja Administrators
-<!-- Template: user/account_activate.tpl.html End --> 
-JAMESBOND2: sql:"INSERT INTO memeje__user (first_name,last_name,username,email,password,gender,dob,random_num,add_date,ip) VALUES('mumu','juts','preenis','preenis@gmail.com','jjjjjj','F','1987-11-18','01dfdce907f8ec3e537bdda436cff02c',NOW(),'::1')"
-Sending mail to:preenis@gmail.com
-JAMES-BOND-2.1 - mail() -- to:preenis@gmail.com; from:afixi.upendra@gmail.com; subject:Account Activation; body:
-<!-- Template: user/account_activate.tpl.html Start 05/04/2012 10:43:12 --> 
- <b>Dear mumu,</b><br /><br />
-Thank you for making an account for <b>http://localhost/</b>!<br /><br />
-<a href="http://localhost/user/check_user/confirm/01dfdce907f8ec3e537bdda436cff02c">Please click here</a> to activate your account. <br /><br />
-
-<i>If the above link does not work, you can copy and paste the link below into your web browser (do not add extra spaces).</i>
-<br /><br />
-<a href="http://localhost/user/check_user/confirm/01dfdce907f8ec3e537bdda436cff02c">http://localhost/user/check_user/confirm/01dfdce907f8ec3e537bdda436cff02c</a><br /><br />-->
+<a href="http://localhost/user/check_user/confirm/c11c4b2bebc053113599062a70f9d065">http://localhost/user/check_user/confirm/c11c4b2bebc053113599062a70f9d065</a><br /><br />-->
 We sincerly hope you have an enjoyable experience here at Memeja. Feel free to look at our live feed of memes, rate/comment on the images you see, increase your rank in the leaderboard, and even create your own meme!
 
 - Memeja Administrators

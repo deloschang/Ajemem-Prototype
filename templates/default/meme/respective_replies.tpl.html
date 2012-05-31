@@ -17,12 +17,12 @@
 {/foreach}
 
 {literal}
-<script>
+<script>	
 	$(document).ready(function(){
-		// min chars for username
+		// min chars for reply
 		var min_chars = 10;
 			
-		var validateCharacter = $('#validateCharacter');
+		var validateCharacter = $('#validateCharacter'+{/literal}{$sm.id_meme}{literal});
 		var text_input = $('#{/literal}{if !$sm.flag}rpl_con{else}rand_rpl_con{/if}{$sm.id_meme}{literal}');
 				
 		text_input.keyup(function() {
@@ -30,10 +30,9 @@
 			var text_length = text_input_words.length;
 			var remaining = min_chars - text_length
 		
-		// No username
+		// No reply
 			if (!text_input_words) {
 				validateCharacter.html('10 min characters remaining...');
-							
 			} else {
 		
 				if (this.value != this.lastValue && text_length < min_chars) {
@@ -55,7 +54,12 @@
 </script>
 {/literal}
 
-<textarea id="{if !$sm.flag}rpl_con{else}rand_rpl_con{/if}{$sm.id_meme}" style="width:90%;" onclick="{if !$sm.flag}chk_forclear{else}rand_chk_forclear{/if}('{$sm.id_meme}');" ></textarea><br/>
-<a href="javascript:void(0);" onclick="return {if !$sm.flag}post_reply{else}rand_post_reply{/if}('{$sm.id_meme}');" style="cursor: pointer;"><img src="##LBL_SITE_URL##templates/images/reply.gif "style="width:15px;height:15px"/><span style="font-size:13px;">Reply</span></a>
+<textarea id="{if !$sm.flag}rpl_con{else}rand_rpl_con{/if}{$sm.id_meme}" style="width:90%;" onclick="{if !$sm.flag}chk_forclear{else}rand_chk_forclear{/if}('{$sm.id_meme}');" ></textarea>
 
-<span id="validateCharacter" style="color:#e6e6dc"></span>
+<br/>
+
+<a href="javascript:void(0);" onclick="return {if !$sm.flag}post_reply{else}rand_post_reply{/if}('{$sm.id_meme}');" style="cursor: pointer;">
+	<img src="##LBL_SITE_URL##templates/images/reply.gif "style="width:15px;height:15px"/><span style="font-size:13px;">Reply</span>
+</a>
+
+<span id="validateCharacter{$sm.id_meme}" style="color:#C0C0C0"></span>

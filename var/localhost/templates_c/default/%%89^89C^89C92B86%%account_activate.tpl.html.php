@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-05 10:43:12
+<?php /* Smarty version 2.6.7, created on 2012-04-09 21:40:38
          compiled from user/account_activate.tpl.html */ ?>
 
-<!-- Template: user/account_activate.tpl.html Start 05/04/2012 10:43:12 --> 
+<!-- Template: user/account_activate.tpl.html Start 09/04/2012 21:40:38 --> 
  <b>Dear <?php echo $this->_tpl_vars['sm']['first_name']; ?>
 ,</b><br /><br />
 Thank you for making an account for <b>http://localhost/</b>!<br /><br />

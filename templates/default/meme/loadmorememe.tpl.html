@@ -201,7 +201,6 @@
 <div class="live_feed0" style="display: none; padding-top:20px;"></div>
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
 <div>
-
 	    <div  id="meme{$x.id_meme}" class="meme">
 
 {* Height between memes *}
@@ -231,7 +230,8 @@
 				{elseif $sm.uinfo[$x.id_user].avatar}
 					<img src="##LBL_SITE_URL##image/thumb/avatar/{$sm.uinfo[$x.id_user].avatar}" class="avatar_thumb_regular"/>
 				{else}
-				{if $smarty.session.gender=='M'}{else}{/if}
+				{if $smarty.session.gender=='M'}
+					<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_male.png" class="avatar_thumb_regular"/>{else}<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_female.png" class="avatar_thumb_regular"/>{/if}
 				{/if}			
 			</span>
 			<span id="meme_title">{$x.title|capitalize}</span></a>
@@ -300,21 +300,7 @@ onmouseout ="unhover_user('{$sm.uinfo[$x.id_user].id_user}');"
 			    	{/if}
 
 			    onclick="set_tot_adaggr('{$x.id_meme}','D','{$x.id_user}');"><span style="font-size:15px;">Dishonor</span></a>
-			    <span> 
-			    &emsp;
-				{if $x.tot_honour > 1}
-					<img src="##LBL_SITE_URL##image/orig/premade_images/EWBTE.png" title="Good job! The 2nd Honor!" style="width:17px; height:17px"/>
-				{/if}
-				{if $x.tot_honour > 2}
-					<img src="##LBL_SITE_URL##image/orig/premade_images/ExcitedTroll.png" title="Excited Troll is excited! 2 Honors!" style="width:17px; height:17px"/>
-				{/if}
-				{if $x.tot_honour > 3}
-					<img src="##LBL_SITE_URL##image/orig/premade_images/LOL.png" title="L0L! 3 Honors!" style="width:17px; height:17px"/>
-				{/if}
-				{if $x.tot_honour > 4}
-					<img src="##LBL_SITE_URL##image/orig/premade_images/Obama Not Bad.png" title="Obama says this meme is NOT BAD!" style="width:17px; height:17px"/>
-				{/if}
-				</span>
+			    
 
 			    </div>
 

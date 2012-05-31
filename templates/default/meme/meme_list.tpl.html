@@ -11,6 +11,8 @@
 	var logged_in="{/literal}{$smarty.session.id_user}{literal}";
 	
 	var is_search="{/literal}{$sm.is_search}{literal}";
+	
+	var page_row = {/literal}{$sm.page_row}{literal};
     
     var first_id, after_5sec=0, backup_rand_id_memes='', backup_last_id_meme='';
 	
@@ -42,6 +44,12 @@
 				arrows    : true,
 				nextClick : true,
 				
+				keys: {
+					next: [13, 32, 34, 39], // enter, space, page down, down arrow
+					prev: [8, 33, 37], // backspace, page up, up arrow
+					close: [27] // escape key
+				},
+				
 				helpers : { 
 					thumbs : {
 						width  : 50,
@@ -53,26 +61,65 @@
 				}
 			});
 			
-    
-		$("#last_id_meme").val("{/literal}{$sm.last_id_meme}{literal}");
-		var cat = "{/literal}{$sm.cat}{literal}";
-		$("#rand_id_memes").val("{/literal}{$sm.id_memes}{literal}");
+		if (!logged_in){
+				
+			var message_one = '{/literal}{$sm.msg_arr[0]}{literal}';
+			var link_one = '{/literal}{$sm.link_arr[0]}{literal}';
+			
+			var message_two = '{/literal}{$sm.msg_arr[1]}{literal}';
+			var link_two = '{/literal}{$sm.link_arr[1]}{literal}';
+			
+			var message_three = '{/literal}{$sm.msg_arr[2]}{literal}';
+			var link_three = '{/literal}{$sm.link_arr[2]}{literal}';
+			
+			var icon_arr = {/literal}{$sm.icon_arr}{literal};
+			var title_arr = {/literal}{$sm.title_arr}{literal};
 		
-		$("#last_id_meme_cur_page").val("{/literal}{$sm.last_idmeme}{literal}");
+			$('#nlu_message_one').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'"><img src="##LBL_SITE_URL##image/orig/meme/'+link_one+'" style="cursor:pointer;width: 210px; height: 170px; "/></a>');
+			
+			$('#blurb_one').html('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'">'+message_one+'</a>');
+			
+			$('#nlu_message_two').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_two+'" title="'+message_two+'"><img src="##LBL_SITE_URL##image/orig/meme/'+link_two+'" style="cursor:pointer; width: 210px; height: 170px; "/></a>');
+			
+			$('#blurb_two').html('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_two+'" title="'+message_two+'">'+message_two+'</a>');
+			
+			$.each(icon_arr, function(index, value){
+				//temporary remover 
+				if (index < 55){
+					$('#icon_container').append('<div class="front_icon" id="icon_'+index+'"><a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+value+'" title="'+title_arr[index]+'"><img src="##LBL_SITE_URL##image/orig/meme/'+value+'" style="cursor:pointer; width: 40px; height: 40px; "/></a></div>');
+				}
+			});
+		}
+			
+		if (logged_in){
+		
+			$("#last_id_meme").val("{/literal}{$sm.last_id_meme}{literal}");
+			
+			var cat = "{/literal}{$sm.cat}{literal}";
+			
+			
+			$("#rand_id_memes").val("{/literal}{$sm.id_memes}{literal}");
+			
+			$("#last_id_meme_cur_page").val("{/literal}{$sm.last_idmeme}{literal}");
+		
+		
 	    	get_all_flag_details(1);
 	    	setInterval("get_all_flag_details()",6000);
-		
-		var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
-		var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
-		
-		for(var i = 1; i < 8; i++) {
-			$('#pagingcount').append('<span id="page'+i+'"><a href="javascript:void(0);" onclick="paging_func('+i+');">'+i+'</a></span> ');
+			
+			var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
+			var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
+			
+			for(var i = 1; i < page_row + 1; i++) {
+				$('#pagingcount').append('<span id="page'+i+'"><a href="javascript:void(0);" onclick="paging_func('+i+');">'+i+'</a></span> ');
+			}
+			
+			$('#pagenext').html('<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>');
+			
+			$("#page"+1).css({'font-weight' : 'bolder'});
+			backup_page_no = 1;
 		}
 		
-		$('#pagenext').html('<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>');
 		
-		$("#page"+1).css({'font-weight' : 'bolder'});
-		backup_page_no = 1;
 		
 		// Self-describing for search
 	    var describedClass = 'self-described';
@@ -93,13 +140,19 @@
 			if ($("#chk_me").val()!=1) {
 				last_id = $("#last_id_meme_cur_page").val();
 				
-				var cat = "{/literal}{$sm.cat}{literal}";
+				
+				if (logged_in){
+					var cat = "{/literal}{$sm.cat}{literal}";
+				} else {
+					var cat = "main_feed";
+				}
+					
 				var ext = "{/literal}{$smarty.request.ext}{literal}";
 				var url = "##LBL_SITE_URL##meme/meme_list";
 				
 				$("#loadingmeme_img").show();
 				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,ext:ext}, function(res){
-					if(res!="")
+					if(res != "")
 						$("#all_memes").html(res);
 						$("#loadingmeme_img").hide();
 				});
@@ -123,12 +176,12 @@
 			if (page_no > 4){
 				$("#pagingcount").html('');
 				
-				if (page_no + 4 < {/literal}{$sm.page_row}{literal}){
+				if (page_no + 4 < page_row){
 					for(var i = page_no - 3; i < page_no + 4; i++) {
 						$('#pagingcount').append('<span id="page'+i+'"><a href="javascript:void(0);" onclick="paging_func('+i+');">'+i+'</a></span> ');
 					}
 				} else {
-					for(var i = page_no - 3; i < {/literal}{$sm.page_row}{literal} + 1; i++) {
+					for(var i = page_no - 3; i < page_row + 1; i++) {
 						$('#pagingcount').append('<span id="page'+i+'"><a href="javascript:void(0);" onclick="paging_func('+i+');">'+i+'</a></span> ');
 					}
 				}
@@ -146,11 +199,11 @@
 			$('#pageprev').html('');
 		}
 		
-		if (page_no == {/literal}{$sm.page_row}{literal}){
+		if (page_no == page_row){
 			$('#pagenext').html('');
 		}
 		
-		if (backup_page_no == {/literal}{$sm.page_row}{literal}){
+		if (backup_page_no == page_row){
 			$('#pagenext').html('<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>');
 		}
 		
@@ -405,9 +458,15 @@
 <!--	</div>-->
 <!--</div>-->
 <!--{/if}-->
-<br><br><br>
+
+	
+	
+<br><br>
+
+
+{if $smarty.session.id_user}
 <div id="all_memes">
-    {if $sm.res_meme}
+    {if $sm.res_meme} 
 	{include file="meme/loadmorememe"}
     {else}
 	<input type="hidden" id="msgexist" value="1">
@@ -416,13 +475,30 @@
 </div>
 
 {if !$sm.is_search}
-<span id="pageprev"></span>
-<span id="pagingcount" ></span>
-<span id="pagenext"></span>
+<div style="text-align:center">
+	<span id="pageprev"></span>
+	<span id="pagingcount" ></span>
+	<span id="pagenext"></span>
+</div>
 {/if}
 
-<div id="loadingmeme_img" style="display:none;">
+<div id="loadingmeme_img" style="margin-left: 41%; display:none;">
     <img src="##LBL_SITE_URL##templates/images/loading.gif" />
 </div>
 
-<div id="signupmemes" style="display:none;">To see more memes, sign up! Or try our random generator</div>
+{/if}
+
+
+{if !$smarty.session.id_user}
+	<div id="icon_container"></div>
+	<div class="module_text" id="front_card">Your stories belong here.</div>
+	<div class="module_text" id="first_half">Whether it's...</div>
+	<div id="module_container">
+		<div id="message_container">
+			<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
+			<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
+			<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="##LBL_SITE_URL##image/questions.jpg" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
+		</div>
+		<div class="module_text" id="second_half">...Memeja helps you share experiences with the people you care about.</div>
+	</div>
+{/if}

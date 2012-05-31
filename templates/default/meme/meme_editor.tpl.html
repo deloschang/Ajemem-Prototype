@@ -112,17 +112,17 @@ $(document).ready(function(){
 	$(window).scroll(function(e){
 		var scrollTop = $(window).scrollTop();
 		console.log(scrollTop);
-		if(scrollTop > 155){
+		if(scrollTop > 145){
 			var y = $('#main').offset();
 			$('#main').css({
 			    position:'fixed',
-				top:'40px!important',
+				top:'0px',
 			    left : y.left+'px'
 			});
 		}else{
 			$('#main').css({
 			    position:'absolute',
-				top:'20px',
+				top:'-30px',
 			    left :'-10px'
 			});
 		}
@@ -133,7 +133,7 @@ $(document).ready(function(){
 {/literal}
 <img src="##LBL_SITE_URL##spad/Memeja Watermark.png" id="memejimark" style="display:none">
 
-<div id="uploader">
+<div id="uploader"class="nohighlight">
 	<input type="file" name="updimage" id="updimage" size="5" />
 	<input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
 	URL: <input type="text" name="imgurl" id="imgurl" size="27" />
@@ -141,12 +141,14 @@ $(document).ready(function(){
 	<div id="prev_image" class="prev_image"></div>
 </div>
              
-        <div class='main_smiley_loading'style="top:100px;">
+        <div class='main_smiley_loading'class="nohighlight"style="top:100px;">
             <div class="smileys_in_small_size">
                 <div id="loadimg" ></div>
             </div>
         </div>
-<div id="page" style="display:none; left:-160px;">
+		<div class="spacer"></div>
+		<div id="editorside"></div>
+<div id="page" style="display:none; left:-160px;"class="nohighlight">
 	<canvas id="dummy1" style="display:none;"></canvas>
 	<div id="sp" style="position:relative;"><canvas id="mycid" style="border:1px solid red"></canvas></div>
     <div id="main" style="width:660px;left:-10px;">
@@ -159,8 +161,8 @@ $(document).ready(function(){
         <td><img src="##LBL_SITE_URL##spad/site_image/color_wheel.png" width="20" height="20" alt="Pick Color" title="Pick Color" id="color" /><br /></td>
         <span id="hilight">
 		    <td><img src="##LBL_SITE_URL##spad/site_image/grid.png" width="20" height="20" class="grid" title="Gridlines" alt="Gridlines Toggle" /></td>
-		    <td><img src="##LBL_SITE_URL##spad/site_image/uparrow.png" width="20" height="20" class="uparrow" title="Scroll Up" alt="Up Arrow" /></td>
-			<td><img src="##LBL_SITE_URL##spad/site_image/downarrow.png" width="20" height="20" class="downarrow" title="Scroll Bottom" alt="Down Arrow" /></td>
+		    <!--<td><img src="##LBL_SITE_URL##spad/site_image/uparrow.png" width="20" height="20" class="uparrow" title="Scroll Up" alt="Up Arrow" /></td>
+			<!--<td><img src="##LBL_SITE_URL##spad/site_image/downarrow.png" width="20" height="20" class="downarrow" title="Scroll Bottom" alt="Down Arrow" /></td>
 			<!--<td><img src="##LBL_SITE_URL##spad/site_image/paintbucket.png" width="16" height="16" class="paintbucket" title="Paintbucket" alt="Paintbucket" /></td>-->
             <td><img src="##LBL_SITE_URL##spad/site_image/erase.png" width="20" height="20" class="erase" title="Erase" alt="Erase" /></td>
             <td><img src="##LBL_SITE_URL##spad/site_image/line.png" width="20" height="20" class="size" title="Pencil" id="line" alt="Pencil" /></td>
