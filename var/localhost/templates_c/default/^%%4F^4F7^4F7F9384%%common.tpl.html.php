@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-05-31 05:31:31
+<?php /* Smarty version 2.6.7, created on 2012-06-01 03:27:59
          compiled from common/common.tpl.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -422,6 +422,7 @@
 	function submit() {
 		$(\'#searches\').submit();
 	 }
+
 	
 </script>
 <script type="text/javascript">
