@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-05 03:20:50
+<?php /* Smarty version 2.6.7, created on 2012-06-05 03:24:37
          compiled from user/left_pan.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 6, false),array('function', 'get_mod', 'user/left_pan.tpl.html', 44, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = '6812e4cbda647cd00e27e425f810a51f';  if ($_SESSION['id_user']): ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = 'b9d07858e5c96a02eda8f9134ef579e7';  if ($_SESSION['id_user']): ?>
 
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
 
@@ -49,12 +49,12 @@ unset($_smarty_tpl_vars);
 <!--    </tr>-->
 
 		<div id="my_meme_list" style="margin-top:-60px;">
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:6812e4cbda647cd00e27e425f810a51f#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:6812e4cbda647cd00e27e425f810a51f#0}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b9d07858e5c96a02eda8f9134ef579e7#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b9d07858e5c96a02eda8f9134ef579e7#0}';}?>
 
 		</div>
 
 		<div id="my_favorites" >
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:6812e4cbda647cd00e27e425f810a51f#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:6812e4cbda647cd00e27e425f810a51f#1}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b9d07858e5c96a02eda8f9134ef579e7#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b9d07858e5c96a02eda8f9134ef579e7#1}';}?>
 
 		</div>
 	
@@ -63,3 +63,4 @@ unset($_smarty_tpl_vars);
 			<a href="mailto:karanchitnis92@gmail.com?Subject=Memeja%20suggestion">Suggestions</a>
 		</br></br>-->
  <?php endif; ?>
+

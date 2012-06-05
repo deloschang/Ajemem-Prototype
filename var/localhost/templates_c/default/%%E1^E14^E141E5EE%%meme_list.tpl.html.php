@@ -1,6 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-05 03:20:50
+<?php /* Smarty version 2.6.7, created on 2012-06-05 03:24:37
          compiled from meme/meme_list.tpl.html */ ?>
-<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
+<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
+<?php echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script type="text/javascript">
     var reply_color = "';  echo $this->_tpl_vars['x']['reply'];  echo '";
@@ -508,4 +509,4 @@ unset($_smarty_tpl_vars);
 		</div>
 		<div class="module_text" id="second_half">...Memeja helps you share experiences with the people you care about.</div>
 	</div>
-<?php endif; ?>
+<?php endif; ?>
