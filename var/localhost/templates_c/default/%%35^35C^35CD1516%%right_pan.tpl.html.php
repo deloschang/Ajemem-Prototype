@@ -1,38 +1,13 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-01 03:27:59
+<?php /* Smarty version 2.6.7, created on 2012-06-05 03:20:50
          compiled from user/right_pan.tpl.html */ ?>
 
-<!-- Template: user/right_pan.tpl.html Start 01/06/2012 03:27:59 --> 
- <br/>
+<!-- Template: user/right_pan.tpl.html Start 05/06/2012 03:20:50 --> 
+ <span id="right_pan">
 
-<span id="right_pan">
-<!--
-<?php if ($_SESSION['id_user']): ?>
-<fieldset style="width:40%;align:center;">
-    <legend><b><h3>Search meme</h3></b></legend>
-    <form>
-	    <table>
-		<tr>
-		    <td class="dec">Username:</td>
-		    <td><input type="text" name="muname" id="muname" value="<?php echo $_REQUEST['muname']; ?>
-"/></td>
-		</tr>
-		<tr>
-		    <td class="dec">Title:</td>
-		    <td><input type="text" name="mtitle" id="mtitle" value="<?php echo $_REQUEST['mtitle']; ?>
-"/></td>
-		</tr>
-	    </table>
-	<input type="submit" value="Search"/>
-    </form>
-</fieldset>
-<?php endif; ?>
-
-</br/>-->
 <?php if ($_SESSION['id_user']): ?>  <!-- If not logged in, then don't show -->
 	<!--<div class="fbfrnd">
 		<a href="javascript:void(0);" onclick="invitePopup();" class="facebook">Invite Facebook Friends </a>
 	</div>-->
-<br/>
 <?php endif; ?>
 
 <?php if ($_SESSION['id_user']): ?>

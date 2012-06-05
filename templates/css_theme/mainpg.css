@@ -848,7 +848,9 @@ moz-border-radius: 10px;
 		border-color:#ACACA5;
 		border-width:1px;
 		border-style: solid;
-		padding:3px;
+		padding:2px;
+		padding-bottom:7px;
+		background-color:#ECECEC;
 		moz-border-radius: 10px;
 		webkit-border-radius: 10px;
 		khtml-border-radius: 10px;
@@ -876,6 +878,7 @@ moz-border-radius: 10px;
 		top:-8px;
 		bottom:3px;
 	}
+	
 	
 	#user_ranking_info {
 		background-color: #4ebaff;
