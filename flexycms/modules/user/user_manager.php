@@ -1572,19 +1572,6 @@ class user_manager extends mod_manager {
 	    	
 	    	$this->_set_login($results['email'], $results['password']);
 	    } else {
-				
-			// Iterate through friends list and sep by id and name
-			$friends = $facebook->api('me/friends');
-			$id_list = array();
-			$name_list = array();
-			
-			foreach ($friends as $friend_array) {
-				foreach ($friend_array as $friend) {
-					$id_list[] = $friend['id'];
-					$name_list[] = $friend['name'];
-				}
-			}
-			$in_user['id_friends'] = implode(",", $id_list);
 			
 			#### Does not load properly into name_friends ####
 			## Tried LONGTEXT and LONGBLOB for column structure ##
@@ -1873,35 +1860,20 @@ class user_manager extends mod_manager {
 	    global $link;
 		
 		$arr = $this->decrypt_fb_data();		
-		$facebook = $arr[0];		
-		$data = $arr[1];
+		$facebook = $arr[0];
 		
 		$friends_list = $facebook->api('me/friends');	
 		$collection = $friends_list['data'];
+		
 		foreach($collection as $page) {
 			$name = $page['name'];
 			$id = $page['id'];
 			
 			$img = "<img src='https://graph.facebook.com/$id/picture'/>";
-			$arr[] = array("name"=>$name,"value"=>$id,"lname"=>'lastname',"pf_img"=>$img);
+			$arr[] = array("name"=>$name,"value"=>$id,"pf_img"=>$img);
 		}
 		
-	    //$sql_frnd = get_search_sql("user"," id_user=".$_SESSION['id_user'],"memeje_friends");
-	    //$res_frnd=getrows($sql_frnd,$err);
-	    //if($res_frnd[0]['memeje_friends']){
-		//    $sql =get_search_sql("user","id_user IN(".$res_frnd[0]['memeje_friends'].") ");
-	 	//   $res = mysqli_query($link,$sql);
-		//    while($rec= mysqli_fetch_assoc($res)){
-		//		$img_nm = ($rec['avatar'])?$rec['avatar']:(($rec['gender']='M')?"memeja_male.png":"memeja_female.png");
-		//		$img = "<img src='".LBL_SITE_URL."image/thumb/avatar/".$img_nm."' style='width:40px;height:40px;'/>";
-		//		$arr[] = array("name"=>$rec['fname'],"value"=>$rec['id_user'],"lname"=>'lastname',"pf_img"=>$img);
-		//    }
-		//    mysqli_free_result($res);
-		//    mysqli_next_result($link);
-	    //}
-	    if(!$arr && $this->_input['flg_duel']){
-			print "1";exit;
-	    }
-	    print json_encode($arr);exit;
+	    print json_encode($arr);
+		exit;
 	}
 }

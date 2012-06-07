@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-07 23:38:47
+<?php /* Smarty version 2.6.7, created on 2012-06-08 01:30:27
          compiled from meme/addmeme.tpl.html */ ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 07/06/2012 23:38:47 --> 
+<!-- Template: meme/addmeme.tpl.html Start 08/06/2012 01:30:27 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
@@ -176,11 +176,8 @@ _draw.png"/>
 <?php echo '
 	<script type="text/javascript">
  		$(document).ready(function(){
-		var url = "http://localhost/index.php?page=user&choice=getfriends4tag&flg=1&ce=0";
-			$("#tag").autocomplete({json_url:url,height:6 });			
-		//$.post(url, function(res){
-		//			$("#boxtest").html(res);
-		//		 });
+			var url = "http://localhost/index.php?page=user&choice=getfriends4tag&flg=1&ce=0";
+			$("#tag").autocomplete({json_url:url,height:6 });
 		 });
 
 	</script>

@@ -212,16 +212,19 @@ jQuery(function($){
                             if (options.cache && json_cache) {
                                 addMembers(etext);
                                 bindEvents();
+								//console.log('cached');
                             }
                             else {
                                 getBoxTimeout++;
                                 var getBoxTimeoutValue = getBoxTimeout;  
                                 setTimeout (function() {
-                                    if (getBoxTimeoutValue != getBoxTimeout) return;
+                                    json_cache = true;
+                                    if (getBoxTimeoutValue != getBoxTimeout) 
+										return;
                                     $.getJSON(options.json_url + ( options.json_url.indexOf("?") > -1 ? "&" : "?" ) + "tag=" + etext, null, function (data) {
-					addMembers(etext, data);
-                                        json_cache = true;
+										addMembers(etext, data);
                                         bindEvents();
+										console.log('after function call done');
                                     });
                                 }, options.delay);                            
 							}
