@@ -1,6 +1,9 @@
 <?php
 define("SUB_DIR", "");
 session_name("memeja");
+
+require_once('FirePHPCore/fb.php');
+
 ob_start();
 ini_set("memory_limit","8M");
 $report = array ('stats' => array ());

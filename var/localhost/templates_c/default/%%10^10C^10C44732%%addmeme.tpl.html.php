@@ -1,12 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2012-05-03 21:20:40
+<?php /* Smarty version 2.6.7, created on 2012-06-07 23:24:36
          compiled from meme/addmeme.tpl.html */ ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 03/05/2012 21:20:40 --> 
+<!-- Template: meme/addmeme.tpl.html Start 07/06/2012 23:24:36 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
 -->
-<div id="showmodal" class="showmodal"><em><strong><center>ENTER MEMEJA DOJO</center></strong></em></div>
+<div id="showmodal" class="showmodal"><em><strong><center>ENTERING MEMEJA DOJO</center></strong></em></div>
 
 <script type="text/javascript">
     var last_comic="http://localhost/spad/workspace/<?php echo $_SESSION['id_user']; ?>
@@ -35,11 +35,13 @@ _img.png";
 	function title_focus() {
         b_titlefocus = true;
      }
+	
     function title_blur() { b_titlefocus = false;  }
     
     function cancel_meme(){
-	window.location="http://localhost/user/user_home";
+		window.location="http://localhost/user/user_home";
      }
+	
     function get_premade_images(obj){
         var cat=obj.value;
         if(cat==\'\')
@@ -71,17 +73,17 @@ _img.png";
 
     function validate_me(){
         obj=document.getElementById(\'ques_ans\');
-        if($(obj.title).val()==\'\')
-		{
+        if($(obj.title).val()==\'\') {
             alert("Enter The Title");
             $(obj.title).focus();
             return false;
          }
-		if($(obj.title).val().length>80)
-		{
+		
+		if($(obj.title).val().length>80) {
             alert("Enter a shorter title");
             return false;
          }
+		
         if($(obj.see_fr).val()==""){
             alert("Choose Who Can See?");
             $(obj.see_fr).focus();
@@ -96,30 +98,30 @@ _img.png";
             alert("Choose One Category");
             $("#meme_cat").focus();
             return false;
-         }else{
+         } else {
         
-		if(!$("#tag").val())
-		{
-			/* Godzilla: Uncomment and comment out var conf=true once the tagging system is implemented. 
-				Allows users to submit memes without choosing if they have to tag a friend or not. 
-			*/
-			
-			//var conf=confirm("Are you sure you don\'t want to tag your friends?");
-			var conf=true;
-			if(conf)
+			if(!$("#tag").val())
 			{
+				/* Godzilla: Uncomment and comment out var conf=true once the tagging system is implemented. 
+					Allows users to submit memes without choosing if they have to tag a friend or not. 
+				*/
+				
+				//var conf=confirm("Are you sure you don\'t want to tag your friends?");
+				var conf=true;
+				if(conf)
+				{
+					$(window).unbind();
+					submit_memeje();
+				 }
+				else
+				{
+					return false;
+				 }
+			 }
+			else{
 				$(window).unbind();
 				submit_memeje();
 			 }
-			else
-			{
-				return false;
-			 }
-		 }
-		else{
-			$(window).unbind();
-			submit_memeje();
-		 }
          }
      }
 	$(window).bind(\'beforeunload\', function() {
@@ -151,6 +153,8 @@ _img.png";
             <span>
                 <input type="text" name="meme[title]" id="title" size="50" onfocus="title_focus()" onblur="title_blur()"/>
             </span>
+			
+			
         </div><br/>
         <div id="edtr"class="nohighlight">
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
@@ -160,21 +164,23 @@ unset($_smarty_tpl_vars);
  ?>
 
           <div id="submitter" ><input type="button" value="Submit" onclick="validate_me();"/></div>
-        <script language = "Javascript">
-		
-		</script>
 		
 		<div style="position:fixed;bottom:35px; left:800px"><input type="checkbox" name="memejimark" value="" onclick="insertMark();"/> Watermark</div>
 				
 		</div>
+		
+		<div id="boxtest"></div>
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>
 _draw.png"/>
 </form>
 <?php echo '
-	<script typ="text/javascript">
+	<script type="text/javascript">
  		$(document).ready(function(){
 		var url = "http://localhost/index.php?page=user&choice=getfriends4tag&flg=1&ce=0";
-			$("#tag").autocomplete({json_url:url,height:6 });
+			$("#tag").autocomplete({json_url:url,height:6 });			
+		//$.post(url, function(res){
+		//			$("#boxtest").html(res);
+		//		 });
 		 });
 
 	</script>

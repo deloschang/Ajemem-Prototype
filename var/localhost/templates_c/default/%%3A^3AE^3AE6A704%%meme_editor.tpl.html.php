@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-05-03 21:20:40
+<?php /* Smarty version 2.6.7, created on 2012-06-07 23:24:36
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 199, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 209, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 03/05/2012 21:20:40 --> 
+<!-- Template: meme/meme_editor.tpl.html Start 07/06/2012 23:24:36 --> 
  <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
 <?php echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
@@ -142,11 +142,21 @@ $(document).ready(function(){
 
 <div id="uploader"class="nohighlight">
 	<input type="file" name="updimage" id="updimage" size="5" />
-	<input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
+	<input type="button" onClick="show_image();" value="Upload" style="width:50px;" />
+	
+	<br />
+	
 	URL: <input type="text" name="imgurl" id="imgurl" size="27" />
 	<input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
 	<div id="prev_image" class="prev_image"></div>
+	
+	<div>
+        <b>Tag</b>
+         <select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select>
+    </div>
 </div>
+
+		
              
         <div class='main_smiley_loading'class="nohighlight"style="top:100px;">
             <div class="smileys_in_small_size">
@@ -167,7 +177,6 @@ $(document).ready(function(){
         <td><input type="hidden" id="fontsize" class="ls" value="1" style="width:25px" ></td>
         <td><img src="http://localhost/spad/site_image/color_wheel.png" width="20" height="20" alt="Pick Color" title="Pick Color" id="color" /><br /></td>
         <span id="hilight">
-		    <td><img src="http://localhost/spad/site_image/grid.png" width="20" height="20" class="grid" title="Gridlines" alt="Gridlines Toggle" /></td>
 		    <!--<td><img src="http://localhost/spad/site_image/uparrow.png" width="20" height="20" class="uparrow" title="Scroll Up" alt="Up Arrow" /></td>
 			<!--<td><img src="http://localhost/spad/site_image/downarrow.png" width="20" height="20" class="downarrow" title="Scroll Bottom" alt="Down Arrow" /></td>
 			<!--<td><img src="http://localhost/spad/site_image/paintbucket.png" width="16" height="16" class="paintbucket" title="Paintbucket" alt="Paintbucket" /></td>-->
@@ -199,6 +208,7 @@ $(document).ready(function(){
         <td><img src="http://localhost/spad/site_image/redo.png" width="19" height="16" class="redo" id="redo" title="Redo" alt="Redo" /></td>
         <td><img src="http://localhost/spad/site_image/increase_panel.png" class="addpanel" title="Increase Height" alt="Add Panel" width="16" height="16" /></td>
         <td><img src="http://localhost/spad/site_image/decrease_panel.png" class="removepanel" title="Decrease Height" alt="Remove Panel" width="16" height="16" /></td>
+		<td><img src="http://localhost/spad/site_image/grid.png" width="20" height="20" class="grid" title="Gridlines" alt="Gridlines Toggle" /></td>
 		<td><img src="http://localhost/spad/site_image/clear.png" class="clear" title="Clear Canvas" alt="Clear" width="16" height="16" /></td>
 		<td><select id="img_dpw" onChange="setOptions(this);">
                         <?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['premade_category']), $this);?>

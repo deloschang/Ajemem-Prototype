@@ -1,18 +1,18 @@
-<?php /* Smarty version 2.6.7, created on 2012-05-09 01:51:52
+<?php /* Smarty version 2.6.7, created on 2012-06-07 23:24:39
          compiled from user/left_pan.tpl.html */
 
-$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = 'dae387d251b81ff9409cef1cff7b52d9';
+$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%2C^2C0^2C056D19%%left_pan.tpl.html.inc'] = 'cdc05a456756f3fbaf564a682df49c79';
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 5, false),array('function', 'get_mod', 'user/left_pan.tpl.html', 52, false),)), $this); ?>
 <?php
-function _smarty_tplfunc_dae387d251b81ff9409cef1cff7b52d9_0(&$_smarty)
+function _smarty_tplfunc_cdc05a456756f3fbaf564a682df49c79_0(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_dae387d251b81ff9409cef1cff7b52d9_1(&$_smarty)
+function _smarty_tplfunc_cdc05a456756f3fbaf564a682df49c79_1(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $_smarty);
 }

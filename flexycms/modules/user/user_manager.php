@@ -1,5 +1,5 @@
 <?php
-if($_REQUEST['choice']=='facebook_info' or $_REQUEST['choice']=='logout' or $_REQUEST['choice']=='check_fb_session' or $_REQUEST['choice']=='test'){
+if($_REQUEST['choice']=='facebook_info' or $_REQUEST['choice']=='logout' or $_REQUEST['choice']=='check_fb_session' or $_REQUEST['choice']=='test' or $_REQUEST['choice'] == 'getfriends4tag'){
 	require_once(APP_ROOT."flexycms/classes/common/facebook-library/facebook.php");
 }
 class user_manager extends mod_manager {
@@ -1520,6 +1520,7 @@ class user_manager extends mod_manager {
 
 	    $arr = $this->decrypt_fb_data();
 	    $facebook = $arr[0]; // instance of class FB 
+		
 	    $data = $arr[1];	// decrypted data with access token + session_key
 
 		//var_dump($facebook);		Does FB instance exist?
@@ -1870,21 +1871,37 @@ class user_manager extends mod_manager {
 	}
 	function  _getfriends4tag(){
 	    global $link;
-	    $sql_frnd = get_search_sql("user"," id_user=".$_SESSION['id_user'],"memeje_friends");
-	    $res_frnd=getrows($sql_frnd,$err);
-	    if($res_frnd[0]['memeje_friends']){
-		    $sql =get_search_sql("user","id_user IN(".$res_frnd[0]['memeje_friends'].") ");
-	 	    $res = mysqli_query($link,$sql);
-		    while($rec= mysqli_fetch_assoc($res)){
-				$img_nm = ($rec['avatar'])?$rec['avatar']:(($rec['gender']='M')?"memeja_male.png":"memeja_female.png");
-				$img = "<img src='".LBL_SITE_URL."image/thumb/avatar/".$img_nm."' style='width:40px;height:40px;'/>";
-				$arr[] = array("name"=>$rec['fname'],"value"=>$rec['id_user'],"lname"=>$rec['lname'],"pf_img"=>$img);
-		    }
-		    mysqli_free_result($res);
-		    mysqli_next_result($link);
-	    }
+		
+		$arr = $this->decrypt_fb_data();		
+		$facebook = $arr[0];		
+		$data = $arr[1];
+		
+		$friends_list = $facebook->api('me/friends');		
+		foreach ($friends_list as $friend_array){
+			foreach($friend_array as $page) {
+				$name = $page['name'];
+				$id = $page['id'];
+				
+				$img = "<img src='https://graph.facebook.com/$id/picture' style='width:40px;height:40px'/>";
+				$arr[] = array("name"=>$name,"value"=>$id,"lname"=>'lastname',"pf_img"=>$img);
+			}
+		}
+		
+	    //$sql_frnd = get_search_sql("user"," id_user=".$_SESSION['id_user'],"memeje_friends");
+	    //$res_frnd=getrows($sql_frnd,$err);
+	    //if($res_frnd[0]['memeje_friends']){
+		//    $sql =get_search_sql("user","id_user IN(".$res_frnd[0]['memeje_friends'].") ");
+	 	//   $res = mysqli_query($link,$sql);
+		//    while($rec= mysqli_fetch_assoc($res)){
+		//		$img_nm = ($rec['avatar'])?$rec['avatar']:(($rec['gender']='M')?"memeja_male.png":"memeja_female.png");
+		//		$img = "<img src='".LBL_SITE_URL."image/thumb/avatar/".$img_nm."' style='width:40px;height:40px;'/>";
+		//		$arr[] = array("name"=>$rec['fname'],"value"=>$rec['id_user'],"lname"=>'lastname',"pf_img"=>$img);
+		//    }
+		//    mysqli_free_result($res);
+		//    mysqli_next_result($link);
+	    //}
 	    if(!$arr && $this->_input['flg_duel']){
-		print "1";exit;
+			print "1";exit;
 	    }
 	    print json_encode($arr);exit;
 	}
