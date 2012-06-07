@@ -1876,15 +1876,14 @@ class user_manager extends mod_manager {
 		$facebook = $arr[0];		
 		$data = $arr[1];
 		
-		$friends_list = $facebook->api('me/friends');		
-		foreach ($friends_list as $friend_array){
-			foreach($friend_array as $page) {
-				$name = $page['name'];
-				$id = $page['id'];
-				
-				$img = "<img src='https://graph.facebook.com/$id/picture' style='width:40px;height:40px'/>";
-				$arr[] = array("name"=>$name,"value"=>$id,"lname"=>'lastname',"pf_img"=>$img);
-			}
+		$friends_list = $facebook->api('me/friends');	
+		$collection = $friends_list['data'];
+		foreach($collection as $page) {
+			$name = $page['name'];
+			$id = $page['id'];
+			
+			$img = "<img src='https://graph.facebook.com/$id/picture'/>";
+			$arr[] = array("name"=>$name,"value"=>$id,"lname"=>'lastname',"pf_img"=>$img);
 		}
 		
 	    //$sql_frnd = get_search_sql("user"," id_user=".$_SESSION['id_user'],"memeje_friends");
