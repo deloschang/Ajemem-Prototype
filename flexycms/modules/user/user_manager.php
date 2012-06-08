@@ -1484,6 +1484,8 @@ class user_manager extends mod_manager {
   				'secret' => $application_secret,
 			));
 			
+			$facebook = $arr[0];
+			
 			$arr[1] = $data;
 			return $arr;
 			
