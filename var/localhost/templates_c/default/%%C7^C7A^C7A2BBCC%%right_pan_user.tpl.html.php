@@ -1,11 +1,11 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-05 05:26:30
+<?php /* Smarty version 2.6.7, created on 2012-06-09 01:43:00
          compiled from manage/right_pan_user.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/right_pan_user.tpl.html', 5, false),)), $this); ?>
 <?php if ($_SESSION['id_user']): ?>
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
 
-		<div class= "user_name"><?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['username'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+		<div id= "other_user_name"><?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['username'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 </div>
 			<div id="changePhoto">
 				<?php if ($this->_tpl_vars['sm']['fb_pic_normal']): ?>
@@ -19,9 +19,9 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 
 		
 					
-		<div id="user_ranking_info">
+		<div id="more_user_ranking_info">
 		<span id="rank">Rank</span>
-		<span id="ranking_number"><?php if ($this->_tpl_vars['sm']['exp_rank']):  echo $this->_tpl_vars['sm']['exp_rank'];  else: ?>N/A<?php endif; ?></span>
+		<span id="more_ranking_number"><?php if ($this->_tpl_vars['sm']['exp_rank']):  echo $this->_tpl_vars['sm']['exp_rank'];  else: ?>N/A<?php endif; ?></span>
 		
 		 <div id="total_xp" ><?php if ($this->_tpl_vars['sm']['exp_point']):  echo $this->_tpl_vars['sm']['exp_point'];  endif; ?>
 		 <span style="font-size:8px; position:relative; bottom:5px;">XP</span></div>

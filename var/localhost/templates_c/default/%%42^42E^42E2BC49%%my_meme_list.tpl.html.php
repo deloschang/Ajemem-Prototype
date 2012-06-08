@@ -1,9 +1,10 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-05 03:24:37
+<?php /* Smarty version 2.6.7, created on 2012-06-09 01:42:39
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 42, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 44, false),)), $this); ?>
 <?php echo '
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
+
 <script type="text/javascript">
     function show_details(id_meme){
 	//$.fancybox.showActivity();
@@ -26,6 +27,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 
 '; ?>
 
+<div id ="user_memes" >
 <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
 <b>
 		    <?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
@@ -108,4 +110,6 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 			<a href="http://localhost/manage/my_meme_list/"></a>
 		    <?php endif; ?>
 		<?php endif; ?>
-</div>
+</div>
+</div>
+

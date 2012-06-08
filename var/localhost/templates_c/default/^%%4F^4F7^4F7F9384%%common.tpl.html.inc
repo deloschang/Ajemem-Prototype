@@ -1,14 +1,32 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-09 04:52:09
+<?php /* Smarty version 2.6.7, created on 2012-06-09 01:42:39
          compiled from common/common.tpl.html */
 
-$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '557bc6749ed4692795fc6656163bb2fb';
+$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '7b75ce8bbe1b079e4189f6e01ac05512';
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 488, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 644, false),)), $this); ?>
 <?php
-function _smarty_tplfunc_557bc6749ed4692795fc6656163bb2fb_0(&$_smarty)
+function _smarty_tplfunc_7b75ce8bbe1b079e4189f6e01ac05512_0(&$_smarty)
 {
-echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'question','mgr' => 'question','choice' => 'get_this_week_question'), $_smarty);
+echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $_smarty);
+}
+
+
+function _smarty_tplfunc_7b75ce8bbe1b079e4189f6e01ac05512_1(&$_smarty)
+{
+echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $_smarty);
+}
+
+
+function _smarty_tplfunc_7b75ce8bbe1b079e4189f6e01ac05512_2(&$_smarty)
+{
+echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $_smarty);
+}
+
+
+function _smarty_tplfunc_7b75ce8bbe1b079e4189f6e01ac05512_3(&$_smarty)
+{
+echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $_smarty);
 }
 
 

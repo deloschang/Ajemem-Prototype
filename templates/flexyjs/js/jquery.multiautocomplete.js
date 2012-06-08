@@ -217,10 +217,12 @@ jQuery(function($){
                                 getBoxTimeout++;
                                 var getBoxTimeoutValue = getBoxTimeout;  
                                 setTimeout (function() {
-                                    if (getBoxTimeoutValue != getBoxTimeout) return;
+
+                                    json_cache = true;
+                                    if (getBoxTimeoutValue != getBoxTimeout) 
+										return;
                                     $.getJSON(options.json_url + ( options.json_url.indexOf("?") > -1 ? "&" : "?" ) + "tag=" + etext, null, function (data) {
-					addMembers(etext, data);
-                                        json_cache = true;
+										addMembers(etext, data);
                                         bindEvents();
                                     });
                                 }, options.delay);                            
@@ -253,13 +255,14 @@ jQuery(function($){
                 addTextItem(etext);
                 if (data != null && data.length) {
                     $.each(data, function(i, val){
-                        cache.push({
-                            name: val.name,
-			    lname: val.lname,
-                            value: val.value,
-			    pf_img:val.pf_img
-                        });
-                        search_string += "" + (cache.length - 1) + ":" + val.name +" "+val.lname + ";";
+							if (val.name != undefined){
+								cache.push({
+									name: val.name,
+									value: val.value,
+						pf_img:val.pf_img
+								});
+								search_string += "" + (cache.length - 1) + ":" + val.name + ";";
+							}
                     });
                 }
                 var maximum = options.maxshownitems < cache.length ? options.maxshownitems : cache.length;
@@ -282,7 +285,7 @@ jQuery(function($){
                         //nothing here...
                     }
                     else {
-			content += '<li rel="' + object.value + '">'+ object.pf_img + itemIllumination(object.name+" "+object.lname, etext) +'</li>';
+			content += '<li rel="' + object.value + '">'+ object.pf_img + itemIllumination(object.name, etext) +'</li>';
                         //content += '<li rel="' + object.value + '"><table><tr><td>'+ object.pf_img +'</td></tr><tr class="opval"><td>' + itemIllumination(object.name, etext) + " " +object.lname +'</td></tr></table></li>';
 			counter++;
                         maximum--;

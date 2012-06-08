@@ -1,6 +1,7 @@
 {*notag*}
 {literal}
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/mainpg.css"/>
+
 <script type="text/javascript">
     function show_details(id_meme){
 	//$.fancybox.showActivity();
@@ -22,6 +23,7 @@
 </script>
 
 {/literal}
+<div id ="user_memes" >
 {assign var=img_path value=$util->get_values_from_config('IMAGE')}
 <b>
 		    {if $sm.flg==1}
@@ -72,3 +74,5 @@
 		    {/if}
 		{/if}
 </div>
+</div>
+

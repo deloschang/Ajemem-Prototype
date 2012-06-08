@@ -2,7 +2,7 @@
 {if $smarty.session.id_user}
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/mainpg.css"/>
 
-		<div class= "user_name">{$sm.username|capitalize}</div>
+		<div id= "other_user_name">{$sm.username|capitalize}</div>
 			<div id="changePhoto">
 				{if $sm.fb_pic_normal}
 				<img src="{$sm.fb_pic_normal}">
@@ -15,9 +15,9 @@
 		
 		{*User Rank + XP*}
 			
-		<div id="user_ranking_info">
+		<div id="more_user_ranking_info">
 		<span id="rank">Rank</span>
-		<span id="ranking_number">{if $sm.exp_rank}{$sm.exp_rank}{else}N/A{/if}</span>
+		<span id="more_ranking_number">{if $sm.exp_rank}{$sm.exp_rank}{else}N/A{/if}</span>
 		
 		 <div id="total_xp" >{if $sm.exp_point}{$sm.exp_point}{/if}
 		 <span style="font-size:8px; position:relative; bottom:5px;">XP</span></div>

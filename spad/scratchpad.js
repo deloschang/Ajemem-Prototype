@@ -1008,7 +1008,7 @@ function submit_memeje() {
 function saveindisk(csave)
 {
 	var canvasData = getcanvasimage("mycid");
- console.log("SAVEINDISK: " + JSON.stringify(canvasData));
+ //console.log("SAVEINDISK: " + JSON.stringify(canvasData));
     var url = SAVE_IMG_PATH+'/id_user/'+$("#iduser").val(); // extra added
     $.ajax(
 	{

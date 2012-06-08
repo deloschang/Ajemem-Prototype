@@ -1,12 +1,13 @@
-<?php /* Smarty version 2.6.7, created on 2012-05-30 01:39:52
+<?php /* Smarty version 2.6.7, created on 2012-06-09 01:31:57
          compiled from meme/addmeme.tpl.html */ ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 30/05/2012 01:39:52 --> 
+<!-- Template: meme/addmeme.tpl.html Start 09/06/2012 01:31:57 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
 -->
-<div id="showmodal" class="showmodal"><em><strong><center>ENTER MEMEJA DOJO</center></strong></em></div>
+
+<div id="showmodal" class="showmodal"><em><strong><center>ENTERING MEMEJA DOJO</center></strong></em></div>
 
 <script type="text/javascript">
     var last_comic="http://localhost/spad/workspace/<?php echo $_SESSION['id_user']; ?>
@@ -25,7 +26,8 @@ _img.png";
 <link rel="stylesheet" href="http://localhost/spad/css/spad.css" type="text/css"/>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/multiautocomplete.css"/>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
 <script type="text/javascript">
 
 	var mycanvas, cntx;
@@ -34,6 +36,7 @@ _img.png";
 	function title_focus() {
         b_titlefocus = true;
      }
+
     function title_blur() { b_titlefocus = false;  }
     
     function cancel_meme(){
@@ -70,17 +73,17 @@ _img.png";
 
     function validate_me(){
         obj=document.getElementById(\'ques_ans\');
-        if($(obj.title).val()==\'\')
-		{
+        if($(obj.title).val()==\'\') {
             alert("Enter The Title");
             $(obj.title).focus();
             return false;
          }
-		if($(obj.title).val().length>80)
-		{
+		
+		if($(obj.title).val().length>80) {
             alert("Enter a shorter title");
             return false;
          }
+		
         if($(obj.see_fr).val()==""){
             alert("Choose Who Can See?");
             $(obj.see_fr).focus();
@@ -95,30 +98,30 @@ _img.png";
             alert("Choose One Category");
             $("#meme_cat").focus();
             return false;
-         }else{
+         } else {
         
-		if(!$("#tag").val())
-		{
-			/* Godzilla: Uncomment and comment out var conf=true once the tagging system is implemented. 
-				Allows users to submit memes without choosing if they have to tag a friend or not. 
-			*/
-			
-			//var conf=confirm("Are you sure you don\'t want to tag your friends?");
-			var conf=true;
-			if(conf)
+			if(!$("#tag").val())
 			{
+				/* Godzilla: Uncomment and comment out var conf=true once the tagging system is implemented. 
+					Allows users to submit memes without choosing if they have to tag a friend or not. 
+				*/
+				
+				//var conf=confirm("Are you sure you don\'t want to tag your friends?");
+				var conf=true;
+				if(conf)
+				{
+					$(window).unbind();
+					submit_memeje();
+				 }
+				else
+				{
+					return false;
+				 }
+			 }
+			else{
 				$(window).unbind();
 				submit_memeje();
 			 }
-			else
-			{
-				return false;
-			 }
-		 }
-		else{
-			$(window).unbind();
-			submit_memeje();
-		 }
          }
      }
 	$(window).bind(\'beforeunload\', function() {
@@ -152,28 +155,33 @@ _img.png";
             </span>
         </div><br/>
         <div id="edtr"class="nohighlight">
-	<?php $_smarty_tpl_vars = $this->_tpl_vars;
+			<div id="canvas">
+				<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/meme_editor.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+			</div>
 
           <div id="submitter" ><input type="button" value="Submit" onclick="validate_me();"/></div>
-        <script language = "Javascript">
-		
-		</script>
 		
 		<div style="position:fixed;bottom:35px; left:800px"><input type="checkbox" name="memejimark" value="" onclick="insertMark();"/> Watermark</div>
 				
+		</div>
+		
+		<div>
+			<b>Tag</b>
+			 <select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select>
 		</div>
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>
 _draw.png"/>
 </form>
 <?php echo '
-	<script typ="text/javascript">
+	<script type="text/javascript">
  		$(document).ready(function(){
-		var url = "http://localhost/index.php?page=user&choice=getfriends4tag&flg=1&ce=0";
+			var url = "http://localhost/index.php?page=user&choice=getfriends4tag&flg=1&ce=0";			
 			$("#tag").autocomplete({json_url:url,height:6 });
+			
 		 });
 
 	</script>

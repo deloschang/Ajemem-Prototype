@@ -1,5 +1,5 @@
 <?php
-if($_REQUEST['choice']=='facebook_info' or $_REQUEST['choice']=='logout' or $_REQUEST['choice']=='check_fb_session' or $_REQUEST['choice']=='test'){
+if($_REQUEST['choice']=='facebook_info' or $_REQUEST['choice']=='logout' or $_REQUEST['choice']=='check_fb_session' or $_REQUEST['choice']=='test' or $_REQUEST['choice'] == 'getfriends4tag'){
 	require_once(APP_ROOT."flexycms/classes/common/facebook-library/facebook.php");
 }
 class user_manager extends mod_manager {
@@ -246,6 +246,9 @@ class user_manager extends mod_manager {
                             $_SESSION['one_less_rank'] = $one_less_rank;
                             $_SESSION['one_less_exp'] = $res_one_less['exp_point'];
                             $_SESSION['one_less_user'] = $res_one_less['username'];
+							$_SESSION['one_less_pic'] = $res_one_less['fb_pic_normal'];
+							$_SESSION['one_less_avatar'] = $res_one_less['avatar'];
+							$_SESSION['one_less_gender'] = $res_one_less['gender'];
 						
                             // End
                             $_SESSION['raise_message']['global'] = "Successfully logged in";
@@ -1251,6 +1254,9 @@ class user_manager extends mod_manager {
 			} else {
 				$_SESSION['one_less_user'] = $res_other['username'];
 				$_SESSION['one_less_exp'] = $res_other['exp_point'];
+				$_SESSION['one_less_pic'] = $res_other['fb_pic_square'];
+				$_SESSION['one_less_avatar'] = $res_other['avatar'];
+				$_SESSION['one_less_gender'] = $res_other['gender'];
 				exit("AB".",".$res_other['exp_point'].",".$res_other['username']);
 			}
 		
@@ -1266,6 +1272,10 @@ class user_manager extends mod_manager {
 	    	$_SESSION['one_less_exp'] = $res_updated_other['exp_point'];
 	    	$_SESSION['one_less_user'] = $res_updated_other['username'];
 	    	$_SESSION['one_less_rank'] = $less_one_user_updated_rank;
+			$_SESSION['one_less_pic'] = $res_updated_other['fb_pic_square'];
+			$_SESSION['one_less_avatar'] = $res_updated_other['avatar'];
+			$_SESSION['one_less_gender'] = $res_updated_other['gender'];
+			
 	    
 	    	// Which direction has rank changed? Rank improved (lower)
 	    	if ($_SESSION['exp_rank'] > $res['POSITION']) {
@@ -1484,6 +1494,8 @@ class user_manager extends mod_manager {
   				'secret' => $application_secret,
 			));
 			
+			$facebook = $arr[0];
+			
 			$arr[1] = $data;
 			return $arr;
 			
@@ -1520,6 +1532,7 @@ class user_manager extends mod_manager {
 
 	    $arr = $this->decrypt_fb_data();
 	    $facebook = $arr[0]; // instance of class FB 
+		
 	    $data = $arr[1];	// decrypted data with access token + session_key
 
 		//var_dump($facebook);		Does FB instance exist?
@@ -1571,19 +1584,6 @@ class user_manager extends mod_manager {
 	    	
 	    	$this->_set_login($results['email'], $results['password']);
 	    } else {
-				
-			// Iterate through friends list and sep by id and name
-			$friends = $facebook->api('me/friends');
-			$id_list = array();
-			$name_list = array();
-			
-			foreach ($friends as $friend_array) {
-				foreach ($friend_array as $friend) {
-					$id_list[] = $friend['id'];
-					$name_list[] = $friend['name'];
-				}
-			}
-			$in_user['id_friends'] = implode(",", $id_list);
 			
 			#### Does not load properly into name_friends ####
 			## Tried LONGTEXT and LONGBLOB for column structure ##
@@ -1870,22 +1870,22 @@ class user_manager extends mod_manager {
 	}
 	function  _getfriends4tag(){
 	    global $link;
-	    $sql_frnd = get_search_sql("user"," id_user=".$_SESSION['id_user'],"memeje_friends");
-	    $res_frnd=getrows($sql_frnd,$err);
-	    if($res_frnd[0]['memeje_friends']){
-		    $sql =get_search_sql("user","id_user IN(".$res_frnd[0]['memeje_friends'].") ");
-	 	    $res = mysqli_query($link,$sql);
-		    while($rec= mysqli_fetch_assoc($res)){
-				$img_nm = ($rec['avatar'])?$rec['avatar']:(($rec['gender']='M')?"memeja_male.png":"memeja_female.png");
-				$img = "<img src='".LBL_SITE_URL."image/thumb/avatar/".$img_nm."' style='width:40px;height:40px;'/>";
-				$arr[] = array("name"=>$rec['fname'],"value"=>$rec['id_user'],"lname"=>$rec['lname'],"pf_img"=>$img);
-		    }
-		    mysqli_free_result($res);
-		    mysqli_next_result($link);
-	    }
-	    if(!$arr && $this->_input['flg_duel']){
-		print "1";exit;
-	    }
-	    print json_encode($arr);exit;
+		
+		$arr = $this->decrypt_fb_data();		
+		$facebook = $arr[0];
+		
+		$friends_list = $facebook->api('me/friends');	
+		$collection = $friends_list['data'];
+		
+		foreach($collection as $page) {
+			$name = $page['name'];
+			$id = $page['id'];
+			
+			$img = "<img src='https://graph.facebook.com/$id/picture'/>";
+			$arr[] = array("name"=>$name,"value"=>$id,"pf_img"=>$img);
+		}
+		
+	    print json_encode($arr);
+		exit;
 	}
 }

@@ -3,56 +3,38 @@
 
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/mainpg.css"/>
 
-		<div class= "user_name">{$smarty.session.username|capitalize}</div>
-		<!--<span id="left_pan_level" style="font-size:14px; color:#ACACA5; margin-left:2px;"> L{$smarty.session.level}</span>-->
-    
-			<div id="changePhoto">
-				{include file='user/avatar'}
-			</div>
-			
+		<div id= "user_name">{$smarty.session.username|capitalize}</div>
 		{*User Rank + XP*}
 			
-		<div id="user_ranking_info">
-		<span id="rank">Rank</span>
-		<span id="ranking_number">{if $smarty.session.exp_rank}{$smarty.session.exp_rank}{else}N/A{/if}</span>
+		<!--<div id="user_ranking_info">
 		
-		 <div id="total_xp" >{if $smarty.session.exp_point}{$smarty.session.exp_point}{/if}
+		<!-- <div id="total_xp" >{if $smarty.session.exp_point}{$smarty.session.exp_point}{/if}
 		 <span style="font-size:8px; position:relative; bottom:5px;">XP</span></div>
 		 </div>
 		 
 		{*Trailing Rank, User, + XP*} 
-		<div id="other_user_ranking_info" class="softcorner native num_videos" >
-		<div id="trailing_user" >{if $smarty.session.one_less_user}{$smarty.session.one_less_user}{else}---{/if}</div>
-		<span id="trailing_all">
-		 <span id="trailing_ranking_number" style="font-family:Verdana; font-size:40px;s">{$smarty.session.one_less_rank}</span>
-		<div id="trailing_exp" style="-moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; font-size:12px; position:relative; bottom:4px; margin-left:12px;">{if $smarty.session.one_less_exp}{$smarty.session.one_less_exp}{else}0{/if}
+		<div id="other_user_ranking_info" class="softcorner native num_videos">
+		<div id="trailing_user">{if $smarty.session.one_less_user}{$smarty.session.one_less_user}{else}---{/if}</div>
+		<span id="trailing_all"> </span>
+		 <span id="trailing_ranking_number">{$smarty.session.one_less_rank}</span>
+		<!--<div id="trailing_exp" style="-moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; font-size:12px; position:relative; bottom:4px; margin-left:12px;">{if $smarty.session.one_less_exp}{$smarty.session.one_less_exp}{else}0{/if}
 		 <span style="font-size:8px; position:relative; bottom:3px;">XP</span></div>
-		 </div>
+		</div>-->
 
-    <!--
-    <tr>
-		<td><a href="javascript:void(0);">Account Setting</a></td>
-    </tr>-->
-    
-<!--    <tr>-->
-<!--{************ Duels commented out-->
-<!--		<td><a href="##LBL_SITE_URL##duels/list_duels" title="See all duels">Challenge Duel</a></td> *********}-->
-
-<!--    </tr>-->
-
-		<div id="my_meme_list" style="margin-top:-60px;">
-			{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
-		</div>
-
-		<div id="my_favorites" >
-			{get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
-		</div>
+		<!--<a href="javascript:void(0);">Account Setting</a>
+		  
+			
+		<!--    <tr>-->
+		<!--{************ Duels commented out-->
+		<!--		<td><a href="##LBL_SITE_URL##duels/list_duels" title="See all duels">Challenge Duel</a></td> *********}-->
 	
      	<br><br> 
 			<!-- send a mail from the "Suggestions" hyperlink 
 			<a href="mailto:karanchitnis92@gmail.com?Subject=Memeja%20suggestion">Suggestions</a>
 		</br></br>-->
- {***** Dueled Meme Commented out
+		
+		{***** Dueled Meme Commented out
 		<a href="##LBL_SITE_URL##meme/dueled_meme">Dueled Meme</a>*}
+		
 {/if}
 

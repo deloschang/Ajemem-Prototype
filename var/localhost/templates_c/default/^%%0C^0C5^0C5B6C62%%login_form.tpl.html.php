@@ -1,7 +1,14 @@
+<<<<<<< HEAD
+<?php /* Smarty version 2.6.7, created on 2012-06-07 01:13:20
+         compiled from user/login_form.tpl.html */ ?>
+
+<!-- Template: user/login_form.tpl.html Start 07/06/2012 01:13:20 --> 
+=======
 <?php /* Smarty version 2.6.7, created on 2012-05-06 00:04:49
          compiled from user/login_form.tpl.html */ ?>
 
 <!-- Template: user/login_form.tpl.html Start 06/05/2012 00:04:49 --> 
+>>>>>>> 83283487b2e009dffc8cc50bd2aec9418c3eaafa
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -29,6 +36,14 @@
 		x=validator.form();
 		return x;
 	 }
+<<<<<<< HEAD
+	
+	function forgot_pwd(){
+		$(\'#forgot_pwd\').slideToggle(800);
+	 }
+	
+=======
+>>>>>>> 83283487b2e009dffc8cc50bd2aec9418c3eaafa
 </script>
 '; ?>
 
@@ -64,7 +79,11 @@
 		<!--
 		<td class="tl" colspan="2"><input type="checkbox" name="rem" id="rem" value="1"/>Remember Me </td>-->
 		<td>
+<<<<<<< HEAD
+		<a href="javascript:void(0);" onclick="forgot_pwd();">Forgot Password?</a></td>
+=======
 		<a href="http://localhost/user/forgot_pwd">Forgot Password?</a></td>
+>>>>>>> 83283487b2e009dffc8cc50bd2aec9418c3eaafa
     </tr>
 	<!--
     <tr>
@@ -77,7 +96,11 @@
 </form>
 </div>
 </div>
+<<<<<<< HEAD
+	<div id="forgot_pwd" style="display:none">
+=======
 	<div id="forgot_pwd">
+>>>>>>> 83283487b2e009dffc8cc50bd2aec9418c3eaafa
 		<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/forgot_pwd.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;

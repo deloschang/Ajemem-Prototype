@@ -1,10 +1,11 @@
-<?php /* Smarty version 2.6.7, created on 2012-05-30 01:39:52
+<?php /* Smarty version 2.6.7, created on 2012-06-09 01:31:57
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 199, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 203, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 30/05/2012 01:39:52 --> 
- <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY'));  echo '
+<!-- Template: meme/meme_editor.tpl.html Start 09/06/2012 01:31:57 --> 
+ <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
+<?php echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
 <script type="text/javascript" src="http://localhost//spad/jquery.lionbars.0.3.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost//spad/lionbars.css" media="screen" />
@@ -142,6 +143,7 @@ $(document).ready(function(){
 <div id="uploader"class="nohighlight">
 	<input type="file" name="updimage" id="updimage" size="5" />
 	<input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
+
 	URL: <input type="text" name="imgurl" id="imgurl" size="27" />
 	<input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
 	<div id="prev_image" class="prev_image"></div>
@@ -156,7 +158,9 @@ $(document).ready(function(){
 		<div id="editorside"></div>
 <div id="page" style="display:none; left:-160px;"class="nohighlight">
 	<canvas id="dummy1" style="display:none;"></canvas>
+
 	<div id="sp" style="position:relative;"><canvas id="mycid" style="border:1px solid red"></canvas></div>
+
     <div id="main" style="width:660px;left:-10px;">
         <div id="vs" style="height:100px; margin-left:65px; margin-top:-1px; display:none;"></div>
 		<!-- The following is the Line Size Slider Button-->
@@ -167,6 +171,7 @@ $(document).ready(function(){
         <td><img src="http://localhost/spad/site_image/color_wheel.png" width="20" height="20" alt="Pick Color" title="Pick Color" id="color" /><br /></td>
         <span id="hilight">
 		    <td><img src="http://localhost/spad/site_image/grid.png" width="20" height="20" class="grid" title="Gridlines" alt="Gridlines Toggle" /></td>
+
 		    <!--<td><img src="http://localhost/spad/site_image/uparrow.png" width="20" height="20" class="uparrow" title="Scroll Up" alt="Up Arrow" /></td>
 			<!--<td><img src="http://localhost/spad/site_image/downarrow.png" width="20" height="20" class="downarrow" title="Scroll Bottom" alt="Down Arrow" /></td>
 			<!--<td><img src="http://localhost/spad/site_image/paintbucket.png" width="16" height="16" class="paintbucket" title="Paintbucket" alt="Paintbucket" /></td>-->

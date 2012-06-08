@@ -1,8 +1,10 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-05 03:24:37
+<?php /* Smarty version 2.6.7, created on 2012-06-09 01:42:39
          compiled from user/right_pan.tpl.html */ ?>
 
-<!-- Template: user/right_pan.tpl.html Start 05/06/2012 03:24:37 --> 
- <span id="right_pan">
+<!-- Template: user/right_pan.tpl.html Start 09/06/2012 01:42:39 --> 
+ 
+<span id="right_pan">
+
 
 <?php if ($_SESSION['id_user']): ?>  <!-- If not logged in, then don't show -->
 	<!--<div class="fbfrnd">
