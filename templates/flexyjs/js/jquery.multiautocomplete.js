@@ -212,7 +212,6 @@ jQuery(function($){
                             if (options.cache && json_cache) {
                                 addMembers(etext);
                                 bindEvents();
-								//console.log('cached');
                             }
                             else {
                                 getBoxTimeout++;
@@ -224,7 +223,6 @@ jQuery(function($){
                                     $.getJSON(options.json_url + ( options.json_url.indexOf("?") > -1 ? "&" : "?" ) + "tag=" + etext, null, function (data) {
 										addMembers(etext, data);
                                         bindEvents();
-										console.log('after function call done');
                                     });
                                 }, options.delay);                            
 							}
@@ -256,12 +254,14 @@ jQuery(function($){
                 addTextItem(etext);
                 if (data != null && data.length) {
                     $.each(data, function(i, val){
-                        cache.push({
-                            name: val.name,
-                            value: val.value,
-			    pf_img:val.pf_img
-                        });
-                        search_string += "" + (cache.length - 1) + ":" + val.name + ";";
+							if (val.name != undefined){
+								cache.push({
+									name: val.name,
+									value: val.value,
+						pf_img:val.pf_img
+								});
+								search_string += "" + (cache.length - 1) + ":" + val.name + ";";
+							}
                     });
                 }
                 var maximum = options.maxshownitems < cache.length ? options.maxshownitems : cache.length;
