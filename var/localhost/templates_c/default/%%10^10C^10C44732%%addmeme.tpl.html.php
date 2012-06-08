@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-08 07:37:49
+<?php /* Smarty version 2.6.7, created on 2012-06-08 23:44:41
          compiled from meme/addmeme.tpl.html */ ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 08/06/2012 07:37:48 --> 
+<!-- Template: meme/addmeme.tpl.html Start 08/06/2012 23:44:41 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
@@ -169,7 +169,10 @@ unset($_smarty_tpl_vars);
 				
 		</div>
 		
-		<div id="boxtest"></div>
+		<div>
+			<b>Tag</b>
+			 <select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select>
+		</div>
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>
 _draw.png"/>
 </form>

@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-08 07:37:49
+<?php /* Smarty version 2.6.7, created on 2012-06-08 23:44:41
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 209, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 204, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 08/06/2012 07:37:49 --> 
+<!-- Template: meme/meme_editor.tpl.html Start 08/06/2012 23:44:41 --> 
  <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
 <?php echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
@@ -149,11 +149,6 @@ $(document).ready(function(){
 	URL: <input type="text" name="imgurl" id="imgurl" size="27" />
 	<input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
 	<div id="prev_image" class="prev_image"></div>
-	
-	<div>
-        <b>Tag</b>
-         <select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select>
-    </div>
 </div>
 
 		
