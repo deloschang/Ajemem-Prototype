@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-09 01:31:57
+<?php /* Smarty version 2.6.7, created on 2012-06-09 02:33:04
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 203, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 09/06/2012 01:31:57 --> 
+<!-- Template: meme/meme_editor.tpl.html Start 09/06/2012 02:33:04 --> 
  <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
 <?php echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
@@ -180,12 +180,12 @@ $(document).ready(function(){
 			<td><img src="http://localhost/spad/site_image/spray.png" width="20" height="20" class="size" id="spray" title="Spray" alt="Spray" /></td>
             <td><img src="http://localhost/spad/site_image/dline.png" width="20" height="20" class="size" id="DLine" title="Draw line" alt="Draw line" /></td>
             <td><img src="http://localhost/spad/site_image/text.png" class="size" id="text" title="Text" onclick="create_Textbox();" /></td>
-            <td><img src="http://localhost/spad/site_image/triangle.png" width="16" height="16" class="size" id="triangle" title="Triangle"  alt="Triangle" /></td>			
+           <!-- <td><img src="http://localhost/spad/site_image/triangle.png" width="16" height="16" class="size" id="triangle" title="Triangle"  alt="Triangle" /></td>			
             <td><img src="http://localhost/spad/site_image/ftriangle.png" width="16" height="16" class="size" id="ftriangle" title="Fill Triangle"  alt="Fill Triangle" /></td>			
 			<td><img src="http://localhost/spad/site_image/square.png" width="16" height="16" class="size" id="square" title="Square"  alt="Square" /></td>
             <td><img src="http://localhost/spad/site_image/fsquare.png" width="16" height="16" class="size" id="fsquare" title="Fill Square" alt="Fill Square" /></td>
             <td><img src="http://localhost/spad/site_image/circle.png" width="16" height="16" class="size" id="circle" title="Circle" alt="Circle" /></td>
-            <td><img src="http://localhost/spad/site_image/fcircle.png" width="16" height="16" class="size" id="fcircle" title="Fill Circle" alt="Fill Circle" /></td>
+            <td><img src="http://localhost/spad/site_image/fcircle.png" width="16" height="16" class="size" id="fcircle" title="Fill Circle" alt="Fill Circle" /></td>-->
             <span class="text_div" style="display:none">
                 <select name="font" id="font" style="font-size:10px">
                     <option>Arial</option>

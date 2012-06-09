@@ -581,7 +581,6 @@
 	
 /* Memeja Logo */
 	#logoc {
-		background-color:#F5F5F5;
 		float:left;
 		left:100px;
 		position:fixed;
@@ -670,7 +669,7 @@
 
 /* The top Bar */	
 	#top_header 	{
-		background-color:#F5F5F5;
+		background:url(##LBL_SITE_URL##templates/images/bar.png);
 		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
 		color:#000;
 		clear:both;
@@ -681,7 +680,6 @@
 		position:fixed;
 		width:1400px;
 		z-index:99;
-		
 		
 	}
 
@@ -988,7 +986,7 @@ moz-border-radius: 10px;
 		box-shadow: 0 0 5px 0 #aad450;
 		padding:1px;
 		padding-top:5px;
-		position:relative;
+		position:absolute;
 		top:10px;
 		left:50px;
 		text-align:center;
@@ -1009,6 +1007,14 @@ moz-border-radius: 10px;
 		position:relative;
 		left:300px;
 		top:50px;
+	}
+	
+	#my_favorites {
+		position:absolute;
+	}
+	
+	#my_meme_list{
+		position:absolute;
 	}
 
 /*################################################################################*/

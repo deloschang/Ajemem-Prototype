@@ -630,7 +630,7 @@
 	</div>
 
 	
-	<div id="profile_page">
+	<div id="profile_page" class="nohighlight">
 	
 	<div id="profile_pic">
 	{if $smarty.session.fb_pic_normal}
@@ -658,7 +658,7 @@
 			{include file="user/right_pan"}
 	</div>
 	{else}
-				<div id="live_feed">
+				<div id="live_feed" class="nohighlight">
 				<div id="profile_pic">
 				{if $smarty.session.fb_pic_normal}
 				<img src="{$smarty.session.fb_pic_normal}"class="profile_pic"/>

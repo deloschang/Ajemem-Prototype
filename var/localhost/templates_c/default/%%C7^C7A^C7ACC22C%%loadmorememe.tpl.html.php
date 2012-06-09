@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-09 01:42:37
+<?php /* Smarty version 2.6.7, created on 2012-06-09 02:42:46
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 214, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 262, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 09/06/2012 01:42:37 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 09/06/2012 02:42:46 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -298,7 +298,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 					<?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
 					<a href="javascript:void(0);" onclick="get_all_replies('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ');" class="meme_reply"><img src="http://localhost/templates/images/replys.png" style="width:25px;height:25px;"/><div id="repl<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-"class="meme_reply_label"><?php if ($this->_tpl_vars['x']['tot_reply'] != 0):  echo $this->_tpl_vars['x']['tot_reply'];  endif; ?></div></a>&emsp;
+"class="meme_reply_label"><?php if ($this->_tpl_vars['x']['tot_reply'] != 0):  echo $this->_tpl_vars['x']['tot_reply'];  else: ?>0<?php endif; ?></div></a>&emsp;
 					<?php endif; ?> 
 				
 					
