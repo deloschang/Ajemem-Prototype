@@ -2,6 +2,7 @@
      Commented by Muaz :D
 	 Presenting the Memeja Editor
 -->
+
 <div id="showmodal" class="showmodal"><em><strong><center>ENTERING MEMEJA DOJO</center></strong></em></div>
 
 <script type="text/javascript">
@@ -30,13 +31,12 @@
 	function title_focus() {
         b_titlefocus = true;
     }
-	
+
     function title_blur() { b_titlefocus = false; }
     
     function cancel_meme(){
-		window.location="##LBL_SITE_URL##user/user_home";
+	window.location="##LBL_SITE_URL##user/user_home";
     }
-	
     function get_premade_images(obj){
         var cat=obj.value;
         if(cat=='')
@@ -144,11 +144,11 @@
             <span>
                 <input type="text" name="meme[title]" id="title" size="50" onfocus="title_focus()" onblur="title_blur()"/>
             </span>
-			
-			
         </div><br/>
         <div id="edtr"class="nohighlight">
-	{include file="meme/meme_editor"}
+			<div id="canvas">
+				{include file="meme/meme_editor"}
+			</div>
 
           <div id="submitter" ><input type="button" value="Submit" onclick="validate_me();"/></div>
 		

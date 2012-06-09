@@ -1,7 +1,6 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-08 07:38:23
+<?php /* Smarty version 2.6.7, created on 2012-06-10 01:49:48
          compiled from meme/meme_list.tpl.html */ ?>
-<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
-<?php echo '
+<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script type="text/javascript">
     var reply_color = "';  echo $this->_tpl_vars['x']['reply'];  echo '";
@@ -468,7 +467,7 @@
 <br><br>
 
 
-<?php if ($_SESSION['id_user']): ?>
+<?php if ($_SESSION['id_user'] || $_SESSION['profile']): ?>
 <div id="all_memes">
     <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
@@ -497,7 +496,7 @@ unset($_smarty_tpl_vars);
 <?php endif; ?>
 
 
-<?php if (! $_SESSION['id_user']): ?>
+<?php if (! $_SESSION['id_user'] && ! $_SESSION['profile']): ?>
 	<div id="icon_container"></div>
 	<div class="module_text" id="front_card">Your stories belong here.</div>
 	<div class="module_text" id="first_half">Whether it's...</div>
@@ -509,4 +508,4 @@ unset($_smarty_tpl_vars);
 		</div>
 		<div class="module_text" id="second_half">...Memeja helps you share experiences with the people you care about.</div>
 	</div>
-<?php endif; ?>
+<?php endif; ?>

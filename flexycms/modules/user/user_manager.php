@@ -121,7 +121,7 @@ class user_manager extends mod_manager {
 ##################### SET LOGIN ##################
 ##################################################
     function _set_login($name="",$pass="")
-    {
+    {		
         if($name && $pass) {
             $uname = strtolower($name);
             $pwd = $pass;
@@ -246,6 +246,9 @@ class user_manager extends mod_manager {
                             $_SESSION['one_less_rank'] = $one_less_rank;
                             $_SESSION['one_less_exp'] = $res_one_less['exp_point'];
                             $_SESSION['one_less_user'] = $res_one_less['username'];
+							$_SESSION['one_less_pic'] = $res_one_less['fb_pic_normal'];
+							$_SESSION['one_less_avatar'] = $res_one_less['avatar'];
+							$_SESSION['one_less_gender'] = $res_one_less['gender'];
 						
                             // End
                             $_SESSION['raise_message']['global'] = "Successfully logged in";
@@ -1251,6 +1254,9 @@ class user_manager extends mod_manager {
 			} else {
 				$_SESSION['one_less_user'] = $res_other['username'];
 				$_SESSION['one_less_exp'] = $res_other['exp_point'];
+				$_SESSION['one_less_pic'] = $res_other['fb_pic_square'];
+				$_SESSION['one_less_avatar'] = $res_other['avatar'];
+				$_SESSION['one_less_gender'] = $res_other['gender'];
 				exit("AB".",".$res_other['exp_point'].",".$res_other['username']);
 			}
 		
@@ -1266,6 +1272,10 @@ class user_manager extends mod_manager {
 	    	$_SESSION['one_less_exp'] = $res_updated_other['exp_point'];
 	    	$_SESSION['one_less_user'] = $res_updated_other['username'];
 	    	$_SESSION['one_less_rank'] = $less_one_user_updated_rank;
+			$_SESSION['one_less_pic'] = $res_updated_other['fb_pic_square'];
+			$_SESSION['one_less_avatar'] = $res_updated_other['avatar'];
+			$_SESSION['one_less_gender'] = $res_updated_other['gender'];
+			
 	    
 	    	// Which direction has rank changed? Rank improved (lower)
 	    	if ($_SESSION['exp_rank'] > $res['POSITION']) {

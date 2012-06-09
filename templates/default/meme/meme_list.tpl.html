@@ -464,7 +464,7 @@
 <br><br>
 
 
-{if $smarty.session.id_user}
+{if $smarty.session.id_user || $smarty.session.profile}
 <div id="all_memes">
     {if $sm.res_meme} 
 	{include file="meme/loadmorememe"}
@@ -489,7 +489,7 @@
 {/if}
 
 
-{if !$smarty.session.id_user}
+{if !$smarty.session.id_user && !$smarty.session.profile}
 	<div id="icon_container"></div>
 	<div class="module_text" id="front_card">Your stories belong here.</div>
 	<div class="module_text" id="first_half">Whether it's...</div>

@@ -1,5 +1,7 @@
 {*notag*}
 {literal}
+<link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/mainpg.css"/>
+
 <script type="text/javascript">
     function show_details(id_meme){
 	//$.fancybox.showActivity();
@@ -19,23 +21,21 @@
 	});
     }
 </script>
+
 {/literal}
+<div id ="user_memes" >
 {assign var=img_path value=$util->get_values_from_config('IMAGE')}
-<fieldset style=" background-color:#CAD8F3; width: 200px; margin-left:0px" >
-	    <legend>
-		<b>
+<b>
 		    {if $sm.flg==1}
-		    Recently Honored Memes
+		    Favorites
 		    {elseif $sm.flg==2}
 		    Tagged Meme
 		    {else}
 		    My Memes
-		    {/if}:
-		</b>
-	    </legend>
-	    <table>
-		<tr>
-		    <td>
+		    {/if}
+</b>
+<div id = "liked_memes">
+		
 			{if $sm.res}
 			{section name=cur loop=$sm.res}
 			{assign var=x value=$sm.res[cur]}
@@ -52,28 +52,27 @@
 			{/if}
 			
 			{if (($smarty.section.cur.iteration % 3) == 0)}
-		    </td>
-		</tr>
-		<tr>
-		    <td>
+
 			{/if}
 			
 			{/section}
 			{else}
-			No meme found
+			<b>
+			You haven't made any Memes!!
+			</b>
 			{/if}
-		    </td>
-		</tr>
+
 		{if $sm.res}
 		    {if $sm.flg==1}
-			<tr><td align="right"><a href="##LBL_SITE_URL##manage/my_favorites/"></a></td></tr>
+			<a href="##LBL_SITE_URL##manage/my_favorites/"></a>
 		    {elseif $sm.flg==2}
-			<tr><td align="right"><a href="##LBL_SITE_URL##manage/tagged_meme/">View all</a></td></tr>
+			<a href="##LBL_SITE_URL##manage/tagged_meme/">View all</a>
 		    {elseif $sm.flg==3}
-			<tr><td align="right"><a href="##LBL_SITE_URL##manage/dueled_meme/">View all</a></td></tr>
+			<a href="##LBL_SITE_URL##manage/dueled_meme/">View all</a>
 		    {else}
-			<tr><td align="right"><a href="##LBL_SITE_URL##manage/my_meme_list/"></a></td></tr>
+			<a href="##LBL_SITE_URL##manage/my_meme_list/"></a>
 		    {/if}
 		{/if}
-	    </table>
-</fieldset>
+</div>
+</div>
+

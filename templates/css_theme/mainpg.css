@@ -1,4 +1,3 @@
-
 /*   Welcome to Pati's mess for Memeja! (Currently Under Construction By Muaz)   */
 
 
@@ -67,21 +66,6 @@
 
 /*++++++++++++++++++++++++ NLU Design ++++++++++++++++++*/
 
-	#nlu_masthead{
-		margin: 0 0 0 0;
-	}
-	
-	#nlu_logoc {
-		float:left;
-		margin-left:-30px;
-		width:280px;
-		background:#FFF;
-	    moz-border-radius: 20px;
-	    webkit-border-radius: 20px;
-	    khtml-border-radius: 20px;
-	    border-radius: 20px;
-	}
-	
 	#nlu_login{
 		float:left;
 		width: 250px;
@@ -180,6 +164,8 @@
 	
 	#nlu_container{
 		margin:0.5% 0 0 -3%;
+		position: relative;
+		top:60px;
 	}
 	
 	#nlu_feed{
@@ -576,9 +562,6 @@
 		right: 10px;
 	}
 	
-
-	
-	
 /*++++++++++++++++++++++++ NLU Design ++++++++++++++++++*/
 	
 	#masthead {
@@ -586,7 +569,6 @@
 		margin:0 0 10px 0;
 		padding:10px;
 	}
-	
 	
 	
 	#mastheadcreate{
@@ -599,30 +581,21 @@
 	
 /* Memeja Logo */
 	#logoc {
+		background-color:#F5F5F5;
 		float:left;
-		width:280px;
-		left:10%;
-		top:-35px;
+		left:100px;
+		position:fixed;
+		top:2px;
+		width:100px;
+		z-index:100;
 	}
 	
-/* The Navigation Buttons*/
-	#headerbtns {
-		float:right;
-		top:30px;
-		cursor:pointer;
-		
-	}
-
-/* SearchBar! */
-	#searches {
-		position: relative;
-		top:-40px;
-		left:420px;
-	}
 	
 /* Main Container with the middle column and the sidebars */
 	#contained {
-		position: absolute;
+		position: relative;
+		top:40px;
+		left:-100px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -630,14 +603,15 @@
 		
 	}
 
-/* Middle Column for Live Feed and Meme Editor */
-	#content {
-		margin-left:280px;
+/* Main Profile Page */
+	#profile_page {
+		background-color:#fff;
+		margin-left:390px;
 		margin-right:300px;
-		top: -10px;
 		padding:10px;
-		width:580px;
-		background:#FFF;
+		position:relative;
+		top:-20px;
+		width:600px;
 	    moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -645,61 +619,70 @@
 		voice-family:"\"}\"";
 		voice-family:inherit;
 	}
-	html>body #content {
-	    width:580px;
+	html>body #profile_page {
+	    width:600px;
 	}
 	
-	#editorcontent{
-		margin-left:280px;
+	#editorcontent {
+		position:relative;
+		left:250px;
 	}
 	
-/* Sidebar A - For Your Profile Information */
-	#sidebar_a {
+/* The Live Feed on the Left */
+	#live_feed {
+	    background-color:#87C8F0;
 		float:left;
 		padding:10px;
-		width:220px;
-	    background:#FFF;
+		position:relative;
+		top:-25px;
+		width:350px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
 	    border-radius: 20px;
 		voice-family:"\"}\"";
 		voice-family:inherit;
-		width:220px;
+		width:350px;
 	}
-	html>body #sidebar_a {
-		width:220px;
+	html>body #live_feed {
+		width:350px;
 	}
 	
-/* Sidebar B - For Other's Profile Information */
-	#sidebar_b {
-	    position:absolute;
-		top:0px;
-		left:910px;
-		float:left;
+/* Keeps track of your Network */
+	#friend_feed {
+		background:#FFF;
+		left:1020px;
 		padding:10px;
+		position:absolute;
+		top:-20px;
+		width:300px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
 	    border-radius: 20px;
-		width:220px;
-		background:#FFF;
 	    voice-family:"\"}\"";
 		voice-family:inherit;
-		width:220px;
+		width:300px;
 	}
-	html>body #sidebar_b {
-	    width:220px;
+	html>body #friend_feed {
+	    width:300px;
 	}
 
-/* Footer with Copyright Stuff (might add About us there) */	
-	#footer 	{
-		background:#87C8F0;
-		height:30px;
+/* The top Bar */	
+	#top_header 	{
+		background-color:#F5F5F5;
+		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
 		color:#000;
 		clear:both;
-		width:738px;
+		height:20px;
+		left:-50px;
+		top:0px;
 		padding:10px;
+		position:fixed;
+		width:1400px;
+		z-index:99;
+		
+		
 	}
 
 /* Header Section */
@@ -735,7 +718,7 @@
   top:0px;
   padding:5px;
   font-weight:bold;
-  font:Lucida Console;
+  font: arial, sans-serif;
   moz-border-radius: 20px;
    webkit-border-radius: 20px;
    khtml-border-radius: 20px;
@@ -746,7 +729,7 @@
   margin:-2px;
   color:#FFF;
   font-size: 14px;
-  font:Lucide Console;
+  font: arial, sans-serif;
 }
 
 #follower{
@@ -763,44 +746,45 @@ moz-border-radius: 10px;
 }
 
 /* XP Bar */
-#xpbar {
-    position:fixed;
-	top: 0px;
-    left: 11%;
-    right: 20%;
-	width: 70%;
-	z-index:999998;
-}
+	
+	#xpbar_info {
+		left:300px;
+		position: fixed;
+		top:10px;
+	}
+	
+	#xpbar {
+		position:relative;
+		width:600px;
+		z-index:200;
+	}
 
-#user_level{
-	position: fixed;
-	
-	font-size: 14px;
-	font: Lucida Console;
-	color: white;
-	
-	cursor: default;
-	
-	top: 2px;
-	left: 12%;
-	z-index: 999999;
+	#user_level{
+		color: white;
+		cursor: default;
+		font: arial, sans-serif;
+		font-size: 14px;
+		font-weight:bold;
+		left:5px;
+		position: relative;
+		top:-16px;
+		z-index: 201;
+	}
 
-}
+	#xpbar_status {
+		color: white;
+		cursor: default;
+		display:none;
+		font: arial, sans-serif;
+		font-size: 14px;
+		font-weight:bold;
+		left:250px;
+		position: relative;
+		top:-32px;
+		z-index: 202;
+	}
 
-#xpbar_status {
-	position: fixed;
-	
-	font-size: 14px;
-	font: Lucida Console;
-	color: white;
-	
-	display: none;
-	cursor: default;
-	
-	top: 2px;
-	left: 40%;
-	z-index: 999999;
-}
+/****/
 
 	#uploader {
 	    position:absolute;
@@ -829,6 +813,205 @@ moz-border-radius: 10px;
 		border-radius: 10px;		
 	}
 
+/*+++++++++++++++++++++++++++++++++   Left Panel CSS>> Top-Header CSS   +++++++++++++++++++++++++++++++++*/
+	
+	#user_name {
+		display: block;
+		font-weight:bold; 
+		color:black;
+		font-size:20px;
+		left:1050px;		
+		padding-top:2px;
+		position:fixed;
+		text-align:center;
+		text-shadow: 0px 1px 0px #e5e5ee;
+		top:5px;
+		z-index:201;
+	}
+	
+	#other_user_name {
+		font-weight:bold;
+		font-size:18px;
+		text-align:center;
+		display:block;
+	}
+	
+	#ranking_number {
+		color:white; 
+		font-family:Verdana; 
+		font-size:14px;
+		font-weight:bold;
+		left:0px;
+		position: absolute;
+		top:-2px;
+	}
+	
+	#user_ranking_info {
+		background-color: #4ebaff;
+		box-shadow: 0 0 4px 0 #555555; 
+		color:white; 
+		font-family:Verdana; 
+		font-weight:bold;
+		height:32px;
+		left:925px;		
+		position:fixed;
+		text-align:center;
+		top:5px;
+		width:35px; 
+		z-index:100;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+	}
+	
+	#other_user_ranking_info{
+		background-color: #aad450;
+		box-shadow: 0 0 4px 0 #555555;
+		color:white;
+		font-family:Verdana;
+		font-weight:bold;
+		height:32px;
+		left:975px;
+		position:fixed;
+		text-align:center;
+		top:5px;		
+		width:65px;
+		z-index:100;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+	}
+	
+	#user_pic{
+		position:fixed;
+		top:5px;
+		z-index:100;
+		left:1000px;
+		box-shadow: 0 0 4px 0 #555555;
+	}
+	
+	#trailing_user_pic {
+		position:fixed;
+		top:5px;
+		z-index:101;
+		left:950px;
+		box-shadow: 0 0 4px 0 #555555;
+	}
+	
+	#trailing_user{
+		font-size:10px;
+		position:relative;
+		top:2px;
+	}
+	
+	
+	#liked_memes {
+		background-color:#87C8F0;
+		width: 200px;
+		padding:5px;
+		text-align:center;
+		border:double;
+		border-width:2px;
+		border-color:#ACACA5;
+		margin-top:5px;
+		margin-bottom:5px;
+		moz-border-radius: 10px;
+		webkit-border-radius: 10px;
+		khtml-border-radius: 10px;
+		border-radius: 10px;
+	}
+	
+	#user_memes{
+		position: relative;
+		top:70px;
+	}
+	
+/****************************************************************************************************/
+
+/*Hover User Profile*/
+
+	#more_ranking_number{
+		color:white; 
+		font-family:Verdana; 
+		font-size:20px;
+		font-weight:bold;
+		position:relative;
+		top:-3px;
+	}
+	
+	#rank {
+		color:white; 
+		display:block;
+		font-family:Verdana; 
+		font-size:14px;
+		font-weight:bold;
+	}
+	
+	#total_xp {
+		font-size:12px;
+		margin-left:12px;
+		position:relative;
+		top:-3px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+	}
+	
+	#more_user_ranking_info {
+		background-color: #4ebaff;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px; 
+		font-family:Verdana; 
+		font-weight:bold;
+		color:white; 
+		width:65px;
+		height:55px; 
+		text-align:center;
+		position:absolute;
+		top:20px;
+		left:230px;
+		
+	}
+/*#################################Profile_Page###################################*/
+
+	.profile_pic{
+		width:100px;
+		height:100px;
+		}
+
+	#profile_pic {
+		background-color:#ECECEC;
+		border-color:#ACACA5;
+		border-style: solid;
+		border-width:1px;
+		box-shadow: 0 0 5px 0 #aad450;
+		padding:1px;
+		padding-top:5px;
+		position:relative;
+		top:10px;
+		left:50px;
+		text-align:center;
+		width:105px;
+		height:105px;
+		moz-border-radius: 10px;
+		webkit-border-radius: 10px;
+		khtml-border-radius: 10px;
+		border-radius: 10px;
+		}
+		
+	#addMeme_link {
+		box-shadow: 0 0 5px 0 green;
+		width:60px;
+		height:60px;
+		padding:2px;
+		text-align:center;
+		position:relative;
+		left:300px;
+		top:50px;
+	}
+
+/*################################################################################*/
 
 label.error	{
 	color:#FF0000;
@@ -1341,25 +1524,123 @@ a{
 	text-decoration: none;
 	cursor: pointer;
 }
-.meme{
-	position: relative;
-	top:-25px;
-	margin-left: 15px;
-	padding-left: 10px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	background: white;  /* background for meme color */
-	width:550px;
-	height:auto;
 
-	-moz-border-radius-topright: 6px; -webkit-border-top-right-radius: 6px; border-top-right-radius: 6px; -moz-border-radius-bottomright: 6px; -webkit-border-bottom-right-radius: 6px; border-bottom-right-radius: 6px; -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; border-bottom-left-radius: 6px; 
+/* +++++++++++++++++++++++++++ Live Feed +++++++++++++++++++++++++++ */
+	.meme{
+		background: white;  /* background for meme color */
+		border-bottom: 1px dotted #e6e6dc;		
+		height:auto;
+		margin:auto;
+		position: relative;
+		padding: 10px 0px 10px 10px;
+		top:-30px;
+		width:350px;
 
-	-moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; border-top-left-radius: 6px;
+	}
 
-	 border-bottom: 1px dotted #e6e6dc;
-
-}
-
+	#meme_title {
+		color: black;
+		font-size: 16px; 
+		font-weight:bold;
+		display:block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space:nowrap;
+		padding-left:60px; 
+		position:relative;
+		top:-45px;
+	}
+	
+	#meme_title_cont {
+		width:275px;
+	}
+	
+	#meme_info {
+		color:#ACACA5;
+		font-size:14px;		
+		left:145px;
+		position:absolute;
+		top:30px;
+	}
+	
+	.meme_reproductive_system { 
+		left:123px;
+		position:absolute;
+		top:35px
+	}
+	
+	#whitebox{
+		background-color:#FFF;
+		width:30px;
+		height:30px;
+		position:absolute;
+		left:270px;
+		top:55px;
+		z-index:102;
+	}
+	
+	.meme_like {
+		height:35px;
+		padding:4px;
+		font-size:11px;
+		font-weight:bold;
+		color:black;
+		position:relative;
+		left:153px;
+		top:-40px;
+	}
+	
+	.meme_like_label {
+		width:15px;
+		height:15px;
+		position:relative;
+		top:-10px;
+		left:21px;
+		text-align:center;
+	}
+	
+	.meme_dislike {
+		height:35px;
+		padding:4px;
+		color:black;
+		position:relative;
+		left:162px;
+		top:-63px;
+	}
+	
+	.meme_dislike_label {
+		width:15px;
+		height:15px;
+		position:relative;
+		top:-16px;
+		left:12px;
+		font-weight:bold;
+		font-size:11px;
+		text-align:center;
+	}
+	
+	.meme_reply {
+		left:205px;
+		top:-10px;
+		text-align:left;
+		color:black;
+		position:absolute;
+	}
+	
+	.meme_reply_label {
+		font-weight:bold;
+		top:-20px;
+		left:10px;
+		position:relative;
+	}
+	
+	#user_avatar_thumb {
+		left:0px;
+		padding-left: 10px;
+		position:relative;
+		top:0px;
+	}
+	
 /* Inner formatting of live feed meme */
 img.avatar_thumb_fb, 
 img.avatar_thumb_regular {
@@ -1367,18 +1648,6 @@ img.avatar_thumb_regular {
 	height: 40px;
 }
 
-#meme_title {
-	position:relative;
-	bottom:6px;
-	padding-left:10px; 
-	font-size: 18.5px; 
-	font-weight: bold;
-}
-
-.meme_reproductive_system{
-	position:relative; 
-	left:55px;
-}
 
 .dec{			
 font-size: 12px;
@@ -1422,4 +1691,15 @@ a{
 .borderyes	{
 	border:#000000 solid 1px;
 }
+
+/**^^^^^^^^^^^^^^^^^^^^^^^^	Editor Page	^^^^^^^^^^^^^^^^^^^^^^^^**/
+
+	#edtr{
+	position:relative;
+	}
+	#canvas {
+	position:relative;
+	}
+
+/*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 

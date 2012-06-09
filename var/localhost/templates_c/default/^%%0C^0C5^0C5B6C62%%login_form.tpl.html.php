@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-05-06 00:04:49
+<?php /* Smarty version 2.6.7, created on 2012-06-10 00:44:02
          compiled from user/login_form.tpl.html */ ?>
 
-<!-- Template: user/login_form.tpl.html Start 06/05/2012 00:04:49 --> 
+<!-- Template: user/login_form.tpl.html Start 10/06/2012 00:44:02 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -29,6 +29,11 @@
 		x=validator.form();
 		return x;
 	 }
+	
+	function forgot_pwd(){
+		$(\'#forgot_pwd\').slideToggle(800);
+	 }
+	
 </script>
 '; ?>
 
@@ -64,7 +69,7 @@
 		<!--
 		<td class="tl" colspan="2"><input type="checkbox" name="rem" id="rem" value="1"/>Remember Me </td>-->
 		<td>
-		<a href="http://localhost/user/forgot_pwd">Forgot Password?</a></td>
+		<a href="javascript:void(0);" onclick="forgot_pwd();">Forgot Password?</a></td>
     </tr>
 	<!--
     <tr>
@@ -77,7 +82,7 @@
 </form>
 </div>
 </div>
-	<div id="forgot_pwd">
+	<div id="forgot_pwd" style="display:none">
 		<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/forgot_pwd.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;

@@ -56,6 +56,16 @@ if ($_input['mod']) {
 }
 
 $page = isset ($_input['page']) ? $_input['page'] : 'common';
+fb($_input, 'var $_input');
+
+if (isset($_input['id'])){
+	$_SESSION['profile'] = $_input['id'];
+} else {
+	$_SESSION['profile'] = 0;
+}
+
+
+
 $site->handle_page($page); //sets default_tpl to $page/home UNLESS static
 $smarty->assign('page_title', $page_title);
 
@@ -75,9 +85,11 @@ if($page =='user' || file_exists($file_test)) {
 	} else {
 		$tpl = $site->default_tpl;
 	}
+	
 	if (!empty ($_SESSION['CACHE_OUTPUT'])) {
 		ob_start();
 	}
+	
 	restore_error_handler();
 	$report['debug'] = 0;
 	$report['end_code'] = getmicrotime();
@@ -92,12 +104,12 @@ if($page =='user' || file_exists($file_test)) {
 		ob_end_flush();
 		unset ($_SESSION['CACHE_OUTPUT']);
 	}
-}else {
-
+} else {
 	// Error handling because file does not exist
 	if(!($page =='templates' || $page =='image')){
 		$_SESSION['raise_message']['global'] = "<h2>Herp a derp?<h2>";
-		redirect(LBL_SITE_URL);
+		fb('error handling hello world');
+		//redirect(LBL_SITE_URL);
 	}else{
 		return;
 	}

@@ -217,6 +217,7 @@ jQuery(function($){
                                 getBoxTimeout++;
                                 var getBoxTimeoutValue = getBoxTimeout;  
                                 setTimeout (function() {
+
                                     json_cache = true;
                                     if (getBoxTimeoutValue != getBoxTimeout) 
 										return;

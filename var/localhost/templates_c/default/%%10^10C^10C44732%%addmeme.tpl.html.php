@@ -1,11 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-09 00:28:26
+<?php /* Smarty version 2.6.7, created on 2012-06-09 21:00:57
          compiled from meme/addmeme.tpl.html */ ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 09/06/2012 00:28:26 --> 
+<!-- Template: meme/addmeme.tpl.html Start 09/06/2012 21:00:57 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
 -->
+
 <div id="showmodal" class="showmodal"><em><strong><center>ENTERING MEMEJA DOJO</center></strong></em></div>
 
 <script type="text/javascript">
@@ -25,8 +26,7 @@ _img.png";
 <link rel="stylesheet" href="http://localhost/spad/css/spad.css" type="text/css"/>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/multiautocomplete.css"/>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
-<?php echo '
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
 
 	var mycanvas, cntx;
@@ -35,13 +35,12 @@ _img.png";
 	function title_focus() {
         b_titlefocus = true;
      }
-	
+
     function title_blur() { b_titlefocus = false;  }
     
     function cancel_meme(){
-		window.location="http://localhost/user/user_home";
+	window.location="http://localhost/user/user_home";
      }
-	
     function get_premade_images(obj){
         var cat=obj.value;
         if(cat==\'\')
@@ -153,15 +152,15 @@ _img.png";
             <span>
                 <input type="text" name="meme[title]" id="title" size="50" onfocus="title_focus()" onblur="title_blur()"/>
             </span>
-			
-			
         </div><br/>
         <div id="edtr"class="nohighlight">
-	<?php $_smarty_tpl_vars = $this->_tpl_vars;
+			<div id="canvas">
+				<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/meme_editor.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+			</div>
 
           <div id="submitter" ><input type="button" value="Submit" onclick="validate_me();"/></div>
 		
