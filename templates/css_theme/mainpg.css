@@ -669,7 +669,7 @@
 
 /* The top Bar */	
 	#top_header 	{
-		background:url(##LBL_SITE_URL##templates/images/bar.png);
+		background:#f5f5f5;
 		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
 		color:#000;
 		clear:both;

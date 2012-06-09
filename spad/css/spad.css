@@ -35,6 +35,17 @@
 		bottom:35px;
 		left:670px
 	}
+	
+/** Drawing Tools & Canvas Tools **/
+	
+	#canvas_tools {
+		position:fixed;
+		width:20px;
+		left:1050px;
+		top:150px;
+		
+	}
+
 	.smileys_part	{
 	position:absolute;
 	right:-30px;
@@ -123,7 +134,7 @@
 	padding:2px;
 	}
 	#hilight img:hover,#hilight img.active	{
-	background:yellow;
+	background:#87C8F0;
 	}
 	#edtr	{
 	width:960px;
