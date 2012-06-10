@@ -138,18 +138,11 @@
 			if ($("#chk_me").val()!=1) {
 				last_id = $("#last_id_meme_cur_page").val();
 				
-				
-				if (logged_in){
-					var cat = "{/literal}{$sm.cat}{literal}";
-				} else {
-					var cat = "main_feed";
-				}
-					
 				var ext = "{/literal}{$smarty.request.ext}{literal}";
 				var url = "##LBL_SITE_URL##meme/meme_list";
 				
 				$("#loadingmeme_img").show();
-				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,ext:ext}, function(res){
+				$.post(url,{cat:'main_feed',page_no:page_no,ce:0,last_id:last_id,ext:ext}, function(res){
 					if(res != "")
 						$("#all_memes").html(res);
 						$("#loadingmeme_img").hide();

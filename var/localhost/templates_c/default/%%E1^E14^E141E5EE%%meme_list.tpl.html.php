@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 07:29:35
+<?php /* Smarty version 2.6.7, created on 2012-06-10 07:48:12
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -138,18 +138,11 @@
 			if ($("#chk_me").val()!=1) {
 				last_id = $("#last_id_meme_cur_page").val();
 				
-				
-				if (logged_in){
-					var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
-				 } else {
-					var cat = "main_feed";
-				 }
-					
 				var ext = "';  echo $_REQUEST['ext'];  echo '";
 				var url = "http://localhost/meme/meme_list";
 				
 				$("#loadingmeme_img").show();
-				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,ext:ext }, function(res){
+				$.post(url,{cat:\'main_feed\',page_no:page_no,ce:0,last_id:last_id,ext:ext }, function(res){
 					if(res != "")
 						$("#all_memes").html(res);
 						$("#loadingmeme_img").hide();
