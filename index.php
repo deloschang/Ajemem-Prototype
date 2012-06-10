@@ -56,7 +56,7 @@ if ($_input['mod']) {
 }
 
 $page = isset ($_input['page']) ? $_input['page'] : 'common';
-fb($_input, 'var $_input');
+//fb($_input, 'var $_input');
 
 if (isset($_input['id'])){
 	global $link;
@@ -68,6 +68,7 @@ if (isset($_input['id'])){
 	if ($profile_data['id_user']){
 		$_SESSION['profile'] = $_input['id'];
 		$_SESSION['profile_id'] = $profile_data['id_user'];
+		$_SESSION['profile_uid'] = $profile_data['uid'];
 		$_SESSION['profile_picture'] = $profile_data['fb_pic_normal'];
 		//fb('profile is activated');
 		//fb($profile_data);
@@ -103,7 +104,12 @@ if (isset($_input['id'])){
 } else {
 	$_SESSION['profile'] = 0;
 	$_SESSION['profile_id'] = 0;
+	$_SESSION['profile_uid'] = 0;
 	$_SESSION['profile_picture'] = 0;
+	
+	$_SESSION['profile_meme_title'] = 0;
+	$_SESSION['profile_meme_image'] = 0;
+	$_SESSION['profile_meme_tagged'] = 0;
 }
 
 

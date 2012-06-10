@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 21:40:23
+<?php /* Smarty version 2.6.7, created on 2012-06-10 22:58:04
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 45, false),)), $this); ?>
@@ -79,6 +79,14 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
 		
 			<?php elseif ($this->_tpl_vars['sm']['flg'] == 2): ?>
+				<a class="meme_gallery" data-fancybox-group="fav_meme" id="meme_tagged<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+" onclick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+');" href="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+">
+			
+				<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+" style="width: 60px;height: 60px;cursor: pointer;"/></a>
 			<?php else: ?>
 				<a class="meme_gallery" data-fancybox-group="my_meme" id="my_meme_image<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " onclick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
@@ -91,16 +99,22 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 			<?php endif; ?>
 			<?php endfor; endif; ?>
 		<?php else: ?>
-			<b>
-			You haven't made any Memes!!
-			</b>
+			<?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
+				<b>You don't like any memes? You have no soul</b>
+			<?php elseif ($this->_tpl_vars['sm']['flg'] == 2): ?>
+				<b> Nobody has tagged you :( </b>
+			<?php else: ?>
+				<b>
+				You haven't made any Memes!!
+				</b>
+			<?php endif; ?>
 		<?php endif; ?>
 
 		<?php if ($this->_tpl_vars['sm']['res']): ?>
 		    <?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
 				<a href="http://localhost/manage/my_favorites/"></a>
 		    <?php elseif ($this->_tpl_vars['sm']['flg'] == 2): ?>
-				<a href="http://localhost/manage/tagged_meme/">View all</a>
+				<a href="http://localhost/manage/tagged_meme/"></a>
 		    <?php elseif ($this->_tpl_vars['sm']['flg'] == 3): ?>
 				<a href="http://localhost/manage/dueled_meme/">View all</a>
 		    <?php else: ?>

@@ -215,6 +215,7 @@ class user_manager extends mod_manager {
                             $_SESSION['friends']=$result['memeje_friends'];
                             $_SESSION['gender']=$result['gender'];
                             $_SESSION['id_user'] = $result['id_user'];
+							$_SESSION['uid'] = $result['uid'];
 						
                             // User Level
                             $_SESSION['exp_point'] = $result['exp_point'];

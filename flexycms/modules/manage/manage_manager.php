@@ -87,6 +87,35 @@ class manage_manager extends mod_manager {
 	    return $hst_rtd_cap;
 	}
 	
+	function _tagged_memes(){
+		$id_user = $_SESSION['profile_uid'] ? $_SESSION['profile_uid'] : (($_SESSION['profile_id']) ? '' : $_SESSION['uid']);
+	
+		global $link;
+	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'];
+	    $cond = "FIND_IN_SET(".$id_user.",tagged_user) ";
+	    $cond.=" ORDER BY id_meme DESC LIMIT ".$limit;
+	    $sql=$this->manage_bl->get_search_sql("meme",$cond,"*");
+	    $res = mysqli_query($link,$sql);
+	    if($res){
+			while($rec = mysqli_fetch_assoc($res)){
+				$id_memes.=$rec['id_meme'].",";
+				$arr[] = $rec;
+			}
+	    }
+	    @mysqli_free_result($res);
+	    mysqli_next_result($link);
+		
+		$this->_output['flg']=2;
+	    $this->_output['res']=$arr;
+		
+		if($this->arg['gmod']==1){
+			$tpl="manage/my_meme_list";
+	    } else{
+			$tpl=(!$this->_input['last_id'])?"manage/my_meme_details":"manage/loadmore_my_meme";
+	    }
+	    $this->_output['tpl'] = $tpl;
+	}
+	
 	function _my_favorites(){
 	    check_session();
 	    global $link;
@@ -97,10 +126,10 @@ class manage_manager extends mod_manager {
 	    $sql=$this->manage_bl->get_search_sql("meme",$cond,"*");
 	    $res = mysqli_query($link,$sql);
 	    if($res){
-		while($rec = mysqli_fetch_assoc($res)){
-		    $id_memes.=$rec['id_meme'].",";
-		    $arr[] = $rec;
-		}
+			while($rec = mysqli_fetch_assoc($res)){
+				$id_memes.=$rec['id_meme'].",";
+				$arr[] = $rec;
+			}
 	    }
 	    @mysqli_free_result($res);
 	    mysqli_next_result($link);
@@ -119,38 +148,6 @@ class manage_manager extends mod_manager {
 	    $this->_output['tpl'] = $tpl;
 	}
 
-	function _tagged_meme(){
-	    check_session();
-	    global $link;
-	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'];
-	    $comm = "FIND_IN_SET(".$_SESSION['id_user'].",tagged_user) ";
-	    $cond = (!$this->_input['last_id'])?$comm:$comm." AND id_meme <".$this->_input['last_id'];
-	    $cond.=" ORDER BY id_meme DESC LIMIT ".$limit;
-	    $sql=$this->manage_bl->get_search_sql("meme",$cond,"*");
-	    $res = mysqli_query($link,$sql);
-	    if($res){
-		while($rec = mysqli_fetch_assoc($res)){
-		    $id_memes.=$rec['id_meme'].",";
-		    $arr[] = $rec;
-		}
-	    }
-	    @mysqli_free_result($res);
-	    mysqli_next_result($link);
-	    $hst_rtd_cap = $this->get_hst_rtd_caption(trim($id_memes,','));
-	    $this->_output['hrc']=$hst_rtd_cap;
-	    $usr_info=$this->get_user_info();
-	    $this->_output['usr_info']=$usr_info;
-	    $this->_output['flg']=2;
-	    $this->_output['res']=$arr;
-	    $this->_output['last_res_id_meme']=($arr)?$arr[count($arr)-1]['id_meme']:"";
-	    if($this->arg['gmod']==1){
-			$tpl="manage/my_meme_list";
-	    } else{
-			$tpl=(!$this->_input['last_id'])?"manage/my_meme_details":"manage/loadmore_my_meme";
-	    }
-	    $this->_output['tpl'] = $tpl;
-	}
-	
 	function _dueled_meme(){
 	}
 ########################################################################
