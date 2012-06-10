@@ -238,11 +238,7 @@
 			<!-- end of gallery class-->
 
 			<div id="meme_info">  by
-				<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:14px;text-decoration:underline; color:#ACACA5;"><a href="javascript:void(0);" 
-				{if $smarty.session.id_user}
-					onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');"
-				{/if}
-				>{$sm.uinfo[$x.id_user].username}</a></span>		
+				<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:14px;text-decoration:underline; color:#ACACA5;"><a href="/?id={$sm.uinfo[$x.id_user].username}">{$sm.uinfo[$x.id_user].username}</a></span>		
 			
 				<!--<span style="font-size:13px; color:#ACACA5;"> L{$sm.uinfo[$x.id_user].level}</span>-->
 			</div>
@@ -272,7 +268,6 @@
 					
 					<!-- Honor -->
 					<a href="javascript:void(0);" id="agr_link{$x.id_meme}" class="meme_like" 
-			    	{* Added by Delos: highlights according to agree/disagree *}
 			    	{if $smarty.session.id_user}
 			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
 				    		style="box-shadow: 0 0 7px 0 green; cursor: default"

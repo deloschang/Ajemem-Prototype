@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 03:01:00
+<?php /* Smarty version 2.6.7, created on 2012-06-10 03:06:02
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 536, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'b5f5ad2b00360c9fdfd70038d7594199'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '8e50f6b74dc29e451f449216380abee2'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -563,7 +563,7 @@ unset($_smarty_tpl_vars);
 		</div>
 		
 		<div id="my_meme_list">
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b5f5ad2b00360c9fdfd70038d7594199#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b5f5ad2b00360c9fdfd70038d7594199#0}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:8e50f6b74dc29e451f449216380abee2#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:8e50f6b74dc29e451f449216380abee2#0}';}?>
 
 		</div>
 	</div>
@@ -719,14 +719,14 @@ unset($_smarty_tpl_vars);
 	</div>
 	
 		<div id="my_meme_list" style="margin-top:-60px;">
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b5f5ad2b00360c9fdfd70038d7594199#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b5f5ad2b00360c9fdfd70038d7594199#1}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:8e50f6b74dc29e451f449216380abee2#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:8e50f6b74dc29e451f449216380abee2#1}';}?>
 
 		</div>
 			<div id="addMeme_link">
 				<a href="http://localhost/meme/addMeme"><img src="http://localhost/templates/images/add.png"style="width:60px;height:60px;"/></a>
 			</div>
 		<div id="my_favorites" >
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b5f5ad2b00360c9fdfd70038d7594199#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b5f5ad2b00360c9fdfd70038d7594199#2}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:8e50f6b74dc29e451f449216380abee2#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:8e50f6b74dc29e451f449216380abee2#2}';}?>
 
 		</div>
 					
@@ -753,12 +753,12 @@ unset($_smarty_tpl_vars);
 				</div>
 				
 					<div id="my_meme_list" style="margin-top:-60px;">
-						<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b5f5ad2b00360c9fdfd70038d7594199#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b5f5ad2b00360c9fdfd70038d7594199#3}';}?>
+						<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:8e50f6b74dc29e451f449216380abee2#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:8e50f6b74dc29e451f449216380abee2#3}';}?>
 
 					</div>
 
 					<div id="my_favorites" >
-						<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b5f5ad2b00360c9fdfd70038d7594199#4}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b5f5ad2b00360c9fdfd70038d7594199#4}';}?>
+						<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:8e50f6b74dc29e451f449216380abee2#4}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:8e50f6b74dc29e451f449216380abee2#4}';}?>
 
 					</div>
 				</div>

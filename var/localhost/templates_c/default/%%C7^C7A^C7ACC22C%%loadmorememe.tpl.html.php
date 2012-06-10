@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 03:01:00
+<?php /* Smarty version 2.6.7, created on 2012-06-10 03:06:03
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 214, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 262, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 214, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 258, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 10/06/2012 03:01:00 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 10/06/2012 03:06:03 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
@@ -256,12 +256,8 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 
 			<div id="meme_info">  by
 				<span id="user<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-" style="font-size:14px;text-decoration:underline; color:#ACACA5;"><a href="javascript:void(0);" 
-				<?php if ($_SESSION['id_user']): ?>
-					onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-');"
-				<?php endif; ?>
-				><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
+" style="font-size:14px;text-decoration:underline; color:#ACACA5;"><a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
+"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
 </a></span>		
 			
 				<!--<span style="font-size:13px; color:#ACACA5;"> L<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['level']; ?>
@@ -303,7 +299,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 					<!-- Honor -->
 					<a href="javascript:void(0);" id="agr_link<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " class="meme_like" 
-			    				    	<?php if ($_SESSION['id_user']): ?>
+			    	<?php if ($_SESSION['id_user']): ?>
 			    		<?php if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )): ?>
 				    		style="box-shadow: 0 0 7px 0 green; cursor: default"
 				    	<?php elseif (substr_count ( $this->_tpl_vars['x']['dishonour_id_user'] , $_SESSION['id_user'] )): ?>
