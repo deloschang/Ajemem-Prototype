@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 23:43:09
+<?php /* Smarty version 2.6.7, created on 2012-06-11 00:16:49
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -441,26 +441,22 @@
 <input type="hidden" name="rand_id_memes" id="rand_id_memes" value=''/>
 <input type="hidden" name="chk_me" id="chk_me" value=''/>
 <input type="hidden" name="last_id_meme" id="last_id_meme" value=''/>
-<!--<?php if ($_SESSION['id_user']): ?>-->
-<!--<div class="fltlft" id="tab">-->
-<!--	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>unselected<?php else: ?>selected<?php endif; ?>">-->
-<!--		<a href="http://localhost/meme/meme_list/cat/<?php echo $this->_tpl_vars['sm']['cat']; ?>
-" >MAIN LIVE FEED</a>-->
-<!--	</div>-->
-<!--	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>selected<?php else: ?>unselected<?php endif; ?>">-->
-<!--		<a href="http://localhost/meme/meme_list/cat/<?php echo $this->_tpl_vars['sm']['cat']; ?>
-/ext/1" >NETWORK FEED</a>-->
-<!--	</div>-->
-<!--</div>-->
-<!--<?php endif; ?>-->
-
-	
-	
-<br><br>
-
 
 <?php if ($_SESSION['id_user'] || $_SESSION['profile']): ?>
-<div id="all_memes">
+<div>
+	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>unselected<?php else: ?>selected<?php endif; ?>">
+		<a href="http://localhost/meme/meme_list/cat/main_feed" >MAIN LIVE FEED</a>
+	</div>
+	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>selected<?php else: ?>unselected<?php endif; ?>">
+		<a href="http://localhost/meme/meme_list/cat/<?php echo $this->_tpl_vars['sm']['cat']; ?>
+/ext/1" >NETWORK FEED</a>
+	</div>
+</div>
+
+<!-- Muaz remove this later when styling -->
+<br><br><br><br><br>
+
+<div id="all_memes">	
     <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmorememe.tpl.html", 'smarty_include_vars' => array()));

@@ -439,24 +439,21 @@
 <input type="hidden" name="rand_id_memes" id="rand_id_memes" value=''/>
 <input type="hidden" name="chk_me" id="chk_me" value=''/>
 <input type="hidden" name="last_id_meme" id="last_id_meme" value=''/>
-<!--{if $smarty.session.id_user}-->
-<!--<div class="fltlft" id="tab">-->
-<!--	<div class="fltlft {if $smarty.request.ext=='1'}unselected{else}selected{/if}">-->
-<!--		<a href="##LBL_SITE_URL##meme/meme_list/cat/{$sm.cat}" >MAIN LIVE FEED</a>-->
-<!--	</div>-->
-<!--	<div class="fltlft {if $smarty.request.ext=='1'}selected{else}unselected{/if}">-->
-<!--		<a href="##LBL_SITE_URL##meme/meme_list/cat/{$sm.cat}/ext/1" >NETWORK FEED</a>-->
-<!--	</div>-->
-<!--</div>-->
-<!--{/if}-->
-
-	
-	
-<br><br>
-
 
 {if $smarty.session.id_user || $smarty.session.profile}
-<div id="all_memes">
+<div>
+	<div class="fltlft {if $smarty.request.ext=='1'}unselected{else}selected{/if}">
+		<a href="##LBL_SITE_URL##meme/meme_list/cat/main_feed" >MAIN LIVE FEED</a>
+	</div>
+	<div class="fltlft {if $smarty.request.ext=='1'}selected{else}unselected{/if}">
+		<a href="##LBL_SITE_URL##meme/meme_list/cat/{$sm.cat}/ext/1" >NETWORK FEED</a>
+	</div>
+</div>
+
+<!-- Muaz remove this later when styling -->
+<br><br><br><br><br>
+
+<div id="all_memes">	
     {if $sm.res_meme} 
 	{include file="meme/loadmorememe"}
     {else}

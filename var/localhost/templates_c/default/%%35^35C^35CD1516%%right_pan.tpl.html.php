@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 23:41:55
+<?php /* Smarty version 2.6.7, created on 2012-06-11 00:16:49
          compiled from user/right_pan.tpl.html */ ?>
 
-<!-- Template: user/right_pan.tpl.html Start 10/06/2012 23:41:55 --> 
+<!-- Template: user/right_pan.tpl.html Start 11/06/2012 00:16:49 --> 
  
 <span id="right_pan">
 
@@ -13,10 +13,13 @@
 <?php endif; ?>
 
 <?php if ($_SESSION['id_user']): ?>
-            
+    <a href="javascript:void(0);" onclick="show_memeje_frnds();">Find friends in Memeja to add</a><br />
+    <div id="show_profile_info" style="position: fixed;background-color:white;border: 1px solid #CAD8F3;"></div>
+    
     <div>
 		<br>
-				</br>
+		<a href="http://localhost/manage/suggestion">Suggestions</a>
+		</br>
 	</div>
 	    
 	
