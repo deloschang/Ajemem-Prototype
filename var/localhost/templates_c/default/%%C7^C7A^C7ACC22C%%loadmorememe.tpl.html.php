@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-11 00:16:49
+<?php /* Smarty version 2.6.7, created on 2012-06-11 00:57:36
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 214, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 258, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 202, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 243, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 11/06/2012 00:16:49 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 11/06/2012 00:57:36 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -49,18 +49,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 
 	function common_fun_extended(id,color_code){
 	    $("#meme"+id).effect("highlight", {color:color_code }, 2600);
-     }
-    
-	
-    function hover_user(id_user){
-    	var right_pan_url = "http://localhost/user/see_user";
-    	
-		if (id_user != see_user_old) {
-			$.post(right_pan_url,{id_user:id_user,ce:0 }, function(res){
-				$("#right_pan").html(res);
-				see_user_old = id_user;
-			 });
-		 }
      }
 
 	function live_meme () {
@@ -233,11 +221,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 				<?php endif; ?>
 			<?php endif; ?>" align="left"/>
 			
-			<span id="user_avatar_thumb" 
-				<?php if ($_SESSION['id_user']): ?>
-					onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-');"
-				<?php endif; ?>>
+			<span id="user_avatar_thumb">
 				
 				<?php if ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']): ?>
 					<img src="<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']; ?>

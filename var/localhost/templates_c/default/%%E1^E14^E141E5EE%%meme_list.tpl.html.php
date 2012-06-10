@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-11 00:16:49
+<?php /* Smarty version 2.6.7, created on 2012-06-11 00:57:21
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -20,7 +20,6 @@
 	var global_page_no = 1;
 	var backup_page_no;
 	
-	var see_user_old = 0;
 	var live_meme_wait = 15000;
 	
 	var meme_timer;
@@ -413,6 +412,16 @@
 		     }); 
 	     }
      }
+	
+	function diff_feed(ext, ajax){
+		var url = "http://localhost/meme/meme_list";
+		$.post(url,{cat:\'main_feed\',ce:0,ext:ext }, function(res){
+			if(res != "")
+				$(\'#all_memes\').html(res);
+		 });
+	 }
+	
+	
     $(document).ready(function(){
     	// Search function
 		//$("#muname").autocomplete(\'http://localhost/index.php?page=meme&choice=auto_comp&ce=0\',{
@@ -445,11 +454,10 @@
 <?php if ($_SESSION['id_user'] || $_SESSION['profile']): ?>
 <div>
 	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>unselected<?php else: ?>selected<?php endif; ?>">
-		<a href="http://localhost/meme/meme_list/cat/main_feed" >MAIN LIVE FEED</a>
+		<a href="javascript:void(0);" onclick="diff_feed(0);">LIVE FEED</a>
 	</div>
 	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>selected<?php else: ?>unselected<?php endif; ?>">
-		<a href="http://localhost/meme/meme_list/cat/<?php echo $this->_tpl_vars['sm']['cat']; ?>
-/ext/1" >NETWORK FEED</a>
+		<a href="javascript:void(0);" onclick="diff_feed(1);">FRIENDS FEED</a>
 	</div>
 </div>
 
