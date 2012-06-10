@@ -4,6 +4,7 @@ class site {
 	function init() {
 		$this->container_tpl = "common/common";
 	}
+
 	function handle_page($page) {
 		$this->cache_id = $page;
 		$this->smarty->caching = 0;
@@ -11,7 +12,9 @@ class site {
 		
 			// static from templates/
 			case "static" :
-				$type=$_REQUEST['choice'];
+
+				$type= $_REQUEST['choice'];
+				
 				$this->default_tpl = "static/$type";
 				break;
 

@@ -89,10 +89,7 @@
 					$('#icon_container').append('<div class="front_icon" id="icon_'+index+'"><a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+value+'" title="'+title_arr[index]+'"><img src="##LBL_SITE_URL##image/orig/meme/'+value+'" style="cursor:pointer; width: 40px; height: 40px; "/></a></div>');
 				}
 			});
-		}
-			
-		if (logged_in){
-		
+		}		
 			$("#last_id_meme").val("{/literal}{$sm.last_id_meme}{literal}");
 			
 			var cat = "{/literal}{$sm.cat}{literal}";
@@ -102,9 +99,11 @@
 			
 			$("#last_id_meme_cur_page").val("{/literal}{$sm.last_idmeme}{literal}");
 		
-		
-	    	get_all_flag_details(1);
-	    	setInterval("get_all_flag_details()",6000);
+			if (logged_in){
+				get_all_flag_details(1);
+				setInterval("get_all_flag_details()",6000);
+			}
+
 			
 			var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
 			var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
@@ -117,10 +116,7 @@
 			
 			$("#page"+1).css({'font-weight' : 'bolder'});
 			backup_page_no = 1;
-		}
-		
-		
-		
+				
 		// Self-describing for search
 	    var describedClass = 'self-described';
 		$('.self-describing').focus(function(){
@@ -140,18 +136,12 @@
 			if ($("#chk_me").val()!=1) {
 				last_id = $("#last_id_meme_cur_page").val();
 				
-				
-				if (logged_in){
-					var cat = "{/literal}{$sm.cat}{literal}";
-				} else {
-					var cat = "main_feed";
-				}
-					
 				var ext = "{/literal}{$smarty.request.ext}{literal}";
 				var url = "##LBL_SITE_URL##meme/meme_list";
 				
 				$("#loadingmeme_img").show();
-				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,ext:ext}, function(res){
+				$.post(url,{cat:'main_feed',page_no:page_no,ce:0,last_id:last_id,ext:ext}, function(res){
+
 					if(res != "")
 						$("#all_memes").html(res);
 						$("#loadingmeme_img").hide();
@@ -463,8 +453,8 @@
 	
 <br><br>
 
+{if $smarty.session.id_user || $smarty.session.profile}
 
-{if $smarty.session.id_user}
 <div id="all_memes">
     {if $sm.res_meme} 
 	{include file="meme/loadmorememe"}
@@ -488,8 +478,7 @@
 
 {/if}
 
-
-{if !$smarty.session.id_user}
+{if !$smarty.session.id_user && !$smarty.session.profile}
 	<div id="icon_container"></div>
 	<div class="module_text" id="front_card">Your stories belong here.</div>
 	<div class="module_text" id="first_half">Whether it's...</div>

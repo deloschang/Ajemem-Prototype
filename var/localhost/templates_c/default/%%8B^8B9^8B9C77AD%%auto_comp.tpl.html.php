@@ -9,7 +9,11 @@ if ($this->_foreach['f1']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['i']):
         $this->_foreach['f1']['iteration']++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
 =======
 ?>
 >>>>>>> 83283487b2e009dffc8cc50bd2aec9418c3eaafa
@@ -18,11 +22,19 @@ if ($this->_foreach['f2']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k1'] => $this->_tpl_vars['i1']):
         $this->_foreach['f2']['iteration']++;
 <<<<<<< HEAD
+<<<<<<< HEAD
 ?>
     <?php echo $this->_tpl_vars['i1']; ?>
 
     <?php endforeach; endif; unset($_from); ?>
     <?php endforeach; endif; unset($_from); ?>
+=======
+?>
+    <?php echo $this->_tpl_vars['i1']; ?>
+
+    <?php endforeach; endif; unset($_from); ?>
+    <?php endforeach; endif; unset($_from); ?>
+>>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
 =======
 ?>
     <?php echo $this->_tpl_vars['i1']; ?>

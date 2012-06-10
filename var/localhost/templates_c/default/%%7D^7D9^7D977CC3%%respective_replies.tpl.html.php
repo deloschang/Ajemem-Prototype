@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-08 10:44:25
          compiled from meme/respective_replies.tpl.html */ ?>
 
@@ -9,6 +10,12 @@
 
 <!-- Template: meme/respective_replies.tpl.html Start 07/06/2012 22:37:25 --> 
 >>>>>>> 83283487b2e009dffc8cc50bd2aec9418c3eaafa
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-10 01:12:16
+         compiled from meme/respective_replies.tpl.html */ ?>
+
+<!-- Template: meme/respective_replies.tpl.html Start 10/06/2012 01:12:16 --> 
+>>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
  <?php $this->_foreach['rep'] = array('total' => count($_from = (array)$this->_tpl_vars['sm']['reparr']), 'iteration' => 0);
 if ($this->_foreach['rep']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['i']):
@@ -25,11 +32,15 @@ if ($this->_foreach['rep']['total'] > 0):
 " style="width:50px;height:50px"/>
 <?php else: ?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png" style="width:50px;height:50px"/><?php endif;  endif; ?></a>
 =======
 <img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png" style="width:50px;height:50px"/><?php endif; ?>
 <?php endif; ?></a>
 >>>>>>> 83283487b2e009dffc8cc50bd2aec9418c3eaafa
+=======
+<img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png" style="width:50px;height:50px"/><?php endif;  endif; ?></a>
+>>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
 
 <span style="position:relative; bottom:38px; left:4px;"> 
 <a href="javascript:void(0)" onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['i']['id_user']]['id_user']; ?>

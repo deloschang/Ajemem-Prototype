@@ -469,7 +469,6 @@
           });
           
           FB.Event.subscribe('auth.login', function (response) {
-          	console.log("FB.event.subscribe auth login fired");
           	window.location = "##LBL_SITE_URL##user/facebook_info";
     	  });
         };
@@ -493,195 +492,290 @@
 
 {if !$smarty.session.id_user}
 
-	<div class="clear"></div>
+	<!-- NLU looks @ home page -->
+	{if !$smarty.session.profile}
 
-	<div id="nlu_container">	
-		
-		<div id="nlu_feed">
-			{include file=$content}
-			{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
-		</div>
-		
-		<div id ="nlu_login">
-			{include file=user/login_form"}
-		</div>
-		
-		<div id ="nlu_login_register">
-			{include file=user/login_form_register"}
-		</div>
-		
-	</div>
+		<div class="clear"></div>
 
-{else}
-
-{include file="user/left_pan"}
-
-	<!--Not on the create page
-	<div id="masthead" class="nohighlight">
-			
-			<!-- Memeja Top Bar 
-		   <div id ="headerbtns"> 
-		   
-			<!-- Login/Logout Buttons 
-				{if !$smarty.session.id_user}
-					<img src="##LBL_SITE_URL##templates/images/joinmemeja.png" id="joinmemeja" onclick="$('#fblogin').slideToggle();" style="margin:-2px;">
-				{else}
-					<img src="##LBL_SITE_URL##templates/images/logout.png" id="logout" onclick="fb_logout();" style="margin:-2px;">
-				{/if}
-				
-			<!-- Image Editor Button 
-				<a href="##LBL_SITE_URL##meme/addMeme"><img src="##LBL_SITE_URL##templates/images/create.png" id="create"style="margin:-2px;"></a>
-			
-			<!-- Random Generator Button 
-					<a href="javascript:void(0);" onclick="get_random_meme();"><img src="##LBL_SITE_URL##templates/images/random.png"style="margin:-2px;"></a>
-			
-			<!-- About Us Button 
-				<a href="##LBL_SITE_URL##achievements/whatisMemeja"><img src="##LBL_SITE_URL##templates/images/help.png"style="margin:-2px;"></a>
-				
-			<!-- Search Feature 
-				<a href="javascript:void(0);"><img src="##LBL_SITE_URL##templates/images/searchend.png" style="margin:-2px;" onclick="submit();"></a>-->
-				
-					<!--<form id ="searches">
-						<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title."/>
-					</form>
-			<!--</div>
-	</div>-->
-
-	<!-- Header buttons on the Create Page
-	<div id="mastheadcreate"class="nohighlight">
-			
-			<!-- Memeja Top Bar 
-		   <div id ="headerbtns"> 
-		   
-			<!-- Login/Logout Buttons 
-				{if !$smarty.session.id_user}
-					<img src="##LBL_SITE_URL##templates/images/joinmemeja.png" id="joinmemeja" onclick="$('#fblogin').slideToggle();" style="margin:-2px;">
-				{else}
-					<img src="##LBL_SITE_URL##templates/images/logout.png" id="logout" onclick="fb_logout();" style="margin:-2px;">
-				{/if}
-				
-			<!-- Image Editor Button 
-				<a href="##LBL_SITE_URL##meme/addMeme"><img src="##LBL_SITE_URL##templates/images/create.png" id="create"style="margin:-2px;"></a>
-			
-			<!-- Random Generator Button
-					<a href="javascript:void(0);" onclick="get_random_meme();"><img src="##LBL_SITE_URL##templates/images/random.png"style="margin:-2px;"></a>
-			
-			<!-- About Us Button
-				<a href="##LBL_SITE_URL##achievements/whatisMemeja"><img src="##LBL_SITE_URL##templates/images/help.png"style="margin:-2px;"></a>
-				
-			<!-- Search Feature 	
-				<a href="javascript:void(0);"><img src="##LBL_SITE_URL##templates/images/searchend.png" style="margin:-2px;" onclick="submit();"></a>-->
-				
-					<!--<form id ="searches">
-						<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title."/>
-					</form>
-			<!--</div>
-	</div>-->
-
-
-
-		<!-- FB LOGIN Button 
-		<div id="fblogin" style="display:none;"width="50px;">
-			<div class="fb-login-button" scope="email, publish_stream ,user_education_history {*,user_birthday*}{* Uncomment to enable *}">
-						  Login with Facebook
+		<div id="nlu_container">	
+			<div id="nlu_feed">
+				{include file=$content}
+				{if !$smarty.request.page}{include file="meme/home"}{/if} 
 			</div>
-		</div>		-->
+		</div>
 		
-	<div id="xpbar_info" class="nohighlight">
-		<div id="xpbar"></div>	
-		<div id="user_level"></div>
-		<div id="xpbar_status"></div>
+	{elseif $smarty.session.profile == 'invalid'}
+		<div id="live_feed" class="nohighlight">
+			{include file="meme/home"}
+		</div>
+		
+		<div id="profile_page">
+			<div id="profile_name" style="font-size:50px">Flerp??? We couldn't find this user. Sorry</div>
+		</div>
+	{else}
+	<!-- NLU views a public profile -->
+
+	<!-- out of position, rename ID to something else -->
+	<div id="live_feed" class="nohighlight">
+		{include file="meme/home"}
 	</div>
 	
-	<div id="user_pic" class="nohighlight">
-		{if $smarty.session.fb_pic_normal}
-		<img src="{$smarty.session.fb_pic_normal}" style="width:30px;height:30px">
+	<div id="profile_page">
+		<div id="profile_name" style="font-size:50px">{$smarty.session.profile}</div>
+	
+		<div id="profile_pic">
+		{if $smarty.session.profile_picture}
+			<img src="{$smarty.session.profile_picture}"class="profile_pic"/>
 		{else}
-		<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:30px;height:30px"/>
+			<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}"class="profile_pic"/>
 		{/if}
-		<div id="ranking_number">{if $smarty.session.exp_rank}{$smarty.session.exp_rank}{else}N/A{/if}</div>
+		</div>
+		
+		{if $smarty.session.profile_meme_image}
+			<div id="profile_meme">
+				{$smarty.session.profile_meme_title}
+			</div>
+			<div id="profile_meme_image">
+				<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}" />
+			</div>
+			{if $smarty.session.profile_meme_tagged}
+				<div id="profile_tagged">
+					Tagged: 
+					{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
+						<span>
+							<img src="https://graph.facebook.com/{$x.id}/picture"/>
+							{$x.name}
+						</span>
+					{/foreach}
+				</div>
+			{/if}
+		{/if}
+		
+		<div id="my_meme_list">
+			{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+		</div>
+	</div>
+	{/if}
+	
+	<div id ="nlu_login">
+		{include file=user/login_form"}
 	</div>
 	
-	{if $smarty.session.one_less_user}
-	<div id="trailing_user_pic" class="nohighlight">
-		{if $smarty.session.one_less_pic}
-		<img src="{$smarty.session.one_less_pic}" style="width:30px;height:30px">
+	<div id ="nlu_login_register">
+		{include file=user/login_form_register"}
+	</div>
+	
+{else}
+<!-- User is logged in -->
+		{include file="user/left_pan"}
+
+		<!--Not on the create page
+		<div id="masthead" class="nohighlight">
+				
+				<!-- Memeja Top Bar 
+			   <div id ="headerbtns"> 
+			   
+				<!-- Login/Logout Buttons 
+					{if !$smarty.session.id_user}
+						<img src="##LBL_SITE_URL##templates/images/joinmemeja.png" id="joinmemeja" onclick="$('#fblogin').slideToggle();" style="margin:-2px;">
+					{else}
+						<img src="##LBL_SITE_URL##templates/images/logout.png" id="logout" onclick="fb_logout();" style="margin:-2px;">
+					{/if}
+					
+				<!-- Image Editor Button 
+					<a href="##LBL_SITE_URL##meme/addMeme"><img src="##LBL_SITE_URL##templates/images/create.png" id="create"style="margin:-2px;"></a>
+				
+				<!-- Random Generator Button 
+						<a href="javascript:void(0);" onclick="get_random_meme();"><img src="##LBL_SITE_URL##templates/images/random.png"style="margin:-2px;"></a>
+				
+				<!-- About Us Button 
+					<a href="##LBL_SITE_URL##achievements/whatisMemeja"><img src="##LBL_SITE_URL##templates/images/help.png"style="margin:-2px;"></a>
+					
+				<!-- Search Feature 
+					<a href="javascript:void(0);"><img src="##LBL_SITE_URL##templates/images/searchend.png" style="margin:-2px;" onclick="submit();"></a>-->
+					
+						<!--<form id ="searches">
+							<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title."/>
+						</form>
+				<!--</div>
+		</div>-->
+
+		<!-- Header buttons on the Create Page
+		<div id="mastheadcreate"class="nohighlight">
+				
+				<!-- Memeja Top Bar 
+			   <div id ="headerbtns"> 
+			   
+				<!-- Login/Logout Buttons 
+					{if !$smarty.session.id_user}
+						<img src="##LBL_SITE_URL##templates/images/joinmemeja.png" id="joinmemeja" onclick="$('#fblogin').slideToggle();" style="margin:-2px;">
+					{else}
+						<img src="##LBL_SITE_URL##templates/images/logout.png" id="logout" onclick="fb_logout();" style="margin:-2px;">
+					{/if}
+					
+				<!-- Image Editor Button 
+					<a href="##LBL_SITE_URL##meme/addMeme"><img src="##LBL_SITE_URL##templates/images/create.png" id="create"style="margin:-2px;"></a>
+				
+				<!-- Random Generator Button
+						<a href="javascript:void(0);" onclick="get_random_meme();"><img src="##LBL_SITE_URL##templates/images/random.png"style="margin:-2px;"></a>
+				
+				<!-- About Us Button
+					<a href="##LBL_SITE_URL##achievements/whatisMemeja"><img src="##LBL_SITE_URL##templates/images/help.png"style="margin:-2px;"></a>
+					
+				<!-- Search Feature 	
+					<a href="javascript:void(0);"><img src="##LBL_SITE_URL##templates/images/searchend.png" style="margin:-2px;" onclick="submit();"></a>-->
+					
+						<!--<form id ="searches">
+							<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title."/>
+						</form>
+				<!--</div>
+		</div>-->
+
+
+
+			<!-- FB LOGIN Button 
+			<div id="fblogin" style="display:none;"width="50px;">
+				<div class="fb-login-button" scope="email, publish_stream ,user_education_history {*,user_birthday*}{* Uncomment to enable *}">
+							  Login with Facebook
+				</div>
+			</div>		-->
+			
+		<div id="xpbar_info" class="nohighlight">
+			<div id="xpbar"></div>	
+			<div id="user_level"></div>
+			<div id="xpbar_status"></div>
+		</div>
+		
+		<div id="user_pic" class="nohighlight">
+			{if $smarty.session.fb_pic_normal}
+				<img src="{$smarty.session.fb_pic_normal}" style="width:30px;height:30px">
+			{else}
+				<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:30px;height:30px"/>
+			{/if}
+			<div id="ranking_number">{if $smarty.session.exp_rank}{$smarty.session.exp_rank}{else}N/A{/if}</div>
+		</div>
+		
+		{if $smarty.session.one_less_user}
+			<div id="trailing_user_pic" class="nohighlight">
+				{if $smarty.session.one_less_pic}
+					<img src="{$smarty.session.one_less_pic}" style="width:30px;height:30px">
+				{else}
+					<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:30px;height:30px"/>
+				{/if}
+			<div id="ranking_number">{if $smarty.session.one_less_rank}{$smarty.session.one_less_rank}{else}N/A{/if}</div>
+		</div>
 		{else}
-		<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:30px;height:30px"/>
-		{/if}
-		<div id="ranking_number">{if $smarty.session.one_less_rank}{$smarty.session.one_less_rank}{else}N/A{/if}</div>
-	</div>
-    {else}
-	
-    {/if}	
+			
+		{/if}	
 
 	
 <div class="clear"></div>
 
 <div id="contained">
 {if $smarty.request.choice !='addMeme'}
-	<div id="live_feed"class="nohighlight">
-	{include file=$content}
-	{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
+
+	<div id="live_feed" class="nohighlight">
+		{include file="meme/home"} 
 	</div>
 
 	<div>
 		<font color="#FF0000">{myinclude file="common/messages" module="global"}</font>
 	</div>
 
-	
-	<div id="profile_page" class="nohighlight">
-	
-	<div id="profile_pic">
-	{if $smarty.session.fb_pic_normal}
-	<img src="{$smarty.session.fb_pic_normal}"class="profile_pic"/>
-	{else}
-	<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
-	{/if}
-	</div>
-	
-		<div id="my_meme_list" style="margin-top:-60px;">
-			{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
-		</div>
-			<div id="addMeme_link">
-				<a href="##LBL_SITE_URL##meme/addMeme"><img src="##LBL_SITE_URL##templates/images/add.png"style="width:60px;height:60px;"/></a>
+	{if !$smarty.session.profile}
+		<div id="profile_page">
+			<div id="profile_name" style="font-size:50px">{$smarty.session.username}</div>
+		
+			<div id="profile_pic">
+			{if $smarty.session.fb_pic_normal}
+				<img src="{$smarty.session.fb_pic_normal}"class="profile_pic"/>
+			{else}
+				<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
+			{/if}
 			</div>
-		<div id="my_favorites" >
-			{get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
+			
+			<div id="my_meme_list" style="margin-top:-60px;">
+				{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+			</div>
+				<div id="addMeme_link">
+					<a href="##LBL_SITE_URL##meme/addMeme"><img src="##LBL_SITE_URL##templates/images/add.png"style="width:60px;height:60px;"/></a>
+				</div>
+			<div id="my_favorites" >
+				{get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
+			</div>
 		</div>
-					
-	
-	</div>
+	{elseif $smarty.session.profile == 'invalid'}
+		<div id="profile_page">
+			<div id="profile_name" style="font-size:50px">Flerp? We couldn't find this user!</div>
+		
+			<div id="profile_pic">
+			{if $smarty.session.fb_pic_normal}
+				<img src="{$smarty.session.fb_pic_normal}"class="profile_pic"/>
+			{else}
+				<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
+			{/if}
+			</div>
+			
+			<div id="my_meme_list" style="margin-top:-60px;">
+				{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+			</div>
+				<div id="addMeme_link">
+					<a href="##LBL_SITE_URL##meme/addMeme"><img src="##LBL_SITE_URL##templates/images/add.png"style="width:60px;height:60px;"/></a>
+				</div>
+			<div id="my_favorites" >
+				{get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
+			</div>
+		</div>
+	{else} 
+		<div id="profile_page">
+			<div id="profile_name" style="font-size:50px">{$smarty.session.profile}</div>
+		
+			<div id="profile_pic">
+			{if $smarty.session.profile_picture}
+				<img src="{$smarty.session.profile_picture}"class="profile_pic"/>
+			{else}
+				<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
+			{/if}
+			</div>
+			
+			{if $smarty.session.profile_meme_image}
+				<div id="profile_meme">
+					{$smarty.session.profile_meme_title}
+				</div>
+				<div id="profile_meme_image">
+					<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}" />
+				</div>
+				{if $smarty.session.profile_meme_tagged}
+					<div id="profile_tagged">
+						Tagged: 
+						{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
+							<span>
+								<img src="https://graph.facebook.com/{$x.id}/picture"/>
+								{$x.name}
+							</span>
+						{/foreach}
+					</div>
+				{/if}
+			{/if}
+			
+			<div id="my_meme_list">
+				{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+			</div>
+		</div>
+	{/if}
 		
 	<!-- The Friends Feed keeps track of your network-->				
 	<div id="friend_feed"class="nohighlight">
 			{include file="user/right_pan"}
 	</div>
-	{else}
-				<div id="live_feed" class="nohighlight">
-				<div id="profile_pic">
-				{if $smarty.session.fb_pic_normal}
-				<img src="{$smarty.session.fb_pic_normal}"class="profile_pic"/>
-				{else}
-				<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
-				{/if}
-				</div>
-				
-					<div id="my_meme_list" style="margin-top:-60px;">
-						{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
-					</div>
 
-					<div id="my_favorites" >
-						{get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
-					</div>
-				</div>
-				
-			    <div id="editorcontent">
-		<!-- Content in middle of page (Live Feed/Editor) -->
-				{include file=$content}
-				{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
-	            </div>		
-	{/if}
+{else}
+	<div id="editorcontent">
+		{include file=$content}
+		{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
+	</div>		
+{/if}
+
 
 			
 <div class="clear"></div>

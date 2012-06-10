@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-10 22:30:08
          compiled from meme/addmeme.tpl.html */ ?>
 
 <!-- Template: meme/addmeme.tpl.html Start 10/06/2012 22:30:08 --> 
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-10 21:35:17
+         compiled from meme/addmeme.tpl.html */ ?>
+
+<!-- Template: meme/addmeme.tpl.html Start 10/06/2012 21:35:17 --> 
+>>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
@@ -139,6 +146,10 @@ _img.png";
 <img src="http://localhost/spad/Memeja Watermark2.png" id="removewater" style="display:none">
 
 <form method="post" action="http://localhost/meme/meme_insert" enctype="multipart/form-data" name="ques_ans" id="ques_ans">
+<<<<<<< HEAD
+=======
+    <div align="center">
+>>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
         <?php if ($this->_tpl_vars['sm']['idq']): ?>
         <input type="hidden" name="meme[id_question]" id="id_question" value="<?php echo $this->_tpl_vars['sm']['idq']; ?>
 "/>
@@ -147,13 +158,24 @@ _img.png";
         <input type="hidden" name="meme[duel]" id="duel" value="<?php echo $this->_tpl_vars['sm']['duel']; ?>
 "/>
         <?php endif; ?>
+<<<<<<< HEAD
         
+=======
+        <div id="memetitle" class="nohighlight">
+            <span><b>Title:</b></span>
+            <span>
+                <input type="text" name="meme[title]" id="title" size="50" onfocus="title_focus()" onblur="title_blur()"/>
+            </span>
+        </div><br/>
+        <div id="edtr"class="nohighlight">
+>>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
 			<div id="canvas">
 				<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/meme_editor.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+<<<<<<< HEAD
 			</div>			
 		
 		<div id="shares">
@@ -164,6 +186,22 @@ unset($_smarty_tpl_vars);
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>
 _draw.png"/>
 		
+=======
+			</div>
+
+          <div id="submitter" ><input type="button" value="Submit" onclick="validate_me();"/></div>
+		
+		<div style="position:fixed;bottom:35px; left:800px"><input type="checkbox" name="memejimark" value="" onclick="insertMark();"/> Watermark</div>
+				
+		</div>
+		
+		<div>
+			<b>Tag</b>
+			 <select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select>
+		</div>
+        <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>
+_draw.png"/>
+>>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
 </form>
 <?php echo '
 	<script type="text/javascript">

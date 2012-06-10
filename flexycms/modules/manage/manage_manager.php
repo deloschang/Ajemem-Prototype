@@ -49,19 +49,25 @@ class manage_manager extends mod_manager {
 
 	
 	function _my_meme_list(){
-	    check_session();
+
+	    //check_session();
+		
+		// is this a profile or my own page?
+		$id_user = $_SESSION['profile_id'] ? $_SESSION['profile_id'] : $_SESSION['id_user'];
+		
 	    global $link;
-	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'] - 7;
-	    $comm = " id_user=".$_SESSION['id_user'];
+	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'] + 10;
+	    $comm = " id_user=".$id_user;
+
 	    $cond = (!$this->_input['last_id'])?$comm:$comm." AND id_meme <".$this->_input['last_id'];
 	    $cond.=" ORDER BY id_meme DESC LIMIT ".$limit;
 	    $sql=$this->manage_bl->get_search_sql("meme",$cond,"*");
 	    $res = mysqli_query($link,$sql);
 	    if($res){
-		while($rec = mysqli_fetch_assoc($res)){
-		    $id_memes.=$rec['id_meme'].",";
-		    $arr[] = $rec;
-		}
+			while($rec = mysqli_fetch_assoc($res)){
+				$id_memes.=$rec['id_meme'].",";
+				$arr[] = $rec;
+			}
 	    }
 	    @mysqli_free_result($res);
 	    mysqli_next_result($link);
@@ -70,12 +76,13 @@ class manage_manager extends mod_manager {
 	    $this->_output['hrc']=$hst_rtd_cap;
 	    $this->_output['last_res_id_meme']=($arr)?$arr[count($arr)-1]['id_meme']:"";
 	    if($this->arg['gmod']==1){
-		$tpl="manage/my_meme_list";
-	    }else{
-		$tpl=(!$this->_input['last_id'])?"manage/my_meme_details":"manage/loadmore_my_meme";
+			$tpl="manage/my_meme_list";
+	    } else {
+			$tpl=(!$this->_input['last_id'])?"manage/my_meme_details":"manage/loadmore_my_meme";
 	    }
 	    $this->_output['tpl'] = $tpl;
 	}
+	
 	function get_hst_rtd_caption($id_memes){
 	    $sql = $this->manage_bl->get_max_recs("(select * from ".TABLE_PREFIX."caption order by tot_honour desc) a","id_meme,caption","1 GROUP BY id_meme");
 	    $hst_rtd_cap = getindexrows($sql, "id_meme");

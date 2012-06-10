@@ -159,6 +159,7 @@
 	left:85px;
 	width:200px;
 	}
+	
 	#main{
 	position:fixed;
 	top:50px;
@@ -171,6 +172,7 @@
 	-moz-border-radius:12px;
 	-webkit-border-radius:12px;
 	-o-border-radius:12px;
+
 	}
 	html > body .toolbar {
 	*left:-180px;

@@ -238,11 +238,7 @@
 			<!-- end of gallery class-->
 
 			<div id="meme_info">  by
-				<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:14px;text-decoration:underline; color:#ACACA5;"><a href="javascript:void(0);" 
-				{if $smarty.session.id_user}
-					onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');"
-				{/if}
-				>{$sm.uinfo[$x.id_user].username}</a></span>		
+				<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:14px;text-decoration:underline; color:#ACACA5;"><a href="/?id={$sm.uinfo[$x.id_user].username}">{$sm.uinfo[$x.id_user].username}</a></span>		
 			
 				<!--<span style="font-size:13px; color:#ACACA5;"> L{$sm.uinfo[$x.id_user].level}</span>-->
 			</div>
@@ -266,13 +262,14 @@
 			
 				<div class="meme_reproductive_system">
 					{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
-					<a href="javascript:void(0);" onclick="get_all_replies('{$x.id_meme}');" class="meme_reply"><img src="##LBL_SITE_URL##templates/images/replys.png" style="width:25px;height:25px;"/><div id="repl{$x.id_meme}"class="meme_reply_label">{if $x.tot_reply != 0}{$x.tot_reply}{else}0{/if}</div></a>&emsp;
+
+					<a href="javascript:void(0);" onclick="get_all_replies('{$x.id_meme}');" class="meme_reply"><img src="##LBL_SITE_URL##templates/images/replys.png" style="width:25px;height:25px;"/><div id="repl{$x.id_meme}"class="meme_reply_label">{if $x.tot_reply != 0}{$x.tot_reply}{/if}</div></a>&emsp;
+
 					{/if} 
 				
 					
 					<!-- Honor -->
 					<a href="javascript:void(0);" id="agr_link{$x.id_meme}" class="meme_like" 
-			    	{* Added by Delos: highlights according to agree/disagree *}
 			    	{if $smarty.session.id_user}
 			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
 				    		style="box-shadow: 0 0 7px 0 green; cursor: default"
