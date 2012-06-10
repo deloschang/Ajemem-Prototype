@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 22:58:04
+<?php /* Smarty version 2.6.7, created on 2012-06-10 23:01:22
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 45, false),)), $this); ?>
@@ -102,7 +102,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 			<?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
 				<b>You don't like any memes? You have no soul</b>
 			<?php elseif ($this->_tpl_vars['sm']['flg'] == 2): ?>
-				<b> Nobody has tagged you :( </b>
+				<b>No tags. Lonely Memeja is lonely </b>
 			<?php else: ?>
 				<b>
 				You haven't made any Memes!!
