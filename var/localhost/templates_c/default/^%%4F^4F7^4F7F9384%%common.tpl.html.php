@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 06:54:10
+<?php /* Smarty version 2.6.7, created on 2012-06-10 07:25:59
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 536, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '1f679387737fe6b784d70aef8e0312d8'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 534, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'ce58076fabcccfd9add01016c58b657f'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -501,7 +501,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', '
 		<div class="clear"></div>
 
 		<div id="nlu_container">	
-			
 			<div id="nlu_feed">
 				<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['content'], 'smarty_include_vars' => array()));
@@ -514,25 +513,20 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
   endif; ?> 
 			</div>
-			
-			<div id ="nlu_login">
-				<?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form.tpl.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?>
-			</div>
-			
-			<div id ="nlu_login_register">
-				<?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form_register.tpl.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?>
-			</div>
-			
 		</div>
 		
+	<?php elseif ($_SESSION['profile'] == 'invalid'): ?>
+		<div id="live_feed" class="nohighlight">
+			<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+		</div>
+		
+		<div id="profile_page">
+			<div id="profile_name" style="font-size:50px">Flerp??? We couldn't find this user. Sorry</div>
+		</div>
 	<?php else: ?>
 	<!-- NLU views a profile -->
 
@@ -559,27 +553,27 @@ unset($_smarty_tpl_vars);
 		</div>
 		
 		<div id="my_meme_list">
-			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:1f679387737fe6b784d70aef8e0312d8#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:1f679387737fe6b784d70aef8e0312d8#0}';}?>
+			<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:ce58076fabcccfd9add01016c58b657f#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:ce58076fabcccfd9add01016c58b657f#0}';}?>
 
 		</div>
 	</div>
-		
-		<div id ="nlu_login">
-			<?php $_smarty_tpl_vars = $this->_tpl_vars;
+	<?php endif; ?>
+	
+	<div id ="nlu_login">
+		<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-		</div>
-		
-		<div id ="nlu_login_register">
-			<?php $_smarty_tpl_vars = $this->_tpl_vars;
+	</div>
+	
+	<div id ="nlu_login_register">
+		<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form_register.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-		</div>
-	<?php endif; ?>
+	</div>
 	
 <?php else: ?>
 <!-- User is logged in -->
@@ -727,14 +721,39 @@ unset($_smarty_tpl_vars);
 			</div>
 			
 			<div id="my_meme_list" style="margin-top:-60px;">
-				<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:1f679387737fe6b784d70aef8e0312d8#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:1f679387737fe6b784d70aef8e0312d8#1}';}?>
+				<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:ce58076fabcccfd9add01016c58b657f#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:ce58076fabcccfd9add01016c58b657f#1}';}?>
 
 			</div>
 				<div id="addMeme_link">
 					<a href="http://localhost/meme/addMeme"><img src="http://localhost/templates/images/add.png"style="width:60px;height:60px;"/></a>
 				</div>
 			<div id="my_favorites" >
-				<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:1f679387737fe6b784d70aef8e0312d8#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:1f679387737fe6b784d70aef8e0312d8#2}';}?>
+				<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:ce58076fabcccfd9add01016c58b657f#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:ce58076fabcccfd9add01016c58b657f#2}';}?>
+
+			</div>
+		</div>
+	<?php elseif ($_SESSION['profile'] == 'invalid'): ?>
+		<div id="profile_page">
+			<div id="profile_name" style="font-size:50px">Flerp? We couldn't find this user!</div>
+		
+			<div id="profile_pic">
+			<?php if ($_SESSION['fb_pic_normal']): ?>
+				<img src="<?php echo $_SESSION['fb_pic_normal']; ?>
+"class="profile_pic"/>
+			<?php else: ?>
+				<img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['avatar']):  echo $_SESSION['avatar'];  else:  if ($_SESSION['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png<?php endif;  endif; ?>"class="profile_pic"/>
+			<?php endif; ?>
+			</div>
+			
+			<div id="my_meme_list" style="margin-top:-60px;">
+				<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:ce58076fabcccfd9add01016c58b657f#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:ce58076fabcccfd9add01016c58b657f#3}';}?>
+
+			</div>
+				<div id="addMeme_link">
+					<a href="http://localhost/meme/addMeme"><img src="http://localhost/templates/images/add.png"style="width:60px;height:60px;"/></a>
+				</div>
+			<div id="my_favorites" >
+				<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:ce58076fabcccfd9add01016c58b657f#4}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:ce58076fabcccfd9add01016c58b657f#4}';}?>
 
 			</div>
 		</div>
@@ -748,12 +767,12 @@ unset($_smarty_tpl_vars);
 				<img src="<?php echo $_SESSION['profile_picture']; ?>
 "class="profile_pic"/>
 			<?php else: ?>
-				<img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png<?php endif; ?>"class="profile_pic"/>
+				<img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['avatar']):  echo $_SESSION['avatar'];  else:  if ($_SESSION['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png<?php endif;  endif; ?>"class="profile_pic"/>
 			<?php endif; ?>
 			</div>
 			
 			<div id="my_meme_list">
-				<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:1f679387737fe6b784d70aef8e0312d8#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:1f679387737fe6b784d70aef8e0312d8#3}';}?>
+				<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:ce58076fabcccfd9add01016c58b657f#5}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:ce58076fabcccfd9add01016c58b657f#5}';}?>
 
 			</div>
 		</div>

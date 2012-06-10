@@ -70,12 +70,15 @@ if (isset($_input['id'])){
 		$_SESSION['profile_id'] = $profile_data['id_user'];
 		$_SESSION['profile_picture'] = $profile_data['fb_pic_normal'];
 		//fb('profile is activated');
+		fb($profile_data);
 	} else { 
-		$_SESSION['profile'] = 0;  // stop rendering, profile does not exist
+		$_SESSION['profile'] = 'invalid';  // stop rendering, profile does not exist
 		//fb('profile is deactivated');
 	}
 } else {
 	$_SESSION['profile'] = 0;
+	$_SESSION['profile_id'] = 0;
+	$_SESSION['profile_picture'] = 0;
 }
 
 

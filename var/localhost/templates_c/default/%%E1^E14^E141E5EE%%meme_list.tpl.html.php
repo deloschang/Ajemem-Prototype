@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 06:54:10
+<?php /* Smarty version 2.6.7, created on 2012-06-10 07:25:57
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -90,8 +90,6 @@
 				 }
 			 });
 		 }
-			
-		if (logged_in){
 		
 			$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
 			
@@ -102,9 +100,10 @@
 			
 			$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
 		
-		
-	    	get_all_flag_details(1);
-	    	setInterval("get_all_flag_details()",6000);
+			if (logged_in){
+				get_all_flag_details(1);
+				setInterval("get_all_flag_details()",6000);
+			 }
 			
 			var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
 			var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
@@ -117,7 +116,6 @@
 			
 			$("#page"+1).css({\'font-weight\' : \'bolder\' });
 			backup_page_no = 1;
-		 }
 		
 		
 		

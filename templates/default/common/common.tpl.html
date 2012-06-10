@@ -497,22 +497,20 @@
 		<div class="clear"></div>
 
 		<div id="nlu_container">	
-			
 			<div id="nlu_feed">
 				{include file=$content}
 				{if !$smarty.request.page}{include file="meme/home"}{/if} 
 			</div>
-			
-			<div id ="nlu_login">
-				{include file=user/login_form"}
-			</div>
-			
-			<div id ="nlu_login_register">
-				{include file=user/login_form_register"}
-			</div>
-			
 		</div>
 		
+	{elseif $smarty.session.profile == 'invalid'}
+		<div id="live_feed" class="nohighlight">
+			{include file="meme/home"}
+		</div>
+		
+		<div id="profile_page">
+			<div id="profile_name" style="font-size:50px">Flerp??? We couldn't find this user. Sorry</div>
+		</div>
 	{else}
 	<!-- NLU views a profile -->
 
@@ -536,15 +534,15 @@
 			{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
 		</div>
 	</div>
-		
-		<div id ="nlu_login">
-			{include file=user/login_form"}
-		</div>
-		
-		<div id ="nlu_login_register">
-			{include file=user/login_form_register"}
-		</div>
 	{/if}
+	
+	<div id ="nlu_login">
+		{include file=user/login_form"}
+	</div>
+	
+	<div id ="nlu_login_register">
+		{include file=user/login_form_register"}
+	</div>
 	
 {else}
 <!-- User is logged in -->
@@ -685,6 +683,28 @@
 				{get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
 			</div>
 		</div>
+	{elseif $smarty.session.profile == 'invalid'}
+		<div id="profile_page">
+			<div id="profile_name" style="font-size:50px">Flerp? We couldn't find this user!</div>
+		
+			<div id="profile_pic">
+			{if $smarty.session.fb_pic_normal}
+				<img src="{$smarty.session.fb_pic_normal}"class="profile_pic"/>
+			{else}
+				<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
+			{/if}
+			</div>
+			
+			<div id="my_meme_list" style="margin-top:-60px;">
+				{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+			</div>
+				<div id="addMeme_link">
+					<a href="##LBL_SITE_URL##meme/addMeme"><img src="##LBL_SITE_URL##templates/images/add.png"style="width:60px;height:60px;"/></a>
+				</div>
+			<div id="my_favorites" >
+				{get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
+			</div>
+		</div>
 	{else} 
 		<div id="profile_page">
 			<div id="profile_name" style="font-size:50px">{$smarty.session.profile}</div>
@@ -693,7 +713,7 @@
 			{if $smarty.session.profile_picture}
 				<img src="{$smarty.session.profile_picture}"class="profile_pic"/>
 			{else}
-				<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}"class="profile_pic"/>
+				<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
 			{/if}
 			</div>
 			

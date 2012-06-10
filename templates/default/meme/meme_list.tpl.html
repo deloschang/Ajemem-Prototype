@@ -90,8 +90,6 @@
 				}
 			});
 		}
-			
-		if (logged_in){
 		
 			$("#last_id_meme").val("{/literal}{$sm.last_id_meme}{literal}");
 			
@@ -102,9 +100,10 @@
 			
 			$("#last_id_meme_cur_page").val("{/literal}{$sm.last_idmeme}{literal}");
 		
-		
-	    	get_all_flag_details(1);
-	    	setInterval("get_all_flag_details()",6000);
+			if (logged_in){
+				get_all_flag_details(1);
+				setInterval("get_all_flag_details()",6000);
+			}
 			
 			var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
 			var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
@@ -117,7 +116,6 @@
 			
 			$("#page"+1).css({'font-weight' : 'bolder'});
 			backup_page_no = 1;
-		}
 		
 		
 		
