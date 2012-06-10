@@ -56,7 +56,7 @@ if ($_input['mod']) {
 }
 
 $page = isset ($_input['page']) ? $_input['page'] : 'common';
-fb($_input, 'var $_input');
+//fb($_input, 'var $_input');
 
 if (isset($_input['id'])){
 	global $link;
@@ -68,20 +68,11 @@ if (isset($_input['id'])){
 	if ($profile_data['id_user']){
 		$_SESSION['profile'] = $_input['id'];
 		$_SESSION['profile_id'] = $profile_data['id_user'];
-		
-		//$hst_rtd_cap = get_hst_rtd_caption(trim($id_memes,','));
-		//$this->_output['res']=$arr;
-		//$this->_output['hrc']=$hst_rtd_cap;
-		//$this->_output['last_res_id_meme']=($arr)?$arr[count($arr)-1]['id_meme']:"";
-		//if($this->arg['gmod']==1){
-			//$tpl="manage/my_meme_list";
-		//} else {
-			//$tpl=manage/my_meme_details;
-			//"manage/loadmore_my_meme";
-		//}
+		$_SESSION['profile_picture'] = $profile_data['fb_pic_normal'];
+		//fb('profile is activated');
 	} else { 
 		$_SESSION['profile'] = 0;  // stop rendering, profile does not exist
-		fb('no profile');
+		//fb('profile is deactivated');
 	}
 } else {
 	$_SESSION['profile'] = 0;
@@ -131,8 +122,7 @@ if($page =='user' || file_exists($file_test)) {
 	// Error handling because file does not exist
 	if(!($page =='templates' || $page =='image')){
 		$_SESSION['raise_message']['global'] = "<h2>Herp a derp?<h2>";
-		fb('error handling hello world');
-		//redirect(LBL_SITE_URL);
+		redirect(LBL_SITE_URL);
 	}else{
 		return;
 	}
