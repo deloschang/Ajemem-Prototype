@@ -512,7 +512,7 @@
 			<div id="profile_name" style="font-size:50px">Flerp??? We couldn't find this user. Sorry</div>
 		</div>
 	{else}
-	<!-- NLU views a profile -->
+	<!-- NLU views a public profile -->
 
 	<!-- out of position, rename ID to something else -->
 	<div id="live_feed" class="nohighlight">
@@ -529,6 +529,26 @@
 			<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}"class="profile_pic"/>
 		{/if}
 		</div>
+		
+		{if $smarty.session.profile_meme_image}
+			<div id="profile_meme">
+				{$smarty.session.profile_meme_title}
+			</div>
+			<div id="profile_meme_image">
+				<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}" />
+			</div>
+			{if $smarty.session.profile_meme_tagged}
+				<div id="profile_tagged">
+					Tagged: 
+					{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
+						<span>
+							<img src="https://graph.facebook.com/{$x.id}/picture"/>
+							{$x.name}
+						</span>
+					{/foreach}
+				</div>
+			{/if}
+		{/if}
 		
 		<div id="my_meme_list">
 			{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}

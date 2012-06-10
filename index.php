@@ -56,7 +56,7 @@ if ($_input['mod']) {
 }
 
 $page = isset ($_input['page']) ? $_input['page'] : 'common';
-//fb($_input, 'var $_input');
+fb($_input, 'var $_input');
 
 if (isset($_input['id'])){
 	global $link;
@@ -70,7 +70,32 @@ if (isset($_input['id'])){
 		$_SESSION['profile_id'] = $profile_data['id_user'];
 		$_SESSION['profile_picture'] = $profile_data['fb_pic_normal'];
 		//fb('profile is activated');
-		fb($profile_data);
+		//fb($profile_data);
+		
+		if ($_input['meme']){
+			$sql = get_search_sql("meme","id_meme = '".$_input['meme']."' LIMIT 1");
+			$temp_meme = getrows($sql,$err);
+			$profile_meme = $temp_meme[0];
+			
+			if ($profile_meme['id_user'] == $profile_data['id_user']){
+				//fb($profile_meme, 'profile meme is found');
+				$_SESSION['profile_meme_title'] = $profile_meme['title'];
+				$_SESSION['profile_meme_image'] = $profile_meme['image'];
+				
+				if ($profile_meme['tagged_user']){
+					$tagged_data = explode(',',$profile_meme['tagged_user']);
+					foreach($tagged_data as $key => $value){
+						$tagged_data[$key] = array();
+						$tagged_data[$key]['id'] = $value;
+						$tagged_data[$key]['name'] = json_decode(file_get_contents('http://graph.facebook.com/'.$value))->name;
+					}
+					
+					$_SESSION['profile_meme_tagged'] = $tagged_data;
+				}
+			} else{
+				fb('profile meme not found');
+			}
+		}
 	} else { 
 		$_SESSION['profile'] = 'invalid';  // stop rendering, profile does not exist
 		//fb('profile is deactivated');

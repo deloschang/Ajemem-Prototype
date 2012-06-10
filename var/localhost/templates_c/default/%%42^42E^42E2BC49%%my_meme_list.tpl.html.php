@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 07:48:10
+<?php /* Smarty version 2.6.7, created on 2012-06-10 21:32:02
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 46, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 45, false),)), $this); ?>
 <?php echo '
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
 
@@ -11,8 +11,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	$.ajax({
 		url: "http://localhost/meme/meme_details",
 		type:"POST",
-		data: "ce=0&id="+id_meme,
-		async:false,
+		data: "ce=0&id="+id_meme
 <!--		success: function(res){-->
 <!--		    $.fancybox(res,{-->
 <!--			centerOnScroll:true,-->
@@ -110,3 +109,4 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 		<?php endif; ?>
 </div>
 </div>
+
