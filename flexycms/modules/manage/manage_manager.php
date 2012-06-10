@@ -19,7 +19,7 @@ class manage_manager extends mod_manager {
 		if (function_exists($call)) {
 			$call($this);
 		} else {
-			print "<h1>Put your own error handling code here</h1>";
+			print "<h1>Manager Error</h1>";
 		}
 	}
 	function _suggestion(){

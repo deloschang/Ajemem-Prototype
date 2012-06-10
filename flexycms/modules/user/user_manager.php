@@ -20,7 +20,7 @@ class user_manager extends mod_manager {
 		if (function_exists($call)) {
 			$call($this);//$call(&$this);
 		} else {
-			print "<h1>Put your own error handling code here</h1>";
+			print "<h1>User Manager Error</h1>";
 		}
 	}
 	function _default() {
@@ -1382,39 +1382,7 @@ class user_manager extends mod_manager {
 	}
 		
     function _create_username() {
-        global $link;
-
-        if (isset($this->_input['username'])) {
-            // Setup query to see if username is already taken
-            $myusername = mysql_real_escape_string(stripslashes($this->_input['username']));
-
-            $check_table = "SELECT COUNT(*) FROM " . TABLE_PREFIX . "user WHERE username='" . $myusername . "'";
-            //var_dump($check_table);
-            $result = mysqli_query($link, $check_table) or die(mysqli_error());
-
-            $row = mysqli_fetch_assoc($result);
-
-            //var_dump($row['COUNT(*)']);
-
-            if ($row['COUNT(*)'] != 0) {
-                echo 'This user already exists';
-            } else {
-                ##### Updating database with new username #####
-                //var_dump($myusername);
-                $sql = "UPDATE " . TABLE_PREFIX . "user SET username= '" . $myusername . "' WHERE id_user=" . $_SESSION['id_user'];
-                $result = mysqli_query($link, $sql);
-                //var_dump($result);
-                ##### Update TOC session to 1, username selected ######
-                $sql = "UPDATE " . TABLE_PREFIX . "user SET toc=1 WHERE id_user=" . $_SESSION['id_user'];
-                mysqli_query($link, $sql);
-                $_SESSION['toc'] = '1';
-                $_SESSION['username'] = $myusername;
-
-                ##### Redirect user out #####
-                // Insert static landing page here? //
-                redirect(LBL_SITE_URL . "meme/meme_list/cat/main_feed");
-            }
-        }
+        // seems to be running from meme_manager.php
     }
 
     #### Deprecated with Submit and other functions
