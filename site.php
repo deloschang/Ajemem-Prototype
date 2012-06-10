@@ -18,7 +18,6 @@ class site {
 				break;
 
 			default :
-				fb('default activated');
 				$this->is_container_enabled = isset($_REQUEST['ce'])?$_REQUEST['ce']:1;
 				$this->default_tpl = $page.'/home';
 				break;

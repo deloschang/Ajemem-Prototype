@@ -1,10 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-31 02:26:49
+<?php /* Smarty version 2.6.7, created on 2012-06-10 02:58:34
          compiled from manage/loadmore_my_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/loadmore_my_meme.tpl.html', 18, false),array('modifier', 'date_format', 'manage/loadmore_my_meme.tpl.html', 19, false),)), $this); ?>
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-<?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE'));  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 	    <?php if ($this->_tpl_vars['sm']['res']): ?>
 		<?php unset($this->_sections['cur']);
 $this->_sections['cur']['name'] = 'cur';
@@ -104,8 +103,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 		</div>
 		<br/>
 		<?php endfor; endif; ?>
-	    <?php endif; ?>
-<?php echo '
+	    <?php endif;  echo '
 <script type="text/javascript">
 	$(".fb_btn").each(function (){
 	    FB.XFBML.parse($(this).get(0));
@@ -117,4 +115,3 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
     a{text-decoration:none; }
 </style>
 '; ?>
-

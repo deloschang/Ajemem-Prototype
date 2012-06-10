@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 01:43:56
+<?php /* Smarty version 2.6.7, created on 2012-06-10 03:01:00
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 44, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 46, false),)), $this); ?>
 <?php echo '
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
 
@@ -31,16 +31,18 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
 <b>
 		    <?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
-		    Favorites
+				Favorites
 		    <?php elseif ($this->_tpl_vars['sm']['flg'] == 2): ?>
-		    Tagged Meme
+				Tagged Meme
 		    <?php else: ?>
-		    My Memes
+				Profile Memes
 		    <?php endif; ?>
 </b>
+
 <div id = "liked_memes">
+		<!-- width of meme in CSS -->
 		
-			<?php if ($this->_tpl_vars['sm']['res']): ?>
+		<?php if ($this->_tpl_vars['sm']['res']): ?>
 			<?php unset($this->_sections['cur']);
 $this->_sections['cur']['name'] = 'cur';
 $this->_sections['cur']['loop'] = is_array($_loop=$this->_tpl_vars['sm']['res']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
@@ -66,48 +68,44 @@ $this->_sections['cur']['first']      = ($this->_sections['cur']['iteration'] ==
 $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] == $this->_sections['cur']['total']);
 ?>
 			<?php $this->assign('x', $this->_tpl_vars['sm']['res'][$this->_sections['cur']['index']]); ?>
-			
+		
 			<?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
-			<a class="meme_gallery" data-fancybox-group="fav_meme" id="meme_fav_image<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+				<a class="meme_gallery" data-fancybox-group="fav_meme" id="meme_fav_image<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " onclick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ');" href="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
 " title="<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 ">
 			
-			<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+				<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
-			
-			<?php elseif ($this->_tpl_vars['sm']['flg'] == 2):  else: ?>
-			<a class="meme_gallery" data-fancybox-group="my_meme" id="my_meme_image<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-" onclick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-');" href="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
-" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
-">
-			
-			<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
-" style="width: 60px;height: 60px;cursor: pointer;"/></a>
-			<?php endif; ?>
-			
-			<?php if (( ( $this->_sections['cur']['iteration'] % 3 ) == 0 )): ?>
-
-			<?php endif; ?>
-			
-			<?php endfor; endif; ?>
+		
+			<?php elseif ($this->_tpl_vars['sm']['flg'] == 2): ?>
 			<?php else: ?>
+				<a class="meme_gallery" data-fancybox-group="my_meme" id="my_meme_image<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+" onclick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+');" href="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+">
+			
+				<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+" style="width: 60px;height: 60px;cursor: pointer;"/></a>
+			<?php endif; ?>
+			<?php endfor; endif; ?>
+		<?php else: ?>
 			<b>
 			You haven't made any Memes!!
 			</b>
-			<?php endif; ?>
+		<?php endif; ?>
 
 		<?php if ($this->_tpl_vars['sm']['res']): ?>
 		    <?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
-			<a href="http://localhost/manage/my_favorites/"></a>
+				<a href="http://localhost/manage/my_favorites/"></a>
 		    <?php elseif ($this->_tpl_vars['sm']['flg'] == 2): ?>
-			<a href="http://localhost/manage/tagged_meme/">View all</a>
+				<a href="http://localhost/manage/tagged_meme/">View all</a>
 		    <?php elseif ($this->_tpl_vars['sm']['flg'] == 3): ?>
-			<a href="http://localhost/manage/dueled_meme/">View all</a>
+				<a href="http://localhost/manage/dueled_meme/">View all</a>
 		    <?php else: ?>
-			<a href="http://localhost/manage/my_meme_list/"></a>
+				<a href="http://localhost/manage/my_meme_list/"></a>
 		    <?php endif; ?>
 		<?php endif; ?>
 </div>

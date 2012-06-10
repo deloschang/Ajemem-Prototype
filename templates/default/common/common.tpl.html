@@ -519,6 +519,23 @@
 	<div id="live_feed" class="nohighlight">
 	{include file=$content}
 	{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
+	</div>
+	
+	<div id="profile_page">
+		<div id="profile_name" style="font-size:50px">{$smarty.session.profile}</div>
+	
+		<div id="profile_pic">
+		{if $smarty.session.fb_pic_normal}
+			<img src="{$smarty.session.fb_pic_normal}"class="profile_pic"/>
+		{else}
+			<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
+		{/if}
+		</div>
+		
+		<div id="my_meme_list">
+			{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+		</div>
+	</div>
 	
 {/if}
 

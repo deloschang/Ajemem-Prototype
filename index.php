@@ -59,7 +59,30 @@ $page = isset ($_input['page']) ? $_input['page'] : 'common';
 fb($_input, 'var $_input');
 
 if (isset($_input['id'])){
-	$_SESSION['profile'] = $_input['id'];
+	global $link;
+	
+	$sql = get_search_sql("user","username = '".$_input['id']."' LIMIT 1");
+	$temp_data = getrows($sql,$err);
+	$profile_data = $temp_data[0];
+	
+	if ($profile_data['id_user']){
+		$_SESSION['profile'] = $_input['id'];
+		$_SESSION['profile_id'] = $profile_data['id_user'];
+		
+		//$hst_rtd_cap = get_hst_rtd_caption(trim($id_memes,','));
+		//$this->_output['res']=$arr;
+		//$this->_output['hrc']=$hst_rtd_cap;
+		//$this->_output['last_res_id_meme']=($arr)?$arr[count($arr)-1]['id_meme']:"";
+		//if($this->arg['gmod']==1){
+			//$tpl="manage/my_meme_list";
+		//} else {
+			//$tpl=manage/my_meme_details;
+			//"manage/loadmore_my_meme";
+		//}
+	} else { 
+		$_SESSION['profile'] = 0;  // stop rendering, profile does not exist
+		fb('no profile');
+	}
 } else {
 	$_SESSION['profile'] = 0;
 }
