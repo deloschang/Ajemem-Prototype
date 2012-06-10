@@ -1697,7 +1697,8 @@ a{
 	
 	#editorcontent {
 		position:relative;
-		left:540px;
+		top:50px;
+		left:410px;
 		width:600px;
 	}
 	
@@ -1713,6 +1714,18 @@ a{
 		text-shadow: 2px 2px 3px #555
 	}
 
+	#uploader {
+	    position:fixed;
+		top:50px;
+		padding:5px;
+	    left:40px;
+		z-index:5;
+		background:#FFF;
+		moz-border-radius: 10px;
+		webkit-border-radius: 10px;
+		khtml-border-radius: 10px;
+		border-radius: 10px;
+	}
 	
 	.main_smiley_loading {
 		position:relative;
@@ -1722,13 +1735,13 @@ a{
 		overflow-x:hidden;
 		overflow-y:auto;
 		width: 140px;
-		height: 430px;
+		height: 480px;
 		margin:0px;
 		padding:5px;
 		background:#FFF;
 		position:fixed;
-		top:200px;
-		left:1140px;
+		top:150px;
+		left:100px;
 		-moz-border-radius: 10px; 
 		-webkit-border-radius: 10px; 
 		border-radius: 10px;

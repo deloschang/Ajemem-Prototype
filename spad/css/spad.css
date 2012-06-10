@@ -31,8 +31,8 @@
 	
 	#shares {
 		position:fixed;
-		top:45px;
-		left:1050px;
+		top:60px;
+		left:1040px;
 		width:300px;
 		text-align:center;
 	}
@@ -50,8 +50,8 @@
 	#canvas_tools {
 		position:fixed;
 		width:20px;
-		left:1040px;
-		top:130px;
+		left:1010px;
+		top:100px;
 		padding:2px;
 		background-color:#Fff;
 		moz-border-radius: 10px;
@@ -63,18 +63,6 @@
 	
 	#vs	{
 		position:absolute;
-	}
-		#uploader {
-	    position:fixed;
-		top:100px;
-		padding:5px;
-	    right:15px;
-		z-index:5;
-		background:#FFF;
-		moz-border-radius: 10px;
-		webkit-border-radius: 10px;
-		khtml-border-radius: 10px;
-		border-radius: 10px;
 	}
 
 	.smileys_part	{
@@ -163,7 +151,7 @@
 	#main{
 	position:fixed;
 	top:50px;
-	left:380px;
+	left:350px;
 	background:#FAFAFA;
 	padding:0px 3px;
 	border:1px solid #DCDCDC;

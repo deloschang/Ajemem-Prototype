@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-10 22:30:21
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-10 19:37:03
->>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+<?php /* Smarty version 2.6.7, created on 2012-06-10 23:22:13
          compiled from manage/right_pan_user.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/right_pan_user.tpl.html', 5, false),)), $this); ?>

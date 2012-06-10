@@ -671,9 +671,8 @@
 	
 <div class="clear"></div>
 
-<div id="contained">
 {if $smarty.request.choice !='addMeme'}
-
+<div id="contained">
 	<div id="live_feed" class="nohighlight">
 		{include file="meme/home"} 
 	</div>
@@ -768,6 +767,7 @@
 	<div id="friend_feed"class="nohighlight">
 			{include file="user/right_pan"}
 	</div>
+</div>
 
 {else}
 	<div id="editorcontent">
@@ -779,10 +779,8 @@
 
 			
 <div class="clear"></div>
-
-</div>		
-
-<!-- Keeping the Footer at the Bottom -->	
+		
+	
 <div class="clear"></div>
 {/if}
 </body>
