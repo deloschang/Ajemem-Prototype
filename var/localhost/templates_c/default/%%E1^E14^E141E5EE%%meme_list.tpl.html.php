@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-10 22:30:29
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-10 21:40:23
->>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+<?php /* Smarty version 2.6.7, created on 2012-06-10 23:16:39
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -94,13 +90,7 @@
 					$(\'#icon_container\').append(\'<div class="front_icon" id="icon_\'+index+\'"><a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+value+\'" title="\'+title_arr[index]+\'"><img src="http://localhost/image/orig/meme/\'+value+\'" style="cursor:pointer; width: 40px; height: 40px; "/></a></div>\');
 				 }
 			 });
-		 }
-<<<<<<< HEAD
-			
-		if (logged_in){
-=======
->>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
-		
+		 }		
 			$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
 			
 			var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
@@ -110,16 +100,11 @@
 			
 			$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
 		
-<<<<<<< HEAD
-		
-	    	get_all_flag_details(1);
-	    	setInterval("get_all_flag_details()",6000);
-=======
 			if (logged_in){
 				get_all_flag_details(1);
 				setInterval("get_all_flag_details()",6000);
 			 }
->>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+
 			
 			var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
 			var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
@@ -132,13 +117,7 @@
 			
 			$("#page"+1).css({\'font-weight\' : \'bolder\' });
 			backup_page_no = 1;
-<<<<<<< HEAD
-		 }
-=======
->>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
-		
-		
-		
+				
 		// Self-describing for search
 	    var describedClass = \'self-described\';
 		$(\'.self-describing\').focus(function(){
@@ -158,25 +137,12 @@
 			if ($("#chk_me").val()!=1) {
 				last_id = $("#last_id_meme_cur_page").val();
 				
-<<<<<<< HEAD
-				
-				if (logged_in){
-					var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
-				 } else {
-					var cat = "main_feed";
-				 }
-					
-=======
->>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
 				var ext = "';  echo $_REQUEST['ext'];  echo '";
 				var url = "http://localhost/meme/meme_list";
 				
 				$("#loadingmeme_img").show();
-<<<<<<< HEAD
-				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,ext:ext }, function(res){
-=======
 				$.post(url,{cat:\'main_feed\',page_no:page_no,ce:0,last_id:last_id,ext:ext }, function(res){
->>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+
 					if(res != "")
 						$("#all_memes").html(res);
 						$("#loadingmeme_img").hide();
@@ -491,12 +457,8 @@
 	
 <br><br>
 
-
-<<<<<<< HEAD
-<?php if ($_SESSION['id_user']): ?>
-=======
 <?php if ($_SESSION['id_user'] || $_SESSION['profile']): ?>
->>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+
 <div id="all_memes">
     <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
@@ -524,12 +486,7 @@ unset($_smarty_tpl_vars);
 
 <?php endif; ?>
 
-
-<<<<<<< HEAD
-<?php if (! $_SESSION['id_user']): ?>
-=======
 <?php if (! $_SESSION['id_user'] && ! $_SESSION['profile']): ?>
->>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
 	<div id="icon_container"></div>
 	<div class="module_text" id="front_card">Your stories belong here.</div>
 	<div class="module_text" id="first_half">Whether it's...</div>

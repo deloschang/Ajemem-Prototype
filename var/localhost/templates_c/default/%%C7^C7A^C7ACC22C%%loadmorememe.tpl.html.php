@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-10 22:30:14
-         compiled from meme/loadmorememe.tpl.html */ ?>
-<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 214, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 262, false),)), $this); ?>
-
-<!-- Template: meme/loadmorememe.tpl.html Start 10/06/2012 22:30:14 --> 
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-10 21:40:23
+<?php /* Smarty version 2.6.7, created on 2012-06-10 23:16:39
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 214, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 258, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 10/06/2012 21:40:23 --> 
->>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+<!-- Template: meme/loadmorememe.tpl.html Start 10/06/2012 23:16:39 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -267,17 +258,8 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 
 			<div id="meme_info">  by
 				<span id="user<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-<<<<<<< HEAD
-" style="font-size:14px;text-decoration:underline; color:#ACACA5;"><a href="javascript:void(0);" 
-				<?php if ($_SESSION['id_user']): ?>
-					onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-');"
-				<?php endif; ?>
-				><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
-=======
 " style="font-size:14px;text-decoration:underline; color:#ACACA5;"><a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
 "><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
->>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
 </a></span>		
 			
 				<!--<span style="font-size:13px; color:#ACACA5;"> L<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['level']; ?>
@@ -310,24 +292,18 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 			
 				<div class="meme_reproductive_system">
 					<?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
+
 					<a href="javascript:void(0);" onclick="get_all_replies('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ');" class="meme_reply"><img src="http://localhost/templates/images/replys.png" style="width:25px;height:25px;"/><div id="repl<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-<<<<<<< HEAD
-"class="meme_reply_label"><?php if ($this->_tpl_vars['x']['tot_reply'] != 0):  echo $this->_tpl_vars['x']['tot_reply'];  else: ?>0<?php endif; ?></div></a>&emsp;
-=======
 "class="meme_reply_label"><?php if ($this->_tpl_vars['x']['tot_reply'] != 0):  echo $this->_tpl_vars['x']['tot_reply'];  endif; ?></div></a>&emsp;
->>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+
 					<?php endif; ?> 
 				
 					
 					<!-- Honor -->
 					<a href="javascript:void(0);" id="agr_link<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " class="meme_like" 
-<<<<<<< HEAD
-			    				    	<?php if ($_SESSION['id_user']): ?>
-=======
 			    	<?php if ($_SESSION['id_user']): ?>
->>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
 			    		<?php if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )): ?>
 				    		style="box-shadow: 0 0 7px 0 green; cursor: default"
 				    	<?php elseif (substr_count ( $this->_tpl_vars['x']['dishonour_id_user'] , $_SESSION['id_user'] )): ?>
