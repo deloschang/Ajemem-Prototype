@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-09 02:58:32
+<?php /* Smarty version 2.6.7, created on 2012-06-10 22:30:08
          compiled from meme/addmeme.tpl.html */ ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 09/06/2012 02:58:32 --> 
+<!-- Template: meme/addmeme.tpl.html Start 10/06/2012 22:30:08 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
@@ -139,7 +139,6 @@ _img.png";
 <img src="http://localhost/spad/Memeja Watermark2.png" id="removewater" style="display:none">
 
 <form method="post" action="http://localhost/meme/meme_insert" enctype="multipart/form-data" name="ques_ans" id="ques_ans">
-    <div align="center">
         <?php if ($this->_tpl_vars['sm']['idq']): ?>
         <input type="hidden" name="meme[id_question]" id="id_question" value="<?php echo $this->_tpl_vars['sm']['idq']; ?>
 "/>
@@ -148,33 +147,23 @@ _img.png";
         <input type="hidden" name="meme[duel]" id="duel" value="<?php echo $this->_tpl_vars['sm']['duel']; ?>
 "/>
         <?php endif; ?>
-        <div id="memetitle" class="nohighlight">
-            <span><b>Title:</b></span>
-            <span>
-                <input type="text" name="meme[title]" id="title" size="50" onfocus="title_focus()" onblur="title_blur()"/>
-            </span>
-        </div><br/>
-        <div id="edtr"class="nohighlight">
+        
 			<div id="canvas">
 				<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/meme_editor.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-			</div>
-
-          <div id="submitter" ><input type="button" value="Submit" onclick="validate_me();"/></div>
+			</div>			
 		
-		<div style="position:fixed;bottom:35px; left:800px"><input type="checkbox" name="memejimark" value="" onclick="insertMark();"/> Watermark</div>
-				
+		<div id="shares">
+			<div id="tagline">Tag Your Friends!</div>
+			 <select id="tag" multiple="multiple" style="display: none;" name="tagged_user[]"></select>
 		</div>
 		
-		<div>
-			<b>Tag</b>
-			 <select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select>
-		</div>
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>
 _draw.png"/>
+		
 </form>
 <?php echo '
 	<script type="text/javascript">

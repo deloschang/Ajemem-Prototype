@@ -132,35 +132,24 @@
 <img src="##LBL_SITE_URL##spad/Memeja Watermark2.png" id="removewater" style="display:none">
 
 <form method="post" action="##LBL_SITE_URL##meme/meme_insert" enctype="multipart/form-data" name="ques_ans" id="ques_ans">
-    <div align="center">
         {if $sm.idq}
         <input type="hidden" name="meme[id_question]" id="id_question" value="{$sm.idq}"/>
         {/if}
         {if $sm.duel}
         <input type="hidden" name="meme[duel]" id="duel" value="{$sm.duel}"/>
         {/if}
-        <div id="memetitle" class="nohighlight">
-            <span><b>Title:</b></span>
-            <span>
-                <input type="text" name="meme[title]" id="title" size="50" onfocus="title_focus()" onblur="title_blur()"/>
-            </span>
-        </div><br/>
-        <div id="edtr"class="nohighlight">
+        
 			<div id="canvas">
 				{include file="meme/meme_editor"}
-			</div>
-
-          <div id="submitter" ><input type="button" value="Submit" onclick="validate_me();"/></div>
+			</div>			
 		
-		<div style="position:fixed;bottom:35px; left:800px"><input type="checkbox" name="memejimark" value="" onclick="insertMark();"/> Watermark</div>
-				
+		<div id="shares">
+			<div id="tagline">Tag Your Friends!</div>
+			 <select id="tag" multiple="multiple" style="display: none;" name="tagged_user[]"></select>
 		</div>
 		
-		<div>
-			<b>Tag</b>
-			 <select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select>
-		</div>
         <input type="hidden" id="edited_img" name="meme[image]" value="{$smarty.now}_draw.png"/>
+		
 </form>
 {literal}
 	<script type="text/javascript">

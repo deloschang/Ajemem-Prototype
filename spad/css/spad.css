@@ -19,10 +19,8 @@
 	}
 
 	#memetitle{
-		position:absolute;
-		top:-35px;
-		left:330px;
-		padding:2px;
+		position:relative;
+		padding:3px;
 		background:#FFF;
 		moz-border-radius: 10px;
 		webkit-border-radius: 10px;
@@ -30,10 +28,21 @@
 		border-radius: 10px;
 
 	}
-	#submitter{
+	
+	#shares {
 		position:fixed;
-		bottom:35px;
-		left:670px
+		top:45px;
+		left:1050px;
+		width:300px;
+		text-align:center;
+	}
+	
+	#submitter{
+		position:relative;
+	}
+	
+	#watermark{
+		position:relative;
 	}
 	
 /** Drawing Tools & Canvas Tools **/
@@ -41,9 +50,31 @@
 	#canvas_tools {
 		position:fixed;
 		width:20px;
-		left:1050px;
-		top:150px;
+		left:1040px;
+		top:130px;
+		padding:2px;
+		background-color:#Fff;
+		moz-border-radius: 10px;
+		webkit-border-radius: 10px;
+		khtml-border-radius: 10px;
+		border-radius: 10px;
 		
+	}
+	
+	#vs	{
+		position:absolute;
+	}
+		#uploader {
+	    position:fixed;
+		top:100px;
+		padding:5px;
+	    right:15px;
+		z-index:5;
+		background:#FFF;
+		moz-border-radius: 10px;
+		webkit-border-radius: 10px;
+		khtml-border-radius: 10px;
+		border-radius: 10px;
 	}
 
 	.smileys_part	{
@@ -105,28 +136,9 @@
 	height:120px;
 	z-index: 100;
 	}
+	
 	/**************************Jagat Css**********************************/
-	.main_smiley_loading	{
-	position:relative;
-	}
-	.smileys_in_small_size	{
-	overflow-x:hidden;
-	overflow-y:auto;
-	width: 140px;
-	height: 475px;
-	margin:0px;
-	padding:5px;
-	background:#FFF;
-	position:absolute;
-	top:-65px;
-	left:720px;
-	-moz-border-radius: 10px; 
-	-webkit-border-radius: 10px; 
-	border-radius: 10px;
-	}
-	#vs	{
-	position:absolute;
-	}
+
 	input[type='button']	{
 	min-width:19px;
 	}
@@ -147,21 +159,18 @@
 	left:85px;
 	width:200px;
 	}
-	.toolbar,.postop0,#main{
-	position:absolute;
-	top:-30px;
-	left:-180px;
-	width:80px;
-	line-height:24px;
-	text-align:center;
+	#main{
+	position:fixed;
+	top:50px;
+	left:380px;
 	background:#FAFAFA;
 	padding:0px 3px;
+	border:1px solid #DCDCDC;
+	z-index:100;
 	border-radius:12px;
 	-moz-border-radius:12px;
 	-webkit-border-radius:12px;
 	-o-border-radius:12px;
-	border:1px solid #DCDCDC;
-	z-index:9999999;
 	}
 	html > body .toolbar {
 	*left:-180px;

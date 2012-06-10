@@ -622,10 +622,6 @@
 	    width:600px;
 	}
 	
-	#editorcontent {
-		position:relative;
-		left:250px;
-	}
 	
 /* The Live Feed on the Left */
 	#live_feed {
@@ -783,19 +779,6 @@ moz-border-radius: 10px;
 	}
 
 /****/
-
-	#uploader {
-	    position:absolute;
-		top:-30px;
-		padding:5px;
-	    right:30px;
-		z-index:99;
-		background:#FFF;
-		moz-border-radius: 10px;
-		webkit-border-radius: 10px;
-		khtml-border-radius: 10px;
-		border-radius: 10px;
-	}
 
 	.spacer {
 		padding:5px;
@@ -1700,12 +1683,56 @@ a{
 
 /**^^^^^^^^^^^^^^^^^^^^^^^^	Editor Page	^^^^^^^^^^^^^^^^^^^^^^^^**/
 
-	#edtr{
-	position:relative;
-	}
+
 	#canvas {
-	position:relative;
+		position:relative;
+		width:600px;
 	}
 
+
+	#ques_ans {
+		position:relative;
+		width:600px;
+	}
+	
+	#editorcontent {
+		position:relative;
+		left:540px;
+		width:600px;
+	}
+	
+	#img_dpw{
+		position:relative;
+		left:60px;
+	}
+	
+	#tagline {
+		font-weight:bold;
+		color:white;
+		font-size:14px;
+		text-shadow: 2px 2px 3px #555
+	}
+
+	
+	.main_smiley_loading {
+		position:relative;
+	}
+	
+	.smileys_in_small_size {
+		overflow-x:hidden;
+		overflow-y:auto;
+		width: 140px;
+		height: 430px;
+		margin:0px;
+		padding:5px;
+		background:#FFF;
+		position:fixed;
+		top:200px;
+		left:1140px;
+		-moz-border-radius: 10px; 
+		-webkit-border-radius: 10px; 
+		border-radius: 10px;
+	}
+	
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
 
