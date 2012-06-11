@@ -74,12 +74,12 @@ if (isset($_input['id'])){
 		//fb($profile_data);
 		
 		// check if following user
-		$sql = get_search_sql("user"," ( FIND_IN_SET(".$_SESSION['profile_id'].",memeje_friends) ) AND id_user=".$_SESSION['id_user']);
-	    $check = getrows($sql, $err);
+		// $sql = get_search_sql("user"," ( FIND_IN_SET(".$_SESSION['profile_id'].",memeje_friends) ) AND id_user=".$_SESSION['id_user']);
+	    // $check = getrows($sql, $err);
 		
-		if ($check){
-			$_SESSION['following'] = 1;
-		}
+		// if ($check){
+			// $_SESSION['following'] = 1;
+		// }
 		
 		// requests to view a meme
 		if ($_input['meme']){
@@ -120,7 +120,7 @@ if (isset($_input['id'])){
 	$_SESSION['profile_meme_image'] = 0;
 	$_SESSION['profile_meme_tagged'] = 0;
 	
-	$_SESSION['following'] = 0;
+	// $_SESSION['following'] = 0;
 }
 
 

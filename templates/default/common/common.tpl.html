@@ -427,14 +427,18 @@
 		$('#searches').submit();
 	}
 	
-	function follow_user() {
+	function follow_user(status) {		
 		{/literal}{if $smarty.session.profile_id}{literal}
 		var profile_id = {/literal}{$smarty.session.profile_id}{literal}
 		{/literal}{/if}{literal}
-		
 		var url = "##LBL_SITE_URL##user/follow_user";
-		$.post(url, {ce:0, id:profile_id}, function(res){
-			$("#follow_btn").html('Unfollow');
+		
+		$.post(url, {ce:0, id:profile_id, status:'follow'}, function(res){
+			if (status == 'follow') {
+				$("#follow_btn").html('Unfollow');
+			} else {
+				$("#follow_btn").html('Follow');
+			}
 		});
 	}
 	
@@ -747,9 +751,9 @@
 			<div id="profile_name" style="font-size:50px">{$smarty.session.profile}</div>
 			
 			{if $smarty.session.following}
-				<span><a href="javascript:void(0);" id="follow_btn" onclick="follow_user();">Unfollow</a></span>
+				<span><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('unfollow');">Unfollow</a></span>
 			{else}
-				<span><a href="javascript:void(0);" id="follow_btn" onclick="follow_user();">follow</a></span>
+				<span><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('follow');">follow</a></span>
 			{/if}
 		
 			<div id="profile_pic">
