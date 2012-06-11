@@ -62,7 +62,9 @@
 	}
 	
 	#vs	{
-		position:absolute;
+		position:relative;
+		text-align:center;
+		margin:3px;
 	}
 
 	.smileys_part	{

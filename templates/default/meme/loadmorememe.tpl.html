@@ -46,7 +46,7 @@
     }
     
 	
-    function hover_user(id_user){
+   /* function hover_user(id_user){
     	var right_pan_url = "##LBL_SITE_URL##user/see_user";
     	
 		if (id_user != see_user_old) {
@@ -55,7 +55,7 @@
 				see_user_old = id_user;
 			});
 		}
-    }
+    }*/
 
 	function live_meme () {
 		//console.log("List "+new_ids);
@@ -218,11 +218,7 @@
 				{/if}
 			{/if}" align="left"/>
 			
-			<span id="user_avatar_thumb" 
-				{if $smarty.session.id_user}
-					onmouseover="hover_user('{$sm.uinfo[$x.id_user].id_user}');"
-				{/if}>
-				
+			<span id="user_avatar_thumb"> 				
 				{if $sm.uinfo[$x.id_user].fb_pic_square}
 					<img src="{$sm.uinfo[$x.id_user].fb_pic_square}" class="avatar_thumb_fb" >
 				{elseif $sm.uinfo[$x.id_user].avatar}
@@ -263,7 +259,7 @@
 				<div class="meme_reproductive_system">
 					{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
 
-					<a href="javascript:void(0);" onclick="get_all_replies('{$x.id_meme}');" class="meme_reply"><img src="##LBL_SITE_URL##templates/images/replys.png" style="width:25px;height:25px;"/><div id="repl{$x.id_meme}"class="meme_reply_label">{if $x.tot_reply != 0}{$x.tot_reply}{/if}</div></a>&emsp;
+					<a href="javascript:void(0);" onclick="get_all_replies('{$x.id_meme}');" class="meme_reply"><img src="##LBL_SITE_URL##templates/images/replys.png" style="width:25px;height:25px;"/><div id="repl{$x.id_meme}"class="meme_reply_label">{if $x.tot_reply != 0}{$x.tot_reply}{else}0{/if}</div></a>&emsp;
 
 					{/if} 
 				

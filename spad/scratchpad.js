@@ -379,7 +379,6 @@ var settings = {
             });
             $( "#vs" ).bind( "slidestop", function(event, ui) {
                 adjustfontsize(ui.value);
-                $('#vs').slideUp('slow');
             });
             $('#fontsize').blur(function(){
                 adjustfontsize($(this).val());

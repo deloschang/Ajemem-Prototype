@@ -1,14 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 23:42:19
+<?php /* Smarty version 2.6.7, created on 2012-06-11 02:11:36
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 128, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 121, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 10/06/2012 23:42:19 --> 
+<!-- Template: meme/meme_editor.tpl.html Start 11/06/2012 02:11:36 --> 
  <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
 <?php echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
-<script type="text/javascript" src="http://localhost//spad/jquery.lionbars.0.3.js"></script>
-<link rel="stylesheet" type="text/css" href="http://localhost//spad/lionbars.css" media="screen" />
 <script type="text/javascript">
 
 
@@ -28,13 +26,7 @@ function loadcanvas() {
 		if(!($(\'#text\').hasClass(\'active\')))
 			$(\'.text_div\').css(\'display\',\'none\');
 	 });
-	$(\'#line_size\').click(function(){
-		if($(\'#vs\').is(\':hidden\'))
-			$(\'#vs\').slideDown(\'slow\');
-		else
-			$(\'#vs\').slideUp(\'slow\');
-		return false;
-	 });
+	
 	$( "#vs" ).slider({
 		orientation: "vertical",
 		range: "min",
@@ -42,6 +34,7 @@ function loadcanvas() {
 		max: 25,
 		value: 1
 	 });
+	
 	$(\'#sp\').scratchpad({ \'width\':636, \'height\':478  });
 	$(\'input[type="button"]\').click(function(){
 		$(\'input[type="button"]\').removeClass("selected");
@@ -146,9 +139,7 @@ $(document).ready(function(){
 
 	<div id="sp" style="position:relative;"><canvas id="mycid" style="border:1px solid red"></canvas></div>
 
-    <div id="main" style="width:660px;">
-        <div id="vs" style="height:100px; margin-left:65px; margin-top:-1px; display:none;"></div>
-		<!-- The following is the Line Size Slider Button-->		
+    <div id="main" style="width:660px;">	
 		<table><tr>
 		<td><div id="memetitle" class="nohighlight">
             <span><b>Title:</b></span>
@@ -156,7 +147,6 @@ $(document).ready(function(){
                 <input type="text" name="meme[title]" id="title" size="50" onfocus="title_focus()" onblur="title_blur()"/>
             </span>
         </div></td>
-        <td><img src="http://localhost/spad/site_image/size.png" width="20" height="20" class="changesize" id="line_size" title="Brush Size" alt="Brush Size" /></td>
         <input type="hidden" id="fontsize" class="ls" value="1" style="width:25px" >
         <td><img src="http://localhost/spad/site_image/color_wheel.png" width="20" height="20" alt="Pick Color" title="Pick Color" id="color" /><br /></td>
         
@@ -195,6 +185,8 @@ $(document).ready(function(){
         <img src="http://localhost/spad/site_image/redo.png" width="19" height="16" class="redo" id="redo" title="Redo" alt="Redo" />-->
 		</div>
 		<div id="canvas_tools">
+		<div id="vs"title="Change Size"></div>	
+		</br>
         <img src="http://localhost/spad/site_image/increase_panel.png" class="addpanel" title="Increase Height" alt="Add Panel" width="16" height="16" />
         <img src="http://localhost/spad/site_image/decrease_panel.png" class="removepanel" title="Decrease Height" alt="Remove Panel" width="16" height="16" />
 		<img src="http://localhost/spad/site_image/clear.png" class="clear" title="Clear Canvas" alt="Clear" width="16" height="16" />

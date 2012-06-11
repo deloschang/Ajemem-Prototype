@@ -80,6 +80,11 @@
 		box-shadow: 0 0 4px 0 #555555;
 	}
 	
+	#registration {
+		position:relative;
+		top:60px;
+	}
+	
 	#forgot_pwd{
 		padding:10px 0 12px 0;
 		margin: 10px 0 0 30px;
@@ -605,12 +610,12 @@
 /* Main Profile Page */
 	#profile_page {
 		background-color:#fff;
-		margin-left:390px;
-		margin-right:300px;
+		margin-left:100px;
+		margin-right:400px;
 		padding:10px;
 		position:relative;
 		top:-20px;
-		width:600px;
+		width:800px;
 	    moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -619,17 +624,18 @@
 		voice-family:inherit;
 	}
 	html>body #profile_page {
-	    width:600px;
+	    width:800px;
 	}
 	
 	
-/* The Live Feed on the Left */
+/* The Live Feed on the Right */
 	#live_feed {
 	    background-color:#87C8F0;
-		float:left;
+		float:right;
+		left:930px;
 		padding:10px;
-		position:relative;
-		top:-25px;
+		position:absolute;
+		top:-40px;
 		width:350px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
@@ -643,7 +649,20 @@
 		width:350px;
 	}
 	
-/* Keeps track of your Network */
+	#random_meme {
+		margin-left:auto;
+		margin-right:auto;
+		position:relative;
+		left:5px;
+		margin:10px;
+	}
+	
+	#feed_cont {
+		margin-left:auto;
+		margin-right:auto;
+	}
+	
+/* Keeps track of your Network 
 	#friend_feed {
 		background:#FFF;
 		left:1020px;
@@ -822,6 +841,7 @@ moz-border-radius: 10px;
 		font-family:Verdana; 
 		font-size:14px;
 		font-weight:bold;
+		text-shadow:2px 1px 2px #000;
 		left:0px;
 		position: absolute;
 		top:-2px;
@@ -888,14 +908,12 @@ moz-border-radius: 10px;
 	
 	#liked_memes {
 		background-color:#87C8F0;
-		width: 200px;
+		border:double;
+		border-color:#ACACA5;
+		border-width:2px;
+		margin:5px;
 		padding:5px;
 		text-align:center;
-		border:double;
-		border-width:2px;
-		border-color:#ACACA5;
-		margin-top:5px;
-		margin-bottom:5px;
 		moz-border-radius: 10px;
 		webkit-border-radius: 10px;
 		khtml-border-radius: 10px;
@@ -904,7 +922,6 @@ moz-border-radius: 10px;
 	
 	#user_memes{
 		position: relative;
-		top:70px;
 	}
 	
 /****************************************************************************************************/
@@ -967,19 +984,40 @@ moz-border-radius: 10px;
 		border-style: solid;
 		border-width:1px;
 		box-shadow: 0 0 5px 0 #aad450;
+		height:105px;
+		left:50px;
 		padding:1px;
 		padding-top:5px;
-		position:absolute;
-		top:10px;
-		left:50px;
+		position:relative;
 		text-align:center;
+		top:10px;
 		width:105px;
-		height:105px;
 		moz-border-radius: 10px;
 		webkit-border-radius: 10px;
 		khtml-border-radius: 10px;
 		border-radius: 10px;
 		}
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@  User Info @@@@@@@@@@@@@@@@@@@@@@@@*/
+
+	#user_info{
+	
+	}
+	
+	#profile_name {
+		font-size:36px;
+		left:200px;
+		position:relative;
+		top:-100px;
+		
+	}
+	
+	#username {
+		font-size:20px;
+		left:200px;
+		position:relative;
+		top:-100px;
+	}
 		
 	#addMeme_link {
 		box-shadow: 0 0 5px 0 green;
@@ -988,16 +1026,14 @@ moz-border-radius: 10px;
 		padding:2px;
 		text-align:center;
 		position:relative;
-		left:300px;
-		top:50px;
 	}
 	
 	#my_favorites {
-		position:absolute;
+		position:relative;
 	}
 	
 	#my_meme_list{
-		position:absolute;
+		position:relative;
 	}
 
 /*################################################################################*/
@@ -1565,7 +1601,7 @@ a{
 		position:absolute;
 		left:270px;
 		top:55px;
-		z-index:102;
+		z-index:98;
 	}
 	
 	.meme_like {
@@ -1748,4 +1784,63 @@ a{
 	}
 	
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/
+
+/* 9gag Button */
+.special-btn-wrap {
+    height: 50px;
+    margin: 10px 0 -5px;
+    overflow: hidden;
+}
+a.special-btn {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -3px 0 rgba(0, 0, 0, 0.3) inset, 0 0 10px rgba(255, 255, 255, 0.3) inset, 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #FFFFFF;
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 11px 0 14px;
+    text-align: center;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+}
+a.special-btn.red {
+    background-color: #E15F4E;
+}
+a.special-btn.green {
+    background-color: #399A35;
+}
+a.special-btn.facebook {
+    background: url("../img/sprite_v13.png") no-repeat scroll -386px -1590px #3B5998;
+    padding-left: 30px;
+}
+a.special-btn:hover {
+    background-color: #24BBFF;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.4) inset, 0 -3px 0 rgba(0, 0, 0, 0.3) inset, 0 0 10px rgba(255, 255, 255, 0.4) inset, 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+a.special-btn.red:hover {
+    background-color: #F96655;
+}
+a.special-btn.green:hover {
+    background-color: #43B93F;
+}
+a.special-btn.facebook:hover {
+    background-color: #2C57A5;
+}
+a.special-btn:active {
+    background-color: #0082BD;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 -1px 0 rgba(0, 0, 0, 0.3) inset, 0 0 10px rgba(255, 255, 255, 0.2) inset, 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-top: 2px;
+    padding: 11px 0 12px;
+}
+a.special-btn.red:active {
+    background-color: #C65143;
+}
+a.special-btn.green:active {
+    background-color: #2E7F2B;
+}
+a.special-btn.facebook:active {
+    background-color: #112F61;
+    padding-left: 30px;
+}
 

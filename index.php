@@ -100,6 +100,10 @@ if (isset($_input['id'])){
 	$_SESSION['profile'] = 0;
 	$_SESSION['profile_id'] = 0;
 	$_SESSION['profile_picture'] = 0;
+	
+	$_SESSION['profile_meme_title'] = 0;
+	$_SESSION['profile_meme_image'] = 0;
+	$_SESSION['profile_meme_tagged'] = 0;
 }
 
 $site->handle_page($page); //sets default_tpl to $page/home UNLESS static

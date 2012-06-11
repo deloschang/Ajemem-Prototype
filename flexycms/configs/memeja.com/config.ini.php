@@ -134,7 +134,7 @@ initamt = "0,Initial non-recurring payment amount due immediately upon profile c
 description = "Your recurring payment description,Description about transaction."
 
 [PREMADE_CATEGORY]
-0 = "Select Category"
+13 = "Happy"
 33 = "2-panel"
 38 = "Accessories"
 1 = "Angry"

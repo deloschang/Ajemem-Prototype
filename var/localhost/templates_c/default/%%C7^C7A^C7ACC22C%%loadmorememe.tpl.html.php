@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 23:42:20
+<?php /* Smarty version 2.6.7, created on 2012-06-11 02:23:13
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 214, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 258, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 214, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 254, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 10/06/2012 23:42:20 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 11/06/2012 02:23:13 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -52,7 +52,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
      }
     
 	
-    function hover_user(id_user){
+   /* function hover_user(id_user){
     	var right_pan_url = "http://localhost/user/see_user";
     	
 		if (id_user != see_user_old) {
@@ -61,7 +61,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 				see_user_old = id_user;
 			 });
 		 }
-     }
+     }*/
 
 	function live_meme () {
 		//console.log("List "+new_ids);
@@ -233,12 +233,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 				<?php endif; ?>
 			<?php endif; ?>" align="left"/>
 			
-			<span id="user_avatar_thumb" 
-				<?php if ($_SESSION['id_user']): ?>
-					onmouseover="hover_user('<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-');"
-				<?php endif; ?>>
-				
+			<span id="user_avatar_thumb"> 				
 				<?php if ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']): ?>
 					<img src="<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']; ?>
 " class="avatar_thumb_fb" >
@@ -295,7 +290,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 
 					<a href="javascript:void(0);" onclick="get_all_replies('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ');" class="meme_reply"><img src="http://localhost/templates/images/replys.png" style="width:25px;height:25px;"/><div id="repl<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-"class="meme_reply_label"><?php if ($this->_tpl_vars['x']['tot_reply'] != 0):  echo $this->_tpl_vars['x']['tot_reply'];  endif; ?></div></a>&emsp;
+"class="meme_reply_label"><?php if ($this->_tpl_vars['x']['tot_reply'] != 0):  echo $this->_tpl_vars['x']['tot_reply'];  else: ?>0<?php endif; ?></div></a>&emsp;
 
 					<?php endif; ?> 
 				
