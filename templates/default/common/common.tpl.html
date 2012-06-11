@@ -746,8 +746,11 @@
 		<div id="profile_page">
 			<div id="profile_name" style="font-size:50px">{$smarty.session.profile}</div>
 			
-			<span><a href="javascript:void(0);" id="follow_btn" onclick="follow_user();">follow</a></span>
-		
+			{if $smarty.session.following}
+				<span><a href="javascript:void(0);" id="follow_btn" onclick="follow_user();">Unfollow</a></span>
+			{else}
+				<span><a href="javascript:void(0);" id="follow_btn" onclick="follow_user();">follow</a></span>
+			{/if}
 		
 			<div id="profile_pic">
 			{if $smarty.session.profile_picture}

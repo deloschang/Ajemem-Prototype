@@ -1,60 +1,60 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-11 19:18:17
+<?php /* Smarty version 2.6.7, created on 2012-06-11 19:34:42
          compiled from common/common.tpl.html */
 
-$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'fe7c6ea01c2788e4f3fb44aa95f84c19';
+$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '889fced4c9e66fd0d76ca16a076a6b92';
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/common.tpl.html', 565, false),)), $this); ?>
 <?php
-function _smarty_tplfunc_fe7c6ea01c2788e4f3fb44aa95f84c19_0(&$_smarty)
+function _smarty_tplfunc_889fced4c9e66fd0d76ca16a076a6b92_0(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_fe7c6ea01c2788e4f3fb44aa95f84c19_1(&$_smarty)
+function _smarty_tplfunc_889fced4c9e66fd0d76ca16a076a6b92_1(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_fe7c6ea01c2788e4f3fb44aa95f84c19_2(&$_smarty)
+function _smarty_tplfunc_889fced4c9e66fd0d76ca16a076a6b92_2(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_fe7c6ea01c2788e4f3fb44aa95f84c19_3(&$_smarty)
+function _smarty_tplfunc_889fced4c9e66fd0d76ca16a076a6b92_3(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_fe7c6ea01c2788e4f3fb44aa95f84c19_4(&$_smarty)
+function _smarty_tplfunc_889fced4c9e66fd0d76ca16a076a6b92_4(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_fe7c6ea01c2788e4f3fb44aa95f84c19_5(&$_smarty)
+function _smarty_tplfunc_889fced4c9e66fd0d76ca16a076a6b92_5(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_fe7c6ea01c2788e4f3fb44aa95f84c19_6(&$_smarty)
+function _smarty_tplfunc_889fced4c9e66fd0d76ca16a076a6b92_6(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_fe7c6ea01c2788e4f3fb44aa95f84c19_7(&$_smarty)
+function _smarty_tplfunc_889fced4c9e66fd0d76ca16a076a6b92_7(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_fe7c6ea01c2788e4f3fb44aa95f84c19_8(&$_smarty)
+function _smarty_tplfunc_889fced4c9e66fd0d76ca16a076a6b92_8(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $_smarty);
 }
