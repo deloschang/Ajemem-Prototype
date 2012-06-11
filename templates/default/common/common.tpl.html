@@ -427,6 +427,17 @@
 		$('#searches').submit();
 	}
 	
+	function follow_user() {
+		{/literal}{if $smarty.session.profile_id}{literal}
+		var profile_id = {/literal}{$smarty.session.profile_id}{literal}
+		{/literal}{/if}{literal}
+		
+		var url = "##LBL_SITE_URL##user/follow_user";
+		$.post(url, {ce:0, id:profile_id}, function(res){
+			$("#follow_btn").html('Unfollow');
+		});
+	}
+	
 </script>
 <script type="text/javascript">
 	    function fb_logout(){
@@ -734,6 +745,9 @@
 	{else} 
 		<div id="profile_page">
 			<div id="profile_name" style="font-size:50px">{$smarty.session.profile}</div>
+			
+			<span><a href="javascript:void(0);" id="follow_btn" onclick="follow_user();">follow</a></span>
+		
 		
 			<div id="profile_pic">
 			{if $smarty.session.profile_picture}

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-10 23:56:42
+<?php /* Smarty version 2.6.7, created on 2012-06-11 01:18:20
          compiled from user/memeje_friends.tpl.html */ ?>
 
-<!-- Template: user/memeje_friends.tpl.html Start 10/06/2012 23:56:42 --> 
+<!-- Template: user/memeje_friends.tpl.html Start 11/06/2012 01:18:20 --> 
  <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/filter.css"/>
 
 <div align="center">

@@ -1714,6 +1714,7 @@ class user_manager extends mod_manager {
 	    if($id)
 			$this->_mail_notification($this->_input['ids'],"send_frnd_request");
 	}
+	
 	function _mail_notification($ids,$param){
 		global $link;
 		if (is_array($ids)){
@@ -1838,6 +1839,7 @@ class user_manager extends mod_manager {
 	    $this->_input['qstart'] = $qstart;
 	    $this->_all_friends($this->_input['qstart']);
 	}
+	
 	function  _getfriends4tag(){
 	    global $link;
 		
@@ -1857,5 +1859,11 @@ class user_manager extends mod_manager {
 		
 	    print json_encode($arr);
 		exit;
+	}	
+	
+	function _follow_user(){
+		$data = $this->_input;
+		$id_user = $_SESSION['id_user'];
+		
 	}
 }

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-11 01:06:52
+<?php /* Smarty version 2.6.7, created on 2012-06-11 02:16:57
          compiled from user/right_pan.tpl.html */ ?>
 
-<!-- Template: user/right_pan.tpl.html Start 11/06/2012 01:06:52 --> 
+<!-- Template: user/right_pan.tpl.html Start 11/06/2012 02:16:57 --> 
  
 <span id="right_pan">
 
@@ -32,7 +32,7 @@
 // Find friends in Memeja to add
 function show_memeje_frnds(){
 	var url="http://localhost/index.php";
-	$.post(url,{page:"user",choice:"get_memeje_frnds",ce:0 },function(res){//alert(res);
+	$.post(url,{page:"user",choice:"get_memeje_frnds",ce:0 },function(res){
 		//show_fancybox(res);
 		 $.fancybox(res,{
 			centerOnScroll:true,
