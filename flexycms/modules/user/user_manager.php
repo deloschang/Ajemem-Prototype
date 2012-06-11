@@ -1863,7 +1863,30 @@ class user_manager extends mod_manager {
 	
 	function _follow_user(){
 		$data = $this->_input;
+		
+		$want_to_follow = $data['id'];
 		$id_user = $_SESSION['id_user'];
 		
+		// check database to see if ID is already in there 
+		$sql = get_search_sql("user"," ( FIND_IN_SET(".$want_to_follow.",memeje_friends) ) AND id_user=".$id_user);
+	    $check = getrows($sql, $err);
+		
+		fb($sql);
+		fb($check, "check");
+		
+		if (!$check){
+			fb('entered into database');
+			
+			//insert into database		
+			$table_name = "user";
+			$cond = " id_user=".$_SESSION['id_user'];
+			
+			//memeje_friends are the people you're following
+			$info['memeje_friends'] = "IF(memeje_friends='',".$want_to_follow.",CONCAT(memeje_friends,',','".$want_to_follow."'))";
+			
+			$this->obj_user->update_this($table_name,$info,$cond,1);
+		} else{
+			fb('blocked from database');
+		}
 	}
 }
