@@ -1,12 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-11 02:24:20
+<?php /* Smarty version 2.6.7, created on 2012-06-11 02:24:32
          compiled from user/home.tpl.html */
 
-$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%1F^1F9^1F96D91B%%home.tpl.html.inc'] = '8ce84a83c66354a0d4b79a3dc5bf4474';
+$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%1F^1F9^1F96D91B%%home.tpl.html.inc'] = 'bc96043e248a8643a65c14f54b7dbc0d';
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'user/home.tpl.html', 2, false),)), $this); ?>
 <?php
-function _smarty_tplfunc_8ce84a83c66354a0d4b79a3dc5bf4474_0(&$_smarty)
+function _smarty_tplfunc_bc96043e248a8643a65c14f54b7dbc0d_0(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user'), $_smarty);
 }
