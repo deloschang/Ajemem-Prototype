@@ -70,16 +70,14 @@ if (isset($_input['id'])){
 		$_SESSION['profile_id'] = $profile_data['id_user'];		
 		$_SESSION['profile_uid'] = $profile_data['uid'];
 		$_SESSION['profile_picture'] = $profile_data['fb_pic_normal'];
-		//fb('profile is activated');
-		//fb($profile_data);
 		
-		// check if following user
-		// $sql = get_search_sql("user"," ( FIND_IN_SET(".$_SESSION['profile_id'].",memeje_friends) ) AND id_user=".$_SESSION['id_user']);
-	    // $check = getrows($sql, $err);
+		// check if already following profile user
+		$sql = get_search_sql("friends"," following=".$_SESSION['profile_id']." AND id_user=".$_SESSION['id_user']);
+	    $check = getrows($sql, $err);
 		
-		// if ($check){
-			// $_SESSION['following'] = 1;
-		// }
+		if ($check){
+			$_SESSION['following'] = 1;
+		}
 		
 		// requests to view a meme
 		if ($_input['meme']){
@@ -120,7 +118,7 @@ if (isset($_input['id'])){
 	$_SESSION['profile_meme_image'] = 0;
 	$_SESSION['profile_meme_tagged'] = 0;
 	
-	// $_SESSION['following'] = 0;
+	$_SESSION['following'] = 0;
 }
 
 
