@@ -1866,21 +1866,13 @@ class user_manager extends mod_manager {
 		
 		$info['following'] = $data['id'];
 		$info['id_user'] = $_SESSION['id_user'];
-		
-		// check database to see if ID is already in there 
-		//$sql = get_search_sql("user"," ( FIND_IN_SET(".$want_to_follow.",memeje_friends) ) AND id_user=".$id_user);
-	    //$check = getrows($sql, $err);
-		
-		//fb($sql);
-		//fb($check, "check");
-		
-		//if (!$check){
-		//fb('entered into database');
-		
+				
 		if ($data['status'] == 'follow'){			
 			$id = $this->obj_user->insert_all("friends",$info);
 		} elseif ($data['status'] == 'unfollow'){
-			fb('unfollow this user');
+			$sql = "DELETE FROM memeje__friends WHERE id_user = ".$info['id_user']." AND following = ".$info['following'];
+
+			execute($sql,$err);
 		}
 	}
 }
