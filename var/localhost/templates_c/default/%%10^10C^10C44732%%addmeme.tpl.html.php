@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-11 02:11:36
          compiled from meme/addmeme.tpl.html */ ?>
 
 <!-- Template: meme/addmeme.tpl.html Start 11/06/2012 02:11:36 --> 
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-10 23:29:47
+         compiled from meme/addmeme.tpl.html */ ?>
+
+<!-- Template: meme/addmeme.tpl.html Start 10/06/2012 23:29:47 --> 
+>>>>>>> 5bf977c9a1fccb50ac9b1a4eadb4749659f5d673
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor

@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-11 00:58:13
          compiled from user/right_pan.tpl.html */ ?>
 
 <!-- Template: user/right_pan.tpl.html Start 11/06/2012 00:58:13 --> 
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-11 02:16:57
+         compiled from user/right_pan.tpl.html */ ?>
+
+<!-- Template: user/right_pan.tpl.html Start 11/06/2012 02:16:57 --> 
+>>>>>>> 5bf977c9a1fccb50ac9b1a4eadb4749659f5d673
  
 <span id="right_pan">
 
@@ -13,10 +20,13 @@
 <?php endif; ?>
 
 <?php if ($_SESSION['id_user']): ?>
-            
+    <a href="javascript:void(0);" onclick="show_memeje_frnds();">Find friends in Memeja to add</a><br />
+    <div id="show_profile_info" style="position: fixed;background-color:white;border: 1px solid #CAD8F3;"></div>
+    
     <div>
 		<br>
-				</br>
+		<a href="http://localhost/manage/suggestion">Suggestions</a>
+		</br>
 	</div>
 	    
 	
@@ -29,7 +39,7 @@
 // Find friends in Memeja to add
 function show_memeje_frnds(){
 	var url="http://localhost/index.php";
-	$.post(url,{page:"user",choice:"get_memeje_frnds",ce:0 },function(res){//alert(res);
+	$.post(url,{page:"user",choice:"get_memeje_frnds",ce:0 },function(res){
 		//show_fancybox(res);
 		 $.fancybox(res,{
 			centerOnScroll:true,

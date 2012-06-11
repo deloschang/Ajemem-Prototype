@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-11 02:23:13
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-11 02:16:57
+>>>>>>> 5bf977c9a1fccb50ac9b1a4eadb4749659f5d673
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -20,7 +24,6 @@
 	var global_page_no = 1;
 	var backup_page_no;
 	
-	var see_user_old = 0;
 	var live_meme_wait = 15000;
 	
 	var meme_timer;
@@ -412,6 +415,16 @@
 		     }); 
 	     }
      }
+	
+	function diff_feed(ext, ajax){
+		var url = "http://localhost/meme/meme_list";
+		$.post(url,{cat:\'main_feed\',ce:0,ext:ext }, function(res){
+			if(res != "")
+				$(\'#all_memes\').html(res);
+		 });
+	 }
+	
+	
     $(document).ready(function(){
     	// Search function
 		//$("#muname").autocomplete(\'http://localhost/index.php?page=meme&choice=auto_comp&ce=0\',{
@@ -440,26 +453,27 @@
 <input type="hidden" name="rand_id_memes" id="rand_id_memes" value=''/>
 <input type="hidden" name="chk_me" id="chk_me" value=''/>
 <input type="hidden" name="last_id_meme" id="last_id_meme" value=''/>
-<!--<?php if ($_SESSION['id_user']): ?>-->
-<!--<div class="fltlft" id="tab">-->
-<!--	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>unselected<?php else: ?>selected<?php endif; ?>">-->
-<!--		<a href="http://localhost/meme/meme_list/cat/<?php echo $this->_tpl_vars['sm']['cat']; ?>
-" >MAIN LIVE FEED</a>-->
-<!--	</div>-->
-<!--	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>selected<?php else: ?>unselected<?php endif; ?>">-->
-<!--		<a href="http://localhost/meme/meme_list/cat/<?php echo $this->_tpl_vars['sm']['cat']; ?>
-/ext/1" >NETWORK FEED</a>-->
-<!--	</div>-->
-<!--</div>-->
-<!--<?php endif; ?>-->
 
-	
-	
-<br><br>
+<?php if ($_SESSION['id_user'] || $_SESSION['profile']): ?>
+<div>
+	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>unselected<?php else: ?>selected<?php endif; ?>">
+		<a href="javascript:void(0);" onclick="diff_feed(0);">WORLD FEED</a>
+	</div>
+	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>selected<?php else: ?>unselected<?php endif; ?>">
+		<a href="javascript:void(0);" onclick="diff_feed(1);">FRIENDS FEED</a>
+	</div>
+</div>
 
+<<<<<<< HEAD
 <?php if ($_SESSION['id_user'] || $_SESSION['profile']): ?>
 
 <div id="all_memes">
+=======
+<!-- Muaz remove this later when styling -->
+<br><br><br><br><br>
+
+<div id="all_memes">	
+>>>>>>> 5bf977c9a1fccb50ac9b1a4eadb4749659f5d673
     <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmorememe.tpl.html", 'smarty_include_vars' => array()));

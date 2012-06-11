@@ -44,18 +44,6 @@
 	function common_fun_extended(id,color_code){
 	    $("#meme"+id).effect("highlight", {color:color_code}, 2600);
     }
-    
-	
-   /* function hover_user(id_user){
-    	var right_pan_url = "##LBL_SITE_URL##user/see_user";
-    	
-		if (id_user != see_user_old) {
-			$.post(right_pan_url,{id_user:id_user,ce:0}, function(res){
-				$("#right_pan").html(res);
-				see_user_old = id_user;
-			});
-		}
-    }*/
 
 	function live_meme () {
 		//console.log("List "+new_ids);
@@ -219,6 +207,7 @@
 			{/if}" align="left"/>
 			
 			<span id="user_avatar_thumb"> 				
+
 				{if $sm.uinfo[$x.id_user].fb_pic_square}
 					<img src="{$sm.uinfo[$x.id_user].fb_pic_square}" class="avatar_thumb_fb" >
 				{elseif $sm.uinfo[$x.id_user].avatar}

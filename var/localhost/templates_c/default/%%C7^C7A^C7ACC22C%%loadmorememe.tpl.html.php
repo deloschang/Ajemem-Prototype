@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-11 02:23:13
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 214, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 254, false),)), $this); ?>
 
 <!-- Template: meme/loadmorememe.tpl.html Start 11/06/2012 02:23:13 --> 
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-11 02:16:57
+         compiled from meme/loadmorememe.tpl.html */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 202, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 243, false),)), $this); ?>
+
+<!-- Template: meme/loadmorememe.tpl.html Start 11/06/2012 02:16:57 --> 
+>>>>>>> 5bf977c9a1fccb50ac9b1a4eadb4749659f5d673
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -50,6 +59,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	function common_fun_extended(id,color_code){
 	    $("#meme"+id).effect("highlight", {color:color_code }, 2600);
      }
+<<<<<<< HEAD
     
 	
    /* function hover_user(id_user){
@@ -62,6 +72,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			 });
 		 }
      }*/
+=======
+>>>>>>> 5bf977c9a1fccb50ac9b1a4eadb4749659f5d673
 
 	function live_meme () {
 		//console.log("List "+new_ids);
@@ -233,7 +245,12 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 				<?php endif; ?>
 			<?php endif; ?>" align="left"/>
 			
+<<<<<<< HEAD
 			<span id="user_avatar_thumb"> 				
+=======
+			<span id="user_avatar_thumb">
+				
+>>>>>>> 5bf977c9a1fccb50ac9b1a4eadb4749659f5d673
 				<?php if ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']): ?>
 					<img src="<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']; ?>
 " class="avatar_thumb_fb" >

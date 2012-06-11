@@ -19,7 +19,6 @@
 	var global_page_no = 1;
 	var backup_page_no;
 	
-	var see_user_old = 0;
 	var live_meme_wait = 15000;
 	
 	var meme_timer;
@@ -411,6 +410,16 @@
 		    }); 
 	    }
     }
+	
+	function diff_feed(ext, ajax){
+		var url = "##LBL_SITE_URL##meme/meme_list";
+		$.post(url,{cat:'main_feed',ce:0,ext:ext}, function(res){
+			if(res != "")
+				$('#all_memes').html(res);
+		});
+	}
+	
+	
     $(document).ready(function(){
     	// Search function
 		//$("#muname").autocomplete('##LBL_SITE_URL##index.php?page=meme&choice=auto_comp&ce=0',{
@@ -438,24 +447,21 @@
 <input type="hidden" name="rand_id_memes" id="rand_id_memes" value=''/>
 <input type="hidden" name="chk_me" id="chk_me" value=''/>
 <input type="hidden" name="last_id_meme" id="last_id_meme" value=''/>
-<!--{if $smarty.session.id_user}-->
-<!--<div class="fltlft" id="tab">-->
-<!--	<div class="fltlft {if $smarty.request.ext=='1'}unselected{else}selected{/if}">-->
-<!--		<a href="##LBL_SITE_URL##meme/meme_list/cat/{$sm.cat}" >MAIN LIVE FEED</a>-->
-<!--	</div>-->
-<!--	<div class="fltlft {if $smarty.request.ext=='1'}selected{else}unselected{/if}">-->
-<!--		<a href="##LBL_SITE_URL##meme/meme_list/cat/{$sm.cat}/ext/1" >NETWORK FEED</a>-->
-<!--	</div>-->
-<!--</div>-->
-<!--{/if}-->
-
-	
-	
-<br><br>
 
 {if $smarty.session.id_user || $smarty.session.profile}
+<div>
+	<div class="fltlft {if $smarty.request.ext=='1'}unselected{else}selected{/if}">
+		<a href="javascript:void(0);" onclick="diff_feed(0);">WORLD FEED</a>
+	</div>
+	<div class="fltlft {if $smarty.request.ext=='1'}selected{else}unselected{/if}">
+		<a href="javascript:void(0);" onclick="diff_feed(1);">FRIENDS FEED</a>
+	</div>
+</div>
+
+
 
 <div id="all_memes">
+
     {if $sm.res_meme} 
 	{include file="meme/loadmorememe"}
     {else}
