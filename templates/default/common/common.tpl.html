@@ -435,9 +435,9 @@
 		
 		$.post(url, {ce:0, id:profile_id, status:status}, function(res){
 			if (status == 'follow') {
-				$("#follow_btn").html('Unfollow');
-			} else {
-				$("#follow_btn").html('Follow');
+				$("#follow_me").html('<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'unfollow\');">Unfollow</a>');
+			} else if (status == 'unfollow') {
+				$("#follow_me").html('<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'follow\');">Follow</a>');
 			}
 		});
 	}
@@ -751,9 +751,10 @@
 			<div id="profile_name" style="font-size:50px">{$smarty.session.profile}</div>
 			
 			{if $smarty.session.following}
-				<span><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('unfollow');">Unfollow</a></span>
+				<!-- Muaz, follow_me is called in jQuery, make sure not to change it -->
+				<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('unfollow');">Unfollow</a></span>
 			{else}
-				<span><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('follow');">follow</a></span>
+				<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('follow');">follow</a></span>
 			{/if}
 		
 			<div id="profile_pic">

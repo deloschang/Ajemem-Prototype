@@ -1869,10 +1869,12 @@ class user_manager extends mod_manager {
 				
 		if ($data['status'] == 'follow'){			
 			$id = $this->obj_user->insert_all("friends",$info);
+			fb('attachment inserted');
 		} elseif ($data['status'] == 'unfollow'){
 			$sql = "DELETE FROM memeje__friends WHERE id_user = ".$info['id_user']." AND following = ".$info['following'];
 
 			execute($sql,$err);
+			fb('attachment broken');
 		}
 	}
 }
