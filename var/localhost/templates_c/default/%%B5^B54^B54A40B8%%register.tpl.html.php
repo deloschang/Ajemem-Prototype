@@ -1,17 +1,25 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-12 03:56:24
 =======
 <?php /* Smarty version 2.6.7, created on 2012-06-12 03:07:18
 >>>>>>> a5133832599c541bdf2df7acaece67cc8cdc0116
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-12 20:00:04
+>>>>>>> 7b5f054f749573e2c4b326012bfdeddbaf8f1b61
          compiled from user/register.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 275, false),array('function', 'html_select_date', 'user/register.tpl.html', 290, false),)), $this); ?>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- Template: user/register.tpl.html Start 12/06/2012 03:56:24 --> 
 =======
 <!-- Template: user/register.tpl.html Start 12/06/2012 03:07:18 --> 
 >>>>>>> a5133832599c541bdf2df7acaece67cc8cdc0116
+=======
+<!-- Template: user/register.tpl.html Start 12/06/2012 20:00:04 --> 
+>>>>>>> 7b5f054f749573e2c4b326012bfdeddbaf8f1b61
  <?php echo '
 	<script type="text/javascript" src="colorBckg.js"></script>
 	<script type="text/javascript">

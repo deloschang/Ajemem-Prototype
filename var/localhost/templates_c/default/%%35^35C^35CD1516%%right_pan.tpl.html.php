@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-11 00:58:13
          compiled from user/right_pan.tpl.html */ ?>
 
@@ -17,6 +18,12 @@
 
 <!-- Template: user/right_pan.tpl.html Start 12/06/2012 03:05:08 --> 
 >>>>>>> a5133832599c541bdf2df7acaece67cc8cdc0116
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-12 20:00:15
+         compiled from user/right_pan.tpl.html */ ?>
+
+<!-- Template: user/right_pan.tpl.html Start 12/06/2012 20:00:15 --> 
+>>>>>>> 7b5f054f749573e2c4b326012bfdeddbaf8f1b61
  
 <span id="right_pan">
 =======
