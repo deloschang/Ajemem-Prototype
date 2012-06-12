@@ -71,6 +71,19 @@ if (isset($_input['id'])){
 		$_SESSION['profile_uid'] = $profile_data['uid'];
 		$_SESSION['profile_picture'] = $profile_data['fb_pic_normal'];
 		
+		// count followers
+		$page_sql="SELECT COUNT(*) FROM memeje__friends WHERE following=".$profile_data['id_user'];
+	    $page_res=mysqli_query($link,$page_sql);
+		
+		if ($page_res){
+			$page_row = $page_res->fetch_row();
+			$_SESSION['profile_follower_count'] = $page_row[0];
+		} else {
+			$_SESSION['profile_follower_count'] = '0';
+		}
+		
+		
+		
 		if ($_SESSION['profile_id'] != $_SESSION['id_user']){
 			// check if already following profile user
 			$sql = get_search_sql("friends"," following=".$_SESSION['profile_id']." AND id_user=".$_SESSION['id_user']);
