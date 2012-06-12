@@ -1042,8 +1042,10 @@ moz-border-radius: 10px;
 	}
 	
 	#my_pics {
-		position:relative;
-		top:-100px;
+		position:absolute;
+		top:150px;
+		width:700px;
+		height:400px;
 	}
 	
 	#my_favorites {
@@ -1883,7 +1885,7 @@ a.special-btn.facebook:active {
 }
 .content {
   position: absolute;
-  top: 28px;
+  top: 22px;
   left: 0;
   background: white;
   right: 0;
