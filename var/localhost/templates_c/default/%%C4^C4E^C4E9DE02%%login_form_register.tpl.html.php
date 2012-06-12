@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-12 03:58:58
+<?php /* Smarty version 2.6.7, created on 2012-06-12 04:36:20
          compiled from user/login_form_register.tpl.html */ ?>
 
-<!-- Template: user/login_form_register.tpl.html Start 12/06/2012 03:58:58 --> 
+<!-- Template: user/login_form_register.tpl.html Start 12/06/2012 04:36:20 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
