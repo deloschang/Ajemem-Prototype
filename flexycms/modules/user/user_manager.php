@@ -263,7 +263,7 @@ class user_manager extends mod_manager {
                             if($_SESSION['id_admin']){
                                 redirect(LBL_ADMIN_SITE_URL);
                             }else{
-                                redirect(LBL_SITE_URL."meme/meme_list/cat/main_feed");
+                                redirect(LBL_SITE_URL);
                             }
                         }
                         else
@@ -605,7 +605,7 @@ class user_manager extends mod_manager {
           $_SESSION['username'] = $name;
           ##### Redirect user out #####
           // Insert static landing page here? //
-          redirect(LBL_SITE_URL . "meme/meme_list/cat/main_feed");
+          redirect(LBL_SITE_URL);
       }
       else{
           $_SESSION['raise_message']['global']=  "You have already confirmed.<br/>You can login now.";
@@ -1416,7 +1416,7 @@ class user_manager extends mod_manager {
 
                 ##### Redirect user out #####
                 // Insert static landing page here? //
-                redirect(LBL_SITE_URL . "meme/meme_list/cat/main_feed");
+                redirect(LBL_SITE_URL);
             }
         }
     }

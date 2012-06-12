@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/mainpg.css"/>
 
-		<div id= "user_name">{$smarty.session.username|capitalize}</div>
+		<div id= "user_name">{$smarty.session.fname|capitalize} {$smarty.session.lname|capitalize}</div>
 		{*User Rank + XP*}
 			
 		<!--<div id="user_ranking_info">

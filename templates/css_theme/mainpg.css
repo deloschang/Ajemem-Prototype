@@ -67,18 +67,43 @@
 /*++++++++++++++++++++++++ NLU Design ++++++++++++++++++*/
 
 	#nlu_login{
-		float:left;
-		width: 250px;
-		margin:0 0 0 20px;
-		
 		background:#FFF;
+		float:left;
+		margin:0 0 0 20px;
+		position:relative;
+		top:60px;
+		width: 250px;
 	    moz-border-radius: 12px;
 	    webkit-border-radius: 12px;
 	    khtml-border-radius: 12px;
 	    border-radius: 12px;
-		
 		box-shadow: 0 0 4px 0 #555555;
 	}
+	
+	#nlu_login_register{
+		background:#FFF;
+		float:left;
+		margin:20px 0 0 20px;
+		position:relative;
+		top:60px;
+		width:250px;
+	    moz-border-radius: 12px;
+	    webkit-border-radius: 12px;
+	    khtml-border-radius: 12px;
+	    border-radius: 12px;	
+		box-shadow: 0 0 4px 0 #555555;
+	}
+	
+	#nlu_contained {
+		position: relative;
+		top:65px;
+		left:-100px;
+		moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;	
+	}
+	
 	
 	#registration {
 		position:relative;
@@ -88,20 +113,6 @@
 	#forgot_pwd{
 		padding:10px 0 12px 0;
 		margin: 10px 0 0 30px;
-	}
-	
-	#nlu_login_register{
-		float:left;
-		width:250px;
-		margin:20px 0 0 20px;
-		
-		background:#FFF;
-	    moz-border-radius: 12px;
-	    webkit-border-radius: 12px;
-	    khtml-border-radius: 12px;
-	    border-radius: 12px;
-		
-		box-shadow: 0 0 4px 0 #555555;
 	}
 	
 	#signup{
@@ -603,8 +614,7 @@
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
-	    border-radius: 20px;
-		
+	    border-radius: 20px;	
 	}
 
 /* Main Profile Page */
