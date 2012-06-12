@@ -1206,7 +1206,8 @@ function saveindisk(csave)
             }
 			else
 			{
-				alert("Please set all images/textboxes to the canvas (second button above the image)");
+			document.ques_ans.submit();
+				//alert("Please set all images/textboxes to the canvas (second button above the image)");
 			}
         },
         error: function(xhr, errorMessage, thrownError) {

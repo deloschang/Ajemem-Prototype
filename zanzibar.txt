@@ -322,3 +322,19 @@ We sincerly hope you have an enjoyable experience here at Memeja. Feel free to l
 <!-- Template: user/account_activate.tpl.html End --> 
 GENDER is: UNDEFINED
 >>>>>>> test2
+GENDER is: UNDEFINED
+JAMESBOND2: sql:"INSERT INTO memeje__user (first_name,last_name,username,email,password,gender,dob,random_num,add_date,ip) VALUES('hello','no','shloop','muazs786@gmail.com','muazmuaz1','M','1999-05-13','55bf70422dcfcd7cc7507f9fe0299b61',NOW(),'::1')"
+DAKIYA DAAK LAAYA - Sending e-mail to :muazs786@gmail.com; LBL_SITE_URL :http://localhost/
+JAMES-BOND-2.1 - mail() -- to:muazs786@gmail.com; from:karanchitnis92@gmail.com; subject:Account Activation; body:
+<!-- Template: user/account_activate.tpl.html Start 12/06/2012 03:54:32 --> 
+ <b>Dear hello,</b><br /><br />
+Thank you for making an account for <b>http://localhost/</b>!<br /><br />
+<a href="http://localhost/user/check_user/confirm/55bf70422dcfcd7cc7507f9fe0299b61">Please click here</a> to activate your account. <br /><br />
+
+<i>If the above link does not work, you can copy and paste the link below into your web browser (do not add extra spaces).</i>
+<br /><br />
+<a href="http://localhost/user/check_user/confirm/55bf70422dcfcd7cc7507f9fe0299b61">http://localhost/user/check_user/confirm/55bf70422dcfcd7cc7507f9fe0299b61</a><br /><br />-->
+We sincerly hope you have an enjoyable experience here at Memeja. Feel free to look at our live feed of memes, rate/comment on the images you see, increase your rank in the leaderboard, and even create your own meme!
+
+- Memeja Administrators
+<!-- Template: user/account_activate.tpl.html End --> 

@@ -1,24 +1,13 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-12 02:02:19
+<?php /* Smarty version 2.6.7, created on 2012-06-12 04:04:42
          compiled from meme/addmeme.tpl.html */ ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 12/06/2012 02:02:19 --> 
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-11 03:39:50
-         compiled from meme/addmeme.tpl.html */ ?>
-
-<!-- Template: meme/addmeme.tpl.html Start 11/06/2012 03:39:50 --> 
->>>>>>> test2
+<!-- Template: meme/addmeme.tpl.html Start 12/06/2012 04:04:42 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
 -->
-<<<<<<< HEAD
 
 <div id="showmodal" class="showmodal"><em><strong><center>ENTERING MEMEJA DOJO</center></strong></em></div>
-=======
-<div id="showmodal" class="showmodal"><em><strong><center>ENTER MEMEJA DOJO</center></strong></em></div>
->>>>>>> test2
 
 <script type="text/javascript">
     var last_comic="http://localhost/spad/workspace/<?php echo $_SESSION['id_user']; ?>
@@ -37,7 +26,8 @@ _img.png";
 <link rel="stylesheet" href="http://localhost/spad/css/spad.css" type="text/css"/>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/multiautocomplete.css"/>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
 <script type="text/javascript">
 
 	var mycanvas, cntx;
@@ -46,10 +36,7 @@ _img.png";
 	function title_focus() {
         b_titlefocus = true;
      }
-<<<<<<< HEAD
-
-=======
->>>>>>> test2
+	
     function title_blur() { b_titlefocus = false;  }
     
     function cancel_meme(){
@@ -86,30 +73,17 @@ _img.png";
 
     function validate_me(){
         obj=document.getElementById(\'ques_ans\');
-<<<<<<< HEAD
         if($(obj.title).val()==\'\') {
-=======
-        if($(obj.title).val()==\'\')
-		{
->>>>>>> test2
             alert("Enter The Title");
             $(obj.title).focus();
             return false;
          }
-<<<<<<< HEAD
 		
 		if($(obj.title).val().length>80) {
             alert("Enter a shorter title");
             return false;
          }
-		
-=======
-		if($(obj.title).val().length>80)
-		{
-            alert("Enter a shorter title");
-            return false;
-         }
->>>>>>> test2
+
         if($(obj.see_fr).val()==""){
             alert("Choose Who Can See?");
             $(obj.see_fr).focus();
@@ -126,30 +100,6 @@ _img.png";
             return false;
          } else {
         
-<<<<<<< HEAD
-			if(!$("#tag").val())
-			{
-				/* Godzilla: Uncomment and comment out var conf=true once the tagging system is implemented. 
-					Allows users to submit memes without choosing if they have to tag a friend or not. 
-				*/
-				
-				//var conf=confirm("Are you sure you don\'t want to tag your friends?");
-				var conf=true;
-				if(conf)
-				{
-					$(window).unbind();
-					submit_memeje();
-				 }
-				else
-				{
-					return false;
-				 }
-			 }
-			else{
-				$(window).unbind();
-				submit_memeje();
-			 }
-=======
 		if(!$("#tag").val())
 		{
 			/*  Uncomment and comment out var conf=true once the tagging system is implemented. 
@@ -172,7 +122,6 @@ _img.png";
 			$(window).unbind();
 			submit_memeje();
 		 }
->>>>>>> test2
          }
      }
 	$(window).bind(\'beforeunload\', function() {
@@ -198,25 +147,13 @@ _img.png";
         <input type="hidden" name="meme[duel]" id="duel" value="<?php echo $this->_tpl_vars['sm']['duel']; ?>
 "/>
         <?php endif; ?>
-<<<<<<< HEAD
         
 			<div id="canvas">
 				<?php $_smarty_tpl_vars = $this->_tpl_vars;
-=======
-        <div id="memetitle" class="nohighlight">
-            <span><b>Title:</b></span>
-            <span>
-                <input type="text" name="meme[title]" id="title" size="50" onfocus="title_focus()" onblur="title_blur()"/>
-            </span>
-        </div><br/>
-        <div id="edtr"class="nohighlight">
-	<?php $_smarty_tpl_vars = $this->_tpl_vars;
->>>>>>> test2
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/meme_editor.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-<<<<<<< HEAD
 			</div>			
 		
 		<div id="shares">
@@ -224,23 +161,6 @@ unset($_smarty_tpl_vars);
 			 <select id="tag" multiple="multiple" style="display: none;" name="tagged_user[]"></select>
 		</div>
 		
-=======
-
-	    <table>
-			<tr>
-                <td valign='top'><b>Tag your friends:</b></td>
-                <td><select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select></td>
-            </tr>
-		</table>
-		
-        <div id="submitter" ><input type="button" value="Submit" onclick="validate_me();"/></div>
-        <script language = "Javascript">
-		
-		</script>
-		
-		<div style="position:fixed;bottom:35px; left:800px"><input type="checkbox" name="memejimark" value="" onclick="insertMark();"/> Watermark</div>
-		</div>
->>>>>>> test2
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>
 _draw.png"/>
 		

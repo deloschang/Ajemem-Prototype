@@ -74,7 +74,6 @@ class meme{
 			$final_val=@implode(",",$to_b_add);
 		}
 		$sql_upd="UPDATE ".TABLE_PREFIX.$tbl." SET ".$fld."='".$final_val."' WHERE ".$cond." LIMIT 1";
-		fb('UPDATE_DIFF_DATA REACHED'.$sql_upd);
 		execute($sql_upd,$err);
 		$res = $err?$err:1;
 		return $res;

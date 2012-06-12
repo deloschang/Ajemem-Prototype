@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-11 02:52:20
+<?php /* Smarty version 2.6.7, created on 2012-06-12 03:58:58
          compiled from user/login_form_register.tpl.html */ ?>
 
-<!-- Template: user/login_form_register.tpl.html Start 11/06/2012 02:52:20 --> 
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-11 02:28:11
-         compiled from user/login_form_register.tpl.html */ ?>
-
-<!-- Template: user/login_form_register.tpl.html Start 11/06/2012 02:28:11 --> 
->>>>>>> test2
+<!-- Template: user/login_form_register.tpl.html Start 12/06/2012 03:58:58 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -66,13 +59,10 @@
 <div> (1) Because Facebook helps us link <strong>you + your stories</strong> with your friends</div>
 <div style="padding-top:5px;"> (2) Because we <strong>promise</strong> <span id="promise"><a href="javascript:void(0);" onclick="lol_promise();">(not plomise!)</a></span> we'll never post without your permission.</div>
 
-<<<<<<< HEAD
-=======
 <br> 
 		<!-- send a mail from the "Suggestions" hyperlink -->
 		<span style="font-size:10px;"> <a href="mailto:karanchitnis92@gmail.com?Subject=Memeja%20suggestion">Suggestions</a></span>
 </br>
->>>>>>> test2
 </div>
 
 
@@ -85,21 +75,14 @@
 </div>
 
 <!-- Under Construction 
-<<<<<<< HEAD
-<div id="signup_alt" style="padding-top:10px"><a href="javascript:void(0);" onclick="basic_login();">I don't have a Facebook account.</a></div>
--->
-=======
--->
-<div id="signup_alt" style="padding-top:10px"><a href="javascript:void(0);" onclick="basic_login();">Sign up without Facebook</a></div>
->>>>>>> test2
 
-<div id="signup_alt_form" style="display:none"><?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "user/register.tpl.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?></div>
+
+<div id="signup_alt" style="padding-top:10px"><a href="javascript:void(0);" onclick="basic_login();">Sign up without Facebook</a></div>
+
+
+<div id="signup_alt_form" style="display:none">include file="user/register"</div>
 </div>
 
-<div class="clear"></div>
+<div class="clear"></div>-->
 
 <!-- Template: user/login_form_register.tpl.html End --> 
