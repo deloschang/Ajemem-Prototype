@@ -50,6 +50,8 @@
 	var chc ="{/literal}{$chc}{literal}";
 	var idu="{/literal}{$smarty.session.id_user}{literal}";
 	
+	var follow_count = parseInt({/literal}{$smarty.session.profile_follower_count}{literal});
+	
 		// Variables for XP updating
 		var curr_xp = {/literal}{if $smarty.session.exp_point}{$smarty.session.exp_point}{else}0{/if}{literal};
 		var xp_to_level = {/literal}{if $smarty.session.xp_to_level}{$smarty.session.xp_to_level}{else}0{/if}{literal};
@@ -425,14 +427,24 @@
 		$('#searches').submit();
 	}
 	
-	function follow_user() {
+	function follow_user(status) {		
 		{/literal}{if $smarty.session.profile_id}{literal}
 		var profile_id = {/literal}{$smarty.session.profile_id}{literal}
 		{/literal}{/if}{literal}
-		
 		var url = "##LBL_SITE_URL##user/follow_user";
-		$.post(url, {ce:0, id:profile_id}, function(res){
-			$("#follow_btn").html('Unfollow');
+		
+		$.post(url, {ce:0, id:profile_id, status:status}, function(res){
+			if (status == 'follow') {
+				$("#follow_me").html('<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'unfollow\');">Unfollow</a>');
+				
+				follow_count += 1;				
+			} else if (status == 'unfollow') {
+				$("#follow_me").html('<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'follow\');">Follow</a>');
+				
+				follow_count -= 1;
+			}
+			
+			$('#follower_count').html(follow_count+' followers');
 		});
 	}
 	
@@ -540,6 +552,9 @@
 	</div>
 	
 	<div id="profile_page">
+		<div id="profile_name" style="font-size:50px">{$smarty.session.profile}</div>
+		
+		<div id="follower_count">{$smarty.session.profile_follower_count} followers</div>
 	
 		<div id="profile_pic">
 		{if $smarty.session.profile_picture}
@@ -663,7 +678,12 @@
 		</div>
 
 	{if !$smarty.session.profile}
+		<!-- view home page -->
 		<div id="profile_page">
+			<div id="profile_name" style="font-size:50px">{$smarty.session.username}</div>
+			
+			<div id="follower_count">{$smarty.session.profile_follower_count} followers</div>
+			
 			<div id="profile_pic">
 			{if $smarty.session.fb_pic_normal}
 				<img src="{$smarty.session.fb_pic_normal}"class="profile_pic"/>
@@ -705,9 +725,17 @@
 			
 		</div>
 	{else} 
-
-		<div id="profile_page">			
-			<span><a href="javascript:void(0);" id="follow_btn" onclick="follow_user();">follow</a></span>
+		<div id="profile_page">
+			<div id="profile_name" style="font-size:50px">{$smarty.session.profile}</div>
+			
+			<div id="follower_count">{$smarty.session.profile_follower_count} followers</div>
+			
+			{if $smarty.session.following == 'y'}
+				<!-- Muaz, follow_me is called in jQuery, be sure not to change it -->
+				<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('unfollow');">Unfollow</a></span>
+			{elseif $smarty.session.following == 'n'}
+				<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('follow');">follow</a></span>
+			{/if}
 		
 			<div id="profile_pic">
 			{if $smarty.session.profile_picture}

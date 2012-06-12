@@ -1899,7 +1899,16 @@ class user_manager extends mod_manager {
 	
 	function _follow_user(){
 		$data = $this->_input;
-		$id_user = $_SESSION['id_user'];
 		
+		$info['following'] = $data['id'];
+		$info['id_user'] = $_SESSION['id_user'];
+				
+		if ($data['status'] == 'follow'){			
+			$this->obj_user->insert_all("friends",$info);
+		} elseif ($data['status'] == 'unfollow'){
+			$sql = "DELETE FROM memeje__friends WHERE id_user = ".$info['id_user']." AND following = ".$info['following'];
+
+			execute($sql,$err);;
+		}
 	}
 }

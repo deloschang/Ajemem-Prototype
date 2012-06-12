@@ -62,13 +62,39 @@ if (isset($_input['id'])){
 	$profile_data = $temp_data[0];
 	
 	if ($profile_data['id_user']){
-		$_SESSION['profile'] = $_input['id'];
-		$_SESSION['profile_id'] = $profile_data['id_user'];
+		$_SESSION['profile'] = $_input['id'];						//username
+		$_SESSION['profile_id'] = $profile_data['id_user'];		
 		$_SESSION['profile_uid'] = $profile_data['uid'];
 		$_SESSION['profile_picture'] = $profile_data['fb_pic_normal'];
-		//fb('profile is activated');
-		//fb($profile_data);
 		
+		// count followers
+		$page_sql="SELECT COUNT(*) FROM memeje__friends WHERE following=".$profile_data['id_user'];
+	    $page_res=mysqli_query($link,$page_sql);
+		
+		if ($page_res){
+			$page_row = $page_res->fetch_row();
+			$_SESSION['profile_follower_count'] = $page_row[0];
+		} else {
+			$_SESSION['profile_follower_count'] = '0';
+		}
+		
+		
+		
+		if ($_SESSION['id_user'] && $_SESSION['profile_id'] != $_SESSION['id_user']){
+			// check if already following profile user
+			$sql = get_search_sql("friends"," following=".$_SESSION['profile_id']." AND id_user=".$_SESSION['id_user']);
+			$check = getrows($sql, $err);
+			
+			if ($check){
+				$_SESSION['following'] = 'y';
+			} else {
+				$_SESSION['following'] = 'n';
+			}
+		} else {
+			$_SESSION['following'] = 'self'; 
+		}
+		
+		// requests to view a meme
 		if ($_input['meme']){
 			$sql = get_search_sql("meme","id_meme = '".$_input['meme']."' LIMIT 1");
 			$temp_meme = getrows($sql,$err);
@@ -90,7 +116,6 @@ if (isset($_input['id'])){
 					$_SESSION['profile_meme_tagged'] = $tagged_data;
 				}
 			} else{
-				fb('profile meme not found');
 			}
 		}
 	} else { 
@@ -106,6 +131,8 @@ if (isset($_input['id'])){
 	$_SESSION['profile_meme_title'] = 0;
 	$_SESSION['profile_meme_image'] = 0;
 	$_SESSION['profile_meme_tagged'] = 0;
+	
+	$_SESSION['following'] = 0;
 }
 
 $site->handle_page($page); //sets default_tpl to $page/home UNLESS static
