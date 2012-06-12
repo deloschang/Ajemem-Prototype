@@ -84,7 +84,7 @@ if (isset($_input['id'])){
 		
 		
 		
-		if ($_SESSION['profile_id'] != $_SESSION['id_user']){
+		if ($_SESSION['id_user'] && $_SESSION['profile_id'] != $_SESSION['id_user']){
 			// check if already following profile user
 			$sql = get_search_sql("friends"," following=".$_SESSION['profile_id']." AND id_user=".$_SESSION['id_user']);
 			$check = getrows($sql, $err);

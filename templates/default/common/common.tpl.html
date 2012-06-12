@@ -544,6 +544,8 @@
 	
 	<div id="profile_page">
 		<div id="profile_name" style="font-size:50px">{$smarty.session.profile}</div>
+		
+		<div id="follower_count">{$smarty.session.profile_follower_count} followers</div>
 	
 		<div id="profile_pic">
 		{if $smarty.session.profile_picture}
@@ -708,9 +710,12 @@
 
 	
 	{if !$smarty.session.profile}
+		<!-- view home page -->
 		<div id="profile_page">
 			<div id="profile_name" style="font-size:50px">{$smarty.session.username}</div>
-		
+			
+			<div id="follower_count">{$smarty.session.profile_follower_count} followers</div>
+			
 			<div id="profile_pic">
 			{if $smarty.session.fb_pic_normal}
 				<img src="{$smarty.session.fb_pic_normal}"class="profile_pic"/>
