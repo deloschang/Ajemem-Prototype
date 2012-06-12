@@ -635,7 +635,7 @@
 		left:930px;
 		padding:10px;
 		position:absolute;
-		top:-40px;
+		top:40px;
 		width:350px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
@@ -655,6 +655,7 @@
 		position:relative;
 		left:5px;
 		margin:10px;
+		display:none;
 	}
 	
 	#feed_cont {
@@ -1025,6 +1026,8 @@ moz-border-radius: 10px;
 		height:60px;
 		padding:2px;
 		text-align:center;
+		top:-100px;
+		left:300px;
 		position:relative;
 	}
 	

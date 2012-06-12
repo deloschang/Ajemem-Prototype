@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-11 02:23:13
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-11 02:16:57
->>>>>>> 5bf977c9a1fccb50ac9b1a4eadb4749659f5d673
+<?php /* Smarty version 2.6.7, created on 2012-06-12 02:03:31
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -464,16 +460,10 @@
 	</div>
 </div>
 
-<<<<<<< HEAD
-<?php if ($_SESSION['id_user'] || $_SESSION['profile']): ?>
-
-<div id="all_memes">
-=======
 <!-- Muaz remove this later when styling -->
 <br><br><br><br><br>
 
 <div id="all_memes">	
->>>>>>> 5bf977c9a1fccb50ac9b1a4eadb4749659f5d673
     <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmorememe.tpl.html", 'smarty_include_vars' => array()));
