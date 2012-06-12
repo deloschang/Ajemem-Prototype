@@ -750,10 +750,10 @@
 		<div id="profile_page">
 			<div id="profile_name" style="font-size:50px">{$smarty.session.profile}</div>
 			
-			{if $smarty.session.following}
+			{if $smarty.session.following == 'y'}
 				<!-- Muaz, follow_me is called in jQuery, make sure not to change it -->
 				<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('unfollow');">Unfollow</a></span>
-			{else}
+			{elseif $smarty.session.following == 'n'}
 				<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('follow');">follow</a></span>
 			{/if}
 		

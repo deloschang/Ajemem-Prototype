@@ -71,12 +71,18 @@ if (isset($_input['id'])){
 		$_SESSION['profile_uid'] = $profile_data['uid'];
 		$_SESSION['profile_picture'] = $profile_data['fb_pic_normal'];
 		
-		// check if already following profile user
-		$sql = get_search_sql("friends"," following=".$_SESSION['profile_id']." AND id_user=".$_SESSION['id_user']);
-	    $check = getrows($sql, $err);
-		
-		if ($check){
-			$_SESSION['following'] = 1;
+		if ($_SESSION['profile_id'] != $_SESSION['id_user']){
+			// check if already following profile user
+			$sql = get_search_sql("friends"," following=".$_SESSION['profile_id']." AND id_user=".$_SESSION['id_user']);
+			$check = getrows($sql, $err);
+			
+			if ($check){
+				$_SESSION['following'] = 'y';
+			} else {
+				$_SESSION['following'] = 'n';
+			}
+		} else {
+			$_SESSION['following'] = 'self'; 
 		}
 		
 		// requests to view a meme
