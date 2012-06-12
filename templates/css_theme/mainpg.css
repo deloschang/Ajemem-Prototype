@@ -635,7 +635,7 @@
 		left:930px;
 		padding:10px;
 		position:absolute;
-		top:40px;
+		top:0px;
 		width:350px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
@@ -1002,33 +1002,38 @@ moz-border-radius: 10px;
 /*@@@@@@@@@@@@@@@@@@@@@@@@  User Info @@@@@@@@@@@@@@@@@@@@@@@@*/
 
 	#user_info{
-	
+		position:relative;
+		left:200px;
+		top:-100px;
 	}
 	
 	#profile_name {
 		font-size:36px;
-		left:200px;
-		position:relative;
-		top:-100px;
-		
+		position:relative;	
 	}
 	
 	#username {
 		font-size:20px;
-		left:200px;
 		position:relative;
-		top:-100px;
 	}
-		
+	
+	#follower_count {
+		position:relative;
+	}
+	
 	#addMeme_link {
-		box-shadow: 0 0 5px 0 green;
 		width:60px;
 		height:60px;
 		padding:2px;
 		text-align:center;
-		top:-100px;
-		left:300px;
+		top:-150px;
+		left:500px;
 		position:relative;
+	}
+	
+	#my_pics {
+		position:relative;
+		top:-100px;
 	}
 	
 	#my_favorites {
@@ -1843,11 +1848,12 @@ a.special-btn.facebook:active {
     background-color: #112F61;
     padding-left: 30px;
 }
+
 /*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
 
 .tabs {
   position: relative;
-  min-height: 200px; /* This part sucks */
+  min-height: 300px; /* This part sucks */
   clear: both;
   margin: 25px 0;
 }

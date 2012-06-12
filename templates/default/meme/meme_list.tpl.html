@@ -455,13 +455,19 @@
 
 {if $smarty.session.id_user || $smarty.session.profile}
 <div>
-	<div class="fltlft {if $smarty.request.ext=='1'}unselected{else}selected{/if}">
-		<a href="javascript:void(0);" onclick="diff_feed(0);">WORLD FEED</a>
-	</div>
-	<div class="fltlft {if $smarty.request.ext=='1'}selected{else}unselected{/if}">
-		<a href="javascript:void(0);" onclick="diff_feed(1);">FRIENDS FEED</a>
-	</div>
+		<div id="world_feed">
+			<a href="javascript:void(0);" onclick="diff_feed(0);" class="special-btn green">World Feed</a>
+		</div>
+		
+		<div id="friends_feed">
+			<a href="javascript:void(0);" onclick="diff_feed(1);" class="special-btn red">Friends Feed</a>
+		</div>
 </div>
+
+
+
+<!-- Muaz remove this later when styling -->
+<br><br><br><br><br>
 
 <div id="all_memes">	
     {if $sm.res_meme} 

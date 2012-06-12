@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-12 05:34:29
+<?php /* Smarty version 2.6.7, created on 2012-06-12 23:22:24
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -457,13 +457,19 @@
 
 <?php if ($_SESSION['id_user'] || $_SESSION['profile']): ?>
 <div>
-	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>unselected<?php else: ?>selected<?php endif; ?>">
-		<a href="javascript:void(0);" onclick="diff_feed(0);">WORLD FEED</a>
-	</div>
-	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>selected<?php else: ?>unselected<?php endif; ?>">
-		<a href="javascript:void(0);" onclick="diff_feed(1);">FRIENDS FEED</a>
-	</div>
+		<div id="world_feed">
+			<a href="javascript:void(0);" onclick="diff_feed(0);" class="special-btn green">World Feed</a>
+		</div>
+		
+		<div id="friends_feed">
+			<a href="javascript:void(0);" onclick="diff_feed(1);" class="special-btn red">Friends Feed</a>
+		</div>
 </div>
+
+
+
+<!-- Muaz remove this later when styling -->
+<br><br><br><br><br>
 
 <div id="all_memes">	
     <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
