@@ -1,11 +1,10 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-04 21:43:00
+<?php /* Smarty version 2.6.7, created on 2012-06-11 03:39:50
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 205, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 199, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 04/04/2012 21:43:00 --> 
- <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
-<?php echo '
+<!-- Template: meme/meme_editor.tpl.html Start 11/06/2012 03:39:50 --> 
+ <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY'));  echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
 <script type="text/javascript" src="http://localhost//spad/jquery.lionbars.0.3.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost//spad/lionbars.css" media="screen" />
@@ -43,7 +42,6 @@ function loadcanvas() {
 		value: 1
 	 });
 	$(\'#sp\').scratchpad({ \'width\':636, \'height\':478  });
-	// $(\'#sp\').scratchpad({ \'width\':652, \'height\':480  });
 	$(\'input[type="button"]\').click(function(){
 		$(\'input[type="button"]\').removeClass("selected");
 		$(this).addClass("selected");
@@ -59,7 +57,6 @@ function showText(){
 	$(".text_div").show();
  }
 function show_image(){
-    console.log("INTO SHOW_IMAGE");
 	var im=$(\'#updimage\').val();
 	if(im){
 		var y=1;
@@ -120,17 +117,17 @@ $(document).ready(function(){
 	$(window).scroll(function(e){
 		var scrollTop = $(window).scrollTop();
 		console.log(scrollTop);
-		if(scrollTop > 155){
+		if(scrollTop > 145){
 			var y = $(\'#main\').offset();
 			$(\'#main\').css({
 			    position:\'fixed\',
-				top:\'40px!important\',
+				top:\'0px\',
 			    left : y.left+\'px\'
 			 });
 		 }else{
 			$(\'#main\').css({
 			    position:\'absolute\',
-				top:\'20px\',
+				top:\'-30px\',
 			    left :\'-10px\'
 			 });
 		 }
@@ -142,28 +139,25 @@ $(document).ready(function(){
 
 <img src="http://localhost/spad/Memeja Watermark.png" id="memejimark" style="display:none">
 
-<div style="position:fixed; bottom:-10px; left:-120px;">
-        <table width='100%' class="smil_tabl_fixed" border="0">
-            <tr>
-                <td align='right'>
-                    <input type="file" name="updimage" id="updimage" size="5" />
-                    <input type="button" id = "uploadImg"; onClick="show_image();" value="Upload" style="width:50px;" /><br />
-                    URL: <input type="text" name="imgurl" id="imgurl" size="27" />
-                    <input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
-					<div id="prev_image" class="prev_image"></div>
-                </td>
-            </tr>
-        </table>
-        <div class='main_smiley_loading'style="top:100px;">
+<div id="uploader"class="nohighlight">
+	<input type="file" name="updimage" id="updimage" size="5" />
+	<input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
+	URL: <input type="text" name="imgurl" id="imgurl" size="27" />
+	<input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
+	<div id="prev_image" class="prev_image"></div>
+</div>
+             
+        <div class='main_smiley_loading'class="nohighlight"style="top:100px;">
             <div class="smileys_in_small_size">
                 <div id="loadimg" ></div>
             </div>
         </div>
-    </div>
-<div id="page" style="display:none; left:60px;">
+		<div class="spacer"></div>
+		<div id="editorside"></div>
+<div id="page" style="display:none; left:-160px;"class="nohighlight">
 	<canvas id="dummy1" style="display:none;"></canvas>
 	<div id="sp" style="position:relative;"><canvas id="mycid" style="border:1px solid red"></canvas></div>
-    <div id="main" style="width:720px;left:-45px;">
+    <div id="main" style="width:660px;left:-10px;">
         <div id="vs" style="height:100px; margin-left:65px; margin-top:-1px; display:none;"></div>
 		<!-- The following is the Line Size Slider Button-->
 		<table border="0;">
@@ -173,8 +167,8 @@ $(document).ready(function(){
         <td><img src="http://localhost/spad/site_image/color_wheel.png" width="20" height="20" alt="Pick Color" title="Pick Color" id="color" /><br /></td>
         <span id="hilight">
 		    <td><img src="http://localhost/spad/site_image/grid.png" width="20" height="20" class="grid" title="Gridlines" alt="Gridlines Toggle" /></td>
-		    <td><img src="http://localhost/spad/site_image/uparrow.png" width="20" height="20" class="uparrow" title="Scroll Up" alt="Up Arrow" /></td>
-			<td><img src="http://localhost/spad/site_image/downarrow.png" width="20" height="20" class="downarrow" title="Scroll Bottom" alt="Down Arrow" /></td>
+		    <!--<td><img src="http://localhost/spad/site_image/uparrow.png" width="20" height="20" class="uparrow" title="Scroll Up" alt="Up Arrow" /></td>
+			<!--<td><img src="http://localhost/spad/site_image/downarrow.png" width="20" height="20" class="downarrow" title="Scroll Bottom" alt="Down Arrow" /></td>
 			<!--<td><img src="http://localhost/spad/site_image/paintbucket.png" width="16" height="16" class="paintbucket" title="Paintbucket" alt="Paintbucket" /></td>-->
             <td><img src="http://localhost/spad/site_image/erase.png" width="20" height="20" class="erase" title="Erase" alt="Erase" /></td>
             <td><img src="http://localhost/spad/site_image/line.png" width="20" height="20" class="size" title="Pencil" id="line" alt="Pencil" /></td>
@@ -196,8 +190,7 @@ $(document).ready(function(){
                     <option>Sans-serif</option>
                     <option>Tahoma</option>
                     <option>Verdana</option>
-					<option><name="font" id="font" font color="#FFFFFF" style="font-size:10px">Impact</option>
-					</select>
+                </select>
                 <input type='text' id="imgtext" size="15" value="Some Text">
             </span>
         </span>

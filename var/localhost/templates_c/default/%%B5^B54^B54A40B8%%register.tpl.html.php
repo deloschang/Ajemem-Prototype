@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-09 03:08:47
+<?php /* Smarty version 2.6.7, created on 2012-06-11 02:28:11
          compiled from user/register.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 276, false),array('function', 'html_select_date', 'user/register.tpl.html', 290, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 277, false),array('function', 'html_select_date', 'user/register.tpl.html', 291, false),)), $this); ?>
 
-<!-- Template: user/register.tpl.html Start 09/04/2012 03:08:47 --> 
+<!-- Template: user/register.tpl.html Start 11/06/2012 02:28:11 --> 
  <?php echo '
 	<script type="text/javascript" src="colorBckg.js"></script>
 	<script type="text/javascript">
@@ -225,7 +225,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 <form id="signupform" name="signupform" action="http://localhost/user/<?php if ($this->_tpl_vars['sm']['flag']): ?>update_profile<?php else: ?>insert<?php endif; ?>" method="post" onSubmit="return checkvalidate();">
     <table align="center" class="form_tbl">
         <tr>
-            <th colspan="2"><?php if (! $this->_tpl_vars['sm']['res']['username']): ?>You're Almost There!<?php else: ?>Edit Profile &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://localhost/user/change_password">Change Password</a><?php endif; ?></th>
+            <th colspan="2"><?php if (! $this->_tpl_vars['sm']['res']['username']): ?>You're Almost There! **Check Your Email Upon Registering** <?php else: ?>Edit Profile &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://localhost/user/change_password">Change Password</a><?php endif; ?></th>
         </tr> 
         <tr>
             <td align="right">First Name :</td>
@@ -286,6 +286,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
             </td>
         </tr>
          <?php endif; ?>
+        <!--
         <tr>
             <td align="right">Gender : </td>
             <td align="left">
@@ -296,7 +297,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 </span>
             </td>
         </tr>
-       
+         -->
         <tr>
             <td align="right">Date of Birth : </td>
             <td align="left">

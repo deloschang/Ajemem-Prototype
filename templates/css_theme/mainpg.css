@@ -1,19 +1,835 @@
-html,body	{
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:12px;
-	height:100%;
-	margin:0px;
+
+/*   Welcome to Pati's mess for Memeja! (Currently Under Construction By Muaz)   */
+
+
+/****************************** Main Page Styling *******************************/
+
+
+/* Default values for site stored in body (Sized in em for Cross-Browser Compatibility) */
+	html,body {
+		font-family: Trebuchet, Helvetica, sans-serif;
+		font-size:0.8em;
+		margin:10px 0% 10px 4%;
+		background-color:#87C8F0;
+		/*width: 1000px;*/
+			/*Removed for NLU sizing */
+	}
+
+/* =p Define paragraph text size */
+	p {
+		font-size:1.1em;
+	}
+	  
+/* =h Define headings font sizes */
+	h1 {
+		font-size:2em;
+	}
+	h2 {
+		font-size:1.8em;
+	}
+	h3 {
+		font-size:1.7em;
+	}
+
+/* Define form and table font-size */
+	input, select, th, td {
+		font-size:1.1em;
+	}
+	
+	a{
+		color:#0099FF;
+		outline:none;
+    }
+	
+	h1,h2,h3,h4,h5,h6,form{
+		margin:0px;
+		padding:0px;
+	}
+
+/* Highlighting Problem*/
+
+	.nohighlight {
+	-webkit-touch-callout: none;
+
+	-webkit-user-select: none;
+
+	-khtml-user-select: none;
+
+	-moz-user-select: none;
+
+	-ms-user-select: none;
+
+	user-select: none;
+	}
+	
+	
+/*++++++++++++++++++++++++++ Memeja Header ++++++++++++++++++++++++++++*/	
+
+/*++++++++++++++++++++++++ NLU Design ++++++++++++++++++*/
+
+	#nlu_masthead{
+		margin: 0 0 0 0;
+	}
+	
+	#nlu_logoc {
+		float:left;
+		margin-left:-30px;
+		width:280px;
+		background:#FFF;
+	    moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;
+	}
+	
+	#nlu_login{
+		float:left;
+		width: 250px;
+		margin:0 0 0 20px;
+		
+		background:#FFF;
+	    moz-border-radius: 12px;
+	    webkit-border-radius: 12px;
+	    khtml-border-radius: 12px;
+	    border-radius: 12px;
+		
+		box-shadow: 0 0 4px 0 #555555;
+	}
+	
+	#forgot_pwd{
+		padding:10px 0 12px 0;
+		margin: 10px 0 0 30px;
+	}
+	
+	#nlu_login_register{
+		float:left;
+		width:250px;
+		margin:20px 0 0 20px;
+		
+		background:#FFF;
+	    moz-border-radius: 12px;
+	    webkit-border-radius: 12px;
+	    khtml-border-radius: 12px;
+	    border-radius: 12px;
+		
+		box-shadow: 0 0 4px 0 #555555;
+	}
+	
+	#signup{
+		margin:15px 20px 20px 12px;
+	}
+	
+	#signup_text{
+		font:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size:20px;
+		font-style: bold;
+		color: #333333;
+		line-height:20px;
+		
+		margin-bottom:15px;
+	}
+	
+	#signup_explanation, #signup_alt{
+		font:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size:12px;
+		color: #666666;
+		padding-left: 6px;
+	}
+	
+	#explanation_header{
+		font-size: 16px;
+		border-bottom: 1px solid #E2E2E2;
+		margin-bottom: 8px;
+		padding: 12px 0 12px 0 ;
+		line-height: 20px;
+		font-weight: 300;
+		text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+		box-shadow: 0 1px 0 #FFFFFF;
+	}
+	
+	#lol_promise{
+		padding-top:15px;
+	}
+	
+	#lol_promise_mascot{
+		margin-left:-10px; 
+		padding-bottom:5px;
+	}
+	
+	#lol_plomise_mascot{
+		padding-left:3px; 
+		padding-top:5px; 
+		border-top: 1px solid #E2E2E2
+	}
+	
+	#lol_promise_text{
+		float:right;
+		margin: 15px 14px 0 0;
+		font-size: 19px;
+		font-weight:300;
+		line-height:20px;
+		color:#00CC00;
+	}
+	
+	#lol_plomise_text{
+		float:right;
+		font-size:14px;
+		margin: 17px 0 0 0;
+		color:#FA3A56;
+	}
+	
+	#nlu_container{
+		margin:0.5% 0 0 -3%;
+	}
+	
+	#nlu_feed{
+		float:left; 
+		position: relative;
+		margin:0 0 0 0;
+		padding: 15px 50px 50px 50px;
+		
+		width:860px;
+		height:445px;
+		
+		background:#FFF;
+	    moz-border-radius: 12px;
+	    webkit-border-radius: 12px;
+	    khtml-border-radius: 12px;
+	    border-radius: 12px;
+		
+		box-shadow: 0 0 4px 0 #555555;
+	}	
+		
+	.module_text{
+		font:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		font-size:30px;
+		font-weight: 700;
+		line-height: 1.2em;
+		color: black;
+	}
+	
+	#front_card{
+		position:absolute;
+		top:75px;
+		left: 170px;
+		text-align:left;
+		font-size:50px;
+		color: #fa3a56;
+		padding:5px 10px;
+		background:rgba(58,250,222,0.3);
+	}
+	
+	#first_half{
+		font-size:24px;
+		margin-top:140px;
+		margin-left:20px;
+		padding-bottom:15px;
+		color:#7E3AFA;
+	}
+	
+	#second_half{
+		float:right;
+		margin-right: 20px;
+		font-size:20px;
+		padding-top: 25px;
+	}
+	
+	#module_container{
+		text-align:center;
+	}
+	
+	#message_container{
+		display:inline-block;
+	}
+	
+	#nlu_message_one{
+		position:relative;
+		float:left;
+		margin-left:15px;
+	}
+	
+	#nlu_message_two{
+		position:relative;
+		float: left;
+		margin: 0 0 0 10px;
+	}
+	
+	#nlu_message_three{
+		position:relative;
+		float: left;
+		margin: 0 0 0 10px;
+	}
+	
+	.blurb {
+		position:absolute;
+		background: none repeat scroll 0 0 rgba(52, 182, 250, 0.8);
+		
+		width:100%;
+		
+		padding: 10px 0 12px 0;
+		z-index:10;
+		text-align:center;
+	}
+	
+	#blurb_one{
+		top:0;
+		left:0;
+	}
+	
+	#blurb_two, #blurb_three{
+		top:0;
+		left:0;
+	}
+	
+	#blurb_three{
+		background: none repeat scroll 0 0 rgba(58,250,126,0.7);
+	}
+	
+	#blurb_one a, #blurb_two a, #blurb_three a{
+		color: #FFFFFF;
+		font-size: 15px;
+		font-weight: bold;
+		line-height: 17px;
+	}
+	
+	#blurb_one a:hover, #blurb_two a:hover, #blurb_three a:hover{
+		text-decoration:underline;
+	}
+	
+	.front_icon{
+		position: absolute;
+		border: 1px solid rgba(163,193,173,0.4);
+	}
+	
+	#icon_0{
+		top:10px;
+		left:10px;
+	}
+	
+	#icon_1{
+		bottom: 10px;
+		left: 10px;
+	}
+	
+	#icon_2{
+		bottom: 10px;
+		right: 10px;
+	}
+	
+	#icon_3{
+		top: 10px;
+		right: 10px;
+	}
+	
+	#icon_4{
+		top:60px;
+		left:10px;
+	}
+	
+	#icon_5{
+		bottom:60px;
+		left:10px;
+	}
+	
+	#icon_6{
+		bottom: 60px;
+		right: 10px;
+	}
+	
+	#icon_7{
+		top: 60px;
+		right: 10px;
+	}
+	
+	#icon_8{
+		top: 10px;
+		right: 60px;
+	}
+	
+	#icon_9{
+		bottom: 10px;
+		right: 60px;
+	}
+	
+	#icon_10{
+		top: 10px;
+		left: 60px;
+	}	
+	
+	#icon_11{
+		bottom:10px;
+		left:60px;
+	}
+	
+	#icon_12{
+		top: 110px;
+		left: 10px;
+	}
+	
+	#icon_13{
+		bottom: 110px;
+		right: 10px;
+	}
+	
+	#icon_14 {
+		bottom: 10px;
+		right: 110px;
+	}
+	
+	#icon_15{
+		top: 10px;
+		right: 110px;
+	}
+	
+	#icon_16{
+		bottom: 10px;
+		left: 110px;
+	}
+	
+	#icon_17{
+		top: 10px;
+		left: 110px;
+	}
+	
+	#icon_18{
+		top: 110px;
+		right: 10px;
+	}
+	
+	#icon_19{
+		bottom: 110px;
+		left: 10px;
+	}
+	
+	#icon_20{
+		top: 10px;
+		left: 160px;
+	}
+	
+	#icon_21{
+		top: 10px;
+		right: 160px;
+	}
+	
+	#icon_22{
+		bottom: 160px;
+		left: 10px;
+	}
+	
+	#icon_23{
+		top: 160px;
+		right: 10px;
+	}
+	
+	#icon_24{
+		bottom: 160px;
+		left: 10px;
+	}
+	
+	#icon_25{
+		bottom: 10px;
+		left: 160px;
+	}
+	
+	#icon_26{
+		top: 160px;
+		left: 10px;
+	}
+	
+	#icon_27{
+		top: 210px;
+		left: 10px;
+	}
+	
+	#icon_28 {
+		top:260px;
+		left: 10px;
+	}
+	
+	#icon_29{
+		bottom: 10px;
+		left: 210px;
+	}
+	
+	#icon_30{
+		bottom: 10px;
+		left: 260px;
+	}
+	
+	#icon_31{
+		bottom: 10px;
+		left: 310px;
+	}
+	
+	#icon_32{
+		bottom: 10px;
+		left: 360px;
+	}
+	
+	#icon_33{
+		bottom: 10px;
+		left: 410px;
+	}
+	
+	#icon_34{
+		bottom: 10px;
+		left: 460px;
+	}
+	
+	#icon_35{
+		bottom: 10px;
+		left: 510px;
+	}
+	
+	#icon_36{
+		bottom: 10px;
+		left: 560px;
+	}
+	
+	#icon_37{
+		bottom: 10px;
+		left: 610px;
+	}
+	
+	#icon_38{
+		bottom: 10px;
+		left: 660px;
+	}
+	
+	#icon_39{
+		bottom: 10px;
+		left: 710px;
+	}
+	
+	#icon_40{
+		bottom: 10px;
+		left: 760px;
+	}
+	
+	#icon_41{
+		top: 10px;
+		left: 210px;
+	}
+	
+	#icon_42{
+		top: 10px;
+		left: 260px;
+	}
+	
+	#icon_43{
+		top: 10px;
+		left: 310px;
+	}
+	
+	#icon_44{
+		top: 10px;
+		left: 360px;
+	}
+	
+	#icon_45{
+		top: 10px;
+		left: 410px;
+	}
+	
+	#icon_46{
+		top: 10px;
+		left: 460px;
+	}
+	
+	#icon_47{
+		top: 10px;
+		left: 510px;
+	}
+	
+	#icon_48{
+		top: 10px;
+		left: 560px;
+	}
+	
+	#icon_49{
+		top: 10px;
+		left: 610px;
+	}
+	
+	#icon_50{
+		top: 10px;
+		left: 660px;
+	}
+	
+	#icon_51{
+		top: 10px;
+		left: 710px;
+	}
+	
+	#icon_52{
+		top: 210px;
+		right: 10px;
+	}
+	
+	#icon_53{
+		top: 260px;
+		right: 10px;
+	}
+	
+	#icon_54{
+		top: 310px;
+		right: 10px;
+	}
+	
+
+	
+	
+/*++++++++++++++++++++++++ NLU Design ++++++++++++++++++*/
+	
+	#masthead {
+		width:1002px;
+		margin:0 0 10px 0;
+		padding:10px;
+	}
+	
+	
+	
+	#mastheadcreate{
+	    position: relative;
+		top:-25px;
+		width:1002px;
+		margin:0 0 10px 0;
+		padding:10px;
+	}
+	
+/* Memeja Logo */
+	#logoc {
+		float:left;
+		width:280px;
+		left:10%;
+		top:-35px;
+	}
+	
+/* The Navigation Buttons*/
+	#headerbtns {
+		float:right;
+		top:30px;
+		cursor:pointer;
+		
+	}
+
+/* SearchBar! */
+	#searches {
+		position: relative;
+		top:-40px;
+		left:420px;
+	}
+	
+/* Main Container with the middle column and the sidebars */
+	#contained {
+		position: absolute;
+		moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;
+		
+	}
+
+/* Middle Column for Live Feed and Meme Editor */
+	#content {
+		margin-left:280px;
+		margin-right:300px;
+		top: -10px;
+		padding:10px;
+		width:580px;
+		background:#FFF;
+	    moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;
+		voice-family:"\"}\"";
+		voice-family:inherit;
+	}
+	html>body #content {
+	    width:580px;
+	}
+	
+	#editorcontent{
+		margin-left:280px;
+	}
+	
+/* Sidebar A - For Your Profile Information */
+	#sidebar_a {
+		float:left;
+		padding:10px;
+		width:220px;
+	    background:#FFF;
+		moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;
+		voice-family:"\"}\"";
+		voice-family:inherit;
+		width:220px;
+	}
+	html>body #sidebar_a {
+		width:220px;
+	}
+	
+/* Sidebar B - For Other's Profile Information */
+	#sidebar_b {
+	    position:absolute;
+		top:0px;
+		left:910px;
+		float:left;
+		padding:10px;
+		moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;
+		width:220px;
+		background:#FFF;
+	    voice-family:"\"}\"";
+		voice-family:inherit;
+		width:220px;
+	}
+	html>body #sidebar_b {
+	    width:220px;
+	}
+
+/* Footer with Copyright Stuff (might add About us there) */	
+	#footer 	{
+		background:#87C8F0;
+		height:30px;
+		color:#000;
+		clear:both;
+		width:738px;
+		padding:10px;
+	}
+
+/* Header Section */
+
+#header h1	{
+    font:Garamond;
+	color:#FFF;
+	font-size:24px;
+	font-weight:bold;
+	float:left;
 }
-img	{
-	border:none;
+#header h1 a	{
+	text-decoration:none;
 }
-a	{
-	color:#0099FF;
+
+#header a	{
+	color:#FFF;
+	font-size:18px;
 }
-h1,h2,h3,h4,h5,h6,form	{
-	margin:0px;
-	padding:0px;
+
+/*Under Join Memeja*/
+#fblogin {
+  display:none;
+  position:absolute;
+  top:45px;
+  left:508px;
 }
+
+/* Next to xpbar */
+#fbstuff{
+  position:fixed;
+  left:81.5%;
+  top:0px;
+  padding:5px;
+  font-weight:bold;
+  font:Lucida Console;
+  moz-border-radius: 20px;
+   webkit-border-radius: 20px;
+   khtml-border-radius: 20px;
+   border-radius: 20px;
+}
+
+#fbstuff a{
+  margin:-2px;
+  color:#FFF;
+  font-size: 14px;
+  font:Lucide Console;
+}
+
+#follower{
+background:#4C4C4C;
+moz-border-radius: 10px;
+   webkit-border-radius: 10px;
+   khtml-border-radius: 10px;
+   border-radius: 10px;
+}
+
+#openingmsg {
+  font-size:25px;
+  color:#000;
+}
+
+/* XP Bar */
+#xpbar {
+    position:fixed;
+	top: 0px;
+    left: 11%;
+    right: 20%;
+	width: 70%;
+	z-index:999998;
+}
+
+#user_level{
+	position: fixed;
+	
+	font-size: 14px;
+	font: Lucida Console;
+	color: white;
+	
+	cursor: default;
+	
+	top: 2px;
+	left: 12%;
+	z-index: 999999;
+
+}
+
+#xpbar_status {
+	position: fixed;
+	
+	font-size: 14px;
+	font: Lucida Console;
+	color: white;
+	
+	display: none;
+	cursor: default;
+	
+	top: 2px;
+	left: 40%;
+	z-index: 999999;
+}
+
+	#uploader {
+	    position:absolute;
+		top:-30px;
+		padding:5px;
+	    right:30px;
+		z-index:99;
+		background:#FFF;
+		moz-border-radius: 10px;
+		webkit-border-radius: 10px;
+		khtml-border-radius: 10px;
+		border-radius: 10px;
+	}
+
+	.spacer {
+		padding:5px;
+		margin:5px;
+	}
+	
+	#editorside {
+		position:absolute;
+		background:#FFF;
+		moz-border-radius: 10px;
+		webkit-border-radius: 10px;
+		khtml-border-radius: 10px;
+		border-radius: 10px;		
+	}
+
+
 label.error	{
 	color:#FF0000;
 	font-size:12px;
@@ -46,87 +862,12 @@ label.error	{
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
+	background:#FFF;
 
-}
-#footer 	{
-	background:#87C8F0;
-	height:30px;
-	color:#FFF;
 }
 .push	{
 	height:30px;
 }
-/* ======================================= */
-
-/* Navigation Section */
-#navigation {
-	background: #000;
-	display: block;
-	float: left;
-	margin: 0 auto;
-	width:100%;
-}
-#navigation .menu-header,
-div.menu {
-	font-size: 13px;
-}
-#navigation .menu-header ul,
-div.menu ul {
-	list-style: none;
-	margin:0px;
-	padding:0px;
-}
-#navigation .menu-header li,
-div.menu li {
-	float: left;
-	position: relative;
-}
-#navigation a {
-	color: #aaa;
-	display: block;
-	line-height: 28px;
-	padding: 0 10px;
-	text-decoration: none;
-}
-#navigation ul ul {
-	display: none;
-	position: absolute;
-	top: 28px;
-	left: 0;
-	float: left;
-	width: 180px;
-	z-index: 99999;
-}
-#navigation ul ul li {
-	min-width: 180px;
-}
-#navigation ul ul ul {
-	left: 100%;
-	top: 0;
-}
-#navigation ul ul a {
-	background: #333;
-	line-height: 1em;
-	padding: 10px;
-	width: 160px;
-	height: auto;
-}
-#navigation li:hover > a,
-#navigation ul ul :hover > a {
-	background: #333;
-	color: #fff;
-}
-#navigation ul li:hover > ul {
-	display: block;
-}
-#navigation ul li.current > a {
-	background: #333;
-	color: #fff;
-}
-* html #navigation ul li a:hover {
-	color: #fff;
-}
-
 /* ======================================= */
 
 /* Listing Section */
@@ -171,12 +912,7 @@ div.menu li {
 .list_tbl td a:hover	{
 	text-decoration:underline;
 }
-/* ======================================= */
 
-/* Container Section */
-#container	{
-	margin:10px;
-}
 /* ======================================= */
 
 /* Pagination Section */
@@ -385,8 +1121,9 @@ div.menu li {
 }
 #logintable	{
 	width:250px;
-	margin:20px auto;
+	margin:10px 20px 20px 5px;
 }
+
 #logintable #new_user	{
 	/*border:#06C solid 1px;*/
 	width:220px;  
@@ -405,16 +1142,21 @@ div.menu li {
 /* CSS for REGISTERED USERS */
 #logintable #register_user	{
 	/* border:#06C solid 1px;  */
-	width:220px;
-	height:250px;
 	float:left;
-	padding:5px 10px 0px;
+	padding:5px;
+	margin-top:-5px;
  	/*margin-left:5px */
 }
 
-/* Added by Delos to shorten field */
 #logintable #uname, #pass {
 	width:95%
+}
+
+#uname, #pass, #email {
+	height: 20px;
+	border-radius: 3px 3px 3px 3px;
+	outline:medium none;
+	padding:4px;
 }
 
 #fgtpwdtable	{
@@ -470,15 +1212,34 @@ table.userinfo input.fields:focus	{
 }
 
 /* Non-Fb Login Button */
-.inputbtn	{
-	background:#F18200;
-	border:#FF0000 solid 1px;
-	padding:2px 5px;
-	text-align:center;
-	color:#FFF;
-	font-weight:bold;
-	cursor:pointer;
+.inputbtn	{	
+	box-shadow: 0 1px 0 #FFFFFF;
+	height: 30px;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 18px;
+	overflow: visible;
+	padding: 5px 10px;
+	margin-left:10px;
+
+	background: none repeat scroll 0 0 rgba(52, 182, 250, 0.8);
+    border-color: #057ED0;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	border-radius: 4px 4px 4px 4px;
 }
+
+.inputbtn:hover, .inputbtn:focus {
+	background-color: #0271BF;
+    background-image: -moz-linear-gradient(#2DADDC, #0271BF);
+    background-repeat: repeat-x;
+    border-color: #096EB3;
+}
+
+
 .showmodal{
 	width:400px;
 	height:35px;
@@ -492,146 +1253,6 @@ table.userinfo input.fields:focus	{
 	z-index:99999999;
 }
 
-/******************************Main Page Styling*******************************/
-
-body {
-	background-color:#87C8F0;
-}
-
-#mainpage {
- color:#FFF;
-}
-
-/* Memeja Logo */
-#logo {
- position:absolute;
- left:10%;
- top:-35px;
-}
-
-
-/*Feed Contents*/
-#mid_cont {
-   width:80%;
-   background:#FFF;
-   margin-left: 10%;
-   margin-right: 10%;
-   moz-border-radius: 20px;
-   webkit-border-radius: 20px;
-   khtml-border-radius: 20px;
-   border-radius: 20px;
-}
-
-/* Header Section
-   Vimeo Blue:87C8F0 */
-#header	{
-	background:#87C8F0;
-	color:#FFF;
-	height:100px;
-	padding:0px 10px;
-}
-#header h1	{
-    font:Garamond;
-	color:#FFF;
-	font-size:24px;
-	font-weight:bold;
-	float:left;
-}
-#header h1 a	{
-	text-decoration:none;
-}
-
-#header a	{
-	color:#FFF;
-	font-size:18px;
-}
-
-#headerbtns {
-  top:30px;
-  position:absolute;
-  left:46.5%;
-  width:30%;
-  cursor:pointer;
-}
-/*Under Join Memeja*/
-#fblogin {
-  display:none;
-  position:absolute;
-  top:48px;
-  left:635px;
-}
-/* Next to xpbar */
-#fbstuff{
-  position:fixed;
-  left:81.5%;
-  top:0px;
-  padding:5px;
-  font-weight:bold;
-  font:Lucida Console;
-  moz-border-radius: 20px;
-   webkit-border-radius: 20px;
-   khtml-border-radius: 20px;
-   border-radius: 20px;
-}
-
-#fbstuff a{
-  margin:-2px;
-  color:#FFF;
-  font-size: 14px;
-  font:Lucide Console;
-}
-
-#follower{
-background:#4C4C4C;
-moz-border-radius: 10px;
-   webkit-border-radius: 10px;
-   khtml-border-radius: 10px;
-   border-radius: 10px;
-}
-
-#openingmsg {
-  font-size:25px;
-  color:#000;
-}
-/* XP Bar */
-#xpbar {
-    position:fixed;
-	top: 0px;
-    left: 11%;
-    right: 20%;
-	width: 70%;
-	z-index:999998;
-}
-
-#user_level{
-	position: fixed;
-	
-	font-size: 14px;
-	font: Lucida Console;
-	color: white;
-	
-	cursor: default;
-	
-	top: 2px;
-	left: 12%;
-	z-index: 999999;
-
-}
-
-#xpbar_status {
-	position: fixed;
-	
-	font-size: 14px;
-	font: Lucida Console;
-	color: white;
-	
-	display: none;
-	cursor: default;
-	
-	top: 2px;
-	left: 40%;
-	z-index: 999999;
-}
 
 	
 /* Exp Bar Tab */
@@ -698,7 +1319,6 @@ moz-border-radius: 10px;
 
 /* Outer div to live feed */
 #meme_content{
-	width:700px;
 	background-color:#e6e6dc;
 	-moz-border-radius-topright: 15px; -webkit-border-top-right-radius: 15px; border-top-right-radius: 15px; -moz-border-radius-bottomright: 15px; -webkit-border-bottom-right-radius: 15px; border-bottom-right-radius: 15px; -moz-border-radius-bottomleft: 15px; -webkit-border-bottom-left-radius: 15px; border-bottom-left-radius: 15px; 
 	
@@ -715,5 +1335,91 @@ moz-border-radius: 10px;
  -moz-border-radius: 10px; 
  -webkit-border-radius: 10px; 
  border-radius: 10px;
+}
+
+a{
+	text-decoration: none;
+	cursor: pointer;
+}
+.meme{
+	position: relative;
+	top:-25px;
+	margin-left: 15px;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: white;  /* background for meme color */
+	width:550px;
+	height:auto;
+
+	-moz-border-radius-topright: 6px; -webkit-border-top-right-radius: 6px; border-top-right-radius: 6px; -moz-border-radius-bottomright: 6px; -webkit-border-bottom-right-radius: 6px; border-bottom-right-radius: 6px; -moz-border-radius-bottomleft: 6px; -webkit-border-bottom-left-radius: 6px; border-bottom-left-radius: 6px; 
+
+	-moz-border-radius-topleft: 6px; -webkit-border-top-left-radius: 6px; border-top-left-radius: 6px;
+
+	 border-bottom: 1px dotted #e6e6dc;
+
+}
+
+/* Inner formatting of live feed meme */
+img.avatar_thumb_fb, 
+img.avatar_thumb_regular {
+	width: 40px;
+	height: 40px;
+}
+
+#meme_title {
+	position:relative;
+	bottom:6px;
+	padding-left:10px; 
+	font-size: 18.5px; 
+	font-weight: bold;
+}
+
+.meme_reproductive_system{
+	position:relative; 
+	left:55px;
+}
+
+.dec{			
+font-size: 12px;
+font-weight: bold;
+}
+
+#tab div	{
+	margin-right:-20px;
+	font-weight:bold;
+}
+
+{* Float of 'Main Live Feed' and 'Network Feed' *}
+.fltlft	{
+	margin-left:25px;
+	float:left;
+}
+.unselected	{
+	background-color:#AAD8F3;
+	width:auto;
+	height:23px;
+	text-align:center;
+	padding-top:7px;
+}
+.hover	{
+	background-color:#CAD8F3;
+	height:23px;
+	width:auto;
+	text-align:center;
+	padding-top:7px;
+}
+.selected	{
+	background-color:#4D79A6;
+	width:auto;
+	height:23px;
+	text-align:center;
+	padding-top:7px;
+}
+a{
+	text-decoration:none;
+}
+.borderyes	{
+	border:#000000 solid 1px;
 }
 

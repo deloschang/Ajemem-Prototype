@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-03-29 07:54:21
+<?php /* Smarty version 2.6.7, created on 2012-04-09 23:12:19
          compiled from user/first_login_msg.tpl.html */ ?>
 
-<!-- Template: user/first_login_msg.tpl.html Start 29/03/2012 07:54:21 --> 
+<!-- Template: user/first_login_msg.tpl.html Start 09/04/2012 23:12:19 --> 
  <?php echo '
 <script type="text/javascript">
 	function checkbox_validate() {

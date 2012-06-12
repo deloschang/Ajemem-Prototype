@@ -532,12 +532,14 @@ class user_manager extends mod_manager {
                     $_output['MAIL'][0]['sm'] = $_output;
                     $this->smarty->assign('sm', $_output['MAIL'][0]['sm']);
                     $mail_message = $this->smarty->fetch($this->smarty->add_theme_to_template($_output['MAIL'][0]['tpl']));
-					logToFile("Sending mail to:".$_output['MAIL'][0]['to']);
+					logToFile("DAKIYA DAAK LAAYA - Sending e-mail to :".$_output['MAIL'][0]['to']."; LBL_SITE_URL :".LBL_SITE_URL);
+					$_SESSION['raise_message']['global'] = 'Your confirmation has been sent to your mail id';
                     $r = sendmail($_output['MAIL'][0]['to'], $_output['MAIL'][0]['subject'], $mail_message, $GLOBALS['conf']['SITE_ADMIN']['email']);
 
 
 
                     redirect(LBL_SITE_URL);
+					$_SESSION['raise_message']['global'] = 'Your confirmation has really been sent to your mail id';
                 } else {
                     $_SESSION['raise_message']['global'] = "Registration failed";
                     redirect(LBL_SITE_URL);
@@ -573,7 +575,7 @@ class user_manager extends mod_manager {
 ##################################################
     function _check_user(){
       $link = mysql_connect(DB_HOST,DB_USER,DB_PASS,DB_DB) or die("Could not connect to db: ".mysql_error());
-      mysql_select_db ("demos4clients_com_db") or die("Could not select database : ".mysql_error());
+      mysql_select_db (DB_DB) or die("Could not select database : ".mysql_error());
       $sql = get_search_sql("user","random_num='".$this->_input['confirm']."' LIMIT 1");
 
       $query = mysql_query($sql);
@@ -1208,8 +1210,8 @@ class user_manager extends mod_manager {
 	}
 	
 	##################################################################
-	##### LIVE RANKING SYSTEM ################3
-	################ ADDED BY DELOS #########################420
+	##### LIVE RANKING SYSTEM ################
+	################ ADDED BY DELOS #########################
 	
 	function _live_ranking(){
 		

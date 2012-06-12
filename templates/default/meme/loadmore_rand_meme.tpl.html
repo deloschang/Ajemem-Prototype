@@ -18,6 +18,7 @@
 <!--	    <br/>-->
 
 	    <div>
+			{if $smarty.session.id_user}
 		    <span>
 			{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
 			
@@ -63,7 +64,9 @@
 <!--			<br/>-->
 <!--			<span class="fb_btn"><fb:like href="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like></span>-->
 
-		    </span><br/>
+		    </span>
+			<br/>
+			{/if}
 	</div>
 	    
 	    
@@ -86,6 +89,8 @@
 	var notagree = 0;
 	var notdisagree = 0;
 	
+	var notreply = 0;
+	
 	function clearTimer() {
     	notyet = 0;   
 	}  
@@ -106,7 +111,7 @@
 			next_meme();
 		});
 			
-		$(document).bind('keydown', 'a', function(){
+		$(document).bind('keydown', 'h', function(){
 			next_agree();
 		});
 		
@@ -114,8 +119,21 @@
 			next_disagree();
 		});
 		
+		$(document).bind('keydown', 'r', function(){
+			next_reply();
+		});
+		
     });
     
+	function next_reply(){
+		if (notreply == 1) {
+			return;
+		}
+		notreply = 1;
+		get_all_rand_replies('{/literal}{$x.id_meme}{literal}');
+		setTimeout('clearTimer()', 1000);
+	}
+	
     function next_meme(){
 		if (notyet == 1) {
 		    return; 

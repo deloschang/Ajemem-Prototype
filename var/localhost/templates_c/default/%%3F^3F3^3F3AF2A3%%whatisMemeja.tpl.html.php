@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-01 08:46:14
+<?php /* Smarty version 2.6.7, created on 2012-06-06 22:13:41
          compiled from achievements/whatisMemeja.tpl.html */ ?>
 
-<!-- Template: achievements/whatisMemeja.tpl.html Start 01/04/2012 08:46:14 --> 
+<!-- Template: achievements/whatisMemeja.tpl.html Start 06/06/2012 22:13:41 --> 
  
 <div style="font-size:14px">Welcome to Memeja Beta! Happy 2012!
                                          <br>

@@ -24,6 +24,9 @@ var preloadImage=last_comic;
 var newimgid = 1;
 var newtextid = 1;
 
+// Hash of "unsaved" meme boxes in canvas
+var myHashMemeBoxes = {};
+
 // Keeps track of if there should be gridlines or not.
 var grid = true;
 
@@ -509,6 +512,9 @@ function removeMemeid(e, text) {
 		//alert(putCanvasCounter);
 	}
     $("#"+id).remove();
+    if(myHashMemeBoxes[id.toString()]) {
+        delete myHashMemeBoxes[id.toString()];
+    }
 
 }
 
@@ -547,7 +553,13 @@ function cloneme(e)
     img_rotate[newimgid]['x'] = img_rotate[mydivid]['x'];
     img_rotate[newimgid]['y'] = img_rotate[mydivid]['y'];
     img_rotate[newimgid]['src'] = img_rotate[mydivid]['src'];
+
+    // Add meme box to unsaved hash list when cloning
+    var myObj = new Object();    // empty for now
+    addMemeBox(newimgid.toString(), myObj);
+
     ++newimgid;
+
     $(newele).draggable({
         cursor:'pointer',
         containment:"#mycid"
@@ -705,6 +717,10 @@ function clonetext(e) {
 
     change_attr_of_text("text"+newtextid, origOffset.top+30, origOffset.left+30);
 
+    // Add meme box to unsaved hash list
+    var myObj = new Object();    // empty for now
+    addMemeBox("text" + newtextid.toString(), myObj);
+
     newtextid++;
     return false;
 }
@@ -779,15 +795,13 @@ function rright() {
 function create_Textbox(){
 	putCanvasCounter++;
     var textId="text"+newtextid;
-
+	
 	// Makes sure the textbox is near the top of the canvas
     var textTop = 250;
     var textLeft = 500;
-
     if(window.pageYOffset > 250) {
         textTop = window.pageYOffset;
     }
-
     // Makes sure the next textbox isn't overlapping the previous one
     if(newtextid % 3 == 1) 
 		textTop += 50;
@@ -800,21 +814,25 @@ function create_Textbox(){
     if(newtextid % 6 == 5) 
 		textTop += 150;
 
-    newtextid++;
+    // Add meme box to unsaved hash list
+    var myObj = new Object();    // empty for now
+    addMemeBox("text" + newtextid.toString(), myObj);
+
+	newtextid++;
 
     var html = "<div class='newtextdd' id='"+textId+"'  style='position:relative;padding-top:14px;left:150px;'>"+
     "<div class='memejeTextContainer'>"+
     "<img title='Remove' src='"+SITE_IMAGE_PATH+"delete.png' onclick='removeMemeid(this,\"text\")' />"+
-    "<img title='Put in Canvas' src='"+SITE_IMAGE_PATH+"shape_move_backwards.png' onclick='puttextincanvas(this)' />"+
+    "<img title='Set to the Background' src='"+SITE_IMAGE_PATH+"shape_move_backwards.png' onclick='puttextincanvas(this)' />"+
     "<img title='Decrease size' src='"+SITE_IMAGE_PATH+"decrease_font.png' onclick='changeTextSize(this, -2)' />"+
     "<img title='Increase size' src='"+SITE_IMAGE_PATH+"increase_font.png' onclick='changeTextSize(this, 2)' />"+
     "<img title='Toggle Bold' src='"+SITE_IMAGE_PATH+"bold.png' onclick='toggleTextBoldStyle(this)' />"+
-    "<img title='Toggle Italic' src='"+SITE_IMAGE_PATH+"italic.png' onclick='toggleTextItalicStyle(this)' />"+
-    "<img title='Clone text' src='"+SITE_IMAGE_PATH+"shape_clone.png' onclick='clonetext(this)' />" ;
+    "<img title='Toggle Italic' src='"+SITE_IMAGE_PATH+"italic.png' onclick='toggleTextItalicStyle(this)' />";
+    //"<img title='Clone text' src='"+SITE_IMAGE_PATH+"shape_clone.png' onclick='clonetext(this)' />" ;
     html += "<select onchange='changeFontFamily(this)'><option>Arial</option><option>Courier</option><option>Helvetica</option><option>sans-serif</option><option>Georgia1f</option><option>Impact</option>"+
     "</select><img title='Drag this' src='"+SITE_IMAGE_PATH+"hand.png' />";
 
-    html += "</div><textarea style='font-size: 12px;width:228px;' spellcheck='true' onfocus='title_focus()' onblur='title_blur()' id='TextBox"+textId+"'>Enter text here</textarea>"+
+    html += "</div><textarea style='font-size: 12px;width:125px;border: 0; spellcheck='true' onfocus='title_focus()' onblur='title_blur()' id='TextBox"+textId+"'>Enter text here</textarea>"+
 	"</div>";
 
     $("body").prepend(html)
@@ -881,9 +899,9 @@ function create_Imagebox(clicked_img)
             showdebug("Orig:"+mydivid);
             newh = $(this).height() + SET_EDITOR_HEIGHT;
             newh -=2;
-            newhtml = "<div style='position:relative;' class='memejeImageContainer'><span style='top:-"+newh+"px;' class='icon_div'>";
+            newhtml = "<div style='position:relative;' class='memejeImageContainer'><span style='top:-"+newh+"px;' class='icon_div' class='nohighlight'>";
             newhtml += "<img title='Remove' src='"+SITE_IMAGE_PATH+"delete.png' onclick='removeMemeid(this)'>";
-            newhtml += "<img title='Put in Canvas' src='"+SITE_IMAGE_PATH+"shape_move_backwards.png' onclick='putincanvas(this)'>";
+            newhtml += "<img title='Set to the Background' src='"+SITE_IMAGE_PATH+"shape_move_backwards.png' onclick='putincanvas(this)'>";
             newhtml += "<img title='Rotate Left' src='"+SITE_IMAGE_PATH+"shape_rotate_anticlockwise.png' class='rleft'>";
             newhtml += "<img title='Rotate Right' src='"+SITE_IMAGE_PATH+"shape_rotate_clockwise.png' class='rright'>";
             newhtml += "<img title='Horizontal Flip' src='"+SITE_IMAGE_PATH+"shape_flip_horizontal.png' onclick='hflip(this)'>";
@@ -896,7 +914,7 @@ function create_Imagebox(clicked_img)
                 mydivid = $(this).parents("div.newdd").attr("id");
                 img_rotate[newimgid] = [];
                 img_rotate[newimgid]['rotate'] = img_rotate[mydivid]['rotate'];
-                img_rotate[newimgid]['src'] = img_rotate[mydivid]['src']
+                img_rotate[newimgid]['src'] = img_rotate[mydivid]['src'];
                 newimgid++;
             });
             rleft();
@@ -929,15 +947,85 @@ function create_Imagebox(clicked_img)
         },
         aspectRatio: true
     });
+
+    // Add meme box to unsaved hash list
+    var myObj = new Object();    // empty for now
+    addMemeBox(newimgid.toString(), myObj);
+
     ++newimgid;
 }
 
-function putincanvas(e)
+function getRandomKey()
 {
-//var is_macromeme_checked = document.getElementById('macromeme_checkbox').checked;
+    return Math.random().toString(36).substr(2, 5);
+}
+function addMemeBox(myid, myobj)
+{
+    console.log("addMemeBox: " + myid);
+
+    myHashMemeBoxes[myid] = myobj;
+}
+
+// Save all unsaved meme boxes in canvas
+function putAllUnsavedTextBoxessInCanvas()
+{
+    for(var id in myHashMemeBoxes)
+    {
+        if(id.indexOf("text") != 0) {
+            continue;
+        }
+        putCanvasCounter--;
+        saveRestorePoint();
+        lastimgdrawn = 1;
+        //id = $(e).parents("div.newtextdd").attr("id");
+
+        var textBoxAttr=$("#TextBox"+id);
+        var textBoxAttrSizePx=parseInt(textBoxAttr.css('font-size').replace("px",""));
+        var boldness=textBoxAttr.css('font-weight')=='700' || textBoxAttr.css('font-weight')=='bold'?"bold ":"";
+        var italic=textBoxAttr.css('font-style')=='italic'?"italic ":"";
+        var textFont=textBoxAttr.css('font-family');
+        var textAreaWidth = parseInt(textBoxAttr.css('width').replace("px",""));
+
+        cntx.textBaseline="top";
+        cntx.fillStyle=textBoxAttr.css('color');
+        cntx.font=boldness+italic+textBoxAttrSizePx+"px "+textFont;
+        var textBoxAttrSplit=textBoxAttr.val().split('\n');
+        var curPos=$("#TextBox"+id).offset();
+        canvasPos=$('#mycid').offset();
+
+        curPos.left=Math.round(curPos.left - canvasPos.left + 3);
+        curPos.top=Math.round(curPos.top - canvasPos.top + 3);
+        if ($.browser.mozilla) {
+            curPos.top+=2;
+            curPos.left-=1;
+        }
+        //var mylines = getLines(cntx, textBoxAttrSplit[0], textAreaWidth);
+        //console.log("MYLINES = "+mylines.join( "; "));
+        for(var cnt=0;cnt<textBoxAttrSplit.length;cnt++){
+            var mylines = getLines(cntx, textBoxAttrSplit[cnt], textAreaWidth);
+            for(var cnt2=0;cnt2<mylines.length;cnt2++){
+                cntx.fillText(mylines[cnt2],curPos.left,(curPos.top+((cnt+cnt2)*textBoxAttrSizePx)));
+            }
+        }
+        //for(var cnt=0;cnt<textBoxAttrSplit.length;cnt++){
+        //console.log("puttextincanvas: cnt["+cnt+"] = "+textBoxAttrSplit[cnt]+"; textBoxAttrSizePx="+textBoxAttrSizePx + ";textFont="+textFont+";textAreaWidth="+textAreaWidth);
+        //    cntx.fillText(textBoxAttrSplit[cnt],curPos.left,(curPos.top+(cnt*textBoxAttrSizePx)), (mycanvas.width-curPos.left));
+        //}
+        $("#"+id).remove();
+    }
+}
+// DSC, 06/09/2012 - save all unsaved meme boxes in canvas
+function putAllUnsavedMemesInCanvas()
+{
+  for(var mydivid in myHashMemeBoxes)
+  {
+      if(mydivid.indexOf("text") == 0) {
+          continue;
+      }
+  console.log("SAVE UNSAVED MEME ID:" + mydivid);
     saveRestorePoint();
-	lastimgdrawn = 1;
-    mydivid = $(e).parents("div.newdd").attr("id");
+    lastimgdrawn = 1;
+    //mydivid = $(e).parents("div.newdd").attr("id");
     cntx.save();
 
     var canvasPos=$('#mycid').offset();
@@ -946,7 +1034,65 @@ function putincanvas(e)
     var imgPosition=$("#"+mydivid).offset();
     imgPosition.left = Math.round(imgPosition.left - canvasPos.left + 1);
     imgPosition.top = Math.round(imgPosition.top - canvasPos.top + 1);
+    var imgW=$(oImg).width();
+    var imgH=$(oImg).height();
+    if ($.browser.mozilla) {
+        imgPosition.left-=1;
+        //imgPosition.top-=1;
+    }
+    if (img_rotate[mydivid]['rotate']!=0) {
+        cntx.translate(imgPosition.left+(imgW/2),imgPosition.top+(imgH/2));
+        cntx.rotate(img_rotate[mydivid]['rotate']*(Math.PI/180));
+        if (img_rotate[mydivid]['x']==-1) {
+            cntx.scale(-1, 1);
+        }
+        if (img_rotate[mydivid]['y']==-1) {
+            cntx.scale(1, -1);
+        }
+        var t=new Image();
+        t.src=img_rotate[mydivid]['src'];
+        cntx.drawImage(document.getElementById("image"+mydivid), 0, 0, t.width, t.height, (-1*imgW)/2, (-1*imgH)/2, imgW, imgH);
+    } else {
+        if (img_rotate[mydivid]['x']==-1) {
+            cntx.scale(-1, 1);
+            imgPosition.left=(imgPosition.left*-1)-imgW;
+        }
+        if (img_rotate[mydivid]['y']==-1) {
+            cntx.scale(1, -1);
+            imgPosition.top=(imgPosition.top*-1)-imgH;
+        }
+        cntx.drawImage(document.getElementById("image"+mydivid), imgPosition.left, imgPosition.top, imgW, imgH);
+    }
+    $("#"+mydivid).remove();
+    putCanvasCounter--;
+  console.log("putCanvasCounter:" + putCanvasCounter);
+    //alert(putCanvasCounter);
+    //images[mydivid]
+    cntx.restore();
+  }
 
+}
+
+function putincanvas(e)
+{
+//var is_macromeme_checked = document.getElementById('macromeme_checkbox').checked;
+
+
+	saveRestorePoint();
+	lastimgdrawn = 1;
+    mydivid = $(e).parents("div.newdd").attr("id");
+    cntx.save();
+
+    if(myHashMemeBoxes[mydivid.toString()]) {
+        delete myHashMemeBoxes[mydivid.toString()];
+    }
+
+    var canvasPos=$('#mycid').offset();
+    var oImg=$("#image"+mydivid);
+
+    var imgPosition=$("#"+mydivid).offset();
+    imgPosition.left = Math.round(imgPosition.left - canvasPos.left + 1);
+    imgPosition.top = Math.round(imgPosition.top - canvasPos.top + 1);
     var imgW=$(oImg).width();
     var imgH=$(oImg).height();
 /**    if(is_macromeme_checked == true) {
@@ -958,12 +1104,39 @@ function putincanvas(e)
         //$('#fontsize').val(40);
     }
 	*/
+	
     if ($.browser.mozilla) {
         imgPosition.left-=1;
         //imgPosition.top-=1;
     }
     //var imgW=$(oImg).width();
     //var imgH=$(oImg).height();
+	
+//	var testObj = new Object();
+//	var hash = new Object();
+//	testObj.firstele = imgPosition.left
+//	testObj.secondele = imgPosition.top;
+//
+//	var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz!@#$%^&*()_+=`:;'/.,<>[]{}\|";
+//	var keylen = 5;
+//	var randstr = '';
+//	for (var i = 0; i < keylen; i++) {
+//		var pos = Math.floor(Math.random() * chars.length);
+//		randstr += chars.substring(pos,pos+1);
+//	}
+//
+//	hash[randstr] = testObj.firstele;
+//	for (var k in hash) {
+//		if (hash.hasOwnProperty(k)) {
+//			alert('key is: ' + k + ', value is: ' + hash[k]);
+//		}
+//	}
+
+   	var testObj = new Object();
+    var hash = new Object();
+    testObj.firstele = imgPosition.left
+    testObj.secondele = imgPosition.top;
+
     if (img_rotate[mydivid]['rotate']!=0) {
         cntx.translate(imgPosition.left+(imgW/2),imgPosition.top+(imgH/2));
         cntx.rotate(img_rotate[mydivid]['rotate']*(Math.PI/180));
@@ -1003,6 +1176,11 @@ function submit_memeje() {
         var x=mycanvas.width-wm.width()-paddings;
         var y=mycanvas.height-wm.height()-paddings;
         cntx.drawImage(wm[0],x,y,wm.width(),wm.height()); */
+
+
+    putAllUnsavedMemesInCanvas();
+    putAllUnsavedTextBoxessInCanvas();
+	
 		saveindisk(1);
 }
 function saveindisk(csave)
@@ -1140,12 +1318,15 @@ function clear_canvas() {
 	cntx.clearRect(0, 0, cntx.canvas.width, cntx.canvas.height);
 	numImages++;
 	putCanvasCounter = 0;
-	//alert(putCanvasCounter);
 	for(x=0;x<numImages;x++)
 	{
     $("#"+x).remove();
 	}
 	drawpanellines(settings.panel);
+
+    // Clear the hash
+    myHashMemeBoxes = {};
+
 	return false;
 }
 

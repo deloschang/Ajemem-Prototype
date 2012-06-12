@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-04-04 21:43:07
+<?php /* Smarty version 2.6.7, created on 2012-06-11 03:40:14
          compiled from meme/premade_image.tpl.html */ ?>
 
-<!-- Template: meme/premade_image.tpl.html Start 04/04/2012 21:43:07 --> 
+<!-- Template: meme/premade_image.tpl.html Start 11/06/2012 03:40:14 --> 
  <?php unset($this->_sections['cur_img']);
 $this->_sections['cur_img']['name'] = 'cur_img';
 $this->_sections['cur_img']['loop'] = is_array($_loop=$this->_tpl_vars['sm']['premade_imgs']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
@@ -25,8 +25,7 @@ $this->_sections['cur_img']['index_prev'] = $this->_sections['cur_img']['index']
 $this->_sections['cur_img']['index_next'] = $this->_sections['cur_img']['index'] + $this->_sections['cur_img']['step'];
 $this->_sections['cur_img']['first']      = ($this->_sections['cur_img']['iteration'] == 1);
 $this->_sections['cur_img']['last']       = ($this->_sections['cur_img']['iteration'] == $this->_sections['cur_img']['total']);
-?>
-<?php $this->assign('i', $this->_tpl_vars['sm']['premade_imgs'][$this->_sections['cur_img']['index']]); ?>
+ $this->assign('i', $this->_tpl_vars['sm']['premade_imgs'][$this->_sections['cur_img']['index']]); ?>
     <div class='idrag' style='float:left'><img height='100px' width='100px' src='http://localhost/image/orig/premade_images/<?php echo $this->_tpl_vars['i']['img_name']; ?>
 ' onclick='create_Imagebox(this.src)'/></div>
 <?php endfor; endif; ?>
