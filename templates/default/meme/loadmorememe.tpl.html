@@ -187,7 +187,6 @@
 </script>
 {/literal}
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
-
 <div>
 	<div  id="meme{$x.id_meme}" class="meme">
 
@@ -241,6 +240,7 @@
 							On: {$x.add_date|date_format:"%m-%d-%Y"} @ {$x.add_date|date_format:"%I:%M %p"}<br/><br/>  -->
 			<!--	<div class="meme_gen_info" style="position:relative; left: 13px; bottom:2px; font-size:13px; color:#ACACA5;">born 24 min ago</div>-->
 
+
 			<br/>
 			
 			<!-- Reply System -->
@@ -283,30 +283,20 @@
 									{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
 									&nbsp;<label id="capt{$x.id_meme}">{if $x.tot_caption != 0}{$x.tot_caption}{/if}</label> <a href="javascript:void(0)" onclick="get_captions('{$x.id_meme}');" >Add Caption</a>
 									{/if}
-						
+					
 
-					<!-- Flag 
-									{if $x.id_user!=$smarty.session.id_user}
-									 &nbsp;<a href="javascript:void(0)" onclick="flagging('{$x.id_meme}')">Flag</a>
-									{/if}
-					-->
-		</div>
+<span><a href="http://twitter.com/share" class="twitter-share-button" data-url="##LBL_SITE_URL##image/orig/meme/{$x.image}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje">Tweet</a></span> 
+<span class="fb_btn"><fb:like href="##LBL_SITE_URL##image/orig/meme/{$x.image}" send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like>
 
-				<!-- Twitter function commented out
-								<span class="fb_btn"><fb:like href="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like></span>
-							</span><br/>
-							<span ><a href="http://twitter.com/share" class="twitter-share-button" data-url="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje"  >Tweet</a></span> 
-							
-				{if $smarty.session.id_user == $x.id_user}
-				<a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /> </a>
-				</span><br/>
-				<span class="fb_btn"><fb:like href="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like></span>
-				</span><br/>
-				<span ><a href="http://twitter.com/share" class="twitter-share-button" data-url="##LBL_SITE_URL##meme/meme_details/id/{$x.id_meme}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje"  >Tweet</a></span>
-				{/if}
-				-->
-	</div>
-	
+<!--
+KARAN: Post to Reddit Button
+
+{if $smarty.session.id_user == $x.id_user}
+<a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /> </a>
+</span><br/>
+{/if}
+-->
+	    </div>
 	    <div id="send_reply{$x.id_meme}" style="width:75%; margin:-20px 0 30px 120px; display: none;"></div>
 		<!--<div id="add_caption{$x.id_meme}" style="width:60%;display: none;"></div> -->
 	    <input type="hidden" name="is_replied" id="is_replied{$x.id_meme}" value=''/>

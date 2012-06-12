@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-07 01:01:26
          compiled from user/avatar.tpl.html */ ?>
 
@@ -9,6 +10,12 @@
 
 <!-- Template: user/avatar.tpl.html Start 09/06/2012 00:28:28 --> 
 >>>>>>> 83283487b2e009dffc8cc50bd2aec9418c3eaafa
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-11 04:51:51
+         compiled from user/avatar.tpl.html */ ?>
+
+<!-- Template: user/avatar.tpl.html Start 11/06/2012 04:51:51 --> 
+>>>>>>> test2
  <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE')); ?>
 <div id="edit_photo">
 <!-- orig onclick editPhoto; -->

@@ -19,6 +19,7 @@
 	var global_page_no = 1;
 	var backup_page_no;
 	
+	var see_user_old = 0;
 	var live_meme_wait = 15000;
 	
 	var meme_timer;
@@ -71,8 +72,12 @@
 			var message_three = '{/literal}{$sm.msg_arr[2]}{literal}';
 			var link_three = '{/literal}{$sm.link_arr[2]}{literal}';
 			
-			var icon_arr = {/literal}{$sm.icon_arr}{literal};
-			var title_arr = {/literal}{$sm.title_arr}{literal};
+			var icon_arr = new Array();
+			icon_arr = {/literal}{$sm.icon_arr}{literal};
+			
+			var title_arr = new Array();
+			title_arr = {/literal}{$sm.title_arr}{literal};
+
 		
 			$('#nlu_message_one').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'"><img src="##LBL_SITE_URL##image/orig/meme/'+link_one+'" style="cursor:pointer;width: 210px; height: 170px; "/></a>');
 			
@@ -89,6 +94,7 @@
 				}
 			});
 		}		
+
 			$("#last_id_meme").val("{/literal}{$sm.last_id_meme}{literal}");
 			
 			var cat = "{/literal}{$sm.cat}{literal}";
@@ -102,7 +108,6 @@
 				get_all_flag_details(1);
 				setInterval("get_all_flag_details()",6000);
 			}
-
 			
 			var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
 			var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
@@ -115,7 +120,7 @@
 			
 			$("#page"+1).css({'font-weight' : 'bolder'});
 			backup_page_no = 1;
-				
+			
 		// Self-describing for search
 	    var describedClass = 'self-described';
 		$('.self-describing').focus(function(){
@@ -135,12 +140,12 @@
 			if ($("#chk_me").val()!=1) {
 				last_id = $("#last_id_meme_cur_page").val();
 				
+
 				var ext = "{/literal}{$smarty.request.ext}{literal}";
 				var url = "##LBL_SITE_URL##meme/meme_list";
 				
 				$("#loadingmeme_img").show();
 				$.post(url,{cat:'main_feed',page_no:page_no,ce:0,last_id:last_id,ext:ext}, function(res){
-
 					if(res != "")
 						$("#all_memes").html(res);
 						$("#loadingmeme_img").hide();
@@ -485,6 +490,7 @@
 {/if}
 
 {if !$smarty.session.id_user && !$smarty.session.profile}
+
 	<div id="icon_container"></div>
 	<div class="module_text" id="front_card">Your stories belong here.</div>
 	<div class="module_text" id="first_half">Whether it's...</div>

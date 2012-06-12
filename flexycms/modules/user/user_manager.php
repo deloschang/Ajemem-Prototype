@@ -216,6 +216,7 @@ class user_manager extends mod_manager {
                             $_SESSION['gender']=$result['gender'];
                             $_SESSION['id_user'] = $result['id_user'];
 							$_SESSION['uid'] = $result['uid'];
+
 						
                             // User Level
                             $_SESSION['exp_point'] = $result['exp_point'];
@@ -251,6 +252,7 @@ class user_manager extends mod_manager {
 							$_SESSION['one_less_pic'] = $res_one_less['fb_pic_normal'];
 							$_SESSION['one_less_avatar'] = $res_one_less['avatar'];
 							$_SESSION['one_less_gender'] = $res_one_less['gender'];
+
 						
                             // End
                             $_SESSION['raise_message']['global'] = "Successfully logged in";
@@ -537,12 +539,14 @@ class user_manager extends mod_manager {
                     $_output['MAIL'][0]['sm'] = $_output;
                     $this->smarty->assign('sm', $_output['MAIL'][0]['sm']);
                     $mail_message = $this->smarty->fetch($this->smarty->add_theme_to_template($_output['MAIL'][0]['tpl']));
-					logToFile("Sending mail to:".$_output['MAIL'][0]['to']);
+					logToFile("DAKIYA DAAK LAAYA - Sending e-mail to :".$_output['MAIL'][0]['to']."; LBL_SITE_URL :".LBL_SITE_URL);
+					$_SESSION['raise_message']['global'] = 'Your confirmation has been sent to your mail id';
                     $r = sendmail($_output['MAIL'][0]['to'], $_output['MAIL'][0]['subject'], $mail_message, $GLOBALS['conf']['SITE_ADMIN']['email']);
 
 
 
                     redirect(LBL_SITE_URL);
+					$_SESSION['raise_message']['global'] = 'Your confirmation has really been sent to your mail id';
                 } else {
                     $_SESSION['raise_message']['global'] = "Registration failed";
                     redirect(LBL_SITE_URL);
@@ -1382,7 +1386,39 @@ class user_manager extends mod_manager {
 	}
 		
     function _create_username() {
-        // seems to be running from meme_manager.php
+        global $link;
+
+        if (isset($this->_input['username'])) {
+            // Setup query to see if username is already taken
+            $myusername = mysql_real_escape_string(stripslashes($this->_input['username']));
+
+            $check_table = "SELECT COUNT(*) FROM " . TABLE_PREFIX . "user WHERE username='" . $myusername . "'";
+            //var_dump($check_table);
+            $result = mysqli_query($link, $check_table) or die(mysqli_error());
+
+            $row = mysqli_fetch_assoc($result);
+
+            //var_dump($row['COUNT(*)']);
+
+            if ($row['COUNT(*)'] != 0) {
+                echo 'This user already exists';
+            } else {
+                ##### Updating database with new username #####
+                //var_dump($myusername);
+                $sql = "UPDATE " . TABLE_PREFIX . "user SET username= '" . $myusername . "' WHERE id_user=" . $_SESSION['id_user'];
+                $result = mysqli_query($link, $sql);
+                //var_dump($result);
+                ##### Update TOC session to 1, username selected ######
+                $sql = "UPDATE " . TABLE_PREFIX . "user SET toc=1 WHERE id_user=" . $_SESSION['id_user'];
+                mysqli_query($link, $sql);
+                $_SESSION['toc'] = '1';
+                $_SESSION['username'] = $myusername;
+
+                ##### Redirect user out #####
+                // Insert static landing page here? //
+                redirect(LBL_SITE_URL . "meme/meme_list/cat/main_feed");
+            }
+        }
     }
 
     #### Deprecated with Submit and other functions

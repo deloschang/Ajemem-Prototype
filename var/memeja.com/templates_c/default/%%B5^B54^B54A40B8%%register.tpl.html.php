@@ -1,16 +1,31 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2011-10-14 10:50:09
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-06 22:48:32
+>>>>>>> test2
          compiled from user/register.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 231, false),array('function', 'html_checkboxes', 'user/register.tpl.html', 240, false),array('function', 'html_select_date', 'user/register.tpl.html', 260, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 276, false),array('function', 'html_select_date', 'user/register.tpl.html', 290, false),)), $this); ?>
 
-<!-- Template: user/register.tpl.html Start 14/10/2011 10:50:09 --> 
+<!-- Template: user/register.tpl.html Start 06/06/2012 22:48:32 --> 
  <?php echo '
+	<script type="text/javascript" src="colorBckg.js"></script>
 	<script type="text/javascript">
+
 		$.validator.addMethod("username", function(value) {
 			return /^[a-z0-9]([a-z0-9_.]+)?$/i.test(value);
 			 },\'<br>Please enter a valid username\'
 		);
+		function validateCheck() {
+		if ($("#toc").click) 
+		{
+			$("#register").attr(\'disabled\', \'\');
+		 } else 
+		{
+			$("#register").attr(\'disabled\', \'disabled\');
+		 }
+	 }
 		function checkvalidate() {
 			var validator=$("#signupform").validate({
 			   	rules: {
@@ -41,9 +56,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 						equalTo:\'#pwd\'
 					 },
 					"gender":{
-						required: true
-					 },
-					"user[address]":{
 						required: true
 					 },
 					"dob_Month":{
@@ -85,9 +97,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 					"gender" :{
 						required: flexymsg.required
 					 },
-					"user[address]" :{
-						required: flexymsg.required
-					 },
 					"dob_Month" :{
 						required: flexymsg.required_dob
 					 },
@@ -107,20 +116,40 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 		 }
 		function show_username_exist() {
 			var username=document.getElementById(\'username\').value;
+			var pass = document.getElementById(\'pwd\').value;
 			var url="http://www.memeja.com/index.php";
-			$.post(url,{"page":"user","choice":"check_username",ce:0,"username":username },function(res){
+		/**
+			if(username.length < 6)
+				$(\'#add_user_msg\').html("<center><font color=red>Must enter a longer username</font></center>");
+			else if(pass.length < 6)
+				$(\'#add_user_msg\').html("<center><font color=red>Must enter a longer password</font></center>");
+			else if(username.length < 6 && pass.length >= 6)
+				$(\'#add_user_msg\').html("<center><font color=red>Must enter a longer username</font></center>");
+			else if(username.length >= 6 && pass.length < 6)
+				$(\'#add_user_msg\').html("<center><font color=red>Must enter a longer password</font></center>");
+			//if(username.length < 6 || pass.length < 6)
+			//	$("#register").attr(\'disabled\', \'disabled\');
+			if(username.length >= 6 && pass.length >= 6 && ("#toc").click) {
+				$("#register").attr(\'disabled\', \'\');
+				$(\'#add_user_msg\').html(\'\');
+			 }
+			else
+				$("#register").attr(\'disabled\', \'disabled\');
+			*/
+		$.post(url,{"page":"user","choice":"check_username",ce:0,"username":username },function(res){
 			
 				if(res!=0 && username!=""){
 					$(\'#add_user_msg\').html("<center><font color=red>This Username Already Exist.</font></center>");
 					$(\'#username\').val("");
 					return false;
 				  }else{
-					$(\'#add_user_msg\').html(\'\');
+					//$(\'#add_user_msg\').html(\'\');
 					return true;
 				  }
 			 });
 		 }
 		function checkpassword() {
+			
 			var text=document.getElementById(\'pwd\').value;
 			var i,s,color,width;
 			var n_o_small_char=0;
@@ -128,6 +157,26 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 			var n_o_spe_char=0;
 			var n_o_dig=0;
 			var point=0;
+		/**
+			if(username.length < 6)
+				$(\'#add_user_msg\').html("<center><font color=red>Must enter a longer username</font></center>");
+			else if(text.length < 6)
+				$(\'#add_user_msg\').html("<center><font color=red>Must enter a longer password</font></center>");
+			else if(username.length < 6 && text.length >= 6)
+				$(\'#add_user_msg\').html("<center><font color=red>Must enter a longer username</font></center>");
+			else if(username.length >= 6 && text.length < 6)
+				$(\'#add_user_msg\').html("<center><font color=red>Must enter a longer password</font></center>");
+			//if(username.length < 6 || text.length < 6)
+			//	$("#register").attr(\'disabled\', \'disabled\');
+			if(username.length >= 6 && text.length >= 6 && ("#toc").click) {
+				$("#register").attr(\'disabled\', \'\');
+				$(\'#add_user_msg\').html(\'\');
+			 }
+			else
+				$("#register").attr(\'disabled\', \'disabled\');
+			*/
+			
+			
 			for(i=0;i<text.length;i++){
 				if(97<=text.charCodeAt(i) && text.charCodeAt(i)<=122) {
 					point++;
@@ -181,7 +230,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 <form id="signupform" name="signupform" action="http://www.memeja.com/user/<?php if ($this->_tpl_vars['sm']['flag']): ?>update_profile<?php else: ?>insert<?php endif; ?>" method="post" onSubmit="return checkvalidate();">
     <table align="center" class="form_tbl">
         <tr>
-            <th colspan="2"><?php if (! $this->_tpl_vars['sm']['res']['username']): ?>You can join here<?php else: ?>Edit Profile &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.memeja.com/user/change_password">Change Password</a><?php endif; ?></th>
+            <th colspan="2"><?php if (! $this->_tpl_vars['sm']['res']['username']): ?>You're Almost There!<?php else: ?>Edit Profile &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.memeja.com/user/change_password">Change Password</a><?php endif; ?></th>
         </tr> 
         <tr>
             <td align="right">First Name :</td>
@@ -254,25 +303,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
         </tr>
        
         <tr>
-            <td align="right">Hobbies : </td>
-            <td align="left">
-            <?php echo smarty_function_html_checkboxes(array('name' => 'hobbies','options' => $this->_tpl_vars['sm']['hobbies'],'selected' => $this->_tpl_vars['sm']['res']['hobbies']), $this);?>
-
-				 <span id="err6"><?php echo $this->_tpl_vars['sm']['err']['hobbies']; ?>
-</span>
-                        <br />
-            </td>
-        </tr>
-        <tr>
-            <td valign="top" align="right">Address : </td>
-            <td align="left">
-            	<textarea name="user[address]" id="address" cols="16" rows="3" ><?php echo $this->_tpl_vars['sm']['res']['address']; ?>
-</textarea>
-				 <span id="err7"><?php echo $this->_tpl_vars['sm']['err']['address']; ?>
-</span>
-            </td>
-        </tr>
-        <tr>
             <td align="right">Date of Birth : </td>
             <td align="left">
             <?php if ($this->_tpl_vars['sm']['res']['dob']): ?>
@@ -286,9 +316,13 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 </span>
             </td>
         </tr>
+		<tr>
+			<td align="right"><a href="http://www.memeja.com/templates/default/user/termsandconditions.html" target="_blank">Terms and Conditions</a>
+			<input type="checkbox" name="toc" id="toc" value="0" onclick="validateCheck();"/></td>
+		</tr>
         <tr>
         	<td>&nbsp;</td>
-            <td><input type="submit" value="<?php if ($this->_tpl_vars['sm']['flag']): ?>Update<?php else: ?>Register<?php endif; ?>" class="btn" /></td>
+            <td><input type="submit" id = "register" disabled = '' 	value="<?php if ($this->_tpl_vars['sm']['flag']): ?>Update<?php else: ?>Register<?php endif; ?>" class="btn" /></td>
         </tr>
     </table>
 </form>

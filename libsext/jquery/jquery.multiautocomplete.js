@@ -514,7 +514,7 @@ jQuery(function($){
                 filter_case: false,
 				filter_selected:true,
                 filter_hide: true,
-                complete_text: "Start to type...",
+                complete_text: "Start typing...",
                 maxshownitems: 30,
                 maxitems: 10,
                 onselect: "",

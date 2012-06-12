@@ -1,8 +1,6 @@
-<?php /* Smarty version 2.6.7, created on 2011-12-30 00:30:25
+<?php /* Smarty version 2.6.7, created on 2012-06-05 06:28:19
          compiled from meme/top_memelist.tpl.html */ ?>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
-<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
-<?php echo '
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script type="text/javascript">
     var reply_color = "';  echo $this->_tpl_vars['x']['reply'];  echo '";
     var honour_color = "';  echo $this->_tpl_vars['x']['agree'];  echo '";
@@ -267,4 +265,4 @@ unset($_smarty_tpl_vars);
 </div>
 <div id="loadingmeme_img" style="display:none;">
     <img src="http://localhost/templates/images/loading.gif" />   
-</div>
+</div>

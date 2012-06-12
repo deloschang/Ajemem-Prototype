@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2011-12-31 02:26:49
          compiled from manage/my_meme_details.tpl.html */ ?>
 
@@ -9,6 +10,12 @@
 
 <!-- Template: manage/my_meme_details.tpl.html Start 10/06/2012 02:58:34 --> 
 >>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-04 04:39:57
+         compiled from manage/my_meme_details.tpl.html */ ?>
+
+<!-- Template: manage/my_meme_details.tpl.html Start 04/06/2012 04:39:57 --> 
+>>>>>>> test2
  <?php echo '
 <style type="text/css">
 .meme{

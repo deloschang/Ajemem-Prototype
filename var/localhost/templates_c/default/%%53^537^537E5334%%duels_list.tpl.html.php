@@ -1,5 +1,9 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2011-12-25 14:22:26
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-03 21:36:20
+>>>>>>> test2
          compiled from leaderboard/duels_list.tpl.html */ ?>
 <div id="leaderboard_lb_duels">
 <div class="box box-75 altbox">
@@ -7,6 +11,7 @@
 	<input type="hidden" name="htot" id="rtot" value='<?php echo $this->_tpl_vars['sm']['next_prev']->total; ?>
 '/>
         <input type="hidden" id="qstart" value="<?php echo $this->_tpl_vars['sm']['qstart']; ?>
+<<<<<<< HEAD
 "/>
         <div class="content">
 	    <table  align="center" cellpadding="10" border="1" width="345px;">
@@ -28,6 +33,8 @@
 	<input type="hidden" name="htot" id="rtot" value='<?php echo $this->_tpl_vars['sm']['next_prev']->total; ?>
 '/>
         <input type="hidden" id="qstart" value="<?php echo $this->_tpl_vars['sm']['qstart']; ?>
+=======
+>>>>>>> test2
 "/>
         <div class="content">
 	    <table  align="center" cellpadding="10" border="1" width="345px;">
@@ -40,6 +47,9 @@
 		    <th>Duels</th>
 		</thead>
 		<tbody>
+<<<<<<< HEAD
+>>>>>>> test2
+=======
 >>>>>>> test2
 		    <?php unset($this->_sections['cur']);
 $this->_sections['cur']['name'] = 'cur';
@@ -65,8 +75,13 @@ $this->_sections['cur']['index_next'] = $this->_sections['cur']['index'] + $this
 $this->_sections['cur']['first']      = ($this->_sections['cur']['iteration'] == 1);
 $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] == $this->_sections['cur']['total']);
 <<<<<<< HEAD
+<<<<<<< HEAD
 ?>
 		    <?php $this->assign('x', $this->_tpl_vars['sm']['list'][$this->_sections['cur']['index']]); ?>
+=======
+?>
+		    <?php $this->assign('x', $this->_tpl_vars['sm']['list'][$this->_sections['cur']['index']]); ?>
+>>>>>>> test2
 			<tr id="usid<?php echo $this->_tpl_vars['x']['id_user']; ?>
 " class="sprofile hndptr" lid_user="<?php echo $this->_tpl_vars['x']['id_user']; ?>
 " lpos="<?php echo $this->_sections['cur']['iteration']+$this->_tpl_vars['sm']['qstart']; ?>
@@ -146,6 +161,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
     
 </script>
 '; ?>
+<<<<<<< HEAD
 
 =======
 ?>
@@ -229,4 +245,6 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
     
 </script>
 '; ?>
+>>>>>>> test2
+=======
 >>>>>>> test2

@@ -1,5 +1,8 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> test2
 <?php /* Smarty version 2.6.7, created on 2011-12-22 13:18:28
          compiled from user/login_form.tpl.html */ ?>
 
@@ -10,6 +13,7 @@
 
 <!-- Template: user/login_form.tpl.html Start 01/04/2012 08:49:20 --> 
 >>>>>>> test2
+<<<<<<< HEAD
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -149,6 +153,8 @@
          compiled from user/login_form.tpl.html */ ?>
 
 <!-- Template: user/login_form.tpl.html Start 01/04/2012 08:49:20 --> 
+>>>>>>> test2
+=======
 >>>>>>> test2
  <?php echo '
 <script type="text/javascript">

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-12 02:02:19
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
@@ -6,6 +7,15 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_option
 <!-- Template: meme/meme_editor.tpl.html Start 12/06/2012 02:02:19 --> 
  <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY')); ?>
 <?php echo '
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-11 03:39:50
+         compiled from meme/meme_editor.tpl.html */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 199, false),)), $this); ?>
+
+<!-- Template: meme/meme_editor.tpl.html Start 11/06/2012 03:39:50 --> 
+ <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY'));  echo '
+>>>>>>> test2
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
 <script type="text/javascript">
 
@@ -107,6 +117,28 @@ function setOptions(obj){
  }
 $(document).ready(function(){
 	loadcanvas();
+<<<<<<< HEAD
+=======
+	var main_ofst = $(\'#main\').offset();
+	$(window).scroll(function(e){
+		var scrollTop = $(window).scrollTop();
+		console.log(scrollTop);
+		if(scrollTop > 145){
+			var y = $(\'#main\').offset();
+			$(\'#main\').css({
+			    position:\'fixed\',
+				top:\'0px\',
+			    left : y.left+\'px\'
+			 });
+		 }else{
+			$(\'#main\').css({
+			    position:\'absolute\',
+				top:\'-30px\',
+			    left :\'-10px\'
+			 });
+		 }
+	 });
+>>>>>>> test2
 	$("#page").show();
  });
 </script>
@@ -117,6 +149,7 @@ $(document).ready(function(){
 <div id="uploader"class="nohighlight">
 	<input type="file" name="updimage" id="updimage" size="5" />
 	<input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
+<<<<<<< HEAD
 
 	URL: <input type="text" name="imgurl" id="imgurl" size="27" />
 	<input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
@@ -126,6 +159,11 @@ $(document).ready(function(){
 		<?php echo smarty_function_html_options(array('options' => $this->_tpl_vars['premade_category']), $this);?>
 
 	</select>	
+=======
+	URL: <input type="text" name="imgurl" id="imgurl" size="27" />
+	<input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
+	<div id="prev_image" class="prev_image"></div>
+>>>>>>> test2
 </div>
              
         <div class='main_smiley_loading'class="nohighlight"style="top:100px;">
@@ -133,6 +171,10 @@ $(document).ready(function(){
                 <div id="loadimg" ></div>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+		<div class="spacer"></div>
+>>>>>>> test2
 		<div id="editorside"></div>
 <div id="page" style="display:none; left:-160px;"class="nohighlight">
 	<canvas id="dummy1" style="display:none;"></canvas>
@@ -149,8 +191,13 @@ $(document).ready(function(){
         </div></td>
         <input type="hidden" id="fontsize" class="ls" value="1" style="width:25px" >
         <td><img src="http://localhost/spad/site_image/color_wheel.png" width="20" height="20" alt="Pick Color" title="Pick Color" id="color" /><br /></td>
+<<<<<<< HEAD
         
 		<span id="hilight">
+=======
+        <span id="hilight">
+		    <td><img src="http://localhost/spad/site_image/grid.png" width="20" height="20" class="grid" title="Gridlines" alt="Gridlines Toggle" /></td>
+>>>>>>> test2
 		    <!--<td><img src="http://localhost/spad/site_image/uparrow.png" width="20" height="20" class="uparrow" title="Scroll Up" alt="Up Arrow" /></td>
 			<!--<td><img src="http://localhost/spad/site_image/downarrow.png" width="20" height="20" class="downarrow" title="Scroll Bottom" alt="Down Arrow" /></td>
 			<!--<td><img src="http://localhost/spad/site_image/paintbucket.png" width="16" height="16" class="paintbucket" title="Paintbucket" alt="Paintbucket" /></td>-->

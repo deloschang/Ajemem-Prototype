@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2011-12-31 02:26:49
          compiled from manage/loadmore_my_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
@@ -16,6 +17,15 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE'));  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 	    <?php if ($this->_tpl_vars['sm']['res']): ?>
 >>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-04 04:39:57
+         compiled from manage/loadmore_my_meme.tpl.html */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/loadmore_my_meme.tpl.html', 18, false),array('modifier', 'date_format', 'manage/loadmore_my_meme.tpl.html', 19, false),)), $this); ?>
+<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+<?php $this->assign('img_path', $this->_tpl_vars['util']->get_values_from_config('IMAGE'));  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+	    <?php if ($this->_tpl_vars['sm']['res']): ?>
+>>>>>>> test2
 		<?php unset($this->_sections['cur']);
 $this->_sections['cur']['name'] = 'cur';
 $this->_sections['cur']['loop'] = is_array($_loop=$this->_tpl_vars['sm']['res']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
@@ -31,6 +41,7 @@ if ($this->_sections['cur']['show']) {
     $this->_sections['cur']['total'] = 0;
 if ($this->_sections['cur']['show']):
 <<<<<<< HEAD
+<<<<<<< HEAD
 
             for ($this->_sections['cur']['index'] = $this->_sections['cur']['start'], $this->_sections['cur']['iteration'] = 1;
                  $this->_sections['cur']['iteration'] <= $this->_sections['cur']['total'];
@@ -39,6 +50,11 @@ if ($this->_sections['cur']['show']):
             for ($this->_sections['cur']['index'] = $this->_sections['cur']['start'], $this->_sections['cur']['iteration'] = 1;
                  $this->_sections['cur']['iteration'] <= $this->_sections['cur']['total'];
 >>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+=======
+
+            for ($this->_sections['cur']['index'] = $this->_sections['cur']['start'], $this->_sections['cur']['iteration'] = 1;
+                 $this->_sections['cur']['iteration'] <= $this->_sections['cur']['total'];
+>>>>>>> test2
                  $this->_sections['cur']['index'] += $this->_sections['cur']['step'], $this->_sections['cur']['iteration']++):
 $this->_sections['cur']['rownum'] = $this->_sections['cur']['iteration'];
 $this->_sections['cur']['index_prev'] = $this->_sections['cur']['index'] - $this->_sections['cur']['step'];
@@ -46,9 +62,15 @@ $this->_sections['cur']['index_next'] = $this->_sections['cur']['index'] + $this
 $this->_sections['cur']['first']      = ($this->_sections['cur']['iteration'] == 1);
 $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] == $this->_sections['cur']['total']);
 <<<<<<< HEAD
+<<<<<<< HEAD
 ?>
 		<?php $this->assign('x', $this->_tpl_vars['sm']['res'][$this->_sections['cur']['index']]); ?>
 		<div >
+=======
+?>
+		<?php $this->assign('x', $this->_tpl_vars['sm']['res'][$this->_sections['cur']['index']]); ?>
+		<div >
+>>>>>>> test2
 			<div  id="meme<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " class="meme">
 				<div style="height: 110px;">
@@ -78,6 +100,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 					<label id="repl<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "><?php echo $this->_tpl_vars['x']['tot_reply']; ?>
 </label>&nbsp;<a href="javascript:void(0);" onclick="get_all_replies('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+<<<<<<< HEAD
 ');"><img src="http://localhost/templates/images/reply.gif" />Reply</a>&emsp;
 					<?php endif; ?>
 =======
@@ -116,22 +139,35 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 ');"><img src="http://localhost/templates/images/reply.gif" />Reply</a>&emsp;
 					<?php endif; ?>
 >>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+=======
+');"><img src="http://localhost/templates/images/reply.gif" />Reply</a>&emsp;
+					<?php endif; ?>
+>>>>>>> test2
 					<label id="aggr<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "><?php echo $this->_tpl_vars['x']['tot_honour']; ?>
 </label>&nbsp;<a href="javascript:void(0);" id="agr_link<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " onclick="set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 ','A');">Honour</a>&emsp;
 =======
 ','A');">Honour</a>&emsp;
 >>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+=======
+','A');">Honour</a>&emsp;
+>>>>>>> test2
 					<label id="disaggr<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "><?php echo $this->_tpl_vars['x']['tot_dishonour']; ?>
 </label>&nbsp;<a href="javascript:void(0);" id="disagr_link<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " onclick="set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 ','D');">Dishonour</a>
 					<?php if ($this->_tpl_vars['x']['can_all_comment'] || @ in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
+=======
+','D');">Dishonour</a>
+					<?php if ($this->_tpl_vars['x']['can_all_comment'] || @ in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
+>>>>>>> test2
 					&nbsp;<label id="capt<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "><?php echo $this->_tpl_vars['x']['tot_caption']; ?>
  </label> <a href="javascript:void(0)" onclick="get_captions('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
@@ -162,8 +198,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 		</div>
 		<br/>
 		<?php endfor; endif; ?>
-	    <?php endif; ?>
-<?php echo '
+	    <?php endif;  echo '
 <script type="text/javascript">
 	$(".fb_btn").each(function (){
 	    FB.XFBML.parse($(this).get(0));
@@ -175,6 +210,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
     a{text-decoration:none; }
 </style>
 '; ?>
+<<<<<<< HEAD
 
 =======
 ','D');">Dishonour</a>
@@ -222,3 +258,5 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 </style>
 '; ?>
 >>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+=======
+>>>>>>> test2

@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-11 00:58:05
          compiled from user/register.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 274, false),array('function', 'html_select_date', 'user/register.tpl.html', 288, false),)), $this); ?>
 
 <!-- Template: user/register.tpl.html Start 11/06/2012 00:58:05 --> 
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-09 06:32:59
+         compiled from user/register.tpl.html */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 277, false),array('function', 'html_select_date', 'user/register.tpl.html', 291, false),)), $this); ?>
+
+<!-- Template: user/register.tpl.html Start 09/06/2012 06:32:59 --> 
+>>>>>>> test2
  <?php echo '
 	<script type="text/javascript" src="colorBckg.js"></script>
 	<script type="text/javascript">
@@ -106,7 +115,13 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 			var x=validator.form();
 			return x;
 		 }
+<<<<<<< HEAD
 		
+=======
+		function check_date(e) {
+			
+		 }
+>>>>>>> test2
 		function show_username_exist() {
 			var username=document.getElementById(\'username\').value;
 			var pass = document.getElementById(\'pwd\').value;
@@ -223,7 +238,11 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 <form id="signupform" name="signupform" action="http://localhost/user/<?php if ($this->_tpl_vars['sm']['flag']): ?>update_profile<?php else: ?>insert<?php endif; ?>" method="post" onSubmit="return checkvalidate();">
     <table align="center" class="form_tbl">
         <tr>
+<<<<<<< HEAD
             <th colspan="2"><?php if (! $this->_tpl_vars['sm']['res']['username']): ?>You're Almost There!<?php else: ?>Edit Profile &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://localhost/user/change_password">Change Password</a><?php endif; ?></th>
+=======
+            <th colspan="2"><?php if (! $this->_tpl_vars['sm']['res']['username']): ?>You're Almost There! **Check your email upon registering** <?php else: ?>Edit Profile &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://localhost/user/change_password">Change Password</a><?php endif; ?></th>
+>>>>>>> test2
         </tr> 
         <tr>
             <td align="right">First Name :</td>
@@ -284,6 +303,10 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
             </td>
         </tr>
          <?php endif; ?>
+<<<<<<< HEAD
+=======
+        <!--
+>>>>>>> test2
         <tr>
             <td align="right">Gender : </td>
             <td align="left">
@@ -294,7 +317,11 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 </span>
             </td>
         </tr>
+<<<<<<< HEAD
        
+=======
+         -->
+>>>>>>> test2
         <tr>
             <td align="right">Date of Birth : </td>
             <td align="left">

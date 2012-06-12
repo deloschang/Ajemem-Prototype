@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-11 01:34:18
          compiled from meme/respective_replies.tpl.html */ ?>
 
 <!-- Template: meme/respective_replies.tpl.html Start 11/06/2012 01:34:18 --> 
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-07 01:39:15
+         compiled from meme/respective_replies.tpl.html */ ?>
+
+<!-- Template: meme/respective_replies.tpl.html Start 07/06/2012 01:39:15 --> 
+>>>>>>> test2
  <?php $this->_foreach['rep'] = array('total' => count($_from = (array)$this->_tpl_vars['sm']['reparr']), 'iteration' => 0);
 if ($this->_foreach['rep']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['i']):

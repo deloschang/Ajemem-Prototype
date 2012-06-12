@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-04-09 21:40:38
          compiled from user/account_activate.tpl.html */ ?>
 
 <!-- Template: user/account_activate.tpl.html Start 09/04/2012 21:40:38 --> 
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-09 06:31:22
+         compiled from user/account_activate.tpl.html */ ?>
+
+<!-- Template: user/account_activate.tpl.html Start 09/06/2012 06:31:22 --> 
+>>>>>>> test2
  <b>Dear <?php echo $this->_tpl_vars['sm']['first_name']; ?>
 ,</b><br /><br />
 Thank you for making an account for <b>http://localhost/</b>!<br /><br />

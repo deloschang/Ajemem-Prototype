@@ -1,13 +1,20 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-11 01:18:20
          compiled from user/memeje_friends.tpl.html */ ?>
 
 <!-- Template: user/memeje_friends.tpl.html Start 11/06/2012 01:18:20 --> 
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-03 22:34:49
+         compiled from user/memeje_friends.tpl.html */ ?>
+
+<!-- Template: user/memeje_friends.tpl.html Start 03/06/2012 22:34:49 --> 
+>>>>>>> test2
  <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/filter.css"/>
 
 <div align="center">
-      <h2>Add friends to memeje friend list </h2>
-      <div> You have currently <?php if ($this->_tpl_vars['sm']['frnds_cnt']): ?><b><?php echo $this->_tpl_vars['sm']['frnds_cnt']; ?>
-</b><?php else: ?>no<?php endif; ?> friend<?php if ($this->_tpl_vars['sm']['frnds_cnt'] > 1): ?>s<?php endif; ?></div>
+      <h2>Add Friends</h2>
+      <div> You currently have <?php if ($this->_tpl_vars['sm']['frnds_cnt']): ?><b><?php echo $this->_tpl_vars['sm']['frnds_cnt']; ?>
+</b><?php else: ?>no<?php endif; ?> friends<?php if ($this->_tpl_vars['sm']['frnds_cnt'] > 1): ?>s<?php endif; ?></div>
       <div id="search" >
         <label for="filter">Find friends</label> <input type="text" name="filter" value="" id="filter" />
       </div>

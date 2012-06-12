@@ -31,7 +31,7 @@
 	function title_focus() {
         b_titlefocus = true;
     }
-
+	
     function title_blur() { b_titlefocus = false; }
     
     function cancel_meme(){
@@ -78,7 +78,7 @@
             alert("Enter a shorter title");
             return false;
         }
-		
+
         if($(obj.see_fr).val()==""){
             alert("Choose Who Can See?");
             $(obj.see_fr).focus();
@@ -95,28 +95,28 @@
             return false;
         } else {
         
-			if(!$("#tag").val())
+		if(!$("#tag").val())
+		{
+			/*  Uncomment and comment out var conf=true once the tagging system is implemented. 
+				Allows users to submit memes without choosing if they have to tag a friend or not. 
+			*/
+			
+			var conf=confirm("Are you sure you don't want to tag your friends?");
+			//var conf=true;
+			if(conf)
 			{
-				/* Godzilla: Uncomment and comment out var conf=true once the tagging system is implemented. 
-					Allows users to submit memes without choosing if they have to tag a friend or not. 
-				*/
-				
-				//var conf=confirm("Are you sure you don't want to tag your friends?");
-				var conf=true;
-				if(conf)
-				{
-					$(window).unbind();
-					submit_memeje();
-				}
-				else
-				{
-					return false;
-				}
-			}
-			else{
 				$(window).unbind();
 				submit_memeje();
 			}
+			else
+			{
+				return false;
+			}
+		}
+		else{
+			$(window).unbind();
+			submit_memeje();
+		}
         }
     }
 	$(window).bind('beforeunload', function() {

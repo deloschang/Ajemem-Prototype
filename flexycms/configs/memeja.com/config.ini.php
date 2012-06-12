@@ -152,7 +152,6 @@ description = "Your recurring payment description,Description about transaction.
 11 = "F**k Yea"
 34 = "Female/Hair"
 12 = "Forever Alone"
-13 = "Happy"
 14 = "Laugh"
 15 = "Me Gusta"
 16 = "Milk"
