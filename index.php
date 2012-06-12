@@ -61,18 +61,20 @@ $page = isset ($_input['page']) ? $_input['page'] : 'common';
 if (isset($_input['id'])){
 	global $link;
 	
-	$sql = get_search_sql("user","username = '".$_input['id']."' LIMIT 1");
+	$sanitize_id =  mysql_real_escape_string($_input['id']);
+	
+	$sql = get_search_sql("user","username = '".$sanitize_id."' LIMIT 1");
 	$temp_data = getrows($sql,$err);
 	$profile_data = $temp_data[0];
 	
 	if ($profile_data['id_user']){
-		$_SESSION['profile'] = $_input['id'];						//username
+		$_SESSION['profile'] = mysql_real_escape_string($_input['id']);						//username
 		$_SESSION['profile_id'] = $profile_data['id_user'];		
 		$_SESSION['profile_uid'] = $profile_data['uid'];
 		$_SESSION['profile_picture'] = $profile_data['fb_pic_normal'];
 		
 		// count followers
-		$page_sql="SELECT COUNT(*) FROM memeje__friends WHERE following=".$profile_data['id_user'];
+		$page_sql="SELECT COUNT(*) FROM memeje__friends WHERE following=".$_SESSION['id_user'];
 	    $page_res=mysqli_query($link,$page_sql);
 		
 		if ($page_res){
@@ -100,7 +102,8 @@ if (isset($_input['id'])){
 		
 		// requests to view a meme
 		if ($_input['meme']){
-			$sql = get_search_sql("meme","id_meme = '".$_input['meme']."' LIMIT 1");
+			$input_meme = mysql_real_escape_string($_input['meme']);
+			$sql = get_search_sql("meme","id_meme = '".$input_meme."' LIMIT 1");
 			$temp_meme = getrows($sql,$err);
 			$profile_meme = $temp_meme[0];
 			
