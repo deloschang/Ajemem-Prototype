@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-12 03:56:24
 =======
 <?php /* Smarty version 2.6.7, created on 2012-06-12 03:07:18
@@ -7,10 +8,14 @@
 =======
 <?php /* Smarty version 2.6.7, created on 2012-06-12 20:00:04
 >>>>>>> 7b5f054f749573e2c4b326012bfdeddbaf8f1b61
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-13 07:00:26
+>>>>>>> ac4211d0e074165145718401fe01962755d00891
          compiled from user/register.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios', 'user/register.tpl.html', 275, false),array('function', 'html_select_date', 'user/register.tpl.html', 290, false),)), $this); ?>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <!-- Template: user/register.tpl.html Start 12/06/2012 03:56:24 --> 
@@ -20,6 +25,9 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'html_radios
 =======
 <!-- Template: user/register.tpl.html Start 12/06/2012 20:00:04 --> 
 >>>>>>> 7b5f054f749573e2c4b326012bfdeddbaf8f1b61
+=======
+<!-- Template: user/register.tpl.html Start 13/06/2012 07:00:26 --> 
+>>>>>>> ac4211d0e074165145718401fe01962755d00891
  <?php echo '
 	<script type="text/javascript" src="colorBckg.js"></script>
 	<script type="text/javascript">
