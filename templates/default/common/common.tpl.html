@@ -532,11 +532,21 @@
 				<div id="profile_name"><center>Flerp? We couldn't find this user!</center></div>
 			</div>		
 			<div id="live_feed" class="nohighlight">
-				<center><div id="random_meme">
+				<div id="random_meme" style="left:259px; z-index:4;">
 					<a href="javascript:void(0);" onclick="get_random_meme();" class="special-btn red">Random</a>
-				</div></center>	
+				</div>	
 				<div id="feed_cont">
 					{include file="meme/home"}
+				</div>
+			</div>
+			<div id="login_top">
+				<div class="fb-login-button" scope="
+				email,
+				publish_stream
+				,user_education_history
+				{*,user_birthday*}	{* Uncomment to enable *}
+				">
+			Login with Facebook
 				</div>
 			</div>
 		</div>	
@@ -553,50 +563,50 @@
 				<div id="user_info">
 					<div id="profile_name">{$smarty.session.profile|capitalize}</div>
 					<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if} followers</div>
-				</div>	
-				
-				<div id="my_pics">
-							<div class="tabs">
-							   <div class="tab">
-								   <input type="radio" id="tab-1" name="tab-group-1" checked>
-								   <label for="tab-1">My Memes</label>
-								   <div class="content">
-										<div id="my_meme_list">
-											{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
-										</div>
-								   </div>
-							   </div>
-							   <div class="tab">
-								   <input type="radio" id="tab-2" name="tab-group-1">
-								   <label for="tab-2">Tagged Memes</label>
-								   <div class="content">
-										<div id="my_tagged">
-											{get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
-										</div>
-								   </div>
-							   </div>
+				</div>
+				<div id="view_meme">
+					{if $smarty.session.profile_meme_image}
+						<div id="profile_meme">
+							{$smarty.session.profile_meme_title}
+						</div>
+						<div id="profile_meme_image">
+							<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}" />
+						</div>
+						{if $smarty.session.profile_meme_tagged}
+							<div id="profile_tagged">
+								Tagged: 
+								{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
+									<span>
+										<img src="https://graph.facebook.com/{$x.id}/picture"/>
+										{$x.name}
+									</span>
+								{/foreach}
 							</div>
-						</div>
-						
-				{if $smarty.session.profile_meme_image}
-					<div id="profile_meme">
-						{$smarty.session.profile_meme_title}
-					</div>
-					<div id="profile_meme_image">
-						<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}" />
-					</div>
-					{if $smarty.session.profile_meme_tagged}
-						<div id="profile_tagged">
-							Tagged: 
-							{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
-								<span>
-									<img src="https://graph.facebook.com/{$x.id}/picture"/>
-									{$x.name}
-								</span>
-							{/foreach}
-						</div>
+						{/if}
 					{/if}
-				{/if}
+				</div>
+				<div id="my_pics">
+					<div class="tabs">
+					   <div class="tab">
+						   <input type="radio" id="tab-1" name="tab-group-1" checked>
+						   <label for="tab-1">My Memes</label>
+						   <div class="content">
+								<div id="my_meme_list">
+									{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+								</div>
+						   </div>
+					   </div>
+					   <div class="tab">
+						   <input type="radio" id="tab-2" name="tab-group-1">
+						   <label for="tab-2">Tagged Memes</label>
+						   <div class="content">
+								<div id="my_tagged">
+									{get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
+								</div>
+						   </div>
+					   </div>
+					</div>
+				</div>
 			</div>
 			
 			<div id="live_feed" class="nohighlight">
@@ -607,7 +617,16 @@
 					{include file="meme/home"}
 				</div>
 			</div>
-			
+			<div id="login_top">
+				<div class="fb-login-button" scope="
+			email,
+			publish_stream
+			,user_education_history
+			{*,user_birthday*}	{* Uncomment to enable *}
+			">
+		Login with Facebook
+				</div>
+			</div>
 		</div>
 	{/if}
 {else}
@@ -714,48 +733,49 @@
 						<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('follow');">follow</a></span>
 					{/if}
 				</div>	
-						<div id="my_pics">
-							<div class="tabs">
-							   <div class="tab">
-								   <input type="radio" id="tab-1" name="tab-group-1" checked>
-								   <label for="tab-1">{$smarty.session.profile|capitalize}'s Memes</label>
-								   <div class="content">
-										<div id="my_meme_list">
-											{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
-										</div>
-								   </div>
-							   </div>
-							   <div class="tab">
-								   <input type="radio" id="tab-2" name="tab-group-1">
-								   <label for="tab-2">Tagged Memes</label>
-								   <div class="content">
-										<div id="my_tagged">
-											{get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
-										</div>
-								   </div>
-							   </div>
-							</div>
-						</div>
-					
+				<div id="view_meme">
 					{if $smarty.session.profile_meme_image}
-						<div id="profile_meme">
-							{$smarty.session.profile_meme_title}
-						</div>
-						<div id="profile_meme_image">
-							<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}" />
-						</div>
-						{if $smarty.session.profile_meme_tagged}
-							<div id="profile_tagged">
-								Tagged: 
-								{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
-									<span>
-										<img src="https://graph.facebook.com/{$x.id}/picture"/>
-										{$x.name}
-									</span>
-								{/foreach}
+							<div id="profile_meme">
+								{$smarty.session.profile_meme_title}
 							</div>
+							<div id="profile_meme_image">
+								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}" />
+							</div>
+							{if $smarty.session.profile_meme_tagged}
+								<div id="profile_tagged">
+									Tagged: 
+									{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
+										<span>
+											<img src="https://graph.facebook.com/{$x.id}/picture"/>
+											{$x.name}
+										</span>
+									{/foreach}
+								</div>
+							{/if}
 						{/if}
-					{/if}
+					</div>
+					<div id="my_pics">
+						<div class="tabs">
+						   <div class="tab">
+							   <input type="radio" id="tab-1" name="tab-group-1" checked>
+							   <label for="tab-1">{$smarty.session.profile|capitalize}'s Memes</label>
+							   <div class="content">
+									<div id="my_meme_list">
+										{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+									</div>
+							   </div>
+						   </div>
+						   <div class="tab">
+							   <input type="radio" id="tab-2" name="tab-group-1">
+							   <label for="tab-2">Tagged Memes</label>
+							   <div class="content">
+									<div id="my_tagged">
+										{get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
+									</div>
+							   </div>
+						   </div>
+						</div>
+					</div>
 				</div>
 			{/if}
 			

@@ -662,7 +662,7 @@
 		margin-left:auto;
 		margin-right:auto;
 		position:absolute;
-		left:140px;
+		left:130px;
 	}
 	
 	#feed_cont {
@@ -846,10 +846,10 @@ moz-border-radius: 10px;
 		z-index:201;
 	}
 	
-	#nlu_login_top {
-		left:1050px;		
+	#login_top {
+		left:1080px;		
 		position:fixed;
-		top:5px;
+		top:10px;
 		z-index:201;
 	}
 	
@@ -949,6 +949,38 @@ moz-border-radius: 10px;
 	}
 	
 /****************************************************************************************************/
+
+/*^^^^^^^^^^^^^^^^^^^^^ Tagged Memes ^^^^^^^^^^^^^^^^^^^^^*/
+	#view_meme {
+		position:relative;
+		top:20px;
+	}
+	
+	#profile_meme{
+		font-size:18px;
+		font-weight:bold;
+		text-align:center;
+	}
+	
+	#profile_meme_image {
+		margin-left:auto;
+		margin-right:auto;
+		margin-bottom:60px;
+		position:relative;
+		text-align:center;
+		top:30px;
+	}
+	
+	#profile_tagged {
+		position:absolute;
+		top:-100px;
+		left:500px;
+		font-size:16px;
+		font-weight:bold;
+		padding:5px;
+		text-align:center;
+		box-shadow: 0 0 4px 0 #87C8F0;
+	}
 
 /*Hover User Profile*/
 
@@ -1595,6 +1627,7 @@ a{
 		 -moz-border-radius: 10px; 
 		-webkit-border-radius: 10px; 
 		border-radius: 10px;
+		z-index:5;
 
 	}
 
