@@ -24,16 +24,6 @@
 {/literal}
 <div id ="user_memes" >
 {assign var=img_path value=$util->get_values_from_config('IMAGE')}
-<b>
-		    {if $sm.flg==1}
-				Favorites
-		    {elseif $sm.flg==2}
-				Tagged Memes
-		    {else}
-				My Memes
-		    {/if}
-</b>
-
 <div id = "liked_memes">
 		<!-- width of meme in CSS -->
 		

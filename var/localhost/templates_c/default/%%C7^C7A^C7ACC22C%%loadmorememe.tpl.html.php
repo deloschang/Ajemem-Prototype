@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-13 07:52:00
+<?php /* Smarty version 2.6.7, created on 2012-06-13 10:18:45
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 201, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 242, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 206, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 247, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 13/06/2012 07:52:00 --> 
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-13 07:52:47
-         compiled from meme/loadmorememe.tpl.html */ ?>
-<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 207, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 248, false),)), $this); ?>
-
-<!-- Template: meme/loadmorememe.tpl.html Start 13/06/2012 07:52:47 --> 
->>>>>>> ac4211d0e074165145718401fe01962755d00891
+<!-- Template: meme/loadmorememe.tpl.html Start 13/06/2012 10:18:45 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
