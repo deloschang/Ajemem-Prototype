@@ -49,8 +49,8 @@
 {literal}
 
 <script type="text/javascript">
-	var chc ="{/literal}{$chc}{literal}";
-	var idu="{/literal}{$smarty.session.id_user}{literal}";
+	var chc = "{/literal}{$chc}{literal}";
+	var idu = "{/literal}{$smarty.session.id_user}{literal}";
 	
 	var follow_count = parseInt({/literal}{$smarty.session.profile_follower_count}{literal});
 	
@@ -183,25 +183,26 @@
 				// Rank? No. 1- User? No. 1- XP? Yes.
 				if (ajax_response_exp[0].trim() == "AAB"){
 					
-					$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');
+					//$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');
 
-					$("#other_user_ranking_info").css("background", '#AAF2DC');
-					$("#other_user_ranking_info").animate( { "opacity" : 0.4 }, 700, function() {
-						$("#other_user_ranking_info").css("background","#aad450");
-						$("#other_user_ranking_info").animate( { "opacity" : 1 }, 300)
+					$("#trailing_user_pic").css("background", '#AAF2DC');
+					$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
+						$("#trailing_user_pic").css("background","#aad450");
+						$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
 					});
 				
 				// Rank? No 1- User? Yes.
 				} else if (ajax_response_exp[0].trim() == "AB") {
 					$("#trailing_user").html(ajax_response_exp[2]);
-					$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
+					//$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
 						
 				// Rank? Yes. Improvement? Yes.
 				} else if (ajax_response_exp[0].trim() == "BA") {
 					new_rank = ajax_response_exp[1];
-					trailing_xp = ajax_response_exp[2];
+					trailing_pic = ajax_response_exp[2];
 					trailing_user = ajax_response_exp[3];
 					trailing_rank = ajax_response_exp[4];
+					trailing_dupe = ajax_response_exp[5];
 					
 					$("#ranking_number").html(new_rank);
 					
@@ -216,18 +217,17 @@
 					if (trailing_user) {
 					
 						$("#trailing_ranking_number").html(trailing_rank);
-						$("#trailing_exp").html(trailing_xp+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
+						$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');	
 							
-						$("#trailing_user").html(trailing_user);
+						//$("#trailing_user").html(trailing_user);
 						
-						$("#other_user_ranking_info").css("background", '#FE4EB9');
-						$("#other_user_ranking_info").animate( { "opacity" : 0.4 }, 700, function() {
-							$("#other_user_ranking_info").css("background","#aad450");
-							$("#other_user_ranking_info").animate( { "opacity" : 1 }, 300)
+						$("#trailing_user_pic").css("background", '#FE4EB9');
+						$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
+							$("#trailing_user_pic").css("background","#aad450");
+							$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
 						});
 					
-					}
-					
+					}					
 				
 				// Rank? Yes. Improve? No.
 				} else {
@@ -235,6 +235,7 @@
 					trailing_xp = ajax_response_exp[2];
 					trailing_user = ajax_response_exp[3];
 					trailing_rank = ajax_response_exp[4];
+					trailing_dupe = ajax_response_exp[5];
 					
 					$("#ranking_number").html(new_rank);
 							
@@ -248,14 +249,16 @@
 					
 					if (trailing_user) {
 						$("#trailing_ranking_number").html(trailing_rank);
-						$("#trailing_exp").html(trailing_xp+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
-								
-						$("#trailing_user").html(trailing_user);
+						$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');	
 						
-						$("#other_user_ranking_info").css("background", '#B9FE4E');
-						$("#other_user_ranking_info").animate( { "opacity" : 0.4 }, 700, function() {
-							$("#other_user_ranking_info").css("background","#aad450");
-							$("#other_user_ranking_info").animate( { "opacity" : 1 }, 300)
+						//$("#trailing_exp").html(trailing_xp+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
+								
+						//$("#trailing_user").html(trailing_user);
+						
+						$("#trailing_user_pic").css("background", '#B9FE4E');
+						$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
+							$("#trailing_user_pic").css("background","#aad450");
+							$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
 						});
 					}
 				}
@@ -674,23 +677,29 @@
 		</div>
 		
 		<div id="user_pic" class="nohighlight">
-			{if $smarty.session.fb_pic_normal}
-				<img src="{$smarty.session.fb_pic_normal}" style="width:30px;height:30px">
-			{else}
-				<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:30px;height:30px"/>
-			{/if}
+			<a href="/?id={$smarty.session.dupe_username}">
+				{if $smarty.session.fb_pic_normal}
+					<img src="{$smarty.session.fb_pic_normal}" style="width:30px;height:30px">
+				{else}
+					<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:30px;height:30px"/>
+				{/if}
+			</a>
 			<div id="ranking_number">{if $smarty.session.exp_rank}{$smarty.session.exp_rank}{else}N/A{/if}</div>
 		</div>
 		
 		{if $smarty.session.one_less_user}
+			
 			<div id="trailing_user_pic" class="nohighlight">
-				{if $smarty.session.one_less_pic}
-					<img src="{$smarty.session.one_less_pic}" style="width:30px;height:30px">
-				{else}
-					<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:30px;height:30px"/>
-				{/if}
-			<div id="ranking_number">{if $smarty.session.one_less_rank}{$smarty.session.one_less_rank}{else}N/A{/if}</div>
-		</div>
+				<span id="trailing_user_profile_pic">
+					{if $smarty.session.one_less_pic}
+						<a href="/?id={$smarty.session.one_less_dupe_username}"><img src="{$smarty.session.one_less_pic}" style="width:30px;height:30px">
+					{else}
+						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:30px;height:30px"/></a>
+					{/if}
+				</span>
+				<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}{$smarty.session.one_less_rank}{else}N/A{/if}
+				</div>
+			</div>
 		{else}
 			
 		{/if}	

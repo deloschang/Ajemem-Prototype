@@ -836,8 +836,8 @@ moz-border-radius: 10px;
 		display:block;
 	}
 	
-	#ranking_number {
-		color:white; 
+	#ranking_number, #trailing_ranking_number{
+		color: #81cdfe; 
 		font-family:Verdana; 
 		font-size:14px;
 		font-weight:bold;
