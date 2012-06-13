@@ -8,7 +8,7 @@
 	html,body {
 		font-family: Trebuchet, Helvetica, sans-serif;
 		font-size:0.8em;
-		margin:10px 0% 10px 4%;
+		margin:10px 0% 10px 0%;
 		background-color:#87C8F0;
 		/*width: 1000px;*/
 			/*Removed for NLU sizing */
@@ -183,6 +183,14 @@
 		position: relative;
 		top:60px;
 	}
+	#nlu_container img {
+		width:860px;
+		height:445px;;
+		moz-border-radius: 12px;
+	    webkit-border-radius: 12px;
+	    khtml-border-radius: 12px;
+	    border-radius: 12px;
+	}
 	
 	#nlu_feed{
 		float:left; 
@@ -193,7 +201,7 @@
 		width:860px;
 		height:445px;
 		
-		background:#FFF;
+		background-image:url(##LBL_SITE_URL##templates/images/background.png) no-repeat;
 	    moz-border-radius: 12px;
 	    webkit-border-radius: 12px;
 	    khtml-border-radius: 12px;
@@ -620,7 +628,7 @@
 /* Main Profile Page */
 	#profile_page {
 		background-color:#fff;
-		margin-left:100px;
+		margin-left:200px;
 		margin-right:400px;
 		padding:10px;
 		position:relative;
@@ -642,7 +650,7 @@
 	#live_feed {
 	    background-color:#87C8F0;
 		float:right;
-		left:970px;
+		left:1070px;
 		position:absolute;
 		top:-20px;
 		width:350px;
@@ -1799,7 +1807,7 @@ a{
 	#editorcontent {
 		position:relative;
 		top:50px;
-		left:410px;
+		left:510px;
 		width:600px;
 	}
 	
