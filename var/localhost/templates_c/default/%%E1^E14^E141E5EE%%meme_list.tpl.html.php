@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-13 01:39:59
+<?php /* Smarty version 2.6.7, created on 2012-06-13 02:31:46
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -462,7 +462,7 @@
 		</div>
 		
 		<div id="friends_feed">
-			<a href="javascript:void(0);" onclick="diff_feed(1);" class="special-btn red">Friends Feed</a>
+			<a href="javascript:void(0);" onclick="diff_feed(1);" class="special-btn green">Friends Feed</a>
 		</div>
 </div>
 

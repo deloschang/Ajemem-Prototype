@@ -610,7 +610,7 @@
 	#contained {
 		position: relative;
 		top:40px;
-		left:-100px;
+		left:-150px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -624,7 +624,7 @@
 		margin-right:400px;
 		padding:10px;
 		position:relative;
-		top:-20px;
+		top:0px;
 		width:800px;
 	    moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
@@ -642,10 +642,9 @@
 	#live_feed {
 	    background-color:#87C8F0;
 		float:right;
-		left:930px;
-		padding:10px;
+		left:970px;
 		position:absolute;
-		top:0px;
+		top:-20px;
 		width:350px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
@@ -662,15 +661,22 @@
 	#random_meme {
 		margin-left:auto;
 		margin-right:auto;
-		position:relative;
-		left:5px;
-		margin:10px;
-		display:none;
+		position:absolute;
+		left:140px;
 	}
 	
 	#feed_cont {
 		margin-left:auto;
 		margin-right:auto;
+	}
+	
+	#world_feed {
+		float:left;
+	}
+	
+	#friends_feed {
+		position:absolute;
+		right:-10px;
 	}
 	
 /* Keeps track of your Network 
@@ -840,6 +846,13 @@ moz-border-radius: 10px;
 		z-index:201;
 	}
 	
+	#nlu_login_top {
+		left:1050px;		
+		position:fixed;
+		top:5px;
+		z-index:201;
+	}
+	
 	#other_user_name {
 		font-weight:bold;
 		font-size:18px;
@@ -996,7 +1009,7 @@ moz-border-radius: 10px;
 		border-width:1px;
 		box-shadow: 0 0 5px 0 #aad450;
 		height:105px;
-		left:50px;
+		left:20px;
 		padding:1px;
 		padding-top:5px;
 		position:relative;
@@ -1012,9 +1025,9 @@ moz-border-radius: 10px;
 /*@@@@@@@@@@@@@@@@@@@@@@@@  User Info @@@@@@@@@@@@@@@@@@@@@@@@*/
 
 	#user_info{
-		position:relative;
-		left:200px;
-		top:-100px;
+		position:absolute;
+		left:170px;
+		top:30px;
 	}
 	
 	#profile_name {
@@ -1036,16 +1049,14 @@ moz-border-radius: 10px;
 		height:60px;
 		padding:2px;
 		text-align:center;
-		top:-150px;
-		left:500px;
-		position:relative;
+		top:40px;
+		left:600px;
+		position:absolute;
 	}
 	
 	#my_pics {
-		position:absolute;
-		top:150px;
-		width:700px;
-		height:400px;
+		position:relative;
+		top:10px;
 	}
 	
 	#my_favorites {
@@ -1574,12 +1585,16 @@ a{
 	.meme{
 		background: white;  /* background for meme color */
 		border-bottom: 1px dotted #e6e6dc;		
+		box-shadow: 0 0 4px 0 #555555;
 		height:auto;
 		margin:auto;
 		position: relative;
 		padding: 10px 0px 10px 10px;
 		top:-30px;
 		width:350px;
+		 -moz-border-radius: 10px; 
+		-webkit-border-radius: 10px; 
+		border-radius: 10px;
 
 	}
 
@@ -1820,6 +1835,7 @@ a.special-btn {
     padding: 11px 0 14px;
     text-align: center;
     text-shadow: 0 -1px rgba(0, 0, 0, 0.2);
+	width:100px;
 }
 a.special-btn.red {
     background-color: #E15F4E;
