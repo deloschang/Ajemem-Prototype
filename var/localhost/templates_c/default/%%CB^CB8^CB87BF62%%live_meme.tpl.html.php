@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-12 02:37:11
+<?php /* Smarty version 2.6.7, created on 2012-06-13 07:52:52
          compiled from meme/live_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/live_meme.tpl.html', 14, false),array('modifier', 'date_format', 'meme/live_meme.tpl.html', 51, false),)), $this); ?>
 
-<!-- Template: meme/live_meme.tpl.html Start 12/06/2012 02:37:11 --> 
+<!-- Template: meme/live_meme.tpl.html Start 13/06/2012 07:52:52 --> 
  <div>
 	
 	    <div  id="meme<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
