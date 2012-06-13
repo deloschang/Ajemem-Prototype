@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-13 07:52:47
+<?php /* Smarty version 2.6.7, created on 2012-06-13 09:27:34
          compiled from user/left_pan.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 6, false),)), $this); ?>

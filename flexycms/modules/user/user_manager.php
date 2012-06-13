@@ -195,10 +195,6 @@ class user_manager extends mod_manager {
 							redirect(LBL_ADMIN_SITE_URL);
 
                             }
-						
-                            if($result['toc']=='0'){
-                                $_SESSION['toc']='0';
-                            }
 
                             $_SESSION['fname']=$result['fname'];
                             $_SESSION['lname']=$result['lname'];
@@ -212,7 +208,7 @@ class user_manager extends mod_manager {
                                 $_SESSION['avatar'] = $result['avatar'] ? $result['avatar']:($result['gender']=='M'?'memeja_male.png':'memeja_female.png');
                             }
 						
-                            $_SESSION['friends']=$result['memeje_friends'];
+                            //$_SESSION['friends']=$result['memeje_friends'];
                             $_SESSION['gender']=$result['gender'];
                             $_SESSION['id_user'] = $result['id_user'];
 							$_SESSION['uid'] = $result['uid'];
@@ -1588,15 +1584,34 @@ class user_manager extends mod_manager {
 		
 			// **** 
 			$in_user['id_user']  = $user_details[''];
-
-			$in_user['username']  = 'Derpja #'.rand(1,9999999);
-						
+			
 			$in_user['fname']  = $user_details['first_name'];
 			$in_user['mname']  = $user_details['middle_name'];
 			$in_user['lname']  = $user_details['last_name'];
+			$in_user['username']  = $in_user['mname'] ? $in_user['fname'].' '.$in_user['mname'].' '.$in_user['lname'] : $in_user['fname'].' '.$in_user['lname'];
+			
+			// check to see duplicates, if so, give unique id
+			
+			$page_sql="SELECT COUNT(*) FROM ".TABLE_PREFIX."meme WHERE username=".$in_user['username'];
+			$page_res=mysqli_query($link,$page_sql);
+			
+			if ($page_res) {
+				$page_row = $page_res->fetch_row();
+				
+				$page_tag = $page_row[0] + 1;
+				$in_user['dupe_username'] = $in_user['mname'] ? $in_user['fname'].'-'.$in_user['mname'].'-'.$in_user['lname'].'-'.$page_tag : $in_user['fname'].'-'.$in_user['lname'].'-'.$page_tag;
+			} else {
+				$in_user['dupe_username'] = $in_user['mname'] ? $in_user['fname'].'-'.$in_user['mname'].'-'.$in_user['lname'] : $in_user['fname'].'-'.$in_user['lname'];
+			}
+			
+		
+						
+			
 			$in_user['email']  = $user_details['email'];
 			$in_user['password']  = $pwd;
 			
+			
+
 			#$in_user['id_admin']  = 0;
 			
 			$gender = ($user_details['gender']=='male')?'M':(($user_details['gender']=='female')?'F':'');
@@ -1625,7 +1640,7 @@ class user_manager extends mod_manager {
 			$in_user['flag']  = 1;
 			$in_user['user_status']  = 1;
 			
-			$in_user['memeje_friends'] = $user_details[''];
+			#$in_user['memeje_friends'] = $user_details[''];
 			#$in_user['toc']  = $user_details[''];
 			#$in_user['add_date']  = $user_details[''];
 			$in_user['ip']  = $_SERVER['REMOTE_ADDR'];

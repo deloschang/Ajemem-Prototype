@@ -63,12 +63,12 @@ if (isset($_input['id'])){
 	
 	$sanitize_id =  mysql_real_escape_string($_input['id']);
 	
-	$sql = get_search_sql("user","username = '".$sanitize_id."' LIMIT 1");
+	$sql = get_search_sql("user","dupe_username = '".$sanitize_id."' LIMIT 1");
 	$temp_data = getrows($sql,$err);
 	$profile_data = $temp_data[0];
 	
 	if ($profile_data['id_user']){
-		$_SESSION['profile'] = mysql_real_escape_string($_input['id']);						//username
+		$_SESSION['profile'] = $profile_data['username'];				//username
 		$_SESSION['profile_id'] = $profile_data['id_user'];		
 		$_SESSION['profile_uid'] = $profile_data['uid'];
 		$_SESSION['profile_picture'] = $profile_data['fb_pic_normal'];
