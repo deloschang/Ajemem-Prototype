@@ -1246,19 +1246,19 @@ class user_manager extends mod_manager {
 				
 				// Has trailing user XP changed? Yes
 				} else {
-					$_SESSION['one_less_exp'] = $res_other['exp_point'];
+					//$_SESSION['one_less_exp'] = $res_other['exp_point'];
 					exit("AAB".",".$res_other['exp_point']);
 				}
 			
 			// Has trailing user changed? Yes
 			} else {
 				$_SESSION['one_less_user'] = $res_other['username'];
-				$_SESSION['one_less_dupe_username'] = $res_updated_other['dupe_username'];
+				$_SESSION['one_less_dupe_username'] = $res_other['dupe_username'];
 				//$_SESSION['one_less_exp'] = $res_other['exp_point'];
-				$_SESSION['one_less_pic'] = $res_other['fb_pic_square'];
+				$_SESSION['one_less_pic'] = $res_other['fb_pic_square'] ? $res_updated_other['fb_pic_square'] : 'image/thumb/avatar/memeja_male.png'; 
 				$_SESSION['one_less_avatar'] = $res_other['avatar'];
 				$_SESSION['one_less_gender'] = $res_other['gender'];
-				exit("AB".",".$res_other['exp_point'].",".$res_other['username']);
+				exit("AB".",".$_SESSION['one_less_pic'].",".$res_other['dupe_username']);
 			}
 		
 		// Has Rank Changed? Yes	

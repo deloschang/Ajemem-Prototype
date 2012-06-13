@@ -180,20 +180,25 @@
 			} else {
 				var ajax_response_exp = ranking_data.split(',');
 				
+				console.log(ajax_response_exp);
 				// Rank? No. 1- User? No. 1- XP? Yes.
 				if (ajax_response_exp[0].trim() == "AAB"){
 					
 					//$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');
-
-					$("#trailing_user_pic").css("background", '#AAF2DC');
-					$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
-						$("#trailing_user_pic").css("background","#aad450");
-						$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
-					});
 				
 				// Rank? No 1- User? Yes.
 				} else if (ajax_response_exp[0].trim() == "AB") {
-					$("#trailing_user").html(ajax_response_exp[2]);
+					trailing_pic = ajax_response_exp[1];
+					trailing_dupe = ajax_response_exp[2];
+					
+					$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');
+					
+					$("#trailing_ranking_number").css("color", '#FEEB4E');
+					$("#trailing_ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
+						$("#trailing_ranking_number").css("color","#81cdfe");
+						$("#trailing_ranking_number").animate( { "opacity" : 1 }, 300)
+					});
+					
 					//$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
 						
 				// Rank? Yes. Improvement? Yes.
@@ -208,10 +213,10 @@
 					
 					// Green flash
 
-					$("#user_pic").css("background", '#B9FE4E');
-					$("#user_pic").animate( { "opacity" : 0.4 }, 700, function() {
-						$("#user_pic").css("background","#4ebaff");
-						$("#user_pic").animate( { "opacity" : 1 }, 300)
+					$("#ranking_number").css("color", '#B9FE4E');
+					$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
+						$("#ranking_number").css("color","#81cdfe");
+						$("#ranking_number").animate( { "opacity" : 1 }, 300)
 					});
 					
 					if (trailing_user) {
@@ -221,11 +226,11 @@
 							
 						//$("#trailing_user").html(trailing_user);
 						
-						$("#trailing_user_pic").css("background", '#FE4EB9');
-						$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
-							$("#trailing_user_pic").css("background","#aad450");
-							$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
-						});
+						//$("#trailing_user_pic").css("background", '#FE4EB9');
+						//$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
+						//	$("#trailing_user_pic").css("background","#aad450");
+						//	$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
+						//});
 					
 					}					
 				
@@ -241,10 +246,10 @@
 							
 					// Red flash
 
-					$("#user_pic").css("background", '#FE4EB9');
-					$("#user_pic").animate( { "opacity" : 0.4 }, 700, function() {
-						$("#user_pic").css("background","#4ebaff");
-						$("#user_pic").animate( { "opacity" : 1 }, 300)
+					$("#ranking_number").css("color", '#FE4EB9');
+					$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
+						$("#ranking_number").css("color","#81cdfe");
+						$("#ranking_number").animate( { "opacity" : 1 }, 300)
 					});
 					
 					if (trailing_user) {
@@ -255,11 +260,11 @@
 								
 						//$("#trailing_user").html(trailing_user);
 						
-						$("#trailing_user_pic").css("background", '#B9FE4E');
-						$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
-							$("#trailing_user_pic").css("background","#aad450");
-							$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
-						});
+						//$("#trailing_user_pic").css("background", '#B9FE4E');
+						//$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
+						//	$("#trailing_user_pic").css("background","#aad450");
+						//	$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
+						//});
 					}
 				}
 				
@@ -294,6 +299,13 @@
 				console.log("User Level is "+user_level);
 				console.log("Previous XP to Level is "+previous_xp_to_level);
 				console.log("XP_TO_LEVEL is "+xp_to_level);
+				
+				// flash ranking number yellow
+				$("#ranking_number").css("color", '#FEEB4E');		//yellow
+				$("#ranking_number").animate( { "opacity" : 0.8 }, 500, function() {
+					$("#ranking_number").css("color","#81cdfe");
+					$("#ranking_number").animate( { "opacity" : 1 }, 200)
+				});
 				
 				if (user_level == 1) {
 					new_xp_percent = (new_xp / xp_to_level) * 100;
