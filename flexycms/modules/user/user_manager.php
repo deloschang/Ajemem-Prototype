@@ -20,7 +20,7 @@ class user_manager extends mod_manager {
 		if (function_exists($call)) {
 			$call($this);//$call(&$this);
 		} else {
-			print "<h1>Put your own error handling code here</h1>";
+			print "<h1>User Manager Error</h1>";
 		}
 	}
 	function _default() {
@@ -75,8 +75,9 @@ class user_manager extends mod_manager {
 		$login = 1;
 		if(isset($_COOKIE['username']) && isset($_COOKIE['password'])){
 			$login = $this->get_checkcookie();
-		}elseif($_SESSION['id_user'] && !$_SESSION['id_admin']) {
-			redirect(LBL_SITE_URL."meme/meme_list/cat/main_feed");
+		} elseif($_SESSION['id_user'] && !$_SESSION['id_admin']) {
+			//redirect(LBL_SITE_URL."meme/meme_list/cat/main_feed");
+			//blocked
 		}
 
 	}
@@ -121,7 +122,7 @@ class user_manager extends mod_manager {
 ##################### SET LOGIN ##################
 ##################################################
     function _set_login($name="",$pass="")
-    {
+    {		
         if($name && $pass) {
             $uname = strtolower($name);
             $pwd = $pass;
@@ -194,15 +195,12 @@ class user_manager extends mod_manager {
 							redirect(LBL_ADMIN_SITE_URL);
 
                             }
-						
-                            if($result['toc']=='0'){
-                                $_SESSION['toc']='0';
-                            }
 
                             $_SESSION['fname']=$result['fname'];
                             $_SESSION['lname']=$result['lname'];
                             $_SESSION['email'] = $result['email'];
                             $_SESSION['username'] = $result['username'];
+							$_SESSION['dupe_username'] = $result['dupe_username'];
 						
                             if ($result['fb_pic_normal']) {
                                 $_SESSION['fb_pic_normal'] = $result['fb_pic_normal'];
@@ -211,9 +209,11 @@ class user_manager extends mod_manager {
                                 $_SESSION['avatar'] = $result['avatar'] ? $result['avatar']:($result['gender']=='M'?'memeja_male.png':'memeja_female.png');
                             }
 						
-                            $_SESSION['friends']=$result['memeje_friends'];
+                            //$_SESSION['friends']=$result['memeje_friends'];
                             $_SESSION['gender']=$result['gender'];
                             $_SESSION['id_user'] = $result['id_user'];
+							$_SESSION['uid'] = $result['uid'];
+
 						
                             // User Level
                             $_SESSION['exp_point'] = $result['exp_point'];
@@ -244,8 +244,13 @@ class user_manager extends mod_manager {
                             $res_one_less=getsingleindexrow($sql_one_less);
 						
                             $_SESSION['one_less_rank'] = $one_less_rank;
-                            $_SESSION['one_less_exp'] = $res_one_less['exp_point'];
+                            //$_SESSION['one_less_exp'] = $res_one_less['exp_point'];
                             $_SESSION['one_less_user'] = $res_one_less['username'];
+							$_SESSION['one_less_dupe_username'] = $res_updated_other['dupe_username'];
+							$_SESSION['one_less_pic'] = $res_one_less['fb_pic_normal'];
+							$_SESSION['one_less_avatar'] = $res_one_less['avatar'];
+							$_SESSION['one_less_gender'] = $res_one_less['gender'];
+
 						
                             // End
                             $_SESSION['raise_message']['global'] = "Successfully logged in";
@@ -256,7 +261,7 @@ class user_manager extends mod_manager {
                             if($_SESSION['id_admin']){
                                 redirect(LBL_ADMIN_SITE_URL);
                             }else{
-                                redirect(LBL_SITE_URL."meme/meme_list/cat/main_feed");
+                                redirect(LBL_SITE_URL);
                             }
                         }
                         else
@@ -532,12 +537,14 @@ class user_manager extends mod_manager {
                     $_output['MAIL'][0]['sm'] = $_output;
                     $this->smarty->assign('sm', $_output['MAIL'][0]['sm']);
                     $mail_message = $this->smarty->fetch($this->smarty->add_theme_to_template($_output['MAIL'][0]['tpl']));
-					logToFile("Sending mail to:".$_output['MAIL'][0]['to']);
+					logToFile("DAKIYA DAAK LAAYA - Sending e-mail to :".$_output['MAIL'][0]['to']."; LBL_SITE_URL :".LBL_SITE_URL);
+					$_SESSION['raise_message']['global'] = 'Your confirmation has been sent to your mail id';
                     $r = sendmail($_output['MAIL'][0]['to'], $_output['MAIL'][0]['subject'], $mail_message, $GLOBALS['conf']['SITE_ADMIN']['email']);
 
 
 
                     redirect(LBL_SITE_URL);
+					$_SESSION['raise_message']['global'] = 'Your confirmation has really been sent to your mail id';
                 } else {
                     $_SESSION['raise_message']['global'] = "Registration failed";
                     redirect(LBL_SITE_URL);
@@ -596,7 +603,7 @@ class user_manager extends mod_manager {
           $_SESSION['username'] = $name;
           ##### Redirect user out #####
           // Insert static landing page here? //
-          redirect(LBL_SITE_URL . "meme/meme_list/cat/main_feed");
+          redirect(LBL_SITE_URL);
       }
       else{
           $_SESSION['raise_message']['global']=  "You have already confirmed.<br/>You can login now.";
@@ -1243,15 +1250,19 @@ class user_manager extends mod_manager {
 				
 				// Has trailing user XP changed? Yes
 				} else {
-					$_SESSION['one_less_exp'] = $res_other['exp_point'];
+					//$_SESSION['one_less_exp'] = $res_other['exp_point'];
 					exit("AAB".",".$res_other['exp_point']);
 				}
 			
 			// Has trailing user changed? Yes
 			} else {
 				$_SESSION['one_less_user'] = $res_other['username'];
-				$_SESSION['one_less_exp'] = $res_other['exp_point'];
-				exit("AB".",".$res_other['exp_point'].",".$res_other['username']);
+				$_SESSION['one_less_dupe_username'] = $res_other['dupe_username'];
+				//$_SESSION['one_less_exp'] = $res_other['exp_point'];
+				$_SESSION['one_less_pic'] = $res_other['fb_pic_square'] ? $res_updated_other['fb_pic_square'] : 'image/thumb/avatar/memeja_male.png'; 
+				$_SESSION['one_less_avatar'] = $res_other['avatar'];
+				$_SESSION['one_less_gender'] = $res_other['gender'];
+				exit("AB".",".$_SESSION['one_less_pic'].",".$res_other['dupe_username']);
 			}
 		
 		// Has Rank Changed? Yes	
@@ -1263,20 +1274,26 @@ class user_manager extends mod_manager {
 			$sql_updated_other="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE POSITION=".$less_one_user_updated_rank;
 			$res_updated_other = getsingleindexrow($sql_updated_other);
 			
-	    	$_SESSION['one_less_exp'] = $res_updated_other['exp_point'];
+	    	//$_SESSION['one_less_exp'] = $res_updated_other['exp_point'];
 	    	$_SESSION['one_less_user'] = $res_updated_other['username'];
+			$_SESSION['one_less_dupe_username'] = $res_updated_other['dupe_username'];
 	    	$_SESSION['one_less_rank'] = $less_one_user_updated_rank;
+			
+			$_SESSION['one_less_pic'] = $res_updated_other['fb_pic_square'] ? $res_updated_other['fb_pic_square'] : 'image/thumb/avatar/memeja_male.png';
+			$_SESSION['one_less_avatar'] = $res_updated_other['avatar'];
+			$_SESSION['one_less_gender'] = $res_updated_other['gender'];
+			
 	    
 	    	// Which direction has rank changed? Rank improved (lower)
 	    	if ($_SESSION['exp_rank'] > $res['POSITION']) {
 	    		$_SESSION['exp_rank'] = $res['POSITION'];
 	    		
-	    		exit("BA".','.$res['POSITION'].",".$res_updated_other['exp_point'].",".$res_updated_other['username'].",".$less_one_user_updated_rank);
+	    		exit("BA".','.$res['POSITION'].",".$_SESSION['one_less_pic'].",".$res_updated_other['username'].",".$less_one_user_updated_rank.','.$res_updated_other['dupe_username']);
 	    	
 	    	// Which direction has rank changed? Rank deproved (higher)
 	    	} else {
 	    		$_SESSION['exp_rank'] = $res['POSITION'];
-	    		exit("BB".','.$res['POSITION'].",".$res_updated_other['exp_point'].",".$res_updated_other['username'].",".$less_one_user_updated_rank);
+	    		exit("BB".','.$res['POSITION'].",".$_SESSION['one_less_pic'].",".$res_updated_other['username'].",".$less_one_user_updated_rank.','.$res_updated_other['dupe_username']);
 	    	}
 	    	
 	    }
@@ -1400,7 +1417,7 @@ class user_manager extends mod_manager {
 
                 ##### Redirect user out #####
                 // Insert static landing page here? //
-                redirect(LBL_SITE_URL . "meme/meme_list/cat/main_feed");
+                redirect(LBL_SITE_URL);
             }
         }
     }
@@ -1608,15 +1625,34 @@ class user_manager extends mod_manager {
 		
 			// **** 
 			$in_user['id_user']  = $user_details[''];
-
-			$in_user['username']  = 'Derpja #'.rand(1,9999999);
-						
+			
 			$in_user['fname']  = $user_details['first_name'];
 			$in_user['mname']  = $user_details['middle_name'];
 			$in_user['lname']  = $user_details['last_name'];
+			$in_user['username']  = $in_user['mname'] ? $in_user['fname'].' '.$in_user['mname'].' '.$in_user['lname'] : $in_user['fname'].' '.$in_user['lname'];
+			
+			// check to see duplicates, if so, give unique id
+			
+			$page_sql="SELECT COUNT(*) FROM ".TABLE_PREFIX."meme WHERE username=".$in_user['username'];
+			$page_res=mysqli_query($link,$page_sql);
+			
+			if ($page_res) {
+				$page_row = $page_res->fetch_row();
+				
+				$page_tag = $page_row[0] + 1;
+				$in_user['dupe_username'] = $in_user['mname'] ? $in_user['fname'].'-'.$in_user['mname'].'-'.$in_user['lname'].'-'.$page_tag : $in_user['fname'].'-'.$in_user['lname'].'-'.$page_tag;
+			} else {
+				$in_user['dupe_username'] = $in_user['mname'] ? $in_user['fname'].'-'.$in_user['mname'].'-'.$in_user['lname'] : $in_user['fname'].'-'.$in_user['lname'];
+			}
+			
+		
+						
+			
 			$in_user['email']  = $user_details['email'];
 			$in_user['password']  = $pwd;
 			
+			
+
 			#$in_user['id_admin']  = 0;
 			
 			$gender = ($user_details['gender']=='male')?'M':(($user_details['gender']=='female')?'F':'');
@@ -1645,7 +1681,7 @@ class user_manager extends mod_manager {
 			$in_user['flag']  = 1;
 			$in_user['user_status']  = 1;
 			
-			$in_user['memeje_friends'] = $user_details[''];
+			#$in_user['memeje_friends'] = $user_details[''];
 			#$in_user['toc']  = $user_details[''];
 			#$in_user['add_date']  = $user_details[''];
 			$in_user['ip']  = $_SERVER['REMOTE_ADDR'];
@@ -1704,18 +1740,18 @@ class user_manager extends mod_manager {
 		$this->_output['tpl']='user/friend_req_list';
 	}
 
-	function _get_memeje_frnds(){
-		check_session();
-		$id_user=$_SESSION['id_user'];
-		$sql="SELECT * FROM ".TABLE_PREFIX."user WHERE id_admin !=1 AND id_user !=".$id_user." AND id_user NOT IN (SELECT requested_to FROM ".TABLE_PREFIX."frnd_request WHERE requested_by = ".$id_user." AND req_status !=2 UNION SELECT requested_by FROM ".TABLE_PREFIX."frnd_request WHERE requested_to =".$id_user." AND req_status !=2)";
-		$res=getrows($sql,$err);
-		$sql = "SELECT memeje_friends FROM ".TABLE_PREFIX."user WHERE id_user=".$id_user;
-		$arr= getsingleindexrow($sql);
-		$has_frnds_cnt = ($arr['memeje_friends']!='')?count(explode(',',$arr['memeje_friends'])):0;
-		$this->_output['frnds_cnt']=$has_frnds_cnt;
-		$this->_output['frnds']=$res;
-		$this->_output['tpl']="user/memeje_friends";
-	}
+	// function _get_memeje_frnds(){
+		// check_session();
+		// $id_user=$_SESSION['id_user'];
+		// $sql="SELECT * FROM ".TABLE_PREFIX."user WHERE id_admin !=1 AND id_user !=".$id_user." AND id_user NOT IN (SELECT requested_to FROM ".TABLE_PREFIX."frnd_request WHERE requested_by = ".$id_user." AND req_status !=2 UNION SELECT requested_by FROM ".TABLE_PREFIX."frnd_request WHERE requested_to =".$id_user." AND req_status !=2)";
+		// $res=getrows($sql,$err);
+		// $sql = "SELECT memeje_friends FROM ".TABLE_PREFIX."user WHERE id_user=".$id_user;
+		// $arr= getsingleindexrow($sql);
+		// $has_frnds_cnt = ($arr['memeje_friends']!='')?count(explode(',',$arr['memeje_friends'])):0;
+		// $this->_output['frnds_cnt']=$has_frnds_cnt;
+		// $this->_output['frnds']=$res;
+		// $this->_output['tpl']="user/memeje_friends";
+	// }
 	
 	function _add_memeje_frnds(){
 	    $ids=array();
@@ -1734,6 +1770,7 @@ class user_manager extends mod_manager {
 	    if($id)
 			$this->_mail_notification($this->_input['ids'],"send_frnd_request");
 	}
+	
 	function _mail_notification($ids,$param){
 		global $link;
 		if (is_array($ids)){
@@ -1768,23 +1805,24 @@ class user_manager extends mod_manager {
 		    }
 		}
 	}
-	function _conf_frnd_request(){
-	    $arr_fd_req['req_status']='1';
-	    $id=$notify['notified_user'] =$this->_input['id'];
-	    $id_user=$notify['id_user']=$_SESSION['id_user'];
-		$notify['notification_type'] = '1';
-		$notify1['is_removed']='1';
-	    $frnd_request=$this->obj_user->update_this("frnd_request",$arr_fd_req,"requested_by =$id AND requested_to =$id_user");
-	    $update_fd_own=$this->obj_user->update_diff_data('memeje_friends','user','id_user='.$id_user,$id);
-			unset($_SESSION['friends']);
-			$_SESSION['friends']=$update_fd_own;		
+	
+	// function _conf_frnd_request(){
+	    // $arr_fd_req['req_status']='1';
+	    // $id=$notify['notified_user'] =$this->_input['id'];
+	    // $id_user=$notify['id_user']=$_SESSION['id_user'];
+		// $notify['notification_type'] = '1';
+		// $notify1['is_removed']='1';
+	    // $frnd_request=$this->obj_user->update_this("frnd_request",$arr_fd_req,"requested_by =$id AND requested_to =$id_user");
+	    // $update_fd_own=$this->obj_user->update_diff_data('memeje_friends','user','id_user='.$id_user,$id);
+			// unset($_SESSION['friends']);
+			// $_SESSION['friends']=$update_fd_own;		
 
-	    $update_fd_ops=$this->obj_user->update_diff_data('memeje_friends','user','id_user='.$id,$id_user);
-		$notify_id = $this->obj_user->insert_all("notification",$notify,1);
-		$notify_upd=$this->obj_user->update_this("notification",$notify1,"id_user =$id AND  notified_user=$id_user AND notification_type=5");
-	    //print  $update_fd_ops;
-	    $this->_mail_notification($id,"conf_frnd_request");
-	}
+	    // $update_fd_ops=$this->obj_user->update_diff_data('memeje_friends','user','id_user='.$id,$id_user);
+		// $notify_id = $this->obj_user->insert_all("notification",$notify,1);
+		// $notify_upd=$this->obj_user->update_this("notification",$notify1,"id_user =$id AND  notified_user=$id_user AND notification_type=5");
+	    // $this->_mail_notification($id,"conf_frnd_request");
+	// }
+	
 	function _rej_frnd_request(){
 		$arr['req_status']=2;
 		$notify['is_removed'] =1;
@@ -1813,51 +1851,51 @@ class user_manager extends mod_manager {
 	###############################################################
 	####################  FRIEND LIST #############################
 	###############################################################
-	function _friend_list(){
-	    check_session();
-	    $sql=get_search_sql("user","FIND_IN_SET(id_user,(select memeje_friends from memeje__user where id_user='".$_SESSION['id_user']."'))","*");
-	    $sql= "SELECT avatar,id_user,gender,concat(fname,' ',lname) as name FROM ".TABLE_PREFIX."user WHERE FIND_IN_SET(id_user,(select memeje_friends from memeje__user where id_user='".$_SESSION['id_user']."'))";
-	    $res=getrows($sql, $err);
-	    $this->_output['count']=count($res);
-	    $this->_output['res']=$res;
-	    $this->_output['tpl']="user/friend_list";
-	}
-	function _all_friends($q='0'){
-	    $qstart = $this->_input['qstart'] ? $this->_input['qstart'] : $q;
-	    $uri = 'user/all_friends';
-	    $sql= "SELECT avatar,id_user,gender,concat(fname,' ',lname) as name,memeje_friends FROM ".TABLE_PREFIX."user WHERE FIND_IN_SET(id_user,(select memeje_friends from memeje__user where id_user='".$_SESSION['id_user']."'))";
-	    $this->_output['field'] = array("id_user" => array("id_user", 1));
-	    $this->_output['uri'] = $uri;
-	    $this->_output['limit'] = $GLOBALS['conf']['PAGINATE']['rec_per_page'];
-	    $this->_output['show'] = $GLOBALS['conf']['PAGINATE']['show_page'];
-	    $this->_output['sql'] = $sql;
-	    $this->_output['type'] = 'box';
-	    $this->_output['sort_by'] ="name";
-	    $this->_output['sort_order'] = "ASC";
-	    $this->_output['ajax'] = '1';
-	    $this->_output['qstart'] = $qstart;
-	    //$_REQUEST['qstart'] =$qstart;
-	     $_REQUEST['choice'] ='all_friends';
-	    $this->user_bl->page_listing($this, "user/all_friends");
-	}
-	function _remove_frnd(){
-	    check_session();
-	    $id=$this->obj_user->remove_frnd($this->_input['ssnfrnds'],$this->_input['rmvdfrnds'],$this->_input['id_user']);
-	    if ($this->_input['qstart']) {
-		 $qstart = $this->_input['qstart'];
-	    } else {
-		$qstart = 0;
-	    }
-	    if ($this->_input['count'] == 1 && $qstart > 0) {
-		$qstart = $qstart - $this->_input['limit'];
-	    } else if ($this->_input['count'] > 1 && $qstart > 1) {
-		$qstart = $qstart;
-	    }else {
-		$qstart = 0;
-	    }
-	    $this->_input['qstart'] = $qstart;
-	    $this->_all_friends($this->_input['qstart']);
-	}
+	// function _friend_list(){
+	    // check_session();
+	    // $sql=get_search_sql("user","FIND_IN_SET(id_user,(select memeje_friends from memeje__user where id_user='".$_SESSION['id_user']."'))","*");
+	    // $sql= "SELECT avatar,id_user,gender,concat(fname,' ',lname) as name FROM ".TABLE_PREFIX."user WHERE FIND_IN_SET(id_user,(select memeje_friends from memeje__user where id_user='".$_SESSION['id_user']."'))";
+	    // $res=getrows($sql, $err);
+	    // $this->_output['count']=count($res);
+	    // $this->_output['res']=$res;
+	    // $this->_output['tpl']="user/friend_list";
+	// }
+	// function _all_friends($q='0'){
+	    // $qstart = $this->_input['qstart'] ? $this->_input['qstart'] : $q;
+	    // $uri = 'user/all_friends';
+	    // $sql= "SELECT avatar,id_user,gender,concat(fname,' ',lname) as name,memeje_friends FROM ".TABLE_PREFIX."user WHERE FIND_IN_SET(id_user,(select memeje_friends from memeje__user where id_user='".$_SESSION['id_user']."'))";
+	    // $this->_output['field'] = array("id_user" => array("id_user", 1));
+	    // $this->_output['uri'] = $uri;
+	    // $this->_output['limit'] = $GLOBALS['conf']['PAGINATE']['rec_per_page'];
+	    // $this->_output['show'] = $GLOBALS['conf']['PAGINATE']['show_page'];
+	    // $this->_output['sql'] = $sql;
+	    // $this->_output['type'] = 'box';
+	    // $this->_output['sort_by'] ="name";
+	    // $this->_output['sort_order'] = "ASC";
+	    // $this->_output['ajax'] = '1';
+	    // $this->_output['qstart'] = $qstart;
+	     // $_REQUEST['choice'] ='all_friends';
+	    // $this->user_bl->page_listing($this, "user/all_friends");
+	// }
+	// function _remove_frnd(){
+	    // check_session();
+	    // $id=$this->obj_user->remove_frnd($this->_input['ssnfrnds'],$this->_input['rmvdfrnds'],$this->_input['id_user']);
+	    // if ($this->_input['qstart']) {
+		 // $qstart = $this->_input['qstart'];
+	    // } else {
+		// $qstart = 0;
+	    // }
+	    // if ($this->_input['count'] == 1 && $qstart > 0) {
+		// $qstart = $qstart - $this->_input['limit'];
+	    // } else if ($this->_input['count'] > 1 && $qstart > 1) {
+		// $qstart = $qstart;
+	    // }else {
+		// $qstart = 0;
+	    // }
+	    // $this->_input['qstart'] = $qstart;
+	    // $this->_all_friends($this->_input['qstart']);
+	// }
+	
 	function  _getfriends4tag(){
 	    global $link;
 		
@@ -1877,5 +1915,20 @@ class user_manager extends mod_manager {
 		
 	    print json_encode($arr);
 		exit;
+	}	
+	
+	function _follow_user(){
+		$data = $this->_input;
+		
+		$info['following'] = $data['id'];
+		$info['id_user'] = $_SESSION['id_user'];
+				
+		if ($data['status'] == 'follow'){			
+			$this->obj_user->insert_all("friends",$info);
+		} elseif ($data['status'] == 'unfollow'){
+			$sql = "DELETE FROM memeje__friends WHERE id_user = ".$info['id_user']." AND following = ".$info['following'];
+
+			execute($sql,$err);;
+		}
 	}
 }

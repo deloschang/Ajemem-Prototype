@@ -1,7 +1,6 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-08 07:38:23
+<?php /* Smarty version 2.6.7, created on 2012-06-14 03:16:33
          compiled from meme/meme_list.tpl.html */ ?>
-<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
-<?php echo '
+<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <script type="text/javascript">
     var reply_color = "';  echo $this->_tpl_vars['x']['reply'];  echo '";
@@ -73,8 +72,12 @@
 			var message_three = \'';  echo $this->_tpl_vars['sm']['msg_arr'][2];  echo '\';
 			var link_three = \'';  echo $this->_tpl_vars['sm']['link_arr'][2];  echo '\';
 			
-			var icon_arr = ';  echo $this->_tpl_vars['sm']['icon_arr'];  echo ';
-			var title_arr = ';  echo $this->_tpl_vars['sm']['title_arr'];  echo ';
+			var icon_arr = new Array();
+			icon_arr = ';  echo $this->_tpl_vars['sm']['icon_arr'];  echo ';
+			
+			var title_arr = new Array();
+			title_arr = ';  echo $this->_tpl_vars['sm']['title_arr'];  echo ';
+
 		
 			$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://localhost/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 210px; height: 170px; "/></a>\');
 			
@@ -90,10 +93,8 @@
 					$(\'#icon_container\').append(\'<div class="front_icon" id="icon_\'+index+\'"><a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+value+\'" title="\'+title_arr[index]+\'"><img src="http://localhost/image/orig/meme/\'+value+\'" style="cursor:pointer; width: 40px; height: 40px; "/></a></div>\');
 				 }
 			 });
-		 }
-			
-		if (logged_in){
-		
+		 }		
+
 			$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
 			
 			var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
@@ -103,9 +104,10 @@
 			
 			$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
 		
-		
-	    	get_all_flag_details(1);
-	    	setInterval("get_all_flag_details()",6000);
+			if (logged_in){
+				get_all_flag_details(1);
+				setInterval("get_all_flag_details()",6000);
+			 }
 			
 			var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
 			var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
@@ -118,10 +120,7 @@
 			
 			$("#page"+1).css({\'font-weight\' : \'bolder\' });
 			backup_page_no = 1;
-		 }
-		
-		
-		
+			
 		// Self-describing for search
 	    var describedClass = \'self-described\';
 		$(\'.self-describing\').focus(function(){
@@ -141,18 +140,12 @@
 			if ($("#chk_me").val()!=1) {
 				last_id = $("#last_id_meme_cur_page").val();
 				
-				
-				if (logged_in){
-					var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
-				 } else {
-					var cat = "main_feed";
-				 }
-					
+
 				var ext = "';  echo $_REQUEST['ext'];  echo '";
 				var url = "http://localhost/meme/meme_list";
 				
 				$("#loadingmeme_img").show();
-				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,ext:ext }, function(res){
+				$.post(url,{cat:\'main_feed\',page_no:page_no,ce:0,last_id:last_id,ext:ext }, function(res){
 					if(res != "")
 						$("#all_memes").html(res);
 						$("#loadingmeme_img").hide();
@@ -422,6 +415,16 @@
 		     }); 
 	     }
      }
+	
+	function diff_feed(ext, ajax){
+		var url = "http://localhost/meme/meme_list";
+		$.post(url,{cat:\'main_feed\',ce:0,ext:ext }, function(res){
+			if(res != "")
+				$(\'#all_memes\').html(res);
+		 });
+	 }
+	
+	
     $(document).ready(function(){
     	// Search function
 		//$("#muname").autocomplete(\'http://localhost/index.php?page=meme&choice=auto_comp&ce=0\',{
@@ -450,26 +453,24 @@
 <input type="hidden" name="rand_id_memes" id="rand_id_memes" value=''/>
 <input type="hidden" name="chk_me" id="chk_me" value=''/>
 <input type="hidden" name="last_id_meme" id="last_id_meme" value=''/>
-<!--<?php if ($_SESSION['id_user']): ?>-->
-<!--<div class="fltlft" id="tab">-->
-<!--	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>unselected<?php else: ?>selected<?php endif; ?>">-->
-<!--		<a href="http://localhost/meme/meme_list/cat/<?php echo $this->_tpl_vars['sm']['cat']; ?>
-" >MAIN LIVE FEED</a>-->
-<!--	</div>-->
-<!--	<div class="fltlft <?php if ($_REQUEST['ext'] == '1'): ?>selected<?php else: ?>unselected<?php endif; ?>">-->
-<!--		<a href="http://localhost/meme/meme_list/cat/<?php echo $this->_tpl_vars['sm']['cat']; ?>
-/ext/1" >NETWORK FEED</a>-->
-<!--	</div>-->
-<!--</div>-->
-<!--<?php endif; ?>-->
 
-	
-	
-<br><br>
+<?php if ($_SESSION['id_user'] || $_SESSION['profile']): ?>
+<div>
+		<div id="world_feed">
+			<a href="javascript:void(0);" onclick="diff_feed(0);" class="special-btn green">World Feed</a>
+		</div>
+		
+		<div id="friends_feed">
+			<a href="javascript:void(0);" onclick="diff_feed(1);" class="special-btn green">Friends Feed</a>
+		</div>
+</div>
 
 
-<?php if ($_SESSION['id_user']): ?>
-<div id="all_memes">
+
+<!-- Muaz remove this later when styling -->
+<br><br><br><br><br>
+
+<div id="all_memes">	
     <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmorememe.tpl.html", 'smarty_include_vars' => array()));
@@ -496,8 +497,8 @@ unset($_smarty_tpl_vars);
 
 <?php endif; ?>
 
+<?php if (! $_SESSION['id_user'] && ! $_SESSION['profile']): ?>
 
-<?php if (! $_SESSION['id_user']): ?>
 	<div id="icon_container"></div>
 	<div class="module_text" id="front_card">Your stories belong here.</div>
 	<div class="module_text" id="first_half">Whether it's...</div>
@@ -509,4 +510,4 @@ unset($_smarty_tpl_vars);
 		</div>
 		<div class="module_text" id="second_half">...Memeja helps you share experiences with the people you care about.</div>
 	</div>
-<?php endif; ?>
+<?php endif; ?>

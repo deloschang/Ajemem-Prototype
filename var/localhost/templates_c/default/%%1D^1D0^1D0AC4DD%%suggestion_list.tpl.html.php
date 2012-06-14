@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2011-11-13 03:42:41
+<?php /* Smarty version 2.6.7, created on 2012-05-23 12:23:23
          compiled from manage/suggestion_list.tpl.html */ ?>
 
-<!-- Template: manage/suggestion_list.tpl.html Start 13/11/2011 03:42:41 --> 
+<!-- Template: manage/suggestion_list.tpl.html Start 23/05/2012 12:23:23 --> 
  <?php unset($this->_sections['cur']);
 $this->_sections['cur']['name'] = 'cur';
 $this->_sections['cur']['loop'] = is_array($_loop=$this->_tpl_vars['sm']['feature']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
@@ -25,8 +25,7 @@ $this->_sections['cur']['index_prev'] = $this->_sections['cur']['index'] - $this
 $this->_sections['cur']['index_next'] = $this->_sections['cur']['index'] + $this->_sections['cur']['step'];
 $this->_sections['cur']['first']      = ($this->_sections['cur']['iteration'] == 1);
 $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] == $this->_sections['cur']['total']);
-?>
-<?php $this->assign('x', $this->_tpl_vars['sm']['feature'][$this->_sections['cur']['index']]); ?>
+ $this->assign('x', $this->_tpl_vars['sm']['feature'][$this->_sections['cur']['index']]); ?>
 <div>
     <fieldset style=" background-color:#CAD8F3;width: 550px;margin-left: 250px;border:7px solid gainsboro;" >
     <legend><b><?php echo $this->_tpl_vars['x']['title']; ?>

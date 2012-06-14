@@ -1,11 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-08 23:44:41
+<?php /* Smarty version 2.6.7, created on 2012-06-13 12:05:53
          compiled from meme/addmeme.tpl.html */ ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 08/06/2012 23:44:41 --> 
+<!-- Template: meme/addmeme.tpl.html Start 13/06/2012 12:05:53 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
 -->
+
 <div id="showmodal" class="showmodal"><em><strong><center>ENTERING MEMEJA DOJO</center></strong></em></div>
 
 <script type="text/javascript">
@@ -39,9 +40,8 @@ _img.png";
     function title_blur() { b_titlefocus = false;  }
     
     function cancel_meme(){
-		window.location="http://localhost/user/user_home";
+	window.location="http://localhost/user/user_home";
      }
-	
     function get_premade_images(obj){
         var cat=obj.value;
         if(cat==\'\')
@@ -83,7 +83,7 @@ _img.png";
             alert("Enter a shorter title");
             return false;
          }
-		
+
         if($(obj.see_fr).val()==""){
             alert("Choose Who Can See?");
             $(obj.see_fr).focus();
@@ -100,28 +100,28 @@ _img.png";
             return false;
          } else {
         
-			if(!$("#tag").val())
+		if(!$("#tag").val())
+		{
+			/*  Uncomment and comment out var conf=true once the tagging system is implemented. 
+				Allows users to submit memes without choosing if they have to tag a friend or not. 
+			*/
+			
+			var conf=confirm("Are you sure you don\'t want to tag your friends?");
+			//var conf=true;
+			if(conf)
 			{
-				/* Godzilla: Uncomment and comment out var conf=true once the tagging system is implemented. 
-					Allows users to submit memes without choosing if they have to tag a friend or not. 
-				*/
-				
-				//var conf=confirm("Are you sure you don\'t want to tag your friends?");
-				var conf=true;
-				if(conf)
-				{
-					$(window).unbind();
-					submit_memeje();
-				 }
-				else
-				{
-					return false;
-				 }
-			 }
-			else{
 				$(window).unbind();
 				submit_memeje();
 			 }
+			else
+			{
+				return false;
+			 }
+		 }
+		else{
+			$(window).unbind();
+			submit_memeje();
+		 }
          }
      }
 	$(window).bind(\'beforeunload\', function() {
@@ -139,7 +139,6 @@ _img.png";
 <img src="http://localhost/spad/Memeja Watermark2.png" id="removewater" style="display:none">
 
 <form method="post" action="http://localhost/meme/meme_insert" enctype="multipart/form-data" name="ques_ans" id="ques_ans">
-    <div align="center">
         <?php if ($this->_tpl_vars['sm']['idq']): ?>
         <input type="hidden" name="meme[id_question]" id="id_question" value="<?php echo $this->_tpl_vars['sm']['idq']; ?>
 "/>
@@ -148,33 +147,24 @@ _img.png";
         <input type="hidden" name="meme[duel]" id="duel" value="<?php echo $this->_tpl_vars['sm']['duel']; ?>
 "/>
         <?php endif; ?>
-        <div id="memetitle" class="nohighlight">
-            <span><b>Title:</b></span>
-            <span>
-                <input type="text" name="meme[title]" id="title" size="50" onfocus="title_focus()" onblur="title_blur()"/>
-            </span>
-			
-			
-        </div><br/>
-        <div id="edtr"class="nohighlight">
-	<?php $_smarty_tpl_vars = $this->_tpl_vars;
+        
+			<div id="canvas">
+				<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/meme_editor.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-
-          <div id="submitter" ><input type="button" value="Submit" onclick="validate_me();"/></div>
+			</div>			
 		
-		<div style="position:fixed;bottom:35px; left:800px"><input type="checkbox" name="memejimark" value="" onclick="insertMark();"/> Watermark</div>
-				
+		<div id="shares">
+			<div id="tagline">Tag Your Friends!</div>
+			 <select id="tag" multiple="multiple" style="display: none;" name="tagged_user[]"></select>
 		</div>
 		
-		<div>
-			<b>Tag</b>
-			 <select multiple="multiple" style="display: none;" id="tag" name="tagged_user[]"></select>
-		</div>
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>
 _draw.png"/>
+		
+
 </form>
 <?php echo '
 	<script type="text/javascript">

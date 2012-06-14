@@ -52,30 +52,30 @@ class meme{
 	$sql = 'CALL update_proc("'.TABLE_PREFIX.$tab.'","'.trim($parm,',').'","'.$cond.'")';
 	execute($sql, $err);
     }
+	
     function update_diff_data($fld,$tbl,$cond,$ids){
-	global $link;
-	if(is_array($ids) && $ids!=''){
-		$to_b_add=$ids;
-	}else if($ids!=''){
-		$ids=trim($ids,',');
-		$to_b_add=@explode(",",$ids);
-	}else{
-		return;
-	}
-	$sql = "SELECT ".$fld." FROM ".TABLE_PREFIX.$tbl." WHERE ".$cond." LIMIT 1";
-	$res = mysqli_fetch_assoc(mysqli_query($link,$sql));
-	if($res[$fld]!=''){
-		$val_arr=@explode(",",$res[$fld]);
-		$ext_val_arr=array_diff($to_b_add,$val_arr);
-		$ext_val=@implode(",",$ext_val_arr);
-		$final_val=$ext_val!=''?$res[$fld].','.$ext_val:$res[$fld];
-	}else{
-		$final_val=@implode(",",$to_b_add);
-	}
-	$sql_upd="UPDATE ".TABLE_PREFIX.$tbl." SET ".$fld."='".$final_val."' WHERE ".$cond." LIMIT 1";
-//	print $sql_upd;exit;
-	execute($sql_upd,$err);
-	$res = $err?$err:1;
-	return $res;
+		global $link;
+		if(is_array($ids) && $ids!=''){
+			$to_b_add=$ids;
+		}else if($ids!=''){
+			$ids=trim($ids,',');
+			$to_b_add=@explode(",",$ids);
+		}else{
+			return;
+		}
+		$sql = "SELECT ".$fld." FROM ".TABLE_PREFIX.$tbl." WHERE ".$cond." LIMIT 1";
+		$res = mysqli_fetch_assoc(mysqli_query($link,$sql));
+		if($res[$fld]!=''){
+			$val_arr=@explode(",",$res[$fld]);
+			$ext_val_arr=array_diff($to_b_add,$val_arr);
+			$ext_val=@implode(",",$ext_val_arr);
+			$final_val=$ext_val!=''?$res[$fld].','.$ext_val:$res[$fld];
+		}else{
+			$final_val=@implode(",",$to_b_add);
+		}
+		$sql_upd="UPDATE ".TABLE_PREFIX.$tbl." SET ".$fld."='".$final_val."' WHERE ".$cond." LIMIT 1";
+		execute($sql_upd,$err);
+		$res = $err?$err:1;
+		return $res;
     }
 }

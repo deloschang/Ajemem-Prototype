@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-04-01 01:07:58
          compiled from leaderboard/leaderboard_search.tpl.html */ ?>
 
 <!-- Template: leaderboard/leaderboard_search.tpl.html Start 01/04/2012 01:07:58 --> 
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-03 21:36:20
+         compiled from leaderboard/leaderboard_search.tpl.html */ ?>
+
+<!-- Template: leaderboard/leaderboard_search.tpl.html Start 03/06/2012 21:36:20 --> 
+>>>>>>> test2
  <div id="u_search">
 	 <!--<a href="javascript:void(0)" onclick="leaderboard('duels');">MOST DUELS OWN</a>
 	 &nbsp;<a href="javascript:void(0)" onclick="leaderboard('exp_point');">MOST EXP POINT GAIN</a>

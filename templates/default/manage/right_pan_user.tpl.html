@@ -1,51 +1,34 @@
 {*notag*}
 {if $smarty.session.id_user}
-<table style="margin-top:0px; margin-left:5px;" >
-<tr>
-		<td><span style="font-weight:bold; font-size:28px; padding-top:5px;">{$sm.username|capitalize}</span>
-		<span id="left_pan_level" style="font-size:14px; color:#ACACA5; margin-left:2px;"> L{$smarty.session.level}</span></td>
-    </tr>
-    
-    <tr>
-		<td valign="top">
-			<div id="changePhoto" style="margin-top:1px">
+<link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/mainpg.css"/>
+
+		<div id= "other_user_name">{$sm.username|capitalize}</div>
+			<div id="changePhoto">
 				{if $sm.fb_pic_normal}
 				<img src="{$sm.fb_pic_normal}">
-				
 				{else}
 				<img src="##LBL_SITE_URL##image/thumb/avatar/{if $sm.avatar}{$sm.avatar}{else}{if $sm.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"/>
 				{/if}
-				
 			</div>
-		</td>
-    </tr>
-     
-    <tr>
-		<td>
+
+
 		
 		{*User Rank + XP*}
 			
-		<div id="user_ranking_info" style="background-color: #4ebaff; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; font-family:Verdana; font-weight:bold; color:white; width:90px;height:72px; margin-top:10px; margin-left:5px; text-align:center;" >
-		<span id="ranking_number" style="font-family:Verdana; font-size:48px; ">{if $sm.exp_rank}{$sm.exp_rank}{else}N/A{/if}</span>
+		<div id="more_user_ranking_info">
+		<span id="rank">Rank</span>
+		<span id="more_ranking_number">{if $sm.exp_rank}{$sm.exp_rank}{else}N/A{/if}</span>
 		
-		 <div id="total_xp" style="font-size:14px; margin-left:12px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; position:relative; bottom:3px;">{if $sm.exp_point}{$sm.exp_point}{/if}
+		 <div id="total_xp" >{if $sm.exp_point}{$sm.exp_point}{/if}
 		 <span style="font-size:8px; position:relative; bottom:5px;">XP</span></div>
 		 </div>
-		</td>
-    </tr>
-    
-    <tr>
-		<td>
-		<div id="my_meme_list" >
-			<fieldset style=" background-color:#CAD8F3;width: 200px;margin-left:0px" >
-			
-	    <legend>
+		 
+		<div id="my_meme_list">
+				    
 		<b>My Memes</b>
-	    </legend>
+        <div id="liked_memes">
 	    
-	    <table>
-		<tr>
-		    <td>
+
 		    {if $sm.res}
 			{section name=cur loop=$sm.res}
 			{assign var=x value=$sm.res[cur]}
@@ -55,11 +38,7 @@
 			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="width: 60px;height: 60px;cursor: pointer;"/></a>
 			
 			{if (($smarty.section.cur.iteration % 3) == 0)}
-		    </td>
-		</tr>
-		
-		<tr>
-		    <td>
+
 			{/if}
 			
 			{/section}
@@ -68,21 +47,14 @@
 			{else}
 			No meme found
 			{/if}
-		    </td>
-		</tr>
-		</table>
+        </div>
 		
-	<tr>
-    	<td>
-    <fieldset style=" background-color:#CAD8F3;width: 200px;margin-left:0px" >
-	    <legend>
 		<b>
-		    Recently Honored Memes
+		    Favorites
 		</b>
-	    </legend>
-	    <table>
-		<tr>
-		    <td>
+		
+<div id="liked_memes">
+
 			{if $sm.res_favorite}
 			{section name=cur loop=$sm.res_favorite}
 			{assign var=x value=$sm.res_favorite[cur]}
@@ -92,19 +64,15 @@
 			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="width: 60px;height: 60px;cursor: pointer;"/></a>
 			
 			{if (($smarty.section.cur.iteration % 3) == 0)}
-		    </td>
-		</tr>
-		<tr>
-		    <td>
-			{/if}
-			
+
+			{/if}	
 			{/section}
 			{else}
-			No meme found
+			<b>
+			Go Honor Some Memes!
+			</b>
 			{/if}
-		    </td>
-		</tr>
-	
-</table>
-{/if}
 
+{/if}
+</div>
+</div>

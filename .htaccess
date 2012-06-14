@@ -1,4 +1,12 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+
 RewriteRule    (.*) index.php/$1 [L]
+# RewriteRule ^(meme|user\/set_login) index.php/$1 [L]
+ 
+# RewriteRule ^(.*) index.php/$1 [L]
+
+# RewriteRule ^(meme|user|template|setting|module|manage|page|js|common|choice)/.* index.php/$1 [L]
+# RewriteRule ([^/\.]+)/?$ index.php?id=$1 [L]
+

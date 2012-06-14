@@ -1,7 +1,21 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<?php /* Smarty version 2.6.7, created on 2012-06-10 23:40:55
+         compiled from user/first_login_msg.tpl.html */ ?>
+
+<!-- Template: user/first_login_msg.tpl.html Start 10/06/2012 23:40:55 --> 
+=======
 <?php /* Smarty version 2.6.7, created on 2012-04-09 23:12:19
          compiled from user/first_login_msg.tpl.html */ ?>
 
 <!-- Template: user/first_login_msg.tpl.html Start 09/04/2012 23:12:19 --> 
+>>>>>>> test2
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-13 09:13:22
+         compiled from user/first_login_msg.tpl.html */ ?>
+
+<!-- Template: user/first_login_msg.tpl.html Start 13/06/2012 09:13:22 --> 
+>>>>>>> 5c7946b7a5a01a5faefe62be6a80d7f56cefbb03
  <?php echo '
 <script type="text/javascript">
 	function checkbox_validate() {

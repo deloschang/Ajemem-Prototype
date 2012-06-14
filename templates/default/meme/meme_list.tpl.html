@@ -72,8 +72,12 @@
 			var message_three = '{/literal}{$sm.msg_arr[2]}{literal}';
 			var link_three = '{/literal}{$sm.link_arr[2]}{literal}';
 			
-			var icon_arr = {/literal}{$sm.icon_arr}{literal};
-			var title_arr = {/literal}{$sm.title_arr}{literal};
+			var icon_arr = new Array();
+			icon_arr = {/literal}{$sm.icon_arr}{literal};
+			
+			var title_arr = new Array();
+			title_arr = {/literal}{$sm.title_arr}{literal};
+
 		
 			$('#nlu_message_one').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'"><img src="##LBL_SITE_URL##image/orig/meme/'+link_one+'" style="cursor:pointer;width: 210px; height: 170px; "/></a>');
 			
@@ -89,10 +93,8 @@
 					$('#icon_container').append('<div class="front_icon" id="icon_'+index+'"><a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+value+'" title="'+title_arr[index]+'"><img src="##LBL_SITE_URL##image/orig/meme/'+value+'" style="cursor:pointer; width: 40px; height: 40px; "/></a></div>');
 				}
 			});
-		}
-			
-		if (logged_in){
-		
+		}		
+
 			$("#last_id_meme").val("{/literal}{$sm.last_id_meme}{literal}");
 			
 			var cat = "{/literal}{$sm.cat}{literal}";
@@ -102,9 +104,10 @@
 			
 			$("#last_id_meme_cur_page").val("{/literal}{$sm.last_idmeme}{literal}");
 		
-		
-	    	get_all_flag_details(1);
-	    	setInterval("get_all_flag_details()",6000);
+			if (logged_in){
+				get_all_flag_details(1);
+				setInterval("get_all_flag_details()",6000);
+			}
 			
 			var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
 			var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
@@ -117,10 +120,7 @@
 			
 			$("#page"+1).css({'font-weight' : 'bolder'});
 			backup_page_no = 1;
-		}
-		
-		
-		
+			
 		// Self-describing for search
 	    var describedClass = 'self-described';
 		$('.self-describing').focus(function(){
@@ -140,18 +140,12 @@
 			if ($("#chk_me").val()!=1) {
 				last_id = $("#last_id_meme_cur_page").val();
 				
-				
-				if (logged_in){
-					var cat = "{/literal}{$sm.cat}{literal}";
-				} else {
-					var cat = "main_feed";
-				}
-					
+
 				var ext = "{/literal}{$smarty.request.ext}{literal}";
 				var url = "##LBL_SITE_URL##meme/meme_list";
 				
 				$("#loadingmeme_img").show();
-				$.post(url,{cat:cat,page_no:page_no,ce:0,last_id:last_id,ext:ext}, function(res){
+				$.post(url,{cat:'main_feed',page_no:page_no,ce:0,last_id:last_id,ext:ext}, function(res){
 					if(res != "")
 						$("#all_memes").html(res);
 						$("#loadingmeme_img").hide();
@@ -421,6 +415,16 @@
 		    }); 
 	    }
     }
+	
+	function diff_feed(ext, ajax){
+		var url = "##LBL_SITE_URL##meme/meme_list";
+		$.post(url,{cat:'main_feed',ce:0,ext:ext}, function(res){
+			if(res != "")
+				$('#all_memes').html(res);
+		});
+	}
+	
+	
     $(document).ready(function(){
     	// Search function
 		//$("#muname").autocomplete('##LBL_SITE_URL##index.php?page=meme&choice=auto_comp&ce=0',{
@@ -448,24 +452,24 @@
 <input type="hidden" name="rand_id_memes" id="rand_id_memes" value=''/>
 <input type="hidden" name="chk_me" id="chk_me" value=''/>
 <input type="hidden" name="last_id_meme" id="last_id_meme" value=''/>
-<!--{if $smarty.session.id_user}-->
-<!--<div class="fltlft" id="tab">-->
-<!--	<div class="fltlft {if $smarty.request.ext=='1'}unselected{else}selected{/if}">-->
-<!--		<a href="##LBL_SITE_URL##meme/meme_list/cat/{$sm.cat}" >MAIN LIVE FEED</a>-->
-<!--	</div>-->
-<!--	<div class="fltlft {if $smarty.request.ext=='1'}selected{else}unselected{/if}">-->
-<!--		<a href="##LBL_SITE_URL##meme/meme_list/cat/{$sm.cat}/ext/1" >NETWORK FEED</a>-->
-<!--	</div>-->
-<!--</div>-->
-<!--{/if}-->
 
-	
-	
-<br><br>
+{if $smarty.session.id_user || $smarty.session.profile}
+<div>
+		<div id="world_feed">
+			<a href="javascript:void(0);" onclick="diff_feed(0);" class="special-btn green">World Feed</a>
+		</div>
+		
+		<div id="friends_feed">
+			<a href="javascript:void(0);" onclick="diff_feed(1);" class="special-btn green">Friends Feed</a>
+		</div>
+</div>
 
 
-{if $smarty.session.id_user}
-<div id="all_memes">
+
+<!-- Muaz remove this later when styling -->
+<br><br><br><br><br>
+
+<div id="all_memes">	
     {if $sm.res_meme} 
 	{include file="meme/loadmorememe"}
     {else}
@@ -488,8 +492,8 @@
 
 {/if}
 
+{if !$smarty.session.id_user && !$smarty.session.profile}
 
-{if !$smarty.session.id_user}
 	<div id="icon_container"></div>
 	<div class="module_text" id="front_card">Your stories belong here.</div>
 	<div class="module_text" id="first_half">Whether it's...</div>

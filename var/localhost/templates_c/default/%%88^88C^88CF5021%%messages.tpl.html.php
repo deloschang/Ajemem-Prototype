@@ -1,7 +1,56 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-08 23:45:20
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<?php /* Smarty version 2.6.7, created on 2012-06-11 00:30:18
          compiled from common/messages.tpl.html */ ?>
 
-<!-- Template: common/messages.tpl.html Start 08/06/2012 23:45:20 --> 
+<!-- Template: common/messages.tpl.html Start 11/06/2012 00:30:18 --> 
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-11 02:16:57
+         compiled from common/messages.tpl.html */ ?>
+
+<!-- Template: common/messages.tpl.html Start 11/06/2012 02:16:57 --> 
+>>>>>>> 5bf977c9a1fccb50ac9b1a4eadb4749659f5d673
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-11 04:51:51
+         compiled from common/messages.tpl.html */ ?>
+
+<!-- Template: common/messages.tpl.html Start 11/06/2012 04:51:51 --> 
+>>>>>>> test2
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-12 03:05:08
+         compiled from common/messages.tpl.html */ ?>
+
+<!-- Template: common/messages.tpl.html Start 12/06/2012 03:05:08 --> 
+>>>>>>> a5133832599c541bdf2df7acaece67cc8cdc0116
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-12 20:00:15
+         compiled from common/messages.tpl.html */ ?>
+
+<!-- Template: common/messages.tpl.html Start 12/06/2012 20:00:15 --> 
+>>>>>>> 7b5f054f749573e2c4b326012bfdeddbaf8f1b61
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-13 07:52:47
+         compiled from common/messages.tpl.html */ ?>
+
+<!-- Template: common/messages.tpl.html Start 13/06/2012 07:52:47 --> 
+>>>>>>> ac4211d0e074165145718401fe01962755d00891
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-13 09:27:35
+         compiled from common/messages.tpl.html */ ?>
+
+<!-- Template: common/messages.tpl.html Start 13/06/2012 09:27:35 --> 
+>>>>>>> 5c7946b7a5a01a5faefe62be6a80d7f56cefbb03
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-13 23:58:28
+         compiled from common/messages.tpl.html */ ?>
+
+<!-- Template: common/messages.tpl.html Start 13/06/2012 23:58:28 --> 
+>>>>>>> 3e35044fbd7c15464e5a989ca87f488cee86e77e
  <!-- messages set by all modules shown here -->
 <?php if ($_SESSION['raise_message'][$this->_tpl_vars['module']]): ?>
     <div class="alert" align="center"><?php echo $_SESSION['raise_message'][$this->_tpl_vars['module']]; ?>

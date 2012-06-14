@@ -217,6 +217,7 @@ jQuery(function($){
                                 getBoxTimeout++;
                                 var getBoxTimeoutValue = getBoxTimeout;  
                                 setTimeout (function() {
+
                                     json_cache = true;
                                     if (getBoxTimeoutValue != getBoxTimeout) 
 										return;
@@ -508,9 +509,9 @@ jQuery(function($){
                 newel: false,
                 firstselected: false,
                 filter_case: false,
-		filter_selected:true,
+				filter_selected:true,
                 filter_hide: true,
-                complete_text: "Start to type...",
+                complete_text: "Start typing...",
                 maxshownitems: 30,
                 maxitems: 10,
                 onselect: "",

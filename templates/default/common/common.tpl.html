@@ -12,7 +12,7 @@
 <script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
 
 <!-- JQuery Library for New Fancybox -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 
 <!-- Add fancyBox -->
 <link rel="stylesheet" href="##LBL_SITE_URL##templates/css_theme/fancybox/jquery.fancybox.css?v=2.0.5" type="text/css" media="screen" />
@@ -47,8 +47,10 @@
 {literal}
 
 <script type="text/javascript">
-	var chc ="{/literal}{$chc}{literal}";
-	var idu="{/literal}{$smarty.session.id_user}{literal}";
+	var chc = "{/literal}{$chc}{literal}";
+	var idu = "{/literal}{$smarty.session.id_user}{literal}";
+	
+	var follow_count = parseInt({/literal}{$smarty.session.profile_follower_count}{literal});
 	
 		// Variables for XP updating
 		var curr_xp = {/literal}{if $smarty.session.exp_point}{$smarty.session.exp_point}{else}0{/if}{literal};
@@ -176,53 +178,59 @@
 			} else {
 				var ajax_response_exp = ranking_data.split(',');
 				
+				console.log(ajax_response_exp);
 				// Rank? No. 1- User? No. 1- XP? Yes.
 				if (ajax_response_exp[0].trim() == "AAB"){
 					
-					$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');
-
-					$("#other_user_ranking_info").css("background", '#AAF2DC');
-					$("#other_user_ranking_info").animate( { "opacity" : 0.4 }, 700, function() {
-						$("#other_user_ranking_info").css("background","#aad450");
-						$("#other_user_ranking_info").animate( { "opacity" : 1 }, 300)
-					});
+					//$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');
 				
 				// Rank? No 1- User? Yes.
 				} else if (ajax_response_exp[0].trim() == "AB") {
-					$("#trailing_user").html(ajax_response_exp[2]);
-					$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
+					trailing_pic = ajax_response_exp[1];
+					trailing_dupe = ajax_response_exp[2];
+					
+					$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');
+					
+					$("#trailing_ranking_number").css("color", '#FEEB4E');
+					$("#trailing_ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
+						$("#trailing_ranking_number").css("color","#81cdfe");
+						$("#trailing_ranking_number").animate( { "opacity" : 1 }, 300)
+					});
+					
+					//$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
 						
 				// Rank? Yes. Improvement? Yes.
 				} else if (ajax_response_exp[0].trim() == "BA") {
 					new_rank = ajax_response_exp[1];
-					trailing_xp = ajax_response_exp[2];
+					trailing_pic = ajax_response_exp[2];
 					trailing_user = ajax_response_exp[3];
 					trailing_rank = ajax_response_exp[4];
+					trailing_dupe = ajax_response_exp[5];
 					
 					$("#ranking_number").html(new_rank);
 					
 					// Green flash
-					$("#user_ranking_info").css("background", '#B9FE4E');
-					$("#user_ranking_info").animate( { "opacity" : 0.4 }, 700, function() {
-						$("#user_ranking_info").css("background","#4ebaff");
-						$("#user_ranking_info").animate( { "opacity" : 1 }, 300)
+
+					$("#ranking_number").css("color", '#B9FE4E');
+					$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
+						$("#ranking_number").css("color","#81cdfe");
+						$("#ranking_number").animate( { "opacity" : 1 }, 300)
 					});
 					
 					if (trailing_user) {
 					
 						$("#trailing_ranking_number").html(trailing_rank);
-						$("#trailing_exp").html(trailing_xp+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
+						$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');	
 							
-						$("#trailing_user").html(trailing_user);
+						//$("#trailing_user").html(trailing_user);
 						
-						$("#other_user_ranking_info").css("background", '#FE4EB9');
-						$("#other_user_ranking_info").animate( { "opacity" : 0.4 }, 700, function() {
-							$("#other_user_ranking_info").css("background","#aad450");
-							$("#other_user_ranking_info").animate( { "opacity" : 1 }, 300)
-						});
+						//$("#trailing_user_pic").css("background", '#FE4EB9');
+						//$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
+						//	$("#trailing_user_pic").css("background","#aad450");
+						//	$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
+						//});
 					
-					}
-					
+					}					
 				
 				// Rank? Yes. Improve? No.
 				} else {
@@ -230,27 +238,31 @@
 					trailing_xp = ajax_response_exp[2];
 					trailing_user = ajax_response_exp[3];
 					trailing_rank = ajax_response_exp[4];
+					trailing_dupe = ajax_response_exp[5];
 					
 					$("#ranking_number").html(new_rank);
 							
 					// Red flash
-					$("#user_ranking_info").css("background", '#FE4EB9');
-					$("#user_ranking_info").animate( { "opacity" : 0.4 }, 700, function() {
-						$("#user_ranking_info").css("background","#4ebaff");
-						$("#user_ranking_info").animate( { "opacity" : 1 }, 300)
+
+					$("#ranking_number").css("color", '#FE4EB9');
+					$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
+						$("#ranking_number").css("color","#81cdfe");
+						$("#ranking_number").animate( { "opacity" : 1 }, 300)
 					});
 					
 					if (trailing_user) {
 						$("#trailing_ranking_number").html(trailing_rank);
-						$("#trailing_exp").html(trailing_xp+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
-								
-						$("#trailing_user").html(trailing_user);
+						$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');	
 						
-						$("#other_user_ranking_info").css("background", '#B9FE4E');
-						$("#other_user_ranking_info").animate( { "opacity" : 0.4 }, 700, function() {
-							$("#other_user_ranking_info").css("background","#aad450");
-							$("#other_user_ranking_info").animate( { "opacity" : 1 }, 300)
-						});
+						//$("#trailing_exp").html(trailing_xp+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
+								
+						//$("#trailing_user").html(trailing_user);
+						
+						//$("#trailing_user_pic").css("background", '#B9FE4E');
+						//$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
+						//	$("#trailing_user_pic").css("background","#aad450");
+						//	$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
+						//});
 					}
 				}
 				
@@ -285,6 +297,13 @@
 				console.log("User Level is "+user_level);
 				console.log("Previous XP to Level is "+previous_xp_to_level);
 				console.log("XP_TO_LEVEL is "+xp_to_level);
+				
+				// flash ranking number yellow
+				$("#ranking_number").css("color", '#FEEB4E');		//yellow
+				$("#ranking_number").animate( { "opacity" : 0.8 }, 500, function() {
+					$("#ranking_number").css("color","#81cdfe");
+					$("#ranking_number").animate( { "opacity" : 1 }, 200)
+				});
 				
 				if (user_level == 1) {
 					new_xp_percent = (new_xp / xp_to_level) * 100;
@@ -346,10 +365,10 @@
 			
 			// Static XP marker
 			$("#total_xp").html(new_xp+'<span style="font-size:8px; position:relative; bottom:5px;"> XP</span>');
-			$("#user_ranking_info").css("background", '#4EFEEB');
-			$("#user_ranking_info").animate( { "opacity" : 0.4 }, 400, function() {
-				$("#user_ranking_info").css("background","#4ebaff");
-				$("#user_ranking_info").animate( { "opacity" : 1 }, 300)
+			$("#user_pic").css("background", '#4EFEEB');
+			$("#user__pic").animate( { "opacity" : 0.4 }, 400, function() {
+				$("#user_pic").css("background","#4ebaff");
+				$("#user_pic").animate( { "opacity" : 1 }, 300)
 			});
 			
 			setTimeout("popup_expbar()", 7000);	
@@ -423,6 +442,27 @@
 		$('#searches').submit();
 	}
 	
+	function follow_user(status) {		
+		{/literal}{if $smarty.session.profile_id}{literal}
+		var profile_id = {/literal}{$smarty.session.profile_id}{literal}
+		{/literal}{/if}{literal}
+		var url = "##LBL_SITE_URL##user/follow_user";
+		
+		$.post(url, {ce:0, id:profile_id, status:status}, function(res){
+			if (status == 'follow') {
+				$("#follow_me").html('<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'unfollow\');">Unfollow</a>');
+				
+				follow_count += 1;				
+			} else if (status == 'unfollow') {
+				$("#follow_me").html('<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'follow\');">Follow</a>');
+				
+				follow_count -= 1;
+			}
+			
+			$('#follower_count').html(follow_count+' followers');
+		});
+	}
+	
 </script>
 <script type="text/javascript">
 	    function fb_logout(){
@@ -465,7 +505,6 @@
           });
           
           FB.Event.subscribe('auth.login', function (response) {
-          	console.log("FB.event.subscribe auth login fired");
           	window.location = "##LBL_SITE_URL##user/facebook_info";
     	  });
         };
@@ -479,180 +518,306 @@
          }(document))
       </script>       
 {/literal}
+<!-- The Header and Logo shown at all times -->
+	<div id="top_header" class="nohighlight"></div>
+
+	<div id= "logoc" class="nohighlight">
+		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/wmemejalogo.png" width="180px" id="logo"></a>
+	</div>
+	{include file="user/left_pan"}
 
 {if !$smarty.session.id_user}
-<div id="nlu_masthead">
-	<!-- Memeja logo -->
-	<div id ="nlu_logoc">
-		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/rmemejalogo.png" width="280px" id="logo"></a>
-	</div>
-	<!--
-	<div id ="nlu_message" class="triangle-right left">
-		Tagline here
-	</div>
-	-->
-</div>
-
-<div class="clear"></div>
-
-
-<div id="nlu_container">	
-	<div id="nlu_feed">
-		{include file=$content}
-		{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
-	</div>
-	
-	<div id ="nlu_login">
-		{include file=user/login_form"}
-	</div>
-	<div id ="nlu_login_register">
-		{include file=user/login_form_register"}
-	</div>
-</div>
-
-{/if}
-
-
-{if $smarty.session.id_user}
-
-{if $smarty.request.choice !='addMeme'}
-<!-- Masthead is the Header which contains the Logo and the Navigation Buttons-->
-<!--Not on the create page-->
-<div id="masthead" class="nohighlight">
-		
-		<!-- Memeja Logo -->
-		<div id= "logoc">
-		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/rmemejalogo.png" width="280px;" id="logo"></a>
-		</div>
-
-		<!-- Memeja Top Bar -->
-	   <div id ="headerbtns"> 
-	   
-	    <!-- Login/Logout Buttons -->
-			{if !$smarty.session.id_user}
-				<img src="##LBL_SITE_URL##templates/images/joinmemeja.png" id="joinmemeja" onclick="$('#fblogin').slideToggle();" style="margin:-2px;">
-			{else}
-				<img src="##LBL_SITE_URL##templates/images/logout.png" id="logout" onclick="fb_logout();" style="margin:-2px;">
-			{/if}
-			
-	    <!-- Image Editor Button -->
-			<a href="##LBL_SITE_URL##meme/addMeme"><img src="##LBL_SITE_URL##templates/images/create.png" id="create"style="margin:-2px;"></a>
-		
-	    <!-- Random Generator Button -->
-				<a href="javascript:void(0);" onclick="get_random_meme();"><img src="##LBL_SITE_URL##templates/images/random.png"style="margin:-2px;"></a>
-		
-	    <!-- About Us Button -->
-			<a href="##LBL_SITE_URL##achievements/whatisMemeja"><img src="##LBL_SITE_URL##templates/images/help.png"style="margin:-2px;"></a>
-			
-		<!-- Search Feature -->	
-			<a href="javascript:void(0);"><img src="##LBL_SITE_URL##templates/images/searchend.png" style="margin:-2px;" onclick="submit();"></a>
-			
-				<form id ="searches">
-					<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title."/>
-				</form>
-		</div>
-</div>
-{else}
-<!-- Header buttons on the Create Page-->
-<div id="mastheadcreate"class="nohighlight">
-		
-		<!-- Memeja Logo -->
-		<div id= "logoc">
-		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/rmemejalogo.png" width="280px" id="logo"></a>
-		</div>
-
-		<!-- Memeja Top Bar -->
-	   <div id ="headerbtns"> 
-	   
-	    <!-- Login/Logout Buttons -->
-			{if !$smarty.session.id_user}
-				<img src="##LBL_SITE_URL##templates/images/joinmemeja.png" id="joinmemeja" onclick="$('#fblogin').slideToggle();" style="margin:-2px;">
-			{else}
-				<img src="##LBL_SITE_URL##templates/images/logout.png" id="logout" onclick="fb_logout();" style="margin:-2px;">
-			{/if}
-			
-	    <!-- Image Editor Button -->
-			<a href="##LBL_SITE_URL##meme/addMeme"><img src="##LBL_SITE_URL##templates/images/create.png" id="create"style="margin:-2px;"></a>
-		
-	    <!-- Random Generator Button -->
-				<a href="javascript:void(0);" onclick="get_random_meme();"><img src="##LBL_SITE_URL##templates/images/random.png"style="margin:-2px;"></a>
-		
-	    <!-- About Us Button -->
-			<a href="##LBL_SITE_URL##achievements/whatisMemeja"><img src="##LBL_SITE_URL##templates/images/help.png"style="margin:-2px;"></a>
-			
-		<!-- Search Feature -->	
-			<a href="javascript:void(0);"><img src="##LBL_SITE_URL##templates/images/searchend.png" style="margin:-2px;" onclick="submit();"></a>
-			
-				<form id ="searches">
-					<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title."/>
-				</form>
-		</div>
-</div>
-{/if}
-
-
-		<!-- FB LOGIN Button -->
-		<div id="fblogin" style="display:none;"width="50px;">
-			<div class="fb-login-button" scope="email, publish_stream ,user_education_history {*,user_birthday*}{* Uncomment to enable *}">
-						  Login with Facebook
-			</div>
+	<!-- NLU looks @ home page -->
+	{if !$smarty.session.profile}
+	<img src="##LBL_SITE_URL##templates/images/background.png"style="position:absolute;"/>
+		<div id="nlu_container">
+				<div id="nlu_feed">
+					{include file=$content}
+					{if !$smarty.request.page}{include file="meme/home"}{/if} 
+				</div>
 		</div>		
-		
-	{if $smarty.session.id_user}
-	{if $smarty.request.choice !='addMeme'}
-	<div id="follower">
-		<div id="xpbar"></div>
-	</div>	
-	<div id="user_level"></div>
-	<div id="xpbar_status"></div>
-        {/if}
-		{/if}
-
-	
-<div class="clear"></div>
-
-<div id="contained">
-
-<!-- Sidebar_A is Your Profile Information(Logged in) / Login Form(Not Logged in) -->		
-
-				<div id="sidebar_a"class="nohighlight">
-					{if $smarty.session.id_user}	
-						{include file="user/left_pan"}
-					{else} 
-						{include file=user/login_form"}
+		<div id ="nlu_login">
+			{include file=user/login_form"}
+		</div>
+		<div id ="nlu_login_register">
+			{include file=user/login_form_register"}
+		</div>
+	{elseif $smarty.session.profile == 'invalid'}
+		<div id="nlu_contained">
+			<div id="profile_page">		
+				<div id="profile_name"><center>Flerp? We couldn't find this user!</center></div>
+			</div>		
+			<div id="live_feed" class="nohighlight">
+				<div id="random_meme" style="left:259px; z-index:4;">
+					<a href="javascript:void(0);" onclick="get_random_meme();" class="special-btn red">Random</a>
+				</div>	
+				<div id="feed_cont">
+					{include file="meme/home"}
+				</div>
+			</div>
+			<div id="login_top">
+				<div class="fb-login-button" scope="
+				email,
+				publish_stream
+				,user_education_history
+				{*,user_birthday*}	{* Uncomment to enable *}
+				">
+			Login with Facebook
+				</div>
+			</div>
+		</div>	
+	{else}
+		<div id="nlu_contained">	
+			<div id="profile_page">	
+				<div id="profile_pic">
+					{if $smarty.session.profile_picture}
+						<img src="{$smarty.session.profile_picture}"class="profile_pic"/>
+					{else}
+						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}"class="profile_pic"/>
 					{/if}
 				</div>
-			
-			    <div>
-					<font color="#FF0000">{myinclude file="common/messages" module="global"}</font>
+				<div id="user_info">
+					<div id="profile_name">{$smarty.session.profile|capitalize}</div>
+					<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if} followers</div>
 				</div>
-<!-- This is the main container which contains the Live Feed/Image Editor -->	
-	{if $smarty.request.choice !='addMeme'}			
-			    <div id="content">
-		<!-- Content in middle of page (Live Feed/Editor) -->
-				{include file=$content}
-				{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
-	            </div>
-	{else}
-			    <div id="editorcontent">
-		<!-- Content in middle of page (Live Feed/Editor) -->
-				{include file=$content}
-				{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
-	            </div>		
-	{/if}
-	
-	<!-- Sidebar_B is for Ads/Search_Bar/Displays the Other Profile Info -->				
-			{if $smarty.request.choice !='addMeme'}
-			<div id="sidebar_b"class="nohighlight">
-				    {include file="user/right_pan"}
+				<div id="view_meme">
+					{if $smarty.session.profile_meme_image}
+						<div id="profile_meme">
+							{$smarty.session.profile_meme_title}
+						</div>
+						<div id="profile_meme_image">
+							<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}" />
+						</div>
+						{if $smarty.session.profile_meme_tagged}
+							<div id="profile_tagged">
+								Tagged: 
+								{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
+									<span>
+										<img src="https://graph.facebook.com/{$x.id}/picture"/>
+										{$x.name}
+									</span>
+								{/foreach}
+							</div>
+						{/if}
+					{/if}
+				</div>
+				<div id="my_pics">
+					<div class="tabs">
+					   <div class="tab">
+						   <input type="radio" id="tab-1" name="tab-group-1" checked>
+						   <label for="tab-1">{$smarty.session.profile|capitalize}'s Memes</label>
+						   <div class="content">
+								<div id="my_meme_list">
+									{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+								</div>
+						   </div>
+					   </div>
+					   <div class="tab">
+						   <input type="radio" id="tab-2" name="tab-group-1">
+						   <label for="tab-2">Tagged Memes</label>
+						   <div class="content">
+								<div id="my_tagged">
+									{get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
+								</div>
+						   </div>
+					   </div>
+					</div>
+				</div>
 			</div>
-			{/if}
-<div class="clear"></div>
-</div>		
+			
+			<div id="live_feed" class="nohighlight">
+				<center><div id="random_meme">
+					<a href="javascript:void(0);" onclick="get_random_meme();" class="special-btn red">Random</a>
+				</div></center>
+				<div id="feed_cont">
+					{include file="meme/home"}
+				</div>
+			</div>
+			<div id="login_top">
+				<div class="fb-login-button" scope="
+			email,
+			publish_stream
+			,user_education_history
+			{*,user_birthday*}	{* Uncomment to enable *}
+			">
+		Login with Facebook
+				</div>
+			</div>
+		</div>
+	{/if}
+{else}
+		<div id="user_pic" class="nohighlight">
+			<a href="/?id={$smarty.session.dupe_username}">
+				{if $smarty.session.fb_pic_normal}
+					<img src="{$smarty.session.fb_pic_normal}" style="width:30px;height:30px">
+				{else}
+					<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:30px;height:30px"/>
+				{/if}
+			</a>
+			<div id="ranking_number">{if $smarty.session.exp_rank}{$smarty.session.exp_rank}{else}N/A{/if}</div>
+		</div>
+		
+		{if $smarty.session.one_less_user}
+			
+			<div id="trailing_user_pic" class="nohighlight">
+				<span id="trailing_user_profile_pic">
+					{if $smarty.session.one_less_pic}
+						<a href="/?id={$smarty.session.one_less_dupe_username}"><img src="{$smarty.session.one_less_pic}" style="width:30px;height:30px">
+					{else}
+						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:30px;height:30px"/></a>
+					{/if}
+				</span>
+				<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}{$smarty.session.one_less_rank}{else}N/A{/if}
+				</div>
+			</div>
+		{else}
+			
+		{/if}	
 
-<!-- Keeping the Footer at the Bottom -->	
-<div class="clear"></div>
-	<div id="footer"class="nohighlight"><center>Copyrights. All Rights Reserved. 2012</center></div>
+	{if $smarty.request.choice !='addMeme'}
+
+		<div id="xpbar_info" class="nohighlight">
+			<div id="xpbar"></div>	
+			<div id="user_level"></div>
+			<div id="xpbar_status"></div>
+		</div>
+		
+		<div id="contained">
+			{if !$smarty.session.profile}
+				<!-- view home page -->
+				<div id="profile_page">
+					<div id="profile_pic">
+					{if $smarty.session.fb_pic_normal}
+						<img src="{$smarty.session.fb_pic_normal}"class="profile_pic"/>
+					{else}
+						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
+					{/if}
+					</div>
+					<div id="user_info">
+						<div id="profile_name">{$smarty.session.fname} {$smarty.session.lname}</div>
+						<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if} followers</div>
+					</div>
+					<div id="addMeme_link">
+						<a href="##LBL_SITE_URL##meme/addMeme"><img src="##LBL_SITE_URL##templates/images/add.png"/></a>
+					</div>
+						
+					<div id="my_pics">
+						<div class="tabs">
+						   <div class="tab">
+							   <input type="radio" id="tab-1" name="tab-group-1" checked>
+							   <label for="tab-1">My Memes</label>
+							   <div class="content">
+									<div id="my_meme_list">
+										{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+									</div>
+							   </div>
+						   </div>
+						   <div class="tab">
+							   <input type="radio" id="tab-2" name="tab-group-1">
+							   <label for="tab-2">Tagged Memes</label>
+							   <div class="content">
+									<div id="my_tagged">
+										{get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
+									</div>
+							   </div>
+						   </div>
+							<div class="tab">
+							   <input type="radio" id="tab-3" name="tab-group-1">
+							   <label for="tab-3">Favorites</label>
+							   <div class="content">
+									<div id="my_favorites" >
+										{get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
+									</div>
+							   </div>
+						   </div>
+						</div>
+					</div>		
+				</div>
+			{elseif $smarty.session.profile == 'invalid'}
+				<div id="profile_page">
+					<div id="profile_name"><center>Flerp? We couldn't find this user!</center></div>
+				</div>
+			{else} 
+				<div id="profile_page">	
+					<div id="profile_pic">
+						{if $smarty.session.profile_picture}
+							<img src="{$smarty.session.profile_picture}"class="profile_pic"/>
+						{else}
+							<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
+						{/if}
+					</div>
+				<div id="user_info">
+					<div id="profile_name">{$smarty.session.profile|capitalize}</div>
+					<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if} followers</div>
+					{if $smarty.session.following == 'y'}
+						<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('unfollow');">Unfollow</a></span>
+					{elseif $smarty.session.following == 'n'}
+						<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('follow');">follow</a></span>
+					{/if}
+				</div>	
+				<div id="view_meme">
+					{if $smarty.session.profile_meme_image}
+							<div id="profile_meme">
+								{$smarty.session.profile_meme_title}
+							</div>
+							<div id="profile_meme_image">
+								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}" />
+							</div>
+							{if $smarty.session.profile_meme_tagged}
+								<div id="profile_tagged">
+									Tagged: 
+									{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
+										<span>
+											<img src="https://graph.facebook.com/{$x.id}/picture"/>
+											{$x.name}
+										</span>
+									{/foreach}
+								</div>
+							{/if}
+						{/if}
+					</div>
+					<div id="my_pics">
+						<div class="tabs">
+						   <div class="tab">
+							   <input type="radio" id="tab-1" name="tab-group-1" checked>
+							   <label for="tab-1">{$smarty.session.profile|capitalize}'s Memes</label>
+							   <div class="content">
+									<div id="my_meme_list">
+										{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+									</div>
+							   </div>
+						   </div>
+						   <div class="tab">
+							   <input type="radio" id="tab-2" name="tab-group-1">
+							   <label for="tab-2">Tagged Memes</label>
+							   <div class="content">
+									<div id="my_tagged">
+										{get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
+									</div>
+							   </div>
+						   </div>
+						</div>
+					</div>
+				</div>
+			{/if}
+			
+			<div id="live_feed" class="nohighlight">
+				<center><div id="random_meme">
+					<a href="javascript:void(0);" onclick="get_random_meme();" class="special-btn red">Random</a>
+				</div></center>
+				<div id="feed_cont">
+					{include file="meme/home"}
+				</div>
+			</div>
+			
+		</div>
+
+	{else}
+		<div id="editorcontent">
+			{include file=$content}
+			{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
+		</div>		
+	{/if}
 {/if}
 </body>
 </html>
