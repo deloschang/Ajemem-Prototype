@@ -1,9 +1,17 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-14 08:33:53
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-14 08:51:01
+>>>>>>> c83555c46de3c263530c8378fd30f04fac505a16
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 206, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 245, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 205, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 244, false),)), $this); ?>
 
+<<<<<<< HEAD
 <!-- Template: meme/loadmorememe.tpl.html Start 14/06/2012 08:33:53 --> 
+=======
+<!-- Template: meme/loadmorememe.tpl.html Start 14/06/2012 08:51:00 --> 
+>>>>>>> c83555c46de3c263530c8378fd30f04fac505a16
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -203,7 +211,6 @@ if ($this->_foreach['cur_meme']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['x']):
         $this->_foreach['cur_meme']['iteration']++;
 ?>
-<div>
 	<div  id="meme<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " class="meme">
 
@@ -277,13 +284,13 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 			<!-- Reply System -->
 			
 				<div class="meme_reproductive_system">
-					<?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
+					<!--if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user-->
 
-					<a href="javascript:void(0);" onclick="get_all_replies('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-');" class="meme_reply"><img src="http://localhost/templates/images/replys.png" style="width:25px;height:25px;"/><div id="repl<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-"class="meme_reply_label"><?php if ($this->_tpl_vars['x']['tot_reply'] != 0):  echo $this->_tpl_vars['x']['tot_reply'];  else: ?>0<?php endif; ?></div></a>&emsp;
+					<a href="javascript:void(0);" <!--onclick="get_all_replies('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+');-->" class="meme_reply"><img src="http://localhost/templates/images/replys.png" style="width:25px;height:25px; display:none;"/><div id="repl<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+"class="meme_reply_label" style="display:none;"><?php if ($this->_tpl_vars['x']['tot_reply'] != 0):  echo $this->_tpl_vars['x']['tot_reply'];  else: ?>0<?php endif; ?></div></a>&emsp;
 
-					<?php endif; ?> 
+					<!--/if-->
 				
 					
 					<!-- Honor -->

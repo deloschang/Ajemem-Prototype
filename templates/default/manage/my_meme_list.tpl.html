@@ -46,16 +46,19 @@
 				<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="width: 60px;height: 60px;cursor: pointer;"/></a>
 			{/if}
 			{/section}
-				<a class="meme_gallery" data-fancybox-group="my_meme" id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!">
-				<img src="##LBL_SITE_URL##templates/images/add.png" style="width: 60px;height: 60px;cursor: pointer;"/></a>
+				{if $smarty.session.profile}
+					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/tag.png" style="padding-left: 15px; cursor: pointer;"/></a>
+				{else}
+					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/add.png" style="padding-left: 15px; cursor: pointer;"/></a>
+				{/if}
 		{else}
 			{if $sm.flg == 1}
-				<b>You don't like any memes? You have no soul</b>
+				<b>No liked memes. Memeja still loves you though</b>
 			{elseif $sm.flg == 2}
 				<b>No tags. Lonely Memeja is lonely </b>
 			{else}
 				<b>
-				You haven't made any Memes!!
+					No memes created. 
 				</b>
 			{/if}
 		{/if}

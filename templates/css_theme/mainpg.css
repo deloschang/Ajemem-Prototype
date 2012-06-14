@@ -85,7 +85,7 @@
 		background:#FFF;
 		float:left;
 		left:40px;
-		margin:20px 0 0 20px;
+		margin:40px 0 0 20px;
 		position:relative;
 		top:60px;
 		width:250px;
@@ -209,8 +209,8 @@
 		margin:0 0 0 0;
 		padding: 15px 50px 50px 50px;
 		width:860px;
-		height:445px;
-		background-color:#B4EEFA;
+		height:400px;
+		opacity:0.97;
 	    moz-border-radius: 12px;
 	    webkit-border-radius: 12px;
 	    khtml-border-radius: 12px;
@@ -607,11 +607,10 @@
 /* Memeja Logo */
 	#logoc {
 		float:left;
-		left:100px;
+		left:70px;
 		position:fixed;
 		top:2px;
-		width:100px;
-		z-index:100;
+		z-index:9002;
 	}
 	
 	
@@ -787,7 +786,7 @@ moz-border-radius: 10px;
 /* XP Bar */
 	
 	#xpbar_info {
-		left:300px;
+		left:280px;
 		position: fixed;
 		top:10px;
 	}
@@ -795,7 +794,7 @@ moz-border-radius: 10px;
 	#xpbar {
 		position:relative;
 		width:600px;
-		z-index:200;
+		z-index:9000;
 	}
 
 	#user_level{
@@ -807,7 +806,7 @@ moz-border-radius: 10px;
 		left:5px;
 		position: relative;
 		top:-16px;
-		z-index: 201;
+		z-index: 9001;
 	}
 
 	#xpbar_status {
@@ -817,10 +816,10 @@ moz-border-radius: 10px;
 		font: arial, sans-serif;
 		font-size: 14px;
 		font-weight:bold;
-		left:250px;
+		left:270px;
 		position: relative;
 		top:-32px;
-		z-index: 202;
+		z-index: 9002;
 	}
 
 /****/
@@ -852,7 +851,7 @@ moz-border-radius: 10px;
 		text-align:center;
 		text-shadow: 0px 1px 0px #e5e5ee;
 		top:5px;
-		z-index:201;
+		z-index:9002;
 	}
 	
 	#login_top {
@@ -878,6 +877,7 @@ moz-border-radius: 10px;
 		left:0px;
 		position: absolute;
 		top:-2px;
+		z-index:9001;
 	}
 	
 	#user_ranking_info {
@@ -919,7 +919,7 @@ moz-border-radius: 10px;
 	#user_pic{
 		position:fixed;
 		top:5px;
-		z-index:100;
+		z-index:9001;
 		left:1000px;
 		box-shadow: 0 0 4px 0 #555555;
 	}
@@ -927,7 +927,7 @@ moz-border-radius: 10px;
 	#trailing_user_pic {
 		position:fixed;
 		top:5px;
-		z-index:101;
+		z-index:9001;
 		left:950px;
 		box-shadow: 0 0 4px 0 #555555;
 	}
@@ -955,6 +955,10 @@ moz-border-radius: 10px;
 	
 	#user_memes{
 		position: relative;
+	}
+	
+	#page_boop{
+		font-size: 11px;
 	}
 	
 /****************************************************************************************************/
