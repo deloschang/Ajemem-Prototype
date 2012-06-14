@@ -85,7 +85,7 @@
 		background:#FFF;
 		float:left;
 		left:40px;
-		margin:20px 0 0 20px;
+		margin:40px 0 0 20px;
 		position:relative;
 		top:60px;
 		width:250px;
@@ -209,8 +209,9 @@
 		margin:0 0 0 0;
 		padding: 15px 50px 50px 50px;
 		width:860px;
-		height:445px;
-		background-color:#87C8F0;
+		height:400px;
+		background-color:#87C8F0; 
+		opacity:0.97;
 	    moz-border-radius: 12px;
 	    webkit-border-radius: 12px;
 	    khtml-border-radius: 12px;
@@ -229,13 +230,13 @@
 	
 	#front_card{
 		position:absolute;
-		top:75px;
+		top:35px;
 		left: 170px;
 		text-align:left;
 		font-size:50px;
 		color: #fa3a56;
 		padding:5px 10px;
-		background:rgba(58,250,222,0.3);
+		#background:rgba(58,250,222,0.3);
 	}
 	
 	#first_half{
