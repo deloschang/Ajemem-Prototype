@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-14 06:14:18
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-14 04:19:18
+>>>>>>> f9b69d2ee1f0ec86533648f372e1b510466c08fa
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '

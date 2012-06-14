@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-14 02:17:45
          compiled from meme/respective_replies.tpl.html */ ?>
 
 <!-- Template: meme/respective_replies.tpl.html Start 14/06/2012 02:17:45 --> 
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-14 03:29:47
+         compiled from meme/respective_replies.tpl.html */ ?>
+
+<!-- Template: meme/respective_replies.tpl.html Start 14/06/2012 03:29:47 --> 
+>>>>>>> f9b69d2ee1f0ec86533648f372e1b510466c08fa
  <?php $this->_foreach['rep'] = array('total' => count($_from = (array)$this->_tpl_vars['sm']['reparr']), 'iteration' => 0);
 if ($this->_foreach['rep']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['i']):
@@ -17,8 +24,7 @@ if ($this->_foreach['rep']['total'] > 0):
 <img src="http://localhost/image/thumb/avatar/<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['i']['id_user']]['avatar']; ?>
 " style="width:50px;height:50px"/>
 <?php else: ?>
-<img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png" style="width:50px;height:50px"/><?php endif; ?>
-<?php endif; ?></a>
+<img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png" style="width:50px;height:50px"/><?php endif;  endif; ?></a>
 
 <span style="position:relative; bottom:38px; left:4px;"> 
 <a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['i']['id_user']]['dupe_username']; ?>
