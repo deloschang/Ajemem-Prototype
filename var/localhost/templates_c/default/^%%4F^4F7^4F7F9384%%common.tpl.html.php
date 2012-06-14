@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-14 08:39:35
+<?php /* Smarty version 2.6.7, created on 2012-06-14 08:57:45
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 577, false),array('function', 'get_mod', 'common/common.tpl.html', 608, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'cfd26b98ef58dcdd23f470f6eac49604'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '45b73a963d5873f7083228a6abd60f6e'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -642,7 +642,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 's Memes</label>
 						   <div class="content">
 								<div id="my_meme_list">
-									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:cfd26b98ef58dcdd23f470f6eac49604#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:cfd26b98ef58dcdd23f470f6eac49604#0}';}?>
+									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:45b73a963d5873f7083228a6abd60f6e#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:45b73a963d5873f7083228a6abd60f6e#0}';}?>
 
 								</div>
 						   </div>
@@ -652,7 +652,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 						   <label for="tab-2">Tagged Memes</label>
 						   <div class="content">
 								<div id="my_tagged">
-									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:cfd26b98ef58dcdd23f470f6eac49604#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:cfd26b98ef58dcdd23f470f6eac49604#1}';}?>
+									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:45b73a963d5873f7083228a6abd60f6e#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:45b73a963d5873f7083228a6abd60f6e#1}';}?>
 
 								</div>
 						   </div>
@@ -751,7 +751,7 @@ unset($_smarty_tpl_vars);
 							   <label for="tab-1">My Memes</label>
 							   <div class="content">
 									<div id="my_meme_list">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:cfd26b98ef58dcdd23f470f6eac49604#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:cfd26b98ef58dcdd23f470f6eac49604#2}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:45b73a963d5873f7083228a6abd60f6e#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:45b73a963d5873f7083228a6abd60f6e#2}';}?>
 
 									</div>
 							   </div>
@@ -761,7 +761,7 @@ unset($_smarty_tpl_vars);
 							   <label for="tab-2">Tagged Memes</label>
 							   <div class="content">
 									<div id="my_tagged">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:cfd26b98ef58dcdd23f470f6eac49604#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:cfd26b98ef58dcdd23f470f6eac49604#3}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:45b73a963d5873f7083228a6abd60f6e#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:45b73a963d5873f7083228a6abd60f6e#3}';}?>
 
 									</div>
 							   </div>
@@ -771,7 +771,7 @@ unset($_smarty_tpl_vars);
 							   <label for="tab-3">Favorites</label>
 							   <div class="content">
 									<div id="my_favorites" >
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:cfd26b98ef58dcdd23f470f6eac49604#4}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:cfd26b98ef58dcdd23f470f6eac49604#4}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:45b73a963d5873f7083228a6abd60f6e#4}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:45b73a963d5873f7083228a6abd60f6e#4}';}?>
 
 									</div>
 							   </div>
@@ -842,7 +842,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 's Memes</label>
 							   <div class="content">
 									<div id="my_meme_list">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:cfd26b98ef58dcdd23f470f6eac49604#5}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:cfd26b98ef58dcdd23f470f6eac49604#5}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:45b73a963d5873f7083228a6abd60f6e#5}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:45b73a963d5873f7083228a6abd60f6e#5}';}?>
 
 									</div>
 							   </div>
@@ -852,7 +852,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 							   <label for="tab-2">Tagged Memes</label>
 							   <div class="content">
 									<div id="my_tagged">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:cfd26b98ef58dcdd23f470f6eac49604#6}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:cfd26b98ef58dcdd23f470f6eac49604#6}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:45b73a963d5873f7083228a6abd60f6e#6}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:45b73a963d5873f7083228a6abd60f6e#6}';}?>
 
 									</div>
 							   </div>

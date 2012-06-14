@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-14 08:39:36
+<?php /* Smarty version 2.6.7, created on 2012-06-14 08:57:46
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -61,6 +61,26 @@
 					 }
 				 }
 			 });
+			
+			if (!logged_in){
+
+				var message_one = \'';  echo $this->_tpl_vars['sm']['msg_arr'][0];  echo '\';
+				var link_one = \'';  echo $this->_tpl_vars['sm']['link_arr'][0];  echo '\';
+
+				var message_two = \'';  echo $this->_tpl_vars['sm']['msg_arr'][1];  echo '\';
+				var link_two = \'';  echo $this->_tpl_vars['sm']['link_arr'][1];  echo '\';
+
+				var message_three = \'';  echo $this->_tpl_vars['sm']['msg_arr'][2];  echo '\';
+				var link_three = \'';  echo $this->_tpl_vars['sm']['link_arr'][2];  echo '\';
+
+				$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://localhost/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 210px; height: 170px; "/></a>\');
+
+				$(\'#blurb_one\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'">\'+message_one+\'</a>\');
+
+				$(\'#nlu_message_two\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'"><img src="http://localhost/image/orig/meme/\'+link_two+\'" style="cursor:pointer; width: 210px; height: 170px; "/></a>\');
+
+				$(\'#blurb_two\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'">\'+message_two+\'</a>\');
+			 }
 
 			$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
 			
@@ -385,15 +405,15 @@
 	
 	function diff_feed(ext){
 		var url = "http://localhost/meme/meme_list";
-		$.post(url,{cat:\'main_feed\',ce:0,ext:ext }, function(res){
-			if(res != "")
-				$(\'#all_memes\').html(res);
-			if (ext == 1){
-				$(\'#page_boop\').hide();
-			 } else {
-				$(\'#page_boop\').show();
-			 }
-		 });
+			$.post(url,{cat:\'main_feed\',ce:0,ext:ext }, function(res){
+				if(res != "")
+					$(\'#all_memes\').html(res);
+				if (ext == 1){
+					$(\'#page_boop\').hide();
+				 } else {
+					$(\'#page_boop\').show();
+				 }
+			 });
 	 }
 	
 	
@@ -432,9 +452,11 @@
 			<a href="javascript:void(0);" onclick="diff_feed(0);" class="special-btn green">World Feed</a>
 		</div>
 		
-		<div id="friends_feed">
-			<a href="javascript:void(0);" onclick="diff_feed(1);" class="special-btn green">Friends Feed</a>
-		</div>
+		<?php if ($_SESSION['id_user']): ?>
+			<div id="friends_feed">
+				<a href="javascript:void(0);" onclick="diff_feed(1);" class="special-btn green">Friends Feed</a>
+			</div>
+		<?php endif; ?>
 </div>
 
 
