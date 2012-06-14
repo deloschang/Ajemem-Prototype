@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-14 02:19:38
 =======
 <?php /* Smarty version 2.6.7, created on 2012-06-14 04:12:40
@@ -7,6 +8,9 @@
 =======
 <?php /* Smarty version 2.6.7, created on 2012-06-14 07:53:07
 >>>>>>> c83555c46de3c263530c8378fd30f04fac505a16
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-14 09:17:53
+>>>>>>> 5741c56381cb56b93e6e6320abb893b6a964f478
          compiled from meme/loadmore_rand_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmore_rand_meme.tpl.html', 11, false),array('modifier', 'date_format', 'meme/loadmore_rand_meme.tpl.html', 13, false),)), $this); ?>
@@ -30,6 +34,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	    
 	    <!--	    <div id="randhrc<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 " style="font-size: 16px;color:blue;"><?php if ($this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption']):  echo $this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption'];  else:  endif; ?></div>-->
 <!--	    -->
 <!--	    <br/>-->
@@ -51,11 +56,24 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			
 			<!--
 >>>>>>> c83555c46de3c263530c8378fd30f04fac505a16
+=======
+" style="font-size: 16px;color:blue;"><?php if ($this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption']):  echo $this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption'];  else:  endif; ?></div>-->
+<!--	    -->
+<!--	    <br/>-->
+
+	    <div>
+			<?php if ($_SESSION['id_user']): ?>
+		    <span>
+			<?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
+			
+			
+>>>>>>> 5741c56381cb56b93e6e6320abb893b6a964f478
 			<span id ="rand_meme_reply_id<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ">
 			<label id="randrepl<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "><?php echo $this->_tpl_vars['x']['tot_reply']; ?>
 </label>&nbsp;<a href="javascript:void(0);" onclick="get_all_rand_replies('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+<<<<<<< HEAD
 <<<<<<< HEAD
 ');"><img src="http://localhost/templates/images/reply.gif" />Reply</a>&emsp;</span>
 			<?php endif; ?>
@@ -65,6 +83,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			<?php endif; ?>
 			
 >>>>>>> c83555c46de3c263530c8378fd30f04fac505a16
+=======
+');"><img src="http://localhost/templates/images/reply.gif" />Reply</a>&emsp;</span>
+			<?php endif; ?>
+			
+>>>>>>> 5741c56381cb56b93e6e6320abb893b6a964f478
 			<span id ="rand_meme_agr_id<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ">
 			<label id="randaggr<?php echo $this->_tpl_vars['x']['id_meme']; ?>
@@ -98,6 +121,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			
 			onclick="rand_set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 ','D');">Dishonor</a></span>
 			
 =======
@@ -105,6 +129,11 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			<span style="margin-left:340px; color:green;">Pro-tip: Hotkeys => H | D | spacebar</span>
 			
 >>>>>>> c83555c46de3c263530c8378fd30f04fac505a16
+=======
+','D');">Dishonor</a></span>
+			<span style="margin-left:280px; color:green;">Pro-tip: Hotkeys => H | D | spacebar</span>
+			
+>>>>>>> 5741c56381cb56b93e6e6320abb893b6a964f478
 			<div id="randsend_reply<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " style="width:60%;display: none;"></div>
 			
