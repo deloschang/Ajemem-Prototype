@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-14 03:26:25
+<?php /* Smarty version 2.6.7, created on 2012-06-14 07:32:19
          compiled from meme/addmeme.tpl.html */ ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 14/06/2012 03:26:25 --> 
+<!-- Template: meme/addmeme.tpl.html Start 14/06/2012 07:32:19 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
@@ -20,13 +20,13 @@ _img.png";
 <script type="text/javascript" src="http://localhost/spad/jquery.jqDock.min.js"></script>
 <script type="text/javascript" src="http://localhost/spad/color/colorpicker.js"></script>
 
-
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" />
 <link type="text/css" href="http://localhost/spad/css/colorpicker.css" rel="stylesheet" />
 <link rel="stylesheet" href="http://localhost/spad/css/spad.css" type="text/css"/>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/multiautocomplete.css"/>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
 <script type="text/javascript">
 
 	var mycanvas, cntx;
@@ -98,26 +98,18 @@ _img.png";
             $("#meme_cat").focus();
             return false;
          } else {
-        
-		if(!$("#tag").val())
-		{
-			/*  Uncomment and comment out var conf=true once the tagging system is implemented. 
-				Allows users to submit memes without choosing if they have to tag a friend or not. 
-			*/
-			
+		
+		if(!$("#tag").val()){			
 			var conf=confirm("Are you sure you don\'t want to tag your friends?");
 			//var conf=true;
-			if(conf)
-			{
+			
+			if(conf){
 				$(window).unbind();
 				submit_memeje();
-			 }
-			else
-			{
+			 } else {
 				return false;
 			 }
-		 }
-		else{
+		 } else {
 			$(window).unbind();
 			submit_memeje();
 		 }
@@ -139,13 +131,17 @@ _img.png";
 
 <form method="post" action="http://localhost/meme/meme_insert" enctype="multipart/form-data" name="ques_ans" id="ques_ans">
         <?php if ($this->_tpl_vars['sm']['idq']): ?>
-        <input type="hidden" name="meme[id_question]" id="id_question" value="<?php echo $this->_tpl_vars['sm']['idq']; ?>
+			<input type="hidden" name="meme[id_question]" id="id_question" value="<?php echo $this->_tpl_vars['sm']['idq']; ?>
 "/>
         <?php endif; ?>
         <?php if ($this->_tpl_vars['sm']['duel']): ?>
-        <input type="hidden" name="meme[duel]" id="duel" value="<?php echo $this->_tpl_vars['sm']['duel']; ?>
+			<input type="hidden" name="meme[duel]" id="duel" value="<?php echo $this->_tpl_vars['sm']['duel']; ?>
 "/>
         <?php endif; ?>
+		<?php if ($this->_tpl_vars['sm']['pretag']): ?>
+			<input type="hidden" name="meme[pretag]" id="pretag" value="<?php echo $this->_tpl_vars['sm']['pretag']; ?>
+"/>
+		<?php endif; ?>
         
 			<div id="canvas">
 				<?php $_smarty_tpl_vars = $this->_tpl_vars;
@@ -157,7 +153,8 @@ unset($_smarty_tpl_vars);
 		
 		<div id="shares">
 			<div id="tagline">Tag Your Friends!</div>
-			 <select id="tag" multiple="multiple" style="display: none;" name="tagged_user[]"></select>
+			 <select id="tag" multiple="multiple" name="tagged_user[]"><?php echo $this->_tpl_vars['sm']['pretag']; ?>
+</select>
 		</div>
 		
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>

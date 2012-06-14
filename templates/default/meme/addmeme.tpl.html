@@ -15,7 +15,6 @@
 <script type="text/javascript" src="##LBL_SITE_URL##spad/jquery.jqDock.min.js"></script>
 <script type="text/javascript" src="##LBL_SITE_URL##spad/color/colorpicker.js"></script>
 
-
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" />
 <link type="text/css" href="##LBL_SITE_URL##spad/css/colorpicker.css" rel="stylesheet" />
 <link rel="stylesheet" href="##LBL_SITE_URL##spad/css/spad.css" type="text/css"/>
@@ -94,26 +93,18 @@
             $("#meme_cat").focus();
             return false;
         } else {
-        
-		if(!$("#tag").val())
-		{
-			/*  Uncomment and comment out var conf=true once the tagging system is implemented. 
-				Allows users to submit memes without choosing if they have to tag a friend or not. 
-			*/
-			
+		
+		if(!$("#tag").val()){			
 			var conf=confirm("Are you sure you don't want to tag your friends?");
 			//var conf=true;
-			if(conf)
-			{
+			
+			if(conf){
 				$(window).unbind();
 				submit_memeje();
-			}
-			else
-			{
+			} else {
 				return false;
 			}
-		}
-		else{
+		} else {
 			$(window).unbind();
 			submit_memeje();
 		}
@@ -133,11 +124,14 @@
 
 <form method="post" action="##LBL_SITE_URL##meme/meme_insert" enctype="multipart/form-data" name="ques_ans" id="ques_ans">
         {if $sm.idq}
-        <input type="hidden" name="meme[id_question]" id="id_question" value="{$sm.idq}"/>
+			<input type="hidden" name="meme[id_question]" id="id_question" value="{$sm.idq}"/>
         {/if}
         {if $sm.duel}
-        <input type="hidden" name="meme[duel]" id="duel" value="{$sm.duel}"/>
+			<input type="hidden" name="meme[duel]" id="duel" value="{$sm.duel}"/>
         {/if}
+		{if $sm.pretag}
+			<input type="hidden" name="meme[pretag]" id="pretag" value="{$sm.pretag}"/>
+		{/if}
         
 			<div id="canvas">
 				{include file="meme/meme_editor"}
@@ -145,7 +139,7 @@
 		
 		<div id="shares">
 			<div id="tagline">Tag Your Friends!</div>
-			 <select id="tag" multiple="multiple" style="display: none;" name="tagged_user[]"></select>
+			 <select id="tag" multiple="multiple" name="tagged_user[]">{$sm.pretag}</select>
 		</div>
 		
         <input type="hidden" id="edited_img" name="meme[image]" value="{$smarty.now}_draw.png"/>
