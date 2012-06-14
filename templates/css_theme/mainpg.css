@@ -210,7 +210,8 @@
 		padding: 15px 50px 50px 50px;
 		width:860px;
 		height:400px;
-		opacity:0.97;
+		opacity:0.95;
+		background-color:#BBE5FC;
 	    moz-border-radius: 12px;
 	    webkit-border-radius: 12px;
 	    khtml-border-radius: 12px;
@@ -1965,6 +1966,10 @@ a.special-btn.facebook:active {
 	#add {
 		padding-left: 15px;
 		cursor: pointer;
+		width:60px;
+	}
+	#tagg {
+		cursor:pointer;
 		width:60px;
 	}
  

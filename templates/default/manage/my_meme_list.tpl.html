@@ -47,33 +47,33 @@
 			{/if}
 			{/section}
 				{if $smarty.session.profile}
-					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/tag.png" style="padding-left: 15px; cursor: pointer;"/></a>
+					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/tag.png" id="tagg"/></a>
 				{else}
-					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/add.png" style="padding-left: 15px; cursor: pointer;"/></a>
+					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/add.png" id="add"/></a>
 				{/if}
 		{else}
 			{if $sm.flg == 1}
 				<b>No liked memes. Memeja still loves you though</b>
 				{if $smarty.session.profile}
-					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/tag.png" style="padding-left: 15px; cursor: pointer;"/></a>
+					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/tag.png" id="tagg"/></a>
 				{else}
-					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/add.png" style="padding-left: 15px; cursor: pointer;"/></a>
+					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/add.png" id="add"/></a>
 				{/if}
 			{elseif $sm.flg == 2}
 				<b>No tags. Lonely Memeja is lonely </b>
 				{if $smarty.session.profile}
-					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/tag.png" style="padding-left: 15px; cursor: pointer;"/></a>
+					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/tag.png" id="tagg"/></a>
 				{else}
-					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/add.png" style="padding-left: 15px; cursor: pointer;"/></a>
+					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/add.png" id="add"/></a>
 				{/if}
 			{else}
 				<b>
 					No memes created. 
 				</b>
 				{if $smarty.session.profile}
-					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/tag.png" style="padding-left: 15px; cursor: pointer;"/></a>
+					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/tag.png" id="tagg"/></a>
 				{else}
-					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/add.png" style="padding-left: 15px; cursor: pointer;"/></a>
+					<a id="create_meme" href="##LBL_SITE_URL##meme/addMeme" title="Create-A-Meme!"><img src="##LBL_SITE_URL##templates/images/add.png" id="add"/></a>
 				{/if}
 			{/if}
 		{/if}
