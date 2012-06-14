@@ -71,7 +71,7 @@ if (isset($_input['id'])){
 		$_SESSION['profile_dupe_username'] = $profile_data['dupe_username'];
 		
 		// count followers
-		$page_sql="SELECT COUNT(*) FROM memeje__friends WHERE following=".$_SESSION['id_user'];
+		$page_sql="SELECT COUNT(*) FROM memeje__friends WHERE following=".$_SESSION['profile_id'];
 	    $page_res=mysqli_query($link,$page_sql);
 		
 		if ($page_res){
