@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-14 01:58:40
+<?php /* Smarty version 2.6.7, created on 2012-06-14 02:52:02
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 35, false),)), $this); ?>
@@ -88,6 +88,8 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
 			<?php endif; ?>
 			<?php endfor; endif; ?>
+				<a class="meme_gallery" data-fancybox-group="my_meme" id="create_meme" href="http://localhost/meme/addMeme" title="Create-A-Meme!">
+				<img src="http://localhost/templates/images/add.png" style="width: 60px;height: 60px;cursor: pointer;"/></a>
 		<?php else: ?>
 			<?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
 				<b>You don't like any memes? You have no soul</b>

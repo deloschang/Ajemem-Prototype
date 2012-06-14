@@ -4,6 +4,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-11 00:30:18
          compiled from common/messages.tpl.html */ ?>
 
@@ -44,6 +45,12 @@
 
 <!-- Template: common/messages.tpl.html Start 13/06/2012 09:27:35 --> 
 >>>>>>> 5c7946b7a5a01a5faefe62be6a80d7f56cefbb03
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-13 23:58:28
+         compiled from common/messages.tpl.html */ ?>
+
+<!-- Template: common/messages.tpl.html Start 13/06/2012 23:58:28 --> 
+>>>>>>> 3e35044fbd7c15464e5a989ca87f488cee86e77e
  <!-- messages set by all modules shown here -->
 <?php if ($_SESSION['raise_message'][$this->_tpl_vars['module']]): ?>
     <div class="alert" align="center"><?php echo $_SESSION['raise_message'][$this->_tpl_vars['module']]; ?>

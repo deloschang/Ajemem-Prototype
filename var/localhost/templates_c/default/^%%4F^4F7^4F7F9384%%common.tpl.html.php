@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-14 01:58:40
+<?php /* Smarty version 2.6.7, created on 2012-06-14 02:52:02
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 565, false),array('function', 'get_mod', 'common/common.tpl.html', 596, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '9f2b816d96c33e192e54fbf7fe154abc'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 580, false),array('function', 'get_mod', 'common/common.tpl.html', 611, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '3d8c104092a77facc62db34a05992ebe'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -50,8 +50,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <?php echo '
 
 <script type="text/javascript">
-	var chc ="';  echo $this->_tpl_vars['chc'];  echo '";
-	var idu="';  echo $_SESSION['id_user'];  echo '";
+	var chc = "';  echo $this->_tpl_vars['chc'];  echo '";
+	var idu = "';  echo $_SESSION['id_user'];  echo '";
 	
 	var follow_count = parseInt(';  echo $_SESSION['profile_follower_count'];  echo ');
 	
@@ -181,54 +181,59 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			 } else {
 				var ajax_response_exp = ranking_data.split(\',\');
 				
+				console.log(ajax_response_exp);
 				// Rank? No. 1- User? No. 1- XP? Yes.
 				if (ajax_response_exp[0].trim() == "AAB"){
 					
-					$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');
-
-					$("#other_user_ranking_info").css("background", \'#AAF2DC\');
-					$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
-						$("#other_user_ranking_info").css("background","#aad450");
-						$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
-					 });
+					//$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');
 				
 				// Rank? No 1- User? Yes.
 				 } else if (ajax_response_exp[0].trim() == "AB") {
-					$("#trailing_user").html(ajax_response_exp[2]);
-					$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+					trailing_pic = ajax_response_exp[1];
+					trailing_dupe = ajax_response_exp[2];
+					
+					$("#trailing_user_profile_pic").html(\'<a href="/?id=\'+trailing_dupe+\'"><img src="\'+trailing_pic+\'" style="width:30px;height:30px"/></a>\');
+					
+					$("#trailing_ranking_number").css("color", \'#FEEB4E\');
+					$("#trailing_ranking_number").animate( { "opacity" : 0.4  }, 700, function() {
+						$("#trailing_ranking_number").css("color","#81cdfe");
+						$("#trailing_ranking_number").animate( { "opacity" : 1  }, 300)
+					 });
+					
+					//$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
 						
 				// Rank? Yes. Improvement? Yes.
 				 } else if (ajax_response_exp[0].trim() == "BA") {
 					new_rank = ajax_response_exp[1];
-					trailing_xp = ajax_response_exp[2];
+					trailing_pic = ajax_response_exp[2];
 					trailing_user = ajax_response_exp[3];
 					trailing_rank = ajax_response_exp[4];
+					trailing_dupe = ajax_response_exp[5];
 					
 					$("#ranking_number").html(new_rank);
 					
 					// Green flash
 
-					$("#user_pic").css("background", \'#B9FE4E\');
-					$("#user_pic").animate( { "opacity" : 0.4  }, 700, function() {
-						$("#user_pic").css("background","#4ebaff");
-						$("#user_pic").animate( { "opacity" : 1  }, 300)
+					$("#ranking_number").css("color", \'#B9FE4E\');
+					$("#ranking_number").animate( { "opacity" : 0.4  }, 700, function() {
+						$("#ranking_number").css("color","#81cdfe");
+						$("#ranking_number").animate( { "opacity" : 1  }, 300)
 					 });
 					
 					if (trailing_user) {
 					
 						$("#trailing_ranking_number").html(trailing_rank);
-						$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+						$("#trailing_user_profile_pic").html(\'<a href="/?id=\'+trailing_dupe+\'"><img src="\'+trailing_pic+\'" style="width:30px;height:30px"/></a>\');	
 							
-						$("#trailing_user").html(trailing_user);
+						//$("#trailing_user").html(trailing_user);
 						
-						$("#other_user_ranking_info").css("background", \'#FE4EB9\');
-						$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
-							$("#other_user_ranking_info").css("background","#aad450");
-							$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
-						 });
+						//$("#trailing_user_pic").css("background", \'#FE4EB9\');
+						//$("#trailing_user_pic").animate( { "opacity" : 0.4  }, 700, function() {
+						//	$("#trailing_user_pic").css("background","#aad450");
+						//	$("#trailing_user_pic").animate( { "opacity" : 1  }, 300)
+						// });
 					
-					 }
-					
+					 }					
 				
 				// Rank? Yes. Improve? No.
 				 } else {
@@ -236,28 +241,31 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 					trailing_xp = ajax_response_exp[2];
 					trailing_user = ajax_response_exp[3];
 					trailing_rank = ajax_response_exp[4];
+					trailing_dupe = ajax_response_exp[5];
 					
 					$("#ranking_number").html(new_rank);
 							
 					// Red flash
 
-					$("#user_pic").css("background", \'#FE4EB9\');
-					$("#user_pic").animate( { "opacity" : 0.4  }, 700, function() {
-						$("#user_pic").css("background","#4ebaff");
-						$("#user_pic").animate( { "opacity" : 1  }, 300)
+					$("#ranking_number").css("color", \'#FE4EB9\');
+					$("#ranking_number").animate( { "opacity" : 0.4  }, 700, function() {
+						$("#ranking_number").css("color","#81cdfe");
+						$("#ranking_number").animate( { "opacity" : 1  }, 300)
 					 });
 					
 					if (trailing_user) {
 						$("#trailing_ranking_number").html(trailing_rank);
-						$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
-								
-						$("#trailing_user").html(trailing_user);
+						$("#trailing_user_profile_pic").html(\'<a href="/?id=\'+trailing_dupe+\'"><img src="\'+trailing_pic+\'" style="width:30px;height:30px"/></a>\');	
 						
-						$("#other_user_ranking_info").css("background", \'#B9FE4E\');
-						$("#other_user_ranking_info").animate( { "opacity" : 0.4  }, 700, function() {
-							$("#other_user_ranking_info").css("background","#aad450");
-							$("#other_user_ranking_info").animate( { "opacity" : 1  }, 300)
-						 });
+						//$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+								
+						//$("#trailing_user").html(trailing_user);
+						
+						//$("#trailing_user_pic").css("background", \'#B9FE4E\');
+						//$("#trailing_user_pic").animate( { "opacity" : 0.4  }, 700, function() {
+						//	$("#trailing_user_pic").css("background","#aad450");
+						//	$("#trailing_user_pic").animate( { "opacity" : 1  }, 300)
+						// });
 					 }
 				 }
 				
@@ -292,6 +300,13 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 				console.log("User Level is "+user_level);
 				console.log("Previous XP to Level is "+previous_xp_to_level);
 				console.log("XP_TO_LEVEL is "+xp_to_level);
+				
+				// flash ranking number yellow
+				$("#ranking_number").css("color", \'#FEEB4E\');		//yellow
+				$("#ranking_number").animate( { "opacity" : 0.8  }, 500, function() {
+					$("#ranking_number").css("color","#81cdfe");
+					$("#ranking_number").animate( { "opacity" : 1  }, 200)
+				 });
 				
 				if (user_level == 1) {
 					new_xp_percent = (new_xp / xp_to_level) * 100;
@@ -633,7 +648,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 's Memes</label>
 						   <div class="content">
 								<div id="my_meme_list">
-									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9f2b816d96c33e192e54fbf7fe154abc#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9f2b816d96c33e192e54fbf7fe154abc#0}';}?>
+									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:3d8c104092a77facc62db34a05992ebe#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:3d8c104092a77facc62db34a05992ebe#0}';}?>
 
 								</div>
 						   </div>
@@ -643,7 +658,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 						   <label for="tab-2">Tagged Memes</label>
 						   <div class="content">
 								<div id="my_tagged">
-									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9f2b816d96c33e192e54fbf7fe154abc#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9f2b816d96c33e192e54fbf7fe154abc#1}';}?>
+									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:3d8c104092a77facc62db34a05992ebe#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:3d8c104092a77facc62db34a05992ebe#1}';}?>
 
 								</div>
 						   </div>
@@ -677,24 +692,32 @@ unset($_smarty_tpl_vars);
 	<?php endif; ?>
 <?php else: ?>
 		<div id="user_pic" class="nohighlight">
-			<?php if ($_SESSION['fb_pic_normal']): ?>
-				<img src="<?php echo $_SESSION['fb_pic_normal']; ?>
+			<a href="/?id=<?php echo $_SESSION['dupe_username']; ?>
+">
+				<?php if ($_SESSION['fb_pic_normal']): ?>
+					<img src="<?php echo $_SESSION['fb_pic_normal']; ?>
 " style="width:30px;height:30px">
-			<?php else: ?>
-				<img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['avatar']):  echo $_SESSION['avatar'];  else:  if ($_SESSION['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png<?php endif;  endif; ?>" style="width:30px;height:30px"/>
-			<?php endif; ?>
+				<?php else: ?>
+					<img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['avatar']):  echo $_SESSION['avatar'];  else:  if ($_SESSION['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png<?php endif;  endif; ?>" style="width:30px;height:30px"/>
+				<?php endif; ?>
+			</a>
 			<div id="ranking_number"><?php if ($_SESSION['exp_rank']):  echo $_SESSION['exp_rank'];  else: ?>N/A<?php endif; ?></div>
 		</div>
 		
 		<?php if ($_SESSION['one_less_user']): ?>
+			
 			<div id="trailing_user_pic" class="nohighlight">
-				<?php if ($_SESSION['one_less_pic']): ?>
-					<img src="<?php echo $_SESSION['one_less_pic']; ?>
+				<span id="trailing_user_profile_pic">
+					<?php if ($_SESSION['one_less_pic']): ?>
+						<a href="/?id=<?php echo $_SESSION['one_less_dupe_username']; ?>
+"><img src="<?php echo $_SESSION['one_less_pic']; ?>
 " style="width:30px;height:30px">
-				<?php else: ?>
-					<img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['one_less_avatar']):  echo $_SESSION['one_less_avatar'];  else:  if ($_SESSION['one_less_gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png<?php endif;  endif; ?>" style="width:30px;height:30px"/>
-				<?php endif; ?>
-				<div id="ranking_number"><?php if ($_SESSION['one_less_rank']):  echo $_SESSION['one_less_rank'];  else: ?>N/A<?php endif; ?></div>
+					<?php else: ?>
+						<img src="http://localhost/image/thumb/avatar/<?php if ($_SESSION['one_less_avatar']):  echo $_SESSION['one_less_avatar'];  else:  if ($_SESSION['one_less_gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png<?php endif;  endif; ?>" style="width:30px;height:30px"/></a>
+					<?php endif; ?>
+				</span>
+				<div id="trailing_ranking_number"><?php if ($_SESSION['one_less_rank']):  echo $_SESSION['one_less_rank'];  else: ?>N/A<?php endif; ?>
+				</div>
 			</div>
 		<?php else: ?>
 			
@@ -727,7 +750,7 @@ unset($_smarty_tpl_vars);
 						<div id="follower_count"><?php if (! $_SESSION['profile_follower_count'] == '0'):  echo $_SESSION['profile_follower_count'];  else: ?>0<?php endif; ?> followers</div>
 					</div>
 					<div id="addMeme_link">
-						<a href="http://localhost/meme/addMeme"><img src="http://localhost/templates/images/add.png"style="width:60px;height:60px;"/></a>
+						<a href="http://localhost/meme/addMeme"><img src="http://localhost/templates/images/add.png"/></a>
 					</div>
 						
 					<div id="my_pics">
@@ -737,7 +760,7 @@ unset($_smarty_tpl_vars);
 							   <label for="tab-1">My Memes</label>
 							   <div class="content">
 									<div id="my_meme_list">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9f2b816d96c33e192e54fbf7fe154abc#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9f2b816d96c33e192e54fbf7fe154abc#2}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:3d8c104092a77facc62db34a05992ebe#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:3d8c104092a77facc62db34a05992ebe#2}';}?>
 
 									</div>
 							   </div>
@@ -747,7 +770,7 @@ unset($_smarty_tpl_vars);
 							   <label for="tab-2">Tagged Memes</label>
 							   <div class="content">
 									<div id="my_tagged">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9f2b816d96c33e192e54fbf7fe154abc#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9f2b816d96c33e192e54fbf7fe154abc#3}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:3d8c104092a77facc62db34a05992ebe#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:3d8c104092a77facc62db34a05992ebe#3}';}?>
 
 									</div>
 							   </div>
@@ -757,7 +780,7 @@ unset($_smarty_tpl_vars);
 							   <label for="tab-3">Favorites</label>
 							   <div class="content">
 									<div id="my_favorites" >
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9f2b816d96c33e192e54fbf7fe154abc#4}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9f2b816d96c33e192e54fbf7fe154abc#4}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:3d8c104092a77facc62db34a05992ebe#4}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:3d8c104092a77facc62db34a05992ebe#4}';}?>
 
 									</div>
 							   </div>
@@ -827,7 +850,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 's Memes</label>
 							   <div class="content">
 									<div id="my_meme_list">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9f2b816d96c33e192e54fbf7fe154abc#5}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9f2b816d96c33e192e54fbf7fe154abc#5}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:3d8c104092a77facc62db34a05992ebe#5}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:3d8c104092a77facc62db34a05992ebe#5}';}?>
 
 									</div>
 							   </div>
@@ -837,7 +860,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 							   <label for="tab-2">Tagged Memes</label>
 							   <div class="content">
 									<div id="my_tagged">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:9f2b816d96c33e192e54fbf7fe154abc#6}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:9f2b816d96c33e192e54fbf7fe154abc#6}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:3d8c104092a77facc62db34a05992ebe#6}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:3d8c104092a77facc62db34a05992ebe#6}';}?>
 
 									</div>
 							   </div>
