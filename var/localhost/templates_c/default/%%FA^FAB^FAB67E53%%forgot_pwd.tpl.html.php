@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-14 06:14:13
+<?php /* Smarty version 2.6.7, created on 2012-06-14 08:51:02
          compiled from user/forgot_pwd.tpl.html */ ?>
 
-<!-- Template: user/forgot_pwd.tpl.html Start 14/06/2012 06:14:13 --> 
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-14 04:01:25
-         compiled from user/forgot_pwd.tpl.html */ ?>
-
-<!-- Template: user/forgot_pwd.tpl.html Start 14/06/2012 04:01:25 --> 
->>>>>>> f9b69d2ee1f0ec86533648f372e1b510466c08fa
+<!-- Template: user/forgot_pwd.tpl.html Start 14/06/2012 08:51:02 --> 
  
 <form action="http://localhost/user/get_forgot_pwd" method="post" name="forgotform" id="forgotform" onsubmit="return validate();">
     <input type="text" name="email" id="email" class="self-describing" title="Email Address" style="height:15px;"/>
