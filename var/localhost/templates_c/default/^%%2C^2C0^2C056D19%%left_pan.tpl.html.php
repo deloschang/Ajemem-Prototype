@@ -1,14 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-14 04:55:53
+<?php /* Smarty version 2.6.7, created on 2012-06-14 05:29:25
          compiled from user/left_pan.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 6, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 4, false),)), $this); ?>
 <?php if ($_SESSION['id_user']): ?>
 
-<link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
-
-		<div id= "user_name"><?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
- <?php echo ((is_array($_tmp=$_SESSION['lname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
-</div>
+		<div id= "user_name"><a href ="/?id=<?php echo $_SESSION['dupe_username']; ?>
+"><?php echo ((is_array($_tmp=$_SESSION['username'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+</a></div>
 					
 		<!--<div id="user_ranking_info">
 		

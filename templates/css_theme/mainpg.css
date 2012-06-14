@@ -616,10 +616,9 @@
 /* Memeja Logo */
 	#logoc {
 		float:left;
-		left:100px;
+		left:70px;
 		position:fixed;
 		top:2px;
-		width:100px;
 		z-index:100;
 	}
 	
@@ -796,7 +795,7 @@ moz-border-radius: 10px;
 /* XP Bar */
 	
 	#xpbar_info {
-		left:300px;
+		left:280px;
 		position: fixed;
 		top:10px;
 	}

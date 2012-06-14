@@ -574,7 +574,7 @@
 					{/if}
 				</div>
 				<div id="user_info">
-					<div id="profile_name">{$smarty.session.profile|capitalize}</div>
+					<div id="profile_name"><a href="/?id={$smarty.session.profile_dupe_username}">{$smarty.session.profile|capitalize}</a></div>
 					<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if} followers</div>
 				</div>
 				<div id="view_meme">
@@ -657,12 +657,12 @@
 		{if $smarty.session.one_less_user}
 			
 			<div id="trailing_user_pic" class="nohighlight">
-				<span id="trailing_user_profile_pic">
+				<span id="trailing_user_profile_pic"><a href="/?id={$smarty.session.one_less_dupe_username}">
 					{if $smarty.session.one_less_pic}
-						<a href="/?id={$smarty.session.one_less_dupe_username}"><img src="{$smarty.session.one_less_pic}" style="width:30px;height:30px">
+						<img src="{$smarty.session.one_less_pic}" style="width:30px;height:30px">
 					{else}
-						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:30px;height:30px"/></a>
-					{/if}
+						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:30px;height:30px"/>
+					{/if}</a>
 				</span>
 				<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}{$smarty.session.one_less_rank}{else}N/A{/if}
 				</div>
@@ -691,7 +691,7 @@
 					{/if}
 					</div>
 					<div id="user_info">
-						<div id="profile_name">{$smarty.session.fname} {$smarty.session.lname}</div>
+						<div id="profile_name"><a href="/?id={$smarty.session.dupe_username}">{$smarty.session.username|capitalize}</a></div>
 						<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if} followers</div>
 					</div>
 					<div id="addMeme_link">
@@ -744,7 +744,7 @@
 						{/if}
 					</div>
 				<div id="user_info">
-					<div id="profile_name">{$smarty.session.profile|capitalize}</div>
+					<div id="profile_name"><a href="/?id={$smarty.session.profile_dupe_username}">{$smarty.session.profile|capitalize}</a></div>
 					<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if} followers</div>
 					{if $smarty.session.following == 'y'}
 						<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('unfollow');">Unfollow</a></span>

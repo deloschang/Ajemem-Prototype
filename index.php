@@ -68,6 +68,7 @@ if (isset($_input['id'])){
 		$_SESSION['profile_id'] = $profile_data['id_user'];		
 		$_SESSION['profile_uid'] = $profile_data['uid'];
 		$_SESSION['profile_picture'] = $profile_data['fb_pic_normal'];
+		$_SESSION['profile_dupe_username'] = $profile_data['dupe_username'];
 		
 		// count followers
 		$page_sql="SELECT COUNT(*) FROM memeje__friends WHERE following=".$_SESSION['id_user'];
