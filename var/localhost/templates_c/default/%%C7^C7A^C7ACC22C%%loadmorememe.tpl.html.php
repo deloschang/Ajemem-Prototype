@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-13 11:24:41
+<?php /* Smarty version 2.6.7, created on 2012-06-14 01:58:40
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 206, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 247, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 206, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 245, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 13/06/2012 11:24:41 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 14/06/2012 01:58:40 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -246,12 +246,9 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 
 			<div id="meme_info">  by
 				<span id="user<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-" style="font-size:14px;text-decoration:underline; color:#ACACA5;"><a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
+" style="font-size:14px;text-decoration:underline; color:#ACACA5;"><a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
 "><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
 </a></span>		
-			
-				<!--<span style="font-size:13px; color:#ACACA5;"> L<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['level']; ?>
-</span>-->
 			</div>
 		
 			<!-- Caption shows below image 

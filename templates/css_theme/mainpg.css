@@ -71,6 +71,7 @@
 		float:left;
 		margin:0 0 0 20px;
 		position:relative;
+		left:40px;
 		top:60px;
 		width: 250px;
 	    moz-border-radius: 12px;
@@ -83,6 +84,7 @@
 	#nlu_login_register{
 		background:#FFF;
 		float:left;
+		left:40px;
 		margin:20px 0 0 20px;
 		position:relative;
 		top:60px;
@@ -179,9 +181,11 @@
 	}
 	
 	#nlu_container{
-		margin:0.5% 0 0 -3%;
+		margin:0.5% 0 0 0;
 		position: relative;
 		top:60px;
+		left:40px;
+		background-color: rgba(255, 255, 255, 0.7);
 	}
 	#nlu_container img {
 		width:860px;
@@ -192,16 +196,21 @@
 	    border-radius: 12px;
 	}
 	
+	#transparent {
+		width:860px;
+		height:445px;
+		opacity:0.4;
+		filter:alpha(opacity=40); /* For IE8 and earlier */
+	}
+	
 	#nlu_feed{
 		float:left; 
 		position: relative;
 		margin:0 0 0 0;
 		padding: 15px 50px 50px 50px;
-		
 		width:860px;
 		height:445px;
-		
-		background-image:url(##LBL_SITE_URL##templates/images/background.png) no-repeat;
+		background-color:#87C8F0;
 	    moz-border-radius: 12px;
 	    webkit-border-radius: 12px;
 	    khtml-border-radius: 12px;
