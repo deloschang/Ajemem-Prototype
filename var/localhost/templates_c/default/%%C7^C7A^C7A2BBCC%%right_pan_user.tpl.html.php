@@ -10,6 +10,7 @@
          compiled from manage/right_pan_user.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/right_pan_user.tpl.html', 5, false),)), $this); ?>
+<<<<<<< HEAD
 <?php if ($_SESSION['id_user']): ?>
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
 
@@ -42,6 +43,40 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	    
 
 		    <?php if ($this->_tpl_vars['sm']['res']): ?>
+=======
+<?php if ($_SESSION['id_user']): ?>
+<link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
+
+		<div id= "other_user_name"><?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['username'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+</div>
+			<div id="changePhoto">
+				<?php if ($this->_tpl_vars['sm']['fb_pic_normal']): ?>
+				<img src="<?php echo $this->_tpl_vars['sm']['fb_pic_normal']; ?>
+">
+				<?php else: ?>
+				<img src="http://localhost/image/thumb/avatar/<?php if ($this->_tpl_vars['sm']['avatar']):  echo $this->_tpl_vars['sm']['avatar'];  else:  if ($this->_tpl_vars['sm']['gender'] == 'M'): ?>memeja_male.png<?php else: ?>memeja_female.png<?php endif;  endif; ?>"/>
+				<?php endif; ?>
+			</div>
+
+
+		
+					
+		<div id="more_user_ranking_info">
+		<span id="rank">Rank</span>
+		<span id="more_ranking_number"><?php if ($this->_tpl_vars['sm']['exp_rank']):  echo $this->_tpl_vars['sm']['exp_rank'];  else: ?>N/A<?php endif; ?></span>
+		
+		 <div id="total_xp" ><?php if ($this->_tpl_vars['sm']['exp_point']):  echo $this->_tpl_vars['sm']['exp_point'];  endif; ?>
+		 <span style="font-size:8px; position:relative; bottom:5px;">XP</span></div>
+		 </div>
+		 
+		<div id="my_meme_list">
+				    
+		<b>My Memes</b>
+        <div id="liked_memes">
+	    
+
+		    <?php if ($this->_tpl_vars['sm']['res']): ?>
+>>>>>>> f9b69d2ee1f0ec86533648f372e1b510466c08fa
 			<?php unset($this->_sections['cur']);
 $this->_sections['cur']['name'] = 'cur';
 $this->_sections['cur']['loop'] = is_array($_loop=$this->_tpl_vars['sm']['res']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
@@ -75,6 +110,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 ">
 			
 			<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+<<<<<<< HEAD
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
 			
 			<?php if (( ( $this->_sections['cur']['iteration'] % 3 ) == 0 )): ?>
@@ -96,6 +132,29 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 <div id="liked_memes">
 
 			<?php if ($this->_tpl_vars['sm']['res_favorite']): ?>
+=======
+" style="width: 60px;height: 60px;cursor: pointer;"/></a>
+			
+			<?php if (( ( $this->_sections['cur']['iteration'] % 3 ) == 0 )): ?>
+
+			<?php endif; ?>
+			
+			<?php endfor; endif; ?>
+			
+			
+			<?php else: ?>
+			No meme found
+			<?php endif; ?>
+        </div>
+		
+		<b>
+		    Favorites
+		</b>
+		
+<div id="liked_memes">
+
+			<?php if ($this->_tpl_vars['sm']['res_favorite']): ?>
+>>>>>>> f9b69d2ee1f0ec86533648f372e1b510466c08fa
 			<?php unset($this->_sections['cur']);
 $this->_sections['cur']['name'] = 'cur';
 $this->_sections['cur']['loop'] = is_array($_loop=$this->_tpl_vars['sm']['res_favorite']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);
@@ -129,6 +188,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 ">
 			
 			<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+<<<<<<< HEAD
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
 			
 			<?php if (( ( $this->_sections['cur']['iteration'] % 3 ) == 0 )): ?>
@@ -144,3 +204,20 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 <?php endif; ?>
 </div>
 </div>
+=======
+" style="width: 60px;height: 60px;cursor: pointer;"/></a>
+			
+			<?php if (( ( $this->_sections['cur']['iteration'] % 3 ) == 0 )): ?>
+
+			<?php endif; ?>	
+			<?php endfor; endif; ?>
+			<?php else: ?>
+			<b>
+			Go Honor Some Memes!
+			</b>
+			<?php endif; ?>
+
+<?php endif; ?>
+</div>
+</div>
+>>>>>>> f9b69d2ee1f0ec86533648f372e1b510466c08fa

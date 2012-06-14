@@ -15,9 +15,15 @@ if ($this->_foreach['f1']['total'] > 0):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ?>
 =======
 ?>
+=======
+?>
+=======
+?>
+>>>>>>> f9b69d2ee1f0ec86533648f372e1b510466c08fa
 >>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
 =======
 ?>
@@ -32,17 +38,32 @@ if ($this->_foreach['f2']['total'] > 0):
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ?>
     <?php echo $this->_tpl_vars['i1']; ?>
 
     <?php endforeach; endif; unset($_from); ?>
     <?php endforeach; endif; unset($_from); ?>
 =======
+=======
+>>>>>>> f9b69d2ee1f0ec86533648f372e1b510466c08fa
 ?>
     <?php echo $this->_tpl_vars['i1']; ?>
 
     <?php endforeach; endif; unset($_from); ?>
     <?php endforeach; endif; unset($_from); ?>
+<<<<<<< HEAD
+>>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
+=======
+>>>>>>> f9b69d2ee1f0ec86533648f372e1b510466c08fa
+=======
+?>
+    <?php echo $this->_tpl_vars['i1']; ?>
+
+    <?php endforeach; endif; unset($_from); ?>
+    <?php endforeach; endif; unset($_from); ?>
+<<<<<<< HEAD
+=======
 >>>>>>> f658ecc96a2b9cf52cbd029071419d2a2f05c434
 =======
 ?>
@@ -50,6 +71,7 @@ if ($this->_foreach['f2']['total'] > 0):
 
     <?php endforeach; endif; unset($_from); ?>
     <?php endforeach; endif; unset($_from); ?>
+>>>>>>> f9b69d2ee1f0ec86533648f372e1b510466c08fa
 >>>>>>> 83283487b2e009dffc8cc50bd2aec9418c3eaafa
 =======
 ?>
