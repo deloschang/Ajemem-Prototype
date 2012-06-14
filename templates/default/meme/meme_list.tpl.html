@@ -60,40 +60,6 @@
 					}
 				}
 			});
-			
-		if (!logged_in){
-				
-			var message_one = '{/literal}{$sm.msg_arr[0]}{literal}';
-			var link_one = '{/literal}{$sm.link_arr[0]}{literal}';
-			
-			var message_two = '{/literal}{$sm.msg_arr[1]}{literal}';
-			var link_two = '{/literal}{$sm.link_arr[1]}{literal}';
-			
-			var message_three = '{/literal}{$sm.msg_arr[2]}{literal}';
-			var link_three = '{/literal}{$sm.link_arr[2]}{literal}';
-			
-			var icon_arr = new Array();
-			icon_arr = {/literal}{$sm.icon_arr}{literal};
-			
-			var title_arr = new Array();
-			title_arr = {/literal}{$sm.title_arr}{literal};
-
-		
-			$('#nlu_message_one').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'"><img src="##LBL_SITE_URL##image/orig/meme/'+link_one+'" style="cursor:pointer;width: 210px; height: 170px; "/></a>');
-			
-			$('#blurb_one').html('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'">'+message_one+'</a>');
-			
-			$('#nlu_message_two').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_two+'" title="'+message_two+'"><img src="##LBL_SITE_URL##image/orig/meme/'+link_two+'" style="cursor:pointer; width: 210px; height: 170px; "/></a>');
-			
-			$('#blurb_two').html('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_two+'" title="'+message_two+'">'+message_two+'</a>');
-			
-			$.each(icon_arr, function(index, value){
-				//temporary remover 
-				if (index < 55){
-					$('#icon_container').append('<div class="front_icon" id="icon_'+index+'"><a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+value+'" title="'+title_arr[index]+'"><img src="##LBL_SITE_URL##image/orig/meme/'+value+'" style="cursor:pointer; width: 40px; height: 40px; "/></a></div>');
-				}
-			});
-		}		
 
 			$("#last_id_meme").val("{/literal}{$sm.last_id_meme}{literal}");
 			
@@ -113,7 +79,7 @@
 			var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
 			
 			for(var i = 1; i < page_row + 1; i++) {
-				$('#pagingcount').append('<span id="page'+i+'"><a href="javascript:void(0);" onclick="paging_func('+i+');">'+i+'</a></span> ');
+				$('#pagingcount').append('<span id="page'+i+'"><a href="javascript:void(0);" style="z-index:999999"; onclick="paging_func('+i+');">'+i+'</a></span> ');
 			}
 			
 			$('#pagenext').html('<a href="javascript:void(0);" onclick="paging_func(-2);">  Next</a>');
@@ -416,11 +382,16 @@
 	    }
     }
 	
-	function diff_feed(ext, ajax){
+	function diff_feed(ext){
 		var url = "##LBL_SITE_URL##meme/meme_list";
 		$.post(url,{cat:'main_feed',ce:0,ext:ext}, function(res){
 			if(res != "")
 				$('#all_memes').html(res);
+			if (ext == 1){
+				$('#page_boop').hide();
+			} else {
+				$('#page_boop').show();
+			}
 		});
 	}
 	
@@ -466,7 +437,6 @@
 
 
 
-<!-- Muaz remove this later when styling -->
 <br><br><br><br><br>
 
 <div id="all_memes">	
@@ -479,7 +449,7 @@
 </div>
 
 {if !$sm.is_search}
-<div style="text-align:center">
+<div id="page_boop" style="text-align:center">
 	<span id="pageprev"></span>
 	<span id="pagingcount" ></span>
 	<span id="pagenext"></span>
