@@ -803,7 +803,7 @@ moz-border-radius: 10px;
 	#xpbar {
 		position:relative;
 		width:600px;
-		z-index:200;
+		z-index:9000;
 	}
 
 	#user_level{
@@ -815,7 +815,7 @@ moz-border-radius: 10px;
 		left:5px;
 		position: relative;
 		top:-16px;
-		z-index: 201;
+		z-index: 9001;
 	}
 
 	#xpbar_status {
@@ -828,7 +828,7 @@ moz-border-radius: 10px;
 		left:250px;
 		position: relative;
 		top:-32px;
-		z-index: 202;
+		z-index: 9002;
 	}
 
 /****/
