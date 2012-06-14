@@ -613,7 +613,6 @@
 		z-index:9002;
 	}
 	
-	
 /* Main Container with the middle column and the sidebars */
 	#contained {
 		position: relative;
@@ -1962,5 +1961,11 @@ a.special-btn.facebook:active {
 	z-index:100;
 }
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Meme Editor SPAD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
+ 
+	#add {
+		padding-left: 15px;
+		cursor: pointer;
+		width:60px;
+	}
+ 
 	

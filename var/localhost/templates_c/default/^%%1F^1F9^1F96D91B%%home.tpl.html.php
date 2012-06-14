@@ -1,13 +1,5 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-14 09:00:37
+<?php /* Smarty version 2.6.7, created on 2012-06-14 09:22:41
          compiled from user/home.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'user/home.tpl.html', 2, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%1F^1F9^1F96D91B%%home.tpl.html.inc'] = '3468a6adaa7e0d77e166bdc6ead08ef8';  if ($this->caching && !$this->_cache_including) { echo '{nocache:3468a6adaa7e0d77e166bdc6ead08ef8#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:3468a6adaa7e0d77e166bdc6ead08ef8#0}';}?>
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-14 08:40:37
-         compiled from user/home.tpl.html */ ?>
-<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'user/home.tpl.html', 2, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%1F^1F9^1F96D91B%%home.tpl.html.inc'] = 'ff7d2416be06043812a55f51ffef13c7';  if ($this->caching && !$this->_cache_including) { echo '{nocache:ff7d2416be06043812a55f51ffef13c7#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:ff7d2416be06043812a55f51ffef13c7#0}';}?>
->>>>>>> c83555c46de3c263530c8378fd30f04fac505a16
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%1F^1F9^1F96D91B%%home.tpl.html.inc'] = 'e6addf94453ca88d02c8d17ac570b9de';  if ($this->caching && !$this->_cache_including) { echo '{nocache:e6addf94453ca88d02c8d17ac570b9de#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:e6addf94453ca88d02c8d17ac570b9de#0}';}?>
