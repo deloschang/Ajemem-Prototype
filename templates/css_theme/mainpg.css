@@ -619,7 +619,7 @@
 		left:70px;
 		position:fixed;
 		top:2px;
-		z-index:100;
+		z-index:9002;
 	}
 	
 	
@@ -825,7 +825,7 @@ moz-border-radius: 10px;
 		font: arial, sans-serif;
 		font-size: 14px;
 		font-weight:bold;
-		left:250px;
+		left:270px;
 		position: relative;
 		top:-32px;
 		z-index: 9002;
@@ -860,7 +860,7 @@ moz-border-radius: 10px;
 		text-align:center;
 		text-shadow: 0px 1px 0px #e5e5ee;
 		top:5px;
-		z-index:201;
+		z-index:9002;
 	}
 	
 	#login_top {
@@ -886,6 +886,7 @@ moz-border-radius: 10px;
 		left:0px;
 		position: absolute;
 		top:-2px;
+		z-index:9001;
 	}
 	
 	#user_ranking_info {
@@ -927,7 +928,7 @@ moz-border-radius: 10px;
 	#user_pic{
 		position:fixed;
 		top:5px;
-		z-index:100;
+		z-index:9001;
 		left:1000px;
 		box-shadow: 0 0 4px 0 #555555;
 	}
@@ -935,7 +936,7 @@ moz-border-radius: 10px;
 	#trailing_user_pic {
 		position:fixed;
 		top:5px;
-		z-index:101;
+		z-index:9001;
 		left:950px;
 		box-shadow: 0 0 4px 0 #555555;
 	}

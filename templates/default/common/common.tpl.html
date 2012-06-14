@@ -78,7 +78,7 @@
 			});
 			
 			$("#user_level").html('L'+user_level);
-			$("#xpbar_status").html('('+ xp_percent.toFixed(2) +'%) '+ (curr_xp - previous_xp_to_level) +' / '+ (xp_to_level - previous_xp_to_level));
+			$("#xpbar_status").html(xp_percent.toFixed(2) +'%');
 			
 			// Mouseover shows XP and %
 			$("#xpbar, #xpbar_status").hoverIntent({
@@ -356,7 +356,7 @@
 				value: new_xp_percent 
 			});
 			
-			$("#xpbar_status").html('('+ new_xp_percent.toFixed(2) +'%) '+ (new_xp - previous_xp_to_level) +' / '+ (xp_to_level - previous_xp_to_level));
+			$("#xpbar_status").html(new_xp_percent.toFixed(2) +'%');
 			
 			// Status bar with XP pops up too
 			$("#xpbar_status").show();
