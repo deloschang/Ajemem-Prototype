@@ -1452,6 +1452,7 @@ class user_manager extends mod_manager {
 		$app_id = $GLOBALS['conf']['FACEBOOK']['app_id'];
 		
 		// Start of newest FB changes
+		
 		if(isset($_COOKIE['fbsr_' . $app_id])){
 			list($encoded_sig, $payload) = explode('.', $_COOKIE['fbsr_' . $app_id], 2);
    

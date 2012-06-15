@@ -3,9 +3,9 @@
 	define("SITEMAP_FILEPATH",$_SERVER['DOCUMENT_ROOT'].'/ccu2new/');
 	define("SITEMAP_PATH",'http://'.$_SERVER['HTTP_HOST'].'/ccu2new/');	
 	define("SITEMAP_URL",APP_ROOT_URL );
-	define("CATEGORY_DIR","index.php/page/category");	
-	define("SECTION_DIR","index.php/page/gallery");
-	define("CONTENT_DIR","index.php/page/content");	
+	define("CATEGORY_DIR","page/category");	
+	define("SECTION_DIR","page/gallery");
+	define("CONTENT_DIR","page/content");	
 	define("SITEMAP_NAMEFORMAT", "sitemap");
 	define("SITEINDEX_FILENAME", "siteindex.xml");
 	define("MAX_SITEMAP_FILE_SIZE", "10485760");

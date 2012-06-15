@@ -85,9 +85,7 @@ function smarty_prefilter_tpl_labels($source, &$smarty) {
 				$replacements[] = constant($pattern_raw);
 			}
 		}
-		//print_r($replacements);
 		$result = preg_replace($patterns, $replacements, $source);
-		
 		return $result;
 	} else {
 		return $source;

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-14 08:44:28
+<?php /* Smarty version 2.6.7, created on 2012-06-15 23:40:40
          compiled from user/login_form_register.tpl.html */ ?>
 
-<!-- Template: user/login_form_register.tpl.html Start 14/06/2012 08:44:28 --> 
+<!-- Template: user/login_form_register.tpl.html Start 15/06/2012 23:40:40 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -60,11 +60,6 @@
 <div style="padding-top:5px;"> (2) Because we <strong>promise</strong> <span id="promise"><a href="javascript:void(0);" onclick="lol_promise();">(not plomise!)</a></span> we'll never post without your permission.</div>
 
 
-
-		<!-- send a mail from the "Suggestions" hyperlink -->
-		<span style="font-size:10px;"> <a href="mailto:karanchitnis92@gmail.com?Subject=Memeja%20suggestion">Suggestions</a></span>
-
-</div>
 
 
 <div id="lol_promise" style="display:none">
