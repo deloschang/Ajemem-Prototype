@@ -1,10 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-14 10:41:17
+<?php /* Smarty version 2.6.7, created on 2012-06-16 22:44:15
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 205, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 244, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 14/06/2012 10:41:17 --> 
- <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<!-- Template: meme/loadmorememe.tpl.html Start 16/06/2012 22:44:15 --> 
+ <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
@@ -351,5 +353,6 @@ KARAN: Post to Reddit Button
 " value=''/>
 </div>
 
-<?php endforeach; endif; unset($_from);  endif; ?>
+<?php endforeach; endif; unset($_from); ?>
+<?php endif; ?>
 <!-- Template: meme/loadmorememe.tpl.html End --> 

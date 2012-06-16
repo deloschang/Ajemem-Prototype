@@ -835,7 +835,7 @@ function create_Textbox(){
     html += "<select onchange='changeFontFamily(this)'><option>Arial</option><option>Courier</option><option>Helvetica</option><option>sans-serif</option><option>Georgia1f</option><option>Impact</option>"+
     "</select><img title='Drag this' src='"+SITE_IMAGE_PATH+"hand.png' />";
 
-    html += "</div><textarea style='font-size: 12px;width:125px;border: 0; spellcheck='true' onfocus='title_focus()' onblur='title_blur()' id='TextBox"+textId+"'>Enter text here</textarea>"+
+    html += "</div><textarea style='font-size: 12px;width:200px;border: 0; spellcheck='true' onfocus='title_focus()' onblur='title_blur()' id='TextBox"+textId+"'>Enter text here</textarea>"+
 
 	"</div>";
 
