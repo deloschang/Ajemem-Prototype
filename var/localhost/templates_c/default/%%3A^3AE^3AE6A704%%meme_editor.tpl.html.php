@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-16 04:28:41
+<?php /* Smarty version 2.6.7, created on 2012-06-17 21:15:29
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 121, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 136, false),)), $this); ?>
 
-<!-- Template: meme/meme_editor.tpl.html Start 16/06/2012 04:28:41 --> 
+<!-- Template: meme/meme_editor.tpl.html Start 17/06/2012 21:15:29 --> 
  <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY'));  echo '
 <!--[if IE]><script type="text/javascript" src="http://mohan.afixiindia.com/memeje/spad/excanvas.js"></script><![endif]-->
 <script type="text/javascript">
@@ -54,8 +54,8 @@ function show_image(){
 	if(im){
 		var y=1;
 		if(y){
-			var url="http://localhost/meme/upload_image/ce/0";
-			$.ajaxFileUpload({
+            var url="http://localhost/meme/upload_image/ce/0";
+            $.ajaxFileUpload({
 				url : url,
 				secureuri:false,
 				fileElementId:\'updimage\',
@@ -82,7 +82,13 @@ function upload_from_url(){
 	 });
  }
 function image_upload_draggable(url) {
-	$(\'#prev_image\').html("<img src=\'"+url+"\' id=\'newimg\' onclick=\'create_Imagebox(this.src)\'>");
+    // There is a bug that the contents of some javascript file is getting appended to the url.
+    // A crude workaround/hack to separate the junk content from the actual url
+    if(url.indexOf("\\n") != -1) {
+        url = url.substr(0, url.indexOf("\\n"));
+     }
+	$(\'#prev_image\').html("<img src=\'"+url+"\' id=\'newimg\'; onclick=\'create_Imagebox(this.src)\'>");
+	
  }
 function setOptions(obj){
 	var hit= 0;
@@ -93,9 +99,11 @@ function setOptions(obj){
 		$("#loadimg").html(res);
 		$(\'#loadimg\').jqDock(opts);
 		$(\'#loadimg\').find(\'.idrag\').each(function(){
-			hit+=$(this).height();
+			hit+=$(this).height();	
 		 });
+		
 		hit += 20;
+		
 		$(\'#loadimg\').css({
 			width:\'140px\',
 			height : hit+\'px\',
@@ -109,13 +117,20 @@ $(document).ready(function(){
 	$("#page").show();
  });
 </script>
+<style type="text/css">
+
+#newimg {
+	max-height: 100px;
+	max-width: 100px;
+ }
+</style>
 '; ?>
 
 <img src="http://localhost/spad/Memeja Watermark.png" id="memejimark" style="display:none">
 
 <div id="uploader"class="nohighlight">
-	<!--<input type="file" name="updimage" id="updimage" size="5" />
-	<input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />-->
+	<input type="file" name="updimage" id="updimage" size="5" />
+	<input type="button" onClick="show_image();" value="Upload" style="width:50px;" /><br />
 
 	URL: <input type="text" name="imgurl" id="imgurl" size="27" />
 	<input type="button" onClick="upload_from_url();" value="Go" style="width:40px;" />
