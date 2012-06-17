@@ -10,6 +10,7 @@
 {assign var=chc value=$smarty.request.choice}
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/mainpg.css"/>
 
+<script type="text/javascript" src="##JS_PATH##templates/css_theme/head.js"></script>
 <script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 <script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5"></script>
@@ -518,9 +519,6 @@
 					{if !$smarty.request.page}{include file="meme/home"}{/if} 
 				</div>
 		</div>		
-		<div id ="nlu_login">
-			{include file=user/login_form"}
-		</div>
 		<div id ="nlu_login_register">
 			{include file=user/login_form_register"}
 		</div>
