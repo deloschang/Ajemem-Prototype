@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-17 01:43:41
+<?php /* Smarty version 2.6.7, created on 2012-06-17 01:59:21
          compiled from meme/addmeme.tpl.html */ ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 17/06/2012 01:43:41 --> 
+<!-- Template: meme/addmeme.tpl.html Start 17/06/2012 01:59:21 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
@@ -14,17 +14,17 @@
 _img.png";
     var LBL_SITE_URL="http://localhost/";
 </script>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" />
+<link type="text/css" href="http://localhost/spad/css/colorpicker.css" rel="stylesheet" />
+<link rel="stylesheet" href="http://localhost/templates/css_theme/mainpg.css" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/multiautocomplete.css"/>
+
 <script type="text/javascript" src="http://localhost/spad/jquery.mousehold.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://localhost/spad/scratchpad.js"></script>
 <script type="text/javascript" src="http://localhost/spad/jquery.jqDock.min.js"></script>
 <script type="text/javascript" src="http://localhost/spad/color/colorpicker.js"></script>
-
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/ui-lightness/jquery-ui.css" />
-<link type="text/css" href="http://localhost/spad/css/colorpicker.css" rel="stylesheet" />
-<link rel="stylesheet" href="http://localhost/templates/css_theme/mainpg.css" type="text/css"/>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
-<link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/multiautocomplete.css"/>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
