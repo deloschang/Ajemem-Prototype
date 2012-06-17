@@ -1972,6 +1972,7 @@ a.special-btn.facebook:active {
 		padding-left: 15px;
 		cursor: pointer;
 		width:60px;
+<<<<<<< HEAD
 	}
 	#tagg {
 		cursor:pointer;
@@ -2147,14 +2148,12 @@ a.special-btn.facebook:active {
 	width:960px;
 	position:relative;
 	margin-bottom:120px;
+
 	}
-	.right_pos_abs	{
-	position:fixed;
-	top:480px;
-	left:85px;
-	width:200px;
+	#tagg {
+		cursor:pointer;
+		width:60px;
 	}
-	
 	#main{
 	position:fixed;
 	top:50px;
@@ -2904,3 +2903,5 @@ a.special-btn.facebook:active {
 .ui-progressbar { height:1.4em; text-align: left; }
 .ui-progressbar .ui-progressbar-value {margin: -1px; height:100%; }
 /*color picker*/
+=======
+>>>>>>> 893f1c27f53ecbe3f23ee5bf15e044a3fbc19c77
