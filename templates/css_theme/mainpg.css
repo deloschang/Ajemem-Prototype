@@ -239,6 +239,7 @@
 	#first_half{
 		font-size:24px;
 		color:#7E3AFA;
+		margin-top:30px;
 	}
 	
 	#second_half{
@@ -1415,6 +1416,10 @@ label.error	{
 	font-size:14px;
 	padding-bottom:5px;
 	border-bottom:#C4D6EC solid 1px;
+}
+
+.newtextdd{
+	width:230px;
 }
 
 /* CSS for REGISTERED USERS */

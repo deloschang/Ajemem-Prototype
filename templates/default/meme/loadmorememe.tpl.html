@@ -197,7 +197,7 @@
 		{* Height between memes *}
 		<div style="height:70px;">
 
-		<div id="whitebox">          </div>
+		<!--<div id="whitebox">          </div>-->
 		<!-- Show details updates view count -->
 		
 			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
@@ -259,12 +259,18 @@
 					<a href="javascript:void(0);" id="agr_link{$x.id_meme}" class="meme_like" 
 			    	{if $smarty.session.id_user}
 			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
-				    		style="box-shadow: 0 0 7px 0 green; cursor: default"
+				    		style="cursor: default"
 				    	{elseif substr_count($x.dishonour_id_user, $smarty.session.id_user)}
 				    		style="cursor: default"
 				    	{/if}
 				    {/if}
-					onclick="set_tot_adaggr('{$x.id_meme}','A','{$x.id_user}');"><img src="##LBL_SITE_URL##templates/images/like.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;right:2px;"/><div id="aggr{$x.id_meme}" class="meme_like_label">{if $x.tot_honour != 0}{$x.tot_honour}{/if}</div></a>
+					onclick="set_tot_adaggr('{$x.id_meme}','A','{$x.id_user}');"><img src="##LBL_SITE_URL##templates/images/like.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;right:2px;"/><div id="aggr{$x.id_meme}" class="meme_like_label" 
+					{if $smarty.session.id_user}
+			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
+						style="color:green"
+						{/if}
+					{/if}
+					>{if $x.tot_honour != 0}{$x.tot_honour}{/if}</div></a>
 
 					<!-- Dishonor -->
 					<a href="javascript:void(0);" id="disagr_link{$x.id_meme}" class="meme_dislike" 
@@ -273,10 +279,16 @@
 			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
 			    			style="cursor: default"
 			    		{elseif substr_count($x.dishonour_id_user, $smarty.session.id_user)}
-			    			style="box-shadow: 0 0 7px 0 red; cursor: default"
+			    			style="cursor: default"
 			    		{/if}
 			    	{/if}
-					onclick="set_tot_adaggr('{$x.id_meme}','D','{$x.id_user}');"><img src="##LBL_SITE_URL##templates/images/dislike.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;right:2px;"/><div id="disaggr{$x.id_meme}" class="meme_dislike_label">{if $x.tot_dishonour != 0}{$x.tot_dishonour}{/if}</div></a>
+					onclick="set_tot_adaggr('{$x.id_meme}','D','{$x.id_user}');"><img src="##LBL_SITE_URL##templates/images/dislike.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;right:2px;"/><div id="disaggr{$x.id_meme}" class="meme_dislike_label"
+					{if $smarty.session.id_user}
+			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
+						style="color:red"
+						{/if}
+					{/if}
+					>{if $x.tot_dishonour != 0}{$x.tot_dishonour}{/if}</div></a>
 			    
 
 					</div>

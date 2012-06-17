@@ -659,11 +659,14 @@ function getLines(ctx,phrase,maxPxLength) {
 }
 // Places the text into the canvas at the appropriate spot.
 function puttextincanvas(e){
-	putCanvasCounter--;
-	saveRestorePoint();
-	lastimgdrawn = 1;
-    id = $(e).parents("div.newtextdd").attr("id");
+putCanvasCounter--;
+saveRestorePoint();
+lastimgdrawn = 1;
+   id = $(e).parents("div.newtextdd").attr("id");
 
+   if(myHashMemeBoxes[id]) {
+       delete myHashMemeBoxes[id];
+   }
     var textBoxAttr=$("#TextBox"+id);
     var textBoxAttrSizePx=parseInt(textBoxAttr.css('font-size').replace("px",""));
     var boldness=textBoxAttr.css('font-weight')=='700' || textBoxAttr.css('font-weight')=='bold'?"bold ":"";
@@ -893,8 +896,6 @@ function create_Imagebox(clicked_img)
 		// Sets the position at which you see the image box
 	    'top': memeTop+"px",
         'left':leftpos+"px",
-        'height':img.height+"px",
-        'width':img.width+"px",
         'z-index':1
     }).hover(
         function ()

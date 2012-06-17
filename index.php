@@ -2,7 +2,13 @@
 define("SUB_DIR", "");
 session_name("memeja");
 ob_start();
-ini_set("memory_limit","8M");
+ini_set("memory_limit","16M");
+
+ini_set('display_errors', true);
+error_reporting(E_ALL + E_NOTICE);
+
+require_once('FirePHPCore/fb.php');
+
 $report = array ('stats' => array ());
 define("THROUGH_CONTROLLER", 1);
 define("AJAX", 0);
@@ -140,13 +146,13 @@ if (isset($_input['id'])){
 }
 
 $site->handle_page($page); //sets default_tpl to $page/home UNLESS static
+
 $smarty->assign('page_title', $page_title);
 
 if (isset($_input['ce']) ) {
 	$site->set_container_enabled($_input['ce']);
 }
 
-// Error Handling When Page is not found
 $file_test = TEMPLATE_DIR.$_SESSION['multi_language']."/".$site->default_tpl.TEMPLATE_EXTENSION;
 
 if($page =='user' || file_exists($file_test)) {
@@ -158,7 +164,6 @@ if($page =='user' || file_exists($file_test)) {
 	} else {
 		$tpl = $site->default_tpl;
 	}
-
 	
 	if (!empty ($_SESSION['CACHE_OUTPUT'])) {
 		ob_start();

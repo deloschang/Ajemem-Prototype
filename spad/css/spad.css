@@ -1,0 +1,260 @@
+.selected{
+		background:#FFF;
+	}
+	#newimg{
+		height:100px;
+		width:100px;
+	}
+	#page	{
+		margin:0px auto;
+		padding:5px;
+		width:640px;
+		position:relative;
+		background:#fff;
+		moz-border-radius: 10px;
+		webkit-border-radius: 10px;
+		khtml-border-radius: 10px;
+		border-radius: 10px;	
+	}
+	
+	#sp {
+		position: relative;
+	}
+
+	#memetitle{
+		position:relative;
+		padding:3px;
+		background:#FFF;
+		moz-border-radius: 10px;
+		webkit-border-radius: 10px;
+		khtml-border-radius: 10px;
+		border-radius: 10px;
+
+	}
+	
+	#shares {
+		position:fixed;
+		top:60px;
+		left:1040px;
+		width:300px;
+		text-align:center;
+	}
+	
+	#submitter{
+		position:relative;
+	}
+	
+	#watermark{
+		position:relative;
+	}
+	
+/** Drawing Tools & Canvas Tools **/
+	
+	#canvas_tools {
+		position:fixed;
+		width:20px;
+		left:1010px;
+		top:100px;
+		padding:2px;
+		background-color:#Fff;
+		moz-border-radius: 10px;
+		webkit-border-radius: 10px;
+		khtml-border-radius: 10px;
+		border-radius: 10px;
+		
+	}
+	
+	#vs	{
+		position:relative;
+		text-align:center;
+		margin:3px;
+	}
+
+	.smileys_part	{
+	position:absolute;
+	right:-30px;
+	top:40px;
+	}
+	#main input[type='button'],#main button{
+	font-size:9px;
+	padding:0px 5px;
+	margin:2px auto;
+	display:block;
+	}
+	#main img{
+	margin:1px 2px;
+	}
+	.size, .erase,.color,.undo,.redo, .save, .mirror, .invert{
+	border: none;
+	}
+	.fltlt{
+	float:left;
+	}
+	.fltrht	{
+	float:right;
+	}
+	.clear{
+	clear:both;
+	}
+	.newdd {
+	position: absolute;
+	padding: 0px;
+	margin: 0px;
+	border: 1px dotted white;
+	}
+	.newdd img {
+	width: 100%;
+	height: 100%;
+	}
+	.newdd:hover {
+	border: 1px solid red;
+	}
+
+	#loadimg .idrag{
+	position:relative;
+	width: 100px;
+	height:100px;
+	margin-bottom:30px;
+	z-index:97;
+	-webkit-touch-callout: none;
+
+	-webkit-user-select: none;
+
+	-khtml-user-select: none;
+
+	-moz-user-select: none;
+
+	-ms-user-select: none;
+
+	user-select: none;
+	}
+	#loadimg .idrag img{
+	position:absolute;
+	top:2px;
+	left:0px;
+	margin-bottom:30px
+	z-index: 98;
+	-webkit-touch-callout: none;
+
+	-webkit-user-select: none;
+
+	-khtml-user-select: none;
+
+	-moz-user-select: none;
+
+	-ms-user-select: none;
+
+	user-select: none;
+	}
+	#loadimg .idrag img:hover{
+	width: 120px;
+	height:120px;
+	z-index: 100;
+	}
+	
+	/**************************Jagat Css**********************************/
+
+	input[type='button']	{
+	min-width:19px;
+	}
+	#hilight img	{
+	padding:2px;
+	}
+	#hilight img:hover,#hilight img.active	{
+	background:#87C8F0;
+	}
+	#edtr	{
+	width:960px;
+	position:relative;
+	margin-bottom:120px;
+	}
+	.right_pos_abs	{
+	position:fixed;
+	top:480px;
+	left:85px;
+	width:200px;
+	}
+	
+	#main{
+	position:fixed;
+	top:50px;
+	left:350px;
+	background:#FAFAFA;
+	padding:0px 3px;
+	border:1px solid #DCDCDC;
+	z-index:100;
+	border-radius:12px;
+	-moz-border-radius:12px;
+	-webkit-border-radius:12px;
+	-o-border-radius:12px;
+
+	}
+	html > body .toolbar {
+	*left:-180px;
+	}
+	.postop0{
+	position:fixed;
+	}
+	.postop1{
+	position:fixed;
+	top:10px;
+	}
+	.memejeTextContainer   {
+	position:relative;
+	}
+	span.icon_div,.memejeTextContainer   {
+	border-radius:6px;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	-o-border-radius:6px;
+	background:#CCC;
+	padding:1px;
+	position:absolute;
+	}
+	.memejeTextContainer{
+	width:230px;
+	top:-11px;
+	}
+	.memejeTextContainer img{
+	position:relative;
+	top:3px;
+	}
+	span.icon_div img{
+	width:16px;
+	height:16px;
+	margin:1px;
+	}
+	.icon_div  {
+	min-width: 180px;
+	overflow: visible;
+	}
+	.smil_tabl_fixed{
+	width:400px;
+	position:fixed;
+	left:10px;
+	top:380px;
+	height:105px;
+	}
+	.memeje_button{
+	margin : 0px;
+	padding : 0px;
+	height : 22px;
+	width : 50px;
+	line-height : 15px;
+	}
+	.showmodal{
+	width:400px;
+	height:35px;
+	position:fixed;
+	left:50%;
+	top:50%!important;
+	margin:-25px 0px 0px -200px;
+	border:1px solid black;
+	padding-top:15px;
+	font-size:16px;
+	color:#FFF;
+	background:#111;
+	-moz-border-radius : 10px 10px 10px 10px;
+	-webkit-border-radius : 10px 10px 10px 10px;
+	}
+	/**************************Jagat Css**********************************/
