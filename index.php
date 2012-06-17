@@ -2,7 +2,7 @@
 define("SUB_DIR", "");
 session_name("memeja");
 ob_start();
-ini_set("memory_limit","8M");
+ini_set("memory_limit","16M");
 
 ini_set('display_errors', true);
 error_reporting(E_ALL + E_NOTICE);

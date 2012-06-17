@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-16 00:11:03
+<?php /* Smarty version 2.6.7, created on 2012-06-17 07:51:10
          compiled from user/login_form_register.tpl.html */ ?>
 
-<!-- Template: user/login_form_register.tpl.html Start 16/06/2012 00:11:03 --> 
+<!-- Template: user/login_form_register.tpl.html Start 17/06/2012 07:51:10 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -63,10 +63,10 @@
 
 
 <div id="lol_promise" style="display:none">
-	<img src="http://localhost/image/white_mascot.png" id="lol_promise_mascot"/><span id="lol_promise_text">We promise.</span>
+	<img src="http:///image/white_mascot.png" id="lol_promise_mascot"/><span id="lol_promise_text">We promise.</span>
 	
 	<div>
-	<img src="http://localhost/image/troll_mascot.png" id="lol_plomise_mascot"/><span id="lol_plomise_text"><strike>We plomise. Twust us</strike></span>
+	<img src="http:///image/troll_mascot.png" id="lol_plomise_mascot"/><span id="lol_plomise_text"><strike>We plomise. Twust us</strike></span>
 	</div>
 </div>
 

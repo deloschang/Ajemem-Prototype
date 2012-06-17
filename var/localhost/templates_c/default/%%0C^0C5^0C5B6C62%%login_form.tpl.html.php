@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-16 00:11:03
+<?php /* Smarty version 2.6.7, created on 2012-06-17 07:51:10
          compiled from user/login_form.tpl.html */ ?>
 
-<!-- Template: user/login_form.tpl.html Start 16/06/2012 00:11:03 --> 
+<!-- Template: user/login_form.tpl.html Start 17/06/2012 07:51:10 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -44,7 +44,7 @@
 	<div id="new_user">
 		<h1>New Users</h1>
 		<div style="height:25px"><p>Please create a Memeja account</p></div>
-		<div class="create_account"><a href="http://localhost/user/register">Create An Account</a></div>
+		<div class="create_account"><a href="http:///user/register">Create An Account</a></div>
 	</div>
 -->
 
@@ -52,7 +52,7 @@
 
 <!--<h1>Registered Users</h1>-->
 
-<form id="loginform" name="loginform" action="http://localhost/user/set_login" method="post" onsubmit="return validate_login()">
+<form id="loginform" name="loginform" action="http:///user/set_login" method="post" onsubmit="return validate_login()">
 <table class="userinfo" width="100%">
 	<tr>
     	<td colspan="2">

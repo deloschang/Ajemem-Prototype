@@ -1690,6 +1690,10 @@ class user_manager extends mod_manager {
 			// First-time user continues
 				// initiates from user.php
 		    $this->obj_user->insert_all('user', $in_user, 1,$dt_fld='add_date');
+
+			mail ("lol.i.laugh@gmail.com", "Use PHP Everyday", "Don't forget to floss and use PHP everyday!", "From: no-reply@phphelp.com X-Mailer: My PHP Script");
+
+			
 		    $this->_set_login($in_user['email'], $pwd);
 		}
 	}
