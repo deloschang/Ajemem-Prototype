@@ -1,28 +1,10 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-17 09:11:58
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-16 00:34:47
->>>>>>> 5f5a5b11223944e343ba093934bf774fc644046f
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-14 02:19:38
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-14 04:12:40
->>>>>>> f9b69d2ee1f0ec86533648f372e1b510466c08fa
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-14 07:52:12
->>>>>>> c83555c46de3c263530c8378fd30f04fac505a16
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-14 09:17:03
->>>>>>> 5741c56381cb56b93e6e6320abb893b6a964f478
->>>>>>> 893f1c27f53ecbe3f23ee5bf15e044a3fbc19c77
+<?php /* Smarty version 2.6.7, created on 2012-06-19 07:51:36
          compiled from meme/random_meme.tpl.html */ ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 <script type="text/javascript">
-    var x=0;
+    head.ready(function{
+	var x=0;
     
     function rand_set_tot_adaggr(id,con){
 		var url = "http://localhost/meme/set_adaggr";
@@ -173,7 +155,7 @@
 				 }); 
 		 }
      }
-    
+     });
 </script>
 '; ?>
 
@@ -205,4 +187,4 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 </div>
-<input type="hidden" id="rand_ids" />
+<input type="hidden" id="rand_ids" />
