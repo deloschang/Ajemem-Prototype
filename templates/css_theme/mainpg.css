@@ -1526,8 +1526,17 @@ a{
 		height:15px;
 		position:relative;
 		top:-10px;
-		left:21px;
+		left:50px;
 		text-align:center;
+	}
+	
+	.meme_button{
+		width:25px;
+		height:25px;
+		position:relative;
+		top:12px;
+		margin:3px;
+		left:27px;
 	}
 	
 	.meme_dislike {
@@ -1544,7 +1553,7 @@ a{
 		height:15px;
 		position:relative;
 		top:-16px;
-		left:12px;
+		left:42px;
 		font-weight:bold;
 		font-size:11px;
 		text-align:center;

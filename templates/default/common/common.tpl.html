@@ -70,114 +70,6 @@
 	    });
 	}
 	
-	function live_ranking() {
-		var ranking_data;
-		var url="##LBL_SITE_URL##user/live_ranking/";
-		
-		$.post(url,{ce:0,chk:1}, function(ranking_data){
-			if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
-				setTimeout("live_ranking()", rank_wait);
-				rank_wait *= 1.5
-				return false;
-			} else {
-				var ajax_response_exp = ranking_data.split(',');
-				
-				console.log(ajax_response_exp);
-				// Rank? No. 1- User? No. 1- XP? Yes.
-				if (ajax_response_exp[0].trim() == "AAB"){
-					
-					//$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');
-				
-				// Rank? No 1- User? Yes.
-				} else if (ajax_response_exp[0].trim() == "AB") {
-					trailing_pic = ajax_response_exp[1];
-					trailing_dupe = ajax_response_exp[2];
-					
-					$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');
-					
-					$("#trailing_ranking_number").css("color", '#FEEB4E');
-					$("#trailing_ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
-						$("#trailing_ranking_number").css("color","#81cdfe");
-						$("#trailing_ranking_number").animate( { "opacity" : 1 }, 300)
-					});
-					
-					//$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
-						
-				// Rank? Yes. Improvement? Yes.
-				} else if (ajax_response_exp[0].trim() == "BA") {
-					new_rank = ajax_response_exp[1];
-					trailing_pic = ajax_response_exp[2];
-					trailing_user = ajax_response_exp[3];
-					trailing_rank = ajax_response_exp[4];
-					trailing_dupe = ajax_response_exp[5];
-					
-					$("#ranking_number").html(new_rank);
-					
-					// Green flash
-
-					$("#ranking_number").css("color", '#B9FE4E');
-					$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
-						$("#ranking_number").css("color","#81cdfe");
-						$("#ranking_number").animate( { "opacity" : 1 }, 300)
-					});
-					
-					if (trailing_user) {
-					
-						$("#trailing_ranking_number").html(trailing_rank);
-						$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');	
-							
-						//$("#trailing_user").html(trailing_user);
-						
-						//$("#trailing_user_pic").css("background", '#FE4EB9');
-						//$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
-						//	$("#trailing_user_pic").css("background","#aad450");
-						//	$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
-						//});
-					
-					}					
-				
-				// Rank? Yes. Improve? No.
-				} else {
-					new_rank = ajax_response_exp[1];
-					trailing_xp = ajax_response_exp[2];
-					trailing_user = ajax_response_exp[3];
-					trailing_rank = ajax_response_exp[4];
-					trailing_dupe = ajax_response_exp[5];
-					
-					$("#ranking_number").html(new_rank);
-							
-					// Red flash
-
-					$("#ranking_number").css("color", '#FE4EB9');
-					$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
-						$("#ranking_number").css("color","#81cdfe");
-						$("#ranking_number").animate( { "opacity" : 1 }, 300)
-					});
-					
-					if (trailing_user) {
-						$("#trailing_ranking_number").html(trailing_rank);
-						$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');	
-						
-						//$("#trailing_exp").html(trailing_xp+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
-								
-						//$("#trailing_user").html(trailing_user);
-						
-						//$("#trailing_user_pic").css("background", '#B9FE4E');
-						//$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
-						//	$("#trailing_user_pic").css("background","#aad450");
-						//	$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
-						//});
-					}
-				}
-				
-				setTimeout("live_ranking()", 20000);
-				rank_wait = 40000;
-			}
-			
-			
-		});
-	}
-	
 	function upd_log_time() {
 		  var url="##LBL_SITE_URL##index.php";
 		  $.post(url,{page:"user",choice:"set_login_time",ce:0},function(res){//alert(res);
@@ -294,6 +186,114 @@
          }(document))
       </script>
 <script type="text/javascript">
+	function live_ranking() {
+		var ranking_data;
+		var url="##LBL_SITE_URL##user/live_ranking/";
+		
+		$.post(url,{ce:0,chk:1}, function(ranking_data){
+			if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
+				setTimeout("live_ranking()", rank_wait);
+				rank_wait *= 1.5
+				return false;
+			} else {
+				var ajax_response_exp = ranking_data.split(',');
+				
+				console.log(ajax_response_exp);
+				// Rank? No. 1- User? No. 1- XP? Yes.
+				if (ajax_response_exp[0].trim() == "AAB"){
+					
+					//$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');
+				
+				// Rank? No 1- User? Yes.
+				} else if (ajax_response_exp[0].trim() == "AB") {
+					trailing_pic = ajax_response_exp[1];
+					trailing_dupe = ajax_response_exp[2];
+					
+					$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');
+					
+					$("#trailing_ranking_number").css("color", '#FEEB4E');
+					$("#trailing_ranking_number").animate( { "opacity" : 0.4 }, 1000, function() {
+						$("#trailing_ranking_number").css("color","#81cdfe");
+						$("#trailing_ranking_number").animate( { "opacity" : 1 }, 300)
+					});
+					
+					//$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
+						
+				// Rank? Yes. Improvement? Yes.
+				} else if (ajax_response_exp[0].trim() == "BA") {
+					new_rank = ajax_response_exp[1];
+					trailing_pic = ajax_response_exp[2];
+					trailing_user = ajax_response_exp[3];
+					trailing_rank = ajax_response_exp[4];
+					trailing_dupe = ajax_response_exp[5];
+					
+					$("#ranking_number").html(new_rank);
+					
+					// Green flash
+
+					$("#ranking_number").css("color", '#B9FE4E');
+					$("#ranking_number").animate( { "opacity" : 0.4 }, 1000, function() {
+						$("#ranking_number").css("color","#81cdfe");
+						$("#ranking_number").animate( { "opacity" : 1 }, 300)
+					});
+					
+					if (trailing_user) {
+					
+						$("#trailing_ranking_number").html(trailing_rank);
+						$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');	
+							
+						//$("#trailing_user").html(trailing_user);
+						
+						//$("#trailing_user_pic").css("background", '#FE4EB9');
+						//$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
+						//	$("#trailing_user_pic").css("background","#aad450");
+						//	$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
+						//});
+					
+					}					
+				
+				// Rank? Yes. Improve? No.
+				} else {
+					new_rank = ajax_response_exp[1];
+					trailing_xp = ajax_response_exp[2];
+					trailing_user = ajax_response_exp[3];
+					trailing_rank = ajax_response_exp[4];
+					trailing_dupe = ajax_response_exp[5];
+					
+					$("#ranking_number").html(new_rank);
+							
+					// Red flash
+
+					$("#ranking_number").css("color", '#FE4EB9');
+					$("#ranking_number").animate( { "opacity" : 0.4 }, 1000, function() {
+						$("#ranking_number").css("color","#81cdfe");
+						$("#ranking_number").animate( { "opacity" : 1 }, 300)
+					});
+					
+					if (trailing_user) {
+						$("#trailing_ranking_number").html(trailing_rank);
+						$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');	
+						
+						//$("#trailing_exp").html(trailing_xp+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
+								
+						//$("#trailing_user").html(trailing_user);
+						
+						//$("#trailing_user_pic").css("background", '#B9FE4E');
+						//$("#trailing_user_pic").animate( { "opacity" : 0.4 }, 700, function() {
+						//	$("#trailing_user_pic").css("background","#aad450");
+						//	$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
+						//});
+					}
+				}
+				
+				setTimeout("live_ranking()", 20000);
+				rank_wait = 40000;
+			}
+			
+			
+		});
+	}
+
 function get_random_meme(){		
 		var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
 		$.fancybox.showLoading();
@@ -549,6 +549,9 @@ function get_random_meme(){
 					{if !$smarty.request.page}{include file="meme/home"}{/if} 
 				</div>
 		</div>		
+		<div id ="nlu_login">
+			{include file=user/login_form"}
+		</div>
 		<div id ="nlu_login_register">
 			{include file=user/login_form_register"}
 		</div>

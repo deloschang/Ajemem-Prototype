@@ -1,17 +1,14 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-19 07:56:14
+<?php /* Smarty version 2.6.7, created on 2012-06-21 00:10:57
          compiled from meme/live_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/live_meme.tpl.html', 11, false),array('modifier', 'date_format', 'meme/live_meme.tpl.html', 48, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/live_meme.tpl.html', 8, false),array('modifier', 'date_format', 'meme/live_meme.tpl.html', 45, false),)), $this); ?>
 
-<!-- Template: meme/live_meme.tpl.html Start 19/06/2012 07:56:14 --> 
+<!-- Template: meme/live_meme.tpl.html Start 21/06/2012 00:10:57 --> 
  <div>
-	
 	    <div  id="meme<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
 " class="meme">
 
 		<div style="height: 70px;">
-		<div id="whitebox">          </div>
-
 			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
 " onclick="show_details('<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
 ');" href="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['sm']['meme_picture']; ?>
@@ -73,24 +70,32 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 
 <div class="meme_reproductive_system">
 
+<!--
 			    <a href="javascript:void(0);" onclick="get_all_replies('<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
 ');" class="meme_reply"><img src="http://localhost/templates/images/replys.png" style="width:25px;height:25px;"/><div id="repl<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
 "class="meme_reply_label"><?php if ($this->_tpl_vars['sm']['tot_reply'] != 0):  echo $this->_tpl_vars['sm']['tot_reply'];  else: ?>0<?php endif; ?></div></a>&emsp;
+-->
 
 <!-- Honor -->
 			    <a href="javascript:void(0);" id="agr_link<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
 " class="meme_like"
 					<?php if ($_SESSION['id_user']): ?>
 			    		<?php if (substr_count ( $this->_tpl_vars['sm']['honour_id_user'] , $_SESSION['id_user'] )): ?>
-				    		style="box-shadow: 0 0 7px 0 green; cursor: default"
+				    		style="cursor: default"
 				    	<?php elseif (substr_count ( $this->_tpl_vars['sm']['dishonour_id_user'] , $_SESSION['id_user'] )): ?>
 				    		style="cursor: default"
 				    	<?php endif; ?>
 				    <?php endif; ?>
 					onclick="set_tot_adaggr('<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
 ','A','<?php echo $this->_tpl_vars['sm']['meme_user']; ?>
-');"><img src="http://localhost/templates/images/like.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;right:2px;"/><div id="aggr<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
-" class="meme_like_label"><?php if ($this->_tpl_vars['sm']['tot_honour'] != 0):  echo $this->_tpl_vars['sm']['tot_honour'];  endif; ?></div></a>&emsp;					
+');"><img src="http://localhost/templates/images/like.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;left:40px;"/><div id="aggr<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
+" class="meme_like_label"
+					<?php if ($_SESSION['id_user']): ?>
+			    		<?php if (substr_count ( $this->_tpl_vars['sm']['honour_id_user'] , $_SESSION['id_user'] )): ?>
+						style="color:green"
+						<?php endif; ?>
+					<?php endif; ?>
+					><?php if ($this->_tpl_vars['sm']['tot_honour'] != 0):  echo $this->_tpl_vars['sm']['tot_honour'];  endif; ?></div></a>&emsp;					
 <!-- Dishonor -->
 			    <a href="javascript:void(0);" id="disagr_link<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
 " class="meme_dislike"
@@ -98,13 +103,19 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			    		<?php if (substr_count ( $this->_tpl_vars['sm']['honour_id_user'] , $_SESSION['id_user'] )): ?>
 			    			style="cursor: default"
 			    		<?php elseif (substr_count ( $this->_tpl_vars['sm']['dishonour_id_user'] , $_SESSION['id_user'] )): ?>
-			    			style="box-shadow: 0 0 7px 0 red; cursor: default"
+			    			style="cursor: default"
 			    		<?php endif; ?>
 			    	<?php endif; ?>
 			    onclick="set_tot_adaggr('<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
 ','D','<?php echo $this->_tpl_vars['sm']['meme_user']; ?>
-');"><img src="http://localhost/templates/images/dislike.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;right:2px;"/><div id="disaggr<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
-" class="meme_dislike_reply"><?php if ($this->_tpl_vars['x']['tot_dishonour'] != 0):  echo $this->_tpl_vars['x']['tot_dishonour'];  endif; ?></div></a>
+');"><img src="http://localhost/templates/images/dislike.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;left:14px;"/><div id="disaggr<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
+" class="meme_dislike_label"
+				<?php if ($_SESSION['id_user']): ?>
+			    		<?php if (substr_count ( $this->_tpl_vars['sm']['dishonour_id_user'] , $_SESSION['id_user'] )): ?>
+						style="color:red"
+						<?php endif; ?>
+					<?php endif; ?>
+				><?php if ($this->_tpl_vars['x']['tot_dishonour'] != 0):  echo $this->_tpl_vars['x']['tot_dishonour'];  endif; ?></div></a>
 			   
 			    </div>
 

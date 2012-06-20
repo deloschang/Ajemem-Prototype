@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-20 23:22:45
+<?php /* Smarty version 2.6.7, created on 2012-06-21 00:10:57
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 591, false),array('function', 'get_mod', 'common/common.tpl.html', 622, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'bdcb7e1b27397d8fe24b84c81d92594d'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 594, false),array('function', 'get_mod', 'common/common.tpl.html', 625, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '118d94abae2fbd3c13bf8f64f1555009'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -70,114 +70,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			$(".inner").html(data);
 			$(".not_txt").hide();
 	     });
-	 }
-	
-	function live_ranking() {
-		var ranking_data;
-		var url="http://localhost/user/live_ranking/";
-		
-		$.post(url,{ce:0,chk:1 }, function(ranking_data){
-			if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
-				setTimeout("live_ranking()", rank_wait);
-				rank_wait *= 1.5
-				return false;
-			 } else {
-				var ajax_response_exp = ranking_data.split(\',\');
-				
-				console.log(ajax_response_exp);
-				// Rank? No. 1- User? No. 1- XP? Yes.
-				if (ajax_response_exp[0].trim() == "AAB"){
-					
-					//$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');
-				
-				// Rank? No 1- User? Yes.
-				 } else if (ajax_response_exp[0].trim() == "AB") {
-					trailing_pic = ajax_response_exp[1];
-					trailing_dupe = ajax_response_exp[2];
-					
-					$("#trailing_user_profile_pic").html(\'<a href="/?id=\'+trailing_dupe+\'"><img src="\'+trailing_pic+\'" style="width:30px;height:30px"/></a>\');
-					
-					$("#trailing_ranking_number").css("color", \'#FEEB4E\');
-					$("#trailing_ranking_number").animate( { "opacity" : 0.4  }, 700, function() {
-						$("#trailing_ranking_number").css("color","#81cdfe");
-						$("#trailing_ranking_number").animate( { "opacity" : 1  }, 300)
-					 });
-					
-					//$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
-						
-				// Rank? Yes. Improvement? Yes.
-				 } else if (ajax_response_exp[0].trim() == "BA") {
-					new_rank = ajax_response_exp[1];
-					trailing_pic = ajax_response_exp[2];
-					trailing_user = ajax_response_exp[3];
-					trailing_rank = ajax_response_exp[4];
-					trailing_dupe = ajax_response_exp[5];
-					
-					$("#ranking_number").html(new_rank);
-					
-					// Green flash
-
-					$("#ranking_number").css("color", \'#B9FE4E\');
-					$("#ranking_number").animate( { "opacity" : 0.4  }, 700, function() {
-						$("#ranking_number").css("color","#81cdfe");
-						$("#ranking_number").animate( { "opacity" : 1  }, 300)
-					 });
-					
-					if (trailing_user) {
-					
-						$("#trailing_ranking_number").html(trailing_rank);
-						$("#trailing_user_profile_pic").html(\'<a href="/?id=\'+trailing_dupe+\'"><img src="\'+trailing_pic+\'" style="width:30px;height:30px"/></a>\');	
-							
-						//$("#trailing_user").html(trailing_user);
-						
-						//$("#trailing_user_pic").css("background", \'#FE4EB9\');
-						//$("#trailing_user_pic").animate( { "opacity" : 0.4  }, 700, function() {
-						//	$("#trailing_user_pic").css("background","#aad450");
-						//	$("#trailing_user_pic").animate( { "opacity" : 1  }, 300)
-						// });
-					
-					 }					
-				
-				// Rank? Yes. Improve? No.
-				 } else {
-					new_rank = ajax_response_exp[1];
-					trailing_xp = ajax_response_exp[2];
-					trailing_user = ajax_response_exp[3];
-					trailing_rank = ajax_response_exp[4];
-					trailing_dupe = ajax_response_exp[5];
-					
-					$("#ranking_number").html(new_rank);
-							
-					// Red flash
-
-					$("#ranking_number").css("color", \'#FE4EB9\');
-					$("#ranking_number").animate( { "opacity" : 0.4  }, 700, function() {
-						$("#ranking_number").css("color","#81cdfe");
-						$("#ranking_number").animate( { "opacity" : 1  }, 300)
-					 });
-					
-					if (trailing_user) {
-						$("#trailing_ranking_number").html(trailing_rank);
-						$("#trailing_user_profile_pic").html(\'<a href="/?id=\'+trailing_dupe+\'"><img src="\'+trailing_pic+\'" style="width:30px;height:30px"/></a>\');	
-						
-						//$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
-								
-						//$("#trailing_user").html(trailing_user);
-						
-						//$("#trailing_user_pic").css("background", \'#B9FE4E\');
-						//$("#trailing_user_pic").animate( { "opacity" : 0.4  }, 700, function() {
-						//	$("#trailing_user_pic").css("background","#aad450");
-						//	$("#trailing_user_pic").animate( { "opacity" : 1  }, 300)
-						// });
-					 }
-				 }
-				
-				setTimeout("live_ranking()", 20000);
-				rank_wait = 40000;
-			 }
-			
-			
-		 });
 	 }
 	
 	function upd_log_time() {
@@ -297,6 +189,114 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
           }(document))
       </script>
 <script type="text/javascript">
+	function live_ranking() {
+		var ranking_data;
+		var url="http://localhost/user/live_ranking/";
+		
+		$.post(url,{ce:0,chk:1 }, function(ranking_data){
+			if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
+				setTimeout("live_ranking()", rank_wait);
+				rank_wait *= 1.5
+				return false;
+			 } else {
+				var ajax_response_exp = ranking_data.split(\',\');
+				
+				console.log(ajax_response_exp);
+				// Rank? No. 1- User? No. 1- XP? Yes.
+				if (ajax_response_exp[0].trim() == "AAB"){
+					
+					//$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');
+				
+				// Rank? No 1- User? Yes.
+				 } else if (ajax_response_exp[0].trim() == "AB") {
+					trailing_pic = ajax_response_exp[1];
+					trailing_dupe = ajax_response_exp[2];
+					
+					$("#trailing_user_profile_pic").html(\'<a href="/?id=\'+trailing_dupe+\'"><img src="\'+trailing_pic+\'" style="width:30px;height:30px"/></a>\');
+					
+					$("#trailing_ranking_number").css("color", \'#FEEB4E\');
+					$("#trailing_ranking_number").animate( { "opacity" : 0.4  }, 1000, function() {
+						$("#trailing_ranking_number").css("color","#81cdfe");
+						$("#trailing_ranking_number").animate( { "opacity" : 1  }, 300)
+					 });
+					
+					//$("#trailing_exp").html(ajax_response_exp[1]+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+						
+				// Rank? Yes. Improvement? Yes.
+				 } else if (ajax_response_exp[0].trim() == "BA") {
+					new_rank = ajax_response_exp[1];
+					trailing_pic = ajax_response_exp[2];
+					trailing_user = ajax_response_exp[3];
+					trailing_rank = ajax_response_exp[4];
+					trailing_dupe = ajax_response_exp[5];
+					
+					$("#ranking_number").html(new_rank);
+					
+					// Green flash
+
+					$("#ranking_number").css("color", \'#B9FE4E\');
+					$("#ranking_number").animate( { "opacity" : 0.4  }, 1000, function() {
+						$("#ranking_number").css("color","#81cdfe");
+						$("#ranking_number").animate( { "opacity" : 1  }, 300)
+					 });
+					
+					if (trailing_user) {
+					
+						$("#trailing_ranking_number").html(trailing_rank);
+						$("#trailing_user_profile_pic").html(\'<a href="/?id=\'+trailing_dupe+\'"><img src="\'+trailing_pic+\'" style="width:30px;height:30px"/></a>\');	
+							
+						//$("#trailing_user").html(trailing_user);
+						
+						//$("#trailing_user_pic").css("background", \'#FE4EB9\');
+						//$("#trailing_user_pic").animate( { "opacity" : 0.4  }, 700, function() {
+						//	$("#trailing_user_pic").css("background","#aad450");
+						//	$("#trailing_user_pic").animate( { "opacity" : 1  }, 300)
+						// });
+					
+					 }					
+				
+				// Rank? Yes. Improve? No.
+				 } else {
+					new_rank = ajax_response_exp[1];
+					trailing_xp = ajax_response_exp[2];
+					trailing_user = ajax_response_exp[3];
+					trailing_rank = ajax_response_exp[4];
+					trailing_dupe = ajax_response_exp[5];
+					
+					$("#ranking_number").html(new_rank);
+							
+					// Red flash
+
+					$("#ranking_number").css("color", \'#FE4EB9\');
+					$("#ranking_number").animate( { "opacity" : 0.4  }, 1000, function() {
+						$("#ranking_number").css("color","#81cdfe");
+						$("#ranking_number").animate( { "opacity" : 1  }, 300)
+					 });
+					
+					if (trailing_user) {
+						$("#trailing_ranking_number").html(trailing_rank);
+						$("#trailing_user_profile_pic").html(\'<a href="/?id=\'+trailing_dupe+\'"><img src="\'+trailing_pic+\'" style="width:30px;height:30px"/></a>\');	
+						
+						//$("#trailing_exp").html(trailing_xp+\'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>\');	
+								
+						//$("#trailing_user").html(trailing_user);
+						
+						//$("#trailing_user_pic").css("background", \'#B9FE4E\');
+						//$("#trailing_user_pic").animate( { "opacity" : 0.4  }, 700, function() {
+						//	$("#trailing_user_pic").css("background","#aad450");
+						//	$("#trailing_user_pic").animate( { "opacity" : 1  }, 300)
+						// });
+					 }
+				 }
+				
+				setTimeout("live_ranking()", 20000);
+				rank_wait = 40000;
+			 }
+			
+			
+		 });
+	 }
+
 function get_random_meme(){		
 		var url = "http://localhost/meme/meme_list/cat/rand";
 		$.fancybox.showLoading();
@@ -521,8 +521,8 @@ function get_random_meme(){
 						if (!response.authResponse){
 							window.location = url;
 							return;
+						 }
 						window.location.href = url+"user/logout";
-						 } 
 					 });
 				 }
 			 }
@@ -565,6 +565,13 @@ unset($_smarty_tpl_vars);
   endif; ?> 
 				</div>
 		</div>		
+		<div id ="nlu_login">
+			<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form.tpl.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+		</div>
 		<div id ="nlu_login_register">
 			<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form_register.tpl.html", 'smarty_include_vars' => array()));
@@ -655,7 +662,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 's Memes</label>
 						   <div class="content">
 								<div id="my_meme_list">
-									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#0}';}?>
+									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:118d94abae2fbd3c13bf8f64f1555009#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:118d94abae2fbd3c13bf8f64f1555009#0}';}?>
 
 								</div>
 						   </div>
@@ -665,7 +672,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 						   <label for="tab-2">Tagged Memes</label>
 						   <div class="content">
 								<div id="my_tagged">
-									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#1}';}?>
+									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:118d94abae2fbd3c13bf8f64f1555009#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:118d94abae2fbd3c13bf8f64f1555009#1}';}?>
 
 								</div>
 						   </div>
@@ -763,7 +770,7 @@ unset($_smarty_tpl_vars);
 							   <label for="tab-1">My Memes</label>
 							   <div class="content">
 									<div id="my_meme_list">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#2}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:118d94abae2fbd3c13bf8f64f1555009#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:118d94abae2fbd3c13bf8f64f1555009#2}';}?>
 
 									</div>
 							   </div>
@@ -773,7 +780,7 @@ unset($_smarty_tpl_vars);
 							   <label for="tab-2">Tagged Memes</label>
 							   <div class="content">
 									<div id="my_tagged">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#3}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:118d94abae2fbd3c13bf8f64f1555009#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:118d94abae2fbd3c13bf8f64f1555009#3}';}?>
 
 									</div>
 							   </div>
@@ -783,7 +790,7 @@ unset($_smarty_tpl_vars);
 							   <label for="tab-3">Favorites</label>
 							   <div class="content">
 									<div id="my_favorites" >
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#4}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#4}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:118d94abae2fbd3c13bf8f64f1555009#4}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:118d94abae2fbd3c13bf8f64f1555009#4}';}?>
 
 									</div>
 							   </div>
@@ -854,7 +861,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 's Memes</label>
 							   <div class="content">
 									<div id="my_meme_list">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#5}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#5}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:118d94abae2fbd3c13bf8f64f1555009#5}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:118d94abae2fbd3c13bf8f64f1555009#5}';}?>
 
 									</div>
 							   </div>
@@ -864,7 +871,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 							   <label for="tab-2">Tagged Memes</label>
 							   <div class="content">
 									<div id="my_tagged">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#6}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#6}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:118d94abae2fbd3c13bf8f64f1555009#6}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:118d94abae2fbd3c13bf8f64f1555009#6}';}?>
 
 									</div>
 							   </div>

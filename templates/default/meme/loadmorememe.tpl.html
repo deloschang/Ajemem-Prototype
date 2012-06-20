@@ -86,7 +86,7 @@
 					feed_count_orig = feed_count;
 					feed_count += 1; 
 
-					$('.live_feed'+feed_count_orig).before('<div class="live_feed'+feed_count+'" style="display: none; padding-top:20px;"></div>');
+					$('.live_feed'+feed_count_orig).before('<div class="live_feed'+feed_count+'" style="display: none;"></div>');
 				});
 			}
 			
@@ -188,7 +188,7 @@
 {/literal}
 
 <!-- part of live meme functionality, do not remove -->
-<div class="live_feed0" style="display: none; padding-top:20px;"></div>
+<div class="live_feed0" style="display: none;"></div>
 <!-- end -->
 
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
@@ -264,7 +264,8 @@
 				    		style="cursor: default"
 				    	{/if}
 				    {/if}
-					onclick="set_tot_adaggr('{$x.id_meme}','A','{$x.id_user}');"><img src="##LBL_SITE_URL##templates/images/like.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;right:2px;"/><div id="aggr{$x.id_meme}" class="meme_like_label" 
+					onclick="set_tot_adaggr('{$x.id_meme}','A','{$x.id_user}');"><img src="##LBL_SITE_URL##templates/images/like.png" 
+					class="meme_button"/><div id="aggr{$x.id_meme}" class="meme_like_label" 
 					{if $smarty.session.id_user}
 			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
 						style="color:green"
@@ -282,9 +283,9 @@
 			    			style="cursor: default"
 			    		{/if}
 			    	{/if}
-					onclick="set_tot_adaggr('{$x.id_meme}','D','{$x.id_user}');"><img src="##LBL_SITE_URL##templates/images/dislike.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;right:2px;"/><div id="disaggr{$x.id_meme}" class="meme_dislike_label"
+					onclick="set_tot_adaggr('{$x.id_meme}','D','{$x.id_user}');"><img src="##LBL_SITE_URL##templates/images/dislike.png" class="meme_button"/><div id="disaggr{$x.id_meme}" class="meme_dislike_label"
 					{if $smarty.session.id_user}
-			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
+			    		{if substr_count($x.dishonour_id_user, $smarty.session.id_user)}
 						style="color:red"
 						{/if}
 					{/if}

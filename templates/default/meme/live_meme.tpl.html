@@ -1,11 +1,8 @@
 <div>
-	
 	    <div  id="meme{$sm.meme_id}" class="meme">
 
 {* Height between memes *}
 		<div style="height: 70px;">
-		<div id="whitebox">          </div>
-
 			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage{$sm.meme_id}" onclick="show_details('{$sm.meme_id}');" href="##LBL_SITE_URL##image/orig/meme/{$sm.meme_picture}" title="{$sm.meme_title|capitalize}">
 			<img src="##LBL_SITE_URL##image/thumb/meme/{$sm.meme_picture}" style="cursor:pointer;width: 75px; height: 65px; 
 			{* Added by Delos: highlights if you created the meme *}
@@ -51,18 +48,26 @@
 
 <div class="meme_reproductive_system">
 
+<!--
 			    <a href="javascript:void(0);" onclick="get_all_replies('{$sm.meme_id}');" class="meme_reply"><img src="##LBL_SITE_URL##templates/images/replys.png" style="width:25px;height:25px;"/><div id="repl{$sm.meme_id}"class="meme_reply_label">{if $sm.tot_reply != 0}{$sm.tot_reply}{else}0{/if}</div></a>&emsp;
+-->
 
 <!-- Honor -->
 			    <a href="javascript:void(0);" id="agr_link{$sm.meme_id}" class="meme_like"
 					{if $smarty.session.id_user}
 			    		{if substr_count($sm.honour_id_user, $smarty.session.id_user)}
-				    		style="box-shadow: 0 0 7px 0 green; cursor: default"
+				    		style="cursor: default"
 				    	{elseif substr_count($sm.dishonour_id_user, $smarty.session.id_user)}
 				    		style="cursor: default"
 				    	{/if}
 				    {/if}
-					onclick="set_tot_adaggr('{$sm.meme_id}','A','{$sm.meme_user}');"><img src="##LBL_SITE_URL##templates/images/like.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;right:2px;"/><div id="aggr{$sm.meme_id}" class="meme_like_label">{if $sm.tot_honour != 0}{$sm.tot_honour}{/if}</div></a>&emsp;					
+					onclick="set_tot_adaggr('{$sm.meme_id}','A','{$sm.meme_user}');"><img src="##LBL_SITE_URL##templates/images/like.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;left:40px;"/><div id="aggr{$sm.meme_id}" class="meme_like_label"
+					{if $smarty.session.id_user}
+			    		{if substr_count($sm.honour_id_user, $smarty.session.id_user)}
+						style="color:green"
+						{/if}
+					{/if}
+					>{if $sm.tot_honour != 0}{$sm.tot_honour}{/if}</div></a>&emsp;					
 <!-- Dishonor -->
 			    <a href="javascript:void(0);" id="disagr_link{$sm.meme_id}" class="meme_dislike"
 			    	{* Added by Delos: highlights according to agree/disagree *}
@@ -70,10 +75,16 @@
 			    		{if substr_count($sm.honour_id_user, $smarty.session.id_user)}
 			    			style="cursor: default"
 			    		{elseif substr_count($sm.dishonour_id_user, $smarty.session.id_user)}
-			    			style="box-shadow: 0 0 7px 0 red; cursor: default"
+			    			style="cursor: default"
 			    		{/if}
 			    	{/if}
-			    onclick="set_tot_adaggr('{$sm.meme_id}','D','{$sm.meme_user}');"><img src="##LBL_SITE_URL##templates/images/dislike.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;right:2px;"/><div id="disaggr{$sm.meme_id}" class="meme_dislike_reply">{if $x.tot_dishonour != 0}{$x.tot_dishonour}{/if}</div></a>
+			    onclick="set_tot_adaggr('{$sm.meme_id}','D','{$sm.meme_user}');"><img src="##LBL_SITE_URL##templates/images/dislike.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;left:14px;"/><div id="disaggr{$sm.meme_id}" class="meme_dislike_label"
+				{if $smarty.session.id_user}
+			    		{if substr_count($sm.dishonour_id_user, $smarty.session.id_user)}
+						style="color:red"
+						{/if}
+					{/if}
+				>{if $x.tot_dishonour != 0}{$x.tot_dishonour}{/if}</div></a>
 			   
 			    </div>
 
