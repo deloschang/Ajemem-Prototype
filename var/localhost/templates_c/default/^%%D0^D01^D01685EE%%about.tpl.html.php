@@ -1,5 +1,8 @@
-<title>About Memeja</title>
-<h1>About Memeja</h1>
+<?php /* Smarty version 2.6.7, created on 2012-06-20 07:08:32
+         compiled from static/about.tpl.html */ ?>
+
+<!-- Template: static/about.tpl.html Start 20/06/2012 07:08:32 --> 
+ <h1>About Memeja</h1>
 
 <h2>We believe in connecting people together through shared experiences.</h2>
 
@@ -18,3 +21,4 @@ insert basic image of creating a meme
 ------------
 
 <h2><strong>
+<!-- Template: static/about.tpl.html End --> 

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Memeja, Social Networking with Memes</title>
-<meta name="description" content="Share experiences with memes and instantly connect with everyone you care about"
+<meta name="description" content="Memeja helps you share experiences through memes. Connect with the lives of everyone you care about as you share those memorable moments that create a lasting impression."
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="##LBL_SITE_URL##favicon.ico" >
 {assign var=appid value=$util->get_values_from_config('FACEBOOK')}
@@ -519,13 +519,16 @@
 					{include file=$content}
 					{if !$smarty.request.page}{include file="meme/home"}{/if} 
 				</div>
-		</div>		
-		<div id ="nlu_login">
-			{include file=user/login_form"}
 		</div>
+<!--		
+		<div id ="nlu_login">
+			include file=user/login_form"
+		</div>
+-->
 		<div id ="nlu_login_register">
 			{include file=user/login_form_register"}
 		</div>
+		
 	{elseif $smarty.session.profile == 'invalid'}
 		<div id="nlu_contained">
 			<div id="profile_page">		
