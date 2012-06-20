@@ -7,8 +7,6 @@ ini_set("memory_limit","16M");
 ini_set('display_errors', true);
 error_reporting(E_ALL + E_NOTICE);
 
-require_once('FirePHPCore/fb.php');
-
 $report = array ('stats' => array ());
 define("THROUGH_CONTROLLER", 1);
 define("AJAX", 0);

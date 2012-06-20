@@ -3,8 +3,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<title>Memeja, Social Networking with Memes</title>
+<meta name="description" content="Memeja helps you share experiences through memes. Connect with the lives of everyone you care about as you share those memorable moments that create a lasting impression."
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Memeja: Social Network with Memes</title>
 <link rel="shortcut icon" href="##LBL_SITE_URL##templates/images/memeja_icon.ico" >
 {assign var=appid value=$util->get_values_from_config('FACEBOOK')}
 {assign var=chc value=$smarty.request.choice}
@@ -33,7 +34,6 @@
 	.js("##LBL_SITE_URL##spad/jquery.jqDock.min.js")
 	.js("##LBL_SITE_URL##templates/flexyjs/js/jquery.multiautocomplete.js"); 
 </script>
-
 {literal}
 
 <script type="text/javascript">
@@ -462,7 +462,6 @@ function get_random_meme(){
 			$("#xpbar").progressbar({
 				value: xp_percent
 			});
-			
 			$("#user_level").html('L'+user_level);
 			$("#xpbar_status").html(xp_percent.toFixed(2) +'%');
 			
@@ -536,8 +535,7 @@ function get_random_meme(){
 		       		});
 		       	}
 		}
-
-	       })
+			})
 		}
 </script>	  
 {/literal}
@@ -566,6 +564,7 @@ function get_random_meme(){
 		<div id ="nlu_login_register">
 			{include file=user/login_form_register"}
 		</div>
+		
 	{elseif $smarty.session.profile == 'invalid'}
 		<div id="nlu_contained">
 			<div id="profile_page">		
