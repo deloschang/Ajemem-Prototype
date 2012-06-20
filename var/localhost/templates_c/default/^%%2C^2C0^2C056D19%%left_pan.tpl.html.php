@@ -1,10 +1,10 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-19 07:51:33
+<?php /* Smarty version 2.6.7, created on 2012-06-20 07:28:55
          compiled from user/left_pan.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 4, false),)), $this); ?>
 <?php if ($_SESSION['id_user']): ?>
 
-		<div id= "user_name"><a href ="/?id=<?php echo $_SESSION['dupe_username']; ?>
+		<div id= "user_name" class="nohighlight"><a href ="/?id=<?php echo $_SESSION['dupe_username']; ?>
 "><?php echo ((is_array($_tmp=$_SESSION['username'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 </a></div>
 					
