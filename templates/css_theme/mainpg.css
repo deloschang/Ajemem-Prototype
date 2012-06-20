@@ -3,15 +3,11 @@
 
 /****************************** Main Page Styling *******************************/
 
-
-/* Default values for site stored in body (Sized in em for Cross-Browser Compatibility) */
 	html,body {
 		font-family: Trebuchet, Helvetica, sans-serif;
 		font-size:0.8em;
 		margin:10px 0% 10px 0%;
 		background-color:#87C8F0;
-		/*width: 1000px;*/
-			/*Removed for NLU sizing */
 	}
 
 /* =p Define paragraph text size */
@@ -60,9 +56,7 @@
 
 	user-select: none;
 	}
-	
-	
-/*++++++++++++++++++++++++++ Memeja Header ++++++++++++++++++++++++++++*/	
+		
 
 /*++++++++++++++++++++++++ NLU Design ++++++++++++++++++*/
 
@@ -313,280 +307,103 @@
 		position: absolute;
 		border: 1px solid rgba(163,193,173,0.4);
 	}
-	
-	#icon_0{
-		top:10px;
-		left:10px;
+
+/************************* About Page ***************************/
+	#bottom_bar{
 	}
 	
-	#icon_1{
-		bottom: 10px;
-		left: 10px;
+	#about{
+		position:relative;
+		top:40px;
+		left:-30px;
 	}
 	
-	#icon_2{
-		bottom: 10px;
-		right: 10px;
+	#privacy_policy{
+		position:relative;
+		left:50px;
+		
+	}
+	.i2Style{
+	font:bold 16px Arial, Helvetica, sans-serif;
+	font-style:normal;
+	color:#000000;
+	background:#f2f2f2;
+	border:0px solid #ffffff;
+	text-shadow:-1px 1px 0px #fff;
+	box-shadow:0px 0px 7px #000000;
+	-moz-box-shadow:0px 0px 7px #000000;
+	-webkit-box-shadow:0px 0px 7px #000000;
+	border-radius:20px 20px 20px 20px;
+	-moz-border-radius:20px 20px 20px 20px;
+	-webkit-border-radius:20px 20px 20px 20px;
+	width:50px;
+	padding:10px;
+	cursor:pointer;
+	margin:0 auto;
+	}
+	.i2Style:active{
+	cursor:pointer;
+	position:relative;
+	top:2px;
+	}
+
+	
+	#about_page{
+		opacity:100;
+		moz-border-radius: 12px;
+	    webkit-border-radius: 12px;
+	    khtml-border-radius: 12px;
+	    border-radius: 12px;
 	}
 	
-	#icon_3{
-		top: 10px;
-		right: 10px;
+	#about_title{
+		font-size:2em;
+		font-weight:bold;
+		margin:5px;
 	}
 	
-	#icon_4{
-		top:60px;
-		left:10px;
+	.about_block {
+		position:relative;
+		border-bottom: 1px solid #C0C0C0;
+		padding:10px;
 	}
 	
-	#icon_5{
-		bottom:60px;
-		left:10px;
+	.about_ptitle{
+		font-size:1.4em;
+		font-style:italic;
+		font-weight:bold;
 	}
 	
-	#icon_6{
-		bottom: 60px;
-		right: 10px;
+	.about_text{
+		width:300px;
+		font-size:1.2em;
 	}
 	
-	#icon_7{
-		top: 60px;
-		right: 10px;
+	.about_pic{
+		position:absolute;
+		padding:30px;
+		margin:30px;
+		top:-30px;
+		left:350px;
+		width:600px;
 	}
 	
-	#icon_8{
-		top: 10px;
-		right: 60px;
+/*((((((((((((((((((((((((((((((( Privacy Policy )))))))))))))))))))))))))))))))*/
+
+	#privacy_text{
+		
 	}
 	
-	#icon_9{
-		bottom: 10px;
-		right: 60px;
+	.privacy_titles{
+		font-size:1.4em;
+		font-weight:bold;
+		font-style:italic;
+		margin:5px;
+		text-align:center;
 	}
 	
-	#icon_10{
-		top: 10px;
-		left: 60px;
-	}	
-	
-	#icon_11{
-		bottom:10px;
-		left:60px;
-	}
-	
-	#icon_12{
-		top: 110px;
-		left: 10px;
-	}
-	
-	#icon_13{
-		bottom: 110px;
-		right: 10px;
-	}
-	
-	#icon_14 {
-		bottom: 10px;
-		right: 110px;
-	}
-	
-	#icon_15{
-		top: 10px;
-		right: 110px;
-	}
-	
-	#icon_16{
-		bottom: 10px;
-		left: 110px;
-	}
-	
-	#icon_17{
-		top: 10px;
-		left: 110px;
-	}
-	
-	#icon_18{
-		top: 110px;
-		right: 10px;
-	}
-	
-	#icon_19{
-		bottom: 110px;
-		left: 10px;
-	}
-	
-	#icon_20{
-		top: 10px;
-		left: 160px;
-	}
-	
-	#icon_21{
-		top: 10px;
-		right: 160px;
-	}
-	
-	#icon_22{
-		bottom: 160px;
-		left: 10px;
-	}
-	
-	#icon_23{
-		top: 160px;
-		right: 10px;
-	}
-	
-	#icon_24{
-		bottom: 160px;
-		left: 10px;
-	}
-	
-	#icon_25{
-		bottom: 10px;
-		left: 160px;
-	}
-	
-	#icon_26{
-		top: 160px;
-		left: 10px;
-	}
-	
-	#icon_27{
-		top: 210px;
-		left: 10px;
-	}
-	
-	#icon_28 {
-		top:260px;
-		left: 10px;
-	}
-	
-	#icon_29{
-		bottom: 10px;
-		left: 210px;
-	}
-	
-	#icon_30{
-		bottom: 10px;
-		left: 260px;
-	}
-	
-	#icon_31{
-		bottom: 10px;
-		left: 310px;
-	}
-	
-	#icon_32{
-		bottom: 10px;
-		left: 360px;
-	}
-	
-	#icon_33{
-		bottom: 10px;
-		left: 410px;
-	}
-	
-	#icon_34{
-		bottom: 10px;
-		left: 460px;
-	}
-	
-	#icon_35{
-		bottom: 10px;
-		left: 510px;
-	}
-	
-	#icon_36{
-		bottom: 10px;
-		left: 560px;
-	}
-	
-	#icon_37{
-		bottom: 10px;
-		left: 610px;
-	}
-	
-	#icon_38{
-		bottom: 10px;
-		left: 660px;
-	}
-	
-	#icon_39{
-		bottom: 10px;
-		left: 710px;
-	}
-	
-	#icon_40{
-		bottom: 10px;
-		left: 760px;
-	}
-	
-	#icon_41{
-		top: 10px;
-		left: 210px;
-	}
-	
-	#icon_42{
-		top: 10px;
-		left: 260px;
-	}
-	
-	#icon_43{
-		top: 10px;
-		left: 310px;
-	}
-	
-	#icon_44{
-		top: 10px;
-		left: 360px;
-	}
-	
-	#icon_45{
-		top: 10px;
-		left: 410px;
-	}
-	
-	#icon_46{
-		top: 10px;
-		left: 460px;
-	}
-	
-	#icon_47{
-		top: 10px;
-		left: 510px;
-	}
-	
-	#icon_48{
-		top: 10px;
-		left: 560px;
-	}
-	
-	#icon_49{
-		top: 10px;
-		left: 610px;
-	}
-	
-	#icon_50{
-		top: 10px;
-		left: 660px;
-	}
-	
-	#icon_51{
-		top: 10px;
-		left: 710px;
-	}
-	
-	#icon_52{
-		top: 210px;
-		right: 10px;
-	}
-	
-	#icon_53{
-		top: 260px;
-		right: 10px;
-	}
-	
-	#icon_54{
-		top: 310px;
-		right: 10px;
+	.privacy_p{
+		font-size:1.1em;
 	}
 	
 /*++++++++++++++++++++++++ NLU Design ++++++++++++++++++*/
