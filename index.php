@@ -4,10 +4,10 @@ session_name("memeja");
 ob_start();
 ini_set("memory_limit","16M");
 
+require_once('/FirePHPCore/fb.php');
+
 ini_set('display_errors', true);
 error_reporting(E_ALL + E_NOTICE);
-
-require_once('FirePHPCore/fb.php');
 
 $report = array ('stats' => array ());
 define("THROUGH_CONTROLLER", 1);

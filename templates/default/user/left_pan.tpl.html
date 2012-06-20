@@ -1,7 +1,7 @@
 {*notag*}
 {if $smarty.session.id_user}
 
-		<div id= "user_name"><a href ="/?id={$smarty.session.dupe_username}">{$smarty.session.username|capitalize}</a></div>
+		<div id= "user_name" class="nohighlight"><a href ="/?id={$smarty.session.dupe_username}">{$smarty.session.fname|capitalize}</a></div>
 		{*User Rank + XP*}
 			
 		<!--<div id="user_ranking_info">

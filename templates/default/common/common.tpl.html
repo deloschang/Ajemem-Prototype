@@ -6,118 +6,38 @@
 <title>Memeja, Social Networking with Memes</title>
 <meta name="description" content="Memeja helps you share experiences through memes. Connect with the lives of everyone you care about as you share those memorable moments that create a lasting impression."
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="shortcut icon" href="##LBL_SITE_URL##favicon.ico" >
+<link rel="shortcut icon" href="##LBL_SITE_URL##templates/images/memeja_icon.ico" >
 {assign var=appid value=$util->get_values_from_config('FACEBOOK')}
 {assign var=chc value=$smarty.request.choice}
-
-<script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
-
-<!-- JQuery Library for New Fancybox -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-
-<!-- Add fancyBox -->
-<link rel="stylesheet" href="##LBL_SITE_URL##templates/css_theme/fancybox/jquery.fancybox.css?v=2.0.5" type="text/css" media="screen" />
-<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5"></script>
-
-<!-- Optionally add button and/or thumbnail helpers -->
-<link rel="stylesheet" href="##LBL_SITE_URL##templates/css_theme/fancybox/jquery.fancybox-buttons.css?v=2.0.5" type="text/css" media="screen" />
-<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5"></script>
-<link rel="stylesheet" href="##LBL_SITE_URL##templates/css_theme/fancybox/jquery.fancybox-thumbs.css?v=2.0.5" type="text/css" media="screen" />
-<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5"></script>
-
-<script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/flexymessage.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/js/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/js/ui.datepicker.js"></script>
-
-<script type="text/javascript" src="##JS_PATH##libsext/js/ajaxfileupload.js"></script>
-
-<script type="text/javascript" src="##JS_PATH##libsext/hotkeys/jquery.hotkeys.js"></script>
-
-<!-- Hover Intent -->
-<script type="text/javascript" src="##LBL_SITE_URL##libsext/hoverintent/jquery.hoverIntent.js"></script>
-
-<!-- XP Bar CSS + JS-->
-<link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/jquery-ui-1.8.16.custom.css"/>
-<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.core.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.highlight.js"></script>
-
-<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/mainpg.css"/>
+
+<script type="text/javascript" src="##JS_PATH##templates/css_theme/head.js"></script>
+<script type="text/javascript">
+	head.js("##JS_PATH##libsext/jquery/jquery.js")
+	.js("http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js")
+	.js("##JS_PATH##libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5")
+	.js("##JS_PATH##libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5")
+	.js("##JS_PATH##libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5")
+	.js("##JS_PATH##libsext/js/jquery.autocomplete.js")
+	.js("##JS_PATH##libsext/js/ui.datepicker.js")
+	.js("##JS_PATH##libsext/js/ajaxfileupload.js")
+	.js("##JS_PATH##libsext/hotkeys/jquery.hotkeys.js")
+	.js("##LBL_SITE_URL##libsext/hoverintent/jquery.hoverIntent.js")
+	.js("##JS_PATH##libsext/xpbar/jquery-ui-1.8.16.custom.min.js")
+	.js("##JS_PATH##libsext/xpbar/jquery.effects.core.js")
+	.js("##JS_PATH##libsext/xpbar/jquery.effects.highlight.js")
+	.js("js/jquery-1.7.1.min.js")
+	.js("##LBL_SITE_URL##spad/color/colorpicker.js")
+	.js("##LBL_SITE_URL##spad/jquery.mousehold.js")
+	.js("http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js")
+	.js("##LBL_SITE_URL##spad/scratchpad.js")
+	.js("##LBL_SITE_URL##spad/jquery.jqDock.min.js")
+	.js("##LBL_SITE_URL##templates/flexyjs/js/jquery.multiautocomplete.js"); 
+</script>
 {literal}
 
 <script type="text/javascript">
-	var chc = "{/literal}{$chc}{literal}";
-	var idu = "{/literal}{$smarty.session.id_user}{literal}";
-	
-	var follow_count = parseInt({/literal}{$smarty.session.profile_follower_count}{literal});
-	
-		// Variables for XP updating
-		var curr_xp = {/literal}{if $smarty.session.exp_point}{$smarty.session.exp_point}{else}0{/if}{literal};
-		var xp_to_level = {/literal}{if $smarty.session.xp_to_level}{$smarty.session.xp_to_level}{else}0{/if}{literal};
-		var previous_xp_to_level = {/literal}{if $smarty.session.previous_xp_to_level}{$smarty.session.previous_xp_to_level}{else}0{/if}{literal};
-
-		var user_level = {/literal}{if $smarty.session.level}{$smarty.session.level}{else}0{/if}{literal};
-
-		if (user_level == 1) {
-			var xp_percent = (curr_xp / xp_to_level) * 100;
-		} else {
-			{/literal}{if $smarty.session.exp_point}
-				xp_percent = (curr_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
-			{else}xp_percent = 0{/if}{literal}
-		}
-		
-		var rank_wait = 40000;
-		var xp_wait = 8000;
-	
-	$(document).ready(function(){
-		if (idu) {
-			// User XP initial display
-			$("#xpbar").progressbar({
-				value: xp_percent
-			});
-			
-			$("#user_level").html('L'+user_level);
-			$("#xpbar_status").html(xp_percent.toFixed(2) +'%');
-			
-			// Mouseover shows XP and %
-			$("#xpbar, #xpbar_status").hoverIntent({
-				interval: 200,
-				timeout:1000
-			});
-			
-			$("#xpbar, #xpbar_status, #user_level").hoverIntent(function(){
-				$("#xpbar_status").delay(200).show();
-			}, function() {
-				$("#xpbar_status").delay(1000).fadeOut();
-			});
-		}
-
-		var scrn_height = window.screen.availHeight;
-            $("#mid_cont").height(scrn_height/2 + scrn_height/9);
-
-	    /* For notification */
-	    $(".inner").hide();
-	    $('#slidebottom div').click(function() {
-			get_details_notification();
-			$(this).next().slideToggle();
-	    });
-
-	    if(idu!="" && chc!='addMeme'){
-			//setInterval("getall_notification()",7000); for notifications
-			
-	    /* For popup bar */
-			setTimeout("popup_expbar()", 7000); 	
-			setTimeout("live_ranking()", 20000);
-	    }
-
-	    /*if (idu) {
-		    /* For updating total login time */
-		    /*upd_log_time();
-	    }  */
-	    
-	});
+	head.ready(function(){
 	
 	function log_in_reminder(){
 		 var url="##LBL_SITE_URL##user/log_in_reminder";
@@ -258,7 +178,161 @@
 		});
 	}
 	
-	function popup_expbar(){
+	function upd_log_time() {
+		  var url="##LBL_SITE_URL##index.php";
+		  $.post(url,{page:"user",choice:"set_login_time",ce:0},function(res){//alert(res);
+		  })
+		  setTimeout("upd_log_time()", 10000);
+    	}
+    	
+	function get_next_page(url, start, limit, div_id) {
+		if (!document.getElementById(div_id)) {
+			div_id = "content";
+		}
+		$("#"+div_id).load(url, {'qstart':start, 'limit':limit, 'ce':0,'pg':1,chk:1}, function(res){
+			//css_even_odd();
+		});
+	}
+	
+	function show_fancybox(res){
+		$.fancybox(res,{centerOnScroll:true,hideOnOverlayClick:false});
+		//$.fancybox(res,{margin:600,hideOnOverlayClick:false});
+	}
+	
+	$(function(){
+		$(".leftpan_img").click(function(){
+			$("#leftpan").toggle();
+			if($("#leftpan").is(":hidden"))
+			    $(".leftpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_next_btn.png) no-repeat");
+			else
+			    $(".leftpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_previous_btn.png) no-repeat");
+		});
+		$(".rightpan_img").click(function(){
+			$("#rightpan").toggle();
+			if($("#rightpan").is(":hidden"))
+			    $(".rightpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_previous_btn.png) no-repeat");
+			else
+			    $(".rightpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_next_btn.png) no-repeat");
+
+		});
+
+	});
+	
+	flexymsg = {
+	required_dob: "This field is required.",
+	required: "<br/>This field is required.",	
+	remote: "<br/>Please fix this field.",
+	email: "<br/>Please enter a valid email address.",
+	url: "<br/>Please enter a valid URL.",
+	date: "<br/>Please enter a valid date.",
+	dateISO: "<br/>Please enter a valid date (ISO).",
+	number: "<br/>Please enter a valid number.",
+	digits: "<br/>Please enter only digits.",
+	creditcard: "<br/>Please enter a valid credit card number.",
+	equalTo: "<br/>Please enter the same value again.",
+	accept: "<br/>Please enter a value with a valid extension.",
+	maxlength: "<br/>Please enter no more than {0} characters.",
+	minlength: "<br/>Please enter at least {0} characters.",
+	rangelength: "<br/>Please enter a value between {0} and {1} characters long.",
+	range: "<br/>Please enter a value between {0} and {1}.",
+	maxValue: "<br/>Please enter a value less than or equal to {0}.",
+	minValue: "<br/>Please enter a value greater than or equal to {0}.",
+	nodefind : "<br/> is not defined!",
+	novalue : "<br/> return value is required!",
+	customarray : "<br/>Custom function should return array!",
+	customfcheck : "<br/>Custom function should be present in case of custom checking!"
+};
+	
+	});
+</script>
+{/literal}
+</head>
+<script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/js/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/js/ui.datepicker.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/hotkeys/jquery.hotkeys.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##libsext/hoverintent/jquery.hoverIntent.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.core.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.highlight.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##spad/color/colorpicker.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##spad/jquery.mousehold.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##spad/scratchpad.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##spad/jquery.jqDock.min.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/js/jquery.multiautocomplete.js"></script>
+<body>
+<div id="fb-root"></div>
+      {literal}
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '219049284838691',
+            status     : true, 
+            cookie     : true,
+            xfbml      : true,
+            oauth      : true,
+          });
+          
+          FB.Event.subscribe('auth.login', function (response) {
+          	window.location = "##LBL_SITE_URL##user/facebook_info";
+    	  });
+        };
+        
+        
+        (function(d){
+           var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+           js = d.createElement('script'); js.id = id; js.async = true;
+           js.src = "//connect.facebook.net/en_US/all.js";
+           d.getElementsByTagName('head')[0].appendChild(js);
+         }(document))
+      </script>
+<script type="text/javascript">
+function get_random_meme(){		
+		var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
+		$.fancybox.showLoading();
+		$.post(url,{ce:0},function(res){
+			$("#randpgexist").val(1);
+			$.fancybox.open(res,{
+				afterClose : function (){
+					$("#randpgexist").val(0);
+				}
+			});
+			$.fancybox.update();
+		});
+    }
+	
+	function submit() {
+		$('#searches').submit();
+	}
+	
+	function follow_user(status) {		
+		{/literal}{if $smarty.session.profile_id}{literal}
+		var profile_id = {/literal}{$smarty.session.profile_id}{literal}
+		{/literal}{/if}{literal}
+		var url = "##LBL_SITE_URL##user/follow_user";
+		
+		$.post(url, {ce:0, id:profile_id, status:status}, function(res){
+			if (status == 'follow') {
+				$("#follow_me").html('<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'unfollow\');">Unfollow</a>');
+				
+				follow_count += 1;				
+			} else if (status == 'unfollow') {
+				$("#follow_me").html('<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'follow\');">Follow</a>');
+				
+				follow_count -= 1;
+			}
+			
+			$('#follower_count').html(follow_count+' followers');
+		});
+	}
+		function popup_expbar(){
 		var data;
 		var url="##LBL_SITE_URL##user/getExperience/";
 		
@@ -359,151 +433,106 @@
 			xp_wait = 8000;
 		});
 	}
+	var chc = "{/literal}{$chc}{literal}";
+	var idu = "{/literal}{$smarty.session.id_user}{literal}";
 	
-	function upd_log_time() {
-		  var url="##LBL_SITE_URL##index.php";
-		  $.post(url,{page:"user",choice:"set_login_time",ce:0},function(res){//alert(res);
-		  })
-		  setTimeout("upd_log_time()", 10000);
-    	}
-    	
-	function get_next_page(url, start, limit, div_id) {
-		if (!document.getElementById(div_id)) {
-			div_id = "content";
+	var follow_count = parseInt({/literal}{$smarty.session.profile_follower_count}{literal});
+	
+	// Variables for XP updating
+	var curr_xp = {/literal}{if $smarty.session.exp_point}{$smarty.session.exp_point}{else}0{/if}{literal},
+		xp_to_level = {/literal}{if $smarty.session.xp_to_level}{$smarty.session.xp_to_level}{else}0{/if}{literal},
+		previous_xp_to_level = {/literal}{if $smarty.session.previous_xp_to_level}{$smarty.session.previous_xp_to_level}{else}0{/if}{literal},
+		user_level = {/literal}{if $smarty.session.level}{$smarty.session.level}{else}0{/if}{literal};
+
+	if (user_level == 1) {
+		var xp_percent = (curr_xp / xp_to_level) * 100;
+	} else {
+		{/literal}{if $smarty.session.exp_point}
+			xp_percent = (curr_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
+		{else}xp_percent = 0{/if}{literal}
+	}
+	
+	var rank_wait = 40000;
+	var xp_wait = 8000;
+	
+	$(document).ready(function(){
+		if (idu) {
+			// User XP initial display
+			$("#xpbar").progressbar({
+				value: xp_percent
+			});
+			$("#user_level").html('L'+user_level);
+			$("#xpbar_status").html(xp_percent.toFixed(2) +'%');
+			
+			// Mouseover shows XP and %
+			$("#xpbar, #xpbar_status").hoverIntent({
+				interval: 200,
+				timeout:1000
+			});
+			
+			$("#xpbar, #xpbar_status, #user_level").hoverIntent(function(){
+				$("#xpbar_status").delay(200).show();
+			}, function() {
+				$("#xpbar_status").delay(1000).fadeOut();
+			});
 		}
-		$("#"+div_id).load(url, {'qstart':start, 'limit':limit, 'ce':0,'pg':1,chk:1}, function(res){
-			//css_even_odd();
-		});
-	}
-	
-	function show_fancybox(res){
-		$.fancybox(res,{centerOnScroll:true,hideOnOverlayClick:false});
-		//$.fancybox(res,{margin:600,hideOnOverlayClick:false});
-	}
-	
-	$(function(){
-		$(".leftpan_img").click(function(){
-			$("#leftpan").toggle();
-			if($("#leftpan").is(":hidden"))
-			    $(".leftpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_next_btn.png) no-repeat");
-			else
-			    $(".leftpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_previous_btn.png) no-repeat");
-		});
-		$(".rightpan_img").click(function(){
-			$("#rightpan").toggle();
-			if($("#rightpan").is(":hidden"))
-			    $(".rightpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_previous_btn.png) no-repeat");
-			else
-			    $(".rightpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_next_btn.png) no-repeat");
 
-		});
+		var scrn_height = window.screen.availHeight;
+            $("#mid_cont").height(scrn_height/2 + scrn_height/9);
 
+	    /* For notification */
+	    $(".inner").hide();
+	    $('#slidebottom div').click(function() {
+			get_details_notification();
+			$(this).next().slideToggle();
+	    });
+
+	    if(idu!="" && chc!='addMeme'){
+			//setInterval("getall_notification()",7000); for notifications
+			
+	    /* For popup bar */
+			setTimeout("popup_expbar()", 7000); 	
+			setTimeout("live_ranking()", 20000);
+	    }
+
+	    /*if (idu) {
+		    /* For updating total login time */
+		    /*upd_log_time();
+	    }  */
+	    
 	});
 	
-	function get_random_meme(){
-		//$(window).scrollBy(0,5);
-		//$(window).scroll(function(e){
-		//	$('#xpbar').css({
-		//		position:'fixed',
-		//		top:'0px!important!',
-		//	});
-		//}
-		
-		var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
-		$.fancybox.showLoading();
-		$.post(url,{ce:0},function(res){
-			$("#randpgexist").val(1);
-			$.fancybox.open(res,{
-				afterClose : function (){
-					$("#randpgexist").val(0);
-				}
-			});
-			$.fancybox.update();
-		});
-    }
-	
-	function submit() {
-		$('#searches').submit();
-	}
-	
-	function follow_user(status) {		
-		{/literal}{if $smarty.session.profile_id}{literal}
-		var profile_id = {/literal}{$smarty.session.profile_id}{literal}
-		{/literal}{/if}{literal}
-		var url = "##LBL_SITE_URL##user/follow_user";
-		
-		$.post(url, {ce:0, id:profile_id, status:status}, function(res){
-			if (status == 'follow') {
-				$("#follow_me").html('<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'unfollow\');">Unfollow</a>');
-				
-				follow_count += 1;				
-			} else if (status == 'unfollow') {
-				$("#follow_me").html('<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'follow\');">Follow</a>');
-				
-				follow_count -= 1;
-			}
+	function fb_logout(){
+	   url="##LBL_SITE_URL##";
+	   $.post(url,{page:"user",choice:"check_fb_session",ce:0},function(res){
+			if(res == '-1'){
+				console.log('res is -1');
+				//   window.location.href = url+"user/logout";
+			} else {
+			// First try logging out normal user
+				window.location.href = url+"user/logout";
 			
-			$('#follower_count').html(follow_count+' followers');
+			// Then try FB logout
+				if (idu) {
+					FB.logout(function(response) {
+						if (!response.authResponse){
+							window.location = url;
+							return;
+						}
+						window.location.href = url+"user/logout";
+					});
+				}
+			}
 		});
 	}
-	
-</script>
-<script type="text/javascript">
-	    function fb_logout(){
-			url="##LBL_SITE_URL##";
-			$.post(url,{page:"user",choice:"check_fb_session",ce:0},function(res){
-				if(res=='-1'){
-					   window.location.href = url+"user/logout";
-				} else {
-						// First try logging out normal user
-						window.location.href = url+"user/logout";
-						
-						// Then try FB logout
-						if (idu) {
-							FB.logout(function(response) {
-								window.location.href = url+"user/logout";
-							});
-						}
-				}
-
-			})
-		}
-		
-		
-	
-</script>
-{/literal}
-</head>
-
-<body>
-<div id="fb-root"></div>
-      {literal}
-      <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '219049284838691',
-            status     : true, 
-            cookie     : true,
-            xfbml      : true,
-            oauth      : true,
-          });
-          
-          FB.Event.subscribe('auth.login', function (response) {
-          	window.location = "##LBL_SITE_URL##user/facebook_info";
-    	  });
-        };
-        
-        
-        (function(d){
-           var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-           js = d.createElement('script'); js.id = id; js.async = true;
-           js.src = "//connect.facebook.net/en_US/all.js";
-           d.getElementsByTagName('head')[0].appendChild(js);
-         }(document))
-      </script>       
+</script>	  
 {/literal}
 <!-- The Header and Logo shown at all times -->
-	<div id="top_header" class="nohighlight"></div>
+	<div id="top_header" class="nohighlight">
+	{if $smarty.session.id_user}
+		<div id="logout"> <a href="javascript:void(0);" onclick="fb_logout();" class="special-btn red">Logout</a></div>
+	{/if}
+	</div>
 
 	<div id= "logoc" class="nohighlight">
 		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/wmemejalogo.png" id="logo" style="width:180px;"></a>
@@ -519,12 +548,7 @@
 					{include file=$content}
 					{if !$smarty.request.page}{include file="meme/home"}{/if} 
 				</div>
-		</div>
-<!--		
-		<div id ="nlu_login">
-			include file=user/login_form"
-		</div>
--->
+		</div>		
 		<div id ="nlu_login_register">
 			{include file=user/login_form_register"}
 		</div>
@@ -797,7 +821,7 @@
 		</div>
 
 	{else}
-		<div id="editorcontent">
+		<div id="editorcontent" class="nohighlight">
 			{include file=$content}
 			{if !$smarty.session.id_user && !$smarty.request.page}{include file="meme/home"}{/if} 
 		</div>		

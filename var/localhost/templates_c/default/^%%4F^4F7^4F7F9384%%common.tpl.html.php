@@ -1,126 +1,45 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-20 07:08:40
+<?php /* Smarty version 2.6.7, created on 2012-06-20 23:22:45
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 567, false),array('function', 'get_mod', 'common/common.tpl.html', 598, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'b52315231a68bf696e120c359415ab55'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 591, false),array('function', 'get_mod', 'common/common.tpl.html', 622, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'bdcb7e1b27397d8fe24b84c81d92594d'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Memeja, Social Networking with Memes</title>
 <meta name="description" content="Memeja helps you share experiences through memes. Connect with the lives of everyone you care about as you share those memorable moments that create a lasting impression."
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="shortcut icon" href="http://localhost/favicon.ico" >
-<?php $this->assign('appid', $this->_tpl_vars['util']->get_values_from_config('FACEBOOK')); ?>
-<?php $this->assign('chc', $_REQUEST['choice']); ?>
-
-<script type="text/javascript" src="http://localhost/libsext/jquery/jquery.js"></script>
-
-<!-- JQuery Library for New Fancybox -->
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-
-<!-- Add fancyBox -->
-<link rel="stylesheet" href="http://localhost/templates/css_theme/fancybox/jquery.fancybox.css?v=2.0.5" type="text/css" media="screen" />
-<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5"></script>
-
-<!-- Optionally add button and/or thumbnail helpers -->
-<link rel="stylesheet" href="http://localhost/templates/css_theme/fancybox/jquery.fancybox-buttons.css?v=2.0.5" type="text/css" media="screen" />
-<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5"></script>
-<link rel="stylesheet" href="http://localhost/templates/css_theme/fancybox/jquery.fancybox-thumbs.css?v=2.0.5" type="text/css" media="screen" />
-<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5"></script>
-
-<script type="text/javascript" src="http://localhost/templates/flexyjs/flexymessage.js"></script>
-<script type="text/javascript" src="http://localhost/libsext/js/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="http://localhost/libsext/js/ui.datepicker.js"></script>
-
-<script type="text/javascript" src="http://localhost/libsext/js/ajaxfileupload.js"></script>
-
-<script type="text/javascript" src="http://localhost/libsext/hotkeys/jquery.hotkeys.js"></script>
-
-<!-- Hover Intent -->
-<script type="text/javascript" src="http://localhost/libsext/hoverintent/jquery.hoverIntent.js"></script>
-
-<!-- XP Bar CSS + JS-->
-<link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/jquery-ui-1.8.16.custom.css"/>
-<script type="text/javascript" src="http://localhost/libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="http://localhost/libsext/xpbar/jquery.effects.core.js"></script>
-<script type="text/javascript" src="http://localhost/libsext/xpbar/jquery.effects.highlight.js"></script>
-
-<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-
+<link rel="shortcut icon" href="http://localhost/templates/images/memeja_icon.ico" >
+<?php $this->assign('appid', $this->_tpl_vars['util']->get_values_from_config('FACEBOOK'));  $this->assign('chc', $_REQUEST['choice']); ?>
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
+
+<script type="text/javascript" src="http://localhost/templates/css_theme/head.js"></script>
+<script type="text/javascript">
+	head.js("http://localhost/libsext/jquery/jquery.js")
+	.js("http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js")
+	.js("http://localhost/libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5")
+	.js("http://localhost/libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5")
+	.js("http://localhost/libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5")
+	.js("http://localhost/libsext/js/jquery.autocomplete.js")
+	.js("http://localhost/libsext/js/ui.datepicker.js")
+	.js("http://localhost/libsext/js/ajaxfileupload.js")
+	.js("http://localhost/libsext/hotkeys/jquery.hotkeys.js")
+	.js("http://localhost/libsext/hoverintent/jquery.hoverIntent.js")
+	.js("http://localhost/libsext/xpbar/jquery-ui-1.8.16.custom.min.js")
+	.js("http://localhost/libsext/xpbar/jquery.effects.core.js")
+	.js("http://localhost/libsext/xpbar/jquery.effects.highlight.js")
+	.js("js/jquery-1.7.1.min.js")
+	.js("http://localhost/spad/color/colorpicker.js")
+	.js("http://localhost/spad/jquery.mousehold.js")
+	.js("http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js")
+	.js("http://localhost/spad/scratchpad.js")
+	.js("http://localhost/spad/jquery.jqDock.min.js")
+	.js("http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"); 
+</script>
 <?php echo '
 
 <script type="text/javascript">
-	var chc = "';  echo $this->_tpl_vars['chc'];  echo '";
-	var idu = "';  echo $_SESSION['id_user'];  echo '";
-	
-	var follow_count = parseInt(';  echo $_SESSION['profile_follower_count'];  echo ');
-	
-		// Variables for XP updating
-		var curr_xp = ';  if ($_SESSION['exp_point']):  echo $_SESSION['exp_point'];  else: ?>0<?php endif;  echo ';
-		var xp_to_level = ';  if ($_SESSION['xp_to_level']):  echo $_SESSION['xp_to_level'];  else: ?>0<?php endif;  echo ';
-		var previous_xp_to_level = ';  if ($_SESSION['previous_xp_to_level']):  echo $_SESSION['previous_xp_to_level'];  else: ?>0<?php endif;  echo ';
-
-		var user_level = ';  if ($_SESSION['level']):  echo $_SESSION['level'];  else: ?>0<?php endif;  echo ';
-
-		if (user_level == 1) {
-			var xp_percent = (curr_xp / xp_to_level) * 100;
-		 } else {
-			';  if ($_SESSION['exp_point']): ?>
-				xp_percent = (curr_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
-			<?php else: ?>xp_percent = 0<?php endif;  echo '
-		 }
-		
-		var rank_wait = 40000;
-		var xp_wait = 8000;
-	
-	$(document).ready(function(){
-		if (idu) {
-			// User XP initial display
-			$("#xpbar").progressbar({
-				value: xp_percent
-			 });
-			
-			$("#user_level").html(\'L\'+user_level);
-			$("#xpbar_status").html(xp_percent.toFixed(2) +\'%\');
-			
-			// Mouseover shows XP and %
-			$("#xpbar, #xpbar_status").hoverIntent({
-				interval: 200,
-				timeout:1000
-			 });
-			
-			$("#xpbar, #xpbar_status, #user_level").hoverIntent(function(){
-				$("#xpbar_status").delay(200).show();
-			 }, function() {
-				$("#xpbar_status").delay(1000).fadeOut();
-			 });
-		 }
-
-		var scrn_height = window.screen.availHeight;
-            $("#mid_cont").height(scrn_height/2 + scrn_height/9);
-
-	    /* For notification */
-	    $(".inner").hide();
-	    $(\'#slidebottom div\').click(function() {
-			get_details_notification();
-			$(this).next().slideToggle();
-	     });
-
-	    if(idu!="" && chc!=\'addMeme\'){
-			//setInterval("getall_notification()",7000); for notifications
-			
-	    /* For popup bar */
-			setTimeout("popup_expbar()", 7000); 	
-			setTimeout("live_ranking()", 20000);
-	     }
-
-	    /*if (idu) {
-		    /* For updating total login time */
-		    /*upd_log_time();
-	     }  */
-	    
-	 });
+	head.ready(function(){
 	
 	function log_in_reminder(){
 		 var url="http://localhost/user/log_in_reminder";
@@ -261,7 +180,162 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		 });
 	 }
 	
-	function popup_expbar(){
+	function upd_log_time() {
+		  var url="http://localhost/index.php";
+		  $.post(url,{page:"user",choice:"set_login_time",ce:0 },function(res){//alert(res);
+		   })
+		  setTimeout("upd_log_time()", 10000);
+    	 }
+    	
+	function get_next_page(url, start, limit, div_id) {
+		if (!document.getElementById(div_id)) {
+			div_id = "content";
+		 }
+		$("#"+div_id).load(url, {\'qstart\':start, \'limit\':limit, \'ce\':0,\'pg\':1,chk:1 }, function(res){
+			//css_even_odd();
+		 });
+	 }
+	
+	function show_fancybox(res){
+		$.fancybox(res,{centerOnScroll:true,hideOnOverlayClick:false });
+		//$.fancybox(res,{margin:600,hideOnOverlayClick:false });
+	 }
+	
+	$(function(){
+		$(".leftpan_img").click(function(){
+			$("#leftpan").toggle();
+			if($("#leftpan").is(":hidden"))
+			    $(".leftpan_img").css(\'background\',"url(http://localhost/templates/images/m_next_btn.png) no-repeat");
+			else
+			    $(".leftpan_img").css(\'background\',"url(http://localhost/templates/images/m_previous_btn.png) no-repeat");
+		 });
+		$(".rightpan_img").click(function(){
+			$("#rightpan").toggle();
+			if($("#rightpan").is(":hidden"))
+			    $(".rightpan_img").css(\'background\',"url(http://localhost/templates/images/m_previous_btn.png) no-repeat");
+			else
+			    $(".rightpan_img").css(\'background\',"url(http://localhost/templates/images/m_next_btn.png) no-repeat");
+
+		 });
+
+	 });
+	
+	flexymsg = {
+	required_dob: "This field is required.",
+	required: "<br/>This field is required.",	
+	remote: "<br/>Please fix this field.",
+	email: "<br/>Please enter a valid email address.",
+	url: "<br/>Please enter a valid URL.",
+	date: "<br/>Please enter a valid date.",
+	dateISO: "<br/>Please enter a valid date (ISO).",
+	number: "<br/>Please enter a valid number.",
+	digits: "<br/>Please enter only digits.",
+	creditcard: "<br/>Please enter a valid credit card number.",
+	equalTo: "<br/>Please enter the same value again.",
+	accept: "<br/>Please enter a value with a valid extension.",
+	maxlength: "<br/>Please enter no more than {0 } characters.",
+	minlength: "<br/>Please enter at least {0 } characters.",
+	rangelength: "<br/>Please enter a value between {0 } and {1 } characters long.",
+	range: "<br/>Please enter a value between {0 } and {1 }.",
+	maxValue: "<br/>Please enter a value less than or equal to {0 }.",
+	minValue: "<br/>Please enter a value greater than or equal to {0 }.",
+	nodefind : "<br/> is not defined!",
+	novalue : "<br/> return value is required!",
+	customarray : "<br/>Custom function should return array!",
+	customfcheck : "<br/>Custom function should be present in case of custom checking!"
+ };
+	
+	 });
+</script>
+'; ?>
+
+</head>
+<script type="text/javascript" src="http://localhost/libsext/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5"></script>
+<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5"></script>
+<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5"></script>
+<script type="text/javascript" src="http://localhost/libsext/js/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="http://localhost/libsext/js/ui.datepicker.js"></script>
+<script type="text/javascript" src="http://localhost/libsext/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="http://localhost/libsext/hotkeys/jquery.hotkeys.js"></script>
+<script type="text/javascript" src="http://localhost/libsext/hoverintent/jquery.hoverIntent.js"></script>
+<script type="text/javascript" src="http://localhost/libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="http://localhost/libsext/xpbar/jquery.effects.core.js"></script>
+<script type="text/javascript" src="http://localhost/libsext/xpbar/jquery.effects.highlight.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="http://localhost/spad/color/colorpicker.js"></script>
+<script type="text/javascript" src="http://localhost/spad/jquery.mousehold.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://localhost/spad/scratchpad.js"></script>
+<script type="text/javascript" src="http://localhost/spad/jquery.jqDock.min.js"></script>
+<script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
+<body>
+<div id="fb-root"></div>
+      <?php echo '
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : \'219049284838691\',
+            status     : true, 
+            cookie     : true,
+            xfbml      : true,
+            oauth      : true,
+           });
+          
+          FB.Event.subscribe(\'auth.login\', function (response) {
+          	window.location = "http://localhost/user/facebook_info";
+    	   });
+         };
+        
+        
+        (function(d){
+           var js, id = \'facebook-jssdk\'; if (d.getElementById(id)) {return; }
+           js = d.createElement(\'script\'); js.id = id; js.async = true;
+           js.src = "//connect.facebook.net/en_US/all.js";
+           d.getElementsByTagName(\'head\')[0].appendChild(js);
+          }(document))
+      </script>
+<script type="text/javascript">
+function get_random_meme(){		
+		var url = "http://localhost/meme/meme_list/cat/rand";
+		$.fancybox.showLoading();
+		$.post(url,{ce:0 },function(res){
+			$("#randpgexist").val(1);
+			$.fancybox.open(res,{
+				afterClose : function (){
+					$("#randpgexist").val(0);
+				 }
+			 });
+			$.fancybox.update();
+		 });
+     }
+	
+	function submit() {
+		$(\'#searches\').submit();
+	 }
+	
+	function follow_user(status) {		
+		';  if ($_SESSION['profile_id']):  echo '
+		var profile_id = ';  echo $_SESSION['profile_id'];  echo '
+		';  endif;  echo '
+		var url = "http://localhost/user/follow_user";
+		
+		$.post(url, {ce:0, id:profile_id, status:status }, function(res){
+			if (status == \'follow\') {
+				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\\\'unfollow\\\');">Unfollow</a>\');
+				
+				follow_count += 1;				
+			 } else if (status == \'unfollow\') {
+				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\\\'follow\\\');">Follow</a>\');
+				
+				follow_count -= 1;
+			 }
+			
+			$(\'#follower_count\').html(follow_count+\' followers\');
+		 });
+	 }
+		function popup_expbar(){
 		var data;
 		var url="http://localhost/user/getExperience/";
 		
@@ -362,153 +436,107 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			xp_wait = 8000;
 		 });
 	 }
+	var chc = "';  echo $this->_tpl_vars['chc'];  echo '";
+	var idu = "';  echo $_SESSION['id_user'];  echo '";
 	
-	function upd_log_time() {
-		  var url="http://localhost/index.php";
-		  $.post(url,{page:"user",choice:"set_login_time",ce:0 },function(res){//alert(res);
-		   })
-		  setTimeout("upd_log_time()", 10000);
-    	 }
-    	
-	function get_next_page(url, start, limit, div_id) {
-		if (!document.getElementById(div_id)) {
-			div_id = "content";
+	var follow_count = parseInt(';  echo $_SESSION['profile_follower_count'];  echo ');
+	
+	// Variables for XP updating
+	var curr_xp = ';  if ($_SESSION['exp_point']):  echo $_SESSION['exp_point'];  else: ?>0<?php endif;  echo ',
+		xp_to_level = ';  if ($_SESSION['xp_to_level']):  echo $_SESSION['xp_to_level'];  else: ?>0<?php endif;  echo ',
+		previous_xp_to_level = ';  if ($_SESSION['previous_xp_to_level']):  echo $_SESSION['previous_xp_to_level'];  else: ?>0<?php endif;  echo ',
+		user_level = ';  if ($_SESSION['level']):  echo $_SESSION['level'];  else: ?>0<?php endif;  echo ';
+
+	if (user_level == 1) {
+		var xp_percent = (curr_xp / xp_to_level) * 100;
+	 } else {
+		';  if ($_SESSION['exp_point']): ?>
+			xp_percent = (curr_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
+		<?php else: ?>xp_percent = 0<?php endif;  echo '
+	 }
+	
+	var rank_wait = 40000;
+	var xp_wait = 8000;
+	
+	$(document).ready(function(){
+		if (idu) {
+			// User XP initial display
+			$("#xpbar").progressbar({
+				value: xp_percent
+			 });
+			$("#user_level").html(\'L\'+user_level);
+			$("#xpbar_status").html(xp_percent.toFixed(2) +\'%\');
+			
+			// Mouseover shows XP and %
+			$("#xpbar, #xpbar_status").hoverIntent({
+				interval: 200,
+				timeout:1000
+			 });
+			
+			$("#xpbar, #xpbar_status, #user_level").hoverIntent(function(){
+				$("#xpbar_status").delay(200).show();
+			 }, function() {
+				$("#xpbar_status").delay(1000).fadeOut();
+			 });
 		 }
-		$("#"+div_id).load(url, {\'qstart\':start, \'limit\':limit, \'ce\':0,\'pg\':1,chk:1 }, function(res){
-			//css_even_odd();
-		 });
-	 }
-	
-	function show_fancybox(res){
-		$.fancybox(res,{centerOnScroll:true,hideOnOverlayClick:false });
-		//$.fancybox(res,{margin:600,hideOnOverlayClick:false });
-	 }
-	
-	$(function(){
-		$(".leftpan_img").click(function(){
-			$("#leftpan").toggle();
-			if($("#leftpan").is(":hidden"))
-			    $(".leftpan_img").css(\'background\',"url(http://localhost/templates/images/m_next_btn.png) no-repeat");
-			else
-			    $(".leftpan_img").css(\'background\',"url(http://localhost/templates/images/m_previous_btn.png) no-repeat");
-		 });
-		$(".rightpan_img").click(function(){
-			$("#rightpan").toggle();
-			if($("#rightpan").is(":hidden"))
-			    $(".rightpan_img").css(\'background\',"url(http://localhost/templates/images/m_previous_btn.png) no-repeat");
-			else
-			    $(".rightpan_img").css(\'background\',"url(http://localhost/templates/images/m_next_btn.png) no-repeat");
 
-		 });
+		var scrn_height = window.screen.availHeight;
+            $("#mid_cont").height(scrn_height/2 + scrn_height/9);
 
+	    /* For notification */
+	    $(".inner").hide();
+	    $(\'#slidebottom div\').click(function() {
+			get_details_notification();
+			$(this).next().slideToggle();
+	     });
+
+	    if(idu!="" && chc!=\'addMeme\'){
+			//setInterval("getall_notification()",7000); for notifications
+			
+	    /* For popup bar */
+			setTimeout("popup_expbar()", 7000); 	
+			setTimeout("live_ranking()", 20000);
+	     }
+
+	    /*if (idu) {
+		    /* For updating total login time */
+		    /*upd_log_time();
+	     }  */
+	    
 	 });
 	
-	function get_random_meme(){
-		//$(window).scrollBy(0,5);
-		//$(window).scroll(function(e){
-		//	$(\'#xpbar\').css({
-		//		position:\'fixed\',
-		//		top:\'0px!important!\',
-		//	 });
-		// }
-		
-		var url = "http://localhost/meme/meme_list/cat/rand";
-		$.fancybox.showLoading();
-		$.post(url,{ce:0 },function(res){
-			$("#randpgexist").val(1);
-			$.fancybox.open(res,{
-				afterClose : function (){
-					$("#randpgexist").val(0);
-				 }
-			 });
-			$.fancybox.update();
-		 });
-     }
-	
-	function submit() {
-		$(\'#searches\').submit();
-	 }
-	
-	function follow_user(status) {		
-		';  if ($_SESSION['profile_id']):  echo '
-		var profile_id = ';  echo $_SESSION['profile_id'];  echo '
-		';  endif;  echo '
-		var url = "http://localhost/user/follow_user";
-		
-		$.post(url, {ce:0, id:profile_id, status:status }, function(res){
-			if (status == \'follow\') {
-				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\\\'unfollow\\\');">Unfollow</a>\');
-				
-				follow_count += 1;				
-			 } else if (status == \'unfollow\') {
-				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\\\'follow\\\');">Follow</a>\');
-				
-				follow_count -= 1;
-			 }
-			
-			$(\'#follower_count\').html(follow_count+\' followers\');
-		 });
-	 }
-	
-</script>
-<script type="text/javascript">
-	    function fb_logout(){
-	       url="http://localhost/";
-	       $.post(url,{page:"user",choice:"check_fb_session",ce:0 },function(res){
-		if(res==\'-1\'){
-		       window.location.href = url+"user/logout";
-		 } else {
-				// First try logging out normal user
+	function fb_logout(){
+	   url="http://localhost/";
+	   $.post(url,{page:"user",choice:"check_fb_session",ce:0 },function(res){
+			if(res == \'-1\'){
+				console.log(\'res is -1\');
+				//   window.location.href = url+"user/logout";
+			 } else {
+			// First try logging out normal user
 				window.location.href = url+"user/logout";
-				
-				// Then try FB logout
+			
+			// Then try FB logout
 				if (idu) {
-		       		FB.logout(function(response) {
+					FB.logout(function(response) {
+						if (!response.authResponse){
+							window.location = url;
+							return;
 						window.location.href = url+"user/logout";
-		       		 });
-		       	 }
-		 }
-
-	        })
-		 }
-		
-		
-	
-</script>
-'; ?>
-
-</head>
-
-<body>
-<div id="fb-root"></div>
-      <?php echo '
-      <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : \'219049284838691\',
-            status     : true, 
-            cookie     : true,
-            xfbml      : true,
-            oauth      : true,
-           });
-          
-          FB.Event.subscribe(\'auth.login\', function (response) {
-          	window.location = "http://localhost/user/facebook_info";
-    	   });
-         };
-        
-        
-        (function(d){
-           var js, id = \'facebook-jssdk\'; if (d.getElementById(id)) {return; }
-           js = d.createElement(\'script\'); js.id = id; js.async = true;
-           js.src = "//connect.facebook.net/en_US/all.js";
-           d.getElementsByTagName(\'head\')[0].appendChild(js);
-          }(document))
-      </script>       
+						 } 
+					 });
+				 }
+			 }
+		 });
+	 }
+</script>	  
 '; ?>
 
 <!-- The Header and Logo shown at all times -->
-	<div id="top_header" class="nohighlight"></div>
+	<div id="top_header" class="nohighlight">
+	<?php if ($_SESSION['id_user']): ?>
+		<div id="logout"> <a href="javascript:void(0);" onclick="fb_logout();" class="special-btn red">Logout</a></div>
+	<?php endif; ?>
+	</div>
 
 	<div id= "logoc" class="nohighlight">
 		<a href="http://localhost/"><img src="http://localhost/templates/images/wmemejalogo.png" id="logo" style="width:180px;"></a>
@@ -536,12 +564,7 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
   endif; ?> 
 				</div>
-		</div>
-<!--		
-		<div id ="nlu_login">
-			include file=user/login_form"
-		</div>
--->
+		</div>		
 		<div id ="nlu_login_register">
 			<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/login_form_register.tpl.html", 'smarty_include_vars' => array()));
@@ -632,7 +655,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 's Memes</label>
 						   <div class="content">
 								<div id="my_meme_list">
-									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b52315231a68bf696e120c359415ab55#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b52315231a68bf696e120c359415ab55#0}';}?>
+									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#0}';}?>
 
 								</div>
 						   </div>
@@ -642,7 +665,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 						   <label for="tab-2">Tagged Memes</label>
 						   <div class="content">
 								<div id="my_tagged">
-									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b52315231a68bf696e120c359415ab55#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b52315231a68bf696e120c359415ab55#1}';}?>
+									<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#1}';}?>
 
 								</div>
 						   </div>
@@ -673,8 +696,7 @@ unset($_smarty_tpl_vars);
 				</div>
 			</div>
 		</div>
-	<?php endif; ?>
-<?php else: ?>
+	<?php endif;  else: ?>
 		<div id="user_pic" class="nohighlight">
 			<a href="/?id=<?php echo $_SESSION['dupe_username']; ?>
 ">
@@ -741,7 +763,7 @@ unset($_smarty_tpl_vars);
 							   <label for="tab-1">My Memes</label>
 							   <div class="content">
 									<div id="my_meme_list">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b52315231a68bf696e120c359415ab55#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b52315231a68bf696e120c359415ab55#2}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#2}';}?>
 
 									</div>
 							   </div>
@@ -751,7 +773,7 @@ unset($_smarty_tpl_vars);
 							   <label for="tab-2">Tagged Memes</label>
 							   <div class="content">
 									<div id="my_tagged">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b52315231a68bf696e120c359415ab55#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b52315231a68bf696e120c359415ab55#3}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#3}';}?>
 
 									</div>
 							   </div>
@@ -761,7 +783,7 @@ unset($_smarty_tpl_vars);
 							   <label for="tab-3">Favorites</label>
 							   <div class="content">
 									<div id="my_favorites" >
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b52315231a68bf696e120c359415ab55#4}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b52315231a68bf696e120c359415ab55#4}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#4}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#4}';}?>
 
 									</div>
 							   </div>
@@ -832,7 +854,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 's Memes</label>
 							   <div class="content">
 									<div id="my_meme_list">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b52315231a68bf696e120c359415ab55#5}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b52315231a68bf696e120c359415ab55#5}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#5}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#5}';}?>
 
 									</div>
 							   </div>
@@ -842,7 +864,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 							   <label for="tab-2">Tagged Memes</label>
 							   <div class="content">
 									<div id="my_tagged">
-										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:b52315231a68bf696e120c359415ab55#6}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:b52315231a68bf696e120c359415ab55#6}';}?>
+										<?php if ($this->caching && !$this->_cache_including) { echo '{nocache:bdcb7e1b27397d8fe24b84c81d92594d#6}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:bdcb7e1b27397d8fe24b84c81d92594d#6}';}?>
 
 									</div>
 							   </div>
@@ -868,7 +890,7 @@ unset($_smarty_tpl_vars);
 		</div>
 
 	<?php else: ?>
-		<div id="editorcontent">
+		<div id="editorcontent" class="nohighlight">
 			<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['content'], 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -880,7 +902,6 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
   endif; ?> 
 		</div>		
-	<?php endif; ?>
-<?php endif; ?>
+	<?php endif;  endif; ?>
 </body>
 </html>

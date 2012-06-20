@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-16 00:34:47
+<?php /* Smarty version 2.6.7, created on 2012-06-20 17:48:07
          compiled from meme/random_meme.tpl.html */ ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
-    var x=0;
+	var x=0;
     
     function rand_set_tot_adaggr(id,con){
 		var url = "http://localhost/meme/set_adaggr";
@@ -153,7 +153,6 @@
 				 }); 
 		 }
      }
-    
 </script>
 '; ?>
 
