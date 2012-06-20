@@ -3,8 +3,9 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<title>Memeja, Social Networking with Memes</title>
+<meta name="description" content="Share experiences with memes and instantly connect with everyone you care about"
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Memeja: Social Network with Memes</title>
 <link rel="shortcut icon" href="##LBL_SITE_URL##favicon.ico" >
 {assign var=appid value=$util->get_values_from_config('FACEBOOK')}
 {assign var=chc value=$smarty.request.choice}
@@ -109,23 +110,6 @@
 	    /* For popup bar */
 			setTimeout("popup_expbar()", 7000); 	
 			setTimeout("live_ranking()", 20000);
-	    }
-
-	    /* TOS Fancybox Popup on First Login */
-	    var first_login="{/literal}{$smarty.session.toc}{literal}";
-	    if(first_login=='0'){
-		    $.get('##LBL_SITE_URL##user/first_login_msg/ce/0', function(res) {
-				$.fancybox(res,{
-			    	closeBtn:false,
-			    	closeClick:false,
-					modal:true,
-			    	helpers : {
-						overlay : {
-							opacity : 0.8
-						}
-					}
-				});
-		    });
 	    }
 
 	    /*if (idu) {
