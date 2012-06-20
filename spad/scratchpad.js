@@ -1,9 +1,3 @@
-/*
-   Muaz-
-   This is the main Memeja Editor, we have most of the functionalities in here.
-   This is called in addmeme.tpl which contains the html/php for this stuff
-   I am commenting every little thing...
-*/
 var putCanvasCounter = 0;
 
 // Location of all the images for the tools, very easy to change the look of the toolbox

@@ -542,16 +542,13 @@ function get_random_meme(){
 {if !$smarty.session.id_user}
 	<!-- NLU looks @ home page -->
 	{if !$smarty.session.profile}
-	<img src="##LBL_SITE_URL##templates/images/background.png"style="position:absolute;"/>
+	<img src="##LBL_SITE_URL##templates/images/background.gif" style="position:absolute;"/>
 		<div id="nlu_container">
 				<div id="nlu_feed">
 					{include file=$content}
 					{if !$smarty.request.page}{include file="meme/home"}{/if} 
 				</div>
 		</div>		
-		<div id ="nlu_login">
-			{include file=user/login_form"}
-		</div>
 		<div id ="nlu_login_register">
 			{include file=user/login_form_register"}
 		</div>
