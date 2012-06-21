@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-21 03:07:38
+<?php /* Smarty version 2.6.7, created on 2012-06-21 03:37:33
          compiled from user/login_form_register.tpl.html */ ?>
 
-<!-- Template: user/login_form_register.tpl.html Start 21/06/2012 03:07:38 --> 
+<!-- Template: user/login_form_register.tpl.html Start 21/06/2012 03:37:33 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -58,6 +58,8 @@
 
 <div> (1) Because Facebook helps us link <strong>you + your stories</strong> with your friends</div>
 <div style="padding-top:5px;"> (2) Because we <strong>promise</strong> <span id="promise"><a href="javascript:void(0);" onclick="lol_promise();">(not plomise!)</a></span> we'll never post without your permission.</div>
+
+<div class="fb-like-box" data-href="http://www.facebook.com/memejalove" data-width="200" data-height="180" data-show-faces="true" data-border-color="white" data-stream="false" data-header="false"></div>
 
 
 
