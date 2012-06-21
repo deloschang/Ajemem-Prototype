@@ -314,42 +314,26 @@
 
 /************************* About Page ***************************/
 	#bottom_bar{
+		font-size:14px;
+		position:relative;
+		top:20px;
+		left:380px;
+	}
+	
+	#bottom_bar a {
+		color:#2B00FF;
 	}
 	
 	#about{
 		position:relative;
-		top:40px;
-		left:-30px;
+		padding:5px;
+		border-right: 1px solid #A1A1A1;
 	}
 	
 	#privacy_policy{
 		position:relative;
-		left:50px;
-		
 	}
-	.i2Style{
-	font:bold 16px Arial, Helvetica, sans-serif;
-	font-style:normal;
-	color:#000000;
-	background:#f2f2f2;
-	border:0px solid #ffffff;
-	text-shadow:-1px 1px 0px #fff;
-	box-shadow:0px 0px 7px #000000;
-	-moz-box-shadow:0px 0px 7px #000000;
-	-webkit-box-shadow:0px 0px 7px #000000;
-	border-radius:20px 20px 20px 20px;
-	-moz-border-radius:20px 20px 20px 20px;
-	-webkit-border-radius:20px 20px 20px 20px;
-	width:50px;
-	padding:15px;
-	cursor:pointer;
-	margin:0 auto;
-	}
-	.i2Style:active{
-	cursor:pointer;
-	position:relative;
-	top:2px;
-	}
+
 
 	
 	#about_page{

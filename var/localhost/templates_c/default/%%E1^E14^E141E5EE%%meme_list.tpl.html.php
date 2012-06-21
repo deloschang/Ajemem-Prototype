@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-21 09:22:32
+<?php /* Smarty version 2.6.7, created on 2012-06-21 09:54:50
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -464,7 +464,9 @@ unset($_smarty_tpl_vars);
 		</div>
 		
 		<div id="bottom_bar">
-			<div id="about"class="i2Style"><a href="/about.html">About</a></div>
-			<div id="privacy_policy"class="i2Style"><a href="/privacypolicy.html">Privacy</a></div>
+			<table><tr>
+			<td><div id="about"><a href="/about.html">About  </a></div></td>
+			<td><div id="privacy_policy"><a href="/privacypolicy.html">Privacy  </a></div></td>
+			</tr></table>
 		</div>
 <?php endif; ?>
