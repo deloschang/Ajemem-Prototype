@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-21 09:54:50
+<?php /* Smarty version 2.6.7, created on 2012-06-21 10:58:07
          compiled from user/login_form_register.tpl.html */ ?>
 
-<!-- Template: user/login_form_register.tpl.html Start 21/06/2012 09:54:50 --> 
+<!-- Template: user/login_form_register.tpl.html Start 21/06/2012 10:58:07 --> 
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -41,7 +41,7 @@
 '; ?>
 
 <div id="signup">
-<div id="signup_text">New? Join Memeja</div>
+<div id="signup_text">Experience the Hype!</div>
         
 		<center>
 	   <div class="fb-login-button" scope="
@@ -63,10 +63,10 @@
 
 
 <div id="lol_promise" style="display:none">
-	<img src="http://localhost/image/white_mascot.png" id="lol_promise_mascot"/><span id="lol_promise_text">We promise.</span>
+	<img src="http://localhost/image/white_mascot.png" style="width:90px;height:80px;" id="lol_promise_mascot"/><span id="lol_promise_text">We promise.</span>
 	
 	<div>
-	<img src="http://localhost/image/troll_mascot.png" id="lol_plomise_mascot"/><span id="lol_plomise_text"><strike>We plomise. Twust us</strike></span>
+	<img src="http://localhost/image/troll_mascot.png" style="width:80px;height:80px;" id="lol_plomise_mascot"/><span id="lol_plomise_text"><strike>We plomise. Twust us</strike></span>
 	</div>
 </div>
 

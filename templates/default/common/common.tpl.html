@@ -656,26 +656,27 @@ function get_random_meme(){
 {/literal}
 {strip}
 <!-- The Header and Logo shown at all times -->
-	<div id="top_header" class="nohighlight"></div>
-
-	<div id= "logoc" class="nohighlight">
-		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/wmemejalogo.png" id="logo" style="width:180px;"></a>
-	</div>
 	{include file="user/left_pan"}
 
 {if !$smarty.session.id_user}
 	<!-- NLU looks @ home page -->
 	{if !$smarty.session.profile}
-	<img src="##LBL_SITE_URL##templates/images/background.gif" style="position:absolute;"/>
+	<img src="##LBL_SITE_URL##templates/images/background.gif" style="position:absolute;top:-10px;width:1400px;height:800px;"/>
+	<div id="fadeback"></div>	
 		<div id="nlu_container">
 				<div id="nlu_feed">
-					{include file=$content}
-					{if !$smarty.request.page}{include file="meme/home"}{/if} 
+					<div id="memeja_logo">
+						<a href="##LBL_SITE_URL##" title="Memeja!"><img src="##LBL_SITE_URL##templates/images/memejalogo.gif"style="width:300px;height:92px;"/></a>
+					</div>	
+					<div id="front_message">
+						{include file=$content}
+						{if !$smarty.request.page}{include file="meme/home"}{/if}
+					</div>
+					<div id ="nlu_login_register">
+						{include file=user/login_form_register"}
+					</div>
 				</div>
-		</div>		
-		<div id ="nlu_login_register">
-			{include file=user/login_form_register"}
-		</div>
+		</div>			
 		
 	{elseif $smarty.session.profile == 'invalid'}
 		<div id="nlu_contained">
@@ -781,6 +782,11 @@ function get_random_meme(){
 		</div>
 	{/if}
 {else}
+	<div id="top_header" class="nohighlight"></div>
+
+	<div id= "logoc" class="nohighlight">
+		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/wmemejalogo.png" id="logo" style="width:180px;"></a>
+	</div>
 		<div id="user_pic" class="nohighlight">
 			<a href="/?id={$smarty.session.dupe_username}">
 				{if $smarty.session.fb_pic_normal}

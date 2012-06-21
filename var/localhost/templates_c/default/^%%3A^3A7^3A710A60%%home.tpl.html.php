@@ -1,6 +1,6 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-21 09:54:50
+<?php /* Smarty version 2.6.7, created on 2012-06-21 10:58:07
          compiled from meme/home.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'meme/home.tpl.html', 2, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%3A^3A7^3A710A60%%home.tpl.html.inc'] = '796a24665ed92b34f0ba05aedd549b1d';  if ($this->caching && !$this->_cache_including) { echo '{nocache:796a24665ed92b34f0ba05aedd549b1d#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'meme','mgr' => 'meme'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:796a24665ed92b34f0ba05aedd549b1d#0}';}?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%3A^3A7^3A710A60%%home.tpl.html.inc'] = '8be35ad3237edf5b336276feab1ee094';  if ($this->caching && !$this->_cache_including) { echo '{nocache:8be35ad3237edf5b336276feab1ee094#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'meme','mgr' => 'meme'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:8be35ad3237edf5b336276feab1ee094#0}';}?>
 
