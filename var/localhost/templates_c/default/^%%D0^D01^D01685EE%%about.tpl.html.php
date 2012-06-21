@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-20 11:04:18
          compiled from static/about.tpl.html */ ?>
 
 <!-- Template: static/about.tpl.html Start 20/06/2012 11:04:18 --> 
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-20 17:44:02
+         compiled from static/about.tpl.html */ ?>
+
+<!-- Template: static/about.tpl.html Start 20/06/2012 17:44:02 --> 
+>>>>>>> 11d759705a6f8b6e8784e45a4afbdeb4d894e999
  <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
 <div id="about_page">
 	<title>About Memeja</title>

@@ -23,8 +23,10 @@
 			{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
 			
 			
-			<span id ="rand_meme_reply_id{$x.id_meme}">
-			<label id="randrepl{$x.id_meme}">{$x.tot_reply}</label>&nbsp;<a href="javascript:void(0);" onclick="get_all_rand_replies('{$x.id_meme}');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;</span>
+			<!--
+			<span id ="rand_meme_reply_id ($x.id_meme)">
+			<label id="randrepl($x.id_meme)"> ($x.tot_reply)<label>&nbsp;<a href="javascript:void(0);" onclick="get_all_rand_replies('($x.id_meme)');"><img src="##LBL_SITE_URL##templates/images/reply.gif" />Reply</a>&emsp;</span>
+			-->
 			{/if}
 			
 			<span id ="rand_meme_agr_id{$x.id_meme}">

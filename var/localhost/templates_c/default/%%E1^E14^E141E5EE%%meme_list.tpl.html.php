@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-21 03:26:03
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-21 03:07:53
+>>>>>>> 11d759705a6f8b6e8784e45a4afbdeb4d894e999
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -427,6 +431,7 @@
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmorememe.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
+<<<<<<< HEAD
  ?>
     <?php else: ?>
 	<input type="hidden" id="msgexist" value="1">
@@ -467,4 +472,47 @@ unset($_smarty_tpl_vars);
 			<div id="about"class="i2Style"><a href="/about.html">About</a></div>
 			<div id="privacy_policy"class="i2Style"><a href="/privacypolicy.html">Privacy</a></div>
 		</div>
-<?php endif; ?>
+<?php endif; ?>
+=======
+ ?>
+    <?php else: ?>
+	<input type="hidden" id="msgexist" value="1">
+		OMG, you've reached the edge of Memeja!
+    <?php endif; ?>
+</div>
+
+<?php if (! $this->_tpl_vars['sm']['is_search']): ?>
+<div id="page_boop" style="text-align:center">
+	<span id="pageprev"></span>
+	<span id="pagingcount" ></span>
+	<span id="pagenext"></span>
+</div>
+<?php endif; ?>
+
+<div id="loadingmeme_img" style="margin-left: 41%; display:none;">
+    <img src="http://localhost/templates/images/loading.gif" />
+</div>
+
+<?php endif; ?>
+
+<?php if (! $_SESSION['id_user'] && ! $_SESSION['profile']): ?>
+
+	<div id="icon_container"></div>
+	<div class="module_text" id="front_card">Your stories belong here</div>
+	
+		<div class="module_text" id="first_half">Whether it's...</div>
+		<div id="module_container">
+			<div id="message_container">
+				<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
+				<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
+				<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="http://localhost/image/questions.png" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
+			</div>
+			<div class="module_text" id="second_half">Memeja helps you share experiences with the people you care about!</div>
+		</div>
+		
+		<div id="bottom_bar">
+			<div id="about"class="i2Style"><a href="/about.html">About</a></div>
+			<div id="privacy_policy"class="i2Style"><a href="/privacypolicy.html">Privacy</a></div>
+		</div>
+<?php endif; ?>
+>>>>>>> 11d759705a6f8b6e8784e45a4afbdeb4d894e999

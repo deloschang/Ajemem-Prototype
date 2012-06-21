@@ -677,9 +677,8 @@ class user_manager extends mod_manager {
 ##################################################
 ################## LOGOUT  #######################
 ##################################################
-	function _logout(){
+function _logout(){
 		// Called for both FB and normal user logout
-		
 		$site = $_SESSION['site_used'];
 		setcookie('username', '', time()-60*60*24*365,"/".SUB_DIR);
 		setcookie('password','', time()-60*60*24*365,"/".SUB_DIR);
@@ -701,9 +700,6 @@ class user_manager extends mod_manager {
 		$_SESSION['email'] = "";
 		$_SESSION['id_user'] = "";
 		$_SESSION['raise_message']['global'] = "You have successfully logged out!";
-
-
-
 
 		$_COOKIE['fbs_'.$app_id]="";
 		if($this->_input['a']) {

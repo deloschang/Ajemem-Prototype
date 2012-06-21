@@ -1,12 +1,21 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-21 03:26:03
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-21 03:07:53
+>>>>>>> 11d759705a6f8b6e8784e45a4afbdeb4d894e999
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 205, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 244, false),)), $this); ?>
 
+<<<<<<< HEAD
 <!-- Template: meme/loadmorememe.tpl.html Start 21/06/2012 03:26:03 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
+=======
+<!-- Template: meme/loadmorememe.tpl.html Start 21/06/2012 03:07:53 --> 
+ <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+>>>>>>> 11d759705a6f8b6e8784e45a4afbdeb4d894e999
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
@@ -92,7 +101,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 					feed_count_orig = feed_count;
 					feed_count += 1; 
 
-					$(\'.live_feed\'+feed_count_orig).before(\'<div class="live_feed\'+feed_count+\'" style="display: none; padding-top:20px;"></div>\');
+					$(\'.live_feed\'+feed_count_orig).before(\'<div class="live_feed\'+feed_count+\'" style="display: none;"></div>\');
 				 });
 			 }
 			
@@ -195,7 +204,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 
 
 <!-- part of live meme functionality, do not remove -->
-<div class="live_feed0" style="display: none; padding-top:20px;"></div>
+<div class="live_feed0" style="display: none;"></div>
 <!-- end -->
 
 <?php $this->_foreach['cur_meme'] = array('total' => count($_from = (array)$this->_tpl_vars['sm']['res_meme']), 'iteration' => 0);
@@ -297,7 +306,8 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 				    <?php endif; ?>
 					onclick="set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ','A','<?php echo $this->_tpl_vars['x']['id_user']; ?>
-');"><img src="http://localhost/templates/images/like.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;right:2px;"/><div id="aggr<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+');"><img src="http://localhost/templates/images/like.png" 
+					class="meme_button"/><div id="aggr<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " class="meme_like_label" 
 					<?php if ($_SESSION['id_user']): ?>
 			    		<?php if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )): ?>
@@ -318,10 +328,10 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 			    	<?php endif; ?>
 					onclick="set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ','D','<?php echo $this->_tpl_vars['x']['id_user']; ?>
-');"><img src="http://localhost/templates/images/dislike.png" style="width:25px;height:25px;position:relative;top:12px;margin:3px;right:2px;"/><div id="disaggr<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+');"><img src="http://localhost/templates/images/dislike.png" class="meme_button"/><div id="disaggr<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " class="meme_dislike_label"
 					<?php if ($_SESSION['id_user']): ?>
-			    		<?php if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )): ?>
+			    		<?php if (substr_count ( $this->_tpl_vars['x']['dishonour_id_user'] , $_SESSION['id_user'] )): ?>
 						style="color:red"
 						<?php endif; ?>
 					<?php endif; ?>

@@ -70,6 +70,122 @@
 	    });
 	}
 	
+	function upd_log_time() {
+		  var url="##LBL_SITE_URL##index.php";
+		  $.post(url,{page:"user",choice:"set_login_time",ce:0},function(res){//alert(res);
+		  })
+		  setTimeout("upd_log_time()", 10000);
+    	}
+    	
+	function get_next_page(url, start, limit, div_id) {
+		if (!document.getElementById(div_id)) {
+			div_id = "content";
+		}
+		$("#"+div_id).load(url, {'qstart':start, 'limit':limit, 'ce':0,'pg':1,chk:1}, function(res){
+			//css_even_odd();
+		});
+	}
+	
+	function show_fancybox(res){
+		$.fancybox(res,{centerOnScroll:true,hideOnOverlayClick:false});
+		//$.fancybox(res,{margin:600,hideOnOverlayClick:false});
+	}
+	
+	$(function(){
+		$(".leftpan_img").click(function(){
+			$("#leftpan").toggle();
+			if($("#leftpan").is(":hidden"))
+			    $(".leftpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_next_btn.png) no-repeat");
+			else
+			    $(".leftpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_previous_btn.png) no-repeat");
+		});
+		$(".rightpan_img").click(function(){
+			$("#rightpan").toggle();
+			if($("#rightpan").is(":hidden"))
+			    $(".rightpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_previous_btn.png) no-repeat");
+			else
+			    $(".rightpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_next_btn.png) no-repeat");
+
+		});
+
+	});
+	
+	flexymsg = {
+	required_dob: "This field is required.",
+	required: "<br/>This field is required.",	
+	remote: "<br/>Please fix this field.",
+	email: "<br/>Please enter a valid email address.",
+	url: "<br/>Please enter a valid URL.",
+	date: "<br/>Please enter a valid date.",
+	dateISO: "<br/>Please enter a valid date (ISO).",
+	number: "<br/>Please enter a valid number.",
+	digits: "<br/>Please enter only digits.",
+	creditcard: "<br/>Please enter a valid credit card number.",
+	equalTo: "<br/>Please enter the same value again.",
+	accept: "<br/>Please enter a value with a valid extension.",
+	maxlength: "<br/>Please enter no more than {0} characters.",
+	minlength: "<br/>Please enter at least {0} characters.",
+	rangelength: "<br/>Please enter a value between {0} and {1} characters long.",
+	range: "<br/>Please enter a value between {0} and {1}.",
+	maxValue: "<br/>Please enter a value less than or equal to {0}.",
+	minValue: "<br/>Please enter a value greater than or equal to {0}.",
+	nodefind : "<br/> is not defined!",
+	novalue : "<br/> return value is required!",
+	customarray : "<br/>Custom function should return array!",
+	customfcheck : "<br/>Custom function should be present in case of custom checking!"
+};
+	
+	});
+</script>
+{/literal}
+</head>
+<script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/js/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/js/ui.datepicker.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/hotkeys/jquery.hotkeys.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##libsext/hoverintent/jquery.hoverIntent.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.core.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.highlight.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##spad/color/colorpicker.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##spad/jquery.mousehold.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##spad/scratchpad.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##spad/jquery.jqDock.min.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/js/jquery.multiautocomplete.js"></script>
+<body>
+<div id="fb-root"></div>
+      {literal}
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '219049284838691',
+            status     : true, 
+            cookie     : true,
+            xfbml      : true,
+            oauth      : true,
+          });
+          
+          FB.Event.subscribe('auth.login', function (response) {
+          	window.location = "##LBL_SITE_URL##user/facebook_info";
+    	  });
+        };
+        
+        
+        (function(d){
+           var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+           js = d.createElement('script'); js.id = id; js.async = true;
+           js.src = "//connect.facebook.net/en_US/all.js";
+           d.getElementsByTagName('head')[0].appendChild(js);
+         }(document))
+      </script>
+<script type="text/javascript">
 	function live_ranking() {
 		var ranking_data;
 		var url="##LBL_SITE_URL##user/live_ranking/";
@@ -96,7 +212,7 @@
 					$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');
 					
 					$("#trailing_ranking_number").css("color", '#FEEB4E');
-					$("#trailing_ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
+					$("#trailing_ranking_number").animate( { "opacity" : 0.4 }, 1000, function() {
 						$("#trailing_ranking_number").css("color","#81cdfe");
 						$("#trailing_ranking_number").animate( { "opacity" : 1 }, 300)
 					});
@@ -116,7 +232,7 @@
 					// Green flash
 
 					$("#ranking_number").css("color", '#B9FE4E');
-					$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
+					$("#ranking_number").animate( { "opacity" : 0.4 }, 1000, function() {
 						$("#ranking_number").css("color","#81cdfe");
 						$("#ranking_number").animate( { "opacity" : 1 }, 300)
 					});
@@ -149,7 +265,7 @@
 					// Red flash
 
 					$("#ranking_number").css("color", '#FE4EB9');
-					$("#ranking_number").animate( { "opacity" : 0.4 }, 700, function() {
+					$("#ranking_number").animate( { "opacity" : 0.4 }, 1000, function() {
 						$("#ranking_number").css("color","#81cdfe");
 						$("#ranking_number").animate( { "opacity" : 1 }, 300)
 					});
@@ -176,6 +292,24 @@
 			
 			
 		});
+	}
+
+function get_random_meme(){		
+		var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
+		$.fancybox.showLoading();
+		$.post(url,{ce:0},function(res){
+			$("#randpgexist").val(1);
+			$.fancybox.open(res,{
+				afterClose : function (){
+					$("#randpgexist").val(0);
+				}
+			});
+			$.fancybox.update();
+		});
+    }
+	
+	function submit() {
+		$('#searches').submit();
 	}
 	
 	function upd_log_time() {
@@ -436,25 +570,23 @@ function get_random_meme(){
 	var chc = "{/literal}{$chc}{literal}";
 	var idu = "{/literal}{$smarty.session.id_user}{literal}";
 	
-	var follow_count = parseInt({/literal}{$smarty.session.profile_follower_count}{literal});
+	var follow_count = parseInt({/literal}{$smarty.session.profile_follower_count}{literal});	
+	// Variables for XP updating
+	var curr_xp = {/literal}{if $smarty.session.exp_point}{$smarty.session.exp_point}{else}0{/if}{literal},
+		xp_to_level = {/literal}{if $smarty.session.xp_to_level}{$smarty.session.xp_to_level}{else}0{/if}{literal},
+		previous_xp_to_level = {/literal}{if $smarty.session.previous_xp_to_level}{$smarty.session.previous_xp_to_level}{else}0{/if}{literal},
+		user_level = {/literal}{if $smarty.session.level}{$smarty.session.level}{else}0{/if}{literal};
+
+	if (user_level == 1) {
+		var xp_percent = (curr_xp / xp_to_level) * 100;
+	} else {
+		{/literal}{if $smarty.session.exp_point}
+			xp_percent = (curr_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
+		{else}xp_percent = 0{/if}{literal}
+	}
 	
-		// Variables for XP updating
-		var curr_xp = {/literal}{if $smarty.session.exp_point}{$smarty.session.exp_point}{else}0{/if}{literal};
-		var xp_to_level = {/literal}{if $smarty.session.xp_to_level}{$smarty.session.xp_to_level}{else}0{/if}{literal};
-		var previous_xp_to_level = {/literal}{if $smarty.session.previous_xp_to_level}{$smarty.session.previous_xp_to_level}{else}0{/if}{literal};
-
-		var user_level = {/literal}{if $smarty.session.level}{$smarty.session.level}{else}0{/if}{literal};
-
-		if (user_level == 1) {
-			var xp_percent = (curr_xp / xp_to_level) * 100;
-		} else {
-			{/literal}{if $smarty.session.exp_point}
-				xp_percent = (curr_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
-			{else}xp_percent = 0{/if}{literal}
-		}
-		
-		var rank_wait = 40000;
-		var xp_wait = 8000;
+	var rank_wait = 40000;
+	var xp_wait = 8000;
 	
 	$(document).ready(function(){
 		if (idu) {
@@ -476,17 +608,23 @@ function get_random_meme(){
 			}, function() {
 				$("#xpbar_status").delay(1000).fadeOut();
 			});
+			
+			$("#user_name").hoverIntent(function(){
+				$(".nav_menu").show();
+			}, function() {
+				$(".nav_menu").slideUp('medium');
+			});
 		}
 
 		var scrn_height = window.screen.availHeight;
             $("#mid_cont").height(scrn_height/2 + scrn_height/9);
 
-	    /* For notification */
+	    /* For notification 
 	    $(".inner").hide();
 	    $('#slidebottom div').click(function() {
 			get_details_notification();
 			$(this).next().slideToggle();
-	    });
+	    });*/
 
 	    if(idu!="" && chc!='addMeme'){
 			//setInterval("getall_notification()",7000); for notifications
@@ -496,55 +634,29 @@ function get_random_meme(){
 			setTimeout("live_ranking()", 20000);
 	    }
 
-	    /* TOS Fancybox Popup on First Login */
-	    var first_login="{/literal}{$smarty.session.toc}{literal}";
-	    if(first_login=='0'){
-		    $.get('##LBL_SITE_URL##user/first_login_msg/ce/0', function(res) {
-				$.fancybox(res,{
-			    	closeBtn:false,
-			    	closeClick:false,
-					modal:true,
-			    	helpers : {
-						overlay : {
-							opacity : 0.8
-						}
-					}
-				});
-		    });
-	    }
-
 	    /*if (idu) {
 		    /* For updating total login time */
 		    /*upd_log_time();
 	    }  */
 	    
 	});
-	 function fb_logout(){
-	       url="##LBL_SITE_URL##";
-	       $.post(url,{page:"user",choice:"check_fb_session",ce:0},function(res){
-		if(res=='-1'){
-		    //   window.location.href = url+"user/logout";
-		} else {
-				// First try logging out normal user
-				//window.location.href = url+"user/logout";
-				
-				// Then try FB logout
-				if (idu) {
-		       		FB.logout(function(response) {
-					//	window.location.href = url+"user/logout";
-		       		});
-		       	}
-		}
-			})
-		}
+	
+	function fb_logout(response){
+		url="##LBL_SITE_URL##";		
+		FB.getLoginStatus(function(response){
+			if (!response.authResponse){
+				window.location.href = url+"user/logout";
+				return;
+			}
+			
+			FB.logout(fb_logout);
+		});
+	}
 </script>	  
 {/literal}
+{strip}
 <!-- The Header and Logo shown at all times -->
-	<div id="top_header" class="nohighlight">
-	{if $smarty.session.id_user}
-		<div id="logout"> <a href="javascript:void(0);" onclick="fb_logout();" class="special-btn red">Logout</a></div>
-	{/if}
-	</div>
+	<div id="top_header" class="nohighlight"></div>
 
 	<div id= "logoc" class="nohighlight">
 		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/wmemejalogo.png" id="logo" style="width:180px;"></a>
@@ -554,7 +666,7 @@ function get_random_meme(){
 {if !$smarty.session.id_user}
 	<!-- NLU looks @ home page -->
 	{if !$smarty.session.profile}
-	<img src="##LBL_SITE_URL##templates/images/background.png"style="position:absolute;"/>
+	<img src="##LBL_SITE_URL##templates/images/background.gif" style="position:absolute;"/>
 		<div id="nlu_container">
 				<div id="nlu_feed">
 					{include file=$content}
@@ -839,5 +951,6 @@ function get_random_meme(){
 		</div>		
 	{/if}
 {/if}
+{/strip}
 </body>
 </html>

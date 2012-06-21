@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-20 11:11:52
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-20 23:26:43
+>>>>>>> 11d759705a6f8b6e8784e45a4afbdeb4d894e999
          compiled from meme/loadmore_rand_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmore_rand_meme.tpl.html', 11, false),array('modifier', 'date_format', 'meme/loadmore_rand_meme.tpl.html', 13, false),)), $this); ?>
@@ -23,6 +27,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	    </div>
 	    
 	    <!--	    <div id="randhrc<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+<<<<<<< HEAD
 " style="font-size: 16px;color:blue;"><?php if ($this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption']):  echo $this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption'];  else:  endif; ?></div>-->
 <!--	    -->
 <!--	    <br/>-->
@@ -41,6 +46,24 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 ');"><img src="http://localhost/templates/images/reply.gif" />Reply</a>&emsp;</span>
 			<?php endif; ?>
 			
+=======
+" style="font-size: 16px;color:blue;"><?php if ($this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption']):  echo $this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption'];  else:  endif; ?></div>-->
+<!--	    -->
+<!--	    <br/>-->
+
+	    <div>
+			<?php if ($_SESSION['id_user']): ?>
+		    <span>
+			<?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
+			
+			
+			<!--
+			<span id ="rand_meme_reply_id ($x.id_meme)">
+			<label id="randrepl($x.id_meme)"> ($x.tot_reply)<label>&nbsp;<a href="javascript:void(0);" onclick="get_all_rand_replies('($x.id_meme)');"><img src="http://localhost/templates/images/reply.gif" />Reply</a>&emsp;</span>
+			-->
+			<?php endif; ?>
+			
+>>>>>>> 11d759705a6f8b6e8784e45a4afbdeb4d894e999
 			<span id ="rand_meme_agr_id<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ">
 			<label id="randaggr<?php echo $this->_tpl_vars['x']['id_meme']; ?>
@@ -206,4 +229,4 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 
 <?php elseif (! $this->_tpl_vars['sm']['rand_fg'] && ! $this->_tpl_vars['sm']['res_meme']['0']): ?>
 No meme found.
-<?php endif; ?>
+<?php endif; ?>
