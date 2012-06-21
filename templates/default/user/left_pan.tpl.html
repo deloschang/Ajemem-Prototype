@@ -1,7 +1,18 @@
 {*notag*}
 {if $smarty.session.id_user}
 
-		<div id= "user_name" class="nohighlight"><a href ="/?id={$smarty.session.dupe_username}">{$smarty.session.fname|capitalize}</a></div>
+		<div id= "user_name" class="nohighlight">
+			<a href ="/?id={$smarty.session.dupe_username}">{$smarty.session.fname|capitalize}</a>
+			<div class="nav_menu" style="top:37px; left:728px;">
+				<div class="hover_menu_contents">
+					<ul class="nav_menu_list">
+						<li>
+							<a href="javascript:void(0); onclick="fb_logout();">Logout</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 		{*User Rank + XP*}
 			
 		<!--<div id="user_ranking_info">

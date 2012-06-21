@@ -40,6 +40,10 @@
 		margin:0px;
 		padding:0px;
 	}
+	
+	ul{
+		list-style: none outside none;
+	}
 
 /* Highlighting Problem*/
 
@@ -671,16 +675,45 @@ moz-border-radius: 10px;
 		top:5px;
 		z-index:9002;
 	}
-	#logout {
-		font-weight:bold; 
-		left:1200px;		
-		top:2px;
-		position:fixed;
-		text-align:center;
-		text-shadow: 0px 1px 0px #e5e5ee;
-		height:40px;
-		z-index:9002;
+	
+	.nav_menu{
+		display:none;
 	}
+	
+	.nav_menu .hover_menu_contents {
+		-moz-border-bottom-colors: none !important;
+		-moz-border-image: none !important;
+		-moz-border-left-colors: none !important;
+		-moz-border-right-colors: none !important;
+		-moz-border-top-colors: none !important;
+		color: #333333;
+		float: left;
+		padding: 10px;
+		width: 180px;
+		background: none repeat scroll 0 0 white;
+		border: 1px solid #999999;
+		border-color: -moz-use-text-color #ACACAC #ACACAC !important;
+		border-radius: 0 0 0 0;
+		border-right: 1px solid #ACACAC !important;
+		border-style: none solid solid !important;
+		border-width: 0 1px 1px !important;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	}
+	
+	.nav_menu_list li a{
+		border-radius: 3px 3px 3px 3px;
+		color: #333333;
+		display: block;
+		font-weight: bold;
+		padding: 5px 10px;
+	}
+	
+	.nav_menu_list li a:hover{
+		background: none repeat scroll 0 0 #DFEAF4;
+		color: #19558D;
+		text-decoration: none;
+	}
+	
 	#login_top {
 		left:1080px;		
 		position:fixed;
@@ -1155,7 +1188,6 @@ label.error	{
 .rest	{
 	background:#4D79A6;
 	float:left;
-	list-style-type:none;
 	display:block;
 	height:27px;
 	margin:0px 1px;
@@ -2319,7 +2351,6 @@ a.special-btn.facebook:active {
 	height: 30px;
 	margin: 0 auto;
 	padding: 0;
-	list-style: none;
 	background: #111;
 	-webkit-box-shadow: 0 1px 3px #000,0 0 0 1px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.05);
 	-moz-box-shadow: 0 1px 3px #000,0 0 0 1px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.05);
@@ -2401,7 +2432,6 @@ a.special-btn.facebook:active {
 
 #fancybox-thumbs ul {
 	position: relative;
-	list-style: none;
 	margin: 0;
 	padding: 0;
 }

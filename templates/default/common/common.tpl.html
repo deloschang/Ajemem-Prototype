@@ -475,6 +475,12 @@ function get_random_meme(){
 			}, function() {
 				$("#xpbar_status").delay(1000).fadeOut();
 			});
+			
+			$("#user_name").hoverIntent(function(){
+				$(".nav_menu").show();
+			}, function() {
+				$(".nav_menu").slideUp('medium');
+			});
 		}
 
 		var scrn_height = window.screen.availHeight;
@@ -527,11 +533,9 @@ function get_random_meme(){
 	}
 </script>	  
 {/literal}
+{strip}
 <!-- The Header and Logo shown at all times -->
 	<div id="top_header" class="nohighlight">
-	{if $smarty.session.id_user}
-		<div id="logout"> <a href="javascript:void(0);" onclick="fb_logout();" class="special-btn red">Logout</a></div>
-	{/if}
 	</div>
 
 	<div id= "logoc" class="nohighlight">
@@ -827,5 +831,6 @@ function get_random_meme(){
 		</div>		
 	{/if}
 {/if}
+{/strip}
 </body>
 </html>
