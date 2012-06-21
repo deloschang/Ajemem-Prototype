@@ -294,7 +294,7 @@
 		});
 	}
 
-function get_random_meme(){		
+	function get_random_meme(){		
 		var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
 		$.fancybox.showLoading();
 		$.post(url,{ce:0},function(res){
@@ -461,7 +461,6 @@ function get_random_meme(){
 			$("#xpbar").progressbar({
 				value: xp_percent
 			});
-			$("#user_level").html('L'+user_level);
 			$("#xpbar_status").html(xp_percent.toFixed(2) +'%');
 			
 			// Mouseover shows XP and %
@@ -487,11 +486,11 @@ function get_random_meme(){
             $("#mid_cont").height(scrn_height/2 + scrn_height/9);
 
 	    /* For notification */
-	    $(".inner").hide();
+	    /*$(".inner").hide();
 	    $('#slidebottom div').click(function() {
 			get_details_notification();
 			$(this).next().slideToggle();
-	    });
+	    });*/
 
 	    if(idu!="" && chc!='addMeme'){
 			//setInterval("getall_notification()",7000); for notifications
@@ -511,24 +510,7 @@ function get_random_meme(){
 	function fb_logout(){
 	   url="##LBL_SITE_URL##";
 	   $.post(url,{page:"user",choice:"check_fb_session",ce:0},function(res){
-			if(res == '-1'){
-				console.log('res is -1');
-				//   window.location.href = url+"user/logout";
-			} else {
-			// First try logging out normal user
-				window.location.href = url+"user/logout";
-			
-			// Then try FB logout
-				if (idu) {
-					FB.logout(function(response) {
-						if (!response.authResponse){
-							window.location = url;
-							return;
-						}
-						window.location.href = url+"user/logout";
-					});
-				}
-			}
+			window.location.href = url+"user/logout";
 		});
 	}
 </script>	  

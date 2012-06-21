@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-21 02:32:06
+<?php /* Smarty version 2.6.7, created on 2012-06-21 02:39:26
          compiled from user/left_pan.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 5, false),)), $this); ?>
@@ -12,7 +12,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 				<div class="hover_menu_contents">
 					<ul class="nav_menu_list">
 						<li>
-							<a href="javascript:void(0); onclick="fb_logout();">Logout</a>
+							<a href="javascript:void(0);" onclick="fb_logout();">Logout</a>
 						</li>
 					</ul>
 				</div>
