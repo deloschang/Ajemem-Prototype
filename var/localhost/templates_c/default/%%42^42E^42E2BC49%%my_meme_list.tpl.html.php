@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-21 03:26:03
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-21 03:07:53
->>>>>>> 11d759705a6f8b6e8784e45a4afbdeb4d894e999
+<?php /* Smarty version 2.6.7, created on 2012-06-21 04:39:56
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 35, false),)), $this); ?>
@@ -137,4 +133,4 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 		<?php endif; ?>
 </div>
 </div>
-
+

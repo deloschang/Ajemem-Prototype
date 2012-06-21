@@ -1868,6 +1868,7 @@ a.special-btn.facebook:active {
 		padding:5px;
 		width:640px;
 		position:relative;
+		background:#FFF;
 		moz-border-radius: 10px;
 		webkit-border-radius: 10px;
 		khtml-border-radius: 10px;
