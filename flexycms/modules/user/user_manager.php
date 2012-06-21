@@ -677,7 +677,39 @@ class user_manager extends mod_manager {
 ##################################################
 ################## LOGOUT  #######################
 ##################################################
-	// in meme_manager.php now
+function _logout(){
+		// Called for both FB and normal user logout
+		$site = $_SESSION['site_used'];
+		setcookie('username', '', time()-60*60*24*365,"/".SUB_DIR);
+		setcookie('password','', time()-60*60*24*365,"/".SUB_DIR);
+		setcookie('email', '', time()-60*60*24*365,"/".SUB_DIR);
+		setcookie('id_user','', time()-60*60*24*365,"/".SUB_DIR);
+		//setcookie('login_cnt','', time()-60*60*24*365,"/");
+		$_COOKIE['username'] = "";
+		$_COOKIE['password'] = "";
+		$_COOKIE['email'] ="";
+		$_COOKIE['id_user']="";
+
+		//$_COOKIE['login_cnt'] = "";
+		$_SESSION = array('');
+		unset($_SESSION);
+		session_unset();
+		session_destroy();
+		session_start();
+		$_SESSION['username'] = "";
+		$_SESSION['email'] = "";
+		$_SESSION['id_user'] = "";
+		$_SESSION['raise_message']['global'] = "You have successfully logged out!";
+
+		$_COOKIE['fbs_'.$app_id]="";
+		if($this->_input['a']) {
+			$_SESSION['id_admin'] = "";
+			$_SESSION['admin'] = "";
+			redirect(LBL_ADMIN_SITE_URL);
+		} else {
+			redirect(LBL_SITE_URL);
+		}
+	}
 
 
 ##################################################

@@ -294,7 +294,7 @@
 		});
 	}
 
-	function get_random_meme(){		
+function get_random_meme(){		
 		var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
 		$.fancybox.showLoading();
 		$.post(url,{ce:0},function(res){
@@ -461,6 +461,7 @@
 			$("#xpbar").progressbar({
 				value: xp_percent
 			});
+			$("#user_level").html('L'+user_level);
 			$("#xpbar_status").html(xp_percent.toFixed(2) +'%');
 			
 			// Mouseover shows XP and %
@@ -485,8 +486,8 @@
 		var scrn_height = window.screen.availHeight;
             $("#mid_cont").height(scrn_height/2 + scrn_height/9);
 
-	    /* For notification */
-	    /*$(".inner").hide();
+	    /* For notification 
+	    $(".inner").hide();
 	    $('#slidebottom div').click(function() {
 			get_details_notification();
 			$(this).next().slideToggle();
@@ -507,10 +508,15 @@
 	    
 	});
 	
-	function fb_logout(){
-	   url="##LBL_SITE_URL##";
-	   $.post(url,{page:"user",choice:"check_fb_session",ce:0},function(res){
-			window.location.href = url+"user/logout";
+	function fb_logout(response){
+		url="##LBL_SITE_URL##";		
+		FB.getLoginStatus(function(response){
+			if (!response.authResponse){
+				window.location.href = url+"user/logout";
+				return;
+			}
+			
+			FB.logout(fb_logout);
 		});
 	}
 </script>	  
