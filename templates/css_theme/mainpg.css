@@ -438,9 +438,11 @@
 	
 /* Main Container with the middle column and the sidebars */
 	#contained {
-		position: relative;
-		top:40px;
-		left:-150px;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin-top: -240px;
+		margin-left: -800px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -1622,6 +1624,12 @@ a{
 		padding-left: 10px;
 		position:relative;
 		top:0px;
+	}
+	
+	.toggle_container{
+		position:absolute;
+		left:95px;
+		top:55px;
 	}
 	
 /* Inner formatting of live feed meme */

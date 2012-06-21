@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-21 04:39:56
+<?php /* Smarty version 2.6.7, created on 2012-06-21 09:22:32
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 205, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 244, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 21/06/2012 04:39:56 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 21/06/2012 09:22:32 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -336,23 +336,22 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 									&nbsp;<label id="capt<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "><?php if ($this->_tpl_vars['x']['tot_caption'] != 0):  echo $this->_tpl_vars['x']['tot_caption'];  endif; ?></label> <a href="javascript:void(0)" onclick="get_captions('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ');" >Add Caption</a>
-									<?php endif; ?>
-					
+									<?php endif; ?> -->
 
-<span><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+					<h2 class="expand_heading"></h2>
+					<div class="toggle_container">
+					<table><tr>
+					<?php if ($_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
+					<td><a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /></a></td>
+					<?php endif; ?>
+					<td><a href="http://twitter.com/share" class="twitter-share-button" data-url="memeja.com/?id=FirstName-LastName&meme=<?php echo $this->_tpl_vars['x']['image']; ?>
 " data-text="<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
-" data-count="none" data-via="memeje">Tweet</a></span> 
-<span class="fb_btn"><fb:like href="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
-" send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like>
-
-<!--
-KARAN: Post to Reddit Button
-
-<?php if ($_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
-<a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /> </a>
-</span><br/>
-<?php endif; ?>
--->
+" data-count="none" data-via="memeje">Tweet</a></td> 
+					<td><div class="fb_btn"><fb:like href="memeja.com/?id=FirstName-LastName&meme=<?php echo $this->_tpl_vars['x']['image']; ?>
+" send="false" width="70" show_faces="true" font="arial" layout="button_count"></fb:like> </div></td>
+					</tr></table>
+					</div>
+	
 	    </div>
 	    <div id="send_reply<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " style="width:75%; margin:-20px 0 30px 120px; display: none;"></div>
