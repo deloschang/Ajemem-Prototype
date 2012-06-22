@@ -1,12 +1,12 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-22 14:20:59
+<?php /* Smarty version 2.6.7, created on 2012-06-22 14:26:00
          compiled from meme/home.tpl.html */
 
-$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\%%3A^3A7^3A710A60%%home.tpl.html.inc'] = 'c7188b3fcf94959acacab5578444a019';
+$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\%%3A^3A7^3A710A60%%home.tpl.html.inc'] = '9628af52212bf9d98a81ca5191351af1';
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'meme/home.tpl.html', 2, false),)), $this); ?>
 <?php
-function _smarty_tplfunc_c7188b3fcf94959acacab5578444a019_0(&$_smarty)
+function _smarty_tplfunc_9628af52212bf9d98a81ca5191351af1_0(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'meme','mgr' => 'meme'), $_smarty);
 }

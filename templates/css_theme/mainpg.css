@@ -781,7 +781,7 @@ moz-border-radius: 10px;
 		-moz-border-top-colors: none;
 		color: #333333;
 		position:absolute;
-		width: 158px;
+		width: 157px;
 		height:30px;
 		background: none repeat scroll 0 0 white;
 		border: 1px solid #999999;
@@ -803,8 +803,8 @@ moz-border-radius: 10px;
 		font-size:14px;
 		padding: 5px;
 		position:relative;
-		top:-5px;
-		left:0px;
+		top:0px;
+		left:10px;
 	}
 	
 	.nav_menu_list li a:hover{
