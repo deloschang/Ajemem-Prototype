@@ -138,9 +138,10 @@
 		font-style: bold;
 		color: #333333;
 		line-height:20px;
+		padding-top:10px;
 		margin-left:auto;
 		margin-right:auto;
-		margin-bottom:15px;
+		margin-bottom:10px;
 	}
 	
 	#signup_explanation, #signup_alt{
@@ -238,7 +239,8 @@
 	
 	#front_message {
 		position:relative;
-		left:-80px;
+		margin-left:auto;
+		margin-right:auto;
 	}
 	
 	#memeja_logo {
@@ -258,21 +260,22 @@
 	}
 	
 	#front_card{
-		font-size:50px;
-		color: #fa3a56;
+		font-size:40px;
+		color: #54BAEB;
 		padding:5px 10px;
 		background:transparent;
 	}
 	
 	#first_half{
 		font-size:24px;
-		color:#7E3AFA;
-		margin-top:30px;
+		color:#54BAEB;
+		margin-top:5px;
 	}
 	
 	#second_half{
 		font-size:20px;
-		padding-top: 25px;
+		padding-top: 5px;
+		color:#54BAEB;
 	}
 	
 	#module_container{
@@ -346,8 +349,7 @@
 	#bottom_bar{
 		font-size:14px;
 		position:relative;
-		top:20px;
-		left:380px;
+		top:10px;
 	}
 	
 	#bottom_bar a {

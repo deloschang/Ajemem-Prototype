@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-22 07:09:57
+<?php /* Smarty version 2.6.7, created on 2012-06-22 08:54:36
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -450,7 +450,6 @@ unset($_smarty_tpl_vars);
 
 <?php if (! $_SESSION['id_user'] && ! $_SESSION['profile']): ?>
 
-	<div id="icon_container"></div>
 	<div class="module_text" id="front_card">Your stories belong here</div>
 	
 		<div class="module_text" id="first_half">Whether it's...</div>
@@ -462,11 +461,21 @@ unset($_smarty_tpl_vars);
 			</div>
 			<div class="module_text" id="second_half">Memeja helps you share experiences with the people you care about!</div>
 		</div>
-		
+		<center>
+		<div id="signup_text">Experience the Hype!</div>
+		<div class="fb-login-button" scope="
+	    	email,
+	    	publish_stream
+	    	,user_education_history
+	    			    	">
+        Login with Facebook
+      </div>
+
 		<div id="bottom_bar">
 			<table><tr>
 			<td><div id="about"><a href="/about.html">About  </a></div></td>
 			<td><div id="privacy_policy"><a href="/privacypolicy.html">Privacy  </a></div></td>
 			</tr></table>
 		</div>
+		</center>
 <?php endif; ?>
