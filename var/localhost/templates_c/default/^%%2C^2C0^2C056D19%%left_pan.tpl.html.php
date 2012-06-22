@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-21 11:10:20
+<?php /* Smarty version 2.6.7, created on 2012-06-22 07:09:57
          compiled from user/left_pan.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 5, false),)), $this); ?>
@@ -8,7 +8,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			<a href ="/?id=<?php echo $_SESSION['dupe_username']; ?>
 "><?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 </a>
-			<div class="nav_menu" style="top:37px; left:728px;">
+		</div>
+			<div class="nav_menu">
 				<div class="hover_menu_contents">
 					<ul class="nav_menu_list">
 						<li>
@@ -17,7 +18,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 					</ul>
 				</div>
 			</div>
-		</div>
 
 					
 		<!--<div id="user_ranking_info">
