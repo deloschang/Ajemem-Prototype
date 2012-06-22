@@ -1,23 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-22 08:54:36
+<?php /* Smarty version 2.6.7, created on 2012-06-22 14:20:59
          compiled from user/left_pan.tpl.html */ ?>
-<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'user/left_pan.tpl.html', 5, false),)), $this); ?>
 <?php if ($_SESSION['id_user']): ?>
 
-		<div id= "user_name" class="nohighlight">
-			<a href ="/?id=<?php echo $_SESSION['dupe_username']; ?>
-"><?php echo ((is_array($_tmp=$_SESSION['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
-</a>
-		</div>
-			<div class="nav_menu">
-				<div class="hover_menu_contents">
-					<ul class="nav_menu_list">
-						<li>
-							<a href="javascript:void(0);" onclick="fb_logout();">Logout</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+		
 
 					
 		<!--<div id="user_ranking_info">
