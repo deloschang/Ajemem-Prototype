@@ -1,40 +1,40 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-21 03:37:33
+<?php /* Smarty version 2.6.7, created on 2012-06-23 02:00:13
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 583, false),array('function', 'get_mod', 'common/common.tpl.html', 614, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '6c6c36af81047d859a40146b25f838df'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '97dc5e71d08f27594dbbfc1fb091a527'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>Memeja, Social Networking with Memes</title>
-<meta name="description" content="Memeja helps you share experiences through memes. Connect with the lives of everyone you care about as you share those memorable moments that create a lasting impression."
+<meta name="description" content="Memeja helps you share experiences through memes. Instantly connect with the lives of everyone you care about as you share those memorable moments that create a lasting impression."
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="shortcut icon" href="http://localhost/templates/images/memeja_icon.ico" >
+<link rel="shortcut icon" href="http://who-think.kiewit.dartmouth.edu/templates/images/memeja_icon.ico" >
 <?php $this->assign('appid', $this->_tpl_vars['util']->get_values_from_config('FACEBOOK'));  $this->assign('chc', $_REQUEST['choice']); ?>
-<link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
+<link rel="stylesheet" type="text/css" href="http://who-think.kiewit.dartmouth.edu/templates/css_theme/mainpg.css"/>
 
-<script type="text/javascript" src="http://localhost/templates/css_theme/head.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/templates/css_theme/head.js"></script>
 <script type="text/javascript">
-	head.js("http://localhost/libsext/jquery/jquery.js")
+	head.js("http://who-think.kiewit.dartmouth.edu/libsext/jquery/jquery.js")
 	.js("http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js")
-	.js("http://localhost/libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5")
-	.js("http://localhost/libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5")
-	.js("http://localhost/libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5")
-	.js("http://localhost/libsext/js/jquery.autocomplete.js")
-	.js("http://localhost/libsext/js/ui.datepicker.js")
-	.js("http://localhost/libsext/js/ajaxfileupload.js")
-	.js("http://localhost/libsext/hotkeys/jquery.hotkeys.js")
-	.js("http://localhost/libsext/hoverintent/jquery.hoverIntent.js")
-	.js("http://localhost/libsext/xpbar/jquery-ui-1.8.16.custom.min.js")
-	.js("http://localhost/libsext/xpbar/jquery.effects.core.js")
-	.js("http://localhost/libsext/xpbar/jquery.effects.highlight.js")
+	.js("http://who-think.kiewit.dartmouth.edu/libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5")
+	.js("http://who-think.kiewit.dartmouth.edu/libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5")
+	.js("http://who-think.kiewit.dartmouth.edu/libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5")
+	.js("http://who-think.kiewit.dartmouth.edu/libsext/js/jquery.autocomplete.js")
+	.js("http://who-think.kiewit.dartmouth.edu/libsext/js/ui.datepicker.js")
+	.js("http://who-think.kiewit.dartmouth.edu/libsext/js/ajaxfileupload.js")
+	.js("http://who-think.kiewit.dartmouth.edu/libsext/hotkeys/jquery.hotkeys.js")
+	.js("http://who-think.kiewit.dartmouth.edu/libsext/hoverintent/jquery.hoverIntent.js")
+	.js("http://who-think.kiewit.dartmouth.edu/libsext/xpbar/jquery-ui-1.8.16.custom.min.js")
+	.js("http://who-think.kiewit.dartmouth.edu/libsext/xpbar/jquery.effects.core.js")
+	.js("http://who-think.kiewit.dartmouth.edu/libsext/xpbar/jquery.effects.highlight.js")
 	.js("js/jquery-1.7.1.min.js")
-	.js("http://localhost/spad/color/colorpicker.js")
-	.js("http://localhost/spad/jquery.mousehold.js")
+	.js("http://who-think.kiewit.dartmouth.edu/spad/color/colorpicker.js")
+	.js("http://who-think.kiewit.dartmouth.edu/spad/jquery.mousehold.js")
 	.js("http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js")
-	.js("http://localhost/spad/scratchpad.js")
-	.js("http://localhost/spad/jquery.jqDock.min.js")
-	.js("http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"); 
+	.js("http://who-think.kiewit.dartmouth.edu/spad/scratchpad.js")
+	.js("http://who-think.kiewit.dartmouth.edu/spad/jquery.jqDock.min.js")
+	.js("http://who-think.kiewit.dartmouth.edu/templates/flexyjs/js/jquery.multiautocomplete.js"); 
 </script>
 <?php echo '
 
@@ -42,7 +42,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	head.ready(function(){
 	
 	function log_in_reminder(){
-		 var url="http://localhost/user/log_in_reminder";
+		 var url="http://who-think.kiewit.dartmouth.edu/user/log_in_reminder";
 		 
 		$.post(url,{ce:0 }, function(res){
 			$.fancybox(res);
@@ -50,7 +50,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	 }
 	
 	function getall_notification(){
-	    var url="http://localhost/manage/getall_notification";
+	    var url="http://who-think.kiewit.dartmouth.edu/manage/getall_notification";
 	    $.post(url,{ce:0 },function(res){
 			if(res[0] != "-1"){
 				if(res[2]==0)
@@ -65,7 +65,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	 }
 	
 	function get_details_notification(){
-	    var url="http://localhost//manage/get_details_notification";
+	    var url="http://who-think.kiewit.dartmouth.edu//manage/get_details_notification";
 	    $.post(url,{id_users:$(\'#user_ids\').val(),id_badges:$(\'#id_badges\').val(),ce:0 },function(data){
 			$(".inner").html(data);
 			$(".not_txt").hide();
@@ -73,7 +73,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	 }
 	
 	function upd_log_time() {
-		  var url="http://localhost/index.php";
+		  var url="http://who-think.kiewit.dartmouth.edu/index.php";
 		  $.post(url,{page:"user",choice:"set_login_time",ce:0 },function(res){//alert(res);
 		   })
 		  setTimeout("upd_log_time()", 10000);
@@ -97,16 +97,16 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		$(".leftpan_img").click(function(){
 			$("#leftpan").toggle();
 			if($("#leftpan").is(":hidden"))
-			    $(".leftpan_img").css(\'background\',"url(http://localhost/templates/images/m_next_btn.png) no-repeat");
+			    $(".leftpan_img").css(\'background\',"url(http://who-think.kiewit.dartmouth.edu/templates/images/m_next_btn.png) no-repeat");
 			else
-			    $(".leftpan_img").css(\'background\',"url(http://localhost/templates/images/m_previous_btn.png) no-repeat");
+			    $(".leftpan_img").css(\'background\',"url(http://who-think.kiewit.dartmouth.edu/templates/images/m_previous_btn.png) no-repeat");
 		 });
 		$(".rightpan_img").click(function(){
 			$("#rightpan").toggle();
 			if($("#rightpan").is(":hidden"))
-			    $(".rightpan_img").css(\'background\',"url(http://localhost/templates/images/m_previous_btn.png) no-repeat");
+			    $(".rightpan_img").css(\'background\',"url(http://who-think.kiewit.dartmouth.edu/templates/images/m_previous_btn.png) no-repeat");
 			else
-			    $(".rightpan_img").css(\'background\',"url(http://localhost/templates/images/m_next_btn.png) no-repeat");
+			    $(".rightpan_img").css(\'background\',"url(http://who-think.kiewit.dartmouth.edu/templates/images/m_next_btn.png) no-repeat");
 
 		 });
 
@@ -142,26 +142,26 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 '; ?>
 
 </head>
-<script type="text/javascript" src="http://localhost/libsext/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/libsext/jquery/jquery.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5"></script>
-<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5"></script>
-<script type="text/javascript" src="http://localhost/libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5"></script>
-<script type="text/javascript" src="http://localhost/libsext/js/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="http://localhost/libsext/js/ui.datepicker.js"></script>
-<script type="text/javascript" src="http://localhost/libsext/js/ajaxfileupload.js"></script>
-<script type="text/javascript" src="http://localhost/libsext/hotkeys/jquery.hotkeys.js"></script>
-<script type="text/javascript" src="http://localhost/libsext/hoverintent/jquery.hoverIntent.js"></script>
-<script type="text/javascript" src="http://localhost/libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="http://localhost/libsext/xpbar/jquery.effects.core.js"></script>
-<script type="text/javascript" src="http://localhost/libsext/xpbar/jquery.effects.highlight.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/libsext/js/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/libsext/js/ui.datepicker.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/libsext/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/libsext/hotkeys/jquery.hotkeys.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/libsext/hoverintent/jquery.hoverIntent.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/libsext/xpbar/jquery.effects.core.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/libsext/xpbar/jquery.effects.highlight.js"></script>
 <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="http://localhost/spad/color/colorpicker.js"></script>
-<script type="text/javascript" src="http://localhost/spad/jquery.mousehold.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/spad/color/colorpicker.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/spad/jquery.mousehold.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
-<script type="text/javascript" src="http://localhost/spad/scratchpad.js"></script>
-<script type="text/javascript" src="http://localhost/spad/jquery.jqDock.min.js"></script>
-<script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/spad/scratchpad.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/spad/jquery.jqDock.min.js"></script>
+<script type="text/javascript" src="http://who-think.kiewit.dartmouth.edu/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
 <body>
 <div id="fb-root"></div>
       <?php echo '
@@ -176,7 +176,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
            });
           
           FB.Event.subscribe(\'auth.login\', function (response) {
-          	window.location = "http://localhost/user/facebook_info";
+          	window.location = "http://who-think.kiewit.dartmouth.edu/user/facebook_info";
     	   });
          };
         
@@ -191,7 +191,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <script type="text/javascript">
 	function live_ranking() {
 		var ranking_data;
-		var url="http://localhost/user/live_ranking/";
+		var url="http://who-think.kiewit.dartmouth.edu/user/live_ranking/";
 		
 		$.post(url,{ce:0,chk:1 }, function(ranking_data){
 			if (ranking_data.trim() == "no update" || ranking_data.trim() == "no rank"){
@@ -298,7 +298,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	 }
 
 function get_random_meme(){		
-		var url = "http://localhost/meme/meme_list/cat/rand";
+		var url = "http://who-think.kiewit.dartmouth.edu/meme/meme_list/cat/rand";
 		$.fancybox.showLoading();
 		$.post(url,{ce:0 },function(res){
 			$("#randpgexist").val(1);
@@ -319,7 +319,7 @@ function get_random_meme(){
 		';  if ($_SESSION['profile_id']):  echo '
 		var profile_id = ';  echo $_SESSION['profile_id'];  echo '
 		';  endif;  echo '
-		var url = "http://localhost/user/follow_user";
+		var url = "http://who-think.kiewit.dartmouth.edu/user/follow_user";
 		
 		$.post(url, {ce:0, id:profile_id, status:status }, function(res){
 			if (status == \'follow\') {
@@ -337,7 +337,7 @@ function get_random_meme(){
 	 }
 		function popup_expbar(){
 		var data;
-		var url="http://localhost/user/getExperience/";
+		var url="http://who-think.kiewit.dartmouth.edu/user/getExperience/";
 		
 		$.post(url,{ce:0,chk:1 }, function(data){
 			if(data == 90999999999){
@@ -512,7 +512,7 @@ function get_random_meme(){
 	 });
 	
 	function fb_logout(response){
-		url="http://localhost/";		
+		url="http://who-think.kiewit.dartmouth.edu/";		
 		FB.getLoginStatus(function(response){
 			if (!response.authResponse){
 				window.location.href = url+"user/logout";
@@ -525,11 +525,11 @@ function get_random_meme(){
 </script>	  
 '; ?>
 
-<?php echo '<!-- The Header and Logo shown at all times --><div id="top_header" class="nohighlight"></div><div id= "logoc" class="nohighlight"><a href="http://localhost/"><img src="http://localhost/templates/images/wmemejalogo.png" id="logo" style="width:180px;"></a></div>';  $_smarty_tpl_vars = $this->_tpl_vars;
+<?php echo '<!-- The Header and Logo shown at all times --><div id="top_header" class="nohighlight"></div><div id= "logoc" class="nohighlight"><a href="http://who-think.kiewit.dartmouth.edu/"><img src="http://who-think.kiewit.dartmouth.edu/templates/images/wmemejalogo.png" id="logo" style="width:180px;"></a></div>';  $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "user/left_pan.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
-  echo '';  if (! $_SESSION['id_user']):  echo '<!-- NLU looks @ home page -->';  if (! $_SESSION['profile']):  echo '<img src="http://localhost/templates/images/background.gif" style="position:absolute;"/><div id="nlu_container"><div id="nlu_feed">';  $_smarty_tpl_vars = $this->_tpl_vars;
+  echo '';  if (! $_SESSION['id_user']):  echo '<!-- NLU looks @ home page -->';  if (! $_SESSION['profile']):  echo '<img src="http://who-think.kiewit.dartmouth.edu/templates/images/background.gif" style="position:absolute;"/><div id="nlu_container"><div id="nlu_feed">';  $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['content'], 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
@@ -545,19 +545,19 @@ unset($_smarty_tpl_vars);
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
-  echo '</div></div><div id="login_top"><div class="fb-login-button" scope="email,publish_stream,user_education_history';  echo '';  echo '">Login with Facebook</div></div></div>';  else:  echo '<div id="nlu_contained"><div id="profile_page"><div id="profile_pic">';  if ($_SESSION['profile_picture']):  echo '<img src="';  echo $_SESSION['profile_picture'];  echo '"class="profile_pic"/>';  else:  echo '<img src="http://localhost/image/thumb/avatar/';  if ($_SESSION['gender'] == 'M'):  echo 'memeja_male.png';  else:  echo 'memeja_female.png';  endif;  echo '"class="profile_pic"/>';  endif;  echo '</div><div id="user_info"><div id="profile_name"><a href="/?id=';  echo $_SESSION['profile_dupe_username'];  echo '">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '</a></div><div id="follower_count">';  if (! $_SESSION['profile_follower_count'] == '0'):  echo '';  echo $_SESSION['profile_follower_count'];  echo '';  else:  echo '0';  endif;  echo 'followers</div></div><div id="view_meme">';  if ($_SESSION['profile_meme_image']):  echo '<div id="profile_meme">';  echo $_SESSION['profile_meme_title'];  echo '</div><div id="profile_meme_image"><img src="http://localhost/image/orig/meme/';  echo $_SESSION['profile_meme_image'];  echo '" title="';  echo $_SESSION['profile_meme_title'];  echo '" /></div>';  if ($_SESSION['profile_meme_tagged']):  echo '<div id="profile_tagged">Tagged:';  $this->_foreach['cur_meme'] = array('total' => count($_from = (array)$_SESSION['profile_meme_tagged']), 'iteration' => 0);
+  echo '</div></div><div id="login_top"><div class="fb-login-button" scope="email,publish_stream,user_education_history';  echo '';  echo '">Login with Facebook</div></div></div>';  else:  echo '<div id="nlu_contained"><div id="profile_page"><div id="profile_pic">';  if ($_SESSION['profile_picture']):  echo '<img src="';  echo $_SESSION['profile_picture'];  echo '"class="profile_pic"/>';  else:  echo '<img src="http://who-think.kiewit.dartmouth.edu/image/thumb/avatar/';  if ($_SESSION['gender'] == 'M'):  echo 'memeja_male.png';  else:  echo 'memeja_female.png';  endif;  echo '"class="profile_pic"/>';  endif;  echo '</div><div id="user_info"><div id="profile_name"><a href="/?id=';  echo $_SESSION['profile_dupe_username'];  echo '">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '</a></div><div id="follower_count">';  if (! $_SESSION['profile_follower_count'] == '0'):  echo '';  echo $_SESSION['profile_follower_count'];  echo '';  else:  echo '0';  endif;  echo 'followers</div></div><div id="view_meme">';  if ($_SESSION['profile_meme_image']):  echo '<div id="profile_meme">';  echo $_SESSION['profile_meme_title'];  echo '</div><div id="profile_meme_image"><img src="http://who-think.kiewit.dartmouth.edu/image/orig/meme/';  echo $_SESSION['profile_meme_image'];  echo '" title="';  echo $_SESSION['profile_meme_title'];  echo '" /></div>';  if ($_SESSION['profile_meme_tagged']):  echo '<div id="profile_tagged">Tagged:';  $this->_foreach['cur_meme'] = array('total' => count($_from = (array)$_SESSION['profile_meme_tagged']), 'iteration' => 0);
 if ($this->_foreach['cur_meme']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['x']):
         $this->_foreach['cur_meme']['iteration']++;
- echo '<span><img src="https://graph.facebook.com/';  echo $this->_tpl_vars['x']['id'];  echo '/picture"/>';  echo $this->_tpl_vars['x']['name'];  echo '</span>';  endforeach; endif; unset($_from);  echo '</div>';  endif;  echo '';  endif;  echo '</div><div id="my_pics"><div class="tabs"><div class="tab"><input type="radio" id="tab-1" name="tab-group-1" checked><label for="tab-1">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '\'s Memes</label><div class="content"><div id="my_meme_list">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:6c6c36af81047d859a40146b25f838df#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:6c6c36af81047d859a40146b25f838df#0}';} echo '</div></div></div><div class="tab"><input type="radio" id="tab-2" name="tab-group-1"><label for="tab-2">Tagged Memes</label><div class="content"><div id="my_tagged">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:6c6c36af81047d859a40146b25f838df#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:6c6c36af81047d859a40146b25f838df#1}';} echo '</div></div></div></div></div></div><div id="live_feed" class="nohighlight"><center><div id="random_meme"><a href="javascript:void(0);" onclick="get_random_meme();" class="special-btn red">Random</a></div></center><div id="feed_cont">';  $_smarty_tpl_vars = $this->_tpl_vars;
+ echo '<span><img src="https://graph.facebook.com/';  echo $this->_tpl_vars['x']['id'];  echo '/picture"/>';  echo $this->_tpl_vars['x']['name'];  echo '</span>';  endforeach; endif; unset($_from);  echo '</div>';  endif;  echo '';  endif;  echo '</div><div id="my_pics"><div class="tabs"><div class="tab"><input type="radio" id="tab-1" name="tab-group-1" checked><label for="tab-1">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '\'s Memes</label><div class="content"><div id="my_meme_list">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:97dc5e71d08f27594dbbfc1fb091a527#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:97dc5e71d08f27594dbbfc1fb091a527#0}';} echo '</div></div></div><div class="tab"><input type="radio" id="tab-2" name="tab-group-1"><label for="tab-2">Tagged Memes</label><div class="content"><div id="my_tagged">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:97dc5e71d08f27594dbbfc1fb091a527#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:97dc5e71d08f27594dbbfc1fb091a527#1}';} echo '</div></div></div></div></div></div><div id="live_feed" class="nohighlight"><center><div id="random_meme"><a href="javascript:void(0);" onclick="get_random_meme();" class="special-btn red">Random</a></div></center><div id="feed_cont">';  $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
-  echo '</div></div><div id="login_top"><div class="fb-login-button" scope="email,publish_stream,user_education_history';  echo '';  echo '">Login with Facebook</div></div></div>';  endif;  echo '';  else:  echo '<div id="user_pic" class="nohighlight"><a href="/?id=';  echo $_SESSION['dupe_username'];  echo '">';  if ($_SESSION['fb_pic_normal']):  echo '<img src="';  echo $_SESSION['fb_pic_normal'];  echo '" style="width:30px;height:30px">';  else:  echo '<img src="http://localhost/image/thumb/avatar/';  if ($_SESSION['avatar']):  echo '';  echo $_SESSION['avatar'];  echo '';  else:  echo '';  if ($_SESSION['gender'] == 'M'):  echo 'memeja_male.png';  else:  echo 'memeja_female.png';  endif;  echo '';  endif;  echo '" style="width:30px;height:30px"/>';  endif;  echo '</a><div id="ranking_number">';  if ($_SESSION['exp_rank']):  echo '';  echo $_SESSION['exp_rank'];  echo '';  else:  echo 'N/A';  endif;  echo '</div></div>';  if ($_SESSION['one_less_user']):  echo '<div id="trailing_user_pic" class="nohighlight"><span id="trailing_user_profile_pic"><a href="/?id=';  echo $_SESSION['one_less_dupe_username'];  echo '">';  if ($_SESSION['one_less_pic']):  echo '<img src="';  echo $_SESSION['one_less_pic'];  echo '" style="width:30px;height:30px">';  else:  echo '<img src="http://localhost/image/thumb/avatar/';  if ($_SESSION['one_less_avatar']):  echo '';  echo $_SESSION['one_less_avatar'];  echo '';  else:  echo '';  if ($_SESSION['one_less_gender'] == 'M'):  echo 'memeja_male.png';  else:  echo 'memeja_female.png';  endif;  echo '';  endif;  echo '" style="width:30px;height:30px"/>';  endif;  echo '</a></span><div id="trailing_ranking_number">';  if ($_SESSION['one_less_rank']):  echo '';  echo $_SESSION['one_less_rank'];  echo '';  else:  echo 'N/A';  endif;  echo '</div></div>';  else:  echo '';  endif;  echo '';  if ($_REQUEST['choice'] != 'addMeme'):  echo '<div id="xpbar_info" class="nohighlight"><div id="xpbar"></div><div id="user_level"></div><div id="xpbar_status"></div></div><div id="contained">';  if (! $_SESSION['profile']):  echo '<!-- view home page --><div id="profile_page"><div id="profile_pic">';  if ($_SESSION['fb_pic_normal']):  echo '<img src="';  echo $_SESSION['fb_pic_normal'];  echo '"class="profile_pic"/>';  else:  echo '<img src="http://localhost/image/thumb/avatar/';  if ($_SESSION['avatar']):  echo '';  echo $_SESSION['avatar'];  echo '';  else:  echo '';  if ($_SESSION['gender'] == 'M'):  echo 'memeja_male.png';  else:  echo 'memeja_female.png';  endif;  echo '';  endif;  echo '"class="profile_pic"/>';  endif;  echo '</div><div id="user_info"><div id="profile_name"><a href="/?id=';  echo $_SESSION['dupe_username'];  echo '">';  echo ((is_array($_tmp=$_SESSION['username'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '</a></div><div id="follower_count">';  if (! $_SESSION['profile_follower_count'] == '0'):  echo '';  echo $_SESSION['profile_follower_count'];  echo '';  else:  echo '0';  endif;  echo 'followers</div></div><div id="my_pics"><div class="tabs"><div class="tab"><input type="radio" id="tab-1" name="tab-group-1" checked><label for="tab-1">My Memes</label><div class="content"><div id="my_meme_list">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:6c6c36af81047d859a40146b25f838df#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:6c6c36af81047d859a40146b25f838df#2}';} echo '</div></div></div><div class="tab"><input type="radio" id="tab-2" name="tab-group-1"><label for="tab-2">Tagged Memes</label><div class="content"><div id="my_tagged">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:6c6c36af81047d859a40146b25f838df#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:6c6c36af81047d859a40146b25f838df#3}';} echo '</div></div></div><div class="tab"><input type="radio" id="tab-3" name="tab-group-1"><label for="tab-3">Favorites</label><div class="content"><div id="my_favorites" >';  if ($this->caching && !$this->_cache_including) { echo '{nocache:6c6c36af81047d859a40146b25f838df#4}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:6c6c36af81047d859a40146b25f838df#4}';} echo '</div></div></div></div></div></div>';  elseif ($_SESSION['profile'] == 'invalid'):  echo '<div id="profile_page"><div id="profile_name"><center>Flerp? We couldn\'t find this user!</center></div></div>';  else:  echo '<div id="profile_page"><div id="profile_pic">';  if ($_SESSION['profile_picture']):  echo '<img src="';  echo $_SESSION['profile_picture'];  echo '"class="profile_pic"/>';  else:  echo '<img src="http://localhost/image/thumb/avatar/';  if ($_SESSION['avatar']):  echo '';  echo $_SESSION['avatar'];  echo '';  else:  echo '';  if ($_SESSION['gender'] == 'M'):  echo 'memeja_male.png';  else:  echo 'memeja_female.png';  endif;  echo '';  endif;  echo '"class="profile_pic"/>';  endif;  echo '</div><div id="user_info"><div id="profile_name"><a href="/?id=';  echo $_SESSION['profile_dupe_username'];  echo '">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '</a></div><div id="follower_count">';  if (! $_SESSION['profile_follower_count'] == '0'):  echo '';  echo $_SESSION['profile_follower_count'];  echo '';  else:  echo '0';  endif;  echo 'followers</div>';  if ($_SESSION['following'] == 'y'):  echo '<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'unfollow\');">Unfollow</a></span>';  elseif ($_SESSION['following'] == 'n'):  echo '<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'follow\');">follow</a></span>';  endif;  echo '</div><div id="view_meme">';  if ($_SESSION['profile_meme_image']):  echo '<div id="profile_meme">';  echo $_SESSION['profile_meme_title'];  echo '</div><div id="profile_meme_image"><img src="http://localhost/image/orig/meme/';  echo $_SESSION['profile_meme_image'];  echo '" title="';  echo $_SESSION['profile_meme_title'];  echo '" /></div>';  if ($_SESSION['profile_meme_tagged']):  echo '<div id="profile_tagged">Tagged:';  $this->_foreach['cur_meme'] = array('total' => count($_from = (array)$_SESSION['profile_meme_tagged']), 'iteration' => 0);
+  echo '</div></div><div id="login_top"><div class="fb-login-button" scope="email,publish_stream,user_education_history';  echo '';  echo '">Login with Facebook</div></div></div>';  endif;  echo '';  else:  echo '<div id="user_pic" class="nohighlight"><a href="/?id=';  echo $_SESSION['dupe_username'];  echo '">';  if ($_SESSION['fb_pic_normal']):  echo '<img src="';  echo $_SESSION['fb_pic_normal'];  echo '" style="width:30px;height:30px">';  else:  echo '<img src="http://who-think.kiewit.dartmouth.edu/image/thumb/avatar/';  if ($_SESSION['avatar']):  echo '';  echo $_SESSION['avatar'];  echo '';  else:  echo '';  if ($_SESSION['gender'] == 'M'):  echo 'memeja_male.png';  else:  echo 'memeja_female.png';  endif;  echo '';  endif;  echo '" style="width:30px;height:30px"/>';  endif;  echo '</a><div id="ranking_number">';  if ($_SESSION['exp_rank']):  echo '';  echo $_SESSION['exp_rank'];  echo '';  else:  echo 'N/A';  endif;  echo '</div></div>';  if ($_SESSION['one_less_user']):  echo '<div id="trailing_user_pic" class="nohighlight"><span id="trailing_user_profile_pic"><a href="/?id=';  echo $_SESSION['one_less_dupe_username'];  echo '">';  if ($_SESSION['one_less_pic']):  echo '<img src="';  echo $_SESSION['one_less_pic'];  echo '" style="width:30px;height:30px">';  else:  echo '<img src="http://who-think.kiewit.dartmouth.edu/image/thumb/avatar/';  if ($_SESSION['one_less_avatar']):  echo '';  echo $_SESSION['one_less_avatar'];  echo '';  else:  echo '';  if ($_SESSION['one_less_gender'] == 'M'):  echo 'memeja_male.png';  else:  echo 'memeja_female.png';  endif;  echo '';  endif;  echo '" style="width:30px;height:30px"/>';  endif;  echo '</a></span><div id="trailing_ranking_number">';  if ($_SESSION['one_less_rank']):  echo '';  echo $_SESSION['one_less_rank'];  echo '';  else:  echo 'N/A';  endif;  echo '</div></div>';  else:  echo '';  endif;  echo '';  if ($_REQUEST['choice'] != 'addMeme'):  echo '<div id="xpbar_info" class="nohighlight"><div id="xpbar"></div><div id="user_level"></div><div id="xpbar_status"></div></div><div id="contained">';  if (! $_SESSION['profile']):  echo '<!-- view home page --><div id="profile_page"><div id="profile_pic">';  if ($_SESSION['fb_pic_normal']):  echo '<img src="';  echo $_SESSION['fb_pic_normal'];  echo '"class="profile_pic"/>';  else:  echo '<img src="http://who-think.kiewit.dartmouth.edu/image/thumb/avatar/';  if ($_SESSION['avatar']):  echo '';  echo $_SESSION['avatar'];  echo '';  else:  echo '';  if ($_SESSION['gender'] == 'M'):  echo 'memeja_male.png';  else:  echo 'memeja_female.png';  endif;  echo '';  endif;  echo '"class="profile_pic"/>';  endif;  echo '</div><div id="user_info"><div id="profile_name"><a href="/?id=';  echo $_SESSION['dupe_username'];  echo '">';  echo ((is_array($_tmp=$_SESSION['username'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '</a></div><div id="follower_count">';  if (! $_SESSION['profile_follower_count'] == '0'):  echo '';  echo $_SESSION['profile_follower_count'];  echo '';  else:  echo '0';  endif;  echo 'followers</div></div><div id="my_pics"><div class="tabs"><div class="tab"><input type="radio" id="tab-1" name="tab-group-1" checked><label for="tab-1">My Memes</label><div class="content"><div id="my_meme_list">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:97dc5e71d08f27594dbbfc1fb091a527#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:97dc5e71d08f27594dbbfc1fb091a527#2}';} echo '</div></div></div><div class="tab"><input type="radio" id="tab-2" name="tab-group-1"><label for="tab-2">Tagged Memes</label><div class="content"><div id="my_tagged">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:97dc5e71d08f27594dbbfc1fb091a527#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:97dc5e71d08f27594dbbfc1fb091a527#3}';} echo '</div></div></div><div class="tab"><input type="radio" id="tab-3" name="tab-group-1"><label for="tab-3">Favorites</label><div class="content"><div id="my_favorites" >';  if ($this->caching && !$this->_cache_including) { echo '{nocache:97dc5e71d08f27594dbbfc1fb091a527#4}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:97dc5e71d08f27594dbbfc1fb091a527#4}';} echo '</div></div></div></div></div></div>';  elseif ($_SESSION['profile'] == 'invalid'):  echo '<div id="profile_page"><div id="profile_name"><center>Flerp? We couldn\'t find this user!</center></div></div>';  else:  echo '<div id="profile_page"><div id="profile_pic">';  if ($_SESSION['profile_picture']):  echo '<img src="';  echo $_SESSION['profile_picture'];  echo '"class="profile_pic"/>';  else:  echo '<img src="http://who-think.kiewit.dartmouth.edu/image/thumb/avatar/';  if ($_SESSION['avatar']):  echo '';  echo $_SESSION['avatar'];  echo '';  else:  echo '';  if ($_SESSION['gender'] == 'M'):  echo 'memeja_male.png';  else:  echo 'memeja_female.png';  endif;  echo '';  endif;  echo '"class="profile_pic"/>';  endif;  echo '</div><div id="user_info"><div id="profile_name"><a href="/?id=';  echo $_SESSION['profile_dupe_username'];  echo '">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '</a></div><div id="follower_count">';  if (! $_SESSION['profile_follower_count'] == '0'):  echo '';  echo $_SESSION['profile_follower_count'];  echo '';  else:  echo '0';  endif;  echo 'followers</div>';  if ($_SESSION['following'] == 'y'):  echo '<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'unfollow\');">Unfollow</a></span>';  elseif ($_SESSION['following'] == 'n'):  echo '<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'follow\');">follow</a></span>';  endif;  echo '</div><div id="view_meme">';  if ($_SESSION['profile_meme_image']):  echo '<div id="profile_meme">';  echo $_SESSION['profile_meme_title'];  echo '</div><div id="profile_meme_image"><img src="http://who-think.kiewit.dartmouth.edu/image/orig/meme/';  echo $_SESSION['profile_meme_image'];  echo '" title="';  echo $_SESSION['profile_meme_title'];  echo '" /></div>';  if ($_SESSION['profile_meme_tagged']):  echo '<div id="profile_tagged">Tagged:';  $this->_foreach['cur_meme'] = array('total' => count($_from = (array)$_SESSION['profile_meme_tagged']), 'iteration' => 0);
 if ($this->_foreach['cur_meme']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['x']):
         $this->_foreach['cur_meme']['iteration']++;
- echo '<span><img src="https://graph.facebook.com/';  echo $this->_tpl_vars['x']['id'];  echo '/picture"/>';  echo $this->_tpl_vars['x']['name'];  echo '</span>';  endforeach; endif; unset($_from);  echo '</div>';  endif;  echo '';  endif;  echo '</div><div id="my_pics"><div class="tabs"><div class="tab"><input type="radio" id="tab-1" name="tab-group-1" checked><label for="tab-1">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '\'s Memes</label><div class="content"><div id="my_meme_list">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:6c6c36af81047d859a40146b25f838df#5}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:6c6c36af81047d859a40146b25f838df#5}';} echo '</div></div></div><div class="tab"><input type="radio" id="tab-2" name="tab-group-1"><label for="tab-2">Tagged Memes</label><div class="content"><div id="my_tagged">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:6c6c36af81047d859a40146b25f838df#6}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:6c6c36af81047d859a40146b25f838df#6}';} echo '</div></div></div></div></div></div>';  endif;  echo '<div id="live_feed" class="nohighlight"><center><div id="random_meme"><a href="javascript:void(0);" onclick="get_random_meme();" class="special-btn red">Random</a></div></center><div id="feed_cont">';  $_smarty_tpl_vars = $this->_tpl_vars;
+ echo '<span><img src="https://graph.facebook.com/';  echo $this->_tpl_vars['x']['id'];  echo '/picture"/>';  echo $this->_tpl_vars['x']['name'];  echo '</span>';  endforeach; endif; unset($_from);  echo '</div>';  endif;  echo '';  endif;  echo '</div><div id="my_pics"><div class="tabs"><div class="tab"><input type="radio" id="tab-1" name="tab-group-1" checked><label for="tab-1">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '\'s Memes</label><div class="content"><div id="my_meme_list">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:97dc5e71d08f27594dbbfc1fb091a527#5}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:97dc5e71d08f27594dbbfc1fb091a527#5}';} echo '</div></div></div><div class="tab"><input type="radio" id="tab-2" name="tab-group-1"><label for="tab-2">Tagged Memes</label><div class="content"><div id="my_tagged">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:97dc5e71d08f27594dbbfc1fb091a527#6}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:97dc5e71d08f27594dbbfc1fb091a527#6}';} echo '</div></div></div></div></div></div>';  endif;  echo '<div id="live_feed" class="nohighlight"><center><div id="random_meme"><a href="javascript:void(0);" onclick="get_random_meme();" class="special-btn red">Random</a></div></center><div id="feed_cont">';  $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
