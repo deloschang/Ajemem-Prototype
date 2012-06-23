@@ -379,7 +379,6 @@ function get_random_meme(){
 	customfcheck : "<br/>Custom function should be present in case of custom checking!"
 };
 	
-	});
 </script>
 {/literal}
 </head>
@@ -611,8 +610,8 @@ function get_random_meme(){
 				$("#xpbar_status").delay(1000).fadeOut();
 			});
 			
-			$("#user_name").hoverIntent(function(){
-				$(".nav_menu").show();
+			$("#user_menu").hoverIntent(function(){
+				$(".nav_menu").slideDown('medium');
 			}, function() {
 				$(".nav_menu").slideUp('medium');
 			});
@@ -793,10 +792,10 @@ function get_random_meme(){
 			</a>
 			<div id="ranking_number">{if $smarty.session.exp_rank}{$smarty.session.exp_rank}{else}N/A{/if}</div>
 			</div>
-			<div id= "user_name" class="nohighlight">
+			<div id = "user_name" class="nohighlight">
 				<a href ="/?id={$smarty.session.dupe_username}">{$smarty.session.fname|capitalize}</a>
 			</div>
-			<div class="nav_menu">
+			<div class="nav_menu" id="hover_menu">
 				<div class="hover_menu_contents">
 					<ul class="nav_menu_list">
 						<li>
