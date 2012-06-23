@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-21 01:38:01
+<?php /* Smarty version 2.6.7, created on 2012-06-22 12:53:22
          compiled from meme/addmeme.tpl.html */ ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 21/06/2012 01:38:01 --> 
+<!-- Template: meme/addmeme.tpl.html Start 22/06/2012 12:53:22 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
@@ -24,7 +24,8 @@ _img.png";
 <script type="text/javascript" src="http://localhost/spad/scratchpad.js"></script>
 <script type="text/javascript" src="http://localhost/spad/jquery.jqDock.min.js"></script>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
 <script type="text/javascript">
 
 	var mycanvas, cntx;

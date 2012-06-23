@@ -4,8 +4,6 @@ session_name("memeja");
 ob_start();
 ini_set("memory_limit","16M");
 
-require_once('/FirePHPCore/fb.php');
-
 ini_set('display_errors', true);
 error_reporting(E_ALL + E_NOTICE);
 

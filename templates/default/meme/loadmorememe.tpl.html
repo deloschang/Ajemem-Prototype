@@ -297,20 +297,19 @@
 					<!-- Add Caption 
 									{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
 									&nbsp;<label id="capt{$x.id_meme}">{if $x.tot_caption != 0}{$x.tot_caption}{/if}</label> <a href="javascript:void(0)" onclick="get_captions('{$x.id_meme}');" >Add Caption</a>
-									{/if}
-					
+									{/if} -->
 
-<span><a href="http://twitter.com/share" class="twitter-share-button" data-url="##LBL_SITE_URL##image/orig/meme/{$x.image}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje">Tweet</a></span> 
-<span class="fb_btn"><fb:like href="##LBL_SITE_URL##image/orig/meme/{$x.image}" send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like>
-
-<!--
-KARAN: Post to Reddit Button
-
-{if $smarty.session.id_user == $x.id_user}
-<a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /> </a>
-</span><br/>
-{/if}
--->
+					<h2 class="expand_heading"></h2>
+					<div class="toggle_container">
+					<table><tr>
+					{if $smarty.session.id_user == $x.id_user}
+					<td><a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /></a></td>
+					{/if}
+					<td><a href="http://twitter.com/share" class="twitter-share-button" data-url="memeja.com/?id=FirstName-LastName&meme={$x.image}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje">Tweet</a></td> 
+					<td><div class="fb_btn"><fb:like href="memeja.com/?id=FirstName-LastName&meme={$x.image}" send="false" width="70" show_faces="true" font="arial" layout="button_count"></fb:like> </div></td>
+					</tr></table>
+					</div>
+	
 	    </div>
 	    <div id="send_reply{$x.id_meme}" style="width:75%; margin:-20px 0 30px 120px; display: none;"></div>
 		<!--<div id="add_caption{$x.id_meme}" style="width:60%;display: none;"></div> -->

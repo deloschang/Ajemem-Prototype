@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-23 02:00:13
+<?php /* Smarty version 2.6.7, created on 2012-06-23 03:35:25
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
@@ -68,13 +68,13 @@
 				var message_three = \'';  echo $this->_tpl_vars['sm']['msg_arr'][2];  echo '\';
 				var link_three = \'';  echo $this->_tpl_vars['sm']['link_arr'][2];  echo '\';
 
-				$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://who-think.kiewit.dartmouth.edu/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://who-think.kiewit.dartmouth.edu/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 210px; height: 170px; "/></a>\');
+				$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://localhost/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 210px; height: 170px; "/></a>\');
 
-				$(\'#blurb_one\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://who-think.kiewit.dartmouth.edu/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'">\'+message_one+\'</a>\');
+				$(\'#blurb_one\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'">\'+message_one+\'</a>\');
 
-				$(\'#nlu_message_two\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://who-think.kiewit.dartmouth.edu/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'"><img src="http://who-think.kiewit.dartmouth.edu/image/orig/meme/\'+link_two+\'" style="cursor:pointer; width: 210px; height: 170px; "/></a>\');
+				$(\'#nlu_message_two\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'"><img src="http://localhost/image/orig/meme/\'+link_two+\'" style="cursor:pointer; width: 210px; height: 170px; "/></a>\');
 
-				$(\'#blurb_two\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://who-think.kiewit.dartmouth.edu/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'">\'+message_two+\'</a>\');
+				$(\'#blurb_two\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'">\'+message_two+\'</a>\');
 			 }
 
 			$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
@@ -124,7 +124,7 @@
 				
 
 				var ext = "';  echo $_REQUEST['ext'];  echo '";
-				var url = "http://who-think.kiewit.dartmouth.edu/meme/meme_list";
+				var url = "http://localhost/meme/meme_list";
 				
 				$("#loadingmeme_img").show();
 				$.post(url,{cat:\'main_feed\',page_no:page_no,ce:0,last_id:last_id,ext:ext }, function(res){
@@ -196,7 +196,7 @@
 		var last_id = $("#last_id_meme").val();
 		last_id_page = $("#last_id_meme_cur_page").val();
 		var page_ids = $("#rand_id_memes").val(); 
-		var url = "http://who-think.kiewit.dartmouth.edu/meme/get_all_flag_details";
+		var url = "http://localhost/meme/get_all_flag_details";
 		$.post(url, {ce:0,last_id:last_id_page,cat:cat,lid:last_id,page_ids:page_ids,ext:ext }, function (res){
 		    if(res){
 			if(timer==1){
@@ -225,7 +225,7 @@
 
 /* Expand replies after reply button is pressed on the meme */
     function get_all_replies(id){
-		var url = "http://who-think.kiewit.dartmouth.edu/meme/get_all_replies";
+		var url = "http://localhost/meme/get_all_replies";
 		$.post(url,{id:id,ce:0 }, function(res){
 			$("#send_reply"+id).html(res);
 			
@@ -237,7 +237,7 @@
      }
     
     function get_captions(id){
-	var url = "http://who-think.kiewit.dartmouth.edu/caption/add_caption";
+	var url = "http://localhost/caption/add_caption";
 	$.post(url,{id:id,ce:0 }, function(res){
 	        $("#add_caption"+id).html(res);
 	    if(!$("#send_reply"+id).is(":hidden"))
@@ -271,7 +271,7 @@
 		
 	   if (logged_in) { 
 			/* $("#send_reply"+id).hide("slow",function(){ }); */
-			var url = "http://who-think.kiewit.dartmouth.edu/meme/answer_to_meme";
+			var url = "http://localhost/meme/answer_to_meme";
 			var reply = strip(($("#rpl_con"+id).val()).trim());
 			
 			$.post(url,{answer:reply,id:id,ce:0 },function(res){
@@ -281,7 +281,7 @@
 			    common_fun(id,reply_color);
 			 });
 		
-			var url = "http://who-think.kiewit.dartmouth.edu/meme/get_all_replies";
+			var url = "http://localhost/meme/get_all_replies";
 			$.post(url,{id:id,ce:0 }, function(res){
 				$("#send_reply"+id).html(res);
 			 });
@@ -293,7 +293,7 @@
 
 /* JS call after Agree/Disagree button is pressed */
     function set_tot_adaggr(id,con,id_user){
-	var url = "http://who-think.kiewit.dartmouth.edu/meme/set_adaggr";
+	var url = "http://localhost/meme/set_adaggr";
 	
 	/* Added by Delos to check if user is logged in */
 	if (logged_in) {
@@ -331,13 +331,13 @@
      }
     
     function show_details(id_meme){
-		var url="http://who-think.kiewit.dartmouth.edu/meme/meme_details/ce/0/id/"+id_meme;
+		var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
 		$.post(url,{meme:meme_details,ce:0,id:id_meme });
      }
 	
     function flagging(id_meme){
 	var flaged_bfr=0;
-	var url = "http://who-think.kiewit.dartmouth.edu/meme/flagging_meme";
+	var url = "http://localhost/meme/flagging_meme";
 	$.ajax({
 	    type: "POST",
 	    url: url,
@@ -361,7 +361,7 @@
      }
 	
 	function diff_feed(ext){
-		var url = "http://who-think.kiewit.dartmouth.edu/meme/meme_list";
+		var url = "http://localhost/meme/meme_list";
 			$.post(url,{cat:\'main_feed\',ce:0,ext:ext }, function(res){
 				if(res != "")
 					$(\'#all_memes\').html(res);
@@ -376,10 +376,10 @@
 	
     $(document).ready(function(){
     	// Search function
-		//$("#muname").autocomplete(\'http://who-think.kiewit.dartmouth.edu/index.php?page=meme&choice=auto_comp&ce=0\',{
+		//$("#muname").autocomplete(\'http://localhost/index.php?page=meme&choice=auto_comp&ce=0\',{
 		//    delay: 500
 		// });
-		$("#mtitle").autocomplete(\'http://who-think.kiewit.dartmouth.edu/index.php?page=meme&choice=auto_comp&flg=1&ce=0\',{
+		$("#mtitle").autocomplete(\'http://localhost/index.php?page=meme&choice=auto_comp&flg=1&ce=0\',{
 		    delay: 500
 		 });
 
@@ -442,14 +442,13 @@ unset($_smarty_tpl_vars);
 <?php endif; ?>
 
 <div id="loadingmeme_img" style="margin-left: 41%; display:none;">
-    <img src="http://who-think.kiewit.dartmouth.edu/templates/images/loading.gif" />
+    <img src="http://localhost/templates/images/loading.gif" />
 </div>
 
 <?php endif; ?>
 
 <?php if (! $_SESSION['id_user'] && ! $_SESSION['profile']): ?>
 
-	<div id="icon_container"></div>
 	<div class="module_text" id="front_card">Your stories belong here</div>
 	
 		<div class="module_text" id="first_half">Whether it's...</div>
@@ -457,13 +456,25 @@ unset($_smarty_tpl_vars);
 			<div id="message_container">
 				<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
 				<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
-				<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="http://who-think.kiewit.dartmouth.edu/image/questions.png" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
+				<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="http://localhost/image/questions.png" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
 			</div>
 			<div class="module_text" id="second_half">Memeja helps you share experiences with the people you care about!</div>
 		</div>
-		
+		<center>
+		<div id="signup_text">Experience the Hype!</div>
+		<div class="fb-login-button" scope="
+	    	email,
+	    	publish_stream
+	    	,user_education_history
+	    			    	">
+        Login with Facebook
+      </div>
+
 		<div id="bottom_bar">
-			<div id="about"class="i2Style"><a href="/about.html">About</a></div>
-			<div id="privacy_policy"class="i2Style"><a href="/privacypolicy.html">Privacy</a></div>
+			<table><tr>
+			<td><div id="about"><a href="/about.html">About  </a></div></td>
+			<td><div id="privacy_policy"><a href="/privacypolicy.html">Privacy  </a></div></td>
+			</tr></table>
 		</div>
+		</center>
 <?php endif; ?>

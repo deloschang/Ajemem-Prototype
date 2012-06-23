@@ -444,7 +444,6 @@
 
 {if !$smarty.session.id_user && !$smarty.session.profile}
 
-	<div id="icon_container"></div>
 	<div class="module_text" id="front_card">Your stories belong here</div>
 	
 		<div class="module_text" id="first_half">Whether it's...</div>
@@ -456,9 +455,22 @@
 			</div>
 			<div class="module_text" id="second_half">Memeja helps you share experiences with the people you care about!</div>
 		</div>
-		
+		<center>
+		<div id="signup_text">Experience the Hype!</div>
+		<div class="fb-login-button" scope="
+	    	email,
+	    	publish_stream
+	    	,user_education_history
+	    	{*,user_birthday*}	{* Uncomment to enable *}
+	    	">
+        Login with Facebook
+      </div>
+
 		<div id="bottom_bar">
-			<div id="about"class="i2Style"><a href="/about.html">About</a></div>
-			<div id="privacy_policy"class="i2Style"><a href="/privacypolicy.html">Privacy</a></div>
+			<table><tr>
+			<td><div id="about"><a href="/about.html">About  </a></div></td>
+			<td><div id="privacy_policy"><a href="/privacypolicy.html">Privacy  </a></div></td>
+			</tr></table>
 		</div>
+		</center>
 {/if}

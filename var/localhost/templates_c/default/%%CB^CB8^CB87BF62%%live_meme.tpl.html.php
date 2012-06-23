@@ -1,9 +1,17 @@
+<<<<<<< HEAD
+<?php /* Smarty version 2.6.7, created on 2012-06-19 07:56:14
+=======
 <?php /* Smarty version 2.6.7, created on 2012-06-21 00:10:57
+>>>>>>> 11d759705a6f8b6e8784e45a4afbdeb4d894e999
          compiled from meme/live_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/live_meme.tpl.html', 8, false),array('modifier', 'date_format', 'meme/live_meme.tpl.html', 45, false),)), $this); ?>
 
+<<<<<<< HEAD
+<!-- Template: meme/live_meme.tpl.html Start 19/06/2012 07:56:14 --> 
+=======
 <!-- Template: meme/live_meme.tpl.html Start 21/06/2012 00:10:57 --> 
+>>>>>>> 11d759705a6f8b6e8784e45a4afbdeb4d894e999
  <div>
 	    <div  id="meme<?php echo $this->_tpl_vars['sm']['meme_id']; ?>
 " class="meme">
