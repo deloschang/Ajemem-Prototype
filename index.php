@@ -4,6 +4,9 @@ session_name("memeja");
 ob_start();
 ini_set("memory_limit","16M");
 
+
+require_once('/FirePHPCore/fb.php');
+
 ini_set('display_errors', true);
 error_reporting(E_ALL + E_NOTICE);
 
@@ -57,6 +60,9 @@ if ($_input['mod']) {
 }
 
 $page = isset ($_input['page']) ? $_input['page'] : 'common';
+
+
+
 
 if (isset($_input['id'])){
 	global $link;
