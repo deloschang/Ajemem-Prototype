@@ -11,10 +11,9 @@
 {assign var=chc value=$smarty.request.choice}
 <link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/mainpg.css"/>
 
-<script type="text/javascript" src="##JS_PATH##templates/css_theme/head.js"></script>
+<script type="text/javascript" src="##JS_PATH##templates/css_theme/head.min.js"></script>
 <script type="text/javascript">
 	head.js("##JS_PATH##libsext/jquery/jquery.js")
-	.js("http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js")
 	.js("##JS_PATH##libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5")
 	.js("##JS_PATH##libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5")
 	.js("##JS_PATH##libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5")
@@ -26,7 +25,7 @@
 	.js("##JS_PATH##libsext/xpbar/jquery-ui-1.8.16.custom.min.js")
 	.js("##JS_PATH##libsext/xpbar/jquery.effects.core.js")
 	.js("##JS_PATH##libsext/xpbar/jquery.effects.highlight.js")
-	.js("js/jquery-1.7.1.min.js")
+	.js("##LBL_SITE_URL##js/jquery-1.7.1.min.js")
 	.js("##LBL_SITE_URL##spad/color/colorpicker.js")
 	.js("##LBL_SITE_URL##spad/jquery.mousehold.js")
 	.js("http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js")
@@ -139,26 +138,6 @@
 </script>
 {/literal}
 </head>
-<script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/js/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/js/ui.datepicker.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/js/ajaxfileupload.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/hotkeys/jquery.hotkeys.js"></script>
-<script type="text/javascript" src="##LBL_SITE_URL##libsext/hoverintent/jquery.hoverIntent.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.core.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.highlight.js"></script>
-<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="##LBL_SITE_URL##spad/color/colorpicker.js"></script>
-<script type="text/javascript" src="##LBL_SITE_URL##spad/jquery.mousehold.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
-<script type="text/javascript" src="##LBL_SITE_URL##spad/scratchpad.js"></script>
-<script type="text/javascript" src="##LBL_SITE_URL##spad/jquery.jqDock.min.js"></script>
-<script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/js/jquery.multiautocomplete.js"></script>
 <body>
 <div id="fb-root"></div>
       {literal}
@@ -185,6 +164,26 @@
            d.getElementsByTagName('head')[0].appendChild(js);
          }(document))
       </script>
+<script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/js/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/js/ui.datepicker.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/hotkeys/jquery.hotkeys.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##libsext/hoverintent/jquery.hoverIntent.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.core.js"></script>
+<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.highlight.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##spad/color/colorpicker.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##spad/jquery.mousehold.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##spad/scratchpad.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##spad/jquery.jqDock.min.js"></script>
+<script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/js/jquery.multiautocomplete.js"></script> 
 <script type="text/javascript">
 	function live_ranking() {
 		var ranking_data;
@@ -294,7 +293,7 @@
 		});
 	}
 
-function get_random_meme(){		
+	function get_random_meme(){		
 		var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
 		$.fancybox.showLoading();
 		$.post(url,{ce:0},function(res){
@@ -335,25 +334,6 @@ function get_random_meme(){
 		//$.fancybox(res,{margin:600,hideOnOverlayClick:false});
 	}
 	
-	$(function(){
-		$(".leftpan_img").click(function(){
-			$("#leftpan").toggle();
-			if($("#leftpan").is(":hidden"))
-			    $(".leftpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_next_btn.png) no-repeat");
-			else
-			    $(".leftpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_previous_btn.png) no-repeat");
-		});
-		$(".rightpan_img").click(function(){
-			$("#rightpan").toggle();
-			if($("#rightpan").is(":hidden"))
-			    $(".rightpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_previous_btn.png) no-repeat");
-			else
-			    $(".rightpan_img").css('background',"url(##LBL_SITE_URL##templates/images/m_next_btn.png) no-repeat");
-
-		});
-
-	});
-	
 	flexymsg = {
 	required_dob: "This field is required.",
 	required: "<br/>This field is required.",	
@@ -377,75 +357,7 @@ function get_random_meme(){
 	novalue : "<br/> return value is required!",
 	customarray : "<br/>Custom function should return array!",
 	customfcheck : "<br/>Custom function should be present in case of custom checking!"
-};
-	
-</script>
-{/literal}
-</head>
-<script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox.pack.js?v=2.0.5"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-buttons.js?v=2.0.5"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/fancybox/jquery.fancybox-thumbs.js?v=2.0.5"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/js/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/js/ui.datepicker.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/js/ajaxfileupload.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/hotkeys/jquery.hotkeys.js"></script>
-<script type="text/javascript" src="##LBL_SITE_URL##libsext/hoverintent/jquery.hoverIntent.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.core.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.highlight.js"></script>
-<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="##LBL_SITE_URL##spad/color/colorpicker.js"></script>
-<script type="text/javascript" src="##LBL_SITE_URL##spad/jquery.mousehold.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
-<script type="text/javascript" src="##LBL_SITE_URL##spad/scratchpad.js"></script>
-<script type="text/javascript" src="##LBL_SITE_URL##spad/jquery.jqDock.min.js"></script>
-<script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/js/jquery.multiautocomplete.js"></script>
-<body>
-<div id="fb-root"></div>
-      {literal}
-      <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '219049284838691',
-            status     : true, 
-            cookie     : true,
-            xfbml      : true,
-            oauth      : true,
-          });
-          
-          FB.Event.subscribe('auth.login', function (response) {
-          	window.location = "##LBL_SITE_URL##user/facebook_info";
-    	  });
-        };
-        
-        
-        (function(d){
-           var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-           js = d.createElement('script'); js.id = id; js.async = true;
-           js.src = "//connect.facebook.net/en_US/all.js";
-           d.getElementsByTagName('head')[0].appendChild(js);
-         }(document))
-      </script>
-<script type="text/javascript">
-function get_random_meme(){		
-		var url = "##LBL_SITE_URL##meme/meme_list/cat/rand";
-		$.fancybox.showLoading();
-		$.post(url,{ce:0},function(res){
-			$("#randpgexist").val(1);
-			$.fancybox.open(res,{
-				afterClose : function (){
-					$("#randpgexist").val(0);
-				}
-			});
-			$.fancybox.update();
-		});
-    }
-	
-	function submit() {
-		$('#searches').submit();
-	}
+	};
 	
 	function follow_user(status) {		
 		{/literal}{if $smarty.session.profile_id}{literal}
@@ -467,7 +379,8 @@ function get_random_meme(){
 			$('#follower_count').html(follow_count+' followers');
 		});
 	}
-		function popup_expbar(){
+	
+	function popup_expbar(){
 		var data;
 		var url="##LBL_SITE_URL##user/getExperience/";
 		
@@ -568,6 +481,7 @@ function get_random_meme(){
 			xp_wait = 8000;
 		});
 	}
+	
 	var chc = "{/literal}{$chc}{literal}";
 	var idu = "{/literal}{$smarty.session.id_user}{literal}";
 	
@@ -653,7 +567,8 @@ function get_random_meme(){
 			FB.logout(fb_logout);
 		});
 	}
-</script>	  
+	
+</script>
 {/literal}
 {strip}
 <!-- The Header and Logo shown at all times -->
@@ -667,7 +582,7 @@ function get_random_meme(){
 		<div id="nlu_container">
 				<div id="nlu_feed">
 					<div id="memeja_logo">
-						<a href="##LBL_SITE_URL##" title="Memeja!"><img src="##LBL_SITE_URL##templates/images/memejalogo.gif"style="width:300px;height:92px;"/></a>
+						<a href="##LBL_SITE_URL##" title="Memeja!"><img src="##LBL_SITE_URL##templates/images/wmemejalogo.png"style="width:300px;height:92px;"/></a>
 					</div>	
 					<div id="front_message">
 						{include file=$content}
@@ -790,7 +705,7 @@ function get_random_meme(){
 					<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
 				{/if}
 			</a>
-			<div id="ranking_number">{if $smarty.session.exp_rank}{$smarty.session.exp_rank}{else}N/A{/if}</div>
+			<div id="ranking_number">{if $smarty.session.exp_rank}<a href="/?id={$smarty.session.dupe_username}">{$smarty.session.exp_rank}</a>{else}N/A{/if}</div>
 			</div>
 			<div id = "user_name" class="nohighlight">
 				<a href ="/?id={$smarty.session.dupe_username}">{$smarty.session.fname|capitalize}</a>
@@ -816,7 +731,7 @@ function get_random_meme(){
 						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
 					{/if}</a>
 				</span>
-				<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}{$smarty.session.one_less_rank}{else}N/A{/if}
+				<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}<a href="/?id={$smarty.session.one_less_dupe_username}">{$smarty.session.one_less_rank}</a>{else}N/A{/if}
 				</div>
 			</div>
 		{else}
