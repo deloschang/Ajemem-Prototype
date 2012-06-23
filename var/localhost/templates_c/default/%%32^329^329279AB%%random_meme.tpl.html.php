@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-23 03:26:29
+<?php /* Smarty version 2.6.7, created on 2012-06-23 04:12:49
          compiled from meme/random_meme.tpl.html */ ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
@@ -98,11 +98,12 @@
 				if(res){
 					$("#rand_meme").html(res);
 				 } else {
-				$.post(url, {last_id:id_meme,ce:0,cat:\'rand\',rand_fg:\'2\',rnd_cat:rnd_cat }, function(data){
-					$("#rand_meme").html(data);
-					$("#rand_ids").val("");
-				 });
+					$.post(url, {last_id:id_meme,ce:0,cat:\'rand\',rand_fg:\'2\',rnd_cat:rnd_cat }, function(data){
+						$("#rand_meme").html(data);
+						$("#rand_ids").val("");
+					 });
 				 }
+				$.fancybox.update();
 		 });
      }
     
