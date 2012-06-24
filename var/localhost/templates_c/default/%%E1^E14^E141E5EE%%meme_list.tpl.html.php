@@ -1,8 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-24 03:10:56
+<?php /* Smarty version 2.6.7, created on 2012-06-24 03:26:00
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
-<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+<!--
+<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>-->
 <script type="text/javascript">
     var reply_color = "';  echo $this->_tpl_vars['x']['reply'];  echo '",
 		honour_color = "';  echo $this->_tpl_vars['x']['agree'];  echo '",
@@ -68,8 +69,8 @@
 			$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
 		
 			if (logged_in){
-				get_all_flag_details(1);
-				setInterval("get_all_flag_details()",6000);
+				//get_all_flag_details(1);
+				//setInterval("get_all_flag_details()",6000);
 			 }
 			
 			var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
@@ -431,8 +432,6 @@ unset($_smarty_tpl_vars);
 <?php if (! $_SESSION['id_user'] && ! $_SESSION['profile']): ?>
 
 	<div class="module_text" id="front_card">Your stories belong here</div>
-	
-		<div class="module_text" id="first_half">Whether it's...</div>
 		<div id="module_container">
 			<div id="message_container">
 				<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="http://localhost/image/questions.png" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
