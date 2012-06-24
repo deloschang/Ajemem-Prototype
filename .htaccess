@@ -15,5 +15,7 @@ Header set Cache-Control "max-age=2903040"
 ExpiresDefault "access plus 1 month"
 </filesMatch>
 
+AddOutputFilterByType DEFLATE text/html text/css application/x-javascript
+
 
 
