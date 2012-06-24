@@ -56,26 +56,6 @@
 					}
 				}
 			});
-			
-			if (!logged_in){
-
-				var message_one = '{/literal}{$sm.msg_arr[0]}{literal}';
-				var link_one = '{/literal}{$sm.link_arr[0]}{literal}';
-
-				var message_two = '{/literal}{$sm.msg_arr[1]}{literal}';
-				var link_two = '{/literal}{$sm.link_arr[1]}{literal}';
-
-				var message_three = '{/literal}{$sm.msg_arr[2]}{literal}';
-				var link_three = '{/literal}{$sm.link_arr[2]}{literal}';
-
-				$('#nlu_message_one').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'"><img src="##LBL_SITE_URL##image/orig/meme/'+link_one+'" style="cursor:pointer;width: 210px; height: 170px; "/></a>');
-
-				$('#blurb_one').html('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_one+'" title="'+message_one+'">'+message_one+'</a>');
-
-				$('#nlu_message_two').append('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_two+'" title="'+message_two+'"><img src="##LBL_SITE_URL##image/orig/meme/'+link_two+'" style="cursor:pointer; width: 210px; height: 170px; "/></a>');
-
-				$('#blurb_two').html('<a class="meme_gallery" data-fancybox-group="thumb" href="##LBL_SITE_URL##image/orig/meme/'+link_two+'" title="'+message_two+'">'+message_two+'</a>');
-			}
 
 			$("#last_id_meme").val("{/literal}{$sm.last_id_meme}{literal}");
 			
@@ -449,8 +429,6 @@
 		<div class="module_text" id="first_half">Whether it's...</div>
 		<div id="module_container">
 			<div id="message_container">
-				<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
-				<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
 				<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="##LBL_SITE_URL##image/questions.png" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
 			</div>
 			<div class="module_text" id="second_half">Memeja helps you share experiences with the people you care about!</div>
