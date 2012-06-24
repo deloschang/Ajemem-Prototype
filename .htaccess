@@ -11,8 +11,8 @@ RewriteRule    (.*) index.php/$1 [L]
 # RewriteRule ([^/\.]+)/?$ index.php?id=$1 [L]
 
 <filesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
-Header set Cache-Control "max-age=290304000"
-ExpiresDefault "access plus 2 years"
+Header set Cache-Control "max-age=2903040"
+ExpiresDefault "access plus 1 month"
 </filesMatch>
 
 
