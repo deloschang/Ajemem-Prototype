@@ -1,12 +1,21 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-24 00:46:13
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-24 04:11:45
+>>>>>>> 253f2112237052b271c69d4998dd6b038abf01ae
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 205, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 244, false),)), $this); ?>
 
+<<<<<<< HEAD
 <!-- Template: meme/loadmorememe.tpl.html Start 24/06/2012 00:46:13 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
+=======
+<!-- Template: meme/loadmorememe.tpl.html Start 24/06/2012 04:11:45 --> 
+ <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+>>>>>>> 253f2112237052b271c69d4998dd6b038abf01ae
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
@@ -339,6 +348,10 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 									<?php endif; ?> -->
 
 					<h2 class="expand_heading"></h2>
+<<<<<<< HEAD
+=======
+					<!--
+>>>>>>> 253f2112237052b271c69d4998dd6b038abf01ae
 					<div class="toggle_container">
 					<table><tr>
 					<?php if ($_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
@@ -350,7 +363,11 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 					<td><div class="fb_btn"><fb:like href="memeja.com/?id=FirstName-LastName&meme=<?php echo $this->_tpl_vars['x']['image']; ?>
 " send="false" width="70" show_faces="true" font="arial" layout="button_count"></fb:like> </div></td>
 					</tr></table>
+<<<<<<< HEAD
 					</div>
+=======
+					</div>-->
+>>>>>>> 253f2112237052b271c69d4998dd6b038abf01ae
 	
 	    </div>
 	    <div id="send_reply<?php echo $this->_tpl_vars['x']['id_meme']; ?>

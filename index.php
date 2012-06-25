@@ -58,6 +58,9 @@ if ($_input['mod']) {
 
 $page = isset ($_input['page']) ? $_input['page'] : 'common';
 
+
+
+
 if (isset($_input['id'])){
 	global $link;
 	

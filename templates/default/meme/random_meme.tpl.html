@@ -98,11 +98,12 @@
 				if(res){
 					$("#rand_meme").html(res);
 				} else {
-				$.post(url, {last_id:id_meme,ce:0,cat:'rand',rand_fg:'2',rnd_cat:rnd_cat}, function(data){
-					$("#rand_meme").html(data);
-					$("#rand_ids").val("");
-				});
+					$.post(url, {last_id:id_meme,ce:0,cat:'rand',rand_fg:'2',rnd_cat:rnd_cat}, function(data){
+						$("#rand_meme").html(data);
+						$("#rand_ids").val("");
+					});
 				}
+				$.fancybox.update();
 		});
     }
     

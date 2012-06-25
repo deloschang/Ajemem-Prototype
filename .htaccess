@@ -10,3 +10,12 @@ RewriteRule    (.*) index.php/$1 [L]
 # RewriteRule ^(meme|user|template|setting|module|manage|page|js|common|choice)/.* index.php/$1 [L]
 # RewriteRule ([^/\.]+)/?$ index.php?id=$1 [L]
 
+<filesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+Header set Cache-Control "max-age=2903040"
+ExpiresDefault "access plus 1 month"
+</filesMatch>
+
+AddOutputFilterByType DEFLATE text/html text/css application/x-javascript
+
+
+

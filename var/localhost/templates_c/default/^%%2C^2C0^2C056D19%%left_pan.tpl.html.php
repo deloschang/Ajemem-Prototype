@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-24 00:46:13
          compiled from user/left_pan.tpl.html */ ?>
 <?php if ($_SESSION['id_user']): ?>
@@ -15,6 +16,25 @@
 		<div id="other_user_ranking_info" class="softcorner native num_videos">
 		<div id="trailing_user"><?php if ($_SESSION['one_less_user']):  echo $_SESSION['one_less_user'];  else: ?>---<?php endif; ?></div>
 		<span id="trailing_all"> </span>
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-24 04:20:56
+         compiled from user/left_pan.tpl.html */ ?>
+<?php if ($_SESSION['id_user']): ?>
+
+		
+
+					
+		<!--<div id="user_ranking_info">
+		
+		<!-- <div id="total_xp" ><?php if ($_SESSION['exp_point']):  echo $_SESSION['exp_point'];  endif; ?>
+		 <span style="font-size:8px; position:relative; bottom:5px;">XP</span></div>
+		 </div>
+		 
+		 
+		<div id="other_user_ranking_info" class="softcorner native num_videos">
+		<div id="trailing_user"><?php if ($_SESSION['one_less_user']):  echo $_SESSION['one_less_user'];  else: ?>---<?php endif; ?></div>
+		<span id="trailing_all"> </span>
+>>>>>>> 253f2112237052b271c69d4998dd6b038abf01ae
 		 <span id="trailing_ranking_number"><?php echo $_SESSION['one_less_rank']; ?>
 </span>
 		<!--<div id="trailing_exp" style="-moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; font-size:12px; position:relative; bottom:4px; margin-left:12px;"><?php if ($_SESSION['one_less_exp']):  echo $_SESSION['one_less_exp'];  else: ?>0<?php endif; ?>
@@ -33,4 +53,4 @@
 		
 				
 <?php endif; ?>
-
+
