@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-25 06:39:13
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-25 06:20:24
->>>>>>> 65b57904bbaef18bdd8a5667e9226bdd06a3d53b
+<?php /* Smarty version 2.6.7, created on 2012-06-25 10:01:36
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -440,7 +436,7 @@ unset($_smarty_tpl_vars);
 			<div id="message_container">
 				<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="http://localhost/image/questions.png" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
 			</div>
-			<div class="module_text" id="second_half">Memeja helps you share experiences with the people you care about!</div>
+			<div class="module_text" id="second_half">Share experiences with the people you care about</div>
 		</div>
 		<center>
 		<div id="signup_text">Experience the Hype!</div>
@@ -450,7 +446,7 @@ unset($_smarty_tpl_vars);
 	    	,user_education_history
 	    			    	">
         Login with Facebook
-      </div>
+		</div>
 
 		<div id="bottom_bar">
 			<table><tr>

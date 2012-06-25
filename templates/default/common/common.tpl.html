@@ -53,9 +53,11 @@
 	<div id="fadeback"></div>	
 		<div id="nlu_container">
 				<div id="nlu_feed">
-					<div id="memeja_logo">
-						<a href="##LBL_SITE_URL##" title="Memeja!"><img src="##LBL_SITE_URL##templates/images/wmemejalogo.png"style="width:300px;height:92px;"/></a>
-					</div>	
+					<center>
+					<div id="intro_logo">
+						<a href="##LBL_SITE_URL##" title="Memeja!"><img src="##LBL_SITE_URL##templates/images/intro_logo.gif"style="width:228px;height:70px;"/></a>
+					</div>
+					</center>					
 					<div id="front_message">
 						{include file=$content}
 						{if !$smarty.request.page}{include file="meme/home"}{/if}
@@ -168,59 +170,63 @@
 	{/if}
 {else}
 	<div id="top_header" class="nohighlight">
-		<div id="user_menu">
-			<div id="user_pic" class="nohighlight">
-			<a href="/?id={$smarty.session.dupe_username}">
-				{if $smarty.session.fb_pic_normal}
-					<img src="{$smarty.session.fb_pic_normal}" style="width:25px;height:25px">
-				{else}
-					<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
-				{/if}
-			</a>
-			<div id="ranking_number">{if $smarty.session.exp_rank}<a href="/?id={$smarty.session.dupe_username}">{$smarty.session.exp_rank}</a>{else}N/A{/if}</div>
-			</div>
-			<div id = "user_name" class="nohighlight">
-				<a href ="/?id={$smarty.session.dupe_username}">{$smarty.session.fname|capitalize}</a>
-			</div>
-			<div class="nav_menu" id="hover_menu">
-				<div class="hover_menu_contents">
-					<ul class="nav_menu_list">
-						<li>
-							<a href="javascript:void(0);" onclick="fb_logout();">Logout</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div id="triangle_down"></div>
-		</div>
-		{if $smarty.session.one_less_user}
-			
-			<div id="trailing_user_pic" class="nohighlight">
-				<span id="trailing_user_profile_pic"><a href="/?id={$smarty.session.one_less_dupe_username}">
-					{if $smarty.session.one_less_pic}
-						<img src="{$smarty.session.one_less_pic}" style="width:25px;height:25px">
+		<div id="header_cont">
+			<div id="user_menu">
+				<div id="user_pic" class="nohighlight">
+				<a href="/?id={$smarty.session.dupe_username}">
+					{if $smarty.session.fb_pic_normal}
+						<img src="{$smarty.session.fb_pic_normal}" style="width:25px;height:25px">
 					{else}
-						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
-					{/if}</a>
-				</span>
-				<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}<a href="/?id={$smarty.session.one_less_dupe_username}">{$smarty.session.one_less_rank}</a>{else}N/A{/if}
+						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
+					{/if}
+				</a>
+				<div id="ranking_number">{if $smarty.session.exp_rank}<a href="/?id={$smarty.session.dupe_username}">{$smarty.session.exp_rank}</a>{else}N/A{/if}</div>
 				</div>
+				<div id = "user_name" class="nohighlight">
+					<a href ="/?id={$smarty.session.dupe_username}">{$smarty.session.fname|capitalize}</a>
+				</div>
+				<div class="nav_menu" id="hover_menu">
+					<div class="hover_menu_contents">
+						<ul class="nav_menu_list">
+							<li>
+								<a href="javascript:void(0);" onclick="fb_logout();">Logout</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="triangle_down"></div>
 			</div>
-		{else}
-			
-		{/if}	
-	</div>
-	<div id= "logoc" class="nohighlight">
-		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/wmemejalogo.png" id="logo" style="width:180px;"></a>
-	</div>
-	{if $smarty.request.choice !='addMeme'}
-
-		<div id="xpbar_info" class="nohighlight">
-			<div id="xpbar"></div>	
-			<div id="user_level"></div>
-			<div id="xpbar_status"></div>
-		</div>
+			{if $smarty.session.one_less_user}
+				
+				<div id="trailing_user_pic" class="nohighlight">
+					<span id="trailing_user_profile_pic"><a href="/?id={$smarty.session.one_less_dupe_username}">
+						{if $smarty.session.one_less_pic}
+							<img src="{$smarty.session.one_less_pic}" style="width:25px;height:25px">
+						{else}
+							<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
+						{/if}</a>
+					</span>
+					<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}<a href="/?id={$smarty.session.one_less_dupe_username}">{$smarty.session.one_less_rank}</a>{else}N/A{/if}
+					</div>
+				</div>
+			{else}
+				
+			{/if}	
 		
+			<div id= "logoc" class="nohighlight">
+				<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo" style="width:130px;"></a>
+			</div>
+			{if $smarty.request.choice !='addMeme'}
+
+				<div id="xpbar_info" class="nohighlight">
+					<div id="xpbar"></div>	
+					<div id="user_level"></div>
+					<div id="xpbar_status"></div>
+				</div>
+			{/if}
+		</div>
+	</div>
+	{if $smarty.request.choice !='addMeme'}	
 		<div id="contained">
 			{if !$smarty.session.profile}
 				<!-- view home page -->

@@ -1,21 +1,7 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-20 11:04:18
+<?php /* Smarty version 2.6.7, created on 2012-06-25 09:51:41
          compiled from static/about.tpl.html */ ?>
 
-<!-- Template: static/about.tpl.html Start 20/06/2012 11:04:18 --> 
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-20 17:44:02
-         compiled from static/about.tpl.html */ ?>
-
-<!-- Template: static/about.tpl.html Start 20/06/2012 17:44:02 --> 
->>>>>>> 11d759705a6f8b6e8784e45a4afbdeb4d894e999
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-23 03:35:11
-         compiled from static/about.tpl.html */ ?>
-
-<!-- Template: static/about.tpl.html Start 23/06/2012 03:35:11 --> 
->>>>>>> 253f2112237052b271c69d4998dd6b038abf01ae
+<!-- Template: static/about.tpl.html Start 25/06/2012 09:51:41 --> 
  <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
 <div id="about_page">
 	<title>About Memeja</title>

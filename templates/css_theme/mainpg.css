@@ -107,9 +107,11 @@
 	}
 	
 	#nlu_contained {
-		position: relative;
-		top:65px;
-		left:-100px;
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		margin-top: -220px;
+		margin-left: -800px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -139,9 +141,10 @@
 		color: #333333;
 		line-height:20px;
 		padding-top:10px;
+		margin-top:10px;
 		margin-left:auto;
 		margin-right:auto;
-		margin-bottom:10px;
+		margin-bottom:20px;
 	}
 	
 	#signup_explanation, #signup_alt{
@@ -243,11 +246,9 @@
 		margin-right:auto;
 	}
 	
-	#memeja_logo {
-		width:300px;
-		height:92px;
-		margin-left:auto;
-		margin-right:auto;
+	#intro_logo {
+		width:228px;
+		height:70px;
 	}
 		
 	.module_text{
@@ -369,6 +370,8 @@
 
 	
 	#about_page{
+		position:relative;
+		top:-30px;
 		opacity:100;
 		moz-border-radius: 12px;
 	    webkit-border-radius: 12px;
@@ -602,8 +605,8 @@ moz-border-radius: 10px;
 /* XP Bar */
 	
 	#xpbar_info {
-		left:280px;
-		position: fixed;
+		left:320px;
+		position: absolute;
 		top:10px;
 	}
 	
@@ -665,17 +668,22 @@ moz-border-radius: 10px;
 		top:0px;
 		padding:10px;
 		position:fixed;
-		width:1450px;
+		width:1600px;
 		z-index:99;
 		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+	}
+	
+	#header_cont{
+		margin-left:auto;
+		margin-right:auto;
 	}
 	
 	/* Memeja Logo */
 	#logoc {
 		float:left;
-		left:70px;
-		position:fixed;
-		top:3px;
+		left:160px;
+		position:absolute;
+		top:0px;
 		z-index:9002;
 	}
 
@@ -713,19 +721,22 @@ moz-border-radius: 10px;
 	#user_name {
 		color:black;
 		font-size:20px;
+		height:20px;
 		left:0px;
 		padding:5px;
 		position:absolute;
 		text-align:center;
 		text-shadow:#fff 0px 1px 0, #000 0 -1px 0;
 		top:0px;
-		width:150px;
+		width:120px;
 		z-index:500;
 	}
 	
 	#user_name a{
 		color: #C3C3C3;
 		text-shadow: 0px -1px 0px rgba(0,0,0,.5);
+		margin-left:auto;
+		margin-right:auto;
 	}
 	
 	#user_name:hover{
@@ -781,8 +792,8 @@ moz-border-radius: 10px;
 		-moz-border-top-colors: none;
 		color: #333333;
 		position:absolute;
-		width: 157px;
-		height:30px;
+		width: 156px;
+		height:35px;
 		background: none repeat scroll 0 0 white;
 		border: 1px solid #999999;
 		border-color: -moz-use-text-color #ACACAC #ACACAC;
@@ -1950,10 +1961,7 @@ a.special-btn.facebook:active {
 		cursor: pointer;
 		width:60px;
 	}
-	#tagg {
-		cursor:pointer;
-		width:60px;
-	}
+	
  	.selected{
 		background:#FFF;
 	}
@@ -1992,6 +2000,10 @@ a.special-btn.facebook:active {
 		left:1040px;
 		width:300px;
 		text-align:center;
+	}
+	
+	#tag {
+		width:200px;
 	}
 
 	#submitter{
