@@ -344,8 +344,13 @@
 	function diff_feed(ext){
 		var url = "##LBL_SITE_URL##meme/meme_list";
 			$.post(url,{cat:'main_feed',ce:0,ext:ext}, function(res){
-				if(res != "")
-					$('#all_memes').html(res);
+				if(res != ""){
+					if (ext == 0){
+						$('#all_memes').html(res);
+					} else {
+						$('#friend_memes').html(res);
+					}
+				}
 				if (ext == 1){
 					$('#page_boop').hide();
 				} else {
@@ -401,6 +406,15 @@
 <br><br><br><br><br>
 
 <div id="all_memes">	
+    {if $sm.res_meme} 
+	{include file="meme/loadmorememe"}
+    {else}
+	<input type="hidden" id="msgexist" value="1">
+		OMG, you've reached the edge of Memeja!
+    {/if}
+</div>
+
+<div id="friend_memes">	
     {if $sm.res_meme} 
 	{include file="meme/loadmorememe"}
     {else}

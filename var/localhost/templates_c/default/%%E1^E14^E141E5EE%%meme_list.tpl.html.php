@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-25 10:58:17
+<?php /* Smarty version 2.6.7, created on 2012-06-25 12:08:36
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -345,8 +345,13 @@
 	function diff_feed(ext){
 		var url = "http://localhost/meme/meme_list";
 			$.post(url,{cat:\'main_feed\',ce:0,ext:ext }, function(res){
-				if(res != "")
-					$(\'#all_memes\').html(res);
+				if(res != ""){
+					if (ext == 0){
+						$(\'#all_memes\').html(res);
+					 } else {
+						$(\'#friend_memes\').html(res);
+					 }
+				 }
 				if (ext == 1){
 					$(\'#page_boop\').hide();
 				 } else {
@@ -403,6 +408,19 @@
 <br><br><br><br><br>
 
 <div id="all_memes">	
+    <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
+	<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmorememe.tpl.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+    <?php else: ?>
+	<input type="hidden" id="msgexist" value="1">
+		OMG, you've reached the edge of Memeja!
+    <?php endif; ?>
+</div>
+
+<div id="friend_memes">	
     <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmorememe.tpl.html", 'smarty_include_vars' => array()));

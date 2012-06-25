@@ -68,9 +68,6 @@
 				<div id="profile_name"><center>Flerp? We couldn't find this user!</center></div>
 			</div>		
 			<div id="live_feed" class="nohighlight">
-				<div id="random_meme" style="left:259px; z-index:4;">
-					<a href="javascript:void(0);" onclick="get_random_meme();" class="special-btn red">Random</a>
-				</div>	
 				<div id="feed_cont">
 					{include file="meme/home"}
 				</div>
@@ -146,9 +143,6 @@
 			</div>
 			
 			<div id="live_feed" class="nohighlight">
-				<center><div id="random_meme">
-					<a href="javascript:void(0);" onclick="get_random_meme();" class="special-btn red">Random</a>
-				</div></center>
 				<div id="feed_cont">
 					{include file="meme/home"}
 				</div>
@@ -236,6 +230,9 @@
 				
 			{/if}	
 		
+			<div id="random_meme">
+					<a href="javascript:void(0);" onclick="get_random_meme();" class="special-btn red">Random</a>
+			</div>
 			<div id= "logoc" class="nohighlight">
 				<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo" style="width:130px;"></a>
 			</div>
@@ -367,9 +364,6 @@
 			{/if}
 			
 			<div id="live_feed" class="nohighlight">
-				<center><div id="random_meme">
-					<a href="javascript:void(0);" onclick="get_random_meme();" class="special-btn red">Random</a>
-				</div></center>
 				<div id="feed_cont">
 					{include file="meme/home"}
 				</div>

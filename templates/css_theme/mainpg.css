@@ -377,8 +377,10 @@
 		position: fixed;
 		top: 50%;
 		left: 50%;
-		margin-top: -220px;
-		margin-left: -800px;
+		margin-top: -240px;
+		margin-left:-600px;
+		background-color:#F0F0F0;
+		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -387,13 +389,14 @@
 
 /* Main Profile Page */
 	#profile_page {
-		background-color:#fff;
-		margin-left:200px;
+		margin-top:20px;
+		margin-left:400px;
 		margin-right:400px;
+		margin-bottom:50px;
 		padding:10px;
 		position:relative;
 		top:0px;
-		width:800px;
+		width:400px;
 	    moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -402,17 +405,15 @@
 		voice-family:inherit;
 	}
 	html>body #profile_page {
-	    width:800px;
+	    width:400px;
 	}
 	
 	
 /* The Live Feed on the Right */
 	#live_feed {
-	    background-color:#87C8F0;
-		float:right;
-		left:1070px;
 		position:absolute;
 		top:-20px;
+		left:840px;
 		width:350px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
@@ -429,8 +430,9 @@
 	#random_meme {
 		margin-left:auto;
 		margin-right:auto;
-		position:absolute;
-		left:130px;
+		position:relative;
+		top:-40px;
+		left:930px;
 	}
 	
 	#feed_cont {
@@ -440,11 +442,27 @@
 	
 	#world_feed {
 		float:left;
+		position:relative;
+		top:30px;
+		left:130px;
 	}
 	
 	#friends_feed {
 		position:absolute;
-		right:-10px;
+		top:32px;
+		right:940px;
+	}
+	
+	#all_memes{
+		position:relative;
+		border-left: 1px solid #CCCCCC;
+	}
+	
+	#friend_memes{
+		position:absolute;
+		right:810px;
+		top:70px;
+		border-right: 1px solid #cccccc;
 	}
 
 /* XP Bar */
@@ -556,7 +574,7 @@
 		top:8px;
 		z-index:9001;
 		width:25px;
-		left:950px;
+		left:1240px;
 		box-shadow: 0 0 4px 0 #555555;
 	}	
 	#user_name {
@@ -758,6 +776,8 @@
 	}
 	
 	#page_boop{
+		position:relative;
+		top:-20px;
 		font-size: 11px;
 	}
 	
@@ -1375,18 +1395,13 @@ a{
 
 /* +++++++++++++++++++++++++++ Live Feed +++++++++++++++++++++++++++ */
 	.meme{
-		background: white;  /* background for meme color */
-		border-bottom: 1px dotted #e6e6dc;		
-		box-shadow: 0 0 4px 0 #555555;
+		border-bottom: 1px solid #cccccc;		
 		height:auto;
 		margin:auto;
 		position: relative;
 		padding: 10px 0px 10px 10px;
-		top:-30px;
+		top:0px;
 		width:350px;
-		 -moz-border-radius: 10px; 
-		-webkit-border-radius: 10px; 
-		border-radius: 10px;
 		z-index:5;
 
 	}
