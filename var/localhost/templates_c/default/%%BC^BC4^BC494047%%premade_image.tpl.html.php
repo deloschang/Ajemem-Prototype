@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-25 09:22:45
+<?php /* Smarty version 2.6.7, created on 2012-06-25 10:48:59
          compiled from meme/premade_image.tpl.html */ ?>
 
-<!-- Template: meme/premade_image.tpl.html Start 25/06/2012 09:22:45 --> 
+<!-- Template: meme/premade_image.tpl.html Start 25/06/2012 10:48:59 --> 
  <?php unset($this->_sections['cur_img']);
 $this->_sections['cur_img']['name'] = 'cur_img';
 $this->_sections['cur_img']['loop'] = is_array($_loop=$this->_tpl_vars['sm']['premade_imgs']) ? count($_loop) : max(0, (int)$_loop); unset($_loop);

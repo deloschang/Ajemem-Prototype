@@ -10,10 +10,7 @@
 <link rel="shortcut icon" href="##LBL_SITE_URL##templates/images/memeja_icon.ico" >
 {assign var=appid value=$util->get_values_from_config('FACEBOOK')}
 {assign var=chc value=$smarty.request.choice}
-
-{literal}
 <script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
-{/literal}
 </head>
 <body>
 <div id="fb-root"></div>
@@ -188,6 +185,32 @@
 				<div class="nav_menu" id="hover_menu">
 					<div class="hover_menu_contents">
 						<ul class="nav_menu_list">
+							<li>
+								<a href="javascript:void(0);" onclick="javascript:toggleDiv('content1','icon1');">Suggestions</a>
+								<div id="content1" class="item" style="display:none">
+									<form action="send-contact-message.php" method="post">
+										<p>
+											Name: (Optional)<br>
+											<input type="text" name="name" id="name" size="25">
+										</p>
+										<p>
+											Email: (Optional)<br>
+											<input type="text" name="email" size="25">
+										</p>
+										<p>
+											Subject:<br>
+											<input type="text" name="subject" size="25">
+										</p>
+										<p>
+											Comments:<br>
+											<textarea name="message" rows="5" cols="25"></textarea>
+										</p>
+										<p>
+											<button type="submit">Submit</button>
+										</p>
+									</form>
+								</div>
+							</li>
 							<li>
 								<a href="javascript:void(0);" onclick="fb_logout();">Logout</a>
 							</li>
@@ -384,6 +407,14 @@
 <script type="text/javascript" src="##LBL_SITE_URL##templates/flexyjs/js/jquery.multiautocomplete.js"></script> 
 
 <script type="text/javascript">	
+	function toggleDiv(id1,id2) {
+		var tag = document.getElementById(id1).style;
+		if(tag.display == "none") {
+			tag.display = "block";
+		} else {
+			tag.display = "none";
+		}
+	}
 	function log_in_reminder(){
 		 var url="##LBL_SITE_URL##user/log_in_reminder";
 		 
