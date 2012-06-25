@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-24 00:46:13
-         compiled from meme/meme_list.tpl.html */ ?>
-<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
-<?php echo '
-<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-24 04:20:56
+<?php /* Smarty version 2.6.7, created on 2012-06-25 06:39:13
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
 <!--
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>-->
->>>>>>> 253f2112237052b271c69d4998dd6b038abf01ae
 <script type="text/javascript">
     var reply_color = "';  echo $this->_tpl_vars['x']['reply'];  echo '",
 		honour_color = "';  echo $this->_tpl_vars['x']['agree'];  echo '",
@@ -66,29 +58,6 @@
 					 }
 				 }
 			 });
-<<<<<<< HEAD
-			
-			if (!logged_in){
-
-				var message_one = \'';  echo $this->_tpl_vars['sm']['msg_arr'][0];  echo '\';
-				var link_one = \'';  echo $this->_tpl_vars['sm']['link_arr'][0];  echo '\';
-
-				var message_two = \'';  echo $this->_tpl_vars['sm']['msg_arr'][1];  echo '\';
-				var link_two = \'';  echo $this->_tpl_vars['sm']['link_arr'][1];  echo '\';
-
-				var message_three = \'';  echo $this->_tpl_vars['sm']['msg_arr'][2];  echo '\';
-				var link_three = \'';  echo $this->_tpl_vars['sm']['link_arr'][2];  echo '\';
-
-				$(\'#nlu_message_one\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'"><img src="http://localhost/image/orig/meme/\'+link_one+\'" style="cursor:pointer;width: 210px; height: 170px; "/></a>\');
-
-				$(\'#blurb_one\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_one+\'" title="\'+message_one+\'">\'+message_one+\'</a>\');
-
-				$(\'#nlu_message_two\').append(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'"><img src="http://localhost/image/orig/meme/\'+link_two+\'" style="cursor:pointer; width: 210px; height: 170px; "/></a>\');
-
-				$(\'#blurb_two\').html(\'<a class="meme_gallery" data-fancybox-group="thumb" href="http://localhost/image/orig/meme/\'+link_two+\'" title="\'+message_two+\'">\'+message_two+\'</a>\');
-			 }
-=======
->>>>>>> 253f2112237052b271c69d4998dd6b038abf01ae
 
 			$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
 			
@@ -100,13 +69,8 @@
 			$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
 		
 			if (logged_in){
-<<<<<<< HEAD
-				get_all_flag_details(1);
-				setInterval("get_all_flag_details()",6000);
-=======
 				//get_all_flag_details(1);
 				//setInterval("get_all_flag_details()",6000);
->>>>>>> 253f2112237052b271c69d4998dd6b038abf01ae
 			 }
 			
 			var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
@@ -468,17 +432,8 @@ unset($_smarty_tpl_vars);
 <?php if (! $_SESSION['id_user'] && ! $_SESSION['profile']): ?>
 
 	<div class="module_text" id="front_card">Your stories belong here</div>
-<<<<<<< HEAD
-	
-		<div class="module_text" id="first_half">Whether it's...</div>
 		<div id="module_container">
 			<div id="message_container">
-				<div id="nlu_message_one"><span class="blurb" id="blurb_one"></span></div>
-				<div id="nlu_message_two"><span class="blurb" id="blurb_two"></span></div>
-=======
-		<div id="module_container">
-			<div id="message_container">
->>>>>>> 253f2112237052b271c69d4998dd6b038abf01ae
 				<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="http://localhost/image/questions.png" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
 			</div>
 			<div class="module_text" id="second_half">Memeja helps you share experiences with the people you care about!</div>
