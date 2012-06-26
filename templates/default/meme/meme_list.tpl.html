@@ -392,13 +392,17 @@
 
 {if $smarty.session.id_user || $smarty.session.profile}
 <div>
-		<div id="world_feed">
-			<a href="javascript:void(0);" onclick="diff_feed(0);" class="special-btn green">World Feed</a>
+		<div id="world_feed" class="feed_buttons">
+			<center>
+			<a href="javascript:void(0);" onclick="diff_feed(0);">World Feed</a>
+			</center>
 		</div>
 		
 		{if $smarty.session.id_user}
-			<div id="friends_feed">
-				<a href="javascript:void(0);" onclick="diff_feed(1);" class="special-btn green">Friends Feed</a>
+			<div id="friends_feed" class="feed_buttons">
+				<center>
+				<a href="javascript:void(0);" onclick="diff_feed(1);">Friends Feed</a>
+				</center>
 			</div>
 		{/if}
 </div>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-26 09:46:20
+<?php /* Smarty version 2.6.7, created on 2012-06-26 10:48:32
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -394,13 +394,17 @@
 
 <?php if ($_SESSION['id_user'] || $_SESSION['profile']): ?>
 <div>
-		<div id="world_feed">
-			<a href="javascript:void(0);" onclick="diff_feed(0);" class="special-btn green">World Feed</a>
+		<div id="world_feed" class="feed_buttons">
+			<center>
+			<a href="javascript:void(0);" onclick="diff_feed(0);">World Feed</a>
+			</center>
 		</div>
 		
 		<?php if ($_SESSION['id_user']): ?>
-			<div id="friends_feed">
-				<a href="javascript:void(0);" onclick="diff_feed(1);" class="special-btn green">Friends Feed</a>
+			<div id="friends_feed" class="feed_buttons">
+				<center>
+				<a href="javascript:void(0);" onclick="diff_feed(1);">Friends Feed</a>
+				</center>
 			</div>
 		<?php endif; ?>
 </div>
