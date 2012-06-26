@@ -11,6 +11,7 @@
 {assign var=appid value=$util->get_values_from_config('FACEBOOK')}
 {assign var=chc value=$smarty.request.choice}
 <script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
+{literal}
 <script type="text/javascript">
 var chc = "{/literal}{$chc}{literal}";
 	var idu = "{/literal}{$smarty.session.id_user}{literal}";
@@ -293,11 +294,9 @@ var chc = "{/literal}{$chc}{literal}";
 				</div>
 				<div id="triangle_down"></div>
 			</div>
-			<div id="triangle_down"></div>
 			
 			<!-- Please style this correctly, to the right of the picture like on Quora-->
-			<div id="home_link"><a href="/">Home</a></div>
-		</div>
+			
 			
 		{if $smarty.session.one_less_user}
 			
@@ -311,12 +310,15 @@ var chc = "{/literal}{$chc}{literal}";
 				</span>
 				<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}<a href="/?id={$smarty.session.one_less_dupe_username}">{$smarty.session.one_less_rank}</a>{else}N/A{/if}
 				</div>
-			{else}
-				
-			{/if}	
-		
-			<div id="random_meme">
-					<a href="javascript:void(0);" onclick="get_random_meme();" class="special-btn red">Random</a>
+			</div>	
+		{/if}
+			<div id="header_nav">
+				<table><tr>
+				<td><div id="home_link" class="header_nav"><a href="/">Home</a></div></td>
+				<td><div id="random_meme" class="header_nav">
+						<a href="javascript:void(0);" onclick="get_random_meme();">Random</a>
+				</div></td>
+				</tr></table>
 			</div>
 			<div id= "logoc" class="nohighlight">
 				<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo" style="width:130px;"></a>

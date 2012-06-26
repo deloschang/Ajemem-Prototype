@@ -427,14 +427,6 @@
 		width:350px;
 	}
 	
-	#random_meme {
-		margin-left:auto;
-		margin-right:auto;
-		position:relative;
-		top:-40px;
-		left:930px;
-	}
-	
 	#feed_cont {
 		margin-left:auto;
 		margin-right:auto;
@@ -476,7 +468,7 @@
 	#xpbar {
 		position:relative;
 		width:600px;
-		z-index:9000;
+		z-index:300;
 	}
 
 	#user_level{
@@ -543,8 +535,45 @@
 		left:160px;
 		position:absolute;
 		top:0px;
-		z-index:9002;
+		z-index:300;
 	}
+	
+	#header_nav{
+		position:absolute;
+		left:930px;
+		top:5px;
+	}
+	
+	.header_nav{
+		padding:5px;
+	}
+	
+	.header_nav a{
+		 font-size:14px;
+		 color: #C3C3C3;
+		 text-shadow: 0px -1px 0px rgba(0,0,0,.5);
+	}
+	
+	.header_nav:hover{
+		background:#EFFAE1;
+		border: 1px solid #CCCCCC;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+	}
+	
+	#home_link{
+		position:relative;
+		z-index:400;
+	}
+	
+	#random_meme {
+		margin-left:auto;
+		margin-right:auto;
+		position:relative;
+	}
+
+	
 
 /******************** User Menu ********************/
 	#user_menu{
@@ -600,7 +629,7 @@
 	
 	#user_name:hover{
 		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-		background:none repeat scroll 0 0 #ACACAC;
+		background:none repeat scroll 0 0 #EFFAE1;
 	}
 	
 	#user_name:hover:after {
@@ -609,7 +638,7 @@
 		position: absolute;
 		width: 0;
 		border: 5px solid transparent;
-		border-top-color: #ACACAC;
+		border-top-color: #EFFAE1;
 		top: 100%;
 		left: 50%;
 		margin-left: -5px;
@@ -621,7 +650,7 @@
 	}
 	
 	#user_name:hover a{
-		color:#FFF;
+		color:#C3C3C3;
 	}
 	
 	#logout {
