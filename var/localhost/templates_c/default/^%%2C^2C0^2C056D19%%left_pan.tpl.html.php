@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-26 05:37:09
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-26 07:38:33
+>>>>>>> 1a0fb76253fc0cffc92597690f208e5a914c4a2d
          compiled from user/left_pan.tpl.html */ ?>
 <?php if ($_SESSION['id_user']): ?>
 
@@ -33,4 +37,4 @@
 		
 				
 <?php endif; ?>
-
+

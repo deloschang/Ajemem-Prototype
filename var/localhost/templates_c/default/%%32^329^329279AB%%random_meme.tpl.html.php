@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-26 01:03:21
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-25 07:14:06
+>>>>>>> 1a0fb76253fc0cffc92597690f208e5a914c4a2d
          compiled from meme/random_meme.tpl.html */ ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -186,4 +190,4 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 </div>
-<input type="hidden" id="rand_ids" />
+<input type="hidden" id="rand_ids" />

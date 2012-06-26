@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-26 05:37:09
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-26 07:38:33
+>>>>>>> 1a0fb76253fc0cffc92597690f208e5a914c4a2d
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -207,15 +211,17 @@
 
 /* Expand replies after reply button is pressed on the meme */
     function get_all_replies(id){
-		var url = "http://localhost/meme/get_all_replies";
-		$.post(url,{id:id,ce:0 }, function(res){
-			$("#send_reply"+id).html(res);
+		$(\'#send_reply\'+id).slideToggle(\'slow\');
+		
+		// Deprecated for FB comments
+		//var url = "http://localhost/meme/get_all_replies";
+		//$.post(url,{id:id,ce:0 }, function(res){
+			//$("#send_reply"+id).html(res);
 			
-			/* If caption is up, swap */
+			/* If caption is up, swap 
 			if(!$("#add_caption"+id).is(":hidden"))
 				$(\'#add_caption\'+id).slideToggle(\'slow\');
-			$(\'#send_reply\'+id).slideToggle(\'slow\');
-		 });
+		 });*/
      }
     
     function get_captions(id){

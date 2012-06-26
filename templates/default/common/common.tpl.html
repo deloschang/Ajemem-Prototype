@@ -11,6 +11,86 @@
 {assign var=appid value=$util->get_values_from_config('FACEBOOK')}
 {assign var=chc value=$smarty.request.choice}
 <script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
+<script type="text/javascript">
+var chc = "{/literal}{$chc}{literal}";
+	var idu = "{/literal}{$smarty.session.id_user}{literal}";
+	
+	var follow_count = parseInt({/literal}{$smarty.session.profile_follower_count}{literal});	
+	// Variables for XP updating
+	var curr_xp = {/literal}{if $smarty.session.exp_point}{$smarty.session.exp_point}{else}0{/if}{literal},
+		xp_to_level = {/literal}{if $smarty.session.xp_to_level}{$smarty.session.xp_to_level}{else}0{/if}{literal},
+		previous_xp_to_level = {/literal}{if $smarty.session.previous_xp_to_level}{$smarty.session.previous_xp_to_level}{else}0{/if}{literal},
+		user_level = {/literal}{if $smarty.session.level}{$smarty.session.level}{else}0{/if}{literal};
+
+	if (user_level == 1) {
+		var xp_percent = (curr_xp / xp_to_level) * 100;
+	} else {
+		{/literal}{if $smarty.session.exp_point}
+			xp_percent = (curr_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
+		{else}xp_percent = 0{/if}{literal}
+	}
+	
+	var rank_wait = 40000;
+	var xp_wait = 8000;
+	
+	$(document).ready(function(){
+		var selected_meme = '{/literal}{$smarty.session.profile_meme_image}{literal}';
+		if (selected_meme){
+			$("#selected_image").fancybox({padding: 0, fitToView: false}).trigger('click');
+		}
+		if (idu) {
+			// User XP initial display
+			$("#xpbar").progressbar({
+				value: xp_percent
+			});
+			$("#user_level").html('L'+user_level);
+			$("#xpbar_status").html(xp_percent.toFixed(2) +'%');
+			
+			// Mouseover shows XP and %
+			$("#xpbar, #xpbar_status").hoverIntent({
+				interval: 200,
+				timeout:1000
+			});
+			
+			$("#xpbar, #xpbar_status, #user_level").hoverIntent(function(){
+				$("#xpbar_status").delay(200).show();
+			}, function() {
+				$("#xpbar_status").delay(1000).fadeOut();
+			});
+			
+			$("#user_menu").hoverIntent(function(){
+				$(".nav_menu").slideDown('medium');
+			}, function() {
+				$(".nav_menu").slideUp('medium');
+			});
+		}
+
+		var scrn_height = window.screen.availHeight;
+            $("#mid_cont").height(scrn_height/2 + scrn_height/9);
+
+	    /* For notification 
+	    $(".inner").hide();
+	    $('#slidebottom div').click(function() {
+			get_details_notification();
+			$(this).next().slideToggle();
+	    });*/
+
+	    if(idu!="" && chc!='addMeme'){
+			//setInterval("getall_notification()",7000); for notifications
+			
+	    /* For popup bar */
+			setTimeout("popup_expbar()", 7000); 	
+			setTimeout("live_ranking()", 20000);
+	    }
+
+	    /*if (idu) {
+		    /* For updating total login time */
+		    /*upd_log_time();
+	    }  */
+	    
+	});
+</script>
+{/literal}
 </head>
 <body>
 <div id="fb-root"></div>
@@ -99,9 +179,9 @@
 				</div>
 				<div id="view_meme">
 					{if $smarty.session.profile_meme_image}
-						<div id="profile_meme">
+						<!--<div id="profile_meme">
 							{$smarty.session.profile_meme_title}
-						</div>
+						</div>-->
 						<div id="profile_meme_image">
 							<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}" />
 						</div>
@@ -213,18 +293,23 @@
 				</div>
 				<div id="triangle_down"></div>
 			</div>
-			{if $smarty.session.one_less_user}
-				
-				<div id="trailing_user_pic" class="nohighlight">
-					<span id="trailing_user_profile_pic"><a href="/?id={$smarty.session.one_less_dupe_username}">
-						{if $smarty.session.one_less_pic}
-							<img src="{$smarty.session.one_less_pic}" style="width:25px;height:25px">
-						{else}
-							<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
-						{/if}</a>
-					</span>
-					<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}<a href="/?id={$smarty.session.one_less_dupe_username}">{$smarty.session.one_less_rank}</a>{else}N/A{/if}
-					</div>
+			<div id="triangle_down"></div>
+			
+			<!-- Please style this correctly, to the right of the picture like on Quora-->
+			<div id="home_link"><a href="/">Home</a></div>
+		</div>
+			
+		{if $smarty.session.one_less_user}
+			
+			<div id="trailing_user_pic" class="nohighlight">
+				<span id="trailing_user_profile_pic"><a href="/?id={$smarty.session.one_less_dupe_username}">
+					{if $smarty.session.one_less_pic}
+						<img src="{$smarty.session.one_less_pic}" style="width:25px;height:25px">
+					{else}
+						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
+					{/if}</a>
+				</span>
+				<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}<a href="/?id={$smarty.session.one_less_dupe_username}">{$smarty.session.one_less_rank}</a>{else}N/A{/if}
 				</div>
 			{else}
 				
@@ -250,51 +335,7 @@
 		<div id="contained">
 			{if !$smarty.session.profile}
 				<!-- view home page -->
-				<div id="profile_page">
-					<div id="profile_pic">
-					{if $smarty.session.fb_pic_normal}
-						<img src="{$smarty.session.fb_pic_normal}"class="profile_pic"/>
-					{else}
-						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
-					{/if}
-					</div>
-					<div id="user_info">
-						<div id="profile_name"><a href="/?id={$smarty.session.dupe_username}">{$smarty.session.username|capitalize}</a></div>
-						<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if} followers</div>
-					</div>
-						
-					<div id="my_pics">
-						<div class="tabs">
-						   <div class="tab">
-							   <input type="radio" id="tab-1" name="tab-group-1" checked>
-							   <label for="tab-1">My Memes</label>
-							   <div class="content">
-									<div id="my_meme_list">
-										{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
-									</div>
-							   </div>
-						   </div>
-						   <div class="tab">
-							   <input type="radio" id="tab-2" name="tab-group-1">
-							   <label for="tab-2">Tagged Memes</label>
-							   <div class="content">
-									<div id="my_tagged">
-										{get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
-									</div>
-							   </div>
-						   </div>
-							<div class="tab">
-							   <input type="radio" id="tab-3" name="tab-group-1">
-							   <label for="tab-3">Favorites</label>
-							   <div class="content">
-									<div id="my_favorites" >
-										{get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
-									</div>
-							   </div>
-						   </div>
-						</div>
-					</div>		
-				</div>
+				
 			{elseif $smarty.session.profile == 'invalid'}
 				<div id="profile_page">
 					<div id="profile_name"><center>Flerp? We couldn't find this user!</center></div>
@@ -323,7 +364,8 @@
 								{$smarty.session.profile_meme_title}
 							</div>
 							<div id="profile_meme_image">
-								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}" />
+								<a class="meme_gallery" data-fancybox-group="my_meme" id="selected_image" href="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}">
+								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" style="display:none;"/></a>
 							</div>
 							{if $smarty.session.profile_meme_tagged}
 								<div id="profile_tagged">
@@ -757,80 +799,6 @@
 			xp_wait = 8000;
 		});
 	}
-	
-	var chc = "{/literal}{$chc}{literal}";
-	var idu = "{/literal}{$smarty.session.id_user}{literal}";
-	
-	var follow_count = parseInt({/literal}{$smarty.session.profile_follower_count}{literal});	
-	// Variables for XP updating
-	var curr_xp = {/literal}{if $smarty.session.exp_point}{$smarty.session.exp_point}{else}0{/if}{literal},
-		xp_to_level = {/literal}{if $smarty.session.xp_to_level}{$smarty.session.xp_to_level}{else}0{/if}{literal},
-		previous_xp_to_level = {/literal}{if $smarty.session.previous_xp_to_level}{$smarty.session.previous_xp_to_level}{else}0{/if}{literal},
-		user_level = {/literal}{if $smarty.session.level}{$smarty.session.level}{else}0{/if}{literal};
-
-	if (user_level == 1) {
-		var xp_percent = (curr_xp / xp_to_level) * 100;
-	} else {
-		{/literal}{if $smarty.session.exp_point}
-			xp_percent = (curr_xp - previous_xp_to_level) / (xp_to_level - previous_xp_to_level) * 100;
-		{else}xp_percent = 0{/if}{literal}
-	}
-	
-	var rank_wait = 40000;
-	var xp_wait = 8000;
-	
-	$(document).ready(function(){
-		if (idu) {
-			// User XP initial display
-			$("#xpbar").progressbar({
-				value: xp_percent
-			});
-			$("#user_level").html('L'+user_level);
-			$("#xpbar_status").html(xp_percent.toFixed(2) +'%');
-			
-			// Mouseover shows XP and %
-			$("#xpbar, #xpbar_status").hoverIntent({
-				interval: 200,
-				timeout:1000
-			});
-			
-			$("#xpbar, #xpbar_status, #user_level").hoverIntent(function(){
-				$("#xpbar_status").delay(200).show();
-			}, function() {
-				$("#xpbar_status").delay(1000).fadeOut();
-			});
-			
-			$("#user_menu").hoverIntent(function(){
-				$(".nav_menu").slideDown('medium');
-			}, function() {
-				$(".nav_menu").slideUp('medium');
-			});
-		}
-
-		var scrn_height = window.screen.availHeight;
-            $("#mid_cont").height(scrn_height/2 + scrn_height/9);
-
-	    /* For notification 
-	    $(".inner").hide();
-	    $('#slidebottom div').click(function() {
-			get_details_notification();
-			$(this).next().slideToggle();
-	    });*/
-
-	    if(idu!="" && chc!='addMeme'){
-			//setInterval("getall_notification()",7000); for notifications
-			
-	    /* For popup bar */
-			setTimeout("popup_expbar()", 7000); 	
-			setTimeout("live_ranking()", 20000);
-	    }
-
-	    /*if (idu) {
-		    /* For updating total login time */
-		    /*upd_log_time();
-	    }  */
-	    
-	});
 	
 	function fb_logout(response){
 		url="##LBL_SITE_URL##";		
