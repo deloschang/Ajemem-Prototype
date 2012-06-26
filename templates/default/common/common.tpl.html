@@ -182,9 +182,9 @@ var chc = "{/literal}{$chc}{literal}";
 				</div>
 				<div id="view_meme">
 					{if $smarty.session.profile_meme_image}
-						<div id="profile_meme">
+						<!--<div id="profile_meme">
 							{$smarty.session.profile_meme_title}
-						</div>
+						</div>-->
 						<div id="profile_meme_image">
 							<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}" />
 						</div>
@@ -271,7 +271,11 @@ var chc = "{/literal}{$chc}{literal}";
 				</div>
 			</div>
 			<div id="triangle_down"></div>
+			
+			<!-- Please style this correctly, to the right of the picture like on Quora-->
+			<div id="home_link"><a href="/">Home</a></div>
 		</div>
+			
 		{if $smarty.session.one_less_user}
 			
 			<div id="trailing_user_pic" class="nohighlight">
@@ -287,7 +291,7 @@ var chc = "{/literal}{$chc}{literal}";
 			</div>
 		{else}
 			
-		{/if}	
+		{/if}
 	</div>
 	<div id= "logoc" class="nohighlight">
 		<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/wmemejalogo.png" id="logo" style="width:180px;"></a>
@@ -303,51 +307,7 @@ var chc = "{/literal}{$chc}{literal}";
 		<div id="contained">
 			{if !$smarty.session.profile}
 				<!-- view home page -->
-				<div id="profile_page">
-					<div id="profile_pic">
-					{if $smarty.session.fb_pic_normal}
-						<img src="{$smarty.session.fb_pic_normal}"class="profile_pic"/>
-					{else}
-						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
-					{/if}
-					</div>
-					<div id="user_info">
-						<div id="profile_name"><a href="/?id={$smarty.session.dupe_username}">{$smarty.session.username|capitalize}</a></div>
-						<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count} followers{else}0 followers{/if}</div>
-					</div>
-						
-					<div id="my_pics">
-						<div class="tabs">
-						   <div class="tab">
-							   <input type="radio" id="tab-1" name="tab-group-1" checked>
-							   <label for="tab-1">My Memes</label>
-							   <div class="content">
-									<div id="my_meme_list">
-										{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
-									</div>
-							   </div>
-						   </div>
-						   <div class="tab">
-							   <input type="radio" id="tab-2" name="tab-group-1">
-							   <label for="tab-2">Tagged Memes</label>
-							   <div class="content">
-									<div id="my_tagged">
-										{get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
-									</div>
-							   </div>
-						   </div>
-							<div class="tab">
-							   <input type="radio" id="tab-3" name="tab-group-1">
-							   <label for="tab-3">Favorites</label>
-							   <div class="content">
-									<div id="my_favorites" >
-										{get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
-									</div>
-							   </div>
-						   </div>
-						</div>
-					</div>		
-				</div>
+				
 			{elseif $smarty.session.profile == 'invalid'}
 				<div id="profile_page">
 					<div id="profile_name"><center>Flerp? We couldn't find this user!</center></div>

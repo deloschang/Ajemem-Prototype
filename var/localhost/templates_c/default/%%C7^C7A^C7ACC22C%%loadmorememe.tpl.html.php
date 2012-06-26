@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-25 07:28:29
+<?php /* Smarty version 2.6.7, created on 2012-06-26 07:38:33
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 205, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 244, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 25/06/2012 07:28:29 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 26/06/2012 07:38:33 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
@@ -277,7 +277,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 					<?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
 
 					<a href="javascript:void(0);" onclick="get_all_replies('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-');" class="meme_reply"><img src="http://localhost/templates/images/replys.png" style="width:25px;height:25px; display:none;"/><div id="repl<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+');" class="meme_reply"><img src="http://localhost/templates/images/replys.png" style="width:25px;height:25px;"/><div id="repl<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "class="meme_reply_label" style="display:none;"><?php if ($this->_tpl_vars['x']['tot_reply'] != 0):  echo $this->_tpl_vars['x']['tot_reply'];  else: ?>0<?php endif; ?></div></a>&emsp;
 
 					<?php endif; ?>
@@ -325,7 +325,6 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 						<?php endif; ?>
 					<?php endif; ?>
 					><?php if ($this->_tpl_vars['x']['tot_dishonour'] != 0):  echo $this->_tpl_vars['x']['tot_dishonour'];  endif; ?></div></a>
-			    
 
 					</div>
 
@@ -353,7 +352,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 	
 	    </div>
 	    <div id="send_reply<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-" style="width:75%; margin:-20px 0 30px 120px; display: none;"></div>
+" style="width:75%; margin:-20px 0 30px 120px; display: none;"><div class="fb-comments" data-href="/" data-num-posts="1" data-width="470"></div></div>
 		<!--<div id="add_caption<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " style="width:60%;display: none;"></div> -->
 	    <input type="hidden" name="is_replied" id="is_replied<?php echo $this->_tpl_vars['x']['id_meme']; ?>
