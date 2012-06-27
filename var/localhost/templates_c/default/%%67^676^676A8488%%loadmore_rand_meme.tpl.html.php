@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-27 02:49:27
+<?php /* Smarty version 2.6.7, created on 2012-06-27 17:04:49
          compiled from meme/loadmore_rand_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmore_rand_meme.tpl.html', 11, false),array('modifier', 'date_format', 'meme/loadmore_rand_meme.tpl.html', 13, false),)), $this); ?>
@@ -192,11 +192,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		rand_set_tot_adaggr(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\',\'D\');
 		setTimeout(\'clearTimer()\', 1000);
      }
-    
-    $(".fb_btn").each(function (){
-		FB.XFBML.parse($(this).get(0));
-     });
-    
 </script>
 '; ?>
 

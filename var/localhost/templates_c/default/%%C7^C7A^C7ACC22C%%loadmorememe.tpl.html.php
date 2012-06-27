@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-27 05:28:22
+<?php /* Smarty version 2.6.7, created on 2012-06-27 17:04:12
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 205, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 245, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 27/06/2012 05:28:22 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 27/06/2012 17:04:12 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
@@ -336,6 +336,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 									<?php endif; ?> -->
 
 					<h2 class="expand_heading"></h2>
+
 					<!--
 					<div class="toggle_container">
 					<table><tr>
@@ -349,6 +350,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 " send="false" width="70" show_faces="true" font="arial" layout="button_count"></fb:like> </div></td>
 					</tr></table>
 					</div>-->
+
 	
 	    </div>
 	    <div id="send_reply<?php echo $this->_tpl_vars['x']['id_meme']; ?>

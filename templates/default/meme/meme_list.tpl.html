@@ -349,8 +349,13 @@
 	function diff_feed(ext){
 		var url = "##LBL_SITE_URL##meme/meme_list";
 			$.post(url,{cat:'main_feed',ce:0,ext:ext}, function(res){
-				if(res != "")
-					$('#all_memes').html(res);
+				if(res != ""){
+					if (ext == 0){
+						$('#all_memes').html(res);
+					} else {
+						$('#friend_memes').html(res);
+					}
+				}
 				if (ext == 1){
 					$('#page_boop').hide();
 				} else {
@@ -390,13 +395,17 @@
 
 {if $smarty.session.id_user || $smarty.session.profile}
 <div>
-		<div id="world_feed">
-			<a href="javascript:void(0);" onclick="diff_feed(0);" class="special-btn green">World Feed</a>
+		<div id="world_feed" class="feed_buttons">
+			<center>
+			<a href="javascript:void(0);" onclick="diff_feed(0);">World Feed</a>
+			</center>
 		</div>
 		
 		{if $smarty.session.id_user}
-			<div id="friends_feed">
-				<a href="javascript:void(0);" onclick="diff_feed(1);" class="special-btn green">Friends Feed</a>
+			<div id="friends_feed" class="feed_buttons">
+				<center>
+				<a href="javascript:void(0);" onclick="diff_feed(1);">Friends Feed</a>
+				</center>
 			</div>
 		{/if}
 </div>
@@ -406,6 +415,15 @@
 <br><br><br><br><br>
 
 <div id="all_memes">	
+    {if $sm.res_meme} 
+	{include file="meme/loadmorememe"}
+    {else}
+	<input type="hidden" id="msgexist" value="1">
+		OMG, you've reached the edge of Memeja!
+    {/if}
+</div>
+
+<div id="friend_memes">	
     {if $sm.res_meme} 
 	{include file="meme/loadmorememe"}
     {else}
@@ -435,7 +453,7 @@
 			<div id="message_container">
 				<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="##LBL_SITE_URL##image/questions.png" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
 			</div>
-			<div class="module_text" id="second_half">Memeja helps you share experiences with the people you care about!</div>
+			<div class="module_text" id="second_half">Share experiences with the people you care about</div>
 		</div>
 		<center>
 		<div id="signup_text">Experience the Hype!</div>
@@ -446,7 +464,7 @@
 	    	{*,user_birthday*}	{* Uncomment to enable *}
 	    	">
         Login with Facebook
-      </div>
+		</div>
 
 		<div id="bottom_bar">
 			<table><tr>

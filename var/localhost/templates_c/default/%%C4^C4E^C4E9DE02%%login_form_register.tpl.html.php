@@ -1,7 +1,14 @@
+<<<<<<< HEAD
+<?php /* Smarty version 2.6.7, created on 2012-06-24 00:17:47
+         compiled from user/login_form_register.tpl.html */ ?>
+
+<!-- Template: user/login_form_register.tpl.html Start 24/06/2012 00:17:47 --> 
+=======
 <?php /* Smarty version 2.6.7, created on 2012-06-22 08:43:08
          compiled from user/login_form_register.tpl.html */ ?>
 
 <!-- Template: user/login_form_register.tpl.html Start 22/06/2012 08:43:08 --> 
+>>>>>>> 253f2112237052b271c69d4998dd6b038abf01ae
  <?php echo '
 <script type="text/javascript">
     function validate_login(){
@@ -37,7 +44,31 @@
 	function lol_promise(){
 		$(\'#lol_promise\').slideToggle(400);
 	 }
+	
+	function toggleDiv(id1,id2) {
+		var tag = document.getElementById(id1).style;
+		if(tag.display == "none") {
+			tag.display = "block";
+		 } else {
+			tag.display = "none";
+		 }
+	 }
 </script>
+
+<style type="text/css">
+
+ .title {
+  background: url(suggestion.png) no-repeat;
+  width:155px;
+  cursor:pointer;
+  height:30px;
+  }
+ .item {
+  width:300px;
+  }
+
+</style>
+
 '; ?>
 
 <div id="signup">
@@ -69,6 +100,33 @@
 	<img src="http://localhost/image/troll_mascot.png" style="width:80px;height:80px;" id="lol_plomise_mascot"/><span id="lol_plomise_text"><strike>We plomise. Twust us</strike></span>
 	</div>
 </div>
+<br/><br/>
+<div id="message"></div>
+<div class="title" id="title" onClick="javascript:toggleDiv('content1','icon1');">
+ </div>
+ <div id="content1" class="item" style="display:none">
+	<form action="send-contact-message.php" method="post">
+<p>
+Name: (Optional)<br>
+<input type="text" name="name" id="name" size="25">
+</p>
+<p>
+Email: (Optional)<br>
+<input type="text" name="email" size="25">
+</p>
+<p>
+Subject:<br>
+<input type="text" name="subject" size="25">
+</p>
+<p>
+Comments:<br>
+<textarea name="message" rows="5" cols="25"></textarea>
+</p>
+	<p>
+		<button type="submit">Submit</button>
+	</p>
+	</form>
+	</div>
 
 <!-- Under Construction 
 
