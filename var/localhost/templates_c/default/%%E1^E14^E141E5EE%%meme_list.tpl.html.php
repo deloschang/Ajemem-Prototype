@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-26 07:38:33
+<?php /* Smarty version 2.6.7, created on 2012-06-27 04:11:17
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -35,7 +35,6 @@
 				
 				prevEffect : \'fade\',
 				nextEffect : \'none\',
-				closeEffect : \'elastic\',
 				closeSpeed : 100,
 
 				closeBtn  : false,
@@ -56,6 +55,11 @@
 					overlay : {
 						opacity : 0.8
 					 }
+				 },
+				afterShow : function (){
+					console.log(\'fancybox called\');
+					var description = "<div class=\'links\'>"+$("#description > div").eq(this.index).html()+"</div>"
+					$(\'#fancybox-overlay\').html(description);
 				 }
 			 });
 
@@ -315,8 +319,8 @@
      }
     
     function show_details(id_meme){
-		var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
-		$.post(url,{meme:meme_details,ce:0,id:id_meme });
+		//var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
+		//$.post(url,{meme:meme_details,ce:0,id:id_meme });
      }
 	
     function flagging(id_meme){

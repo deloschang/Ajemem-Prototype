@@ -1073,6 +1073,27 @@ moz-border-radius: 10px;
 	#my_meme_list{
 		position:relative;
 	}
+	
+	.links {
+		position: absolute; 
+		z-index: 99999;
+		top: 0;
+		right: 0;
+		background: #f2f2f2;
+		width: 200px;
+		height: 100%;
+		display: block;
+		}
+	.links .inner {
+		padding: 50px 10px 10px 15px;
+		font-size: 12px;
+	}
+	
+	#pic_wrapper {
+		width: 800px;
+		margin: 0 auto;
+		position: relative;
+	}
 
 /*################################################################################*/
 
