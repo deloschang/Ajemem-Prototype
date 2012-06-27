@@ -52,11 +52,10 @@
 						height : 50
 					},
 					overlay : {
-						opacity : 0.8
+						opacity : 0.82
 					}
 				},
 				afterShow : function (){
-					console.log('fancybox called');
 					var description = "<div class='links'>"+$("#description > div").eq(this.index).html()+"</div>"
 					$('#fancybox-overlay').html(description);
 				}

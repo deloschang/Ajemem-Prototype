@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-27 04:11:17
+<?php /* Smarty version 2.6.7, created on 2012-06-27 05:28:22
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 205, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 245, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 27/06/2012 04:11:17 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 27/06/2012 05:28:22 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
@@ -362,11 +362,9 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 	    <input type="hidden" name="is_disagreed" id="is_disagreed<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " value=''/>
 
-	<div id="pic_wrapper">
 		<div id="description" style="display: none;">
-			<div><div class="inner">description with links to append to first image</div></div>
+			<div><div class="fb-comments" id="inner" data-href="/" data-num-posts="10" data-width="400"></div></div>
 		</div>
-	</div>
 </div>
 
 <?php endforeach; endif; unset($_from);  endif; ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-27 04:11:17
+<?php /* Smarty version 2.6.7, created on 2012-06-27 05:28:22
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -53,11 +53,10 @@
 						height : 50
 					 },
 					overlay : {
-						opacity : 0.8
+						opacity : 0.82
 					 }
 				 },
 				afterShow : function (){
-					console.log(\'fancybox called\');
 					var description = "<div class=\'links\'>"+$("#description > div").eq(this.index).html()+"</div>"
 					$(\'#fancybox-overlay\').html(description);
 				 }
