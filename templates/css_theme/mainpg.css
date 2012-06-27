@@ -476,7 +476,6 @@
 	#all_memes{
 		position:relative;
 		top:-5px;
-		border-left: 1px solid #CCCCCC;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -487,7 +486,6 @@
 	#friend_memes{
 		background-color:#F0F0F0;
 		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
-		border-right: 1px solid #cccccc;
 		padding:10px;
 		padding-top:70px;
 		position:absolute;
@@ -602,6 +600,13 @@
 		-moz-border-radius: 5px;
 		-webkit-border-radius: 5px;
 		border-radius: 5px;
+		box-shadow: 0 0 2px 0 #555555;
+	}
+	
+	.header_nav:hover a{
+		color:#0099FF;
+		text-shadow: none;
+		font-weight:bold;
 	}
 	
 	#home_link{
@@ -671,7 +676,7 @@
 	
 	#user_name:hover{
 		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-		background:none repeat scroll 0 0 #EFFAE1;
+		background:none repeat scroll 0 0 #FFF;
 	}
 	
 	#user_name:hover:after {
@@ -680,7 +685,7 @@
 		position: absolute;
 		width: 0;
 		border: 5px solid transparent;
-		border-top-color: #EFFAE1;
+		border-top-color: #FFF;
 		top: 100%;
 		left: 50%;
 		margin-left: -5px;
@@ -692,7 +697,9 @@
 	}
 	
 	#user_name:hover a{
-		color:#C3C3C3;
+		color:#87C8F0;
+		text-shadow: none;
+		font-weight:bold;
 	}
 	
 	#logout {
