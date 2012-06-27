@@ -995,15 +995,18 @@
 	}
 	
 	.links {
-		position: absolute; 
+		position: relative;
+		padding:5px;
 		z-index: 99999;
-		opacity: 1;
-		top: 0;
-		right: 0;
+		top:50px;
+		left:900px;
 		background: #f2f2f2;
 		width: 400px;
 		height: 100%;
 		display: block;
+		-moz-border-radius: 10px; 
+		-webkit-border-radius: 10px; 
+		border-radius: 10px;
 	}
 		
 	/*.links #inner {
@@ -2065,10 +2068,12 @@ a{
 	z-index: 1002;
 }
 
+/*To Move fancybox meme around*/
 .fancybox-outer {
 	position: relative;
 	padding: 0;
 	margin: 0;
+	right:300px;
 	background: #f9f9f9;
 	color: #444;
 	text-shadow: none;
@@ -2360,7 +2365,7 @@ a{
 }
 #fancybox-thumbs {
 	position: fixed;
-	left: 0px;
+	right:500px;
 	width: 100%;
 	overflow: hidden;
 	z-index: 1005;

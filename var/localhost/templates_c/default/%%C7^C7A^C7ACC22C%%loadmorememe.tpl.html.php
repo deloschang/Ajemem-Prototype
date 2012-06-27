@@ -1,21 +1,12 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-06-27 09:31:55
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-27 05:28:22
->>>>>>> 972cc8cd30ef0bff65838f0f77bf8bae2182d3a2
+<?php /* Smarty version 2.6.7, created on 2012-06-27 10:56:55
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 205, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 245, false),)), $this); ?>
 
-<<<<<<< HEAD
-<!-- Template: meme/loadmorememe.tpl.html Start 27/06/2012 09:31:55 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 27/06/2012 10:56:55 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
-=======
-<!-- Template: meme/loadmorememe.tpl.html Start 27/06/2012 05:28:22 --> 
- <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
->>>>>>> 972cc8cd30ef0bff65838f0f77bf8bae2182d3a2
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
