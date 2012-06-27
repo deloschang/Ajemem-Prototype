@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-27 09:31:55
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-27 05:28:22
+>>>>>>> 972cc8cd30ef0bff65838f0f77bf8bae2182d3a2
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -35,7 +39,6 @@
 				
 				prevEffect : \'fade\',
 				nextEffect : \'none\',
-				closeEffect : \'elastic\',
 				closeSpeed : 100,
 
 				closeBtn  : false,
@@ -54,8 +57,12 @@
 						height : 50
 					 },
 					overlay : {
-						opacity : 0.8
+						opacity : 0.82
 					 }
+				 },
+				afterShow : function (){
+					var description = "<div class=\'links\'>"+$("#description > div").eq(this.index).html()+"</div>"
+					$(\'#fancybox-overlay\').html(description);
 				 }
 			 });
 
@@ -315,8 +322,8 @@
      }
     
     function show_details(id_meme){
-		var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
-		$.post(url,{meme:meme_details,ce:0,id:id_meme });
+		//var url="http://localhost/meme/meme_details/ce/0/id/"+id_meme;
+		//$.post(url,{meme:meme_details,ce:0,id:id_meme });
      }
 	
     function flagging(id_meme){

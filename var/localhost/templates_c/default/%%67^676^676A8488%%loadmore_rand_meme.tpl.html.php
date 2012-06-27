@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-06-26 10:56:25
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-27 02:49:27
+>>>>>>> 972cc8cd30ef0bff65838f0f77bf8bae2182d3a2
          compiled from meme/loadmore_rand_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmore_rand_meme.tpl.html', 11, false),array('modifier', 'date_format', 'meme/loadmore_rand_meme.tpl.html', 13, false),)), $this); ?>
@@ -204,4 +208,4 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 
 <?php elseif (! $this->_tpl_vars['sm']['rand_fg'] && ! $this->_tpl_vars['sm']['res_meme']['0']): ?>
 No meme found.
-<?php endif; ?>
+<?php endif; ?>

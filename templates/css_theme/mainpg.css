@@ -993,6 +993,23 @@
 	#my_meme_list{
 		position:relative;
 	}
+	
+	.links {
+		position: absolute; 
+		z-index: 99999;
+		opacity: 1;
+		top: 0;
+		right: 0;
+		background: #f2f2f2;
+		width: 400px;
+		height: 100%;
+		display: block;
+	}
+		
+	/*.links #inner {
+		padding: 50px 10px 10px 15px;
+		font-size: 12px;
+	}*/
 
 /*###########################################
 

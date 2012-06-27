@@ -34,7 +34,6 @@
 				
 				prevEffect : 'fade',
 				nextEffect : 'none',
-				closeEffect : 'elastic',
 				closeSpeed : 100,
 
 				closeBtn  : false,
@@ -53,8 +52,12 @@
 						height : 50
 					},
 					overlay : {
-						opacity : 0.8
+						opacity : 0.82
 					}
+				},
+				afterShow : function (){
+					var description = "<div class='links'>"+$("#description > div").eq(this.index).html()+"</div>"
+					$('#fancybox-overlay').html(description);
 				}
 			});
 
@@ -314,8 +317,8 @@
     }
     
     function show_details(id_meme){
-		var url="##LBL_SITE_URL##meme/meme_details/ce/0/id/"+id_meme;
-		$.post(url,{meme:meme_details,ce:0,id:id_meme});
+		//var url="##LBL_SITE_URL##meme/meme_details/ce/0/id/"+id_meme;
+		//$.post(url,{meme:meme_details,ce:0,id:id_meme});
     }
 	
     function flagging(id_meme){
