@@ -1,30 +1,30 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-27 10:56:54
+<?php /* Smarty version 2.6.7, created on 2012-06-27 11:21:27
          compiled from common/common.tpl.html */
 
-$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '3b8201709dac421b36b18cca35b37818';
+$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'dd2b3ca4a32dc241231f323c20c36ec1';
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 178, false),array('function', 'get_mod', 'common/common.tpl.html', 209, false),)), $this); ?>
 <?php
-function _smarty_tplfunc_3b8201709dac421b36b18cca35b37818_0(&$_smarty)
+function _smarty_tplfunc_dd2b3ca4a32dc241231f323c20c36ec1_0(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_3b8201709dac421b36b18cca35b37818_1(&$_smarty)
+function _smarty_tplfunc_dd2b3ca4a32dc241231f323c20c36ec1_1(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_3b8201709dac421b36b18cca35b37818_2(&$_smarty)
+function _smarty_tplfunc_dd2b3ca4a32dc241231f323c20c36ec1_2(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_3b8201709dac421b36b18cca35b37818_3(&$_smarty)
+function _smarty_tplfunc_dd2b3ca4a32dc241231f323c20c36ec1_3(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $_smarty);
 }
