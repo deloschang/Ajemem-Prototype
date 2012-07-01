@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-01 23:58:56
+<?php /* Smarty version 2.6.7, created on 2012-07-02 00:22:09
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 35, false),)), $this); ?>
@@ -86,6 +86,14 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 			
 				<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
+				
+				<div id="description" style="display: none;">		
+					<div>				
+						<div class="fb-comments" id="inner" data-href='http://memeja.com/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
+&meme=<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+' data-num-posts="10" data-width="400"></div>
+					</div>
+				</div>
 			<?php endif; ?>
 			<?php endfor; endif; ?>
 				<?php if ($_SESSION['profile']): ?>

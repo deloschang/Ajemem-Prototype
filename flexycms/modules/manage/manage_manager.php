@@ -72,6 +72,10 @@ class manage_manager extends mod_manager {
 	    @mysqli_free_result($res);
 	    mysqli_next_result($link);
 	    $hst_rtd_cap = $this->get_hst_rtd_caption(trim($id_memes,','));
+		
+	    $usr_info=$this->get_user_info();
+	    $this->_output['uinfo']=$usr_info;
+		
 	    $this->_output['res']=$arr;
 	    $this->_output['hrc']=$hst_rtd_cap;
 	    $this->_output['last_res_id_meme']=($arr)?$arr[count($arr)-1]['id_meme']:"";
@@ -238,16 +242,17 @@ class manage_manager extends mod_manager {
 	function get_user_info($id_users=""){
 	    global $link;
 	    $cond = ($id_users!="")?" id_user IN(".$id_users.")":1;
-	    $sql = $this->manage_bl->get_search_sql("user",$cond,"id_user,fname,lname,avatar,gender");
+	    $sql = $this->manage_bl->get_search_sql("user",$cond,"id_user,fname,lname,avatar,gender,dupe_username");
 	    $res = mysqli_query($link,$sql);
 	    while($rec = mysqli_fetch_assoc($res)){
-		$user_info[$rec['id_user']] = $rec;
-		$user_info[$rec['id_user']]['friends'] = explode(",",$rec['memeje_friends']);
+			$user_info[$rec['id_user']] = $rec;
+		//$user_info[$rec['id_user']]['friends'] = explode(",",$rec['memeje_friends']);
 	    }
 	    mysqli_free_result($res);
 	    mysqli_next_result($link);
 	    return $user_info;
 	}
+	
 	function badge_info($id_badges){
 	    $id_badges = ($id_badges)?$id_badges:0;
 	    $sql = $this->manage_bl->get_search_sql("badge"," id_badge IN(".$id_badges.")","id_badge,image_badge");

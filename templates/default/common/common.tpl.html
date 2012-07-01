@@ -68,7 +68,7 @@ var chc = "{/literal}{$chc}{literal}";
 				},
 				afterShow : function (){
 					var description = "<div class='links'>"+$("#description > div").eq(this.index).html()+"</div>"
-					//console.log(description);
+					console.log(description);
 					$('#fancybox-overlay').html(description);
 				}
 			});
@@ -175,6 +175,8 @@ var chc = "{/literal}{$chc}{literal}";
 
 {if !$smarty.session.id_user}
 	<!-- NLU looks @ home page -->
+	
+	
 	{if !$smarty.session.profile}
 	<img src="##LBL_SITE_URL##templates/images/background.gif" style="position:absolute;top:-10px;width:1400px;height:800px;"/>
 	<div id="fadeback"></div>	

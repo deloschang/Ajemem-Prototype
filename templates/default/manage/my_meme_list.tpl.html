@@ -44,6 +44,12 @@
 				<a class="meme_gallery" data-fancybox-group="my_meme" id="my_meme_image{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
 			
 				<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="width: 60px;height: 60px;cursor: pointer;"/></a>
+				
+				<div id="description" style="display: none;">		
+					<div>				
+						<div class="fb-comments" id="inner" data-href='http://memeja.com/?id={$sm.uinfo[$x.id_user].dupe_username}&meme={$x.id_meme}' data-num-posts="10" data-width="400"></div>
+					</div>
+				</div>
 			{/if}
 			{/section}
 				{if $smarty.session.profile}
