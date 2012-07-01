@@ -349,6 +349,12 @@ var chc = "{/literal}{$chc}{literal}";
 			{if !$smarty.session.profile}
 				<!-- view home page -->
 				
+				<div id="live_feed" class="nohighlight">
+					<div id="feed_cont">
+						{include file="meme/home"}
+					</div>
+				</div>
+				
 			{elseif $smarty.session.profile == 'invalid'}
 				<div id="profile_page">
 					<div id="profile_name"><center>Flerp? We couldn't find this user!</center></div>
@@ -420,12 +426,6 @@ var chc = "{/literal}{$chc}{literal}";
 					</div>
 				</div>
 			{/if}
-			
-			<div id="live_feed" class="nohighlight">
-				<div id="feed_cont">
-					{include file="meme/home"}
-				</div>
-			</div>
 			
 		</div>
 
@@ -633,6 +633,14 @@ var chc = "{/literal}{$chc}{literal}";
 			$("#randpgexist").val(1);
 			$.fancybox.open(res,{
 				fitToView: false,
+				/*	FB comment integration.
+					afterShow : function(){
+					var random_description = "<div class='links'>"+$("#random_description > div").html()+"</div>"
+					
+					console.log(random_description);
+					
+					$('#fancybox-overlay').html(random_description);
+				},*/
 				afterClose : function (){
 					$("#randpgexist").val(0);
 				}

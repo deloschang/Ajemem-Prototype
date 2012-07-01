@@ -76,6 +76,10 @@
 	    
 	    
 	    <div id="lding_rand" style="display: none;" align="center"><img src="##LBL_SITE_URL##templates/images/loadingAnimation.gif" /></div>
+		
+		<div id="random_description" style="display: none;">
+			<div><div class="fb-comments" id="inner" data-href='http://memeja.com/?id={$sm.uinfo[$x.id_user].dupe_username}&meme={$x.id_meme}' data-num-posts="10" data-width="400"></div></div>
+		</div>
 	    
 	    <div  onclick="show_my_details('{$x.id_meme}');" id="comc_img"><br />
 		    <img  src="##LBL_SITE_URL##image/orig/meme/{$x.image}" style="cursor:pointer;"  title="{$x.title}" />

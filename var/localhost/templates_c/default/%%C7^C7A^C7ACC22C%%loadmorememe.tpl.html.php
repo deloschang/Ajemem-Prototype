@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-01 22:02:10
+<?php /* Smarty version 2.6.7, created on 2012-07-01 22:37:05
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 205, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 244, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 01/07/2012 22:02:09 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 01/07/2012 22:37:05 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -356,7 +356,9 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 	
 	    </div>
 	    <div id="send_reply<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-" style="width:75%; margin:-20px 0 30px 120px; display: none;"><div class="fb-comments" data-href="/" data-num-posts="1" data-width="470"></div></div>
+" style="width:75%; margin:-20px 0 30px 120px; display: none;"><div class="fb-comments" data-href="http://memeja.com/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
+&meme=<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+" data-num-posts="1" data-width="470"></div></div>
 		<!--<div id="add_caption<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " style="width:60%;display: none;"></div> -->
 	    <input type="hidden" name="is_replied" id="is_replied<?php echo $this->_tpl_vars['x']['id_meme']; ?>
