@@ -42,7 +42,10 @@ var chc = "{/literal}{$chc}{literal}";
 				padding: 0, 
 				fitToView: false,
 				afterShow : function (){
-					var description = "<div class='links'>"+$("#description > div").eq(this.index).html()+"</div>"
+					var description = "<div class='links'>"+$("#current_description > div").html()+"</div>"
+					
+					console.log(description);
+					
 					$('#fancybox-overlay').html(description);
 				}
 			}).trigger('click');
@@ -376,6 +379,9 @@ var chc = "{/literal}{$chc}{literal}";
 							<div id="profile_meme_image">
 								<a class="meme_gallery" data-fancybox-group="my_meme" id="selected_image" href="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}">
 								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" style="display:none;"/></a>
+							</div>
+							<div id="current_description" style="display: none;">
+								<div><div class="fb-comments" id="inner" data-href='http://memeja.com/?id={$smarty.session.profile_dupe_username}&meme={$smarty.session.profile_meme_id}' data-num-posts="10" data-width="400"></div></div>
 							</div>
 							{if $smarty.session.profile_meme_tagged}
 								<div id="profile_tagged">

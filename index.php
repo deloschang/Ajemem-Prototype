@@ -116,6 +116,8 @@ if (isset($_input['id'])){
 				$_SESSION['profile_meme_title'] = $profile_meme['title'];
 				$_SESSION['profile_meme_image'] = $profile_meme['image'];
 				
+				$_SESSION['profile_meme_id'] = $profile_meme['id_meme'];
+				
 				if ($profile_meme['tagged_user']){
 					$tagged_data = explode(',',$profile_meme['tagged_user']);
 					foreach($tagged_data as $key => $value){
