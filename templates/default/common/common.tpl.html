@@ -35,6 +35,44 @@ var chc = "{/literal}{$chc}{literal}";
 	var xp_wait = 8000;
 	
 	$(document).ready(function(){
+		$('.meme_gallery').fancybox({
+				padding: 0,
+				
+				fitToView: false,
+			
+				openEffect : 'elastic',
+				openSpeed  : 150,
+				
+				prevEffect : 'fade',
+				nextEffect : 'none',
+				closeSpeed : 100,
+
+				closeBtn  : false,
+				arrows    : true,
+				nextClick : true,
+				
+				keys: {
+					next: [13, 32, 34, 39], // enter, space, page down, down arrow
+					prev: [8, 33, 37], // backspace, page up, up arrow
+					close: [27] // escape key
+				},
+				
+				helpers : { 
+					thumbs : {
+						width  : 50,
+						height : 50
+					},
+					overlay : {
+						opacity : 0.82
+					}
+				},
+				afterShow : function (){
+					var description = "<div class='links'>"+$("#description > div").eq(this.index).html()+"</div>"
+					//console.log(description);
+					$('#fancybox-overlay').html(description);
+				}
+			});
+	
 		var selected_meme = '{/literal}{$smarty.session.profile_meme_image}{literal}';
 		if (selected_meme){
 			$("#selected_image").fancybox({
@@ -272,20 +310,11 @@ var chc = "{/literal}{$chc}{literal}";
 					<div class="hover_menu_contents">
 						<ul class="nav_menu_list">
 							<li>
-								<a href="javascript:void(0);" onclick="javascript:toggleDiv('content1','icon1');">Suggestions</a>
+								<a href="javascript:void(0);" onclick="javascript:toggleDiv('content1','icon1');">Feedback?</a>
 								<div id="content1" class="item" style="display:none">
 									<form action="send-contact-message.php" method="post">
 										<p>
-											Name: (Optional)<br>
-											<input type="text" name="name" id="name" size="25">
-										</p>
-										<p>
-											Email: (Optional)<br>
-											<input type="text" name="email" size="25">
-										</p>
-										<p>
-											Subject:<br>
-											<input type="text" name="subject" size="25">
+											<input type="hidden" name="name" id="name" size="25" value="{$smarty.session.username}">
 										</p>
 										<p>
 											Comments:<br>
@@ -387,19 +416,35 @@ var chc = "{/literal}{$chc}{literal}";
 								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" style="display:none;"/></a>
 							</div>
 							<div id="current_description" style="display: none;">
-								<div><div class="fb-comments" id="inner" data-href='http://memeja.com/?id={$smarty.session.profile_dupe_username}&meme={$smarty.session.profile_meme_id}' data-num-posts="10" data-width="400"></div></div>
-							</div>
-							{if $smarty.session.profile_meme_tagged}
-								<div id="profile_tagged">
-									Tagged: 
-									{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
-										<span>
-											<img src="https://graph.facebook.com/{$x.id}/picture"/>
-											{$x.name}
+								<div>
+									{if $smarty.session.profile_meme_tagged}
+										<span class="fancybox_tagged">
+											Tagged: 
+											{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
+												<span>
+													<img src="https://graph.facebook.com/{$x.id}/picture"/>
+													{$x.name}
+												</span>
+											{/foreach}
 										</span>
-									{/foreach}
+									{/if}
+									
+								
+									<div class="fb-comments" id="inner" data-href='http://memeja.com/?id={$smarty.session.profile_dupe_username}&meme={$smarty.session.profile_meme_id}' data-num-posts="10" data-width="400"></div>
 								</div>
-							{/if}
+							</div>
+							
+								{if $smarty.session.profile_meme_tagged}
+										<span id="profile_tagged">
+											Tagged: 
+											{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
+												<span>
+													<img src="https://graph.facebook.com/{$x.id}/picture"/>
+													{$x.name}
+												</span>
+											{/foreach}
+										</span>
+									{/if}
 						{/if}
 					</div>
 					<div id="my_pics">
@@ -424,9 +469,9 @@ var chc = "{/literal}{$chc}{literal}";
 						   </div>
 						</div>
 					</div>
+				
 				</div>
 			{/if}
-			
 		</div>
 
 	{else}

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-01 22:37:05
+<?php /* Smarty version 2.6.7, created on 2012-07-01 23:59:26
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -24,45 +24,6 @@
 		meme_timer, meme_timer_new;
 	
     $(document).ready(function(){	
-    
-			$(\'.meme_gallery\').fancybox({
-				padding: 0,
-				
-				fitToView: false,
-			
-				openEffect : \'elastic\',
-				openSpeed  : 150,
-				
-				prevEffect : \'fade\',
-				nextEffect : \'none\',
-				closeSpeed : 100,
-
-				closeBtn  : false,
-				arrows    : true,
-				nextClick : true,
-				
-				keys: {
-					next: [13, 32, 34, 39], // enter, space, page down, down arrow
-					prev: [8, 33, 37], // backspace, page up, up arrow
-					close: [27] // escape key
-				 },
-				
-				helpers : { 
-					thumbs : {
-						width  : 50,
-						height : 50
-					 },
-					overlay : {
-						opacity : 0.82
-					 }
-				 },
-				afterShow : function (){
-					var description = "<div class=\'links\'>"+$("#description > div").eq(this.index).html()+"</div>"
-					//console.log(description);
-					$(\'#fancybox-overlay\').html(description);
-				 }
-			 });
-
 			$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
 			
 			var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
