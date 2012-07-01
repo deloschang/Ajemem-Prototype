@@ -67,6 +67,13 @@ var chc = "{/literal}{$chc}{literal}";
 					}
 				},
 				afterShow : function (){
+					/*
+					console.log(this.element.dataset);
+					var meme_type = $().attr('data-fancybox-group');
+					if (meme_type){
+						console.log(meme_type);
+					}*/
+					
 					var description = "<div class='links'>"+$("#description > div").eq(this.index).html()+"</div>"
 					console.log(description);
 					$('#fancybox-overlay').html(description);

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-02 00:22:09
+<?php /* Smarty version 2.6.7, created on 2012-07-02 01:02:36
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 35, false),)), $this); ?>
@@ -69,7 +69,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
 		
 			<?php elseif ($this->_tpl_vars['sm']['flg'] == 2): ?>
-				<a class="meme_gallery" data-fancybox-group="fav_meme" id="meme_tagged<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+				<a class="meme_gallery" data-fancybox-group="my_meme" id="meme_tagged<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " onclick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ');" href="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
 " title="<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
@@ -77,6 +77,15 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 			
 				<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
+				
+				<div id="description" style="display: none;">		
+					<div>				
+						<div class="fb-comments" id="inner" data-href='http://memeja.com/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
+&meme=<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+' data-num-posts="10" data-width="400"></div>
+					</div>
+				</div>
+				
 			<?php else: ?>
 				<a class="meme_gallery" data-fancybox-group="my_meme" id="my_meme_image<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " onclick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>

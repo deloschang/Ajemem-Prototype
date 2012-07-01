@@ -114,6 +114,9 @@ class manage_manager extends mod_manager {
 		$this->_output['flg']=2;
 	    $this->_output['res']=$arr;
 		
+		$usr_info=$this->get_user_info();
+	    $this->_output['uinfo']=$usr_info;
+		
 		if($this->arg['gmod']==1){
 			$tpl="manage/my_meme_list";
 	    } else{
