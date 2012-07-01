@@ -203,7 +203,6 @@
 			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage{$x.id_meme}" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
 			
 			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="cursor:pointer;width: 75px; height: 65px; 
-			{* Added by Delos: highlights if you created the meme *}
 			{if $smarty.session.id_user}
 				{if $x.id_user == $smarty.session.id_user}
 					border-style:outset; border-width:2px; border-color:#6699FF;
@@ -321,7 +320,7 @@
 	    <input type="hidden" name="is_disagreed" id="is_disagreed{$x.id_meme}" value=''/>
 
 		<div id="description" style="display: none;">
-			<div><div class="fb-comments" id="inner" data-href="/" data-num-posts="10" data-width="400"></div></div>
+			<div><div class="fb-comments" id="inner" data-href='http://memeja.com/?id={$sm.uinfo[$x.id_user].dupe_username}&meme={$x.id_meme}' data-num-posts="10" data-width="400"></div></div>
 		</div>
 </div>
 

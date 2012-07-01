@@ -37,7 +37,15 @@ var chc = "{/literal}{$chc}{literal}";
 	$(document).ready(function(){
 		var selected_meme = '{/literal}{$smarty.session.profile_meme_image}{literal}';
 		if (selected_meme){
-			$("#selected_image").fancybox({padding: 0, fitToView: false}).trigger('click');
+			$("#selected_image").fancybox({
+				// update comment box feature for direct loading 
+				padding: 0, 
+				fitToView: false,
+				afterShow : function (){
+					var description = "<div class='links'>"+$("#description > div").eq(this.index).html()+"</div>"
+					$('#fancybox-overlay').html(description);
+				}
+			}).trigger('click');
 		}
 		if (idu) {
 			// User XP initial display
