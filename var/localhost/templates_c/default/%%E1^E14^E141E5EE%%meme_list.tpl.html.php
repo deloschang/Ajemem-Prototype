@@ -1,6 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-27 17:04:12
+<?php /* Smarty version 2.6.7, created on 2012-07-01 05:13:52
          compiled from meme/meme_list.tpl.html */ ?>
-<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
+<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
+<?php echo '
 <!--
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>-->
 <script type="text/javascript">
@@ -465,7 +466,9 @@ unset($_smarty_tpl_vars);
 			<div class="module_text" id="second_half">Share experiences with the people you care about</div>
 		</div>
 		<center>
-		<div id="signup_text">Experience the Hype!</div>
+		
+		<br>
+		<!--<div id="signup_text">Experience the Hype!</div>-->
 		<div class="fb-login-button" scope="
 	    	email,
 	    	publish_stream
@@ -473,12 +476,14 @@ unset($_smarty_tpl_vars);
 	    			    	">
         Login with Facebook
 		</div>
-
+		
+		<br>
 		<div id="bottom_bar">
 			<table><tr>
-			<td><div id="about"><a href="/about.html">About  </a></div></td>
+			<td><div id="about"><a href="/about.html">About </a></div></td>
+			<td><div id="about"><a href="http://blog.memeja.com">Blog </a></div></td>
 			<td><div id="privacy_policy"><a href="/privacypolicy.html">Privacy  </a></div></td>
 			</tr></table>
 		</div>
 		</center>
-<?php endif; ?>
+<?php endif; ?>
