@@ -45,6 +45,16 @@
 					<div>
 						Created by <a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">{$sm.uinfo[$x.id_user].username}</a>
 						
+						{if $x.who_was_tagged}
+						<div>Tagged: 
+								{foreach name=cur_meme item=x key=k from=$x.who_was_tagged}
+									<span>
+										<img src="https://graph.facebook.com/{$x.tagged}/picture"/>
+										{$x.tag_name}
+									</span>
+								{/foreach}</div>
+						{/if}
+						
 						<div class="fb-comments" id="inner" data-href='http://memeja.com/?id={$sm.uinfo[$x.id_user].dupe_username}&meme={$x.id_meme}' data-num-posts="10" data-width="400"></div>
 					</div>
 				</div>

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-01 22:40:13
+<?php /* Smarty version 2.6.7, created on 2012-07-05 01:46:54
          compiled from meme/addmeme.tpl.html */ ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 01/07/2012 22:40:13 --> 
+<!-- Template: meme/addmeme.tpl.html Start 05/07/2012 01:46:54 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
@@ -151,8 +151,7 @@ unset($_smarty_tpl_vars);
 		
 		<div id="shares">
 			<div id="tagline">Tag Your Friends!</div>
-			 <select id="tag" multiple="multiple" name="tagged_user[]"><?php echo $this->_tpl_vars['sm']['pretag']; ?>
-</select>
+			 <select id="tag" multiple="multiple" name="tagged_user[]"></select>
 		</div>
 		
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>

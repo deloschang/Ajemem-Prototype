@@ -75,6 +75,7 @@ class manage_manager extends mod_manager {
 	    @mysqli_free_result($res);
 	    mysqli_next_result($link);
 		
+		// maybe abstract 
 		$each_id = explode(',',$id_memes);
 		foreach($each_id as $key => $value){
 			if ($value){
@@ -88,8 +89,6 @@ class manage_manager extends mod_manager {
 						$arr[$key]['who_was_tagged'][$i]['tag_name'] = json_decode(file_get_contents('http://graph.facebook.com/'.$tag_rec['tagged']))->name;
 						$i += 1;
 					}
-				} else {
-					$arr[$key]['tag_id'] = 'correct place';
 				}
 			}
 		}				
@@ -130,8 +129,28 @@ class manage_manager extends mod_manager {
 				$arr[] = $rec;
 			}
 	    }
+		
 	    @mysqli_free_result($res);
 	    mysqli_next_result($link);
+		
+		$each_id = explode(',',$id_memes);
+		
+		// maybe abstract
+		foreach($each_id as $key => $value){
+			if ($value){
+				$tag_sql = "SELECT tagged FROM memeje__tags WHERE id_meme=".$value;
+				$tag_res = mysqli_query($link,$tag_sql);
+				
+				if ($tag_res){
+					$i = 0;
+					while($tag_rec = mysqli_fetch_assoc($tag_res)){
+						$arr[$key]['who_was_tagged'][] = $tag_rec;
+						$arr[$key]['who_was_tagged'][$i]['tag_name'] = json_decode(file_get_contents('http://graph.facebook.com/'.$tag_rec['tagged']))->name;
+						$i += 1;
+					}
+				}
+			}
+		}		
 		
 		$this->_output['flg']=2;
 	    $this->_output['res']=$arr;
