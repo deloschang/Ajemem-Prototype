@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-02 01:02:36
+<?php /* Smarty version 2.6.7, created on 2012-07-04 06:40:07
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 35, false),)), $this); ?>
@@ -79,13 +79,13 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
 				
 				<div id="description" style="display: none;">		
-					<div>				
+					<div>	
+						
 						<div class="fb-comments" id="inner" data-href='http://memeja.com/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
 &meme=<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ' data-num-posts="10" data-width="400"></div>
 					</div>
 				</div>
-				
 			<?php else: ?>
 				<a class="meme_gallery" data-fancybox-group="my_meme" id="my_meme_image<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " onclick="show_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
@@ -98,6 +98,22 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 				
 				<div id="description" style="display: none;">		
 					<div>				
+						<?php if ($this->_tpl_vars['x']['who_was_tagged']): ?>
+						<div>Tagged: 
+								<?php $this->_foreach['cur_meme'] = array('total' => count($_from = (array)$this->_tpl_vars['x']['who_was_tagged']), 'iteration' => 0);
+if ($this->_foreach['cur_meme']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['x']):
+        $this->_foreach['cur_meme']['iteration']++;
+?>
+									<span>
+										<img src="https://graph.facebook.com/<?php echo $this->_tpl_vars['x']['tagged']; ?>
+/picture"/>
+										<?php echo $this->_tpl_vars['x']['tag_name']; ?>
+
+									</span>
+								<?php endforeach; endif; unset($_from); ?></div>
+						<?php endif; ?>
+						
 						<div class="fb-comments" id="inner" data-href='http://memeja.com/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
 &meme=<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ' data-num-posts="10" data-width="400"></div>

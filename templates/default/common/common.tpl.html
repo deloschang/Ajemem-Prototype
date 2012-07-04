@@ -39,13 +39,9 @@ var chc = "{/literal}{$chc}{literal}";
 				padding: 0,
 				
 				fitToView: false,
-			
-				openEffect : 'elastic',
-				openSpeed  : 150,
 				
 				prevEffect : 'fade',
 				nextEffect : 'none',
-				closeSpeed : 100,
 
 				closeBtn  : false,
 				arrows    : true,
@@ -318,6 +314,11 @@ var chc = "{/literal}{$chc}{literal}";
 				<div class="nav_menu" id="hover_menu">
 					<div class="hover_menu_contents">
 						<ul class="nav_menu_list">
+							<!--
+							<li>
+								<a href="/?id={$smarty.session.dupe_username}">My Profile</a>
+							</li>
+							-->
 							<li>
 								<a href="javascript:void(0);" onclick="javascript:toggleDiv('content1','icon1');">Feedback?</a>
 								<div id="content1" class="item" style="display:none">
@@ -444,16 +445,16 @@ var chc = "{/literal}{$chc}{literal}";
 							</div>
 							
 								{if $smarty.session.profile_meme_tagged}
-										<span id="profile_tagged">
-											Tagged: 
-											{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
-												<span>
-													<img src="https://graph.facebook.com/{$x.id}/picture"/>
-													{$x.name}
-												</span>
-											{/foreach}
-										</span>
-									{/if}
+									<span id="profile_tagged">
+										Tagged: 
+										{foreach name=cur_meme item=x key=k from=$smarty.session.profile_meme_tagged}
+											<span>
+												<img src="https://graph.facebook.com/{$x.id}/picture"/>
+												{$x.name}
+											</span>
+										{/foreach}
+									</span>
+								{/if}
 						{/if}
 					</div>
 					<div id="my_pics">

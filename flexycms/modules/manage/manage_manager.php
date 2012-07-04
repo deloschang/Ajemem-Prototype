@@ -59,20 +59,50 @@ class manage_manager extends mod_manager {
 	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'] + 10;
 	    $comm = " id_user=".$id_user;
 
-	    $cond = (!$this->_input['last_id'])?$comm:$comm." AND id_meme <".$this->_input['last_id'];
+	    $cond = (!$this->_input['last_id']) ? $comm : $comm." AND id_meme <".$this->_input['last_id'];
 	    $cond.=" ORDER BY id_meme DESC LIMIT ".$limit;
+		
 	    $sql=$this->manage_bl->get_search_sql("meme",$cond,"*");
 	    $res = mysqli_query($link,$sql);
 	    if($res){
 			while($rec = mysqli_fetch_assoc($res)){
 				$id_memes.=$rec['id_meme'].",";
 				$arr[] = $rec;
+				
+				// $tagged_data = explode(',',$rec['tagged_user']);
+				// foreach($tagged_data as $key => $value){
+					// $arr['tag_id'] = $value;
+					// $arr['name'] = json_decode(file_get_contents('http://graph.facebook.com/'.$value))->name;
+				// }
 			}
 	    }
+		
+		
 	    @mysqli_free_result($res);
 	    mysqli_next_result($link);
-	    $hst_rtd_cap = $this->get_hst_rtd_caption(trim($id_memes,','));
 		
+		$each_id = explode(',',$id_memes);
+		foreach($each_id as $key => $value){
+			if ($value){
+			$tag_sql = "SELECT tagged FROM memeje__tags WHERE id_meme=".$value;
+			$tag_res = mysqli_query($link,$tag_sql);
+			
+			if ($tag_res){
+				$i = 0;
+				while($tag_rec = mysqli_fetch_assoc($tag_res)){
+					$arr[$key]['who_was_tagged'][] = $tag_rec;
+					$arr[$key]['who_was_tagged'][$i]['tag_name'] = json_decode(file_get_contents('http://graph.facebook.com/'.$tag_rec['tagged']))->name;
+					$i += 1;
+				}
+			} else {
+				$arr[$key]['tag_id'] = 'correct place';
+			}
+			}
+		}
+		fb($arr);
+				
+		
+	    $hst_rtd_cap = $this->get_hst_rtd_caption(trim($id_memes,','));		
 	    $usr_info=$this->get_user_info();
 	    $this->_output['uinfo']=$usr_info;
 		

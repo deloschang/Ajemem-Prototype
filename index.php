@@ -11,6 +11,8 @@ $report = array ('stats' => array ());
 define("THROUGH_CONTROLLER", 1);
 define("AJAX", 0);
 
+require_once('FirePHPCore/fb.php');
+
 define("AFIXI_ROOT", $_SERVER['DOCUMENT_ROOT']."/".SUB_DIR."flexycms/");
 define("AFIXI_CORE", $_SERVER['DOCUMENT_ROOT'].'/flexycms/flexycms_core/');
 include (AFIXI_CORE."common5.php");
@@ -128,7 +130,6 @@ if (isset($_input['id'])){
 					
 					$_SESSION['profile_meme_tagged'] = $tagged_data;
 				}
-			} else{
 			}
 		}
 	} else { 
