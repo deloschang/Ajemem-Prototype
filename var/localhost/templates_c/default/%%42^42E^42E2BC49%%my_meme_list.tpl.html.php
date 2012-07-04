@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-04 06:40:07
+<?php /* Smarty version 2.6.7, created on 2012-07-04 22:05:16
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 35, false),)), $this); ?>
@@ -79,7 +79,10 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
 				
 				<div id="description" style="display: none;">		
-					<div>	
+					<div>
+						Created by <a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
+"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
+</a>
 						
 						<div class="fb-comments" id="inner" data-href='http://memeja.com/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
 &meme=<?php echo $this->_tpl_vars['x']['id_meme']; ?>
@@ -97,7 +100,10 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
 				
 				<div id="description" style="display: none;">		
-					<div>				
+					<div>
+						Created by <a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
+"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
+</a>
 						<?php if ($this->_tpl_vars['x']['who_was_tagged']): ?>
 						<div>Tagged: 
 								<?php $this->_foreach['cur_meme'] = array('total' => count($_from = (array)$this->_tpl_vars['x']['who_was_tagged']), 'iteration' => 0);

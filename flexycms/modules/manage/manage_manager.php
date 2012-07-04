@@ -68,12 +68,6 @@ class manage_manager extends mod_manager {
 			while($rec = mysqli_fetch_assoc($res)){
 				$id_memes.=$rec['id_meme'].",";
 				$arr[] = $rec;
-				
-				// $tagged_data = explode(',',$rec['tagged_user']);
-				// foreach($tagged_data as $key => $value){
-					// $arr['tag_id'] = $value;
-					// $arr['name'] = json_decode(file_get_contents('http://graph.facebook.com/'.$value))->name;
-				// }
 			}
 	    }
 		
@@ -84,23 +78,21 @@ class manage_manager extends mod_manager {
 		$each_id = explode(',',$id_memes);
 		foreach($each_id as $key => $value){
 			if ($value){
-			$tag_sql = "SELECT tagged FROM memeje__tags WHERE id_meme=".$value;
-			$tag_res = mysqli_query($link,$tag_sql);
-			
-			if ($tag_res){
-				$i = 0;
-				while($tag_rec = mysqli_fetch_assoc($tag_res)){
-					$arr[$key]['who_was_tagged'][] = $tag_rec;
-					$arr[$key]['who_was_tagged'][$i]['tag_name'] = json_decode(file_get_contents('http://graph.facebook.com/'.$tag_rec['tagged']))->name;
-					$i += 1;
-				}
-			} else {
-				$arr[$key]['tag_id'] = 'correct place';
-			}
-			}
-		}
-		fb($arr);
+				$tag_sql = "SELECT tagged FROM memeje__tags WHERE id_meme=".$value;
+				$tag_res = mysqli_query($link,$tag_sql);
 				
+				if ($tag_res){
+					$i = 0;
+					while($tag_rec = mysqli_fetch_assoc($tag_res)){
+						$arr[$key]['who_was_tagged'][] = $tag_rec;
+						$arr[$key]['who_was_tagged'][$i]['tag_name'] = json_decode(file_get_contents('http://graph.facebook.com/'.$tag_rec['tagged']))->name;
+						$i += 1;
+					}
+				} else {
+					$arr[$key]['tag_id'] = 'correct place';
+				}
+			}
+		}				
 		
 	    $hst_rtd_cap = $this->get_hst_rtd_caption(trim($id_memes,','));		
 	    $usr_info=$this->get_user_info();
@@ -275,7 +267,7 @@ class manage_manager extends mod_manager {
 	function get_user_info($id_users=""){
 	    global $link;
 	    $cond = ($id_users!="")?" id_user IN(".$id_users.")":1;
-	    $sql = $this->manage_bl->get_search_sql("user",$cond,"id_user,fname,lname,avatar,gender,dupe_username");
+	    $sql = $this->manage_bl->get_search_sql("user",$cond,"id_user,fname,lname,avatar,gender,dupe_username,username");
 	    $res = mysqli_query($link,$sql);
 	    while($rec = mysqli_fetch_assoc($res)){
 			$user_info[$rec['id_user']] = $rec;
