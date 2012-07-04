@@ -320,7 +320,8 @@
 	    <input type="hidden" name="is_disagreed" id="is_disagreed{$x.id_meme}" value=''/>
 
 		<div id="description" style="display: none;">		
-			<div>				
+			<div>	
+				Created by: <span><a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">{$sm.uinfo[$x.id_user].username}</a></span>	
 				<div class="fb-comments" id="inner" data-href='http://memeja.com/?id={$sm.uinfo[$x.id_user].dupe_username}&meme={$x.id_meme}' data-num-posts="10" data-width="400"></div>
 			</div>
 		</div>

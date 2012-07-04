@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-04 22:05:23
+<?php /* Smarty version 2.6.7, created on 2012-07-05 00:17:15
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 205, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 244, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 04/07/2012 22:05:23 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 05/07/2012 00:17:14 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -369,7 +369,10 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 " value=''/>
 
 		<div id="description" style="display: none;">		
-			<div>				
+			<div>	
+				Created by: <span><a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
+"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
+</a></span>	
 				<div class="fb-comments" id="inner" data-href='http://memeja.com/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
 &meme=<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ' data-num-posts="10" data-width="400"></div>
