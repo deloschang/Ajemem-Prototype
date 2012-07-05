@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-05 01:46:54
+<?php /* Smarty version 2.6.7, created on 2012-07-05 02:34:12
          compiled from meme/addmeme.tpl.html */ ?>
 
-<!-- Template: meme/addmeme.tpl.html Start 05/07/2012 01:46:54 --> 
+<!-- Template: meme/addmeme.tpl.html Start 05/07/2012 02:34:12 --> 
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
@@ -23,8 +23,10 @@ _img.png";
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://localhost/spad/scratchpad.js"></script>
 <script type="text/javascript" src="http://localhost/spad/jquery.jqDock.min.js"></script>
+<script type="text/javascript" src="http://localhost/spad/color/colorpicker.js"></script>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
 <script type="text/javascript">
 
 	var mycanvas, cntx;
@@ -151,7 +153,7 @@ unset($_smarty_tpl_vars);
 		
 		<div id="shares">
 			<div id="tagline">Tag Your Friends!</div>
-			 <select id="tag" multiple="multiple" name="tagged_user[]"></select>
+			<select id="tag" multiple="multiple" name="tagged_user[]"></select>
 		</div>
 		
         <input type="hidden" id="edited_img" name="meme[image]" value="<?php echo time(); ?>
