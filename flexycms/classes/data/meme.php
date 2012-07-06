@@ -26,6 +26,7 @@ class meme{
 		}
 
 		$sql = 'CALL insert_proc("'.TABLE_PREFIX.$tbl.'","'.$fld_str_key.'","'.addslashes($fld_str_value).'",@id)';
+		
 		if($debug==1){
 		    print $sql;exit;
 		}

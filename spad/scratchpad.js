@@ -1166,6 +1166,7 @@ function putincanvas(e)
     cntx.restore();
 
 }
+
 function submit_memeje() {
 
         /*  Commented out the watermark
@@ -1182,26 +1183,22 @@ function submit_memeje() {
 	
 		saveindisk(1);
 }
-function saveindisk(csave)
-{
+
+function saveindisk(csave){
 	var canvasData = getcanvasimage("mycid");
     var url = SAVE_IMG_PATH+'/id_user/'+$("#iduser").val(); // extra added
-    $.ajax(
-	{
+    $.ajax({
         type: 'POST',
         url: url,
         contentType: 'application/upload;',
         cache: false,
         data: canvasData,
-        success: function(html)
-		{
+        success: function(html){
             if (csave==1 && putCanvasCounter==0)
 			{
                 document.ques_ans.submit();
-            }
-			else
-			{
-			document.ques_ans.submit();
+            } else {
+				document.ques_ans.submit();
 				//alert("Please set all images/textboxes to the canvas (second button above the image)");
 			}
         },
