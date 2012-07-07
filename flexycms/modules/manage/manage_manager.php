@@ -132,16 +132,39 @@ class manage_manager extends mod_manager {
 			// }
 	    // }
 		
-		$sql = "SELECT * FROM memeje__tags a INNER JOIN memeje__meme b
+		// SELECT b.title, b.color, b.detail, a.friend_id
+// FROM table1 a INNER JOIN table2 b
+// on a.pic_id = b.pic_id
+// WHERE EXISTS (SELECT 1 FROM table1 t 
+              // WHERE t.pic_id = a.pic_id AND t.friend_id = 84589)
+		
+	$sql = "SELECT * FROM memeje__tags a INNER JOIN memeje__meme b
 						on a.id_meme = b.id_meme
 				WHERE tagged =".$id_user." ORDER BY b.id_meme DESC LIMIT ".$limit;
+			
+			// table 1= memeje__tags
+			// table 2 = memeje__meme
+			// friend_id = tagged
+			// pic_id = id_meme
+			
+		//$sql = "SELECT b.title, a.tagged FROM memeje__tags a INNER JOIN memeje__meme b on a.id_meme = b.id_meme WHERE EXISTS (SELECT 1 FROM memeje__tags t WHERE t.id_meme = a.id_meme AND t.tagged =".$id_user;
+		//$sql = "SELECT *
+  // GROUP_CONCAT(friend_pics.tagged) as friend_ids
+// FROM memeje__tags as root_pics
+// JOIN memeje__tags as friend_pics 
+  // USING(id_meme)
+// JOIN memeje__meme as pic_details
+  // ON root_pics.id_meme = pic_details.id_meme OR friend_pics.id_meme = pic_details.id_meme
+// WHERE tagged = 641286114
+// GROUP BY pic_details.id_meme";
 		$res = mysqli_query($link,$sql);
 		if($res){
 			while ($rec = mysqli_fetch_assoc($res)){
 				$id_memes.=$rec['id_meme'].",";
 				$arr[] = $rec;
+				
 			}
-		} 
+		}
 		
 	    @mysqli_free_result($res);
 	    mysqli_next_result($link);

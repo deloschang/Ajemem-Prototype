@@ -49,7 +49,10 @@
 				<a class="meme_gallery" data-fancybox-group="my_meme" id="meme_tagged{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
 			
 				<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="width: 60px;height: 60px;cursor: pointer;"/></a>
-				<span><a href="javascript:void(0);" id="meme_tagged{$x.id_meme}x" onclick="remove_tag('{$x.id_meme}', '{$smarty.session.uid}');">X</a></span>
+				
+				{if $smarty.session.profile_id == $smarty.session.id_user}
+					<span><a href="javascript:void(0);" id="meme_tagged{$x.id_meme}x" onclick="remove_tag('{$x.id_meme}', '{$smarty.session.uid}');">X</a></span>
+				{/if}
 				
 				<div id="description" style="display: none;">		
 					<div>

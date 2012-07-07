@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-07 05:33:36
+<?php /* Smarty version 2.6.7, created on 2012-07-07 05:53:25
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 44, false),)), $this); ?>
@@ -86,10 +86,13 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 			
 				<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
-				<span><a href="javascript:void(0);" id="meme_tagged<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+				
+				<?php if ($_SESSION['profile_id'] == $_SESSION['id_user']): ?>
+					<span><a href="javascript:void(0);" id="meme_tagged<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 x" onclick="remove_tag('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ', '<?php echo $_SESSION['uid']; ?>
 ');">X</a></span>
+				<?php endif; ?>
 				
 				<div id="description" style="display: none;">		
 					<div>
