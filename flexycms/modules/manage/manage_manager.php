@@ -119,23 +119,35 @@ class manage_manager extends mod_manager {
 	
 		global $link;
 	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'];
-	    $cond = "FIND_IN_SET(".$id_user.",tagged_user) ";
-	    $cond.=" ORDER BY id_meme DESC LIMIT ".$limit;
-	    $sql=$this->manage_bl->get_search_sql("meme",$cond,"*");
-	    $res = mysqli_query($link,$sql);
-	    if($res){
-			while($rec = mysqli_fetch_assoc($res)){
+		
+		// search memeje__tags by tagged (their facebook user id) -- need full array......
+	    //$cond = "FIND_IN_SET(".$id_user.",tagged_user) ";
+	    // $cond.=" ORDER BY id_meme DESC LIMIT ".$limit;
+	    // $sql=$this->manage_bl->get_search_sql("meme",$cond,"*");
+	    // $res = mysqli_query($link,$sql);
+	    // if($res){
+			// while($rec = mysqli_fetch_assoc($res)){
+				// $id_memes.=$rec['id_meme'].",";
+				// $arr[] = $rec;
+			// }
+	    // }
+		
+		$sql = "SELECT * FROM memeje__tags a INNER JOIN memeje__meme b
+						on a.id_meme = b.id_meme
+				WHERE tagged = 641286114 ORDER BY b.id_meme DESC LIMIT ".$limit;
+		$res = mysqli_query($link,$sql);
+		if($res){
+			while ($rec = mysqli_fetch_assoc($res)){
 				$id_memes.=$rec['id_meme'].",";
 				$arr[] = $rec;
 			}
-	    }
+		} 
 		
 	    @mysqli_free_result($res);
 	    mysqli_next_result($link);
 		
+		// takes each id_meme that has user tagged in it and finds OTHER users who are tagged in same meme.
 		$each_id = explode(',',$id_memes);
-		
-		// maybe abstract
 		foreach($each_id as $key => $value){
 			if ($value){
 				$tag_sql = "SELECT tagged FROM memeje__tags WHERE id_meme=".$value;
@@ -286,7 +298,7 @@ class manage_manager extends mod_manager {
 	function get_user_info($id_users=""){
 	    global $link;
 	    $cond = ($id_users!="")?" id_user IN(".$id_users.")":1;
-	    $sql = $this->manage_bl->get_search_sql("user",$cond,"id_user,fname,lname,avatar,gender,dupe_username,username");
+	    $sql = $this->manage_bl->get_search_sql("user",$cond,"id_user,fname,lname,avatar,gender,dupe_username,uid,username");
 	    $res = mysqli_query($link,$sql);
 	    while($rec = mysqli_fetch_assoc($res)){
 			$user_info[$rec['id_user']] = $rec;

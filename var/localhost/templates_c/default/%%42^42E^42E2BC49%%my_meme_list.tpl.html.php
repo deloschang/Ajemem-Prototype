@@ -1,27 +1,46 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-05 02:43:01
+<?php /* Smarty version 2.6.7, created on 2012-07-07 04:35:34
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 35, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 54, false),)), $this); ?>
 <?php echo '
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
 
 <script type="text/javascript">
     function show_details(id_meme){
-	//$.fancybox.showActivity();
-	$.ajax({
-		url: "http://localhost/meme/meme_details",
-		type:"POST",
-		data: "ce=0&id="+id_meme
-<!--		success: function(res){-->
-<!--		    $.fancybox(res,{-->
-<!--			centerOnScroll:true,-->
-<!--			onComplete : function (){-->
-<!--			    $.fancybox.resize();-->
-<!--			 }-->
-<!--		     });-->
-<!--		 }-->
-	 });
+		//$.fancybox.showActivity();
+		$.ajax({
+			url: "http://localhost/meme/meme_details",
+			type:"POST",
+			data: "ce=0&id="+id_meme
+	<!--		success: function(res){-->
+	<!--		    $.fancybox(res,{-->
+	<!--			centerOnScroll:true,-->
+	<!--			onComplete : function (){-->
+	<!--			    $.fancybox.resize();-->
+	<!--			 }-->
+	<!--		     });-->
+	<!--		 }-->
+		 });
      }
+	
+	function remove_tag(id_meme,facebook_id){
+		var url = "http://localhost/user/remove_tag";
+		
+		$.post(url, {ce:0, id:id_meme, facebook_id:facebook_id }, function(res){
+			console.log(res);
+			/*if (status == \'follow\') {
+				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\\\'unfollow\\\');">Unfollow</a>\');
+				
+				follow_count += 1;				
+			 } else if (status == \'unfollow\') {
+				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\\\'follow\\\');">Follow</a>\');
+				
+				follow_count -= 1;
+			 }
+			
+			$(\'#follower_count\').html(follow_count+\' followers\');*/
+		 });
+	 }
 </script>
 
 '; ?>
@@ -77,6 +96,9 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 			
 				<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
+				<span><a href="javascript:void(0);" onclick="remove_tag('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+', '<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['uid']; ?>
+');">X</a></span>
 				
 				<div id="description" style="display: none;">		
 					<div>

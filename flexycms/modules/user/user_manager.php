@@ -1723,6 +1723,8 @@ function _logout(){
 		}
 		$this->_output['tpl']="user/friend_req";
 	}
+	
+	
 	function _friend_req_list(){
 		check_session();
 		global $link;
@@ -1929,7 +1931,18 @@ function _logout(){
 		} elseif ($data['status'] == 'unfollow'){
 			$sql = "DELETE FROM memeje__friends WHERE id_user = ".$info['id_user']." AND following = ".$info['following'];
 
-			execute($sql,$err);;
+			execute($sql,$err);
 		}
+	}
+	
+	function _remove_tag(){
+		$data = $this ->_input;
+		$info['id_meme'] = $data['id'];
+		$info['facebook_id'] = $data['facebook_id'];
+		
+		$sql = "DELETE FROM memeje__tags WHERE id_meme = ".$info['id_meme']." AND tagged = ".$info['facebook_id'];
+		
+		execute($sql,$err);
+		echo('remove tag');
 	}
 }
