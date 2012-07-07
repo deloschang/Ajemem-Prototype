@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-07 05:53:25
+<?php /* Smarty version 2.6.7, created on 2012-07-07 06:35:43
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 44, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 57, false),)), $this); ?>
 <?php echo '
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
 
@@ -23,12 +23,25 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		 });
      }
 	
-	function remove_tag(id_meme,facebook_id){
+	function remove_tag(id_meme, facebook_id, type){
 		var url = "http://localhost/user/remove_tag";
 		
+		console.log(id_meme);
+		console.log(facebook_id);
+		console.log(type);
 		$.post(url, {ce:0, id:id_meme, facebook_id:facebook_id }, function(res){
-			$(\'#meme_tagged\'+id_meme).html(\'\');
-			$(\'#meme_tagged\'+id_meme+\'x\').hide();
+			console.log(\'response\');
+			if (type == \'profile\'){
+				$(\'#meme_tagged\'+id_meme).html(\'\');
+				$(\'#meme_tagged\'+id_meme+\'x\').hide();
+			 } else if (type == \'fancybox\'){
+				$(\'#meme_tagged\'+id_meme).html(\'\');
+				$(\'#meme_tagged\'+id_meme+\'x\').hide();
+				$(\'#meme_tagged\'+id_meme+\'fancybox\').live("remove icons", function(e){
+					$(this).html(\'\');
+				 });
+				$(\'#meme_tagged\'+id_meme+\'xfancybox\').hide();
+			 }
 		 });
 	 }
 </script>
@@ -91,7 +104,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 					<span><a href="javascript:void(0);" id="meme_tagged<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 x" onclick="remove_tag('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ', '<?php echo $_SESSION['uid']; ?>
-');">X</a></span>
+', 'profile');">X</a></span>
 				<?php endif; ?>
 				
 				<div id="description" style="display: none;">		
@@ -104,15 +117,24 @@ x" onclick="remove_tag('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 						<div>Tagged: 
 								<?php $this->_foreach['cur_meme'] = array('total' => count($_from = (array)$this->_tpl_vars['x']['who_was_tagged']), 'iteration' => 0);
 if ($this->_foreach['cur_meme']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['x']):
+    foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['q']):
         $this->_foreach['cur_meme']['iteration']++;
 ?>
-									<span>
-										<img src="https://graph.facebook.com/<?php echo $this->_tpl_vars['x']['tagged']; ?>
+									<span <?php if ($this->_tpl_vars['q']['tagged'] == $_SESSION['uid']): ?>id="meme_tagged<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+fancybox"<?php endif; ?>>
+										<img src="https://graph.facebook.com/<?php echo $this->_tpl_vars['q']['tagged']; ?>
 /picture"/>
-										<?php echo $this->_tpl_vars['x']['tag_name']; ?>
+										<?php echo $this->_tpl_vars['q']['tag_name']; ?>
 
 									</span>
+									<?php if ($this->_tpl_vars['q']['tagged'] == $_SESSION['uid']): ?>
+										<span>
+											<a href="javascript:void(0);" id="meme_tagged<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+xfancybox" onclick="remove_tag('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+', '<?php echo $_SESSION['uid']; ?>
+', 'fancybox');">X</a>
+										</span>
+									<?php endif; ?>
 								<?php endforeach; endif; unset($_from); ?></div>
 						<?php endif; ?>
 						

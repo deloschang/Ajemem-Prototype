@@ -20,12 +20,25 @@
 		});
     }
 	
-	function remove_tag(id_meme,facebook_id){
+	function remove_tag(id_meme, facebook_id, type){
 		var url = "##LBL_SITE_URL##user/remove_tag";
 		
+		console.log(id_meme);
+		console.log(facebook_id);
+		console.log(type);
 		$.post(url, {ce:0, id:id_meme, facebook_id:facebook_id}, function(res){
-			$('#meme_tagged'+id_meme).html('');
-			$('#meme_tagged'+id_meme+'x').hide();
+			console.log('response');
+			if (type == 'profile'){
+				$('#meme_tagged'+id_meme).html('');
+				$('#meme_tagged'+id_meme+'x').hide();
+			} else if (type == 'fancybox'){
+				$('#meme_tagged'+id_meme).html('');
+				$('#meme_tagged'+id_meme+'x').hide();
+				//$('#meme_tagged'+id_meme+'fancybox').live("remove icons", function(){
+				//	$(this).html('');
+				//});
+				//$('#meme_tagged'+id_meme+'xfancybox').hide();
+			}
 		});
 	}
 </script>
@@ -51,7 +64,7 @@
 				<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="width: 60px;height: 60px;cursor: pointer;"/></a>
 				
 				{if $smarty.session.profile_id == $smarty.session.id_user}
-					<span><a href="javascript:void(0);" id="meme_tagged{$x.id_meme}x" onclick="remove_tag('{$x.id_meme}', '{$smarty.session.uid}');">X</a></span>
+					<span><a href="javascript:void(0);" id="meme_tagged{$x.id_meme}x" onclick="remove_tag('{$x.id_meme}', '{$smarty.session.uid}', 'profile');">X</a></span>
 				{/if}
 				
 				<div id="description" style="display: none;">		
@@ -60,11 +73,16 @@
 						
 						{if $x.who_was_tagged}
 						<div>Tagged: 
-								{foreach name=cur_meme item=x key=k from=$x.who_was_tagged}
-									<span>
-										<img src="https://graph.facebook.com/{$x.tagged}/picture"/>
-										{$x.tag_name}
+								{foreach name=cur_meme item=q key=k from=$x.who_was_tagged}
+									<span {if $q.tagged == $smarty.session.uid}id="meme_tagged{$x.id_meme}fancybox"{/if}>
+										<img src="https://graph.facebook.com/{$q.tagged}/picture"/>
+										{$q.tag_name}
 									</span>
+									{if $q.tagged == $smarty.session.uid}
+										<span>
+											<a href="javascript:void(0);" id="meme_tagged{$x.id_meme}xfancybox" onclick="remove_tag('{$x.id_meme}', '{$smarty.session.uid}', 'fancybox');">X</a>
+										</span>
+									{/if}
 								{/foreach}</div>
 						{/if}
 						
