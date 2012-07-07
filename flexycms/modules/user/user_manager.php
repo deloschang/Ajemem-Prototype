@@ -1918,7 +1918,7 @@ function _logout(){
 		
 	    print json_encode($arr);
 		exit;
-	}	
+	}	 
 	
 	function _follow_user(){
 		$data = $this->_input;
@@ -1943,6 +1943,5 @@ function _logout(){
 		$sql = "DELETE FROM memeje__tags WHERE id_meme = ".$info['id_meme']." AND tagged = ".$info['facebook_id'];
 		
 		execute($sql,$err);
-		echo('remove tag');
 	}
 }

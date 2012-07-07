@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-07 04:35:34
+<?php /* Smarty version 2.6.7, created on 2012-07-07 05:33:36
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 54, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 44, false),)), $this); ?>
 <?php echo '
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
 
@@ -27,18 +27,8 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		var url = "http://localhost/user/remove_tag";
 		
 		$.post(url, {ce:0, id:id_meme, facebook_id:facebook_id }, function(res){
-			console.log(res);
-			/*if (status == \'follow\') {
-				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\\\'unfollow\\\');">Unfollow</a>\');
-				
-				follow_count += 1;				
-			 } else if (status == \'unfollow\') {
-				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\\\'follow\\\');">Follow</a>\');
-				
-				follow_count -= 1;
-			 }
-			
-			$(\'#follower_count\').html(follow_count+\' followers\');*/
+			$(\'#meme_tagged\'+id_meme).html(\'\');
+			$(\'#meme_tagged\'+id_meme+\'x\').hide();
 		 });
 	 }
 </script>
@@ -96,8 +86,9 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 			
 				<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
 " style="width: 60px;height: 60px;cursor: pointer;"/></a>
-				<span><a href="javascript:void(0);" onclick="remove_tag('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-', '<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['uid']; ?>
+				<span><a href="javascript:void(0);" id="meme_tagged<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+x" onclick="remove_tag('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+', '<?php echo $_SESSION['uid']; ?>
 ');">X</a></span>
 				
 				<div id="description" style="display: none;">		

@@ -115,12 +115,12 @@ class manage_manager extends mod_manager {
 	}
 	
 	function _tagged_memes(){
-		$id_user = $_SESSION['profile_uid'] ? $_SESSION['profile_uid'] : (($_SESSION['profile_id']) ? '' : $_SESSION['uid']);
+		$id_user = $_SESSION['profile_uid'] ? $_SESSION['profile_uid'] : (($_SESSION['profile_id']) ? '' : $_SESSION['uid']);  //this is facebook id
 	
 		global $link;
 	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'];
 		
-		// search memeje__tags by tagged (their facebook user id) -- need full array......
+		// old code for old data..
 	    //$cond = "FIND_IN_SET(".$id_user.",tagged_user) ";
 	    // $cond.=" ORDER BY id_meme DESC LIMIT ".$limit;
 	    // $sql=$this->manage_bl->get_search_sql("meme",$cond,"*");
@@ -134,7 +134,7 @@ class manage_manager extends mod_manager {
 		
 		$sql = "SELECT * FROM memeje__tags a INNER JOIN memeje__meme b
 						on a.id_meme = b.id_meme
-				WHERE tagged = 641286114 ORDER BY b.id_meme DESC LIMIT ".$limit;
+				WHERE tagged =".$id_user." ORDER BY b.id_meme DESC LIMIT ".$limit;
 		$res = mysqli_query($link,$sql);
 		if($res){
 			while ($rec = mysqli_fetch_assoc($res)){
@@ -147,6 +147,7 @@ class manage_manager extends mod_manager {
 	    mysqli_next_result($link);
 		
 		// takes each id_meme that has user tagged in it and finds OTHER users who are tagged in same meme.
+			// maybe an easier way to do it in above MySQL?
 		$each_id = explode(',',$id_memes);
 		foreach($each_id as $key => $value){
 			if ($value){

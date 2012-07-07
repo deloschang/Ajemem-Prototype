@@ -24,18 +24,8 @@
 		var url = "##LBL_SITE_URL##user/remove_tag";
 		
 		$.post(url, {ce:0, id:id_meme, facebook_id:facebook_id}, function(res){
-			console.log(res);
-			/*if (status == 'follow') {
-				$("#follow_me").html('<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'unfollow\');">Unfollow</a>');
-				
-				follow_count += 1;				
-			} else if (status == 'unfollow') {
-				$("#follow_me").html('<a href="javascript:void(0);" id="follow_btn" onclick="follow_user(\'follow\');">Follow</a>');
-				
-				follow_count -= 1;
-			}
-			
-			$('#follower_count').html(follow_count+' followers');*/
+			$('#meme_tagged'+id_meme).html('');
+			$('#meme_tagged'+id_meme+'x').hide();
 		});
 	}
 </script>
@@ -59,7 +49,7 @@
 				<a class="meme_gallery" data-fancybox-group="my_meme" id="meme_tagged{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
 			
 				<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="width: 60px;height: 60px;cursor: pointer;"/></a>
-				<span><a href="javascript:void(0);" onclick="remove_tag('{$x.id_meme}', '{$sm.uinfo[$x.id_user].uid}');">X</a></span>
+				<span><a href="javascript:void(0);" id="meme_tagged{$x.id_meme}x" onclick="remove_tag('{$x.id_meme}', '{$smarty.session.uid}');">X</a></span>
 				
 				<div id="description" style="display: none;">		
 					<div>
