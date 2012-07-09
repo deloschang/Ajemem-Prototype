@@ -90,9 +90,12 @@
 	
 	#fadeback {
 		position:absolute;
-		width:1600px;
-		height:800px;
-		top:-10px;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		display:block;
+		
 		opacity:0.5;
 		background:#007FFF;
 		z-index:1;
@@ -160,12 +163,7 @@
 	}
 	
 	#nlu_container{
-		margin:0.5% 0 0 0;
-		position: relative;
-		top:60px;
-		left:40px;
 		background-color: rgba(255, 255, 255, 0.7);
-		z-index:2;
 	}
 	#nlu_container img {
 		width:860px;
@@ -184,16 +182,16 @@
 	}
 	
 	#nlu_feed{
-		float:left; 
-		position: relative;
-		left:6%;
-		padding: 15px 50px 50px 50px;
+		margin-left: -500px;
+		position: absolute;
+		left:50%;
+		padding: 15px 0 50px 0;
 		width:1000px;
-		height:440px;
+		height:360px;
 		opacity:0.95;
-		top:-20px;
+		top:20%;
+		z-index:999;
 		background-color:#FFF;
-		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 	    moz-border-radius: 12px;
 	    webkit-border-radius: 12px;
 	    khtml-border-radius: 12px;

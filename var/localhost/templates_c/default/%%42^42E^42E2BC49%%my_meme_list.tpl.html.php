@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-07 06:35:43
+<?php /* Smarty version 2.6.7, created on 2012-07-09 05:37:36
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 57, false),)), $this); ?>
@@ -37,10 +37,10 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			 } else if (type == \'fancybox\'){
 				$(\'#meme_tagged\'+id_meme).html(\'\');
 				$(\'#meme_tagged\'+id_meme+\'x\').hide();
-				$(\'#meme_tagged\'+id_meme+\'fancybox\').live("remove icons", function(e){
-					$(this).html(\'\');
-				 });
-				$(\'#meme_tagged\'+id_meme+\'xfancybox\').hide();
+				//$(\'#meme_tagged\'+id_meme+\'fancybox\').live("remove icons", function(){
+				//	$(this).html(\'\');
+				// });
+				//$(\'#meme_tagged\'+id_meme+\'xfancybox\').hide();
 			 }
 		 });
 	 }
