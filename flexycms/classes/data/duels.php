@@ -52,3 +52,4 @@ class duels{
 		execute($sql,$err);
 	}
 }
+?>

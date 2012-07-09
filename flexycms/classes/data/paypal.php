@@ -64,4 +64,4 @@ class paypal {
 		execute($sql, $err);
     	}
 }
-?>
+?>

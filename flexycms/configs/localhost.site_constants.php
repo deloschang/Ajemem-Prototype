@@ -11,19 +11,17 @@ define("APP_ROOT_PATH",APP_ROOT_URL.'flexycms/');
 define("APP_ADMIN_ROOT_URL",APP_ROOT_URL.'flexyadmin/'); // URL for admin application
 define("LBL_SITE_URL",APP_ROOT_URL);
 define("LBL_ADMIN_SITE_URL",APP_ROOT_URL.'flexyadmin/');
-define("JS_PATH",'http://'.$_SERVER['HTTP_HOST']."/");
-
+define("JS_PATH",'http://'.$_SERVER['HTTP_HOST']."/");
 if($_SERVER['SERVER_ADDR']=='192.168.1.222'){
 	define("JS_PATH_EXT",'http://'.$_SERVER['HTTP_HOST']."/libsext/");
 }else{
 	define("JS_PATH_EXT","http://ajax.googleapis.com/ajax/libs/");
-}
-
+}
 define("LBL_SITE_RESOURCES_URL",APP_ROOT_URL.'waf_res/');
 define("TEMP_ROOT",APP_ROOT.'waf_res/temp_content/'); // Remote file uploading
 define("MAX",99999);
 define('SESSION_TIMEOUT', 60);    //sets minutes
 if(defined("SITE_USED")){
 	include_once(AFIXI_ROOT.'configs/'.SITE_USED.'/constants.php');
-}
-?>
+}
+?>

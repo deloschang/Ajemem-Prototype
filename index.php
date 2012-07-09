@@ -16,7 +16,6 @@ require_once('FirePHPCore/fb.php');
 define("AFIXI_ROOT", $_SERVER['DOCUMENT_ROOT']."/".SUB_DIR."flexycms/");
 define("AFIXI_CORE", $_SERVER['DOCUMENT_ROOT'].'/flexycms/flexycms_core/');
 include (AFIXI_CORE."common5.php");
-
 // Code for set multilanguage
 if($GLOBALS['conf']['MULTI_LANG']['islang']){
 	$_SESSION['multi_language']=$_SESSION['multi_language']?$_SESSION['multi_language']:"default";
@@ -59,9 +58,6 @@ if ($_input['mod']) {
 }
 
 $page = isset ($_input['page']) ? $_input['page'] : 'common';
-
-
-
 
 if (isset($_input['id'])){
 	global $link;

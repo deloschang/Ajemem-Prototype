@@ -67,3 +67,4 @@ function insert_all($tbl,$arr,$flag='',$dt_fld='add_date',$debug=''){//print("i 
 			return $err;
     }	
 }
+?>

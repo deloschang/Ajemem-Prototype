@@ -68,3 +68,4 @@ class manage{
 			return $err;
     }
 }
+?>
