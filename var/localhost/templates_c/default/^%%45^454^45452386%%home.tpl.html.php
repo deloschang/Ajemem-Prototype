@@ -1,5 +1,5 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-09 05:49:48
+<?php /* Smarty version 2.6.7, created on 2012-07-09 16:29:41
          compiled from common/home.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_mod', 'common/home.tpl.html', 2, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%45^454^45452386%%home.tpl.html.inc'] = 'f81a69fdd0c7d456c3381f9fad0d90a6';  if ($this->caching && !$this->_cache_including) { echo '{nocache:f81a69fdd0c7d456c3381f9fad0d90a6#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:f81a69fdd0c7d456c3381f9fad0d90a6#0}';}?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%45^454^45452386%%home.tpl.html.inc'] = 'd6f642f02e7700c650bee1238fc8521a';  if ($this->caching && !$this->_cache_including) { echo '{nocache:d6f642f02e7700c650bee1238fc8521a#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'user','mgr' => 'user'), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:d6f642f02e7700c650bee1238fc8521a#0}';}?>
