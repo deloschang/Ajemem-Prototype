@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-06-25 10:04:36
+<?php /* Smarty version 2.6.7, created on 2012-07-09 05:41:31
          compiled from static/privacypolicy.tpl.html */ ?>
 
-<!-- Template: static/privacypolicy.tpl.html Start 25/06/2012 10:04:36 --> 
+<!-- Template: static/privacypolicy.tpl.html Start 09/07/2012 05:41:31 --> 
  <div id="about_title">Privacy Policy</div>
 <div id="privacy_text">
 

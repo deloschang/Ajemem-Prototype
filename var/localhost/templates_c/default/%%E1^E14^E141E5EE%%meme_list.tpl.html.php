@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-09 05:37:52
+<?php /* Smarty version 2.6.7, created on 2012-07-09 05:49:48
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -425,18 +425,16 @@ unset($_smarty_tpl_vars);
 			<div id="message_container">
 				<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="http://localhost/image/questions.png" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
 			</div>
-			<div class="module_text" id="second_half">Share experiences with the people you care about</div>
+			<div class="module_text" id="second_half" style="padding-bottom:25px">Share experiences with the people you care about</div>
 		</div>
 		<center>
-		
-		<br>
 		<!--<div id="signup_text">Experience the Hype!</div>-->
-		<div class="fb-login-button" scope="
+		<div class="fb-login-button" size="large" scope="
 	    	email,
 	    	publish_stream
 	    	,user_education_history
 	    			    	">
-        Login with Facebook
+        Connect with Facebook
 		</div>
 		
 		<br>
