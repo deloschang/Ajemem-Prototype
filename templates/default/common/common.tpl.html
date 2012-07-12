@@ -193,33 +193,9 @@ var chc = "{/literal}{$chc}{literal}";
 					</div>
 					</center>					
 					<div id="front_message">
-	<div class="module_text" id="front_card">Your stories belong here</div>
-		<div id="module_container">
-			<div id="message_container">
-				<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="##LBL_SITE_URL##image/questions.png" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
-			</div>
-			<div class="module_text" id="second_half" style="padding-bottom:25px">Share experiences with the people you care about</div>
-		</div>
-		<center>
-		<!--<div id="signup_text">Experience the Hype!</div>-->
-		<div class="fb-login-button" size="large" scope="
-	    	email,
-	    	publish_stream
-	    	,user_education_history
-	    	{*,user_birthday*}	{* Uncomment to enable *}
-	    	">
-        Connect with Facebook
-		</div>
-		
-		<br>
-		<div id="bottom_bar">
-			<table><tr>
-			<td><div id="about"><a href="/about.html">About </a></div></td>
-			<td><div id="about"><a href="http://blog.memeja.com">Blog </a></div></td>
-			<td><div id="privacy_policy"><a href="/privacypolicy.html">Privacy  </a></div></td>
-			</tr></table>
-		</div>
-		</center></div>
+						{include file =$content}
+						{if !$smarty.request.page}{include file="meme/home"}{/if}
+					</div>
 				</div>
 		</div>			
 		

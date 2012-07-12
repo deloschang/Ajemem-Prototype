@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-09 17:54:54
+<?php /* Smarty version 2.6.7, created on 2012-07-13 01:32:05
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -416,4 +416,34 @@ unset($_smarty_tpl_vars);
     <img src="http://localhost/templates/images/loading.gif" />
 </div>
 
-<?php endif; ?>
+<?php endif; ?>
+
+<?php if (! $_SESSION['id_user'] && ! $_SESSION['profile']): ?>
+
+<div class="module_text" id="front_card">Your stories belong here</div>
+		<div id="module_container">
+			<div id="message_container">
+				<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="http://localhost/image/questions.png" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
+			</div>
+			<div class="module_text" id="second_half" style="padding-bottom:25px">Share experiences with the people you care about</div>
+		</div>
+		<center>
+		<!--<div id="signup_text">Experience the Hype!</div>-->
+		<div class="fb-login-button" size="large" scope="
+	    	email,
+	    	publish_stream
+	    	,user_education_history
+	    			    	">
+        Connect with Facebook
+		</div>
+		
+		<br>
+		<div id="bottom_bar">
+			<table><tr>
+			<td><div id="about"><a href="/about.html">About </a></div></td>
+			<td><div id="about"><a href="http://blog.memeja.com">Blog </a></div></td>
+			<td><div id="privacy_policy"><a href="/privacypolicy.html">Privacy  </a></div></td>
+			</tr></table>
+		</div>
+		</center>
+	<?php endif; ?>
