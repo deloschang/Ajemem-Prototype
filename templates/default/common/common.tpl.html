@@ -200,6 +200,11 @@ var chc = "{/literal}{$chc}{literal}";
 		</div>			
 		
 	{elseif $smarty.session.profile == 'invalid'}
+		<div id="top_header" class="nohighlight">
+				<div id= "logoc" class="nohighlight">
+					<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo" style="width:130px;"></a>
+				</div>
+		</div>
 		<div id="nlu_contained">
 			<div id="profile_page">		
 				<div id="profile_name"><center>Flerp? We couldn't find this user!</center></div>
@@ -210,17 +215,24 @@ var chc = "{/literal}{$chc}{literal}";
 				</div>
 			</div>
 			<div id="login_top">
-				<div class="fb-login-button" scope="
-				email,
-				publish_stream
-				,user_education_history
-				{*,user_birthday*}	{* Uncomment to enable *}
-				">
-			Login with Facebook
+				<div class="fb-login-button" size="large" scope="
+			email,
+			publish_stream
+			,user_education_history
+			{*,user_birthday*}	{* Uncomment to enable *}
+			">
+		Connect with Facebook
 				</div>
+			</div>
 			</div>
 		</div>	
 	{else}
+		<div id="top_header" class="nohighlight">
+				<div id= "logoc" class="nohighlight">
+					<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo" style="width:130px;"></a>
+				</div>
+		</div>
+			
 		<div id="nlu_contained">	
 			<div id="profile_page">	
 				<div id="profile_pic">
@@ -284,14 +296,15 @@ var chc = "{/literal}{$chc}{literal}";
 					{include file="meme/home"}
 				</div>
 			</div>
+			
 			<div id="login_top">
-				<div class="fb-login-button" scope="
+				<div class="fb-login-button" size="large" scope="
 			email,
 			publish_stream
 			,user_education_history
 			{*,user_birthday*}	{* Uncomment to enable *}
 			">
-		Login with Facebook
+		Connect with Facebook
 				</div>
 			</div>
 		</div>
@@ -345,10 +358,7 @@ var chc = "{/literal}{$chc}{literal}";
 					</div>
 				</div>
 				<div id="triangle_down"></div>
-			</div>
-			
-			<!-- Please style this correctly, to the right of the picture like on Quora-->
-			
+			</div>			
 			
 		{if $smarty.session.one_less_user}
 			
@@ -375,6 +385,7 @@ var chc = "{/literal}{$chc}{literal}";
 			<div id= "logoc" class="nohighlight">
 				<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo" style="width:130px;"></a>
 			</div>
+			
 			{if $smarty.request.choice !='addMeme'}
 
 				<div id="xpbar_info" class="nohighlight">
