@@ -1598,18 +1598,18 @@ function _logout(){
 			//$in_user['name_friends'] = 'Stacy';	
 						
 			// Enable permission 'user_education_history' in login_form to access.
-			$education = $user_details['education'];
+			// $education = $user_details['education'];
 			
-			$school_name_list = array();
-			$school_id_list = array();
-			foreach ($education as $education_array) {
+			// $school_name_list = array();
+			// $school_id_list = array();
+			// foreach ($education as $education_array) {
 				
-				$school_name_list[] = $education_array['school']['name'];
-				$school_id_list[] = $education_array['school']['id'];
+				// $school_name_list[] = $education_array['school']['name'];
+				// $school_id_list[] = $education_array['school']['id'];
 			
-			}
-			$in_user['school_id'] = implode(",", $school_id_list);	
-			$in_user['school_name'] = implode(",", $school_name_list);	
+			// }
+			// $in_user['school_id'] = implode(",", $school_id_list);	
+			// $in_user['school_name'] = implode(",", $school_name_list);	
 			
 			// Unique FB ID & USERNAME
 			$in_user['uid'] = $user_details['id'];
@@ -1643,13 +1643,8 @@ function _logout(){
 				$in_user['dupe_username'] = $in_user['mname'] ? $in_user['fname'].'-'.$in_user['mname'].'-'.$in_user['lname'] : $in_user['fname'].'-'.$in_user['lname'];
 			}
 			
-		
-						
-			
 			$in_user['email']  = $user_details['email'];
 			$in_user['password']  = $pwd;
-			
-			
 
 			#$in_user['id_admin']  = 0;
 			
@@ -1663,8 +1658,8 @@ function _logout(){
 			//$in_user['avatar']  = $user_details[''];
 			
 			// Hometown and Location
-			$in_user['hometown'] = $user_details['hometown']['id'];
-			$in_user['location'] = $user_details['location']['id'];
+			//$in_user['hometown'] = $user_details['hometown']['id'];
+			//$in_user['location'] = $user_details['location']['id'];
 			
 			#$in_user['ques_week_won']  = $user_details[''];
 			#$in_user['duels_won']  = $user_details[''];
