@@ -121,13 +121,11 @@ class user_manager extends mod_manager {
 ##################################################
 ##################### SET LOGIN ##################
 ##################################################
-    function _set_login($name="",$pass="")
-    {		
+    function _set_login($name="",$pass=""){	
         if($name && $pass) {
             $uname = strtolower($name);
             $pwd = $pass;
-        }
-        else {
+        } else {
             $uname = strtolower($this->_input['username']);
             $pwd = $this->_input['password'];
         }
@@ -141,6 +139,7 @@ class user_manager extends mod_manager {
 		}*/
         $rem = $this->_input['rem'];
         $admin_url =  $this->_input['admin_st'];
+		
         if (empty($uname)||empty($pwd)){
             $_SESSION['raise_message']['global']=  "<center>". "Please enter a username  & password";
             if($admin_url) {
@@ -153,12 +152,10 @@ class user_manager extends mod_manager {
 
         $logincount=$_SESSION['login_count'];
         $result= $this->check_login($uname);
-        if($result !=0)
-        {
+        if($result !=0){
             //if(($uname==$result['email'] || $uname==$result['username']) && $pwd==$result['password'])
-            if((strcasecmp($uname,$result['email'])==0 || strcasecmp($uname,$result['username'])==0) && $pwd==$result['password'])
-            {
-                if($result['random_num']=='0') {
+            if((strcasecmp($uname,$result['email'])==0 || strcasecmp($uname,$result['username'])==0) && $pwd==$result['password']){
+                //if($result['random_num']=='0') {
                     if($result['flag']==1) {
                         if($result['user_status']==1){
                             $arr['id_user']=$result['id_user'];
@@ -258,6 +255,9 @@ class user_manager extends mod_manager {
                             $page['id_user']=$result['id_user'];
                             //$id_page=$this->obj_user->insert_all("page",$page);
                             $_SESSION['id_page']='';//$id_page;
+							
+							echo('logged in');
+							
                             if($_SESSION['id_admin']){
                                 redirect(LBL_ADMIN_SITE_URL);
                             }else{
@@ -267,19 +267,21 @@ class user_manager extends mod_manager {
                         else
                         {
                             $_SESSION['raise_message']['global'] = "You are blocked.<br>Please contact admin.";
-                            redirect(LBL_SITE_URL);
+							echo('blocked');
+                            //redirect(LBL_SITE_URL);
                         }
 
                     }
                     else {
                         $_SESSION['raise_message']['global'] = "You are blocked.<br>Please contact admin.";
-                        redirect(LBL_SITE_URL);
+						echo('blocked');
+                        //redirect(LBL_SITE_URL);
                     }
-                }
-                else {
-                    $_SESSION['raise_message']['global'] = "Please confirm your email.";
-                    redirect(LBL_SITE_URL);
-                }
+                // } else {
+                    // $_SESSION['raise_message']['global'] = "Please confirm your email.";
+					// echo('email');
+                    //redirect(LBL_SITE_URL);
+                //}
             }
             else {
                 $_SESSION['raise_message']['global'] = "Incorrect username and password. Please try again.";
@@ -1581,7 +1583,6 @@ function _logout(){
 	    $results = mysqli_fetch_assoc($qry);
 	    
 	    $_SESSION['fb_login'] = 1;
-	    
 	    if($results){
 	    	// Not a first-time user. 
 	    	// _set_login works like 'return', rest of func not 	invoked
@@ -1674,7 +1675,8 @@ function _logout(){
 			#$in_user['last_login']  = $user_details[''];
 			#$in_user['update_login']  = $user_details[''];
 			#$in_user['login_time']  = $user_details[''];
-			$in_user['random_num']  = '0';
+			
+			$in_user['random_num']  = 1;	//sets email -- 0 for not confirmed yet
 			$in_user['flag']  = 1;
 			$in_user['user_status']  = 1;
 			
@@ -1687,8 +1689,14 @@ function _logout(){
 				// initiates from user.php
 		    $this->obj_user->insert_all('user', $in_user, 1,$dt_fld='add_date');
 
-			mail ("lol.i.laugh@gmail.com", "Use PHP Everyday", "Don't forget to floss and use PHP everyday!", "From: no-reply@phphelp.com X-Mailer: My PHP Script");
+			// The message
+			$message = "New user in database".$in_user['username'];
 
+			// In case any of our lines are larger than 70 characters, we should use wordwrap()
+			$message = wordwrap($message, 70);
+
+			// Send
+			//mail('deloschang@memeja.com', 'New User ', $message);
 			
 		    $this->_set_login($in_user['email'], $pwd);
 		}
