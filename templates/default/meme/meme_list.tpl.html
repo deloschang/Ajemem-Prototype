@@ -27,7 +27,6 @@
 			
 			var cat = "{/literal}{$sm.cat}{literal}";
 			
-			
 			$("#rand_id_memes").val("{/literal}{$sm.id_memes}{literal}");
 			
 			$("#last_id_meme_cur_page").val("{/literal}{$sm.last_idmeme}{literal}");
@@ -67,7 +66,6 @@
 		if ($("#last_id_meme_cur_page").val() != "") {
 			if ($("#chk_me").val()!=1) {
 				last_id = $("#last_id_meme_cur_page").val();
-				
 
 				var ext = "{/literal}{$smarty.request.ext}{literal}";
 				var url = "##LBL_SITE_URL##meme/meme_list";

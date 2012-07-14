@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-13 05:45:31
+<?php /* Smarty version 2.6.7, created on 2012-07-14 03:23:28
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 205, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 244, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 13/07/2012 05:45:31 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 14/07/2012 03:23:28 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -31,9 +31,9 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	    $("#chk_me").val("1");
 	 }
 
-	$(".fb_btn").each(function (){
-	    FB.XFBML.parse($(this).get(0));
-	 });
+	//$(".fb_btn").each(function (){
+	//    FB.XFBML.parse($(this).get(0));
+	// });
 
 	$(document).ready(function() {	
 		// prevents stacking w/ pagination

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-13 05:45:33
+<?php /* Smarty version 2.6.7, created on 2012-07-14 04:09:37
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -27,7 +27,6 @@
 			$("#last_id_meme").val("';  echo $this->_tpl_vars['sm']['last_id_meme'];  echo '");
 			
 			var cat = "';  echo $this->_tpl_vars['sm']['cat'];  echo '";
-			
 			
 			$("#rand_id_memes").val("';  echo $this->_tpl_vars['sm']['id_memes'];  echo '");
 			
@@ -68,7 +67,6 @@
 		if ($("#last_id_meme_cur_page").val() != "") {
 			if ($("#chk_me").val()!=1) {
 				last_id = $("#last_id_meme_cur_page").val();
-				
 
 				var ext = "';  echo $_REQUEST['ext'];  echo '";
 				var url = "http://localhost/meme/meme_list";

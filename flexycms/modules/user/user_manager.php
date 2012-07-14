@@ -1513,10 +1513,6 @@ function _logout(){
      }
 		// End of newest FB changes
 	
-	
-		//can break code for debugging	
-		
-		/* Pati's old shit code */
 //$arr = explode('&',trim(stripslashes($_COOKIE['fbs_'.$app_id]),'"'));
 //		foreach($arr as $k => $v){
 //			$key = substr($v,0,strpos($v,'='));
@@ -1585,7 +1581,6 @@ function _logout(){
 	    $_SESSION['fb_login'] = 1;
 	    if($results){
 	    	// Not a first-time user. 
-	    	// _set_login works like 'return', rest of func not 	invoked
 	    	
 	    	$this->_set_login($results['email'], $results['password']);
 	    } else {
