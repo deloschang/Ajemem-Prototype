@@ -127,7 +127,7 @@ var chc = "{/literal}{$chc}{literal}";
 			
 	    /* For popup bar */
 			//setTimeout("popup_expbar()", 7000); 	
-			//setTimeout("live_ranking()", 20000);
+			setTimeout("live_ranking()", 20000);
 	    }	    
 	});
 </script>
@@ -189,7 +189,7 @@ var chc = "{/literal}{$chc}{literal}";
 	{elseif $smarty.session.profile == 'invalid'}
 		<div id="top_header" class="nohighlight">
 				<div id= "logoc" class="nohighlight">
-					<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo" style="width:130px;"></a>
+					<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo"></a>
 				</div>
 		</div>
 		<div id="nlu_contained">
@@ -216,7 +216,7 @@ var chc = "{/literal}{$chc}{literal}";
 	{else}
 		<div id="top_header" class="nohighlight">
 				<div id= "logoc" class="nohighlight">
-					<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo" style="width:130px;"></a>
+					<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo"></a>
 				</div>
 		</div>
 			
@@ -298,8 +298,9 @@ var chc = "{/literal}{$chc}{literal}";
 	{/if}
 {else}
 	<div id="top_header" class="nohighlight">
-		<div id="header_cont">
-			<div id="user_menu">
+			<div id="header_cont">
+			<div id="header_box">
+				<div id="user_menu">
 				<div id="user_pic" class="nohighlight">
 				<a href="/?id={$smarty.session.dupe_username}">
 					{if $smarty.session.fb_pic_normal}
@@ -308,7 +309,7 @@ var chc = "{/literal}{$chc}{literal}";
 						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
 					{/if}
 				</a>
-				<div id="ranking_number">{if $smarty.session.exp_rank}<a href="/?id={$smarty.session.dupe_username}">{$smarty.session.exp_rank}</a>{else}N/A{/if}</div>
+				<div id="ranking_number">{if $smarty.session.exp_rank}<a href="/?id={$smarty.session.dupe_username}">{$smarty.session.exp_rank}</a>{else}?{/if}</div>
 				</div>
 				<div id = "user_name" class="nohighlight">
 					<a href ="/?id={$smarty.session.dupe_username}">{$smarty.session.fname|capitalize}</a>
@@ -346,7 +347,7 @@ var chc = "{/literal}{$chc}{literal}";
 				</div>
 				<div id="triangle_down"></div>
 			</div>			
-			
+			</div>
 		{if $smarty.session.one_less_user}
 			
 			<div id="trailing_user_pic" class="nohighlight">
@@ -357,7 +358,7 @@ var chc = "{/literal}{$chc}{literal}";
 						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
 					{/if}</a>
 				</span>
-				<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}<a href="/?id={$smarty.session.one_less_dupe_username}">{$smarty.session.one_less_rank}</a>{else}N/A{/if}
+				<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}<a href="/?id={$smarty.session.one_less_dupe_username}">{$smarty.session.one_less_rank}</a>{else}?{/if}
 				</div>
 			</div>	
 		{/if}
@@ -370,7 +371,7 @@ var chc = "{/literal}{$chc}{literal}";
 				</tr></table>
 			</div>
 			<div id= "logoc" class="nohighlight">
-				<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo" style="width:130px;"></a>
+				<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo"></a>
 			</div>
 			
 			{if $smarty.request.choice !='addMeme'}
@@ -559,7 +560,7 @@ var chc = "{/literal}{$chc}{literal}";
 					
 					$("#trailing_ranking_number").css("color", '#FEEB4E');
 					$("#trailing_ranking_number").animate( { "opacity" : 0.4 }, 1000, function() {
-						$("#trailing_ranking_number").css("color","#81cdfe");
+						$("#trailing_ranking_number").css("color","#C0E791");
 						$("#trailing_ranking_number").animate( { "opacity" : 1 }, 300)
 					});
 					
@@ -578,9 +579,15 @@ var chc = "{/literal}{$chc}{literal}";
 					// Green flash
 
 					$("#ranking_number").css("color", '#B9FE4E');
-					$("#ranking_number").animate( { "opacity" : 0.4 }, 1000, function() {
-						$("#ranking_number").css("color","#81cdfe");
-						$("#ranking_number").animate( { "opacity" : 1 }, 300)
+					$("#ranking_number").animate( { "opacity" : 0.4 }, 900, function() {
+						$("#ranking_number").css("color","#81CDFE");
+						$("#ranking_number").animate( { "opacity" : 1 }, 500)
+					});
+					
+					$("#user_name").css("background", '#B9FE4E');
+					$("#user_name").animate( { "opacity" : 0.4 }, 700, function() {
+						$("#user_name").css("background",'');
+						$("#user_name").animate( { "opacity" : 1 }, 500)
 					});
 					
 					if (trailing_user) {
@@ -611,9 +618,15 @@ var chc = "{/literal}{$chc}{literal}";
 					// Red flash
 
 					$("#ranking_number").css("color", '#FE4EB9');
-					$("#ranking_number").animate( { "opacity" : 0.4 }, 1000, function() {
+					$("#ranking_number").animate( { "opacity" : 0.4 }, 900, function() {
 						$("#ranking_number").css("color","#81cdfe");
-						$("#ranking_number").animate( { "opacity" : 1 }, 300)
+						$("#ranking_number").animate( { "opacity" : 1 }, 500)
+					});
+					
+					$("#user_name").css("background", '#FE4E61');
+					$("#user_name").animate( { "opacity" : 0.4 }, 700, function() {
+						$("#user_name").css("background",'');
+						$("#user_name").animate( { "opacity" : 1 }, 500)
 					});
 					
 					if (trailing_user) {

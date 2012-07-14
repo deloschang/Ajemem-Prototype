@@ -137,20 +137,20 @@ class user_manager extends mod_manager {
 			$_SESSION['raise_message']['global'] = "Successfully logged in";
 			redirect(LBL_ADMIN_SITE_URL);
 		}*/
-        $rem = $this->_input['rem'];
-        $admin_url =  $this->_input['admin_st'];
+        // $rem = $this->_input['rem'];
+        // $admin_url =  $this->_input['admin_st'];
 		
-        if (empty($uname)||empty($pwd)){
-            $_SESSION['raise_message']['global']=  "<center>". "Please enter a username  & password";
-            if($admin_url) {
-                redirect(LBL_ADMIN_SITE_URL);
-            }
-            else {
-                redirect(LBL_SITE_URL);
-            }
-        }
+        // if (empty($uname)||empty($pwd)){
+            // $_SESSION['raise_message']['global']=  "<center>". "Please enter a username  & password";
+            // if($admin_url) {
+                // redirect(LBL_ADMIN_SITE_URL);
+            // }
+            // else {
+                // redirect(LBL_SITE_URL);
+            // }
+        // }
 
-        $logincount=$_SESSION['login_count'];
+        // $logincount=$_SESSION['login_count'];
         $result= $this->check_login($uname);
         if($result !=0){
             //if(($uname==$result['email'] || $uname==$result['username']) && $pwd==$result['password'])
@@ -170,28 +170,8 @@ class user_manager extends mod_manager {
                                 'username' => $result['username'],
                                 'email' => $result['email'],
                                 'password' => $result['password']);
-							
-                            // if($rem){
-                                // $this->set_auto_login($info);
-                            // }
-						
-                            // if($result['id_admin'] == $result['id_user']) {
-                                // $_SESSION['admin']=isset($this->_input['admin'])?$this->_input['admin']:1;
-                                // if($_SESSION['admin']==1){
-                                    // $_SESSION['id_admin'] = $result['id_user'];
-                                // }
-                            // }
 						
                             $dconf=array_flip($GLOBALS['conf']['USER_TYPE']);
-                            // if($result['email'] == "developer") {
-							// $_SESSION['id_developer'] = $result['id_user'];
-							// $_SESSION['id_admin'] = $result['id_user'];
-							// $_SESSION['username'] = "developer";
-							// $_SESSION['id_developer'] = $result['id_user'];
-							// $_SESSION['raise_message']['global'] = "Successfully logged in";
-							// redirect(LBL_ADMIN_SITE_URL);
-
-                            // }
 
                             $_SESSION['fname']=$result['fname'];
                             $_SESSION['lname']=$result['lname'];
@@ -201,8 +181,7 @@ class user_manager extends mod_manager {
 						
                             if ($result['fb_pic_normal']) {
                                 $_SESSION['fb_pic_normal'] = $result['fb_pic_normal'];
-                            }
-                            else {
+                            } else {
                                 $_SESSION['avatar'] = $result['avatar'] ? $result['avatar']:($result['gender']=='M'?'memeja_male.png':'memeja_female.png');
                             }
 						
@@ -210,7 +189,6 @@ class user_manager extends mod_manager {
                             $_SESSION['gender']=$result['gender'];
                             $_SESSION['id_user'] = $result['id_user'];
 							$_SESSION['uid'] = $result['uid'];
-
 						
                             // User Level
                             $_SESSION['exp_point'] = $result['exp_point'];
@@ -224,8 +202,6 @@ class user_manager extends mod_manager {
                             $results_xp = getsingleindexrow($sql_xp);
                             $results_previous_xp = getsingleindexrow($sql_previous_xp);
 	   					
-                            //var_dump((int)$results_xp['xp_to_level']);
-                            //exit();
                             $_SESSION['xp_to_level'] = (int)$results_xp['xp_to_level'];
                             $_SESSION['previous_xp_to_level'] = (int)$results_previous_xp['xp_to_level'];
 						
@@ -236,7 +212,6 @@ class user_manager extends mod_manager {
                             $_SESSION['exp_rank']=$res_ach['POSITION'];
                             $one_less_rank = $_SESSION['exp_rank'] + 1;
 						
-                            //var_dump($one_less_rank);
                             $sql_one_less="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE POSITION=".$one_less_rank;
                             $res_one_less=getsingleindexrow($sql_one_less);
 						
@@ -250,17 +225,34 @@ class user_manager extends mod_manager {
 
 						
                             // End
-                            $_SESSION['login_count']=0;
+							
+                            ////$_SESSION['login_count']=0;
+							
                             //$page['id_user']=$result['id_user'];
                             //$id_page=$this->obj_user->insert_all("page",$page);
-                            $_SESSION['id_page']='';//$id_page;
 							
-                            if($_SESSION['id_admin']){
-                                redirect(LBL_ADMIN_SITE_URL);
-                            }else{
-								setcookie('username', $uname, time()+60*60*24*365, "/".SUB_DIR);
-                                redirect(LBL_SITE_URL);
-                            }
+                            ////$_SESSION['id_page']='';//$id_page;
+							
+                            //if($_SESSION['id_admin']){
+                            //    redirect(LBL_ADMIN_SITE_URL);
+                            //}else{
+							
+							setcookie('username', $uname, time()+60*60*24*365, "/".SUB_DIR);
+							// setcookie('xp_to_level', $_SESSION['xp_to_level'], time()+60*60*24*365, "/".SUB_DIR);
+							// setcookie('previous_xp_to_level', $_SESSION['previous_xp_to_level'], time()+60*60*24*365, "/".SUB_DIR);
+							// setcookie('exp_rank', $_SESSION['exp_rank'], time()+60*60*24*365, "/".SUB_DIR);
+							
+							// setcookie('one_less_rank', $_SESSION['one_less_rank'], time()+60*60*24*365, "/".SUB_DIR);
+							// setcookie('one_less_user', $_SESSION['one_less_user'], time()+60*60*24*365, "/".SUB_DIR);
+							// setcookie('one_less_dupe_username', $_SESSION['one_less_dupe_username'], time()+60*60*24*365, "/".SUB_DIR);
+							// setcookie('one_less_pic', $_SESSION['one_less_pic'], time()+60*60*24*365, "/".SUB_DIR);
+							// setcookie('one_less_avatar', $_SESSION['one_less_avatar'], time()+60*60*24*365, "/".SUB_DIR);
+							// setcookie('one_less_gender', $_SESSION['one_less_gender'], time()+60*60*24*365, "/".SUB_DIR);
+								
+								
+                            redirect(LBL_SITE_URL);
+								
+                            //}
                         }
                         else
                         {

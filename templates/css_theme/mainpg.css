@@ -553,11 +553,10 @@
 		color:#000;
 		clear:both;
 		height:20px;
-		left:-50px;
 		top:0px;
 		padding:10px;
 		position:fixed;
-		width:1600px;
+		width:100%;
 		z-index:99;
 		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 	}
@@ -570,7 +569,7 @@
 	/* Memeja Logo */
 	#logoc {
 		float:left;
-		left:160px;
+		left:7%;
 		position:absolute;
 		top:0px;
 		z-index:300;
@@ -666,7 +665,7 @@
 	}
 	
 	#user_name a{
-		color: #C3C3C3;
+		color: #81CDFE;
 		text-shadow: 0px -1px 0px rgba(0,0,0,.5);
 		margin-left:auto;
 		margin-right:auto;
@@ -810,7 +809,7 @@
 	}
 	
 	#ranking_number, #trailing_ranking_number{
-		color: #81cdfe; 
+		color: #81CDFE; 
 		font-family:Verdana; 
 		font-size:14px;
 		font-weight:bold;
@@ -822,7 +821,7 @@
 	}
 	
 	#ranking_number a, #trailing_ranking_number a {
-		color:#C0E791;
+		color:#81CDFE;
 		font-family: Arial;
 	}
 	

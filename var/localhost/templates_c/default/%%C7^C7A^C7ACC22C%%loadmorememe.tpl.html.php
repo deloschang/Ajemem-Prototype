@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-14 06:03:47
+<?php /* Smarty version 2.6.7, created on 2012-07-14 20:34:04
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 201, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 240, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 14/07/2012 06:03:47 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 14/07/2012 20:34:04 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -352,9 +352,13 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 	
 	    </div>
 	    <div id="send_reply<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-" style="width:75%; margin:-20px 0 30px 120px; display: none;"><div class="fb-comments" data-href="http://memeja.com/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
+" style="width:75%; margin:-20px 0 30px 120px; display: none;">
+			<!--
+			<div class="fb-comments" data-href="http://memeja.com/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
 &meme=<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-" data-num-posts="1" data-width="470"></div></div>
+" data-num-posts="1" data-width="470"></div>
+			-->
+		</div>
 		<!--<div id="add_caption<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " style="width:60%;display: none;"></div> -->
 	    <input type="hidden" name="is_replied" id="is_replied<?php echo $this->_tpl_vars['x']['id_meme']; ?>
@@ -363,7 +367,8 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 " value=''/>
 	    <input type="hidden" name="is_disagreed" id="is_disagreed<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " value=''/>
-
+		
+		<!--
 		<div id="description" style="display: none;">		
 			<div>	
 				Created by: <span><a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
@@ -374,6 +379,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 ' data-num-posts="10" data-width="400"></div>
 			</div>
 		</div>
+		-->
 </div>
 
 <?php endforeach; endif; unset($_from); ?>
