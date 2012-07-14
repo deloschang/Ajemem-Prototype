@@ -158,40 +158,40 @@ class user_manager extends mod_manager {
                 //if($result['random_num']=='0') {
                     if($result['flag']==1) {
                         if($result['user_status']==1){
-                            $arr['id_user']=$result['id_user'];
-                            $arr['email']=$result['email'];
-                            $arr['ip']=$_SERVER['REMOTE_ADDR'];
-                            $id=$this->obj_user->insert_all("login",$arr,1,'date_login');
+                            //$arr['id_user']=$result['id_user'];
+                            //$arr['email']=$result['email'];
+                            //$arr['ip']=$_SERVER['REMOTE_ADDR'];
+                            //$id=$this->obj_user->insert_all("login",$arr,1,'date_login');
 
-                            $user_arr['no_of_logs'] = "no_of_logs+1";
-                            $sql_login=$this->obj_user->update_this("user",$user_arr," id_user=".$result['id_user'],1);
+                            //$user_arr['no_of_logs'] = "no_of_logs+1";
+                            //$sql_login=$this->obj_user->update_this("user",$user_arr," id_user=".$result['id_user'],1);
 
                             $info = array('autologin' => 1,'id_user' => $result['id_user'],
                                 'username' => $result['username'],
                                 'email' => $result['email'],
                                 'password' => $result['password']);
 							
-                            if($rem){
-                                $this->set_auto_login($info);
-                            }
+                            // if($rem){
+                                // $this->set_auto_login($info);
+                            // }
 						
-                            if($result['id_admin'] == $result['id_user']) {
-                                $_SESSION['admin']=isset($this->_input['admin'])?$this->_input['admin']:1;
-                                if($_SESSION['admin']==1){
-                                    $_SESSION['id_admin'] = $result['id_user'];
-                                }
-                            }
+                            // if($result['id_admin'] == $result['id_user']) {
+                                // $_SESSION['admin']=isset($this->_input['admin'])?$this->_input['admin']:1;
+                                // if($_SESSION['admin']==1){
+                                    // $_SESSION['id_admin'] = $result['id_user'];
+                                // }
+                            // }
 						
                             $dconf=array_flip($GLOBALS['conf']['USER_TYPE']);
-                            if($result['email'] == "developer") {
-							$_SESSION['id_developer'] = $result['id_user'];
-							$_SESSION['id_admin'] = $result['id_user'];
-							$_SESSION['username'] = "developer";
-							$_SESSION['id_developer'] = $result['id_user'];
-							$_SESSION['raise_message']['global'] = "Successfully logged in";
-							redirect(LBL_ADMIN_SITE_URL);
+                            // if($result['email'] == "developer") {
+							// $_SESSION['id_developer'] = $result['id_user'];
+							// $_SESSION['id_admin'] = $result['id_user'];
+							// $_SESSION['username'] = "developer";
+							// $_SESSION['id_developer'] = $result['id_user'];
+							// $_SESSION['raise_message']['global'] = "Successfully logged in";
+							// redirect(LBL_ADMIN_SITE_URL);
 
-                            }
+                            // }
 
                             $_SESSION['fname']=$result['fname'];
                             $_SESSION['lname']=$result['lname'];
@@ -236,7 +236,7 @@ class user_manager extends mod_manager {
                             $_SESSION['exp_rank']=$res_ach['POSITION'];
                             $one_less_rank = $_SESSION['exp_rank'] + 1;
 						
-                            var_dump($one_less_rank);
+                            //var_dump($one_less_rank);
                             $sql_one_less="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE POSITION=".$one_less_rank;
                             $res_one_less=getsingleindexrow($sql_one_less);
 						
@@ -250,17 +250,15 @@ class user_manager extends mod_manager {
 
 						
                             // End
-                            $_SESSION['raise_message']['global'] = "Successfully logged in";
                             $_SESSION['login_count']=0;
-                            $page['id_user']=$result['id_user'];
+                            //$page['id_user']=$result['id_user'];
                             //$id_page=$this->obj_user->insert_all("page",$page);
                             $_SESSION['id_page']='';//$id_page;
-							
-							echo('logged in');
 							
                             if($_SESSION['id_admin']){
                                 redirect(LBL_ADMIN_SITE_URL);
                             }else{
+								setcookie('username', $uname, time()+60*60*24*365, "/".SUB_DIR);
                                 redirect(LBL_SITE_URL);
                             }
                         }

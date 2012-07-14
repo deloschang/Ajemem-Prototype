@@ -37,6 +37,71 @@ $smarty = getSmarty(); // from common5.php, assigned to $smarty
 $site->smarty= &$smarty;
 $site->cache_id= &$cache_id;
 
+
+fb($_COOKIE);
+if(isset($_COOKIE['username'])){
+	$sql = get_search_sql("user","email = '".$uname."' LIMIT 1");
+		$query = mysqli_query($link,$sql);
+		$result  = mysqli_fetch_assoc($query);
+		
+	$_SESSION['fname']=$result['fname'];
+	$_SESSION['lname']=$result['lname'];
+	$_SESSION['email'] = $result['email'];
+	$_SESSION['username'] = $result['username'];
+	$_SESSION['dupe_username'] = $result['dupe_username'];
+
+	if ($result['fb_pic_normal']) {
+		$_SESSION['fb_pic_normal'] = $result['fb_pic_normal'];
+	}
+	else {
+		$_SESSION['avatar'] = $result['avatar'] ? $result['avatar']:($result['gender']=='M'?'memeja_male.png':'memeja_female.png');
+	}
+
+	//$_SESSION['friends']=$result['memeje_friends'];
+	$_SESSION['gender']=$result['gender'];
+	$_SESSION['id_user'] = 148;
+	$_SESSION['uid'] = $result['uid'];
+
+
+	// User Level
+	$_SESSION['exp_point'] = $result['exp_point'];
+	$_SESSION['level'] = $result['level'];
+	$previous_level = $result['level'] - 1;
+
+	// Find XP to Next Level
+	$sql_xp = "SELECT * FROM ".TABLE_PREFIX."level WHERE level=".$_SESSION['level'];
+	$sql_previous_xp = "SELECT * FROM ".TABLE_PREFIX."level WHERE level=".$previous_level;
+
+	//$results_xp = getsingleindexrow($sql_xp);
+	//$results_previous_xp = getsingleindexrow($sql_previous_xp);
+
+	//var_dump((int)$results_xp['xp_to_level']);
+	//exit();
+	$_SESSION['xp_to_level'] = (int)$results_xp['xp_to_level'];
+	$_SESSION['previous_xp_to_level'] = (int)$results_previous_xp['xp_to_level'];
+
+	// Experience Points Rank
+	$sql_ach="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE id_user=".$_SESSION['id_user'];
+	//$res_ach=getsingleindexrow($sql_ach);
+
+	$_SESSION['exp_rank']=$res_ach['POSITION'];
+	$one_less_rank = $_SESSION['exp_rank'] + 1;
+
+	//var_dump($one_less_rank);
+	$sql_one_less="SET @i=0;SELECT *,POSITION FROM (SELECT *, @i:=@i+1 AS POSITION FROM ".TABLE_PREFIX."user WHERE id_admin!=1 ORDER BY exp_point DESC ) t WHERE POSITION=".$one_less_rank;
+	//$res_one_less=getsingleindexrow($sql_one_less);
+
+	$_SESSION['one_less_rank'] = $one_less_rank;
+	//$_SESSION['one_less_exp'] = $res_one_less['exp_point'];
+	$_SESSION['one_less_user'] = $res_one_less['username'];
+	$_SESSION['one_less_dupe_username'] = $res_updated_other['dupe_username'];
+	$_SESSION['one_less_pic'] = $res_one_less['fb_pic_normal'];
+	$_SESSION['one_less_avatar'] = $res_one_less['avatar'];
+	$_SESSION['one_less_gender'] = $res_one_less['gender'];
+}	
+fb($_SESSION);
+
+
 if ($_input['mod']) {
 	$result = user_templates::get_mod($_input,'',"ACTION");
 	unset($_input['choice']);

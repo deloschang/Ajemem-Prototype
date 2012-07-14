@@ -1,30 +1,30 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-14 05:00:47
+<?php /* Smarty version 2.6.7, created on 2012-07-14 06:03:47
          compiled from common/common.tpl.html */
 
-$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '2570145ab392d1fd3fc6c9fbe31488c6';
+$this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = 'a3bcc1be8c9f2f5877a6989218b6afe7';
 
 ?><?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 234, false),array('function', 'get_mod', 'common/common.tpl.html', 265, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 233, false),array('function', 'get_mod', 'common/common.tpl.html', 264, false),)), $this); ?>
 <?php
-function _smarty_tplfunc_2570145ab392d1fd3fc6c9fbe31488c6_0(&$_smarty)
+function _smarty_tplfunc_a3bcc1be8c9f2f5877a6989218b6afe7_0(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_2570145ab392d1fd3fc6c9fbe31488c6_1(&$_smarty)
+function _smarty_tplfunc_a3bcc1be8c9f2f5877a6989218b6afe7_1(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_2570145ab392d1fd3fc6c9fbe31488c6_2(&$_smarty)
+function _smarty_tplfunc_a3bcc1be8c9f2f5877a6989218b6afe7_2(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $_smarty);
 }
 
 
-function _smarty_tplfunc_2570145ab392d1fd3fc6c9fbe31488c6_3(&$_smarty)
+function _smarty_tplfunc_a3bcc1be8c9f2f5877a6989218b6afe7_3(&$_smarty)
 {
 echo $_smarty->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $_smarty);
 }
