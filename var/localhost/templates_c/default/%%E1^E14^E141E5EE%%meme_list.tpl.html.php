@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-14 04:09:37
+<?php /* Smarty version 2.6.7, created on 2012-07-14 05:00:47
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -31,11 +31,6 @@
 			$("#rand_id_memes").val("';  echo $this->_tpl_vars['sm']['id_memes'];  echo '");
 			
 			$("#last_id_meme_cur_page").val("';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '");
-		
-			if (logged_in){
-				//get_all_flag_details(1);
-				//setInterval("get_all_flag_details()",6000);
-			 }
 			
 			var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
 			var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
@@ -171,31 +166,6 @@
 /* Expand replies after reply button is pressed on the meme */
     function get_all_replies(id){
 		$(\'#send_reply\'+id).slideToggle(\'slow\');
-		
-		// Deprecated for FB comments
-		//var url = "http://localhost/meme/get_all_replies";
-		//$.post(url,{id:id,ce:0 }, function(res){
-			//$("#send_reply"+id).html(res);
-			
-			/* If caption is up, swap 
-			if(!$("#add_caption"+id).is(":hidden"))
-				$(\'#add_caption\'+id).slideToggle(\'slow\');
-		 });*/
-     }
-    
-    function get_captions(id){
-	var url = "http://localhost/caption/add_caption";
-	$.post(url,{id:id,ce:0 }, function(res){
-	        $("#add_caption"+id).html(res);
-	    if(!$("#send_reply"+id).is(":hidden"))
-		$(\'#send_reply\'+id).slideToggle(\'slow\');
-		$(\'#add_caption\'+id).slideToggle(\'slow\');
-	 });
-     }
-    
-    function chk_forclear(id){
-	if($(\'#rpl_con\'+id).val() == "Reply with answer.")
-	    $(\'#rpl_con\'+id).val(\'\');
      }
 
 	function strip(html)
@@ -205,38 +175,6 @@
 	   return tmp.textContent||tmp.innerText;
 	 }
 
-    function post_reply(id){
-		if($("#rpl_con"+id).val()=="" || $("#rpl_con"+id).val()=="Reply with answer."){
-	    	 $("#rpl_con"+id).val("If an empty reply is posted but no one is around to see it, did it ever exist?");
-	    	 return false;
-		 }
-	    
-		if($("#rpl_con"+id).val().length < 10){
-			$("#validateCharacter"+id).html(\'Herp Derp\');
-			return false;
-		 }
-		
-	   if (logged_in) { 
-			/* $("#send_reply"+id).hide("slow",function(){ }); */
-			var url = "http://localhost/meme/answer_to_meme";
-			var reply = strip(($("#rpl_con"+id).val()).trim());
-			
-			$.post(url,{answer:reply,id:id,ce:0 },function(res){
-			    $("#rpl_con"+id).val(\'\'); 
-			    $("#is_replied"+id).val(\'1\'); 
-			    $("#repl"+id).html(res);
-			    common_fun(id,reply_color);
-			 });
-		
-			var url = "http://localhost/meme/get_all_replies";
-			$.post(url,{id:id,ce:0 }, function(res){
-				$("#send_reply"+id).html(res);
-			 });
-		
-    	 } else {
-    		alert("Sorry! Please log in to reply.");
-    	 }
-     }
 
 /* JS call after Agree/Disagree button is pressed */
     function set_tot_adaggr(id,con,id_user){
@@ -282,31 +220,6 @@
 		//$.post(url,{meme:meme_details,ce:0,id:id_meme });
      }
 	
-    function flagging(id_meme){
-	var flaged_bfr=0;
-	var url = "http://localhost/meme/flagging_meme";
-	$.ajax({
-	    type: "POST",
-	    url: url,
-	    async:false,
-	    data: {ce:0,chk:\'1\',id:id_meme } ,
-	    dataType: "json",
-	    success: function(msg) {
-		flaged_bfr = (parseInt(msg))?1:0;
-	     }
-	 });
-	if(flaged_bfr){
-		alert("You have already flagged the meme.");
-		return false;
-	     }else{
-		var fg = confirm("Are you sure ?\\nIf you flag , it may lead your account to be frozened or deleted");
-		if(fg)
-		    $.post(url, {ce:0,id:id_meme },function(data){
-			alert("You have successfully flagged the meme.");
-		     }); 
-	     }
-     }
-	
 	function diff_feed(ext){
 		var url = "http://localhost/meme/meme_list";
 			$.post(url,{cat:\'main_feed\',ce:0,ext:ext }, function(res){
@@ -334,17 +247,6 @@
 		$("#mtitle").autocomplete(\'http://localhost/index.php?page=meme&choice=auto_comp&flg=1&ce=0\',{
 		    delay: 500
 		 });
-
-		// jQuery CSS change for Live and Network feed
-		//$(\'#tab div\').mouseover(function(){
-		//	if($(this).hasClass(\'selected\'));
-		//	else
-		//		$(this).removeClass(\'unselected\').addClass(\'hover\');
-		// }).mouseout(function(){
-		//	if($(this).hasClass(\'selected\'));
-		//	else
-		//	$(this).removeClass(\'hover\').addClass(\'unselected\');
-		// });
      });
 </script>
 '; ?>

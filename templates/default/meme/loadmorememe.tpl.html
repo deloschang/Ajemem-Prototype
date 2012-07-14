@@ -25,19 +25,15 @@
 	    $("#chk_me").val("1");
 	}
 
-	//$(".fb_btn").each(function (){
-	//    FB.XFBML.parse($(this).get(0));
-	//});
-
 	$(document).ready(function() {	
 		// prevents stacking w/ pagination
 		clearTimeout(meme_timer);
 		clearTimeout(meme_timer_new);
 		
-		meme_timer = window.setTimeout("live_feed(0)", 1000);
+		//meme_timer = window.setTimeout("live_feed(0)", 1000);
 		
 		if (global_page_no == 1 && is_search != 1) {
-			meme_timer_new = window.setTimeout("live_meme()", 10000);
+			//meme_timer_new = window.setTimeout("live_meme()", 10000);
 		}
 	});
 

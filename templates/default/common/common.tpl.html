@@ -122,26 +122,13 @@ var chc = "{/literal}{$chc}{literal}";
 		var scrn_height = window.screen.availHeight;
             $("#mid_cont").height(scrn_height/2 + scrn_height/9);
 
-	    /* For notification 
-	    $(".inner").hide();
-	    $('#slidebottom div').click(function() {
-			get_details_notification();
-			$(this).next().slideToggle();
-	    });*/
-
 	    if(idu!="" && chc!='addMeme'){
 			//setInterval("getall_notification()",7000); for notifications
 			
 	    /* For popup bar */
-			setTimeout("popup_expbar()", 7000); 	
-			setTimeout("live_ranking()", 20000);
-	    }
-
-	    /*if (idu) {
-		    /* For updating total login time */
-		    /*upd_log_time();
-	    }  */
-	    
+			//setTimeout("popup_expbar()", 7000); 	
+			//setTimeout("live_ranking()", 20000);
+	    }	    
 	});
 </script>
 {/literal}
@@ -530,44 +517,7 @@ var chc = "{/literal}{$chc}{literal}";
 			tag.display = "none";
 		}
 	}
-	function log_in_reminder(){
-		 var url="##LBL_SITE_URL##user/log_in_reminder";
-		 
-		$.post(url,{ce:0}, function(res){
-			$.fancybox(res);
-    	});
-	}
 	
-	/*
-	function getall_notification(){
-	    var url="##LBL_SITE_URL##manage/getall_notification";
-	    $.post(url,{ce:0},function(res){
-			if(res[0] != "-1"){
-				if(res[2]==0)
-			    	$(".not_txt").hide();
-				else
-			    	$(".not_txt").show();
-				$('#user_ids').val(res[0]);
-				$('#id_badges').val(res[1]);
-				$("#not_cnt").html(res[2]);
-			}
-	    },'json');
-	}*/
-	
-	/*function get_details_notification(){
-	    var url="##LBL_SITE_URL##/manage/get_details_notification";
-	    $.post(url,{id_users:$('#user_ids').val(),id_badges:$('#id_badges').val(),ce:0},function(data){
-			$(".inner").html(data);
-			$(".not_txt").hide();
-	    });
-	}*/
-	
-	function upd_log_time() {
-		  var url="##LBL_SITE_URL##index.php";
-		  $.post(url,{page:"user",choice:"set_login_time",ce:0},function(res){//alert(res);
-		  })
-		  setTimeout("upd_log_time()", 10000);
-    	}
     	
 	function get_next_page(url, start, limit, div_id) {
 		if (!document.getElementById(div_id)) {
@@ -717,51 +667,9 @@ var chc = "{/literal}{$chc}{literal}";
 		$('#searches').submit();
 	}
 	
-	function upd_log_time() {
-		  var url="##LBL_SITE_URL##index.php";
-		  $.post(url,{page:"user",choice:"set_login_time",ce:0},function(res){//alert(res);
-		  })
-		  setTimeout("upd_log_time()", 10000);
-    	}
-    	
-	function get_next_page(url, start, limit, div_id) {
-		if (!document.getElementById(div_id)) {
-			div_id = "content";
-		}
-		$("#"+div_id).load(url, {'qstart':start, 'limit':limit, 'ce':0,'pg':1,chk:1}, function(res){
-			//css_even_odd();
-		});
-	}
-	
 	function show_fancybox(res){
 		$.fancybox(res,{centerOnScroll:true,hideOnOverlayClick:false});
-		//$.fancybox(res,{margin:600,hideOnOverlayClick:false});
 	}
-	
-	flexymsg = {
-	required_dob: "This field is required.",
-	required: "<br/>This field is required.",	
-	remote: "<br/>Please fix this field.",
-	email: "<br/>Please enter a valid email address.",
-	url: "<br/>Please enter a valid URL.",
-	date: "<br/>Please enter a valid date.",
-	dateISO: "<br/>Please enter a valid date (ISO).",
-	number: "<br/>Please enter a valid number.",
-	digits: "<br/>Please enter only digits.",
-	creditcard: "<br/>Please enter a valid credit card number.",
-	equalTo: "<br/>Please enter the same value again.",
-	accept: "<br/>Please enter a value with a valid extension.",
-	maxlength: "<br/>Please enter no more than {0} characters.",
-	minlength: "<br/>Please enter at least {0} characters.",
-	rangelength: "<br/>Please enter a value between {0} and {1} characters long.",
-	range: "<br/>Please enter a value between {0} and {1}.",
-	maxValue: "<br/>Please enter a value less than or equal to {0}.",
-	minValue: "<br/>Please enter a value greater than or equal to {0}.",
-	nodefind : "<br/> is not defined!",
-	novalue : "<br/> return value is required!",
-	customarray : "<br/>Custom function should return array!",
-	customfcheck : "<br/>Custom function should be present in case of custom checking!"
-	};
 	
 	function follow_user(status) {		
 		{/literal}{if $smarty.session.profile_id}{literal}

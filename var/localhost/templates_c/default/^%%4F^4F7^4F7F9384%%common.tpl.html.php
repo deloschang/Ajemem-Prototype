@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-14 04:09:36
+<?php /* Smarty version 2.6.7, created on 2012-07-14 05:00:47
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 247, false),array('function', 'get_mod', 'common/common.tpl.html', 278, false),)), $this); ?>
-<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '7908ac9c1b1e2569b1cde0339cc23a44'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 234, false),array('function', 'get_mod', 'common/common.tpl.html', 265, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '2570145ab392d1fd3fc6c9fbe31488c6'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -125,26 +125,13 @@ var chc = "';  echo $this->_tpl_vars['chc'];  echo '";
 		var scrn_height = window.screen.availHeight;
             $("#mid_cont").height(scrn_height/2 + scrn_height/9);
 
-	    /* For notification 
-	    $(".inner").hide();
-	    $(\'#slidebottom div\').click(function() {
-			get_details_notification();
-			$(this).next().slideToggle();
-	     });*/
-
 	    if(idu!="" && chc!=\'addMeme\'){
 			//setInterval("getall_notification()",7000); for notifications
 			
 	    /* For popup bar */
-			setTimeout("popup_expbar()", 7000); 	
-			setTimeout("live_ranking()", 20000);
-	     }
-
-	    /*if (idu) {
-		    /* For updating total login time */
-		    /*upd_log_time();
-	     }  */
-	    
+			//setTimeout("popup_expbar()", 7000); 	
+			//setTimeout("live_ranking()", 20000);
+	     }	    
 	 });
 </script>
 '; ?>
@@ -199,7 +186,7 @@ unset($_smarty_tpl_vars);
 if ($this->_foreach['cur_meme']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['x']):
         $this->_foreach['cur_meme']['iteration']++;
- echo '<span><img src="https://graph.facebook.com/';  echo $this->_tpl_vars['x']['id'];  echo '/picture"/>';  echo $this->_tpl_vars['x']['name'];  echo '</span>';  endforeach; endif; unset($_from);  echo '</div>';  endif;  echo '';  endif;  echo '</div><div id="my_pics"><div class="tabs"><div class="tab"><input type="radio" id="tab-1" name="tab-group-1" checked><label for="tab-1">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '\'s Memes</label><div class="content"><div id="my_meme_list">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:7908ac9c1b1e2569b1cde0339cc23a44#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:7908ac9c1b1e2569b1cde0339cc23a44#0}';} echo '</div></div></div><div class="tab"><input type="radio" id="tab-2" name="tab-group-1"><label for="tab-2">Tagged Memes</label><div class="content"><div id="my_tagged">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:7908ac9c1b1e2569b1cde0339cc23a44#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:7908ac9c1b1e2569b1cde0339cc23a44#1}';} echo '</div></div></div></div></div></div><div id="live_feed" class="nohighlight"><div id="feed_cont">';  $_smarty_tpl_vars = $this->_tpl_vars;
+ echo '<span><img src="https://graph.facebook.com/';  echo $this->_tpl_vars['x']['id'];  echo '/picture"/>';  echo $this->_tpl_vars['x']['name'];  echo '</span>';  endforeach; endif; unset($_from);  echo '</div>';  endif;  echo '';  endif;  echo '</div><div id="my_pics"><div class="tabs"><div class="tab"><input type="radio" id="tab-1" name="tab-group-1" checked><label for="tab-1">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '\'s Memes</label><div class="content"><div id="my_meme_list">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:2570145ab392d1fd3fc6c9fbe31488c6#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:2570145ab392d1fd3fc6c9fbe31488c6#0}';} echo '</div></div></div><div class="tab"><input type="radio" id="tab-2" name="tab-group-1"><label for="tab-2">Tagged Memes</label><div class="content"><div id="my_tagged">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:2570145ab392d1fd3fc6c9fbe31488c6#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:2570145ab392d1fd3fc6c9fbe31488c6#1}';} echo '</div></div></div></div></div></div><div id="live_feed" class="nohighlight"><div id="feed_cont">';  $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
@@ -215,7 +202,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 if ($this->_foreach['cur_meme']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['x']):
         $this->_foreach['cur_meme']['iteration']++;
- echo '<span><img src="https://graph.facebook.com/';  echo $this->_tpl_vars['x']['id'];  echo '/picture"/>';  echo $this->_tpl_vars['x']['name'];  echo '</span>';  endforeach; endif; unset($_from);  echo '</span>';  endif;  echo '';  endif;  echo '</div><div id="my_pics"><div class="tabs"><div class="tab"><input type="radio" id="tab-1" name="tab-group-1" checked><label for="tab-1">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '\'s Memes</label><div class="content"><div id="my_meme_list">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:7908ac9c1b1e2569b1cde0339cc23a44#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:7908ac9c1b1e2569b1cde0339cc23a44#2}';} echo '</div></div></div><div class="tab"><input type="radio" id="tab-2" name="tab-group-1"><label for="tab-2">Tagged Memes</label><div class="content"><div id="my_tagged">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:7908ac9c1b1e2569b1cde0339cc23a44#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:7908ac9c1b1e2569b1cde0339cc23a44#3}';} echo '</div></div></div></div></div></div>';  endif;  echo '</div>';  else:  echo '<div id="editorcontent" class="nohighlight">';  $_smarty_tpl_vars = $this->_tpl_vars;
+ echo '<span><img src="https://graph.facebook.com/';  echo $this->_tpl_vars['x']['id'];  echo '/picture"/>';  echo $this->_tpl_vars['x']['name'];  echo '</span>';  endforeach; endif; unset($_from);  echo '</span>';  endif;  echo '';  endif;  echo '</div><div id="my_pics"><div class="tabs"><div class="tab"><input type="radio" id="tab-1" name="tab-group-1" checked><label for="tab-1">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '\'s Memes</label><div class="content"><div id="my_meme_list">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:2570145ab392d1fd3fc6c9fbe31488c6#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:2570145ab392d1fd3fc6c9fbe31488c6#2}';} echo '</div></div></div><div class="tab"><input type="radio" id="tab-2" name="tab-group-1"><label for="tab-2">Tagged Memes</label><div class="content"><div id="my_tagged">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:2570145ab392d1fd3fc6c9fbe31488c6#3}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:2570145ab392d1fd3fc6c9fbe31488c6#3}';} echo '</div></div></div></div></div></div>';  endif;  echo '</div>';  else:  echo '<div id="editorcontent" class="nohighlight">';  $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => $this->_tpl_vars['content'], 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
@@ -249,44 +236,7 @@ unset($_smarty_tpl_vars);
 			tag.display = "none";
 		 }
 	 }
-	function log_in_reminder(){
-		 var url="http://localhost/user/log_in_reminder";
-		 
-		$.post(url,{ce:0 }, function(res){
-			$.fancybox(res);
-    	 });
-	 }
 	
-	/*
-	function getall_notification(){
-	    var url="http://localhost/manage/getall_notification";
-	    $.post(url,{ce:0 },function(res){
-			if(res[0] != "-1"){
-				if(res[2]==0)
-			    	$(".not_txt").hide();
-				else
-			    	$(".not_txt").show();
-				$(\'#user_ids\').val(res[0]);
-				$(\'#id_badges\').val(res[1]);
-				$("#not_cnt").html(res[2]);
-			 }
-	     },\'json\');
-	 }*/
-	
-	/*function get_details_notification(){
-	    var url="http://localhost//manage/get_details_notification";
-	    $.post(url,{id_users:$(\'#user_ids\').val(),id_badges:$(\'#id_badges\').val(),ce:0 },function(data){
-			$(".inner").html(data);
-			$(".not_txt").hide();
-	     });
-	 }*/
-	
-	function upd_log_time() {
-		  var url="http://localhost/index.php";
-		  $.post(url,{page:"user",choice:"set_login_time",ce:0 },function(res){//alert(res);
-		   })
-		  setTimeout("upd_log_time()", 10000);
-    	 }
     	
 	function get_next_page(url, start, limit, div_id) {
 		if (!document.getElementById(div_id)) {
@@ -436,51 +386,9 @@ unset($_smarty_tpl_vars);
 		$(\'#searches\').submit();
 	 }
 	
-	function upd_log_time() {
-		  var url="http://localhost/index.php";
-		  $.post(url,{page:"user",choice:"set_login_time",ce:0 },function(res){//alert(res);
-		   })
-		  setTimeout("upd_log_time()", 10000);
-    	 }
-    	
-	function get_next_page(url, start, limit, div_id) {
-		if (!document.getElementById(div_id)) {
-			div_id = "content";
-		 }
-		$("#"+div_id).load(url, {\'qstart\':start, \'limit\':limit, \'ce\':0,\'pg\':1,chk:1 }, function(res){
-			//css_even_odd();
-		 });
-	 }
-	
 	function show_fancybox(res){
 		$.fancybox(res,{centerOnScroll:true,hideOnOverlayClick:false });
-		//$.fancybox(res,{margin:600,hideOnOverlayClick:false });
 	 }
-	
-	flexymsg = {
-	required_dob: "This field is required.",
-	required: "<br/>This field is required.",	
-	remote: "<br/>Please fix this field.",
-	email: "<br/>Please enter a valid email address.",
-	url: "<br/>Please enter a valid URL.",
-	date: "<br/>Please enter a valid date.",
-	dateISO: "<br/>Please enter a valid date (ISO).",
-	number: "<br/>Please enter a valid number.",
-	digits: "<br/>Please enter only digits.",
-	creditcard: "<br/>Please enter a valid credit card number.",
-	equalTo: "<br/>Please enter the same value again.",
-	accept: "<br/>Please enter a value with a valid extension.",
-	maxlength: "<br/>Please enter no more than {0 } characters.",
-	minlength: "<br/>Please enter at least {0 } characters.",
-	rangelength: "<br/>Please enter a value between {0 } and {1 } characters long.",
-	range: "<br/>Please enter a value between {0 } and {1 }.",
-	maxValue: "<br/>Please enter a value less than or equal to {0 }.",
-	minValue: "<br/>Please enter a value greater than or equal to {0 }.",
-	nodefind : "<br/> is not defined!",
-	novalue : "<br/> return value is required!",
-	customarray : "<br/>Custom function should return array!",
-	customfcheck : "<br/>Custom function should be present in case of custom checking!"
-	 };
 	
 	function follow_user(status) {		
 		';  if ($_SESSION['profile_id']):  echo '

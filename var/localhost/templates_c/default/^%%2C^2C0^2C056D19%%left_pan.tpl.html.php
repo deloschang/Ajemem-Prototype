@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-07-14 04:09:37
+<?php /* Smarty version 2.6.7, created on 2012-07-14 05:00:47
          compiled from user/left_pan.tpl.html */ ?>
 <?php if ($_SESSION['id_user']): ?>
 
