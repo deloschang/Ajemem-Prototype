@@ -13,6 +13,39 @@
 <script type="text/javascript" src="##JS_PATH##libsext/jquery/jquery.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
 {literal}
+
+
+<!-- Include support librarys first -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+		<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+		<script type="text/javascript">
+            // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
+            var swfVersionStr = "11.2.0";
+            // To use express install, set to playerProductInstall.swf, otherwise the empty string. 
+            var xiSwfUrlStr = "playerProductInstall.swf";
+            var flashvars = {};
+			flashvars.appId = "219049284838691";
+            var params = {};
+            params.quality = "high";
+            params.bgcolor = "#ffffff";
+            params.allowscriptaccess = "sameDomain";
+            params.allowfullscreen = "true";
+            var attributes = {};
+            attributes.id = "macromeme";
+            attributes.name = "macromeme";
+            attributes.align = "middle";
+            swfobject.embedSWF(
+                "macromeme.swf", "flashContent", 
+                "100%", "100%", 
+                swfVersionStr, xiSwfUrlStr, 
+                flashvars, params, attributes);
+            // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
+            swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+        </script>
+		
+
+
+
 <script type="text/javascript">
 var chc = "{/literal}{$chc}{literal}";
 	var idu = "{/literal}{$smarty.session.id_user}{literal}";
@@ -184,7 +217,19 @@ var chc = "{/literal}{$chc}{literal}";
 						{if !$smarty.request.page}{include file="meme/home"}{/if}
 					</div>
 				</div>
-		</div>			
+		</div>	
+		
+	<div id="flashContent">
+		<p>
+			To view this page ensure that Adobe Flash Player version 
+			11.2.0 or greater is installed. 
+		</p>
+		<script type="text/javascript"> 
+			var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
+			document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
+							+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
+		</script> 
+	</div>
 		
 	{elseif $smarty.session.profile == 'invalid'}
 		<div id="top_header" class="nohighlight">
@@ -324,7 +369,7 @@ var chc = "{/literal}{$chc}{literal}";
 							-->
 							<li>
 								<a href="javascript:void(0);" onclick="javascript:toggleDiv('content1','icon1');">Feedback?</a>
-								<div id="content1" class="item" style="display:none">
+								<div id="content1" class="item" style="display:none; z-index:500;">
 									<form action="send-contact-message.php" method="post">
 										<p>
 											<input type="hidden" name="name" id="name" size="25" value="{$smarty.session.username}">
