@@ -31,6 +31,10 @@ if(defined("SITE_USED") && file_exists(AFIXI_ROOT.'../'.SITE_USED.'.php')){
 	include_once(AFIXI_ROOT.'../site.php');
 }
 
+if(!($_SESSION['domain'])){
+	$_SESSION['domain'] = SITE_USED;
+}
+
 $site = new site; // called from site.php
 $site->init(); // calls function in instance 'site'
 $smarty = getSmarty(); // from common5.php, assigned to $smarty
