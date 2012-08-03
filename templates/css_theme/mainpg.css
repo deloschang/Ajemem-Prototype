@@ -59,7 +59,8 @@
 /*++++++++++++++ Macromeme Generator +++++++++++++*/
 	#macromeme{
 		position:absolute;
-		bottom:-90%;
+		/*bottom:-90%;*/
+		top:0;
 		left:0;
 	}
 	

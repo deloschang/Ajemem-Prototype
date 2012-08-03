@@ -1448,6 +1448,8 @@ function _logout(){
         	$data = json_decode(base64_decode(strtr($payload, '-_', '+/')), true);
   
         	if (strtoupper($data['algorithm']) !== 'HMAC-SHA256') {
+				echo('algo');
+				exit;
             	return null;
          	}
          	
@@ -1523,7 +1525,9 @@ function _logout(){
 	    global $link;
 
 	    $arr = $this->decrypt_fb_data();
-	    $facebook = $arr[0]; // instance of class FB 
+		
+		if($arr){
+			$facebook = $arr[0]; // instance of class FB 
 		
 	    $data = $arr[1];	// decrypted data with access token + session_key
 
@@ -1679,6 +1683,7 @@ function _logout(){
 			//mail('deloschang@memeja.com', 'New User ', $message);
 			
 		    $this->_set_login($in_user['email'], $pwd);
+		}
 		}
 	}
 		

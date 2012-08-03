@@ -17,7 +17,6 @@
 
 <!-- Include support librarys first -->
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-		<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
 		<script type="text/javascript">
             // For version detection, set to min. required Flash Player version, or 0 (or 0.0.0), for no version detection. 
             var swfVersionStr = "11.2.0";
@@ -25,6 +24,7 @@
             var xiSwfUrlStr = "playerProductInstall.swf";
             var flashvars = {};
 			flashvars.appId = "219049284838691";
+			flashvars.accessToken = "";
             var params = {};
             params.quality = "high";
             params.bgcolor = "#ffffff";
@@ -180,7 +180,8 @@ var chc = "{/literal}{$chc}{literal}";
           });
           
           FB.Event.subscribe('auth.login', function (response) {
-          	window.location = "##LBL_SITE_URL##user/facebook_info";
+			//console.log(response);
+			window.location = "##LBL_SITE_URL##user/facebook_info";
     	  });
         };
         
@@ -440,11 +441,25 @@ var chc = "{/literal}{$chc}{literal}";
 					</div>
 				</div>
 				
+				
 			{elseif $smarty.session.profile == 'invalid'}
 				<div id="profile_page">
 					<div id="profile_name"><center>Flerp? We couldn't find this user!</center></div>
 				</div>
 			{else} 
+				
+		<div id="flashContent">
+						<p>
+							To view this page ensure that Adobe Flash Player version 
+							11.2.0 or greater is installed. 
+						</p>
+						<script type="text/javascript"> 
+							var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
+							document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
+											+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
+						</script> 
+					</div>
+					
 				<div id="profile_page">	
 					<div id="profile_pic">
 						{if $smarty.session.profile_picture}
