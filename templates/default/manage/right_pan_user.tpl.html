@@ -1,0 +1,78 @@
+{*notag*}
+{if $smarty.session.id_user}
+<link rel="stylesheet" type="text/css" href="##LBL_SITE_URL##templates/css_theme/mainpg.css"/>
+
+		<div id= "other_user_name">{$sm.username|capitalize}</div>
+			<div id="changePhoto">
+				{if $sm.fb_pic_normal}
+				<img src="{$sm.fb_pic_normal}">
+				{else}
+				<img src="##LBL_SITE_URL##image/thumb/avatar/{if $sm.avatar}{$sm.avatar}{else}{if $sm.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"/>
+				{/if}
+			</div>
+
+
+		
+		{*User Rank + XP*}
+			
+		<div id="more_user_ranking_info">
+		<span id="rank">Rank</span>
+		<span id="more_ranking_number">{if $sm.exp_rank}{$sm.exp_rank}{else}N/A{/if}</span>
+		
+		 <div id="total_xp" >{if $sm.exp_point}{$sm.exp_point}{/if}
+		 <span style="font-size:8px; position:relative; bottom:5px;">XP</span></div>
+		 </div>
+		 
+		<div id="my_meme_list">
+				    
+		<b>My Memes</b>
+        <div id="liked_memes">
+	    
+
+		    {if $sm.res}
+			{section name=cur loop=$sm.res}
+			{assign var=x value=$sm.res[cur]}
+			
+			<a class="meme_gallery" data-fancybox-group="other_user_meme" id="other_user_meme{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
+			
+			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="width: 60px;height: 60px;cursor: pointer;"/></a>
+			
+			{if (($smarty.section.cur.iteration % 3) == 0)}
+
+			{/if}
+			
+			{/section}
+			
+			
+			{else}
+			No meme found
+			{/if}
+        </div>
+		
+		<b>
+		    Favorites
+		</b>
+		
+<div id="liked_memes">
+
+			{if $sm.res_favorite}
+			{section name=cur loop=$sm.res_favorite}
+			{assign var=x value=$sm.res_favorite[cur]}
+			
+			<a class="meme_gallery" data-fancybox-group="other_fav_meme" id="meme_fav_image{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
+			
+			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="width: 60px;height: 60px;cursor: pointer;"/></a>
+			
+			{if (($smarty.section.cur.iteration % 3) == 0)}
+
+			{/if}	
+			{/section}
+			{else}
+			<b>
+			Go Honor Some Memes!
+			</b>
+			{/if}
+
+{/if}
+</div>
+</div>

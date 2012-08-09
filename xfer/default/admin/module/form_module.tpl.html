@@ -1,0 +1,145 @@
+<div class="box box-50 altbox">
+	<div class="boxin">
+		<div class="header">
+			<h3>Create/Upload Module</h3>
+		</div><br/>  
+		<span style="padding-left:10px">
+			<input type="radio" name="mod" id="nmod" {if $smarty.request.status neq 'imp'}checked="checked"{/if} onclick="showhide('newmod','impmod','nmod','add_mod');">New module&nbsp;
+			<input type="radio" name="mod" id="imod" {if $smarty.request.status eq 'imp'}checked="checked"{/if} onclick="showhide('impmod','newmod','imod','upd_mod');">Import module
+		</span>
+		<div id="newmod" style={if $smarty.request.status eq 'imp'}"display:none;height:180px"{else}"height:180px"{/if}>
+			<form action="##LBL_ADMIN_SITE_URL##module/create_module" id="add_mod" class="fields">
+				<fieldset>
+					<label>Enter Module Name</label>
+					<input class="txt" type="text" name="module_name" id="module_name" />
+					<div class="sep">
+						<input class="button" type="button" value="Create" onclick="return chk_validate();"/>
+					</div>
+					<label class="error" generated="true" for="module_name"></label>
+					<div id="m_msg"></div>
+				</fieldset>
+			</form>
+		</div>
+		<div id="impmod" style={if $smarty.request.status neq 'imp'}"display:none;height:180px"{else}"height:180px"{/if}>
+			{include file="admin/module/import"}
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>
+<div id="box1" class="box box-50 altbox"  style="width:350px">
+	<div class="boxin">
+		<div class="header">
+			<h3>Listing</h3>
+		</div>
+		<div id="box1-tabular" class="content">
+			COMMON TEMPLATE<br>
+			{foreach from=$sm.templates item=item}
+				<a href="javascript:void(0);" onclick="show_detail('{$item}','common','tpl');" style="color:#993300">{$item}</a><br>
+			{/foreach}
+			<hr>
+			<table cellspacing="0">
+				<thead>
+					<tr>
+						<td>Module Name</td>
+						<td>Action</td>
+					</tr>
+				</thead>
+				{foreach name=myfor from=$sm.file item=item}
+					<tr>
+						<td>
+							<!--<span id="span_{*$item*}" style="display:none" onclick="show_div('mod_{*$item*}')">-</span>-->
+							<a href="javascript:void(0);" onclick="show_file('{$item}');" style="color:#993300">{$item}</a>
+							<div id="mod_{$item}"></div>
+						</td>
+						<td>
+							<a href="##LBL_ADMIN_SITE_URL##module/delete/mname/{$item}" onclick="return confirm('Are you sure to delete this module?');">Delete</a>		
+						</td>
+					</tr>
+				{/foreach}
+			</table>
+		</div>
+	</div>
+</div>
+
+<div id="box1" class="box box-50 altbox"  style="width:570px">
+	<div class="boxin">
+		<div class="header"><h3>Edit Section</h3></div>
+		<div id="edit_sec">Edit the file contents here.</div>
+	</div>
+</div>
+
+
+{literal}
+<style>
+	.box {float: left; width: 960px; margin: 0 20px 20px 0;}
+	.box-30 {width: 300px;} /* 25% box */
+	.box-70 {width: 550px;} /* 50% box */
+</style>
+
+<script type="text/javascript">
+$.validator.addMethod("check_admin", function(value) {
+	return (value != "admin") && (value != "common") && (value !="css");
+}, 'Please do not enter this word as module name');
+
+$.validator.addMethod("check_mod", function(value) {
+	return value == "";
+}, '');
+
+function chk_validate(){
+	validator = $("#add_mod").validate({
+		rules: {
+			module_name: {
+				required: true,
+				check_admin:true
+			}
+		 }
+	});
+	x=validator.form();
+	if(x) {
+		check_mod_avail();
+	} else {
+		return false;
+	}
+}
+function check_mod_avail(){
+	var url = "##LBL_ADMIN_SITE_URL##index.php";
+	var module_name=$('#module_name').val();
+	$.post(url,{"page":"module","choice":"chk_module",ce:0,module_name:module_name},function(res){
+		if(res=='1'){
+			$("#m_msg").html('Module already exist.');
+		}else{
+			$("#m_msg").html('');
+			$('#add_mod').submit();
+		}
+	});
+}
+function show_file(mod){
+	var url='##LBL_ADMIN_SITE_URL##index.php';
+	$.post(url,{"page":"module","choice":"getfiles",ce:0,mod_name:mod},function(res){
+		$('#mod_'+mod).html(res);
+		//$('#span_'+mod).show();
+		//$('#span_'+mod).html('-');
+		
+	});
+}
+function show_detail(fname,mod_name,type){
+	var url='##LBL_ADMIN_SITE_URL##index.php';
+	$.post(url,{"page":"module","choice":"details",ce:0,mod_name:mod_name,fname:fname,type:type},function(res){
+		$('#edit_sec').html(res);
+	});
+}
+function show_div(id){
+	$('#'+id).toggle();
+}
+
+function showhide(chk_divid,unchk_divid,chk_radioid,formid){
+	if($('#'+chk_radioid).is(':checked')){
+		function complete() {
+			$('#'+chk_divid).fadeIn(1600);
+			$('#'+formid)[0].reset();
+		}
+		$('#'+unchk_divid).fadeOut(1600,complete);		
+	}
+}
+</script>
+{/literal}

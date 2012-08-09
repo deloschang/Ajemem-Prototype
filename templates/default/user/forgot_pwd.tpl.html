@@ -1,0 +1,29 @@
+
+<form action="##APP_ROOT_URL##user/get_forgot_pwd" method="post" name="forgotform" id="forgotform" onsubmit="return validate();">
+    <input type="text" name="email" id="email" class="self-describing" title="Email Address" style="height:15px;"/>
+    <input type="submit" value="Save me!" class="inputbtn" style="float:right; height:26px; font-size:11px; line-height:15px; padding:3px; margin:0 15px 0 0;"/>
+
+</form>
+{literal}
+<script type="text/javascript">
+function validate(){
+
+	var validator=$("#forgotform").validate({
+	   rules: {
+	   		"email":{
+				required:true,
+				email:true
+			}
+		},
+		messages: {
+			"email":{
+				required:flexymsg.required,
+				email:flexymsg.email
+			}
+		}
+	});
+	var x=validator.form();
+	return x;
+}
+</script>
+{/literal}

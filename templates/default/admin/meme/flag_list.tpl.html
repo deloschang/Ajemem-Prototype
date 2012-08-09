@@ -1,0 +1,65 @@
+{*notag*}
+<div class="box box-100 altbox">
+    <div class="boxin">
+	<div class="header">
+	    <h3> Flag List</h3>
+	</div>
+	<div class="content">
+	    <table cellspacing="0">
+		<thead>
+		<!--<th><input type="checkbox" name="chk_all" id="chk_all" onclick="checkUncheck('chkbox_image');" title="Check to select all images"/>select all</th>-->
+		    <th>Image</th>
+		    <th>Posted By</th>
+		   <th>Flagged By</th>
+		    <th>Flagged Date</th>
+		    <th>Time</th>
+		    <th colspan="3" style="text-align: center;">Action</th>
+		</thead>
+		<tbody>
+		    {foreach name=fg item=i key=k from=$sm.list}
+		    <tr>
+			<td><img src="##LBL_SITE_URL##image/thumb/meme/{$sm.meme_info[$i.id_meme].image}" alt='{$sm.meme_info[$i.id_user].image}' style="cursor:pointer;" align="left" title="Meme" onclick="show_my_details('{$x.id_meme}');"/></td> 
+			{assign var=id value=$sm.meme_info[$i.id_meme].id_user}
+			<td>{$sm.user_info[$id].fname} {$sm.user_info[$id].lname}</td>
+			
+			<td>{$sm.user_info[$i.id_user].fname} {$sm.user_info[$i.id_user].lname} </td>
+			<td>{$i.add_date|date_format:"%m-%d-%Y"} </td>
+			<td>{$i.add_date|date_format:"%H:%I %p"}</td>
+			<td><input type="button" value="Approve" onclick="Approve();"/></td>
+			<td><input type="button" value="Disapprove" onclick="Disapprove();"/></td>
+			<td><input type="button" value="Ignone" onclick="Ignone();"/></td>
+		    </tr>
+		    {/foreach}
+		</tbody>
+	    </table>
+	
+	{if $sm.type=='advance'}
+	    <div class="pagination_adv">
+	        {$sm.next_prev->generateadv()}
+	    </div>
+	{elseif $sm.type=='box'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='normal'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->generate()}</div>
+	    </div>
+	{elseif $sm.type=='nextprev'}
+	    <div class="pagination">
+	        <div align="center">{$sm.next_prev->onlynextprev()}</div>
+	    </div>
+	{elseif $sm.type=='extra'}
+	    <div class="pagination_box">
+	        <div align="center">{$sm.next_prev->generateextra()}</div>
+	    </div>
+	{else}
+	    {if $sm.type!='no'}
+	        <div>
+	            <div align="center">{$sm.next_prev->generate()}</div>
+	        </div>
+	    {/if}
+	{/if}
+	</div>
+</div>
+</div>
