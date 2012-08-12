@@ -1,0 +1,37 @@
+{"items":	[{"type":"meme",
+			  "thumb": "library/img/bad_joke_eel_thumb.jpg",
+			  "source": "library/img/bad_joke_eel.jpg",
+			  "title": "Bad Joke Eel",
+			  "top_caption":{"x":15.5,"text":"What do you call someone with no body and a nose?","fontSize":50,"width":576.65,"autoSize":true,"height":100,"y":20},
+			  "bottom_caption":{"x":15.5,"text":"Nobody Knows","fontSize":50,"width":576.65,"autoSize":true,"height":100,"y":321}
+			  },
+			  {"type":"meme",
+			  "thumb": "library/img/drunk_baby_thumb.jpg",
+			  "source": "library/img/drunk_baby.jpg",
+			  "title": "Drunk Baby",
+			  "top_caption":{"x":15.5,"text":"Hey you. Yeah, you.","fontSize":50,"width":576.65,"autoSize":true,"height":100,"y":20},
+			  "bottom_caption":{"x":15.5,"text":"I totally sucked your wife's tits","fontSize":50,"width":576.65,"autoSize":true,"height":100,"y":321}
+			  },
+			  {"type":"demotivator",
+			  "thumb": "library/img/socially_awkward_penguin_thumb.jpg",
+			  "source": "library/img/socially_awkward_penguin.jpg",
+			  "title": "Socially Awkward Penguin",
+			  "top_caption":{"x":16,"text":"Enter top caption here","fontSize":50,"width":592.8,"autoSize":true,"height":120,"y":609},
+			  "bottom_caption":{"x":16,"text":"Enter bottom caption here","fontSize":50,"width":592.8,"autoSize":true,"height":50,"y":744}
+			  },
+			  {"type":"meme",
+			  "thumb": "library/img/suburban_hardass_thumb.jpg",
+			  "source": "library/img/suburban_hardass.jpg",
+			  "title": "Suburban Hardass",
+			  "top_caption":{"x":16,"text":"Enter top caption here","fontSize":50,"width":592.8,"autoSize":true,"height":100,"y":20},
+			  "bottom_caption":{"x":16,"text":"Enter bottom caption here","fontSize":50,"width":592.8,"autoSize":true,"height":100,"y":316}
+			  },
+			  {"type":"meme",
+			  "thumb": "library/img/success_kid_thumb.jpg",
+			  "source": "library/img/success_kid.jpg",
+			  "title": "Victory Baby",
+			  "top_caption":{"x":10,"text":"Enter top caption here","fontSize":50,"width":380,"autoSize":true,"height":60,"y":20},
+			  "bottom_caption":{"x":10,"text":"Enter bottom caption here","fontSize":50,"width":380,"autoSize":true,"height":60,"y":340}
+			  }
+			]
+}
