@@ -24,7 +24,6 @@
             var xiSwfUrlStr = "playerProductInstall.swf";
             var flashvars = {};
 			flashvars.appId = "219049284838691";
-			flashvars.accessToken = "";
             var params = {};
             params.quality = "high";
             params.bgcolor = "#ffffff";
@@ -216,8 +215,7 @@ var chc = "{/literal}{$chc}{literal}";
 						{if !$smarty.request.page}{include file="meme/home"}{/if}
 					</div>
 				</div>
-		</div>	
-	
+		</div>		
 		
 	{elseif $smarty.session.profile == 'invalid'}
 		<div id="top_header" class="nohighlight">
@@ -398,8 +396,21 @@ var chc = "{/literal}{$chc}{literal}";
 				</div>
 			{/if}-->
 		</div>
-	</div>
-	{if $smarty.request.choice !='addMeme'}	
+             </div>
+         {if $smarty.request.choice == 'macromeme'}
+         <div id="flashContent">
+						<p>
+							To view this page ensure that Adobe Flash Player version 
+							11.2.0 or greater is installed. 
+						</p>
+						<script type="text/javascript"> 
+							var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
+							document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
+											+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
+						</script> 
+                                             </div>
+         {/if}                                       
+	{if $smarty.request.choice !='addMeme' && $smarty.request.choice !='macromeme'}	
 		<div id="contained">
 			{if !$smarty.session.profile}
 				<!-- view home page -->
@@ -416,7 +427,6 @@ var chc = "{/literal}{$chc}{literal}";
 					<div id="profile_name"><center>Flerp? We couldn't find this user!</center></div>
 				</div>
 			{else} 
-					
 				<div id="profile_page">	
 
 					<div id="left_info">

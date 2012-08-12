@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-08-10 23:55:24
 =======
 <?php /* Smarty version 2.6.7, created on 2012-08-03 15:14:59
@@ -7,16 +8,23 @@
 =======
 <?php /* Smarty version 2.6.7, created on 2012-06-27 11:06:52
 >>>>>>> ac274dfccb2fd612d94c0615c9eaaac8ba750f6d
+=======
+<?php /* Smarty version 2.6.7, created on 2012-08-12 07:17:12
+>>>>>>> 24599f5f313b1b44211876da81407327bbd250d0
          compiled from meme/meme_editor.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'meme/meme_editor.tpl.html', 136, false),)), $this); ?>
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- Template: meme/meme_editor.tpl.html Start 10/08/2012 23:55:24 --> 
 =======
 <!-- Template: meme/meme_editor.tpl.html Start 03/08/2012 15:14:59 --> 
 >>>>>>> 90355ac7279498d34deb4b1d2454f1c5deccd5f0
+=======
+<!-- Template: meme/meme_editor.tpl.html Start 12/08/2012 07:17:12 --> 
+>>>>>>> 24599f5f313b1b44211876da81407327bbd250d0
  <?php $this->assign('premade_category', $this->_tpl_vars['util']->get_values_from_config('PREMADE_CATEGORY'));  echo '
 =======
 <!-- Template: meme/meme_editor.tpl.html Start 27/06/2012 11:06:52 --> 

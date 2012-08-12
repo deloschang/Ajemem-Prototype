@@ -235,7 +235,6 @@ class meme_manager extends mod_manager {
 ########################################################################
 
 
-
 	function _addMeme(){
 
 	    check_session();
