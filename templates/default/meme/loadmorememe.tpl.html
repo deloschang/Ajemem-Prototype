@@ -193,18 +193,18 @@
 		{* Height between memes *}
 		<div style="height:70px;">
 
-		<!--<div id="whitebox">          </div>-->
-		<!-- Show details updates view count -->
 		
 			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage{$x.id_meme}" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
 			
+			<!-- Actual Meme picture -->
 			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="cursor:pointer;width: 75px; height: 65px; 
 			{if $smarty.session.id_user}
 				{if $x.id_user == $smarty.session.id_user}
 					border-style:outset; border-width:2px; border-color:#6699FF;
 				{/if}
 			{/if}" align="left"/>
-			
+
+			<!--The User's Picture-->
 			<span id="user_avatar_thumb"> 				
 
 				{if $sm.uinfo[$x.id_user].fb_pic_square}
@@ -214,9 +214,11 @@
 				{else}
 				{if $sm.uinfo[$x.id_user].gender=='M'}
 					<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_male.png" class="avatar_thumb_regular"/>{else}<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_female.png" class="avatar_thumb_regular"/>{/if}
-				{/if}			
+				{/if}
+
 			</span>
 			
+			<!-- The Meme Info section -->
 			<div id="meme_title_cont"><div id="meme_title">{$x.title|capitalize}</div></div></a>
 
 			<!-- end of gallery class-->
@@ -224,20 +226,6 @@
 			<div id="meme_info">  by
 				<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:14px;text-decoration:underline; color:#ACACA5;"><a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">{$sm.uinfo[$x.id_user].username}</a></span>		
 			</div>
-		
-			<!-- Caption shows below image 
-						<div style="font-size: 12px; color:blue"><span id="hrc{$x.id_meme}">{if $sm.hrc[$x.id_meme].caption}"{$sm.hrc[$x.id_meme].caption}"{else}{/if}</span></div><br/>-->
-
-			<!-- Comment out Category
-							Category:<b>{$category[$x.category]}</b><br/> -->
-
-			<!-- Meme Author (Commented out)
-							by {$sm.uinfo[$x.id_user].fname|capitalize} {$sm.uinfo[$x.id_user].lname|capitalize} <br/> -->
-
-			<!-- Date (Commented out)
-							On: {$x.add_date|date_format:"%m-%d-%Y"} @ {$x.add_date|date_format:"%I:%M %p"}<br/><br/>  -->
-			<!--	<div class="meme_gen_info" style="position:relative; left: 13px; bottom:2px; font-size:13px; color:#ACACA5;">born 24 min ago</div>-->
-
 
 			<br/>
 			
