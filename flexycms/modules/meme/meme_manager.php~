@@ -73,9 +73,9 @@ class meme_manager extends mod_manager {
 	function _load_flash_meme(){
 		global $link;
 		
-		
 		// grabs user_id that flash sends as a parameter
-         	$flash_user_id = mysql_real_escape_string($_GET['user_id']);	
+		$flash_user_id = mysql_real_escape_string($_GET['user_id']);
+		
 		$sql = "SELECT type, thumb, source, title, top_caption, bottom_caption FROM memeje__meme WHERE user_id =".$flash_user_id;
 		$res = mysqli_query($link,$sql);
 	    
@@ -84,13 +84,19 @@ class meme_manager extends mod_manager {
 	    } 
 		
 		$rows['items'] = array();
+		$i = 0;
 		while($rec = mysqli_fetch_assoc($res)){
 			$rows['items'][] = $rec;
-		}
-	      //$json_rows = json_encode($rows);         
-	        $json_rows = stripslashes(json_encode($rows));
-		//fb($json_rows);
-             exit($json_rows);
+			$decoded_top_caption = json_decode($rec['top_caption'], true);
+			$decoded_bot_caption = json_decode($rec['bottom_caption'], true);
+			$rows['items'][$i]['top_caption'] = $decoded_top_caption;
+			$rows['items'][$i]['bottom_caption'] = $decoded_bot_caption;
+			$i++;
+		}		
+		$json_rows = json_encode($rows);
+		$final_rows = stripslashes($json_rows);
+		
+		exit($final_rows);
 	}
 	
 	function _save_flash_meme(){
@@ -229,6 +235,11 @@ class meme_manager extends mod_manager {
 ########################################################################
 
 
+
+
+      function _macromeme(){
+         $this->_output['tpl']="static/macromeme";
+      }
 
 	function _addMeme(){
 
