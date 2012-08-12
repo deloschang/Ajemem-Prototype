@@ -40,8 +40,9 @@
                 swfVersionStr, xiSwfUrlStr, 
                 flashvars, params, attributes);
             // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
-            swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+            swfobject.createCSS("#flashContent", "display:block;text-align:left");
         </script>
+
 <script type="text/javascript">
 var chc = "{/literal}{$chc}{literal}";
 	var idu = "{/literal}{$smarty.session.id_user}{literal}";
@@ -286,30 +287,7 @@ var chc = "{/literal}{$chc}{literal}";
 						{/if}
 					{/if}
 				</div>
-				<div id="my_pics">
-					<div class="tabs">
-					   <div class="tab">
-						   <input type="radio" id="tab-1" name="tab-group-1" checked>
-						   <label for="tab-1">{$smarty.session.profile|capitalize}'s Memes</label>
-						   <div class="content">
-								<div id="my_meme_list">
-									{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
-								</div>
-						   </div>
-					   </div>
-					   <div class="tab">
-						   <input type="radio" id="tab-2" name="tab-group-1">
-						   <label for="tab-2">Tagged Memes</label>
-						   <div class="content">
-								<div id="my_tagged">
-									{get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
-								</div>
-						   </div>
-					   </div>
-					</div>
-				</div>
 			</div>
-			
 			<div id="live_feed" class="nohighlight">
 				<div id="feed_cont">
 					{include file="meme/home"}
@@ -438,18 +416,6 @@ var chc = "{/literal}{$chc}{literal}";
 					<div id="profile_name"><center>Flerp? We couldn't find this user!</center></div>
 				</div>
 			{else} 
-				
-		<div id="flashContent">
-						<p>
-							To view this page ensure that Adobe Flash Player version 
-							11.2.0 or greater is installed. 
-						</p>
-						<script type="text/javascript"> 
-							var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
-							document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
-											+ pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
-						</script> 
-					</div>
 					
 				<div id="profile_page">	
 

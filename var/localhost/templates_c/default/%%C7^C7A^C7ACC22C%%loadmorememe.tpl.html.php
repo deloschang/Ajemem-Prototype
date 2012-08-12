@@ -1,32 +1,10 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-08-12 02:44:06
-=======
-<?php /* Smarty version 2.6.7, created on 2012-08-12 04:32:59
->>>>>>> 90355ac7279498d34deb4b1d2454f1c5deccd5f0
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-27 11:21:28
->>>>>>> ac274dfccb2fd612d94c0615c9eaaac8ba750f6d
+<?php /* Smarty version 2.6.7, created on 2012-08-12 19:16:08
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 201, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 240, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 199, false),)), $this); ?>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<!-- Template: meme/loadmorememe.tpl.html Start 12/08/2012 02:44:06 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 12/08/2012 19:16:08 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
-=======
-<!-- Template: meme/loadmorememe.tpl.html Start 12/08/2012 04:32:58 --> 
- <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
-<?php echo '
->>>>>>> 90355ac7279498d34deb4b1d2454f1c5deccd5f0
-=======
-<!-- Template: meme/loadmorememe.tpl.html Start 27/06/2012 11:21:28 --> 
- <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
-<?php echo '
->>>>>>> ac274dfccb2fd612d94c0615c9eaaac8ba750f6d
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
@@ -224,14 +202,13 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 
 				<div style="height:70px;">
 
-		<!--<div id="whitebox">          </div>-->
-		<!-- Show details updates view count -->
 		
 			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " href="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
 " title="<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 ">
 			
+			<!-- Actual Meme picture -->
 			<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
 " style="cursor:pointer;width: 75px; height: 65px; 
 			<?php if ($_SESSION['id_user']): ?>
@@ -239,7 +216,8 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 					border-style:outset; border-width:2px; border-color:#6699FF;
 				<?php endif; ?>
 			<?php endif; ?>" align="left"/>
-			
+
+			<!--The User's Picture-->
 			<span id="user_avatar_thumb"> 				
 
 				<?php if ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']): ?>
@@ -251,9 +229,11 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 				<?php else: ?>
 				<?php if ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['gender'] == 'M'): ?>
 					<img src="http://localhost/image/thumb/avatar/memeja_male.png" class="avatar_thumb_regular"/><?php else: ?><img src="http://localhost/image/thumb/avatar/memeja_female.png" class="avatar_thumb_regular"/><?php endif; ?>
-				<?php endif; ?>			
+				<?php endif; ?>
+
 			</span>
 			
+			<!-- The Meme Info section -->
 			<div id="meme_title_cont"><div id="meme_title"><?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 </div></div></a>
 
@@ -265,27 +245,6 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 "><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
 </a></span>		
 			</div>
-		
-			<!-- Caption shows below image 
-						<div style="font-size: 12px; color:blue"><span id="hrc<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-"><?php if ($this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption']): ?>"<?php echo $this->_tpl_vars['sm']['hrc'][$this->_tpl_vars['x']['id_meme']]['caption']; ?>
-"<?php else:  endif; ?></span></div><br/>-->
-
-			<!-- Comment out Category
-							Category:<b><?php echo $this->_tpl_vars['category'][$this->_tpl_vars['x']['category']]; ?>
-</b><br/> -->
-
-			<!-- Meme Author (Commented out)
-							by <?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
- <?php echo ((is_array($_tmp=$this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['lname'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
- <br/> -->
-
-			<!-- Date (Commented out)
-							On: <?php echo ((is_array($_tmp=$this->_tpl_vars['x']['add_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%m-%d-%Y") : smarty_modifier_date_format($_tmp, "%m-%d-%Y")); ?>
- @ <?php echo ((is_array($_tmp=$this->_tpl_vars['x']['add_date'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%I:%M %p") : smarty_modifier_date_format($_tmp, "%I:%M %p")); ?>
-<br/><br/>  -->
-			<!--	<div class="meme_gen_info" style="position:relative; left: 13px; bottom:2px; font-size:13px; color:#ACACA5;">born 24 min ago</div>-->
-
 
 			<br/>
 			
@@ -402,6 +361,5 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 		-->
 </div>
 
-<?php endforeach; endif; unset($_from); ?>
-<?php endif; ?>
+<?php endforeach; endif; unset($_from);  endif; ?>
 <!-- Template: meme/loadmorememe.tpl.html End --> 
