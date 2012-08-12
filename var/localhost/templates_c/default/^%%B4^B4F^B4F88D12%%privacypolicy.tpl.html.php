@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-07-19 20:59:45
          compiled from static/privacypolicy.tpl.html */ ?>
 
 <!-- Template: static/privacypolicy.tpl.html Start 19/07/2012 20:59:45 --> 
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-25 10:04:36
+         compiled from static/privacypolicy.tpl.html */ ?>
+
+<!-- Template: static/privacypolicy.tpl.html Start 25/06/2012 10:04:36 --> 
+>>>>>>> ac274dfccb2fd612d94c0615c9eaaac8ba750f6d
  <div id="about_title">Privacy Policy</div>
 <div id="privacy_text">
 

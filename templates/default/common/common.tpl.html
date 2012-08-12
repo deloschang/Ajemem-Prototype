@@ -42,10 +42,6 @@
             // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
             swfobject.createCSS("#flashContent", "display:block;text-align:left;");
         </script>
-		
-
-
-
 <script type="text/javascript">
 var chc = "{/literal}{$chc}{literal}";
 	var idu = "{/literal}{$smarty.session.id_user}{literal}";
@@ -386,7 +382,6 @@ var chc = "{/literal}{$chc}{literal}";
 				<form id ="searches">
 					<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title." style="width:300px;"/>
 				</form>
-
 			<div id="header_nav">
 				<table><tr>
 				<td><div id="home_link" class="header_nav"><a href="/">Home</a></div></td>
@@ -570,6 +565,13 @@ var chc = "{/literal}{$chc}{literal}";
 		} else {
 			tag.display = "none";
 		}
+	}
+	function log_in_reminder(){
+		 var url="##LBL_SITE_URL##user/log_in_reminder";
+		 
+		$.post(url,{ce:0}, function(res){
+			$.fancybox(res);
+    	});
 	}
 	
     	

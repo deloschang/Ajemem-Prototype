@@ -1,12 +1,17 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-08-12 02:44:06
 =======
 <?php /* Smarty version 2.6.7, created on 2012-08-12 04:32:59
 >>>>>>> 90355ac7279498d34deb4b1d2454f1c5deccd5f0
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-27 11:21:28
+>>>>>>> ac274dfccb2fd612d94c0615c9eaaac8ba750f6d
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 201, false),array('modifier', 'date_format', 'meme/loadmorememe.tpl.html', 240, false),)), $this); ?>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <!-- Template: meme/loadmorememe.tpl.html Start 12/08/2012 02:44:06 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
@@ -16,6 +21,12 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
 >>>>>>> 90355ac7279498d34deb4b1d2454f1c5deccd5f0
+=======
+<!-- Template: meme/loadmorememe.tpl.html Start 27/06/2012 11:21:28 --> 
+ <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
+>>>>>>> ac274dfccb2fd612d94c0615c9eaaac8ba750f6d
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
@@ -391,5 +402,6 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 		-->
 </div>
 
-<?php endforeach; endif; unset($_from);  endif; ?>
+<?php endforeach; endif; unset($_from); ?>
+<?php endif; ?>
 <!-- Template: meme/loadmorememe.tpl.html End --> 

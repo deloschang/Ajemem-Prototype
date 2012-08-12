@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-08-10 23:55:24
          compiled from meme/addmeme.tpl.html */ ?>
 
@@ -9,6 +10,12 @@
 
 <!-- Template: meme/addmeme.tpl.html Start 03/08/2012 15:14:59 --> 
 >>>>>>> 90355ac7279498d34deb4b1d2454f1c5deccd5f0
+=======
+<?php /* Smarty version 2.6.7, created on 2012-06-27 11:06:52
+         compiled from meme/addmeme.tpl.html */ ?>
+
+<!-- Template: meme/addmeme.tpl.html Start 27/06/2012 11:06:52 --> 
+>>>>>>> ac274dfccb2fd612d94c0615c9eaaac8ba750f6d
  <!-- 
      Commented by Muaz :D
 	 Presenting the Memeja Editor
@@ -32,7 +39,8 @@ _img.png";
 <script type="text/javascript" src="http://localhost/spad/jquery.jqDock.min.js"></script>
 <script type="text/javascript" src="http://localhost/spad/color/colorpicker.js"></script>
 <script type="text/javascript" src="http://localhost/templates/flexyjs/js/jquery.multiautocomplete.js"></script>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
 <script type="text/javascript">
 
 	var mycanvas, cntx;
