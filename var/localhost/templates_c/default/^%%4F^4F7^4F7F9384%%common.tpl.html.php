@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-12 21:37:06
+<?php /* Smarty version 2.6.7, created on 2012-08-13 05:17:22
          compiled from common/common.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 264, false),)), $this); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'common/common.tpl.html', 264, false),array('function', 'get_mod', 'common/common.tpl.html', 473, false),)), $this); ?>
+<?php $this->_cache_serials['C:/xampp/htdocs/flexycms/../var/localhost/templates_c/default\^%%4F^4F7^4F7F9384%%common.tpl.html.inc'] = '894173c7722ef6330ab23c76e1202108'; ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -224,7 +224,7 @@ unset($_smarty_tpl_vars);
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/home.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
-  echo '</div></div>';  elseif ($_SESSION['profile'] == 'invalid'):  echo '<div id="profile_page"><div id="profile_name"><center>Flerp? We couldn\'t find this user!</center></div></div>';  else:  echo '<div id="profile_page"><div id="left_info"><div id="profile_pic">';  if ($_SESSION['profile_picture']):  echo '<img src="';  echo $_SESSION['profile_picture'];  echo '"class="profile_pic"/>';  else:  echo '<img src="http://localhost/image/thumb/avatar/';  if ($_SESSION['avatar']):  echo '';  echo $_SESSION['avatar'];  echo '';  else:  echo '';  if ($_SESSION['gender'] == 'M'):  echo 'memeja_male.png';  else:  echo 'memeja_female.png';  endif;  echo '';  endif;  echo '"class="profile_pic"/>';  endif;  echo '</div><div id="user_info"><div id="profile_name"><a href="/?id=';  echo $_SESSION['profile_dupe_username'];  echo '">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '</a></div><div id="follower_count">';  if (! $_SESSION['profile_follower_count'] == '0'):  echo '';  echo $_SESSION['profile_follower_count'];  echo '';  else:  echo '0';  endif;  echo '&nbsp followers</div>';  if ($_SESSION['following'] == 'y'):  echo '<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user(\'unfollow\');">Follow &nbsp --</a></span>';  elseif ($_SESSION['following'] == 'n'):  echo '<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user(\'follow\');">Follow &nbsp ++</a></span>';  endif;  echo '</div><div id="my_memes"><a id="likes" class="a-btn" href="#"><span></span><span>Liked</span><span>My Favs!</span></a><a id="created" class="a-btn" href="#"><span></span><span>Created</span><span>My Works!</span></a><a id="tagged" class="a-btn" href="#"><span></span><span>Tagged</span><span>About Me!</span></a></div></div></div><div id="view_meme">';  if ($_SESSION['profile_meme_image']):  echo '<div id="profile_meme">';  echo $_SESSION['profile_meme_title'];  echo '</div><div id="profile_meme_image"><a class="meme_gallery" data-fancybox-group="my_meme" id="selected_image" href="http://localhost/image/orig/meme/';  echo $_SESSION['profile_meme_image'];  echo '" title="';  echo $_SESSION['profile_meme_title'];  echo '"><img src="http://localhost/image/orig/meme/';  echo $_SESSION['profile_meme_image'];  echo '" style="display:none;"/></a></div><div id="current_description" style="display: none;"><div>';  if ($_SESSION['profile_meme_tagged']):  echo '<span class="fancybox_tagged">Tagged:';  $this->_foreach['cur_meme'] = array('total' => count($_from = (array)$_SESSION['profile_meme_tagged']), 'iteration' => 0);
+  echo '</div></div>';  elseif ($_SESSION['profile'] == 'invalid'):  echo '<div id="profile_page"><div id="profile_name"><center>Flerp? We couldn\'t find this user!</center></div></div>';  else:  echo '<div id="profile_page"><div id="left_info"><div id="profile_pic">';  if ($_SESSION['profile_picture']):  echo '<img src="';  echo $_SESSION['profile_picture'];  echo '"class="profile_pic"/>';  else:  echo '<img src="http://localhost/image/thumb/avatar/';  if ($_SESSION['avatar']):  echo '';  echo $_SESSION['avatar'];  echo '';  else:  echo '';  if ($_SESSION['gender'] == 'M'):  echo 'memeja_male.png';  else:  echo 'memeja_female.png';  endif;  echo '';  endif;  echo '"class="profile_pic"/>';  endif;  echo '</div><div id="user_info"><div id="profile_name"><a href="/?id=';  echo $_SESSION['profile_dupe_username'];  echo '">';  echo ((is_array($_tmp=$_SESSION['profile'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '</a></div><div id="follower_count">';  if (! $_SESSION['profile_follower_count'] == '0'):  echo '';  echo $_SESSION['profile_follower_count'];  echo '';  else:  echo '0';  endif;  echo '&nbsp followers</div>';  if ($_SESSION['following'] == 'y'):  echo '<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user(\'unfollow\');">Follow &nbsp --</a></span>';  elseif ($_SESSION['following'] == 'n'):  echo '<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user(\'follow\');">Follow &nbsp ++</a></span>';  endif;  echo '</div><div id="my_memes"><a id="likes" class="a-btn"href="javascript:void(0);" onclick="switch_list(\'likes\');"><span></span><span>Liked</span><span>My Favs!</span></a><a id="created" class="a-btn"href="javascript:void(0);" onclick="switch_list(\'created\');"><span></span><span>Created</span><span>My Works!</span></a><a id="tagged" class="a-btn" href="javascript:void(0);" onclick="switch_list(\'tagged\');"><span></span><span>Tagged</span><span>About Me!</span></a></div></div></div><!--Need to move to appropriate styling--><div id="my_meme_container" style="position:absolute;top:0;left:20%;"><div id="my_meme_list">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:894173c7722ef6330ab23c76e1202108#0}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_meme_list','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:894173c7722ef6330ab23c76e1202108#0}';} echo '</div><div id="my_meme_tagged" style="display:none;">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:894173c7722ef6330ab23c76e1202108#1}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'tagged_memes','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:894173c7722ef6330ab23c76e1202108#1}';} echo '</div><div id="my_meme_liked" style="display:none;">';  if ($this->caching && !$this->_cache_including) { echo '{nocache:894173c7722ef6330ab23c76e1202108#2}';}echo $this->_plugins['function']['get_mod'][0][0]->get_mod(array('mod' => 'manage','mgr' => 'manage','choice' => 'my_favorites','gmod' => 1), $this);if ($this->caching && !$this->_cache_including) { echo '{/nocache:894173c7722ef6330ab23c76e1202108#2}';} echo '</div></div><div id="view_meme">';  if ($_SESSION['profile_meme_image']):  echo '<div id="profile_meme">';  echo $_SESSION['profile_meme_title'];  echo '</div><div id="profile_meme_image"><a class="meme_gallery" data-fancybox-group="my_meme" id="selected_image" href="http://localhost/image/orig/meme/';  echo $_SESSION['profile_meme_image'];  echo '" title="';  echo $_SESSION['profile_meme_title'];  echo '"><img src="http://localhost/image/orig/meme/';  echo $_SESSION['profile_meme_image'];  echo '" style="display:none;"/></a></div><div id="current_description" style="display: none;"><div>';  if ($_SESSION['profile_meme_tagged']):  echo '<span class="fancybox_tagged">Tagged:';  $this->_foreach['cur_meme'] = array('total' => count($_from = (array)$_SESSION['profile_meme_tagged']), 'iteration' => 0);
 if ($this->_foreach['cur_meme']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['x']):
         $this->_foreach['cur_meme']['iteration']++;
@@ -255,6 +255,19 @@ unset($_smarty_tpl_vars);
 <script type="text/javascript" src="http://localhost/libsext/hoverintent/jquery.hoverIntent.js"></script>
 <script type="text/javascript" src="http://localhost/js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript">	
+   function switch_list(param){
+      if (param == \'tagged\'){
+         $(\'#my_meme_tagged\').show();
+         $(\'#my_meme_list, #my_meme_liked\').hide();
+       } else if (param == \'likes\'){
+         $(\'#my_meme_tagged, #my_meme_list\').hide();
+         $(\'#my_meme_liked\').show();
+       } else if (param == \'created\'){
+         $(\'#my_meme_tagged, #my_meme_liked\').hide();
+         $(\'#my_meme_list\').show();
+       }
+
+    }
 	function toggleDiv(id1,id2) {
 		var tag = document.getElementById(id1).style;
 		if(tag.display == "none") {
@@ -322,10 +335,10 @@ unset($_smarty_tpl_vars);
 				// Rank? Yes. Improvement? Yes.
 				 } else if (ajax_response_exp[0].trim() == "BA") {
 					new_rank = ajax_response_exp[1];
-					trailing_pic = ajax_response_exp[2];
+					/*trailing_pic = ajax_response_exp[2];
 					trailing_user = ajax_response_exp[3];
 					trailing_rank = ajax_response_exp[4];
-					trailing_dupe = ajax_response_exp[5];
+					trailing_dupe = ajax_response_exp[5];*/
 					
 					$("#ranking_number").html(new_rank);
 					
@@ -342,7 +355,8 @@ unset($_smarty_tpl_vars);
 						$("#user_name").css("background",\'\');
 						$("#user_name").animate( { "opacity" : 1  }, 500)
 					 });
-					
+
+                                        /*
 					if (trailing_user) {
 					
 						$("#trailing_ranking_number").html(trailing_rank);
@@ -356,15 +370,16 @@ unset($_smarty_tpl_vars);
 						//	$("#trailing_user_pic").animate( { "opacity" : 1  }, 300)
 						// });
 					
-					 }					
+					 }*/					
 				
 				// Rank? Yes. Improve? No.
 				 } else {
 					new_rank = ajax_response_exp[1];
+                                        /*
 					trailing_xp = ajax_response_exp[2];
 					trailing_user = ajax_response_exp[3];
 					trailing_rank = ajax_response_exp[4];
-					trailing_dupe = ajax_response_exp[5];
+					trailing_dupe = ajax_response_exp[5];*/
 					
 					$("#ranking_number").html(new_rank);
 							
@@ -381,7 +396,8 @@ unset($_smarty_tpl_vars);
 						$("#user_name").css("background",\'\');
 						$("#user_name").animate( { "opacity" : 1  }, 500)
 					 });
-					
+
+                                        /*
 					if (trailing_user) {
 						$("#trailing_ranking_number").html(trailing_rank);
 						$("#trailing_user_profile_pic").html(\'<a href="/?id=\'+trailing_dupe+\'"><img src="\'+trailing_pic+\'" style="width:30px;height:30px"/></a>\');	
@@ -395,7 +411,7 @@ unset($_smarty_tpl_vars);
 						//	$("#trailing_user_pic").css("background","#aad450");
 						//	$("#trailing_user_pic").animate( { "opacity" : 1  }, 300)
 						// });
-					 }
+					 }*/
 				 }
 				
 				setTimeout("live_ranking()", 20000);
