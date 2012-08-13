@@ -160,8 +160,7 @@ class meme_manager extends mod_manager {
 		 $data['top_caption'] = '{"x":15.5,"text":"What do you call someone with no body and a nose?","fontSize":50,"width":576.65,"autoSize":true,"height":100,"y":20}';
 		 $data['bottom_caption'] = '{"x":15.5,"text":"Nobody Knows","fontSize":50,"width":576.65,"autoSize":true,"height":100,"y":321}';
 		 $data['user_id'] = '1337222';	// Flash facebook ID
-		 $data['id_user'] = '141';		// we have foreign key constraint later remove and use this:
-			//$data['id_user'] = $_SESSION['id_user']
+		$data['id_user'] = $_SESSION['id_user'];
 		
 		// Localize Flash variables
 		// $data['type'] = $_POST['type'];
@@ -183,10 +182,15 @@ class meme_manager extends mod_manager {
 			$response['thumb'] = $data['thumb'];
 			$response['source'] = $data['source'];
 			$response['title'] = $data['title'];
-			$response['top_caption'] = stripslashes($data['top_caption']);
-			$response['bottom_caption'] = stripslashes($data['bottom_caption']);
+			
+			$decoded_top_caption = json_decode(stripslashes($data['top_caption']), true);
+			$decoded_bot_caption = json_decode(stripslashes($data['bottom_caption']), true);
+			
+			$response['top_caption'] = $decoded_top_caption;
+			$response['bottom_caption'] = $decoded_bot_caption;
+			
 			$response_rows = json_encode($response);
-			exit($response_rows);
+			exit(strip_slashes($response_rows));
 		} else{
 			exit('failure');
 		}
