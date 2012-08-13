@@ -39,11 +39,8 @@
                 swfVersionStr, xiSwfUrlStr, 
                 flashvars, params, attributes);
             // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
-            swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+            swfobject.createCSS("#flashContent", "display:block;text-align:left");
         </script>
-		
-
-
 
 <script type="text/javascript">
 var chc = "{/literal}{$chc}{literal}";
@@ -125,6 +122,7 @@ var chc = "{/literal}{$chc}{literal}";
 			}).trigger('click');
 		}
 		if (idu) {
+			/*
 			// User XP initial display
 			$("#xpbar").progressbar({
 				value: xp_percent
@@ -142,7 +140,7 @@ var chc = "{/literal}{$chc}{literal}";
 				$("#xpbar_status").delay(200).show();
 			}, function() {
 				$("#xpbar_status").delay(1000).fadeOut();
-			});
+			});*/
 			
 			$("#user_menu").hoverIntent(function(){
 				$(".nav_menu").slideDown('medium');
@@ -287,30 +285,7 @@ var chc = "{/literal}{$chc}{literal}";
 						{/if}
 					{/if}
 				</div>
-				<div id="my_pics">
-					<div class="tabs">
-					   <div class="tab">
-						   <input type="radio" id="tab-1" name="tab-group-1" checked>
-						   <label for="tab-1">{$smarty.session.profile|capitalize}'s Memes</label>
-						   <div class="content">
-								<div id="my_meme_list">
-									{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
-								</div>
-						   </div>
-					   </div>
-					   <div class="tab">
-						   <input type="radio" id="tab-2" name="tab-group-1">
-						   <label for="tab-2">Tagged Memes</label>
-						   <div class="content">
-								<div id="my_tagged">
-									{get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
-								</div>
-						   </div>
-					   </div>
-					</div>
-				</div>
 			</div>
-			
 			<div id="live_feed" class="nohighlight">
 				<div id="feed_cont">
 					{include file="meme/home"}
@@ -342,7 +317,9 @@ var chc = "{/literal}{$chc}{literal}";
 						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
 					{/if}
 				</a>
-				<div id="ranking_number">{if $smarty.session.exp_rank}<a href="/?id={$smarty.session.dupe_username}">{$smarty.session.exp_rank}</a>{else}?{/if}</div>
+				</div>
+				<div id="rank_circle">
+					<div id="ranking_number">{if $smarty.session.exp_rank}<a href="/?id={$smarty.session.dupe_username}">{$smarty.session.exp_rank}</a>{else}?{/if}</div>
 				</div>
 				<div id = "user_name" class="nohighlight">
 					<a href ="/?id={$smarty.session.dupe_username}">{$smarty.session.fname|capitalize}</a>
@@ -356,7 +333,39 @@ var chc = "{/literal}{$chc}{literal}";
 							</li>
 							-->
 							<li>
-								<a href="javascript:void(0);" onclick="javascript:toggleDiv('content1','icon1');">Feedback?</a>
+								<a href="javascript:void(0);" onclick="fb_logout();">Logout</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="triangle_down"></div>
+			</div>			
+			</div>
+		<!--{if $smarty.session.one_less_user}
+			
+			<div id="trailing_user_pic" class="nohighlight">
+				<span id="trailing_user_profile_pic"><a href="/?id={$smarty.session.one_less_dupe_username}">
+					{if $smarty.session.one_less_pic}
+						<img src="{$smarty.session.one_less_pic}" style="width:25px;height:25px">
+					{else}
+						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
+					{/if}</a>
+				</span>
+				<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}<a href="/?id={$smarty.session.one_less_dupe_username}">{$smarty.session.one_less_rank}</a>{else}?{/if}
+				</div>
+			</div>	
+		{/if}-->
+				<form id ="searches">
+					<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title." style="width:300px;"/>
+				</form>
+			<div id="header_nav">
+				<table><tr>
+				<td><div id="home_link" class="header_nav"><a href="/">Home</a></div></td>
+				<td><div id="random_meme" class="header_nav">
+						<a href="javascript:void(0);" onclick="get_random_meme();">Random</a>
+				</div></td>
+				<td><div id="feedback" class="header_nav">
+					<a href="javascript:void(0);" onclick="javascript:toggleDiv('content1','icon1');">Feedback?</a>
 								<div id="content1" class="item" style="display:none; z-index:500;">
 									<form action="send-contact-message.php" method="post">
 										<p>
@@ -371,42 +380,13 @@ var chc = "{/literal}{$chc}{literal}";
 										</p>
 									</form>
 								</div>
-							</li>
-							<li>
-								<a href="javascript:void(0);" onclick="fb_logout();">Logout</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div id="triangle_down"></div>
-			</div>			
-			</div>
-		{if $smarty.session.one_less_user}
-			
-			<div id="trailing_user_pic" class="nohighlight">
-				<span id="trailing_user_profile_pic"><a href="/?id={$smarty.session.one_less_dupe_username}">
-					{if $smarty.session.one_less_pic}
-						<img src="{$smarty.session.one_less_pic}" style="width:25px;height:25px">
-					{else}
-						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
-					{/if}</a>
-				</span>
-				<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}<a href="/?id={$smarty.session.one_less_dupe_username}">{$smarty.session.one_less_rank}</a>{else}?{/if}
-				</div>
-			</div>	
-		{/if}
-			<div id="header_nav">
-				<table><tr>
-				<td><div id="home_link" class="header_nav"><a href="/">Home</a></div></td>
-				<td><div id="random_meme" class="header_nav">
-						<a href="javascript:void(0);" onclick="get_random_meme();">Random</a>
-				</div></td>
+					</div></td>
 				</tr></table>
 			</div>
 			<div id= "logoc" class="nohighlight">
 				<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo"></a>
 			</div>
-			
+			<!--
 			{if $smarty.request.choice !='addMeme'}
 
 				<div id="xpbar_info" class="nohighlight">
@@ -414,10 +394,10 @@ var chc = "{/literal}{$chc}{literal}";
 					<div id="user_level"></div>
 					<div id="xpbar_status"></div>
 				</div>
-			{/if}
+			{/if}-->
 		</div>
              </div>
-         {if $smarty.request.choice != 'macromeme'}
+         {if $smarty.request.choice == 'macromeme'}
          <div id="flashContent">
 						<p>
 							To view this page ensure that Adobe Flash Player version 
@@ -447,26 +427,59 @@ var chc = "{/literal}{$chc}{literal}";
 					<div id="profile_name"><center>Flerp? We couldn't find this user!</center></div>
 				</div>
 			{else} 
-				
-		
-					
 				<div id="profile_page">	
-					<div id="profile_pic">
-						{if $smarty.session.profile_picture}
-							<img src="{$smarty.session.profile_picture}"class="profile_pic"/>
-						{else}
-							<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
-						{/if}
-					</div>
-				<div id="user_info">
-					<div id="profile_name"><a href="/?id={$smarty.session.profile_dupe_username}">{$smarty.session.profile|capitalize}</a></div>
-					<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if} followers</div>
-					{if $smarty.session.following == 'y'}
-						<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('unfollow');">Unfollow</a></span>
-					{elseif $smarty.session.following == 'n'}
-						<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" onclick="follow_user('follow');">follow</a></span>
-					{/if}
-				</div>	
+
+					<div id="left_info">
+
+						<div id="profile_pic">
+							{if $smarty.session.profile_picture}
+								<img src="{$smarty.session.profile_picture}"class="profile_pic"/>
+							{else}
+								<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}"class="profile_pic"/>
+							{/if}
+						</div>
+						<div id="user_info">
+							<div id="profile_name"><a href="/?id={$smarty.session.profile_dupe_username}">{$smarty.session.profile|capitalize}</a></div>
+							<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if}&nbsp followers</div>
+							{if $smarty.session.following == 'y'}
+								<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow');">Follow &nbsp --</a></span>
+							{elseif $smarty.session.following == 'n'}
+								<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
+							{/if}
+						</div>	
+							<div id="my_memes">
+								<a id="likes" class="a-btn"href="javascript:void(0);" onclick="switch_list('likes');">
+									<span></span>
+									<span>Liked</span>
+									<span>My Favs!</span>
+								</a>
+								<a id="created" class="a-btn"href="javascript:void(0);" onclick="switch_list('created');">
+									<span></span>
+									<span>Created</span>
+									<span>My Works!</span>
+								</a>
+								<a id="tagged" class="a-btn" href="javascript:void(0);" onclick="switch_list('tagged');">
+									<span></span>
+									<span>Tagged</span>
+									<span>About Me!</span>
+								</a>
+							</div>
+                                                     </div>
+                                                     
+                                                  </div>	
+                                                  <!--Need to move to appropriate styling-->
+                                                  <div id="my_meme_container" style="position:absolute;top:0;left:20%;">
+                                                     <div id="my_meme_list">
+                                                        {get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+                                                     </div>
+                                                     <div id="my_meme_tagged" style="display:none;">
+                                                        {get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
+                                                     </div>
+                                                     <div id="my_meme_liked" style="display:none;">
+                                                        {get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
+                                                     </div>
+                                                  </div>
+                                                                                                     
 				<div id="view_meme">
 					{if $smarty.session.profile_meme_image}
 							<div id="profile_meme">
@@ -508,29 +521,7 @@ var chc = "{/literal}{$chc}{literal}";
 								{/if}
 						{/if}
 					</div>
-					<div id="my_pics">
-						<div class="tabs">
-						   <div class="tab">
-							   <input type="radio" id="tab-1" name="tab-group-1" checked>
-							   <label for="tab-1">{$smarty.session.profile|capitalize}'s Memes</label>
-							   <div class="content">
-									<div id="my_meme_list">
-										{get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
-									</div>
-							   </div>
-						   </div>
-						   <div class="tab">
-							   <input type="radio" id="tab-2" name="tab-group-1">
-							   <label for="tab-2">Tagged Memes</label>
-							   <div class="content">
-									<div id="my_tagged">
-										{get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
-									</div>
-							   </div>
-						   </div>
-						</div>
-					</div>
-				
+
 				</div>
 			{/if}
 		</div>
@@ -554,11 +545,21 @@ var chc = "{/literal}{$chc}{literal}";
 <script type="text/javascript" src="##JS_PATH##libsext/hotkeys/jquery.hotkeys.js"></script>
 
 <script type="text/javascript" src="##LBL_SITE_URL##libsext/hoverintent/jquery.hoverIntent.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery-ui-1.8.16.custom.min.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.core.js"></script>
-<script type="text/javascript" src="##JS_PATH##libsext/xpbar/jquery.effects.highlight.js"></script>
 <script type="text/javascript" src="##LBL_SITE_URL##js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript">	
+   function switch_list(param){
+      if (param == 'tagged'){
+         $('#my_meme_tagged').show();
+         $('#my_meme_list, #my_meme_liked').hide();
+      } else if (param == 'liked'){
+         $('#my_meme_tagged, #my_meme_list').hide();
+         $('#my_meme_liked').show();
+      } else if (param == 'created'){
+         $('#my_meme_tagged, #my_meme_liked').hide();
+         $('#my_meme_list').show();
+      }
+
+   }
 	function toggleDiv(id1,id2) {
 		var tag = document.getElementById(id1).style;
 		if(tag.display == "none") {
@@ -566,6 +567,13 @@ var chc = "{/literal}{$chc}{literal}";
 		} else {
 			tag.display = "none";
 		}
+	}
+	function log_in_reminder(){
+		 var url="##LBL_SITE_URL##user/log_in_reminder";
+		 
+		$.post(url,{ce:0}, function(res){
+			$.fancybox(res);
+    	});
 	}
 	
     	
@@ -606,23 +614,23 @@ var chc = "{/literal}{$chc}{literal}";
 					trailing_pic = ajax_response_exp[1];
 					trailing_dupe = ajax_response_exp[2];
 					
-					$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');
+					/*$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');
 					
 					$("#trailing_ranking_number").css("color", '#FEEB4E');
 					$("#trailing_ranking_number").animate( { "opacity" : 0.4 }, 1000, function() {
 						$("#trailing_ranking_number").css("color","#C0E791");
 						$("#trailing_ranking_number").animate( { "opacity" : 1 }, 300)
 					});
-					
+					*/
 					//$("#trailing_exp").html(ajax_response_exp[1]+'<span style="font-size:8px; position:relative; bottom:3px;"> XP</span>');	
 						
 				// Rank? Yes. Improvement? Yes.
 				} else if (ajax_response_exp[0].trim() == "BA") {
 					new_rank = ajax_response_exp[1];
-					trailing_pic = ajax_response_exp[2];
+					/*trailing_pic = ajax_response_exp[2];
 					trailing_user = ajax_response_exp[3];
 					trailing_rank = ajax_response_exp[4];
-					trailing_dupe = ajax_response_exp[5];
+					trailing_dupe = ajax_response_exp[5];*/
 					
 					$("#ranking_number").html(new_rank);
 					
@@ -639,7 +647,8 @@ var chc = "{/literal}{$chc}{literal}";
 						$("#user_name").css("background",'');
 						$("#user_name").animate( { "opacity" : 1 }, 500)
 					});
-					
+
+                                        /*
 					if (trailing_user) {
 					
 						$("#trailing_ranking_number").html(trailing_rank);
@@ -653,15 +662,16 @@ var chc = "{/literal}{$chc}{literal}";
 						//	$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
 						//});
 					
-					}					
+					}*/					
 				
 				// Rank? Yes. Improve? No.
 				} else {
 					new_rank = ajax_response_exp[1];
+                                        /*
 					trailing_xp = ajax_response_exp[2];
 					trailing_user = ajax_response_exp[3];
 					trailing_rank = ajax_response_exp[4];
-					trailing_dupe = ajax_response_exp[5];
+					trailing_dupe = ajax_response_exp[5];*/
 					
 					$("#ranking_number").html(new_rank);
 							
@@ -678,7 +688,8 @@ var chc = "{/literal}{$chc}{literal}";
 						$("#user_name").css("background",'');
 						$("#user_name").animate( { "opacity" : 1 }, 500)
 					});
-					
+
+                                        /*
 					if (trailing_user) {
 						$("#trailing_ranking_number").html(trailing_rank);
 						$("#trailing_user_profile_pic").html('<a href="/?id='+trailing_dupe+'"><img src="'+trailing_pic+'" style="width:30px;height:30px"/></a>');	
@@ -692,7 +703,7 @@ var chc = "{/literal}{$chc}{literal}";
 						//	$("#trailing_user_pic").css("background","#aad450");
 						//	$("#trailing_user_pic").animate( { "opacity" : 1 }, 300)
 						//});
-					}
+					}*/
 				}
 				
 				setTimeout("live_ranking()", 20000);
@@ -753,7 +764,8 @@ var chc = "{/literal}{$chc}{literal}";
 			$('#follower_count').html(follow_count+' followers');
 		});
 	}
-	
+
+/*
 	function popup_expbar(){
 		var data;
 		var url="##LBL_SITE_URL##user/getExperience/";
@@ -854,6 +866,7 @@ var chc = "{/literal}{$chc}{literal}";
 			xp_wait = 8000;
 		});
 	}
+	*/
 	
 	function fb_logout(response){
 		url="##LBL_SITE_URL##";		

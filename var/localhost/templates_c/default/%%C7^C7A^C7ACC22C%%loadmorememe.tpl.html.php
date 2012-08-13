@@ -1,10 +1,21 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-08-13 06:21:32
+=======
+<?php /* Smarty version 2.6.7, created on 2012-08-13 05:17:28
+>>>>>>> 4d583cd40a20b003c38d2b43f5bea8ba6f2e1d04
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 197, false),)), $this); ?>
 
+<<<<<<< HEAD
 <!-- Template: meme/loadmorememe.tpl.html Start 13/08/2012 06:21:32 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+=======
+<!-- Template: meme/loadmorememe.tpl.html Start 13/08/2012 05:17:28 --> 
+ <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
+>>>>>>> 4d583cd40a20b003c38d2b43f5bea8ba6f2e1d04
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
 	var new_ids = "';  echo $this->_tpl_vars['sm']['id_memes'];  echo '";
@@ -341,10 +352,15 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 " value=''/>
 </div>
 
+<<<<<<< HEAD
     <script type="text/javascript">
       $('#meme_stats').scrollFollow();
     </script>
 
 <?php endforeach; endif; unset($_from);  endif; ?>
 
+=======
+<?php endforeach; endif; unset($_from); ?>
+<?php endif; ?>
+>>>>>>> 4d583cd40a20b003c38d2b43f5bea8ba6f2e1d04
 <!-- Template: meme/loadmorememe.tpl.html End --> 
