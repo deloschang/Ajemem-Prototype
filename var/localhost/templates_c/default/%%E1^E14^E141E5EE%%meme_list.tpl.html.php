@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-08-13 06:21:32
-=======
-<?php /* Smarty version 2.6.7, created on 2012-08-13 05:17:28
->>>>>>> 4d583cd40a20b003c38d2b43f5bea8ba6f2e1d04
+<?php /* Smarty version 2.6.7, created on 2012-08-13 18:39:44
          compiled from meme/meme_list.tpl.html */ ?>
-<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
-<?php echo '
+<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <!--
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>-->
 <script type="text/javascript">
@@ -254,7 +249,6 @@
      });
 </script>
 '; ?>
-<<<<<<< HEAD
 
 <input type="hidden" name="last_id_meme_cur_page" id="last_id_meme_cur_page" value=''/>
 
@@ -285,38 +279,6 @@
 
 <div id="all_memes">	
     <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
-=======
-
-<input type="hidden" name="last_id_meme_cur_page" id="last_id_meme_cur_page" value=''/>
-
-<input type="hidden" name="rand_id_memes" id="rand_id_memes" value=''/>
-<input type="hidden" name="chk_me" id="chk_me" value=''/>
-<input type="hidden" name="last_id_meme" id="last_id_meme" value=''/>
-
-<?php if ($_SESSION['id_user'] || $_SESSION['profile']): ?>
-<div>
-		<div id="world_feed" class="feed_buttons">
-			<center>
-			<a href="javascript:void(0);" onclick="diff_feed(0);">World Feed</a>
-			</center>
-		</div>
-		
-		<?php if ($_SESSION['id_user']): ?>
-			<div id="friends_feed" class="feed_buttons">
-				<center>
-				<a href="javascript:void(0);" onclick="diff_feed(1);">Friends Feed</a>
-				</center>
-			</div>
-		<?php endif; ?>
-</div>
-
-
-
-<br><br><br><br><br>
-
-<div id="all_memes">	
-    <?php if ($this->_tpl_vars['sm']['res_meme']): ?> 
->>>>>>> 4d583cd40a20b003c38d2b43f5bea8ba6f2e1d04
 	<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmorememe.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
