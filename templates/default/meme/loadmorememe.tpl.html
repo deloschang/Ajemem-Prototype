@@ -189,48 +189,42 @@
 
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
 	<div  id="meme{$x.id_meme}" class="meme">
-
-		{* Height between memes *}
-		<div style="height:70px;">
-
 		
+		<div id="meme_image_cont">
+
 			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage{$x.id_meme}" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
-			
 			<!-- Actual Meme picture -->
-			<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" style="cursor:pointer;width: 75px; height: 65px; 
+			<img src="##LBL_SITE_URL##image/orig/meme/{$x.image}" id="meme_pic" style=" 
 			{if $smarty.session.id_user}
 				{if $x.id_user == $smarty.session.id_user}
 					border-style:outset; border-width:2px; border-color:#6699FF;
 				{/if}
-			{/if}" align="left"/>
-
+			{/if}"/>
 			<!--The User's Picture-->
-			<span id="user_avatar_thumb"> 				
-
 				{if $sm.uinfo[$x.id_user].fb_pic_square}
-					<img src="{$sm.uinfo[$x.id_user].fb_pic_square}" class="avatar_thumb_fb" >
+					<img src="{$sm.uinfo[$x.id_user].fb_pic_square}" class="feed_profile_pic" >
 				{elseif $sm.uinfo[$x.id_user].avatar}
-					<img src="##LBL_SITE_URL##image/thumb/avatar/{$sm.uinfo[$x.id_user].avatar}" class="avatar_thumb_regular"/>
+					<img src="##LBL_SITE_URL##image/thumb/avatar/{$sm.uinfo[$x.id_user].avatar}" class="feed_profile_pic"/>
 				{else}
 				{if $sm.uinfo[$x.id_user].gender=='M'}
-					<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_male.png" class="avatar_thumb_regular"/>{else}<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_female.png" class="avatar_thumb_regular"/>{/if}
+					<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_male.png" class="feed_profile_pic"/>{else}<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_female.png" class="feed_profile_pic"/>{/if}
 				{/if}
+			</a>
 
-			</span>
-			
+		</div>
+
+		<div id ="meme_stats">
+
 			<!-- The Meme Info section -->
-			<div id="meme_title_cont"><div id="meme_title">{$x.title|capitalize}</div></div></a>
-
-			<!-- end of gallery class-->
+			<div id="meme_title">{$x.title|capitalize}</div>
 
 			<div id="meme_info">  by
 				<span id="user{$sm.uinfo[$x.id_user].id_user}" style="font-size:14px;text-decoration:underline; color:#ACACA5;"><a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">{$sm.uinfo[$x.id_user].username}</a></span>		
 			</div>
 
-			<br/>
-			
+		</div>
 			<!-- Reply System -->
-			
+			<!--
 				<div class="meme_reproductive_system">
 					{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
 
@@ -239,7 +233,7 @@
 					{/if}
 				
 					
-					<!-- Honor -->
+					<!-- Honor 
 					<a href="javascript:void(0);" id="agr_link{$x.id_meme}" class="meme_like" 
 			    	{if $smarty.session.id_user}
 			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
@@ -257,7 +251,7 @@
 					{/if}
 					>{if $x.tot_honour != 0}{$x.tot_honour}{/if}</div></a>
 
-					<!-- Dishonor -->
+					<!-- Dishonor 
 					<a href="javascript:void(0);" id="disagr_link{$x.id_meme}" class="meme_dislike" 
 			    	{* Added by Delos: highlights according to agree/disagree *}
 			    	{if $smarty.session.id_user}
@@ -295,8 +289,6 @@
 					</tr></table>
 					</div>-->
 
-	
-	    </div>
 	    <div id="send_reply{$x.id_meme}" style="width:75%; margin:-20px 0 30px 120px; display: none;">
 			<!--
 			<div class="fb-comments" data-href="http://memeja.com/?id={$sm.uinfo[$x.id_user].dupe_username}&meme={$x.id_meme}" data-num-posts="1" data-width="470"></div>
@@ -306,16 +298,11 @@
 	    <input type="hidden" name="is_replied" id="is_replied{$x.id_meme}" value=''/>
 	    <input type="hidden" name="is_agreed" id="is_agreed{$x.id_meme}" value=''/>
 	    <input type="hidden" name="is_disagreed" id="is_disagreed{$x.id_meme}" value=''/>
-		
-		<!--
-		<div id="description" style="display: none;">		
-			<div>	
-				Created by: <span><a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">{$sm.uinfo[$x.id_user].username}</a></span>	
-				<div class="fb-comments" id="inner" data-href='http://memeja.com/?id={$sm.uinfo[$x.id_user].dupe_username}&meme={$x.id_meme}' data-num-posts="10" data-width="400"></div>
-			</div>
-		</div>
-		-->
 </div>
+
+    <script type="text/javascript">
+      $('#meme_stats').scrollFollow();
+    </script>
 
 {/foreach}
 {/if}

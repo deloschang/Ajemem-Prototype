@@ -6,7 +6,6 @@
 	html,body {
 		font-family: Trebuchet, Helvetica, sans-serif;
 		font-size:0.8em;
-		margin:10px 0% 10px 0%;
 		background-color:#87D2FF;
 		/*background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 		*/
@@ -379,13 +378,12 @@
 	
 /* Main Container with the middle column and the sidebars */
 	#contained {
-		position: fixed;
-		top: 50%;
-		left: 50%;
-		margin-top: -280px;
-		margin-left:-600px;
-		background-color:#F0F0F0;
+		margin:auto;	
+		top:50px;
+		width:1000px;
+		background-color:#fff;
 		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+		position: relative;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -394,14 +392,13 @@
 
 /* Main Profile Page */
 	#profile_page {
-		margin-top:10px;
-		margin-left:60px;
-		margin-right:400px;
-		margin-bottom:50px;
-		padding:10px;
+		margin:auto;
 		position:relative;
-		top:-10px;
-		width:720px;
+		left:20px;
+		top:20px;
+		padding:10px;
+		height:650px;
+		width:980px;
 	    moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -410,36 +407,31 @@
 		voice-family:inherit;
 	}
 	html>body #profile_page {
-	    width:720px;
+	    width:960px;
 	}
 	
 	
-/* The Live Feed on the Right */
+/* The Live Feed in the middle of the page */
 	#live_feed {
-		background-color:#F0F0F0;
-		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
-		padding:15px;
-		position:absolute;
-		top:0px;
-		left:840px;
-		width:350px;
+		background-color:#FFF;
+		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+		margin:auto;
+		overflow: auto;
+		padding:10px;
+		position:relative;
+		width:960px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
 	    border-radius: 20px;
 		voice-family:"\"}\"";
 		voice-family:inherit;
-		width:350px;
 	}
 	html>body #live_feed {
-		width:350px;
+		width:960px;
 	}
-	
-	#feed_cont {
-		height:500px;
-		margin-left:auto;
-		margin-right:auto;
-	}
+
+
 	
 	#world_feed {
 		position:absolute;
@@ -479,6 +471,7 @@
 	}
 	
 	#all_memes{
+		overflow: auto;
 		position:relative;
 		top:-5px;
 		moz-border-radius: 20px;
@@ -560,6 +553,7 @@
 		color:#000;
 		clear:both;
 		height:20px;
+		left:-20px;
 		top:0px;
 		padding:10px;
 		position:fixed;
@@ -576,7 +570,7 @@
 	/* Memeja Logo */
 	#logoc {
 		float:left;
-		left:13%;
+		left:18%;
 		position:absolute;
 		top:0px;
 		z-index:300;
@@ -613,7 +607,7 @@
 		width:300px;
 		position:relative;
 		top:-33px;
-		left:380px;
+		left:450px;
 	}
 	
 	#home_link{
@@ -698,30 +692,14 @@
 	
 	#user_name:hover{
 		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-		background:none repeat scroll 0 0 #FFF;
-	}
-	
-	#user_name:hover:after {
-		content: ' ';
-		height: 0;
-		position: absolute;
-		width: 0;
-		border: 5px solid transparent;
-		border-top-color: #FFF;
-		top: 100%;
-		left: 50%;
-		margin-left: -5px;
-		z-index:500;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
-		border-radius: 5px;
-		
+		background:#5CC2FF;
 	}
 	
 	#user_name:hover a{
-		color:#87D2FF;
+		color:#FFF;
 		text-shadow: none;
 		font-weight:bold;
+		text-shadow: 0px -1px 0px rgba(0,0,0,.2);
 	}
 	
 	#logout {
@@ -968,7 +946,8 @@
 		border-radius: 10px;
 		box-shadow: 0 0 10px 0 #FF9718;
 		position: relative;
-		left: -10px;
+		left:5px;
+		top:10px;
 		}
 
 /*@@@@@@@@@@@@@@@@@@@@@@@@  User Info @@@@@@@@@@@@@@@@@@@@@@@@*/
@@ -976,13 +955,14 @@
 	#left_info{
 		position:relative;
 		width:150px;
-		height:540px;
+		height:580px;
+		margin:10px;
 		border-right: 2px solid #ACACA5;
 	}
 	#user_info{
 		position:relative;
-		left:-40px;
-		top:30px;
+		left:-20px;
+		top:40px;
 	}
 	
 	#profile_name {
@@ -1016,8 +996,7 @@
 
 	#my_memes{
 		position: relative;
-		right:20px;
-		top:40px;
+		top:60px;
 	}
 
 	#likes{
@@ -1026,7 +1005,7 @@
 
 	#follow_btn{
 		position:relative;
-		top:5px;
+		top:15px;
 		left:20px;
 	}
 	
@@ -1557,9 +1536,39 @@ a{
 		position: relative;
 		padding: 10px 0px 10px 10px;
 		top:0px;
-		width:350px;
+		width:800px;
 		z-index:5;
 
+	}
+
+	#meme_image_cont{
+		position:relative;
+	}
+
+	#meme_pic{
+		cursor: pointer;
+		margin:auto;
+		position:relative;
+		width:460px;
+	}
+
+	.feed_profile_pic{
+		width: 50px;
+		height: 50px;  
+		-moz-border-radius: 25px; 
+		-webkit-border-radius: 25px;
+		border-radius: 25px;
+		border: 2px solid #FF9718;
+		box-shadow: 0 0 15px 0 #FC5223;
+		position: relative;
+		left:-480px;
+		top:25px;
+	}
+
+	#meme_stats{
+		position:relative;
+		top:-300px;
+		left:500px;
 	}
 
 	#meme_title {
@@ -1570,21 +1579,12 @@ a{
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space:nowrap;
-		padding-left:60px; 
 		position:relative;
-		top:-45px;
 	}
-	
-	#meme_title_cont {
-		width:275px;
-	}
-	
+
 	#meme_info {
 		color:#ACACA5;
 		font-size:14px;		
-		left:145px;
-		position:absolute;
-		top:30px;
 	}
 	
 	.meme_reproductive_system { 
@@ -1668,10 +1668,7 @@ a{
 	}
 	
 	#user_avatar_thumb {
-		left:0px;
-		padding-left: 10px;
 		position:relative;
-		top:0px;
 	}
 	
 	.toggle_container{
@@ -2960,7 +2957,7 @@ button::-moz-focus-inner {
     box-shadow:0px 0px 5px 0px rgba(246, 212, 163, 0.5) inset, 0px -1px 5px 4px rgba(170, 77, 27, 0.2) inset, 0px 0px 0px 7px #fff,  0px -1px 0px 8px rgba(188, 188, 188, 0.3), 0px 0px 0px 10px #fff;
 }
 .a-btn:active span:nth-child(2){
-    color:rgba(170, 77, 27, 0.8);
+    color:#FF9718;
     text-shadow:0px 1px 1px rgba(255, 255, 255, 0.6);
 }
 @keyframes rotate{
