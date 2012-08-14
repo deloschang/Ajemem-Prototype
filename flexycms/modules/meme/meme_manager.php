@@ -69,14 +69,20 @@ class meme_manager extends mod_manager {
 
 ############################ SAVE FLASH GENERATED MACROMEME #############################
 
-#########################################################################################
+#########################################################################################	
 	function _load_flash_meme(){
 		global $link;
 		
 		// grabs user_id that flash sends as a parameter
 		$flash_user_id = mysql_real_escape_string($_GET['user_id']);
 		
-		$sql = "SELECT type, thumb, source, title, top_caption, bottom_caption FROM memeje__meme WHERE user_id =".$flash_user_id;
+		// switch to grab memes from library
+		if ($_REQUEST['library'] == 1){
+			$sql = "SELECT type, thumb, source, title, top_caption, bottom_caption FROM memeje__genlibrary";
+		} else {
+			$sql = "SELECT type, thumb, source, title, top_caption, bottom_caption FROM memeje__meme WHERE user_id =".$flash_user_id;
+		}
+		
 		$res = mysqli_query($link,$sql);
 	    
 	    if(!$res){
