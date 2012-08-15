@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-13 18:39:44
+<?php /* Smarty version 2.6.7, created on 2012-08-15 20:13:54
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 57, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 76, false),)), $this); ?>
 <?php echo '
 <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
 
@@ -79,6 +79,26 @@ $this->_sections['cur']['first']      = ($this->_sections['cur']['iteration'] ==
 $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] == $this->_sections['cur']['total']);
 ?>
 			<?php $this->assign('x', $this->_tpl_vars['sm']['res'][$this->_sections['cur']['index']]); ?>
+			<?php echo '
+		 	<style type="text/css">
+		 		#meme_expanded';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
+		 			display:none;
+		 		 }
+				#meme_fav_image';  echo $this->_tpl_vars['x']['id_meme'];  echo ':hover #meme_expanded';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
+					display:inline;
+				 }
+
+				#meme_tagged';  echo $this->_tpl_vars['x']['id_meme'];  echo ':hover #meme_expanded';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
+					display:inline;
+				 }
+
+				#my_meme_image';  echo $this->_tpl_vars['x']['id_meme'];  echo ':hover #meme_expanded';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
+					display:inline;
+				 }
+
+			</style>
+			'; ?>
+
 		
 			<?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
 				<a class="meme_gallery" data-fancybox-group="fav_meme" id="meme_fav_image<?php echo $this->_tpl_vars['x']['id_meme']; ?>
@@ -88,7 +108,15 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 ">
 			
 				<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
-" style="width: 60px;height: 60px;cursor: pointer;"/></a>
+" class="profile_gallery_meme"/>	
+					<div id="profile_meme_expanded">
+						<div id="meme_expanded<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+">
+							<img src="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+"class="meme_expanded"/>
+						</div>
+					</div> 
+				</a>
 		
 			<?php elseif ($this->_tpl_vars['sm']['flg'] == 2): ?>
 				<a class="meme_gallery" data-fancybox-group="my_meme" id="meme_tagged<?php echo $this->_tpl_vars['x']['id_meme']; ?>
@@ -98,7 +126,15 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 ">
 			
 				<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
-" style="width: 60px;height: 60px;cursor: pointer;"/></a>
+" class="profile_gallery_meme"/>
+					<div id="profile_meme_expanded">
+						<div id="meme_expanded<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+">
+							<img src="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+" class="meme_expanded"/>
+						</div>
+					</div>
+				</a>
 				
 				<?php if ($_SESSION['profile_id'] == $_SESSION['id_user']): ?>
 					<span><a href="javascript:void(0);" id="meme_tagged<?php echo $this->_tpl_vars['x']['id_meme']; ?>
@@ -151,7 +187,15 @@ xfancybox" onclick="remove_tag('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ">
 			
 				<img src="http://localhost/image/thumb/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
-" style="width: 60px;height: 60px;cursor: pointer;"/></a>
+" class="profile_gallery_meme"/>
+					<div id="profile_meme_expanded">
+						<div id="meme_expanded<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+">
+							<img src="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+"class="meme_expanded"/>
+						</div>
+					</div>
+				</a>
 				
 				<div id="description" style="display: none;">		
 					<div>
@@ -181,38 +225,17 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 				</div>
 			<?php endif; ?>
 			<?php endfor; endif; ?>
-				<?php if ($_SESSION['profile']): ?>
-					<a id="create_meme" href="http://localhost/meme/addMeme" title="Create-A-Meme!"><img src="http://localhost/templates/images/tag.png" id="tagg"/></a>
-				<?php else: ?>
-					<a id="create_meme" href="http://localhost/meme/addMeme" title="Create-A-Meme!"><img src="http://localhost/templates/images/add.png" id="add"/></a>
-				<?php endif; ?>
 		<?php else: ?>
 			<?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
 				<b>No liked memes. Memeja still loves you though</b>
-				<?php if ($_SESSION['profile']): ?>
-					<a id="create_meme" href="http://localhost/meme/addMeme" title="Create-A-Meme!"><img src="http://localhost/templates/images/tag.png" id="tagg"/></a>
-				<?php else: ?>
-					<a id="create_meme" href="http://localhost/meme/addMeme" title="Create-A-Meme!"><img src="http://localhost/templates/images/add.png" id="add"/></a>
-				<?php endif; ?>
 			<?php elseif ($this->_tpl_vars['sm']['flg'] == 2): ?>
 				<b>No tags. Lonely Memeja is lonely </b>
-				<?php if ($_SESSION['profile']): ?>
-					<a id="create_meme" href="http://localhost/meme/addMeme" title="Create-A-Meme!"><img src="http://localhost/templates/images/tag.png" id="tagg"/></a>
-				<?php else: ?>
-					<a id="create_meme" href="http://localhost/meme/addMeme" title="Create-A-Meme!"><img src="http://localhost/templates/images/add.png" id="add"/></a>
-				<?php endif; ?>
 			<?php else: ?>
 				<b>
 					No memes created. 
 				</b>
-				<?php if ($_SESSION['profile']): ?>
-					<a id="create_meme" href="http://localhost/meme/addMeme" title="Create-A-Meme!"><img src="http://localhost/templates/images/tag.png" id="tagg"/></a>
-				<?php else: ?>
-					<a id="create_meme" href="http://localhost/meme/addMeme" title="Create-A-Meme!"><img src="http://localhost/templates/images/add.png" id="add"/></a>
-				<?php endif; ?>
 			<?php endif; ?>
 		<?php endif; ?>
-
 		<?php if ($this->_tpl_vars['sm']['res']): ?>
 		    <?php if ($this->_tpl_vars['sm']['flg'] == 1): ?>
 				<a href="http://localhost/manage/my_favorites/"></a>

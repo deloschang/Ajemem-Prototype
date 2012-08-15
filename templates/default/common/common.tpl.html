@@ -147,6 +147,11 @@ var chc = "{/literal}{$chc}{literal}";
 			}, function() {
 				$(".nav_menu").slideUp('medium');
 			});
+			$("#callToAction").hoverIntent(function(){
+				$(".create_menu").slideDown('medium');
+			}, function() {
+				$(".create_menu").slideUp('medium');
+			});
 		}
 
 		var scrn_height = window.screen.availHeight;
@@ -220,7 +225,7 @@ var chc = "{/literal}{$chc}{literal}";
 	{elseif $smarty.session.profile == 'invalid'}
 		<div id="top_header" class="nohighlight">
 				<div id= "logoc" class="nohighlight">
-					<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo"></a>
+					<a href="##LBL_SITE_URL##" title="Memeja!"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif"/></a
 				</div>
 		</div>
 		<div id="nlu_contained">
@@ -341,20 +346,6 @@ var chc = "{/literal}{$chc}{literal}";
 				<div id="triangle_down"></div>
 			</div>			
 			</div>
-		<!--{if $smarty.session.one_less_user}
-			
-			<div id="trailing_user_pic" class="nohighlight">
-				<span id="trailing_user_profile_pic"><a href="/?id={$smarty.session.one_less_dupe_username}">
-					{if $smarty.session.one_less_pic}
-						<img src="{$smarty.session.one_less_pic}" style="width:25px;height:25px">
-					{else}
-						<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.one_less_avatar}{$smarty.session.one_less_avatar}{else}{if $smarty.session.one_less_gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
-					{/if}</a>
-				</span>
-				<div id="trailing_ranking_number">{if $smarty.session.one_less_rank}<a href="/?id={$smarty.session.one_less_dupe_username}">{$smarty.session.one_less_rank}</a>{else}?{/if}
-				</div>
-			</div>	
-		{/if}-->
 				<form id ="searches">
 					<input type="text" class="self-describing" name="mtitle" id="mtitle" title="Search by title." style="width:300px;"/>
 				</form>
@@ -382,6 +373,20 @@ var chc = "{/literal}{$chc}{literal}";
 								</div>
 					</div></td>
 				</tr></table>
+			</div>
+			<div id="callToAction"><a href="javascript:void(0);" class="large orangellow button">Create</a>		
+				<div class="create_menu" id="hover_menu">
+					<div class="create_menu_contents">
+						<ul class="create_menu_list">
+							<li>
+								<a href="/macromeme.html" onclick="fb_logout();">Simple</a>
+							</li>
+							<li>
+								<a href="/meme/addMeme" onclick="fb_logout();">Meaningful</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 			<div id= "logoc" class="nohighlight">
 				<a href="##LBL_SITE_URL##"><img src="##LBL_SITE_URL##templates/images/memeja_logo.gif" id="logo"></a>
@@ -438,13 +443,15 @@ var chc = "{/literal}{$chc}{literal}";
 						</div>
 						<div id="user_info">
 							<div id="profile_name"><a href="/?id={$smarty.session.profile_dupe_username}">{$smarty.session.profile|capitalize}</a></div>
-							<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if}&nbsp followers</div>
-							{if $smarty.session.following == 'y'}
-								<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow');">Follow &nbsp --</a></span>
-							{elseif $smarty.session.following == 'n'}
-								<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
-							{/if}
-						</div>	
+							<div id="profile_follow_cont">
+								<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if}&nbsp followers</div>
+								{if $smarty.session.following == 'y'}
+									<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow');">Follow &nbsp --</a></span>
+								{elseif $smarty.session.following == 'n'}
+									<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
+								{/if}
+							</div>
+								
 							<div id="my_memes">
 								<a id="likes" class="a-btn"href="javascript:void(0);" onclick="switch_list('likes');">
 									<span></span>

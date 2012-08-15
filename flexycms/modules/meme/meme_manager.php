@@ -59,7 +59,7 @@ class meme_manager extends mod_manager {
 			$call($this);
 
 		} else {
-			print "<h1>Meme Manager Error</h1>";
+			//print "<h1>Meme Manager Error</h1>";
 
 		}
 

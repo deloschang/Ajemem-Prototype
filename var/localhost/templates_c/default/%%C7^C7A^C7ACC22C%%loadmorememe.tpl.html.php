@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-13 18:39:44
+<?php /* Smarty version 2.6.7, created on 2012-08-15 20:13:54
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 197, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 198, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 13/08/2012 18:39:44 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 15/08/2012 20:13:54 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
@@ -28,18 +28,6 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 	    $("#last_id_meme_cur_page").val(\'\');
 	    $("#chk_me").val("1");
 	 }
-
-	$(document).ready(function() {	
-		// prevents stacking w/ pagination
-		clearTimeout(meme_timer);
-		clearTimeout(meme_timer_new);
-		
-		//meme_timer = window.setTimeout("live_feed(0)", 1000);
-		
-		if (global_page_no == 1 && is_search != 1) {
-			//meme_timer_new = window.setTimeout("live_meme()", 10000);
-		 }
-	 });
 
 	function common_fun_extended(id,color_code){
 	    $("#meme"+id).effect("highlight", {color:color_code }, 2600);
@@ -94,7 +82,20 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 			live_meme_wait = 15000;
 		 });		
 	 }
-	
+
+      $(document).ready(function() {	
+		// prevents stacking w/ pagination
+		clearTimeout(meme_timer);
+		clearTimeout(meme_timer_new);
+		
+		//meme_timer = window.setTimeout("live_feed(0)", 1000);
+		
+		if (global_page_no == 1 && is_search != 1) {
+			//meme_timer_new = window.setTimeout("live_meme()", 10000);
+		 }
+		 });
+
+	 });	
 	function live_feed (i) {		
 		console.log("Currently on..."+single_id_array[i]);
 			
@@ -200,7 +201,8 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 	<div  id="meme<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " class="meme">
 		
-		<div id="meme_image_cont">
+		<div id="meme_image_cont<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+"class="meme_image_cont">
 
 			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " href="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
@@ -227,19 +229,113 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 				<?php endif; ?>
 			</a>
 
+			<div id="likes_comments">
+				<table><tr>
+					<td>
+						<div id="number_likes">
+							<div id="aggr<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+" 
+								<?php if ($_SESSION['id_user']): ?>
+			    				<?php if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )): ?>
+								style="color:green;"
+								<?php endif; ?>
+								<?php endif; ?>
+								><?php if ($this->_tpl_vars['x']['tot_honour'] != 0):  echo $this->_tpl_vars['x']['tot_honour'];  endif; ?>
+							</div>
+						</div>
+					</td>
+					<td>
+						<div id="like_heart">
+						</div>
+					</td>
+					<td>
+						<div id="number_comments">
+							<?php if ($this->_tpl_vars['x']['tot_reply'] != 0):  echo $this->_tpl_vars['x']['tot_reply'];  else: ?>0<?php endif; ?>
+						</div>
+					</td>
+					<td>
+						<div id="commentbox">
+						</div>
+					</td>
+				</tr></table>
+			</div>
+
+
+			<div id="like_link_box<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+"class="like_link_box">
+				<a href="javascript:void(0);" id="agr_link<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+"
+			    	<?php if ($_SESSION['id_user']): ?>
+			    		<?php if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )): ?>
+				    		style="cursor: default"
+				    	<?php elseif (substr_count ( $this->_tpl_vars['x']['dishonour_id_user'] , $_SESSION['id_user'] )): ?>
+				    		style="cursor: default"
+				    	<?php endif; ?>
+				    <?php endif; ?>
+					onclick="set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+','A','<?php echo $this->_tpl_vars['x']['id_user']; ?>
+');"><div id ="big_heart<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+"class="big_heart">
+				</div></a>
+			</div>
 		</div>
 
 		<div id ="meme_stats">
 
 			<!-- The Meme Info section -->
-			<div id="meme_title"><?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
-</div>
+			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+" href="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
+" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+"><div id="meme_title"><?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+</div></a>
+				<a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
+">
+				<?php if ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']): ?>
+					<img src="<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['fb_pic_square']; ?>
+" class="info_profile_pic" >
+				<?php elseif ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['avatar']): ?>
+					<img src="http://localhost/image/thumb/avatar/<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['avatar']; ?>
+" class="info_profile_pic"/>
+				<?php else: ?>
+				<?php if ($this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['gender'] == 'M'): ?>
+					<img src="http://localhost/image/thumb/avatar/memeja_male.png" class="info_profile_pic"/><?php else: ?><img src="http://localhost/image/thumb/avatar/memeja_female.png" class="info_profile_pic"/><?php endif; ?>
+				<?php endif; ?>
+				
 
 			<div id="meme_info">  by
 				<span id="user<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
-" style="font-size:14px;text-decoration:underline; color:#ACACA5;"><a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
+" class="info_name"><a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
 "><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
 </a></span>		
+			</div>
+				</a>
+
+			<div id="feed_follower_cont">
+				<div id="follower_count"><?php if (! $_SESSION['profile_follower_count'] == '0'):  echo $_SESSION['profile_follower_count'];  else: ?>0<?php endif; ?>&nbsp followers</div>
+				<?php if ($_SESSION['following'] == 'y'): ?>
+					<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow');">Follow &nbsp --</a></span>
+				<?php elseif ($_SESSION['following'] == 'n'): ?>
+					<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
+				<?php endif; ?>
+			</div>
+
+			<div id="share_btns">
+				<table><tr>
+					<?php if ($_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
+					<td><a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /></a></td>
+					<?php endif; ?>
+					<td><a href="http://twitter.com/share" class="twitter-share-button" data-url="memeja.com/?id=FirstName-LastName&meme=<?php echo $this->_tpl_vars['x']['image']; ?>
+" data-text="<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
+" data-count="none" data-via="memeje">Tweet</a></td> 
+					<td><div class="fb_btn"><fb:like href="memeja.com/?id=FirstName-LastName&meme=<?php echo $this->_tpl_vars['x']['image']; ?>
+" send="false" width="70" show_faces="true" font="arial" layout="button_count"></fb:like> </div></td>
+					</tr></table>
+			</div>
+			<div id="comments">
+				<?php if ($this->_tpl_vars['x']['can_all_comment'] || in_array ( $_SESSION['id_user'] , $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['friends'] ) || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
+					<a href="javascript:void(0);" onclick="get_all_replies('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+');">Hello</a>
+				<?php endif; ?>
 			</div>
 
 		</div>
@@ -340,10 +436,19 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 	    <input type="hidden" name="is_disagreed" id="is_disagreed<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " value=''/>
 </div>
-
     <script type="text/javascript">
       $('#meme_stats').scrollFollow();
     </script>
+<?php echo '
+ 	<style type="text/css">
+ 		#like_link_box';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
+ 			display:none;
+ 		 }
+		#meme_image_cont';  echo $this->_tpl_vars['x']['id_meme'];  echo ':hover #like_link_box';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
+			display:inline;
+		 }
+	</style>
+'; ?>
 
 <?php endforeach; endif; unset($_from);  endif; ?>
 

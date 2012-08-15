@@ -58,7 +58,7 @@
 /*++++++++++++++ Macromeme Generator +++++++++++++*/
 	#macromeme{
 		position:absolute;
-                top:6%;
+                top:80px;
 		left:0;
 	}	
 
@@ -379,7 +379,7 @@
 /* Main Container with the middle column and the sidebars */
 	#contained {
 		margin:auto;	
-		top:50px;
+		top:70px;
 		width:1000px;
 		background-color:#fff;
 		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
@@ -397,7 +397,7 @@
 		left:20px;
 		top:20px;
 		padding:10px;
-		height:650px;
+		height:620px;
 		width:980px;
 	    moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
@@ -552,7 +552,7 @@
 		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
 		color:#000;
 		clear:both;
-		height:20px;
+		height:60px;
 		left:-20px;
 		top:0px;
 		padding:10px;
@@ -570,16 +570,16 @@
 	/* Memeja Logo */
 	#logoc {
 		float:left;
-		left:18%;
+		left:16%;
 		position:absolute;
-		top:0px;
+		top:5px;
 		z-index:300;
 	}
 	
 	#header_nav{
 		position:absolute;
-		left:840px;
-		top:5px;
+		left:500px;
+		top:3px;
 	}
 	
 	.header_nav{
@@ -606,7 +606,7 @@
 	#searches{
 		width:300px;
 		position:relative;
-		top:-33px;
+		top:-7px;
 		left:450px;
 	}
 	
@@ -642,7 +642,7 @@
 		box-shadow: 0 0 2px 0 #555555;
 		padding:3px;
 		position:relative;
-		top:-5px;
+		top:15px;
 		left:1050px;
 		width:150px;
 		-moz-border-radius: 5px;
@@ -795,6 +795,62 @@
 		border-top: 8px solid #FFF;
 	}
 
+	#callToAction{
+		position: relative;
+		left:900px;
+		top:-40px;
+
+	}
+
+	.create_menu{
+		width:150px;
+		display:none;
+		left:728px;
+		top:45px;
+	}
+	
+	.create_menu .create_menu_contents {
+		-moz-border-bottom-colors: none;
+		-moz-border-image: none;
+		-moz-border-left-colors: none;
+		-moz-border-right-colors: none;
+		-moz-border-top-colors: none;
+		color: #333333;
+		position:absolute;
+		width: 120px;
+		height:55px;
+		background: none repeat scroll 0 0 white;
+		border: 1px solid #999999;
+		border-color: -moz-use-text-color #ACACAC #ACACAC;
+		border-radius: 0 0 0 0;
+		border-right: 1px solid #ACACAC;
+		border-style: none solid solid;
+		border-width: 0 1px 1px;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+		left:0px;
+		top:30px;
+		z-index:2;
+	}
+	
+	.create_menu_list li {
+		margin:5px;
+	}
+	
+	.create_menu_list li a{
+		border-radius: 3px 3px 3px 3px;
+		color: #333333;
+		font-weight: bold;
+		font-size:14px;
+		padding: 5px;
+		position:relative;
+		right:20px;
+	}
+	
+	.create_menu_list li a:hover{
+		background: none repeat scroll 0 0 #5CC2FF;
+		color: #19558D;
+		text-decoration: none;
+	}
 /**/
 	
 	#login_top {
@@ -847,20 +903,6 @@
 		top:2px;
 	}
 	
-	
-	#liked_memes {
-		background-color:#87D2FF;
-		border:double;
-		border-color:#ACACA5;
-		border-width:2px;
-		margin:5px;
-		padding:5px;
-		text-align:center;
-		moz-border-radius: 10px;
-		webkit-border-radius: 10px;
-		khtml-border-radius: 10px;
-		border-radius: 10px;
-	}
 	
 	#user_memes{
 		position: relative;
@@ -944,7 +986,7 @@
 		webkit-border-radius: 10px;
 		khtml-border-radius: 10px;
 		border-radius: 10px;
-		box-shadow: 0 0 10px 0 #FF9718;
+		box-shadow: 0 0 10px 0 #969696;
 		position: relative;
 		left:5px;
 		top:10px;
@@ -964,6 +1006,7 @@
 		left:-20px;
 		top:40px;
 	}
+
 	
 	#profile_name {
 		text-align: center;
@@ -984,29 +1027,195 @@
 		font-size:20px;
 		position:relative;
 	}
+
+	#profile_follow_cont{
+		position:relative;
+		left:20px;
+		top:10px;
+	}
+
+	#feed_follower_cont{
+		position: absolute;
+		top:35px;
+		left:240px;
+	}
 	
 	#follower_count {
 		position:relative;
-		padding-top: 10px;
-		text-align:center;
+		left:15px;
 		font-size:16px;
-		color: #C3C3C3;
+		margin-bottom: 8px;
+		color: #ACACAC;
 		text-shadow: 0px -1px 0px rgba(0,0,0,.3);
+	}
+
+	#follow_btn{
+		position:relative;
 	}
 
 	#my_memes{
 		position: relative;
-		top:60px;
+		left:20px;
+		top:20px;
 	}
 
 	#likes{
 		position: relative;
 	}
 
-	#follow_btn{
-		position:relative;
-		top:15px;
-		left:20px;
+	#comments{
+		position: relative;
+		top:10px;
+	}
+
+	#likes_comments{
+		position: relative;
+		height:15px;
+		top:-50px;
+		left:380px;
+	}
+	
+	#number_likes{
+
+	}
+
+	#like_heart{ 
+		position: relative; 
+		width: 20px; 
+		height: 18px; 
+	} 
+		
+	#like_heart:before, #like_heart:after { 
+		position: absolute; 
+		content: ""; 
+		left: 10px; 
+		top: 0; 
+		width: 10px; 
+		height: 16px; 
+		background: red; 
+		-moz-border-radius: 10px 10px 0 0; 
+		border-radius: 10px 10px 0 0; 
+		-webkit-transform: rotate(-45deg); 
+		-moz-transform: rotate(-45deg); 
+		-ms-transform: rotate(-45deg); 
+		-o-transform: rotate(-45deg); 
+		transform: rotate(-45deg); 
+		-webkit-transform-origin: 0 100%; 
+		-moz-transform-origin: 0 100%; 
+		-ms-transform-origin: 0 100%; 
+		-o-transform-origin: 0 100%; 
+		transform-origin: 0 100%;
+	} 
+
+	#like_heart:after { 
+		left: 0; 
+		-webkit-transform: rotate(45deg); 
+		-moz-transform: rotate(45deg); 
+		-ms-transform: rotate(45deg); 
+		-o-transform: rotate(45deg); 
+		transform: rotate(45deg); 
+		-webkit-transform-origin: 100% 100%; 
+		-moz-transform-origin: 100% 100%; 
+		-ms-transform-origin: 100% 100%; 
+		-o-transform-origin: 100% 100%; 
+		transform-origin :100% 100%; 
+	}
+	
+	#number_comments{
+
+	}
+
+	#commentbox{
+		left:3px;
+		top:-1px; 
+		width: 20px; 
+		height: 16px; 
+		background: red; 
+		position: relative; 
+		-moz-border-radius: 2px; 
+		-webkit-border-radius: 2px; 
+		border-radius: 2px;
+	 } 
+
+	#commentbox:before{ 
+		content:""; 
+		position: absolute; 
+		right: 100%; 
+		top: 5px; 
+		width: 0; 
+		height: 0; 
+		border-top: 3px solid transparent; 
+		border-right: 5px solid red; 
+		border-bottom: 3px solid transparent; 
+	}
+
+	.like_link_box{
+		background:#e8e8e8;
+		padding:10px;
+		position:absolute;
+		top:10px;
+		left:330px;
+		width:100px;
+		height:80px;
+		 -moz-border-radius: 10px; 
+ 		-webkit-border-radius: 10px; 
+ 		border-radius: 10px;
+	}
+
+	.big_heart{ 
+		position: relative; 
+		width: 100px; 
+		height: 90px; 
+	} 
+		
+	.big_heart:before, .big_heart:after { 
+		position: absolute; 
+		content: ""; 
+		left: 50px; 
+		top: 0; 
+		width: 50px; 
+		height: 80px; 
+		background: #ACACAC; 
+		-moz-border-radius: 50px 50px 0 0; 
+		border-radius: 50px 50px 0 0; 
+		-webkit-transform: rotate(-45deg); 
+		-moz-transform: rotate(-45deg); 
+		-ms-transform: rotate(-45deg); 
+		-o-transform: rotate(-45deg); 
+		transform: rotate(-45deg); 
+		-webkit-transform-origin: 0 100%; 
+		-moz-transform-origin: 0 100%; 
+		-ms-transform-origin: 0 100%; 
+		-o-transform-origin: 0 100%; 
+		transform-origin: 0 100%;
+	} 
+
+	.big_heart:after { 
+		left: 0; 
+		-webkit-transform: rotate(45deg); 
+		-moz-transform: rotate(45deg); 
+		-ms-transform: rotate(45deg); 
+		-o-transform: rotate(45deg); 
+		transform: rotate(45deg); 
+		-webkit-transform-origin: 100% 100%; 
+		-moz-transform-origin: 100% 100%; 
+		-ms-transform-origin: 100% 100%; 
+		-o-transform-origin: 100% 100%; 
+		transform-origin :100% 100%; 
+	}
+
+	.big_heart:hover:before, .big_heart:hover:after{
+		background: red;
+	}
+
+	.big_heart:active{
+		top:5px;
+
+	}
+
+	.big_heart:visited{
+		top:0px;
+		background: red;
 	}
 	
 	#addMeme_link {
@@ -1050,6 +1259,48 @@
 		padding: 50px 10px 10px 15px;
 		font-size: 12px;
 	}*/
+
+/* Profile Gallery CSS */
+
+	#liked_memes {
+		width:230px;
+		height:auto;
+		margin:10px;
+		text-align:center;
+	}
+	#profile_gallery{
+
+	}
+
+	.profile_gallery_meme{
+		width: 80px;
+		height: auto;
+		overflow: auto;
+		border:1px solid #ACACAC;
+		cursor: pointer;
+		-moz-border-radius: 4px; 
+		-webkit-border-radius: 4px; 
+		border-radius: 4px;
+		box-shadow: 0 0 10px 0 #ACACAC;
+		margin:5px;
+	}
+
+	.profile_gallery_meme:hover{
+		box-shadow: 0 0 10px 0 #5CC2FF;
+		border:1px solid #25aeff;
+	}
+	.meme_expanded{
+		width:460px;
+		overflow: auto;
+		height:auto;
+	}
+
+	#profile_meme_expanded{
+		width:460px;
+		position: absolute;
+		left:260px;
+		top:0;
+	}
 
 /*###########################################
 
@@ -1541,8 +1792,10 @@ a{
 
 	}
 
-	#meme_image_cont{
+	.meme_image_cont{
 		position:relative;
+		width:480px;
+		margin:10px;
 	}
 
 	#meme_pic{
@@ -1550,6 +1803,9 @@ a{
 		margin:auto;
 		position:relative;
 		width:460px;
+		-moz-border-radius: 5px; 
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
 	}
 
 	.feed_profile_pic{
@@ -1561,30 +1817,63 @@ a{
 		border: 2px solid #FF9718;
 		box-shadow: 0 0 15px 0 #FC5223;
 		position: relative;
-		left:-480px;
-		top:25px;
+		left:-25px;
+		top:-25px;
 	}
 
 	#meme_stats{
-		position:relative;
-		top:-300px;
+		position:absolute;
+		width:360px;
+		margin:10px;
+		top:10px;
 		left:500px;
 	}
 
 	#meme_title {
-		color: #0099FF;
-		font-size: 16px; 
+		color: #5CC2FF;
+		font-size: 24px; 
+		text-align: center;
 		font-weight:bold;
 		display:block;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space:nowrap;
 		position:relative;
+		text-shadow: 2px 2px 3px #E0E0E0;
+		margin-bottom: 10px;
+	}
+
+	.info_profile_pic{
+		width: 60px;
+		height: 60px;  
+		-moz-border-radius: 6px; 
+		-webkit-border-radius: 6px;
+		border-radius: 6px;
+		position: relative;
+	}
+
+	.info_profile_pic:hover{
+		box-shadow: 0 0 10px 0 #ACACA5;
 	}
 
 	#meme_info {
+		font-size:14px;	
+		position: relative;
+		top:-40px;
+		left:80px;	
+	}
+
+	#meme_info a{
 		color:#ACACA5;
-		font-size:14px;		
+	}
+
+	#meme_info:hover a{
+		text-decoration: underline;
+	}
+	.info_name{
+		font-size:14px;
+		text-decoration:underline; 
+		color:#ACACA5;
 	}
 	
 	.meme_reproductive_system { 
@@ -1741,7 +2030,7 @@ a{
 	
 	#editorcontent {
 		position:relative;
-		top:50px;
+		top:100px;
 		left:510px;
 		width:600px;
 	}
@@ -2868,17 +3157,27 @@ button::-moz-focus-inner {
 }
 
 
-    @-webkit-keyframes greenPulse {
-    from { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
-    50% { background-color: #91bd09; -webkit-box-shadow: 0 0 18px #91bd09; }
-    to { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
-    }
+	@-webkit-keyframes orangePulse {
+		from { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+		50% { background-color: #91bd09; -webkit-box-shadow: 0 0 18px #ff9718; }
+		to { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+	}
+
+	@-moz-keyframes orangePulse {
+		from { box-shadow: 0 0 9px #333; opacity:0.8; -moz-animation-timing-function:  ease-in;}
+		50% { box-shadow: 0 0 20px #ff9718; opacity:1.0; -moz-animation-timing-function: ease-out;}
+		to { box-shadow: 0 0 9px #333; opacity:0.8; -moz-animation-timing-function:  ease-in;}
+	}
 
     a.orangellow.button {
-    -webkit-animation-name: greenPulse;
+    -webkit-animation-name: orangePulse;
     -webkit-animation-duration: 2s;
     -webkit-animation-iteration-count: infinite;
+    -moz-animation-name: orangePulse;
+    -moz-animation-duration: 2s;
+    -moz-animation-iteration-count: infinite;
     }
+
 .a-btn{
     width:70px;
     height:70px;
