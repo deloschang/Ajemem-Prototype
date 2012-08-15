@@ -950,7 +950,6 @@ class meme_manager extends mod_manager {
 
 	    $sql = $this->meme_bl->get_search_sql("meme",$cond_jn);
 	    
-	    //print $sql;
 
 	    $res = mysqli_query($link,$sql);
 

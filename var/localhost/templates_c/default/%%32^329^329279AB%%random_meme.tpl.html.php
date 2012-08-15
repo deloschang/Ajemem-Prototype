@@ -1,15 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-08-11 19:00:28
-=======
-<?php /* Smarty version 2.6.7, created on 2012-08-12 01:29:06
->>>>>>> 90355ac7279498d34deb4b1d2454f1c5deccd5f0
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-26 10:56:25
-=======
-<?php /* Smarty version 2.6.7, created on 2012-06-27 02:48:23
->>>>>>> 972cc8cd30ef0bff65838f0f77bf8bae2182d3a2
->>>>>>> ac274dfccb2fd612d94c0615c9eaaac8ba750f6d
+<?php /* Smarty version 2.6.7, created on 2012-08-14 23:00:39
          compiled from meme/random_meme.tpl.html */ ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -195,12 +184,6 @@
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmore_rand_meme.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
-<<<<<<< HEAD
  ?>
 </div>
-<input type="hidden" id="rand_ids" />
-=======
- ?>
-</div>
-<input type="hidden" id="rand_ids" />
->>>>>>> ac274dfccb2fd612d94c0615c9eaaac8ba750f6d
+<input type="hidden" id="rand_ids" />
