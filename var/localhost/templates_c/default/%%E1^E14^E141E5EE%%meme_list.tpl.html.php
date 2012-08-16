@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-15 20:13:54
+<?php /* Smarty version 2.6.7, created on 2012-08-16 06:28:30
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <!--
@@ -307,24 +307,46 @@ unset($_smarty_tpl_vars);
 
 <?php if (! $_SESSION['id_user'] && ! $_SESSION['profile']): ?>
 
-<div class="module_text" id="front_card">Your stories belong here</div>
-		<div id="module_container">
-			<div id="message_container">
-				<div id="nlu_message_three"><span class="blurb" id="blurb_three"><a href="javascript:void(0);" onclick="get_random_meme();">Surprise Me!</a></span><a href="javascript:void(0);"><img src="http://localhost/image/questions.png" onclick="get_random_meme();" style="cursor:pointer; width: 210px; height: 170px; "/></a></div>
+		<div id="cloud_container">
+				<div id="cloud_1" class="large_cloud"></div>
+				<div id="cloud_2" class="large_cloud"></div>
+				<div id="cloud_3" class="large_cloud"></div>
+				<div id="cloud_4" class="large_cloud"></div>
+				<div id="cloud_5" class="cloud"></div>
+				<div id="cloud_6" class="cloud"></div>
+				<div id="cloud_7" class="cloud"></div>
+				<div id="cloud_8" class="cloud"></div>
+				<div id="cloud_9" class="cloud"></div>
+				<div id="cloud_10" class="large_cloud"></div>
+				<div id="cloud_11" class="cloud"></div>
+				<div id="cloud_12" class="cloud"></div>
+				<div id="cloud_13" class="cloud"></div>
+				<div id="cloud_14" class="cloud"></div>
+				<div id="cloud_15" class="cloud"></div>
+				<div id="cloud_16" class="cloud"></div>
+				<div id="cloud_17" class="cloud"></div>
+				<div id="cloud_18" class="cloud"></div>
+		</div>
+		<div id="video_container">
+			<div id="intro_logo">
+				<a href="http://localhost/" title="Memeja!"><img src="http://localhost/templates/images/intro_logo.gif"style="width:228px;height:70px;"/></a>
 			</div>
-			<div class="module_text" id="second_half" style="padding-bottom:25px">Share experiences with the people you care about</div>
+			<div id="headline">Share Experiences With the People You Care About</div>
+			<div id="video">
+				<iframe src="http://player.vimeo.com/video/47618336?title=0&amp;byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+			</div>
 		</div>
-		<center>
-		<!--<div id="signup_text">Experience the Hype!</div>-->
-		<div class="fb-login-button" size="large" scope="
-	    	email,
-	    	publish_stream
-	    	,user_education_history
-	    			    	">
-        Connect with Facebook
+		<div id="cta_button">	
+			<div class="fb-login-button" size="large" scope="
+		    	email,
+		    	publish_stream
+		    	,user_education_history
+		    				    	">
+	        Share Ideas Now
+			</div>
+			<div id="cta_message"></div>
 		</div>
-		
-		<br>
+
 		<div id="bottom_bar">
 			<table><tr>
 			<td><div id="about"><a href="/about.html">About </a></div></td>
@@ -332,5 +354,4 @@ unset($_smarty_tpl_vars);
 			<td><div id="privacy_policy"><a href="/privacypolicy.html">Privacy  </a></div></td>
 			</tr></table>
 		</div>
-		</center>
 	<?php endif; ?>

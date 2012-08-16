@@ -2,12 +2,27 @@
 
 
 /****************************** Main Page Styling *******************************/
+    *{  
+       margin:0;  
+       padding:0;  
+    }  
+      
+    body{  
+       text-align:center; /*For IE6 Shenanigans*/  
+    }  
+      
+    #wrap{  
+       width:1200px;  
+       margin:0 auto;  
+       text-align:left;  
+       position: relative;
+    } 
 
 	html,body {
 		font-family: Trebuchet, Helvetica, sans-serif;
 		font-size:0.8em;
 		background-color:#87D2FF;
-		/*background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+		/*background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 		*/
 	}
 
@@ -108,11 +123,8 @@
 	}
 	
 	#nlu_contained {
-		position: fixed;
-		top: 50%;
-		left: 50%;
-		margin-top: -220px;
-		margin-left: -800px;
+		width:1050px;
+		margin:0 auto;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -186,43 +198,179 @@
 		opacity:0.4;
 		filter:alpha(opacity=40); /* For IE8 and earlier */
 	}
-	
-	#nlu_feed{
-		margin-left: -500px;
-		position: absolute;
-		left:50%;
-		padding: 15px 0 50px 0;
-		width:1000px;
-		height:440px;
-		opacity:0.95;
-		top:10%;
-		z-index:999;
-		background-color:#FFF;
-	    moz-border-radius: 12px;
-	    webkit-border-radius: 12px;
-	    khtml-border-radius: 12px;
-	    border-radius: 12px;
-		box-shadow: 0 0 4px 0 #000;
-	}	
-	
+		
 	#front_message {
-		position:relative;
+		width:1200px;
 		margin-left:auto;
 		margin-right:auto;
 	}
-	
+
+	#cloud_container{
+
+	}
+
+	.cloud{ 
+		width: 150px; 
+		height: 150px; 
+		background: #FFFFFF; 
+		-moz-border-radius: 75px; 
+		-webkit-border-radius: 75px;
+		 border-radius: 75px; 
+		 border: 1px solid #000;
+		 z-index: 1;
+	}
+
+	.large_cloud{
+		width: 300px; 
+		height: 300px; 
+		background: #FFFFFF; 
+		-moz-border-radius: 150px; 
+		-webkit-border-radius: 150px;
+		 border-radius: 150px;
+	}
+
+	#cloud_1{
+		position:absolute;
+		top:300px;
+		left:0px;
+	}
+
+	#cloud_2{
+		position:absolute;
+		top:300px;
+		left:300px;
+	}
+
+	#cloud_3{
+		position:absolute;
+		top:150px;
+		left:150px;
+	}
+
+	#cloud_4{
+		position:absolute;
+		top:300px;
+		left:150px;
+	}
+
+	#cloud_5{
+		position:absolute;
+		top:148px;
+		left:63px;
+	}
+
+	#cloud_6{
+		position:absolute;
+		top:287px;
+		left:519px;
+	}
+
+	#cloud_7{
+		position:absolute;
+		top:264px;
+		left:34px;
+	}
+
+	#cloud_8{
+		position:absolute;
+		top:148px;
+		left:372px;
+	}
+
+	#cloud_9{
+		position:absolute;
+		top:234px;
+		left:432px;
+	}
+
+	#cloud_10{
+		position:absolute;
+		top:150px;
+		left:326px;
+	}
+
+	#cloud_11{
+		position:absolute;
+		top:175px;
+		left:93px;
+	}
+
+	#cloud_12{
+		position:absolute;
+		top:98px;
+		left:298px;
+	}
+
+	#cloud_13{
+		position:absolute;
+		top:88px;
+		left:212px;
+	}
+
+	#cloud_14{
+		position:absolute;
+		top:69px;
+		left:115px;
+	}
+
+	#cloud_15{
+		position:absolute;
+		top:0;
+		left:0;
+	}
+
+	#cloud_16{
+		position:absolute;
+		top:0;
+		left:0;
+	}
+
+	#cloud_17{
+		position:absolute;
+		top:0;
+		left:0;
+	}
+
+	#cloud_18{
+		position:absolute;
+		top:0;
+		left:0;
+	}
+  
+
+	#video_container{
+
+	}
+
 	#intro_logo {
 		width:228px;
 		height:70px;
 	}
-		
-	.module_text{
-		font:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-		font-size:30px;
-		font-weight: 700;
-		line-height: 1.2em;
-		color: black;
-		text-align:center;
+
+	#headline{
+
+	}
+
+	#video{
+
+	}
+
+	#cta_button{
+
+	}
+
+	#cta_message{
+
+	}
+
+	#bottom_bar{
+		font-size:14px;
+		position:relative;
+		top:10px;
+	}
+
+	#bottom_bar a {
+		color:#2B00FF;
 	}
 	
 	#front_card{
@@ -232,60 +380,7 @@
 		background:transparent;
 	}
 	
-	#first_half{
-		font-size:24px;
-		color:#54BAEB;
-		margin-top:5px;
-	}
 	
-	#second_half{
-		font-size:20px;
-		padding-top: 5px;
-		color:#54BAEB;
-	}
-	
-	#module_container{
-		text-align:center;
-	}
-	
-	#message_container{
-		display:inline-block;
-	}
-	
-	#nlu_message_three{
-		position:relative;
-		float: left;
-		margin: 0 0 0 10px;
-	}
-	
-	.blurb {
-		position:absolute;
-		background: none repeat scroll 0 0 rgba(52, 182, 250, 0.8);
-		
-		width:100%;
-		
-		padding: 10px 0 12px 0;
-		z-index:10;
-		text-align:center;
-	}
-	
-	
-	#blurb_three{
-		background: none repeat scroll 0 0 rgba(58,250,126,0.7);
-		top:0;
-		left:0;
-	}
-	
-	#blurb_three a{
-		color: #FFFFFF;
-		font-size: 15px;
-		font-weight: bold;
-		line-height: 17px;
-	}
-	
-	#blurb_three a:hover{
-		text-decoration:underline;
-	}
 	
 	.front_icon{
 		position: absolute;
@@ -293,15 +388,7 @@
 	}
 
 /************************* About Page ***************************/
-	#bottom_bar{
-		font-size:14px;
-		position:relative;
-		top:10px;
-	}
-	
-	#bottom_bar a {
-		color:#2B00FF;
-	}
+
 	
 	#about{
 		position:relative;
@@ -374,6 +461,8 @@
 	.privacy_p{
 		font-size:1.1em;
 	}
+
+
 	
 	
 /* Main Container with the middle column and the sidebars */
@@ -382,12 +471,29 @@
 		top:70px;
 		width:1000px;
 		background-color:#fff;
-		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 		position: relative;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
 	    border-radius: 20px;	
+	}
+
+	#nlu_profile{
+		margin:auto;	
+		top:100px;
+		width:1000px;
+		background-color:#fff;
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+		position: relative;
+		moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;	
+	}
+
+	#profile_meme{
+
 	}
 
 /* Main Profile Page */
@@ -414,7 +520,7 @@
 /* The Live Feed in the middle of the page */
 	#live_feed {
 		background-color:#FFF;
-		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
 		margin:auto;
 		overflow: auto;
 		padding:10px;
@@ -483,7 +589,7 @@
 	
 	#friend_memes{
 		background-color:#F0F0F0;
-		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 		padding:10px;
 		padding-top:70px;
 		position:absolute;
@@ -559,7 +665,7 @@
 		position:fixed;
 		width:100%;
 		z-index:99;
-		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 	}
 	
 	#header_cont{
@@ -719,7 +825,7 @@
 		width:250px;
 		padding:10px;
 		background-color:#F0F0F0;
-		background-image: url("chrome://browser/content/abouthome/noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 		-moz-border-radius: 5px;
 		-webkit-border-radius: 5px;
 		border-radius: 5px;
@@ -922,6 +1028,37 @@
 		top:20px;
 	}
 	
+
+	#my_meme_container {
+		position: absolute;
+		top:-650px;
+		left:260px;
+	}
+
+	#profile_meme_title{
+		color: #5CC2FF;
+		font-size: 24px; 
+		text-align: center;
+		font-weight:bold;
+		display:block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space:nowrap;
+		position:relative;
+		text-shadow: 2px 2px 3px #E0E0E0;
+		margin-bottom: 10px;
+	}
+
+	.nlu_meme_expanded{
+		width:600px;
+		height:auto;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		border: 1px solid #ACACAC
+		box-shadow: 0 0 10px 0 #ACACA5;
+
+	}
 	#profile_meme{
 		font-size:18px;
 		font-weight:bold;
@@ -1293,6 +1430,11 @@
 		width:460px;
 		overflow: auto;
 		height:auto;
+		-moz-border-radius: 5px; 
+		-webkit-border-radius: 5px; 
+		border-radius: 5px;
+		box-shadow: 0 0 10px 0 #5CC2FF;
+		border:1px solid #ACACAC;
 	}
 
 	#profile_meme_expanded{
@@ -3158,9 +3300,9 @@ button::-moz-focus-inner {
 
 
 	@-webkit-keyframes orangePulse {
-		from { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
-		50% { background-color: #91bd09; -webkit-box-shadow: 0 0 18px #ff9718; }
-		to { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+		from { background-color: #FFB515; -webkit-box-shadow: 0 0 9px #333; }
+		50% { background-color: #FC9200; -webkit-box-shadow: 0 0 18px #ff9718; }
+		to { background-color: #FFB515; -webkit-box-shadow: 0 0 9px #333; }
 	}
 
 	@-moz-keyframes orangePulse {
