@@ -22,8 +22,6 @@
 		font-family: Trebuchet, Helvetica, sans-serif;
 		font-size:0.8em;
 		background-color:#87D2FF;
-		/*background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
-		*/
 	}
 
 /* =p Define paragraph text size */
@@ -53,32 +51,136 @@
 		list-style: none outside none;
 	}
 
-/* Highlighting Problem*/
+/* Highlighting Problem */
 
 	.nohighlight {
-	-webkit-touch-callout: none;
+		-webkit-touch-callout: none;
 
-	-webkit-user-select: none;
+		-webkit-user-select: none;
 
-	-khtml-user-select: none;
+		-khtml-user-select: none;
 
-	-moz-user-select: none;
+		-moz-user-select: none;
 
-	-ms-user-select: none;
+		-ms-user-select: none;
 
-	user-select: none;
+		user-select: none;
 	}
 		
 
 /*++++++++++++++ Macromeme Generator +++++++++++++*/
-	#macromeme{
-		position:absolute;
-                top:80px;
+	#macromeme {
 		left:0;
-	}	
+		position:absolute;
+    	top:80px;
+	}
 
-/*++++++++++++++++++++++++ NLU Design ++++++++++++++++++*/
+/*++++++++++++++++++ NLU Design ++++++++++++++++++*/	
+	#front_message {
+		margin:0 auto;
+		position:relative;
+		width:1600px;
+	}
+
+	#top_header {
+		background:#f5f5f5;
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+		color:#000;
+		clear:both;
+		height:60px;
+		padding:10px;
+		width:1200px;
+		position:fixed;
+		z-index: 100;
+	}
+
+	#header_container{
+		margin:0 auto;
+		position: relative;
+		width:960px;
+		z-index:100;
+	}
+
+	#logoc {
+		left:0px;
+		top:-10px;
+	}
+
+	#login_top {
+		position:relative;
+		top:-45px;
+		left:720px;
+	}
+
+	#nlu_contained {
+		width:960px;
+		margin:0 auto;
+		moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;	
+	}
+
+	#profile_page {
+		margin:0 auto;
+		position:relative;
+		padding:10px;
+		height:650px;
+		width:980px;
+	    moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;
+		voice-family:"\"}\"";
+		voice-family:inherit;
+	}
+	html>body #profile_page {
+	    width:980px;
+	}
+
+	#nlu_profile_name {
+		text-align: center;
+		font-size:24px;
+		position:relative;
+		top:50%;	
+		color:#C3C3C3;
+	}
+
+	#searches{
+		width:300px;
+		position:relative;
+		top:-40px;
+		left:250px;
+	}
+
+	#header_nav{
+		position:relative;
+		left:300px;
+		top:-90px;
+	}
 	
+	.header_nav{
+		padding:5px;
+	}
+	
+	.header_nav a{
+		 font-size:14px;
+		 color: #C3C3C3;
+		 text-shadow: 0px -1px 0px rgba(0,0,0,.3);
+	}
+	
+	.header_nav:hover{
+		border-left: 2px solid #C3C3C3;
+		border-right: 2px solid #C3C3C3;
+	}
+	
+	.header_nav:hover a{
+		color:#25aeff;
+		 text-shadow: 0px -1px 0px rgba(0,0,0,.1);
+		font-weight:bold;
+	}
+
 	#nlu_login{
 		background:#FFF;
 		float:left;
@@ -120,15 +222,6 @@
 		opacity:0.5;
 		background:#007FFF;
 		z-index:1;
-	}
-	
-	#nlu_contained {
-		width:1050px;
-		margin:0 auto;
-		moz-border-radius: 20px;
-	    webkit-border-radius: 20px;
-	    khtml-border-radius: 20px;
-	    border-radius: 20px;	
 	}
 	
 	
@@ -197,12 +290,6 @@
 		height:445px;
 		opacity:0.4;
 		filter:alpha(opacity=40); /* For IE8 and earlier */
-	}
-		
-	#front_message {
-		width:1200px;
-		margin-left:auto;
-		margin-right:auto;
 	}
 
 	#cloud_container{
@@ -468,8 +555,9 @@
 /* Main Container with the middle column and the sidebars */
 	#contained {
 		margin:auto;	
-		top:70px;
-		width:1000px;
+		top:150px;
+		width:980px;
+		padding: 10px;
 		background-color:#fff;
 		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 		position: relative;
@@ -482,7 +570,7 @@
 	#nlu_profile{
 		margin:auto;	
 		top:100px;
-		width:1000px;
+		width:960px;
 		background-color:#fff;
 		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 		position: relative;
@@ -495,26 +583,6 @@
 	#profile_meme{
 
 	}
-
-/* Main Profile Page */
-	#profile_page {
-		margin:auto;
-		position:relative;
-		left:20px;
-		top:20px;
-		padding:10px;
-		height:620px;
-		width:980px;
-	    moz-border-radius: 20px;
-	    webkit-border-radius: 20px;
-	    khtml-border-radius: 20px;
-	    border-radius: 20px;
-		voice-family:"\"}\"";
-		voice-family:inherit;
-	}
-	html>body #profile_page {
-	    width:960px;
-	}
 	
 	
 /* The Live Feed in the middle of the page */
@@ -525,7 +593,7 @@
 		overflow: auto;
 		padding:10px;
 		position:relative;
-		width:960px;
+		width:980px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -534,7 +602,7 @@
 		voice-family:inherit;
 	}
 	html>body #live_feed {
-		width:960px;
+		width:980px;
 	}
 
 
@@ -579,7 +647,7 @@
 	#all_memes{
 		overflow: auto;
 		position:relative;
-		top:-5px;
+		top:-40px;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
 	    khtml-border-radius: 20px;
@@ -650,71 +718,7 @@
 		webkit-border-radius: 10px;
 		khtml-border-radius: 10px;
 		border-radius: 10px;		
-	}
-	
-	/* The top Bar */	
-	#top_header 	{
-		background:#f5f5f5;
-		box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
-		color:#000;
-		clear:both;
-		height:60px;
-		left:-20px;
-		top:0px;
-		padding:10px;
-		position:fixed;
-		width:100%;
-		z-index:99;
-		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
-	}
-	
-	#header_cont{
-		margin-left:auto;
-		margin-right:auto;
-	}
-	
-	/* Memeja Logo */
-	#logoc {
-		float:left;
-		left:16%;
-		position:absolute;
-		top:5px;
-		z-index:300;
-	}
-	
-	#header_nav{
-		position:absolute;
-		left:500px;
-		top:3px;
-	}
-	
-	.header_nav{
-		padding:5px;
-	}
-	
-	.header_nav a{
-		 font-size:14px;
-		 color: #C3C3C3;
-		 text-shadow: 0px -1px 0px rgba(0,0,0,.3);
-	}
-	
-	.header_nav:hover{
-		border-left: 2px solid #C3C3C3;
-		border-right: 2px solid #C3C3C3;
-	}
-	
-	.header_nav:hover a{
-		color:#25aeff;
-		 text-shadow: 0px -1px 0px rgba(0,0,0,.1);
-		font-weight:bold;
-	}
-	
-	#searches{
-		width:300px;
-		position:relative;
-		top:-7px;
-		left:450px;
-	}
+	}	
 	
 	#home_link{
 		position:relative;
@@ -748,8 +752,8 @@
 		box-shadow: 0 0 2px 0 #555555;
 		padding:3px;
 		position:relative;
-		top:15px;
-		left:1050px;
+		top:-130px;
+		left:650px;
 		width:150px;
 		-moz-border-radius: 5px;
 		-webkit-border-radius: 5px;
@@ -821,7 +825,7 @@
 	
 	#content1 {
 		position:absolute;
-		right:0px;
+		left:115px;
 		width:250px;
 		padding:10px;
 		background-color:#F0F0F0;
@@ -959,13 +963,6 @@
 	}
 /**/
 	
-	#login_top {
-		left:1080px;		
-		position:fixed;
-		top:10px;
-		z-index:201;
-	}
-	
 	#other_user_name {
 		font-weight:bold;
 		font-size:18px;
@@ -1059,6 +1056,10 @@
 		box-shadow: 0 0 10px 0 #ACACA5;
 
 	}
+
+	.nlu_meme_expanded:hover{
+		box-shadow: 0 0 10px 0 #5CC2FF;
+	}
 	#profile_meme{
 		font-size:18px;
 		font-weight:bold;
@@ -1133,10 +1134,12 @@
 
 	#left_info{
 		position:relative;
+		top:20px;
+		left:20px;
 		width:150px;
 		height:580px;
 		margin:10px;
-		border-right: 2px solid #ACACA5;
+		border-right: 2px solid #E8E8E8;
 	}
 	#user_info{
 		position:relative;
