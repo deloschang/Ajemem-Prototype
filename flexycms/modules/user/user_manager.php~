@@ -1242,9 +1242,8 @@ function _logout(){
 					exit("AAB".",".$res_other['exp_point']);
 				}
 			
-                                // Has trailing user changed? Yes
-                                //   8/12/12 - Removing trailing for now
-		/*	} else {
+			// Has trailing user changed? Yes
+			} else {
 				$_SESSION['one_less_user'] = $res_other['username'];
 				$_SESSION['one_less_dupe_username'] = $res_other['dupe_username'];
 				//$_SESSION['one_less_exp'] = $res_other['exp_point'];
@@ -1252,7 +1251,7 @@ function _logout(){
 				$_SESSION['one_less_avatar'] = $res_other['avatar'];
 				$_SESSION['one_less_gender'] = $res_other['gender'];
 				exit("AB".",".$_SESSION['one_less_pic'].",".$res_other['dupe_username']);
-                }*/
+			}
 		
 		// Has Rank Changed? Yes	
 	    } else {
