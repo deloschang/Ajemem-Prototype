@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-08-16 08:13:23
+=======
+<?php /* Smarty version 2.6.7, created on 2012-08-15 07:46:25
+>>>>>>> f775559d2a2e88601a3ff6ff5c55e21487273116
          compiled from meme/random_meme.tpl.html */ ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">
@@ -183,6 +187,12 @@
 $this->_smarty_include(array('smarty_include_tpl_file' => "meme/loadmore_rand_meme.tpl.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
+<<<<<<< HEAD
  ?>
 </div>
 <input type="hidden" id="rand_ids" />
+=======
+ ?>
+</div>
+<input type="hidden" id="rand_ids" />
+>>>>>>> f775559d2a2e88601a3ff6ff5c55e21487273116

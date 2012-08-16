@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-08-16 08:13:23
+=======
+<?php /* Smarty version 2.6.7, created on 2012-08-15 07:46:25
+>>>>>>> f775559d2a2e88601a3ff6ff5c55e21487273116
          compiled from meme/loadmore_rand_meme.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmore_rand_meme.tpl.html', 11, false),array('modifier', 'date_format', 'meme/loadmore_rand_meme.tpl.html', 13, false),)), $this); ?>
@@ -88,6 +92,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <!--			<?php endif; ?>-->
 <!--			<br/>-->
 <!--			<span class="fb_btn"><fb:like href="http://localhost/meme/meme_details/id/<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+<<<<<<< HEAD
 " send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like></span>-->
 
 		    </span>
@@ -105,6 +110,25 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 ' data-num-posts="10" data-width="400"></div></div>
 		</div>
 	    
+=======
+" send="false" width="450" show_faces="true" font="arial" layout="button_count"></fb:like></span>-->
+
+		    </span>
+			<br/>
+			<?php endif; ?>
+	</div>
+	    
+	    
+	    
+	    <div id="lding_rand" style="display: none;" align="center"><img src="http://localhost/templates/images/loadingAnimation.gif" /></div>
+		
+		<div id="random_description" style="display: none;">
+			<div><div class="fb-comments" id="inner" data-href='http://memeja.com/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
+&meme=<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+' data-num-posts="10" data-width="400"></div></div>
+		</div>
+	    
+>>>>>>> f775559d2a2e88601a3ff6ff5c55e21487273116
 	    <div  onclick="show_my_details('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ');" id="comc_img"><br />
 		    <img  src="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>
@@ -118,6 +142,7 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 " data-text="<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 " data-count="none" data-via="memeje"  >Tweet</a></span>-->
 <!--	    <div id="randadd_caption<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+<<<<<<< HEAD
 " style="width:60%;display: none;"></div>-->
     </div>
 <?php echo '
@@ -204,3 +229,91 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 <?php elseif (! $this->_tpl_vars['sm']['rand_fg'] && ! $this->_tpl_vars['sm']['res_meme']['0']): ?>
 No meme found.
 <?php endif; ?>
+=======
+" style="width:60%;display: none;"></div>-->
+    </div>
+<?php echo '
+<!--<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>-->
+<script type="text/javascript">
+	var notyet = 0;
+	var notagree = 0;
+	var notdisagree = 0;
+	
+	var notreply = 0;
+	
+	function clearTimer() {
+    	notyet = 0;   
+	 }  
+    
+    $(document).ready(function(){
+		var ids = ($("#rand_ids").val())?$("#rand_ids").val()+",';  echo $this->_tpl_vars['x']['id_meme'];  echo '":"';  echo $this->_tpl_vars['x']['id_meme'];  echo '";
+		$("#rand_ids").val(ids);
+		
+		// Set Title of Meme
+		$("#random_title").html("';  echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp));  echo '");
+		$("#random_username").html(\'<a href="/?id=';  echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username'];  echo '">';  echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username'];  echo '</a>\');
+		
+		$(document).bind(\'keydown\', \'right\', function(){
+			next_meme();
+		 });
+		
+		$(document).bind(\'keydown\', \'space\', function(){
+			next_meme();
+		 });
+			
+		$(document).bind(\'keydown\', \'h\', function(){
+			next_agree();
+		 });
+		
+		$(document).bind(\'keydown\', \'d\', function(){
+			next_disagree();
+		 });
+		
+		$(document).bind(\'keydown\', \'r\', function(){
+			next_reply();
+		 });
+		
+     });
+    
+	function next_reply(){
+		if (notreply == 1) {
+			return;
+		 }
+		notreply = 1;
+		get_all_rand_replies(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\');
+		setTimeout(\'clearTimer()\', 1000);
+	 }
+	
+    function next_meme(){
+		if (notyet == 1) {
+		    return; 
+		 }  
+		notyet = 1;
+		show_my_details(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\');
+		setTimeout(\'clearTimer()\', 1000);
+     }
+    
+    function next_agree(){
+		if (notagree == 1) {
+		    return; 
+		 }  
+		notagree = 1;
+		rand_set_tot_adaggr(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\',\'A\');
+		setTimeout(\'clearTimer()\', 1000);
+     }
+    
+     function next_disagree(){
+		if (notdisagree == 1) {
+		    return; 
+		 }  
+		notdisagree = 1;
+		rand_set_tot_adaggr(\'';  echo $this->_tpl_vars['x']['id_meme'];  echo '\',\'D\');
+		setTimeout(\'clearTimer()\', 1000);
+     }
+</script>
+'; ?>
+
+<?php elseif (! $this->_tpl_vars['sm']['rand_fg'] && ! $this->_tpl_vars['sm']['res_meme']['0']): ?>
+No meme found.
+<?php endif; ?>
+>>>>>>> f775559d2a2e88601a3ff6ff5c55e21487273116

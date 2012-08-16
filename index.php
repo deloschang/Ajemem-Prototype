@@ -33,6 +33,8 @@ if(!($_SESSION['domain'])){
 	$_SESSION['domain'] = SITE_USED;
 }
 
+//var_dump($_COOKIE);
+
 $site = new site; // called from site.php
 $site->init(); // calls function in instance 'site'
 $smarty = getSmarty(); // from common5.php, assigned to $smarty

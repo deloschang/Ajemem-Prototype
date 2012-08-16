@@ -237,7 +237,7 @@ class user_manager extends mod_manager {
                             //    redirect(LBL_ADMIN_SITE_URL);
                             //}else{
 							
-							setcookie('username', $uname, time()+60*60*24*365, "/".SUB_DIR);
+							//setcookie('username', $uname, time()+60*60*24*365, "/".SUB_DIR);
 							// setcookie('xp_to_level', $_SESSION['xp_to_level'], time()+60*60*24*365, "/".SUB_DIR);
 							// setcookie('previous_xp_to_level', $_SESSION['previous_xp_to_level'], time()+60*60*24*365, "/".SUB_DIR);
 							// setcookie('exp_rank', $_SESSION['exp_rank'], time()+60*60*24*365, "/".SUB_DIR);
