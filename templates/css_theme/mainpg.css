@@ -102,27 +102,57 @@
 	}
 
 	#clouds_1{
-
+		position: absolute;
+		top:-60px;
+		left:50px;
 	}
 
 	#clouds_2{
-		
+		position: absolute;
+		top:-50px;
+		left:200px;
 	}
-	
-	#clouds_3{
-		
+
+	#clouds_3{		
+		position: absolute;
+		top:-70px;
+		left:350px;
 	}
 
 	#clouds_4{
-		
+		position: absolute;
+		top:-60px;
+		left:550px;
 	}
 
 	#clouds_5{
-		
+		position: absolute;
+		top:-70px;
+		left:650px;	
 	}
 
 	#clouds_6{
-		
+		position: absolute;
+		top:-50px;
+		left:750px;	
+	}
+
+	#clouds_7{
+		position: absolute;
+		top:-70px;
+		left:850px;	
+	}
+
+	#clouds_8{
+		position: absolute;
+		top:-70px;
+		left:436px;	
+	}
+
+	#clouds_9{
+		position: absolute;
+		top:-53px;
+		left:874px;	
 	}
 
 	#header_container{
