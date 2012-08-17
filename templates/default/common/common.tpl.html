@@ -256,7 +256,7 @@ var chc = "{/literal}{$chc}{literal}";
 		</div>
 			
 		<div id="nlu_profile">	
-			<div id="profile_page">	
+				<div id="profile_page">	
 					<div id="left_info">
 						<div id="profile_pic">
 							{if $smarty.session.profile_picture}
@@ -293,21 +293,12 @@ var chc = "{/literal}{$chc}{literal}";
 									<span>About Me!</span>
 								</a>
 							</div>
-                    	</div>                                      
-               		</div>	
-                                                                                                     
-				<div id="view_meme">
+                        </div>                              
+                    </div>	        
+
+					<div id="view_meme">
 					{if $smarty.session.profile_meme_image}
-							<div id="my_meme_container">
-								<a class="meme_gallery" data-fancybox-group="my_meme" id="selected_image" href="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}">
-									<div id="profile_meme_title">
-										{$smarty.session.profile_meme_title}
-									</div>
-								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" class="nlu_meme_expanded"/></a>		
-							</div>
 							<div id="profile_meme_image">
-								<a class="meme_gallery" data-fancybox-group="my_meme" id="selected_image" href="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}">
-								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" style="display:none;"/></a>
 							</div>
 							<div id="current_description" style="display: none;">
 								<div>
@@ -322,9 +313,6 @@ var chc = "{/literal}{$chc}{literal}";
 											{/foreach}
 										</span>
 									{/if}
-									
-								
-									<div class="fb-comments" id="inner" data-href='http://memeja.com/?id={$smarty.session.profile_dupe_username}&meme={$smarty.session.profile_meme_id}' data-num-posts="10" data-width="400"></div>
 								</div>
 							</div>
 							
@@ -339,7 +327,25 @@ var chc = "{/literal}{$chc}{literal}";
 										{/foreach}
 									</span>
 								{/if}
-					{else}
+						<div id="my_meme_container">
+                             <div id="my_meme_list">
+                                {get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+                             </div>
+                             <div id="my_meme_tagged" style="display:none;">
+                                {get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
+                             </div>
+                             <div id="my_meme_liked" style="display:none;">
+                                {get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
+                             </div>
+                             <div id="profile_meme_expanded">
+                             	<div id="profile_meme_title">
+								{$smarty.session.profile_meme_title|capitalize}
+								</div>
+								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" class="meme_expanded"/>
+                            </div>
+                          </div>
+						{else}
+					       <!--Need to move to appropriate styling-->
                           <div id="my_meme_container">
                              <div id="my_meme_list">
                                 {get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
@@ -547,9 +553,9 @@ var chc = "{/literal}{$chc}{literal}";
                              <div id="my_meme_liked" style="display:none;">
                                 {get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
                              </div>
-                             <div id="profile_meme_expanded1">
+                             <div id="profile_meme_expanded">
                              	<div id="profile_meme_title">
-								{$smarty.session.profile_meme_title}
+								{$smarty.session.profile_meme_title|capitalize}
 								</div>
 								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" class="meme_expanded"/>
                             </div>
@@ -602,12 +608,12 @@ var chc = "{/literal}{$chc}{literal}";
    function switch_list(param){
       if (param == 'tagged'){
          $('#my_meme_tagged').show();
-         $('#my_meme_list, #my_meme_liked').hide();
+         $('#my_meme_list, #my_meme_liked, #profile_meme_expanded_o').hide();
       } else if (param == 'likes'){
-         $('#my_meme_tagged, #my_meme_list').hide();
+         $('#my_meme_tagged, #my_meme_list, #profile_meme_expanded_o').hide();
          $('#my_meme_liked').show();
       } else if (param == 'created'){
-         $('#my_meme_tagged, #my_meme_liked').hide();
+         $('#my_meme_tagged, #my_meme_liked, #profile_meme_expanded_o').hide();
          $('#my_meme_list').show();
       }
 
@@ -925,8 +931,7 @@ var chc = "{/literal}{$chc}{literal}";
 			if (!response.authResponse){
 				window.location.href = url+"user/logout";
 				return;
-			}
-			
+			}	
 			FB.logout(fb_logout);
 		});
 	}

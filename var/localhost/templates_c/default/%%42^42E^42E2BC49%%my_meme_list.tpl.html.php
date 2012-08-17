@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-17 00:27:06
+<?php /* Smarty version 2.6.7, created on 2012-08-17 07:40:41
          compiled from manage/my_meme_list.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'manage/my_meme_list.tpl.html', 76, false),)), $this); ?>
@@ -110,7 +110,7 @@ $this->_sections['cur']['last']       = ($this->_sections['cur']['iteration'] ==
 " class="profile_gallery_meme"/>	
 					<div id="profile_meme_expanded">
 							<div id="meme_expanded<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-">
+" class="hider">
 							<div id="profile_meme_title"><?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 </div>
 								<img src="http://localhost/image/orig/meme/<?php echo $this->_tpl_vars['x']['image']; ?>

@@ -76,7 +76,7 @@
 				<a class="meme_gallery" data-fancybox-group="fav_meme" id="meme_fav_image{$x.id_meme}" onclick="show_details('{$x.id_meme}');" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}">
 					<img src="##LBL_SITE_URL##image/thumb/meme/{$x.image}" class="profile_gallery_meme"/>	
 					<div id="profile_meme_expanded">
-							<div id="meme_expanded{$x.id_meme}">
+							<div id="meme_expanded{$x.id_meme}" class="hider">
 							<div id="profile_meme_title">{$x.title|capitalize}</div>
 								<img src="##LBL_SITE_URL##image/orig/meme/{$x.image}"class="meme_expanded"/>
 							</div>

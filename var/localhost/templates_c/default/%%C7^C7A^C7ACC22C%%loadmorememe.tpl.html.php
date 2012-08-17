@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-17 03:11:03
+<?php /* Smarty version 2.6.7, created on 2012-08-17 07:40:44
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 198, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 218, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 17/08/2012 03:11:03 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 17/08/2012 07:40:44 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
@@ -96,6 +96,26 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		 });
 
 	 });	
+
+	function follow_user(status) {		
+		';  if ($_SESSION['profile_id']):  echo '
+		var profile_id = ';  echo $_SESSION['profile_id'];  echo '
+		';  endif;  echo '
+		var url = "http://localhost/user/follow_user";
+		
+		$.post(url, {ce:0, id:profile_id, status:status }, function(res){
+			if (status == \'follow\') {
+				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user(\\\'unfollow\\\');">Follow &nbsp --</a>\');
+				follow_count += 1;				
+			 } else if (status == \'unfollow\') {
+				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" class="large orangellow button "onclick="follow_user(\\\'follow\\\');">Follow &nbsp ++</a>\');
+				
+				follow_count -= 1;
+			 }
+			
+			$(\'#follower_count\').html(follow_count+\' followers\');
+		 });
+	 }
 	function live_feed (i) {		
 		console.log("Currently on..."+single_id_array[i]);
 			
@@ -448,9 +468,6 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 	    <input type="hidden" name="is_disagreed" id="is_disagreed<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " value=''/>
 </div>
-    <script type="text/javascript">
-      $('#meme_stats').scrollFollow();
-    </script>
 <?php echo '
  	<style type="text/css">
  		';  if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )):  echo '
