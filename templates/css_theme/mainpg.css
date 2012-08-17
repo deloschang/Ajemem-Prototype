@@ -757,9 +757,15 @@
 		position: absolute;
 		left:50px;
 		top:-20px;
+		animation-name: orangePulse;
+	    animation-duration: 2s;
+	    animation-iteration-count: infinite;
 	    -moz-animation-name: orangePulse;
 	    -moz-animation-duration: 2s;
-	    -moz-animation-iteration-count: infinite;
+	    -moz-animation-iteration-count: infinite;    
+	    -webkit-animation-name: orangePulse;
+	    -webkit-animation-duration: 2s;
+	    -webkit-animation-iteration-count: infinite;
 	}
 
 	#create{
@@ -769,12 +775,6 @@
 
 	}
 
-
-	@-moz-keyframes sunPulse {
-		from { box-shadow: 0 0 3px #777; opacity:0.7; -moz-animation-timing-function:  ease-in;}
-		50% { box-shadow: 0 0 18px #ff9718; opacity:1.0; -moz-animation-timing-function: ease-out;}
-		to { box-shadow: 0 0 3px #777; opacity:0.7; -moz-animation-timing-function:  ease-in;}
-	}
 
 	#cta_login{
 		position: absolute;
@@ -1251,32 +1251,15 @@
 	}
 
 	.create_menu{
-		width:150px;
 		display:none;
 		left:728px;
 		top:45px;
 	}
 	
 	.create_menu .create_menu_contents {
-		-moz-border-bottom-colors: none;
-		-moz-border-image: none;
-		-moz-border-left-colors: none;
-		-moz-border-right-colors: none;
-		-moz-border-top-colors: none;
-		color: #333333;
 		position:absolute;
-		width: 120px;
-		height:55px;
-		background: none repeat scroll 0 0 white;
-		border: 1px solid #999999;
-		border-color: -moz-use-text-color #ACACAC #ACACAC;
-		border-radius: 0 0 0 0;
-		border-right: 1px solid #ACACAC;
-		border-style: none solid solid;
-		border-width: 0 1px 1px;
-		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-		left:0px;
-		top:30px;
+		left:185px;
+		top:-20px;
 		z-index:2;
 	}
 	
@@ -1284,18 +1267,22 @@
 		margin:5px;
 	}
 	
-	.create_menu_list li a{
+	.create_menu_list li a img{
 		border-radius: 3px 3px 3px 3px;
+		background:#EAEAEA;
 		color: #333333;
 		font-weight: bold;
 		font-size:14px;
 		padding: 5px;
 		position:relative;
 		right:20px;
+		box-shadow: 0 0 10px #ACACAC;
 	}
 	
-	.create_menu_list li a:hover{
-		background: none repeat scroll 0 0 #5CC2FF;
+	.create_menu_list li a:hover img{
+		box-shadow: 0 0 20px #FF9718;
+		position: relative;
+		top:-3px;
 		color: #19558D;
 		text-decoration: none;
 	}
@@ -2386,6 +2373,9 @@ a{
 		left:0px;
 		top:0px;
 		z-index: 200;
+		animation-name:feedPulse;
+		animation-duration:3s;
+	    animation-iteration-count: infinite;
 		-webkit-animation-name: feedPulse;
 	    -webkit-animation-duration: 3s;
 	    -webkit-animation-iteration-count: infinite;
@@ -2394,6 +2384,11 @@ a{
 	    -moz-animation-iteration-count: infinite;
 	}
 
+	@keyframes feedPulse {
+		from {  box-shadow: 0 0 3px #FFF700; }
+		50% {  box-shadow: 0 0 18px #ff9718; }
+		to {  box-shadow: 0 0 3px #FFF700; }
+	}
 
 	@-webkit-keyframes feedPulse {
 		from {  -webkit-box-shadow: 0 0 3px #FFF700; }
@@ -3770,6 +3765,11 @@ button::-moz-focus-inner {
     background-color: #39CEB0;
 }
 
+	@keyframes orangePulse {
+		from { background-color: #FFB515; -webkit-box-shadow: 0 0 9px #333; }
+		50% { background-color: #FC9200; -webkit-box-shadow: 0 0 18px #ff9718; }
+		to { background-color: #FFB515; -webkit-box-shadow: 0 0 9px #333; }
+	}
 
 	@-webkit-keyframes orangePulse {
 		from { background-color: #FFB515; -webkit-box-shadow: 0 0 9px #333; }
@@ -3787,6 +3787,9 @@ button::-moz-focus-inner {
     -webkit-animation-name: orangePulse;
     -webkit-animation-duration: 2s;
     -webkit-animation-iteration-count: infinite;
+    animation-name: orangePulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
     -moz-animation-name: orangePulse;
     -moz-animation-duration: 2s;
     -moz-animation-iteration-count: infinite;
