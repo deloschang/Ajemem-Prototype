@@ -91,7 +91,39 @@
 		z-index: 100;
 	}
 
-	.clouds
+	.clouds{
+		width: 200px; 
+		height: 200px; 
+		background: #FFFFFF; 
+		-moz-border-radius: 100px; 
+		-webkit-border-radius: 100px;
+		 border-radius: 100px;
+
+	}
+
+	#clouds_1{
+
+	}
+
+	#clouds_2{
+		
+	}
+	
+	#clouds_3{
+		
+	}
+
+	#clouds_4{
+		
+	}
+
+	#clouds_5{
+		
+	}
+
+	#clouds_6{
+		
+	}
 
 	#header_container{
 		margin:0 auto;
