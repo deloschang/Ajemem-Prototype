@@ -244,16 +244,27 @@
 
 
 			<div id="like_link_box{$x.id_meme}"class="like_link_box">
-				<a href="javascript:void(0);" id="agr_link{$x.id_meme}"
-			    	{if $smarty.session.id_user}
-			    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
-				    		style="cursor: default"
-				    	{elseif substr_count($x.dishonour_id_user, $smarty.session.id_user)}
-				    		style="cursor: default"
-				    	{/if}
-				    {/if}
-					onclick="set_tot_adaggr('{$x.id_meme}','A','{$x.id_user}');"><div id ="big_heart{$x.id_meme}"class="big_heart">
-				</div></a>
+				<table><tr>
+				<td>
+					<a href="#" id="remix_link">
+						<div id="remix_btn{$x.id_meme}" class="remix_btn" title="Remix It!">
+						</div>
+					</a>
+				</td>
+				<td>
+					<a href="javascript:void(0);" id="agr_link{$x.id_meme}"
+				    	{if $smarty.session.id_user}
+				    		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
+					    		style="cursor: default"
+					    	{elseif substr_count($x.dishonour_id_user, $smarty.session.id_user)}
+					    		style="cursor: default"
+					    	{/if}
+					    {/if}
+						onclick="set_tot_adaggr('{$x.id_meme}','A','{$x.id_user}');">
+						<div id ="big_heart{$x.id_meme}"class="big_heart" title="Love It!">
+						</div></a>
+				</td>
+			</tr></table>
 			</div>
 		</div>
 
@@ -383,6 +394,11 @@
     </script>
 {literal}
  	<style type="text/css">
+ 		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
+ 		.big_heart:before, .big_heart:after { 
+			background:red;
+		}
+		{/if}
  		#like_link_box{/literal}{$x.id_meme}{literal} {
  			display:none;
  		}

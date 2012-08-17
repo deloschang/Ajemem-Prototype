@@ -203,7 +203,7 @@ class manage_manager extends mod_manager {
 	}
 	
 	function _my_favorites(){
-	    check_session();
+	    //check_session();
 	    global $link;
 	    $limit = $GLOBALS['conf']['PAGINATE']['rec_per_page'] - 7;
 	    $comm = "FIND_IN_SET(".$_SESSION['id_user'].",honour_id_user) ";

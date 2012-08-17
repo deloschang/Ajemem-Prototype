@@ -410,9 +410,9 @@ var chc = "{/literal}{$chc}{literal}";
 				<div id="user_pic" class="nohighlight">
 					<a href="/?id={$smarty.session.dupe_username}">
 						{if $smarty.session.fb_pic_normal}
-							<img src="{$smarty.session.fb_pic_normal}" style="width:25px;height:25px">
+							<img src="{$smarty.session.fb_pic_normal}" class="user_pic">
 						{else}
-							<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" style="width:25px;height:25px"/>
+							<img src="##LBL_SITE_URL##image/thumb/avatar/{if $smarty.session.avatar}{$smarty.session.avatar}{else}{if $smarty.session.gender=='M'}memeja_male.png{else}memeja_female.png{/if}{/if}" class="user_pic"/>
 						{/if}
 					</a>
 				</div>
@@ -508,16 +508,7 @@ var chc = "{/literal}{$chc}{literal}";
 
 					<div id="view_meme">
 					{if $smarty.session.profile_meme_image}
-							<div id="my_meme_container">
-								<div id="profile_meme_title">
-								{$smarty.session.profile_meme_title}
-								</div>
-									<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" class="nlu_meme_expanded"/>
-							</div>
-
 							<div id="profile_meme_image">
-								<a class="meme_gallery" data-fancybox-group="my_meme" id="selected_image" href="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" title="{$smarty.session.profile_meme_title}">
-								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" style="display:none;"/></a>
 							</div>
 							<div id="current_description" style="display: none;">
 								<div>
@@ -532,9 +523,6 @@ var chc = "{/literal}{$chc}{literal}";
 											{/foreach}
 										</span>
 									{/if}
-									
-								
-									<div class="fb-comments" id="inner" data-href='http://memeja.com/?id={$smarty.session.profile_dupe_username}&meme={$smarty.session.profile_meme_id}' data-num-posts="10" data-width="400"></div>
 								</div>
 							</div>
 							
@@ -549,6 +537,23 @@ var chc = "{/literal}{$chc}{literal}";
 										{/foreach}
 									</span>
 								{/if}
+						<div id="my_meme_container">
+                             <div id="my_meme_list">
+                                {get_mod mod=manage mgr=manage choice=my_meme_list gmod=1}
+                             </div>
+                             <div id="my_meme_tagged" style="display:none;">
+                                {get_mod mod=manage mgr=manage choice=tagged_memes gmod=1}
+                             </div>
+                             <div id="my_meme_liked" style="display:none;">
+                                {get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
+                             </div>
+                             <div id="profile_meme_expanded1">
+                             	<div id="profile_meme_title">
+								{$smarty.session.profile_meme_title}
+								</div>
+								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" class="meme_expanded"/>
+                            </div>
+                          </div>
 						{else}
 					       <!--Need to move to appropriate styling-->
                           <div id="my_meme_container">

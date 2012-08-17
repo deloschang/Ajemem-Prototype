@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-16 21:29:46
+<?php /* Smarty version 2.6.7, created on 2012-08-17 00:20:41
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 198, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 16/08/2012 21:29:46 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 17/08/2012 00:20:41 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
@@ -263,20 +263,32 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 
 			<div id="like_link_box<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "class="like_link_box">
-				<a href="javascript:void(0);" id="agr_link<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+				<table><tr>
+				<td>
+					<a href="#" id="remix_link">
+						<div id="remix_btn<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+" class="remix_btn" title="Remix It!">
+						</div>
+					</a>
+				</td>
+				<td>
+					<a href="javascript:void(0);" id="agr_link<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 "
-			    	<?php if ($_SESSION['id_user']): ?>
-			    		<?php if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )): ?>
-				    		style="cursor: default"
-				    	<?php elseif (substr_count ( $this->_tpl_vars['x']['dishonour_id_user'] , $_SESSION['id_user'] )): ?>
-				    		style="cursor: default"
-				    	<?php endif; ?>
-				    <?php endif; ?>
-					onclick="set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+				    	<?php if ($_SESSION['id_user']): ?>
+				    		<?php if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )): ?>
+					    		style="cursor: default"
+					    	<?php elseif (substr_count ( $this->_tpl_vars['x']['dishonour_id_user'] , $_SESSION['id_user'] )): ?>
+					    		style="cursor: default"
+					    	<?php endif; ?>
+					    <?php endif; ?>
+						onclick="set_tot_adaggr('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 ','A','<?php echo $this->_tpl_vars['x']['id_user']; ?>
-');"><div id ="big_heart<?php echo $this->_tpl_vars['x']['id_meme']; ?>
-"class="big_heart">
-				</div></a>
+');">
+						<div id ="big_heart<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+"class="big_heart" title="Love It!">
+						</div></a>
+				</td>
+			</tr></table>
 			</div>
 		</div>
 
@@ -441,6 +453,11 @@ if ($this->_foreach['cur_meme']['total'] > 0):
     </script>
 <?php echo '
  	<style type="text/css">
+ 		{if substr_count($x.honour_id_user, $smarty.session.id_user) }
+ 		.big_heart:before, .big_heart:after { 
+			background:red;
+		 }
+		{/if }
  		#like_link_box';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
  			display:none;
  		 }
