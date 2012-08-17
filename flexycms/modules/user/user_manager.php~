@@ -1926,12 +1926,17 @@ function _logout(){
                         $table_name = "user";
                         $follownum['follower_num'] = "follower_num+1";
                         $cond = " id_user=".$info['following'];
-                        $result = $this->obj_meme->update_this($table_name,$follownum,$cond,1);
+                        $result = $this->obj_user->update_this($table_name,$follownum,$cond,1);
 
 		} elseif ($data['status'] == 'unfollow'){
 			$sql = "DELETE FROM memeje__friends WHERE id_user = ".$info['id_user']." AND following = ".$info['following'];
-
 			execute($sql,$err);
+
+                        $table_name = "user";
+                        $follownum['follower_num'] = "follower_num-1";
+                        $cond = " id_user=".$info['following'];
+                        $result = $this->obj_user->update_this($table_name,$follownum,$cond,1);
+
 		}
 	}
 	
