@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-17 18:56:15
+<?php /* Smarty version 2.6.7, created on 2012-08-17 23:57:04
          compiled from static/about.tpl.html */ ?>
 
-<!-- Template: static/about.tpl.html Start 17/08/2012 18:56:15 --> 
+<!-- Template: static/about.tpl.html Start 17/08/2012 23:57:04 --> 
  <link rel="stylesheet" type="text/css" href="http://localhost/templates/css_theme/mainpg.css"/>
 <div id="about_page">
 	<title>About Memeja</title>

@@ -72,7 +72,19 @@
 	#macromeme {
 		left:0;
 		position:absolute;
-    	top:20%;
+		padding:5px;
+		border: 2px solid #ACACAC;
+    	top:150px;
+    	height: 680px;
+    	-moz-border-radius: 10px; 
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		background-color:#fff;
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+	}
+
+	#flashContent{
+
 	}
 
 /*++++++++++++++++++ NLU Design ++++++++++++++++++*/	
@@ -907,7 +919,7 @@
 
 	#nlu_profile{
 		margin:auto;	
-		top:100px;
+		top:150px;
 		width:960px;
 		background-color:#fff;
 		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
@@ -2638,9 +2650,10 @@ a{
 	
 	#editorcontent {
 		position:relative;
-		top:100px;
-		left:510px;
+		top:200px;
+		left:410px;
 		width:600px;
+		margin-bottom: 50px;
 	}
 	
 	#img_dpw{
@@ -2657,7 +2670,7 @@ a{
 
 	#uploader {
 	    position:fixed;
-		top:50px;
+		top:150px;
 		padding:5px;
 	    left:40px;
 		z-index:5;
@@ -2681,7 +2694,7 @@ a{
 		padding:5px;
 		background:#FFF;
 		position:fixed;
-		top:150px;
+		top:250px;
 		left:100px;
 		-moz-border-radius: 10px; 
 		-webkit-border-radius: 10px; 
@@ -2774,7 +2787,7 @@ a{
 	
 	#shares {
 		position:fixed;
-		top:60px;
+		top:160px;
 		left:1040px;
 		width:300px;
 		text-align:center;
@@ -2798,8 +2811,8 @@ a{
 	#canvas_tools {
 		position:fixed;
 		width:20px;
-		left:1010px;
-		top:100px;
+		left:1020px;
+		top:210px;
 		padding:2px;
 		background-color:#Fff;
 		moz-border-radius: 10px;
@@ -2924,7 +2937,7 @@ a{
 	}
 	#main{
 	position:fixed;
-	top:50px;
+	top:150px;
 	left:350px;
 	background:#FAFAFA;
 	padding:0px 3px;
