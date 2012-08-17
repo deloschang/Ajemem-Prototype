@@ -94,17 +94,33 @@
 	.clouds{
 		width: 200px; 
 		height: 200px; 
-		background: #FFFFFF; 
+		background-color:#fff;
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 		-moz-border-radius: 100px; 
 		-webkit-border-radius: 100px;
-		 border-radius: 100px;
+		border-radius: 100px;
+		box-shadow: 0 0 10px #ACACAC;
+	}
+	.clouds_hide{
+		width: 200px; 
+		height: 200px; 
+		background-color:#fff;
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+		-moz-border-radius: 100px; 
+		-webkit-border-radius: 100px;
+		border-radius: 100px;
+		z-index:2;
+	}
 
+	#cloud_head{
+		position: absolute;
+		top:-20px;
 	}
 
 	#clouds_1{
 		position: absolute;
 		top:-60px;
-		left:50px;
+		left:74px;
 	}
 
 	#clouds_2{
@@ -115,8 +131,8 @@
 
 	#clouds_3{		
 		position: absolute;
-		top:-70px;
-		left:350px;
+		top:-54px;
+		left:321px;
 	}
 
 	#clouds_4{
@@ -139,27 +155,53 @@
 
 	#clouds_7{
 		position: absolute;
-		top:-70px;
-		left:850px;	
+		top:-67px;
+		left:833px;	
 	}
 
 	#clouds_8{
 		position: absolute;
-		top:-70px;
-		left:436px;	
+		top:-160px;
+		left:355px;	
 	}
 
 	#clouds_9{
 		position: absolute;
 		top:-53px;
-		left:874px;	
+		left:912px;	
+	}
+
+	#clouds_10{
+		position: absolute;
+		top:-53px;
+		left:912px;	
+	}
+	#clouds_11{
+		position: absolute;
+		top:-53px;
+		left:912px;	
+	}
+	#clouds_12{
+		position: absolute;
+		top:-53px;
+		left:912px;	
 	}
 
 	#header_container{
 		margin:0 auto;
 		position: relative;
+		top:-40px;
 		width:960px;
+		padding-top:40px;
+		height:95px;
 		z-index:200;
+		background: #fff;
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+		moz-border-radius: 20px;
+	    webkit-border-radius: 20px;
+	    khtml-border-radius: 20px;
+	    border-radius: 20px;
+
 	}
 
 	#logoc {
@@ -194,6 +236,8 @@
 	    border-radius: 20px;
 		voice-family:"\"}\"";
 		voice-family:inherit;
+		background: #fff;
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 	}
 	html>body #profile_page {
 	    width:980px;
@@ -353,6 +397,9 @@
 	}
 
 	#cloud_container{
+		position: relative;
+		left:260px;
+		top:-40px;
 
 	}
 
@@ -366,15 +413,25 @@
 		 z-index: 1;
 	}
 
-	.large_cloud{
+	.large_clouds{
 		width: 300px; 
-		height: 300px; 
-		background: #FFFFFF; 
+		height: 300px;
+		background-color:#fff;
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 		-moz-border-radius: 150px; 
 		-webkit-border-radius: 150px;
-		 border-radius: 150px;
+		border-radius: 150px;
+		box-shadow: 0 0 10px #ACACAC;
 	}
 
+	.large_cloud{
+		width: 300px; 
+		height: 300px;
+		background-color:#fff;
+		-moz-border-radius: 150px; 
+		-webkit-border-radius: 150px;
+		border-radius: 150px;
+	}
 	#cloud_1{
 		position:absolute;
 		top:300px;
@@ -488,8 +545,8 @@
 		position:relative;
 		z-index: 100;
 		width:500px;
-		left:90px;
-		top:175px;
+		left:360px;
+		top:130px;
 	}
 
 	#intro_logo {
@@ -509,6 +566,9 @@
 		position: relative;
 		top:-15px;
 		left:10px;
+		animation-name: bluePulse;
+	    animation-duration: 2s;
+	    animation-iteration-count: infinite;
 		-webkit-animation-name: bluePulse;
 	    -webkit-animation-duration: 2s;
 	    -webkit-animation-iteration-count: infinite;
@@ -517,10 +577,16 @@
 	    -moz-animation-iteration-count: infinite;
 	}
 
+	@keyframes bluePulse {
+		from {  text-shadow: 0px 2px 3px #ACACAC; }
+		50% {  text-shadow: 0px 2px 3px #25AEFF; }
+		to { text-shadow: 0px 2px 3px #ACACAC; }
+	}
+
 	@-webkit-keyframes bluePulse {
-		from { background-color: #E8E8E8; text-shadow: 0px 2px 3px #ACACAC; }
-		50% { background-color: #25AEFF; text-shadow: 0px 2px 3px #25AEFF; }
-		to { background-color: #E8E8E8; text-shadow: 0px 2px 3px #ACACAC; }
+		from {  text-shadow: 0px 2px 3px #ACACAC; }
+		50% {  text-shadow: 0px 2px 3px #25AEFF; }
+		to {  text-shadow: 0px 2px 3px #ACACAC; }
 	}
 
 	@-moz-keyframes bluePulse {
@@ -573,18 +639,23 @@
 	}
 
 	#cta_button{
-		width:600px;
-		height: 600px;
+		position: absolute;
+		top:240px;
+		left:-320px;
+
 	}
 
 	#cta_message{
-		font-size: 12px;
-		line-height: 6px;
+		font-size: 16px;
 		color:#777;
 		text-shadow: 0px 2px 3px #ff9718;
 		position: absolute;
-		left:790px;
-		top:380px;
+		width:400px;
+		left:750px;
+		top:370px;
+		animation-name: wordPulse;
+	    animation-duration: 2s;
+	    animation-iteration-count: infinite;
 		-webkit-animation-name: wordPulse;
 	    -webkit-animation-duration: 2s;
 	    -webkit-animation-iteration-count: infinite;
@@ -594,10 +665,16 @@
 
 	}
 
+	@keyframes wordPulse {
+		from {  text-shadow: 0px 2px 3px #ACACAC; }
+		50% { text-shadow: 0px 2px 3px #FF9F00; }
+		to { text-shadow: 0px 2px 3px #ACACAC; }
+	}
+
 	@-webkit-keyframes wordPulse {
-		from { background-color: #E8E8E8; text-shadow: 0px 2px 3px #ACACAC; }
-		50% { background-color: #FF9F00; text-shadow: 0px 2px 3px #FF9F00; }
-		to { background-color: #E8E8E8; text-shadow: 0px 2px 3px #ACACAC; }
+		from {  text-shadow: 0px 2px 3px #ACACAC; }
+		50% {  text-shadow: 0px 2px 3px #FF9F00; }
+		to {  text-shadow: 0px 2px 3px #ACACAC; }
 	}
 
 	@-moz-keyframes wordPulse {
@@ -608,20 +685,20 @@
 
 	#outer_sun{ 
 		background:#FFA500; 
-		width: 400px; 
-		height: 400px; 
+		width: 100px; 
+		height: 100px; 
 		position: absolute; 
 		text-align: center;
-		left:730px;
-		top:160px;
+		left:50px;
+		top:-20px;
  	} 
 	#outer_sun:before, #outer_sun:after { 
 		content: ""; 
 		position: absolute; 
 		top: 0; 
 		left: 0; 
-		height: 400px; 
-		width: 400px; 
+		height: 100px; 
+		width: 100px; 
 		background: #FFA500;
 	 } 
 	#outer_sun:before { 
@@ -637,47 +714,61 @@
 		-o-transform: rotate(60deg); 
 	}
 
+	#pic_sun{ 
+		background:#FFEA00; 
+		width: 60px; 
+		height: 60px; 
+		position: absolute; 
+		text-align: center;
+		top:-30px;
+		left:-30px;
+		z-index: 100;
+ 	} 
+	#pic_sun:before, #pic_sun:after { 
+		content: ""; 
+		position: absolute; 
+		top: 0; 
+		left: 0; 
+		height: 60px; 
+		width: 60px; 
+		background: #FFEA00;
+		z-index: 100;
+	 } 
+	#pic_sun:before { 
+		-webkit-transform: rotate(30deg); 
+		-moz-transform: rotate(30deg); 
+		-ms-transform: rotate(30deg); 
+		-o-transform: rotate(30deg);
+	 } 
+	#pic_sun:after { 
+		-webkit-transform: rotate(60deg); 
+		-moz-transform: rotate(60deg); 
+		-ms-transform: rotate(60deg); 
+		-o-transform: rotate(60deg); 
+	}
+
 	#inner_sun_1{
-		width: 400px; 
-		height: 400px; 
+		width: 100px; 
+		height: 100px; 
 		background: #FFF700; 
-		-moz-border-radius: 200px; 
-		-webkit-border-radius: 200px; 
-		border-radius: 200px;
+		-moz-border-radius: 50px; 
+		-webkit-border-radius: 50px; 
+		border-radius: 50px;
 		position: absolute;
-		left:730px;
-		top:160px;
-		-webkit-animation-name: orangePulse;
-	    -webkit-animation-duration: 2s;
-	    -webkit-animation-iteration-count: infinite;
-	    -moz-animation-name: orangePulse;
-	    -moz-animation-duration: 2s;
-	    -moz-animation-iteration-count: infinite;
-	}
-	#inner_sun_2{
-		width: 300px; 
-		height: 300px; 
-		background: #FFD000; 
-		-moz-border-radius: 150px; 
-		-webkit-border-radius: 150px; 
-		border-radius: 150px;
-		position: absolute;
-		left:780px;
-		top:210px;
-		-webkit-animation-name: orangePulse;
-	    -webkit-animation-duration: 2s;
-	    -webkit-animation-iteration-count: infinite;
+		left:50px;
+		top:-20px;
 	    -moz-animation-name: orangePulse;
 	    -moz-animation-duration: 2s;
 	    -moz-animation-iteration-count: infinite;
 	}
 
+	#create{
+		position: relative;
+		top:17px;
+		left:65px;
 
-	@-webkit-keyframes sunPulse {
-		from { background-color: #FFB515; -webkit-box-shadow: 0 0 3px #777; }
-		50% { background-color: #FC9200; -webkit-box-shadow: 0 0 18px #ff9718; }
-		to { background-color: #FFB515; -webkit-box-shadow: 0 0 3px #777; }
 	}
+
 
 	@-moz-keyframes sunPulse {
 		from { box-shadow: 0 0 3px #777; opacity:0.7; -moz-animation-timing-function:  ease-in;}
@@ -694,7 +785,7 @@
 		font-size:14px;
 		position:absolute;
 		top:650px;
-		left:550px;
+		left:530px;
 	}
 
 	#bottom_bar a {
@@ -807,8 +898,6 @@
 		top:150px;
 		width:980px;
 		padding: 10px;
-		background-color:#fff;
-		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
 		position: relative;
 		moz-border-radius: 20px;
 	    webkit-border-radius: 20px;
@@ -836,8 +925,6 @@
 	
 /* The Live Feed in the middle of the page */
 	#live_feed {
-		background-color:#FFF;
-		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
 		margin:auto;
 		overflow: auto;
 		padding:10px;
@@ -1158,8 +1245,8 @@
 
 	#callToAction{
 		position: relative;
-		left:900px;
-		top:-40px;
+		left:830px;
+		top:-80px;
 
 	}
 
@@ -1428,9 +1515,16 @@
 	}
 
 	#feed_follower_cont{
-		position: absolute;
-		top:35px;
-		left:240px;
+		position: relative;
+		top:10px;
+		left:60px;
+	}
+
+
+	#share_btns{
+		position: relative;
+		top:-20px;
+		left:220px;
 	}
 	
 	#follower_count {
@@ -1464,8 +1558,8 @@
 	#likes_comments{
 		position: relative;
 		height:15px;
-		top:-50px;
-		left:380px;
+		top:5px;
+		left:450px;
 	}
 	
 	#number_likes{
@@ -1543,12 +1637,12 @@
 	}
 
 	.like_link_box{
-		background:#e8e8e8;
+		background-color:rgba(100,100,100,0.5);
 		padding:10px;
 		position:absolute;
-		top:10px;
-		left:200px;
-		width:220px;
+		top:20px;
+		left:250px;
+		width:210px;
 		height:80px;
 		 -moz-border-radius: 10px; 
  		-webkit-border-radius: 10px; 
@@ -1569,7 +1663,7 @@
 		left: 0;
 		width: 30px;
 		height: 30px; 
-		border: 10px solid #ACACAC;
+		border: 10px solid #555;
 		-moz-border-radius: 25px 25px 0 25px; 
 		border-radius: 25px 25px 0 25px;
 		-webkit-transform: rotate(-45deg);
@@ -2243,14 +2337,14 @@ a{
 }
 
 /* +++++++++++++++++++++++++++ Live Feed +++++++++++++++++++++++++++ */
-	.meme{
-		border-bottom: 1px solid #cccccc;		
+	.meme{		
 		height:auto;
 		margin:auto;
 		position: relative;
-		padding: 10px 0px 10px 10px;
+		padding: 50px;
 		top:0px;
 		width:800px;
+		left:-40px;
 		z-index:5;
 
 	}
@@ -2258,13 +2352,22 @@ a{
 	.meme_image_cont{
 		position:relative;
 		width:480px;
-		margin:10px;
+		padding:10px;
+		background-color:#F0F0F0;
+		border: 1px solid #ACACA5;
+		box-shadow: 0 0 10px #ACACAC;
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+		-moz-border-radius: 10px; 
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
 	}
 
 	#meme_pic{
 		cursor: pointer;
 		margin:auto;
 		position:relative;
+		left:10px;
+		top:5px;
 		width:460px;
 		-moz-border-radius: 5px; 
 		-webkit-border-radius: 5px;
@@ -2272,16 +2375,36 @@ a{
 	}
 
 	.feed_profile_pic{
-		width: 50px;
-		height: 50px;  
-		-moz-border-radius: 25px; 
-		-webkit-border-radius: 25px;
-		border-radius: 25px;
-		border: 2px solid #FF9718;
-		box-shadow: 0 0 15px 0 #FC5223;
-		position: relative;
-		left:-25px;
-		top:-25px;
+		width: 54px;
+		height: 54px;  
+		-moz-border-radius: 27px; 
+		-webkit-border-radius: 27px;
+		border-radius: 27px;
+		border: 3px solid #ff9718;
+		box-shadow: 0 0 15px 0 #ff9718;
+		position: absolute;
+		left:0px;
+		top:0px;
+		z-index: 200;
+		-webkit-animation-name: feedPulse;
+	    -webkit-animation-duration: 3s;
+	    -webkit-animation-iteration-count: infinite;
+	    -moz-animation-name: feedPulse;
+	    -moz-animation-duration: 3s;
+	    -moz-animation-iteration-count: infinite;
+	}
+
+
+	@-webkit-keyframes feedPulse {
+		from {  -webkit-box-shadow: 0 0 3px #FFF700; }
+		50% {  -webkit-box-shadow: 0 0 18px #ff9718; }
+		to {  -webkit-box-shadow: 0 0 3px #FFF700; }
+	}
+
+	@-moz-keyframes feedPulse {
+		from { box-shadow: 0 0 3px #FFF700; opacity:0.7; -moz-animation-timing-function:  ease-in;}
+		50% { box-shadow: 0 0 18px #ff9718; opacity:1.0; -moz-animation-timing-function: ease-out;}
+		to { box-shadow: 0 0 3px #FFF700; opacity:0.7; -moz-animation-timing-function:  ease-in;}
 	}
 
 	#meme_stats{
@@ -2289,7 +2412,33 @@ a{
 		width:360px;
 		margin:10px;
 		top:10px;
-		left:500px;
+		z-index: 200;
+	}
+
+	#talkbubble { 
+		width: 360px; 
+		height: 240px; 
+		position: absolute; 
+		top:100px;
+		left:570px;		
+		background-color:#E8E8E8;
+		border: 1px solid #ACACA5;
+		box-shadow: 0 0 10px #ACACAC;
+		-moz-border-radius: 10px; 
+		-webkit-border-radius: 10px; 
+		border-radius: 10px;
+	} 
+
+	#talkbubble:before { 
+		content:""; 
+		position: absolute; 
+		right: 100%; 
+		top: 210px; 
+		width: 0; 
+		height: 0; 
+		border-top: 13px solid transparent;
+		border-right: 26px solid #ACACA5; 
+		border-bottom: 13px solid transparent; 
 	}
 
 	#meme_title {
@@ -2313,6 +2462,7 @@ a{
 		-webkit-border-radius: 6px;
 		border-radius: 6px;
 		position: relative;
+		left:75px;
 	}
 
 	.info_profile_pic:hover{
@@ -2323,7 +2473,7 @@ a{
 		font-size:14px;	
 		position: relative;
 		top:-40px;
-		left:80px;	
+		left:150px;	
 	}
 
 	#meme_info a{
@@ -2634,6 +2784,7 @@ a{
 		width:300px;
 		text-align:center;
 	}
+
 	
 	#tag {
 		width:200px;

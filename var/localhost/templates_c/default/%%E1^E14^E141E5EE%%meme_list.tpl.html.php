@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-17 19:39:35
+<?php /* Smarty version 2.6.7, created on 2012-08-17 22:49:43
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <!--
@@ -34,6 +34,7 @@
 			var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
 			var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
 			
+			/*
 			for(var i = 1; i < page_row + 1; i++) {
 				$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" style="z-index:999999"; onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
 			 }
@@ -42,6 +43,7 @@
 			
 			$("#page"+1).css({\'font-weight\' : \'bolder\' });
 			backup_page_no = 1;
+			*/
 			
 		// Self-describing for search
 	    var describedClass = \'self-described\';
@@ -53,9 +55,40 @@
 				this.value=this.title;
 				$(this).css("color","grey");
 			 }
-		 }).blur();	 	
+		 }).blur();	
+
+		$(window).scroll(function(){
+			if ($(window).scrollTop() == $(document).height() - $(window).height()){
+				var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
+				var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
+
+				if ($("#last_id_meme_cur_page").val() != "") {
+					if ($("#chk_me").val()!=1) {
+						backup_last_id_meme = $("#last_id_meme_cur_page").val();
+						loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
+						$("#last_id_meme_cur_page").val("");
+					 }
+				 }
+			 }
+	 	 });
+		
+		function loadmorememe(cat,last_id,srch_uname,srch_title){
+			$("#loadingmeme_img").show();
+			var ext = "';  echo $_REQUEST['ext'];  echo '";
+			var url = "http://localhost/meme/meme_list";
+			
+			var cat =\'main_feed\';
+			$.post(url,{cat:cat,ce:0,last_id:last_id,muname:srch_uname,mtitle:srch_title,ext:ext }, function(res){
+				$("#loadingmeme_img").hide();
+				if(res!=""){
+					$("#all_memes").append(res);
+				 }
+			 });
+		 }
+		
      });
     
+	/*
 	function paging_func(page_no){		
 		global_page_no = page_no;
 		if ($("#last_id_meme_cur_page").val() != "") {
@@ -127,6 +160,7 @@
 		
 		backup_page_no = page_no;
 	 }
+	*/
     
     function get_all_flag_details(timer){
 		var last_id_page ;
@@ -243,18 +277,6 @@
 		//$("#muname").autocomplete(\'http://localhost/index.php?page=meme&choice=auto_comp&ce=0\',{
 		//    delay: 500
 		// });
-		    document.getElementById(\'video_link\').onclick = function() {
-		    link = document.getElementById(\'video_link\');
-		    divTest = document.getElementById(\'video\');
-		    if (divTest.style.display === "none") {
-		        divTest.style.display = \'block\';
-		        link.style.display = \'none\';
-		     }
-		    else {
-		        divTest.style.display = "none";
-
-		     }
-		 }
 		$("#mtitle").autocomplete(\'http://localhost/index.php?page=meme&choice=auto_comp&flg=1&ce=0\',{
 		    delay: 500
 		 });
@@ -302,15 +324,6 @@ unset($_smarty_tpl_vars);
     <?php endif; ?>
 </div>
 
-
-<?php if (! $this->_tpl_vars['sm']['is_search']): ?>
-<div id="page_boop" style="text-align:center">
-	<span id="pageprev"></span>
-	<span id="pagingcount" ></span>
-	<span id="pagenext"></span>
-</div>
-<?php endif; ?>
-
 <div id="loadingmeme_img" style="margin-left: 41%; display:none;">
     <img src="http://localhost/templates/images/loading.gif" />
 </div>
@@ -343,20 +356,11 @@ unset($_smarty_tpl_vars);
 				<a href="http://localhost/" title="Memeja!"><img src="http://localhost/templates/images/intro_logo.gif"style="width:228px;height:70px;"/></a>
 			</div>
 			<div id="headline">Share Experiences With the People You Care About</div>
-			<a id="video_link" class="play_btn" href="#">
-									<span></span>
-									<span><div id="play_triangle"></div></span>
-									<span>Why Memeja?</span>
-			</a>
-								
-			<div id="video" style="display:none;">
-				<iframe src="http://player.vimeo.com/video/47618336?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+			<div id="video">
+				<iframe src="http://player.vimeo.com/video/47618336?byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 			</div>
 		</div>
 		<div id="cta_button">
-			<div id="outer_sun"></div>
-			<div id="inner_sun_1"></div>
-			<div id="inner_sun_2"></div>
 			<div id="cta_login"class="fb-login-button" size="large" scope="
 		    	email,
 		    	publish_stream
@@ -364,7 +368,7 @@ unset($_smarty_tpl_vars);
 		    				    	">
 	        Connect with Facebook
 			</div>
-			<div id="cta_message">We Promise to NEVER Post Without Your Permission</div>
+			<div id="cta_message">We Promise To NEVER Post Without Your Permission</div>
 		</div>
 		<div id="bottom_bar">
 			<table><tr>

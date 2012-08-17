@@ -223,6 +223,7 @@
 					border-style:outset; border-width:2px; border-color:#6699FF;
 				{/if}
 			{/if}"/>
+			<div id="pic_sun">
 			<!--The User's Picture-->
 				{if $sm.uinfo[$x.id_user].fb_pic_square}
 					<img src="{$sm.uinfo[$x.id_user].fb_pic_square}" class="feed_profile_pic" >
@@ -232,6 +233,7 @@
 				{if $sm.uinfo[$x.id_user].gender=='M'}
 					<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_male.png" class="feed_profile_pic"/>{else}<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_female.png" class="feed_profile_pic"/>{/if}
 				{/if}
+			</div>
 			</a>
 
 			<div id="likes_comments">
@@ -252,7 +254,7 @@
 						<div id="like_heart">
 						</div>
 					</td>
-					<td>
+					<!--<td>
 						<div id="number_comments">
 							{if $x.tot_reply != 0}{$x.tot_reply}{else}0{/if}
 						</div>
@@ -260,7 +262,7 @@
 					<td>
 						<div id="commentbox">
 						</div>
-					</td>
+					</td>-->
 				</tr></table>
 			</div>
 
@@ -288,52 +290,48 @@
 				</td>
 			</tr></table>
 			</div>
+
 		</div>
+		<div id="talkbubble">
+			<div id ="meme_stats">
 
-		<div id ="meme_stats">
-
-			<!-- The Meme Info section -->
-			<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage{$x.id_meme}" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}"><div id="meme_title">{$x.title|capitalize}</div></a>
-				<a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">
-				{if $sm.uinfo[$x.id_user].fb_pic_square}
-					<img src="{$sm.uinfo[$x.id_user].fb_pic_square}" class="info_profile_pic" >
-				{elseif $sm.uinfo[$x.id_user].avatar}
-					<img src="##LBL_SITE_URL##image/thumb/avatar/{$sm.uinfo[$x.id_user].avatar}" class="info_profile_pic"/>
-				{else}
-				{if $sm.uinfo[$x.id_user].gender=='M'}
-					<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_male.png" class="info_profile_pic"/>{else}<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_female.png" class="info_profile_pic"/>{/if}
-				{/if}
-				
-
-			<div id="meme_info">  by
-				<span id="user{$sm.uinfo[$x.id_user].id_user}" class="info_name"><a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">{$sm.uinfo[$x.id_user].username}</a></span>		
-			</div>
-				</a>
-
-			<div id="feed_follower_cont">
-				<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if}&nbsp followers</div>
-				{if $smarty.session.following == 'y'}
-					<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow');">Follow &nbsp --</a></span>
-				{elseif $smarty.session.following == 'n'}
-					<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
-				{/if}
-			</div>
-
-			<div id="share_btns">
-				<table><tr>
-					{if $smarty.session.id_user == $x.id_user}
-					<td><a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /></a></td>
+				<!-- The Meme Info section -->
+				<a class="meme_gallery" data-fancybox-group="thumb" id="memeimage{$x.id_meme}" href="##LBL_SITE_URL##image/orig/meme/{$x.image}" title="{$x.title|capitalize}"><div id="meme_title">{$x.title|capitalize}</div></a>
+					<a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">
+					{if $sm.uinfo[$x.id_user].fb_pic_square}
+						<img src="{$sm.uinfo[$x.id_user].fb_pic_square}" class="info_profile_pic" >
+					{elseif $sm.uinfo[$x.id_user].avatar}
+						<img src="##LBL_SITE_URL##image/thumb/avatar/{$sm.uinfo[$x.id_user].avatar}" class="info_profile_pic"/>
+					{else}
+					{if $sm.uinfo[$x.id_user].gender=='M'}
+						<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_male.png" class="info_profile_pic"/>{else}<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_female.png" class="info_profile_pic"/>{/if}
 					{/if}
-					<td><a href="http://twitter.com/share" class="twitter-share-button" data-url="memeja.com/?id=FirstName-LastName&meme={$x.image}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje">Tweet</a></td> 
-					<td><div class="fb_btn"><fb:like href="memeja.com/?id=FirstName-LastName&meme={$x.image}" send="false" width="70" show_faces="true" font="arial" layout="button_count"></fb:like> </div></td>
-					</tr></table>
-			</div>
-			<div id="comments">
-				{if $x.can_all_comment || $smarty.session.id_user==$x.id_user}
-					<a href="javascript:void(0);" onclick="get_all_replies('{$x.id_meme}');">Comments</a>
-				{/if}
-			</div>
+					
 
+				<div id="meme_info">  by
+					<span id="user{$sm.uinfo[$x.id_user].id_user}" class="info_name"><a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">{$sm.uinfo[$x.id_user].username}</a></span>		
+				</div>
+					</a>
+
+				<div id="feed_follower_cont">
+					<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if}&nbsp followers</div>
+					{if $smarty.session.following == 'y'}
+						<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow');">Follow &nbsp --</a></span>
+					{elseif $smarty.session.following == 'n'}
+						<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
+					{/if}
+				</div>
+
+				<div id="share_btns">
+					<table><tr>
+						{if $smarty.session.id_user == $x.id_user}
+						<td><a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /></a></td>
+						{/if}
+						<td><a href="http://twitter.com/share" class="twitter-share-button" data-url="memeja.com/?id=FirstName-LastName&meme={$x.image}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje">Tweet</a></td> 
+						<td><div class="fb_btn"><fb:like href="memeja.com/?id=FirstName-LastName&meme={$x.image}" send="false" width="70" show_faces="true" font="arial" layout="button_count"></fb:like> </div></td>
+						</tr></table>
+				</div>
+			</div>
 		</div>
 			<!-- Reply System -->
 			<!--

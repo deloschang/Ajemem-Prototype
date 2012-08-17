@@ -277,18 +277,6 @@
 		//$("#muname").autocomplete('##LBL_SITE_URL##index.php?page=meme&choice=auto_comp&ce=0',{
 		//    delay: 500
 		//});
-		    document.getElementById('video_link').onclick = function() {
-		    link = document.getElementById('video_link');
-		    divTest = document.getElementById('video');
-		    if (divTest.style.display === "none") {
-		        divTest.style.display = 'block';
-		        link.style.display = 'none';
-		    }
-		    else {
-		        divTest.style.display = "none";
-
-		    }
-		}
 		$("#mtitle").autocomplete('##LBL_SITE_URL##index.php?page=meme&choice=auto_comp&flg=1&ce=0',{
 		    delay: 500
 		});
@@ -363,20 +351,11 @@
 				<a href="##LBL_SITE_URL##" title="Memeja!"><img src="##LBL_SITE_URL##templates/images/intro_logo.gif"style="width:228px;height:70px;"/></a>
 			</div>
 			<div id="headline">Share Experiences With the People You Care About</div>
-			<a id="video_link" class="play_btn" href="#">
-									<span></span>
-									<span><div id="play_triangle"></div></span>
-									<span>Why Memeja?</span>
-			</a>
-								
-			<div id="video" style="display:none;">
-				<iframe src="http://player.vimeo.com/video/47618336?title=0&amp;byline=0&amp;portrait=0&amp;autoplay=1" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+			<div id="video">
+				<iframe src="http://player.vimeo.com/video/47618336?byline=0&amp;portrait=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
 			</div>
 		</div>
 		<div id="cta_button">
-			<div id="outer_sun"></div>
-			<div id="inner_sun_1"></div>
-			<div id="inner_sun_2"></div>
 			<div id="cta_login"class="fb-login-button" size="large" scope="
 		    	email,
 		    	publish_stream
@@ -385,7 +364,7 @@
 		    	">
 	        Connect with Facebook
 			</div>
-			<div id="cta_message">We Promise to NEVER Post Without Your Permission</div>
+			<div id="cta_message">We Promise To NEVER Post Without Your Permission</div>
 		</div>
 		<div id="bottom_bar">
 			<table><tr>
