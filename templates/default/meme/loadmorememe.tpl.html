@@ -3,6 +3,7 @@
 {literal}
 <script type="text/javascript">	
 	var id = "{/literal}{$sm.last_idmeme}{literal}";	//lowest id
+	console.log('id='+id);
 	var new_ids = "{/literal}{$sm.id_memes}{literal}";
 
 	var single_id_array = new_ids.split(',');
@@ -24,6 +25,7 @@
 	    $("#last_id_meme_cur_page").val('');
 	    $("#chk_me").val("1");
 	}
+	
 
 	function common_fun_extended(id,color_code){
 	    $("#meme"+id).effect("highlight", {color:color_code}, 2600);
@@ -266,7 +268,7 @@
 			<div id="like_link_box{$x.id_meme}"class="like_link_box">
 				<table><tr>
 				<td>
-					<a href="#" id="remix_link">
+					<a href="/macromeme.html?meme={$x.id_meme}" id="remix_link">
 						<div id="remix_btn{$x.id_meme}" class="remix_btn" title="Remix It!">
 						</div>
 					</a>
@@ -327,8 +329,8 @@
 					</tr></table>
 			</div>
 			<div id="comments">
-				{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
-					<a href="javascript:void(0);" onclick="get_all_replies('{$x.id_meme}');">Hello</a>
+				{if $x.can_all_comment || $smarty.session.id_user==$x.id_user}
+					<a href="javascript:void(0);" onclick="get_all_replies('{$x.id_meme}');">Comments</a>
 				{/if}
 			</div>
 
@@ -382,7 +384,7 @@
 					</div>
 
 					<!-- Add Caption 
-									{if $x.can_all_comment ||in_array($smarty.session.id_user,$sm.uinfo[$x.id_user].friends) || $smarty.session.id_user==$x.id_user}
+									{if $x.can_all_comment || $smarty.session.id_user==$x.id_user}
 									&nbsp;<label id="capt{$x.id_meme}">{if $x.tot_caption != 0}{$x.tot_caption}{/if}</label> <a href="javascript:void(0)" onclick="get_captions('{$x.id_meme}');" >Add Caption</a>
 									{/if} -->
 
