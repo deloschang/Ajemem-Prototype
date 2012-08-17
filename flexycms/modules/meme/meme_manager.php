@@ -805,7 +805,7 @@ class meme_manager extends mod_manager {
 	    //check_session();	 
 	    global $link;
 		
-		$limit = 5; //pagination limit
+		$limit = 10; //pagination limit
 		
 	    $id_memes='';
 
@@ -859,13 +859,15 @@ class meme_manager extends mod_manager {
 	    ############ WHILE SCROLLING DOWN I.E LOADMORE  ########################
 
 	    
-
+		
 	    if($data['last_id']){
 			if($data['cat']=='main_feed'){
 
 				// Old Pati's Code, only paginates friends' memes
 				//$cond_jn = " is_live=1 ".$rand_con.$ext_cond." AND id_meme < ".$data['last_id'].$srch_cond." ORDER BY id_meme DESC LIMIT ".$limit;
 								
+				$cond_jn = " id_meme<".$data['last_id']." AND is_live=1  ORDER BY id_meme DESC LIMIT ".$limit;
+				/*
 				if ($data['page_no'] == -2){
 					$cond_jn = " is_live=1 AND id_meme < ".$data['last_id'].$srch_cond." ORDER BY id_meme DESC LIMIT ".$limit;
 				} elseif ($data['page_no'] == -1){
@@ -873,7 +875,7 @@ class meme_manager extends mod_manager {
 				} else {
 					$page_limit = (($data['page_no'] - 1) * $limit).",".$limit;
 					$cond_jn = " is_live=1 ORDER BY id_meme DESC LIMIT ".$page_limit;
-				}
+				}*/
 
 			} else {
 
@@ -900,9 +902,7 @@ class meme_manager extends mod_manager {
 
 								 );
 			}
-
 	    }
-
 
 
 ################ FIRST TIME  NORMAL PAGE LISTING  ###############
@@ -972,10 +972,12 @@ class meme_manager extends mod_manager {
 		$this->_output['icon_arr'] = 1;
 		$this->_output['title_arr'] = 1;
 		
-		// total memes count
+		// total memes count/
+		
 		$page_sql="SELECT COUNT(*) FROM ".TABLE_PREFIX."meme WHERE is_live=1";
 	    $page_res=mysqli_query($link,$page_sql);
 		$page_row = $page_res->fetch_row();
+		
 		
 		//print $row[0];
 		

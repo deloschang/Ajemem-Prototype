@@ -34,6 +34,7 @@
 			var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
 			var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
 			
+			/*
 			for(var i = 1; i < page_row + 1; i++) {
 				$('#pagingcount').append('<span id="page'+i+'"><a href="javascript:void(0);" style="z-index:999999"; onclick="paging_func('+i+');">'+i+'</a></span> ');
 			}
@@ -42,6 +43,7 @@
 			
 			$("#page"+1).css({'font-weight' : 'bolder'});
 			backup_page_no = 1;
+			*/
 			
 		// Self-describing for search
 	    var describedClass = 'self-described';
@@ -53,9 +55,40 @@
 				this.value=this.title;
 				$(this).css("color","grey");
 			}
-		}).blur();	 	
+		}).blur();	
+
+		$(window).scroll(function(){
+			if ($(window).scrollTop() == $(document).height() - $(window).height()){
+				var srch_uname = "{/literal}{$smarty.request.muname}{literal}";
+				var srch_title = "{/literal}{$smarty.request.mtitle}{literal}";
+
+				if ($("#last_id_meme_cur_page").val() != "") {
+					if ($("#chk_me").val()!=1) {
+						backup_last_id_meme = $("#last_id_meme_cur_page").val();
+						loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
+						$("#last_id_meme_cur_page").val("");
+					}
+				}
+			}
+	 	});
+		
+		function loadmorememe(cat,last_id,srch_uname,srch_title){
+			$("#loadingmeme_img").show();
+			var ext = "{/literal}{$smarty.request.ext}{literal}";
+			var url = "##LBL_SITE_URL##meme/meme_list";
+			
+			var cat ='main_feed';
+			$.post(url,{cat:cat,ce:0,last_id:last_id,muname:srch_uname,mtitle:srch_title,ext:ext}, function(res){
+				$("#loadingmeme_img").hide();
+				if(res!=""){
+					$("#all_memes").append(res);
+				}
+			});
+		}
+		
     });
     
+	/*
 	function paging_func(page_no){		
 		global_page_no = page_no;
 		if ($("#last_id_meme_cur_page").val() != "") {
@@ -127,6 +160,7 @@
 		
 		backup_page_no = page_no;
 	}
+	*/
     
     function get_all_flag_details(timer){
 		var last_id_page ;
@@ -284,15 +318,6 @@
 		OMG, you've reached the edge of Memeja!
     {/if}
 </div>
-
-
-{if !$sm.is_search}
-<div id="page_boop" style="text-align:center">
-	<span id="pageprev"></span>
-	<span id="pagingcount" ></span>
-	<span id="pagenext"></span>
-</div>
-{/if}
 
 <div id="loadingmeme_img" style="margin-left: 41%; display:none;">
     <img src="##LBL_SITE_URL##templates/images/loading.gif" />
