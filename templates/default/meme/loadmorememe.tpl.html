@@ -394,11 +394,12 @@
     </script>
 {literal}
  	<style type="text/css">
- 		{if substr_count($x.honour_id_user, $smarty.session.id_user)}
+ 		{/literal}{if substr_count($x.honour_id_user,$smarty.session.id_user)}{literal}
  		.big_heart:before, .big_heart:after { 
 			background:red;
 		}
-		{/if}
+		{/literal}{/if}{literal}
+
  		#like_link_box{/literal}{$x.id_meme}{literal} {
  			display:none;
  		}

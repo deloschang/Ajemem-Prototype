@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-17 00:20:41
+<?php /* Smarty version 2.6.7, created on 2012-08-17 03:11:03
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 198, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 17/08/2012 00:20:41 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 17/08/2012 03:11:03 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
@@ -453,11 +453,12 @@ if ($this->_foreach['cur_meme']['total'] > 0):
     </script>
 <?php echo '
  	<style type="text/css">
- 		{if substr_count($x.honour_id_user, $smarty.session.id_user) }
+ 		';  if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )):  echo '
  		.big_heart:before, .big_heart:after { 
 			background:red;
 		 }
-		{/if }
+		';  endif;  echo '
+
  		#like_link_box';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
  			display:none;
  		 }
