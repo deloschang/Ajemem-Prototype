@@ -1,6 +1,7 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-17 19:39:35
+<?php /* Smarty version 2.6.7, created on 2012-08-17 23:32:18
          compiled from meme/meme_list.tpl.html */ ?>
-<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
+<?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
+<?php echo '
 <!--
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>-->
 <script type="text/javascript">
@@ -34,6 +35,7 @@
 			var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
 			var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
 			
+			/*
 			for(var i = 1; i < page_row + 1; i++) {
 				$(\'#pagingcount\').append(\'<span id="page\'+i+\'"><a href="javascript:void(0);" style="z-index:999999"; onclick="paging_func(\'+i+\');">\'+i+\'</a></span> \');
 			 }
@@ -42,6 +44,7 @@
 			
 			$("#page"+1).css({\'font-weight\' : \'bolder\' });
 			backup_page_no = 1;
+			*/
 			
 		// Self-describing for search
 	    var describedClass = \'self-described\';
@@ -53,9 +56,40 @@
 				this.value=this.title;
 				$(this).css("color","grey");
 			 }
-		 }).blur();	 	
+		 }).blur();	
+
+		$(window).scroll(function(){
+			if ($(window).scrollTop() == $(document).height() - $(window).height()){
+				var srch_uname = "';  echo $_REQUEST['muname'];  echo '";
+				var srch_title = "';  echo $_REQUEST['mtitle'];  echo '";
+
+				if ($("#last_id_meme_cur_page").val() != "") {
+					if ($("#chk_me").val()!=1) {
+						backup_last_id_meme = $("#last_id_meme_cur_page").val();
+						loadmorememe(cat,backup_last_id_meme,srch_uname,srch_title);
+						$("#last_id_meme_cur_page").val("");
+					 }
+				 }
+			 }
+	 	 });
+		
+		function loadmorememe(cat,last_id,srch_uname,srch_title){
+			$("#loadingmeme_img").show();
+			var ext = "';  echo $_REQUEST['ext'];  echo '";
+			var url = "http://localhost/meme/meme_list";
+			
+			var cat =\'main_feed\';
+			$.post(url,{cat:cat,ce:0,last_id:last_id,muname:srch_uname,mtitle:srch_title,ext:ext }, function(res){
+				$("#loadingmeme_img").hide();
+				if(res!=""){
+					$("#all_memes").append(res);
+				 }
+			 });
+		 }
+		
      });
     
+	/*
 	function paging_func(page_no){		
 		global_page_no = page_no;
 		if ($("#last_id_meme_cur_page").val() != "") {
@@ -127,6 +161,7 @@
 		
 		backup_page_no = page_no;
 	 }
+	*/
     
     function get_all_flag_details(timer){
 		var last_id_page ;
@@ -302,15 +337,6 @@ unset($_smarty_tpl_vars);
     <?php endif; ?>
 </div>
 
-
-<?php if (! $this->_tpl_vars['sm']['is_search']): ?>
-<div id="page_boop" style="text-align:center">
-	<span id="pageprev"></span>
-	<span id="pagingcount" ></span>
-	<span id="pagenext"></span>
-</div>
-<?php endif; ?>
-
 <div id="loadingmeme_img" style="margin-left: 41%; display:none;">
     <img src="http://localhost/templates/images/loading.gif" />
 </div>
@@ -373,4 +399,4 @@ unset($_smarty_tpl_vars);
 			<td><div id="privacy_policy"><a href="/privacypolicy.html">Privacy  </a></div></td>
 			</tr></table>
 		</div>
-	<?php endif; ?>
+	<?php endif; ?>
