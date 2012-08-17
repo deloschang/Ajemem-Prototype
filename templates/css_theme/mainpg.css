@@ -427,6 +427,7 @@
 	#video_container{
 		position:relative;
 		z-index: 100;
+		width:500px;
 		left:90px;
 		top:175px;
 	}
