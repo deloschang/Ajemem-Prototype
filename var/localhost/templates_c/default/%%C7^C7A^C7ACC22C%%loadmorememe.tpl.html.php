@@ -1,22 +1,10 @@
-<<<<<<< HEAD
-<?php /* Smarty version 2.6.7, created on 2012-08-18 03:32:18
+<?php /* Smarty version 2.6.7, created on 2012-08-18 03:51:34
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 244, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 243, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 03:32:18 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 03:51:34 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
-=======
-<?php /* Smarty version 2.6.7, created on 2012-08-18 05:20:43
-         compiled from meme/loadmorememe.tpl.html */ ?>
-<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 225, false),)), $this); ?>
-
-<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 05:20:42 --> 
- <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
-<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
-<?php echo '
->>>>>>> cdf1400c3790dfadfec74792901603ce273e63aa
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
 	console.log(\'id=\'+id);

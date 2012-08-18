@@ -988,7 +988,6 @@
 /* The Live Feed in the middle of the page */
 	#live_feed {
 		margin:auto;
-		overflow: auto;
 		padding:10px;
 		position:relative;
 		width:980px;
@@ -1043,7 +1042,6 @@
 	}
 	
 	#all_memes{
-		overflow: auto;
 		position:relative;
 		top:-40px;
 		moz-border-radius: 20px;
@@ -1305,11 +1303,19 @@
 		border-top: 14px solid #FFF;
 	}
 
+	#user_menu:hover .nav_menu{
+		display: inline;
+	}
+
 	#callToAction{
 		position: relative;
 		left:830px;
 		top:-80px;
 
+	}
+
+	#callToAction:hover .create_menu{
+		display: inline;
 	}
 
 	.create_menu{

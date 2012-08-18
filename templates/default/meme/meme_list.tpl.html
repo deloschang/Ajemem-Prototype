@@ -289,17 +289,18 @@
 <input type="hidden" name="chk_me" id="chk_me" value=''/>
 <input type="hidden" name="last_id_meme" id="last_id_meme" value=''/>
 
-{if $smarty.session.id_user || $smarty.session.profile}
+{if $smarty.session.id_user}
 <div>
-
-		<div id="world_feed" style="position:absolute; top:100px; left:0">
-				<a href="javascript:void(0);" onclick="diff_feed(0);">Latest</a>
-		</div>
-		
-		<div id="friends_feed" class="feed_buttons" style="position:absolute; top:0;left:0;">
-				<a href="javascript:void(0);" onclick="diff_feed(1);">Following</a>
-		</div>
+<div id="world_feed">
+<a href="javascript:void(0);" onclick="diff_feed(0);" class="large green button">Latest</a>
 </div>
+
+<div id="friends_feed">
+<a href="javascript:void(0);" onclick="diff_feed(1);" class="large green button">Following</a>
+</div>
+</div>
+
+{/if}
 
 
 
@@ -318,7 +319,6 @@ OMG, you've reached the edge of Memeja!
     <img src="##LBL_SITE_URL##templates/images/loading.gif" />
 </div>
 
-{/if}
 
 {if !$smarty.session.id_user && !$smarty.session.profile}
 
