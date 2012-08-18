@@ -335,7 +335,7 @@ $(document).ready(function() {
 				</a>
 
                         <div id="feed_follower_cont">
-                                <div id="follower_count{$x.id_user}">{$sm.uinfo[$x.id_user].follower_num}&nbsp followers</div>
+                                <div id="follower_count{$x.id_user}" class="follower_count">{$sm.uinfo[$x.id_user].follower_num}&nbsp followers</div>
                         {if $x.id_user != $smarty.session.id_user}
                                 {if $sm.ufollow[$x.id_user] == 1}
                                 <span id="follow_me{$x.id_user}"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_feed_user('unfollow', {$x.id_user},{$sm.uinfo[$x.id_user].follower_num});">Follow &nbsp --</a></span>

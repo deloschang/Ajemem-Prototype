@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-18 04:38:55
+<?php /* Smarty version 2.6.7, created on 2012-08-18 04:46:10
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 243, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 04:38:55 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 04:46:10 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
@@ -372,7 +372,7 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 
                         <div id="feed_follower_cont">
                                 <div id="follower_count<?php echo $this->_tpl_vars['x']['id_user']; ?>
-"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['follower_num']; ?>
+" class="follower_count"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['follower_num']; ?>
 &nbsp followers</div>
                         <?php if ($this->_tpl_vars['x']['id_user'] != $_SESSION['id_user']): ?>
                                 <?php if ($this->_tpl_vars['sm']['ufollow'][$this->_tpl_vars['x']['id_user']] == 1): ?>
