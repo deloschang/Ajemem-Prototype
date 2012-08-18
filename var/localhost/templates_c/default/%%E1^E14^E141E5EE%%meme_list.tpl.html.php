@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-18 04:33:07
+<?php /* Smarty version 2.6.7, created on 2012-08-18 04:38:55
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <!--
@@ -260,14 +260,14 @@
 					if (ext == 0){
 						$(\'#all_memes\').html(res);
 					 } else {
-						$(\'#friend_memes\').html(res);
+						$(\'#all_memes\').html(res);	//friends feed
 					 }
-				 }
+				 }/*
 				if (ext == 1){
 					$(\'#page_boop\').hide();
 				 } else {
 					$(\'#page_boop\').show();
-				 }
+				 }*/
 			 });
 	 }
 	
@@ -292,15 +292,14 @@
 
 <?php if ($_SESSION['id_user'] || $_SESSION['profile']): ?>
 <div>
-<div id="world_feed">
-<a href="javascript:void(0);" onclick="diff_feed(0);" class="large red button">World Feed</a>
-</div>
+		<div id="world_feed" class="large green button">
+				<a href="javascript:void(0);" onclick="diff_feed(0);">Latest</a>
+		</div>
+		
+		<div id="friends_feed" class="large green button">
+				<a href="javascript:void(0);" onclick="diff_feed(1);">Following</a>
+		</div>
 
-<?php if ($_SESSION['id_user']): ?>
-<div id="friends_feed">
-<a href="javascript:void(0);" onclick="diff_feed(1);" class="large red button">Friends Feed</a>
-</div>
-<?php endif; ?>
 </div>
 
 
