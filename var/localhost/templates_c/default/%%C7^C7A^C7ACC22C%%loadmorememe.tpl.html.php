@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-18 04:14:40
+<?php /* Smarty version 2.6.7, created on 2012-08-18 04:24:52
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 224, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 225, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 04:14:39 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 04:24:51 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -101,24 +101,25 @@ $(document).ready(function() {
 
 	 });	
 
-	function follow_user(status, whotofollow) {		
+	function follow_user(status, whotofollow, follow_on_feed) {		
 		';  if ($_SESSION['profile_id']):  echo '
-		var profile_id = ';  echo $_SESSION['profile_id'];  echo ';
-                ';  else:  echo '
-                var profile_id = whotofollow;
-                ';  endif;  echo '
-
+			var profile_id = ';  echo $_SESSION['profile_id'];  echo ';
+		';  else:  echo '
+			var profile_id = whotofollow;
+        ';  endif;  echo '
                 
 		var url = "http://localhost/user/follow_user";
 
 		$.post(url, {ce:0, id:profile_id, status:status }, function(res){
 			if (status == \'follow\') {
+				follow_on_feed += 1;
 				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user(\\\'unfollow\\\');">Follow &nbsp --</a>\');
-				follow_count += 1;				
+				//follow_count += 1;				
 			 } else if (status == \'unfollow\') {
+				follow_on_feed -= 1;
 				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" class="large orangellow button "onclick="follow_user(\\\'follow\\\');">Follow &nbsp ++</a>\');
 				
-				follow_count -= 1;
+				//follow_count -= 1;
 			 }
 			
 			$(\'#follower_count\').html(follow_count+\' followers\');
@@ -344,24 +345,24 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 				
 
 			<div id="meme_info">  by
-				<span id="user<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['id_user']; ?>
+				<span id="user<?php echo $this->_tpl_vars['x']['id_user']; ?>
 " class="info_name"><a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
 "><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
 </a></span>		
 			</div>
 				</a>
 
-                                
-                
                         <div id="feed_follower_cont">
                                 <div id="follower_count"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['follower_num']; ?>
 &nbsp followers</div>
                         <?php if ($this->_tpl_vars['x']['id_user'] != $_SESSION['id_user']): ?>
                                 <?php if ($this->_tpl_vars['sm']['ufollow'][$this->_tpl_vars['x']['id_user']] == 1): ?>
                                 <span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow', <?php echo $this->_tpl_vars['x']['id_user']; ?>
+,<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['follower_num']; ?>
 );">Follow &nbsp --</a></span>
 				<?php else: ?>
                                 <span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow',<?php echo $this->_tpl_vars['x']['id_user']; ?>
+,<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['follower_num']; ?>
 );">Follow &nbsp ++</a></span>
                                 <?php endif; ?>
                         <?php endif; ?>

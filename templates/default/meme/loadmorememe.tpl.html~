@@ -95,8 +95,14 @@ $(document).ready(function() {
 
 	});	
 
-	function follow_user(status, whotofollow) {
+	function follow_user(status, whotofollow, follow_on_feed) {		
+		{/literal}{if $smarty.session.profile_id}{literal}
+		var profile_id = {/literal}{$smarty.session.profile_id}{literal};
+                {/literal}{else}{literal}
                 var profile_id = whotofollow;
+                {/literal}{/if}{literal}
+
+                
 		var url = "##LBL_SITE_URL##user/follow_user";
 
 		$.post(url, {ce:0, id:profile_id, status:status}, function(res){
@@ -304,19 +310,17 @@ $(document).ready(function() {
 				
 
 			<div id="meme_info">  by
-				<span id="user{$sm.uinfo[$x.id_user].id_user}" class="info_name"><a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">{$sm.uinfo[$x.id_user].username}</a></span>		
+				<span id="user{$x.id_user}" class="info_name"><a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">{$sm.uinfo[$x.id_user].username}</a></span>		
 			</div>
 				</a>
 
-                                
-                
                         <div id="feed_follower_cont">
                                 <div id="follower_count">{$sm.uinfo[$x.id_user].follower_num}&nbsp followers</div>
                         {if $x.id_user != $smarty.session.id_user}
                                 {if $sm.ufollow[$x.id_user] == 1}
-                                <span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow', {$x.id_user});">Follow &nbsp --</a></span>
+                                <span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow', {$x.id_user},{$sm.uinfo[$x.id_user].follower_num});">Follow &nbsp --</a></span>
 				{else}
-                                <span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow',{$x.id_user});">Follow &nbsp ++</a></span>
+                                <span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow',{$x.id_user},{$sm.uinfo[$x.id_user].follower_num});">Follow &nbsp ++</a></span>
                                 {/if}
                         {/if}
                         </div>
