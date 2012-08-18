@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-18 01:29:58
+<?php /* Smarty version 2.6.7, created on 2012-08-18 03:41:23
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 222, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 01:29:57 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 03:41:23 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -355,10 +355,10 @@ if ($this->_foreach['cur_meme']['total'] > 0):
                                 <div id="follower_count"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['follower_num']; ?>
 &nbsp followers</div>
                         <?php if ($this->_tpl_vars['x']['id_user'] != $_SESSION['id_user']): ?>
-                                <?php if ($_SESSION['following'] == 'y'): ?>
+                                <?php if ($this->_tpl_vars['sm']['ufollow'][$this->_tpl_vars['x']['id_user']] == 1): ?>
                                 <span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow', <?php echo $this->_tpl_vars['x']['id_user']; ?>
 );">Follow &nbsp --</a></span>
-				<?php elseif ($_SESSION['following'] == 'n'): ?>
+				<?php else: ?>
 					<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
                                 <?php endif; ?>
                         <?php endif; ?>
@@ -368,14 +368,16 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 			<div id="share_btns">
 				<table><tr>
 					<?php if ($_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
-					<td><a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /></a></td>
-					<?php endif; ?>
+					        <td><a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /></a></td>
+                                        <?php endif; ?>
+
 					<td><a href="http://twitter.com/share" class="twitter-share-button" data-url="memeja.com/?id=FirstName-LastName&meme=<?php echo $this->_tpl_vars['x']['image']; ?>
 " data-text="<?php echo ((is_array($_tmp=$this->_tpl_vars['x']['title'])) ? $this->_run_mod_handler('capitalize', true, $_tmp) : smarty_modifier_capitalize($_tmp)); ?>
 " data-count="none" data-via="memeje">Tweet</a></td> 
 					<td><div class="fb_btn"><fb:like href="memeja.com/?id=FirstName-LastName&meme=<?php echo $this->_tpl_vars['x']['image']; ?>
 " send="false" width="70" show_faces="true" font="arial" layout="button_count"></fb:like> </div></td>
-					</tr></table>
+                                </tr>
+                                </table>
 			</div>
 			<div id="comments">
 				<?php if ($this->_tpl_vars['x']['can_all_comment'] || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>

@@ -984,6 +984,7 @@ class meme_manager extends mod_manager {
 	    $id_memes = trim($id_memes,',');
 
 	    $user_info = $this->get_userinfo();
+            $user_follow = $this->get_userfollowing();
 
 	    $hst_rtd_cap = $this->get_hst_rtd_caption($id_memes);
 
@@ -1007,7 +1008,8 @@ class meme_manager extends mod_manager {
 
 	    $this->_output['last_id']=$data['last_id'];
 
-	    $this->_output['uinfo']=$user_info;
+            $this->_output['uinfo']=$user_info;
+            $this->_output['ufollow'] = $user_follow;
 
 	    $this->_output['cat']=$data['cat'];
 
@@ -1592,11 +1594,12 @@ class meme_manager extends mod_manager {
 
 	    while($rec = mysqli_fetch_assoc($res)){
 
-		$user_info[$rec['id_user']] = $rec;
+                    $user_info[$rec['id_user']] = $rec;
 
 		//$user_info[$rec['id_user']]['friends'] = explode(",",$rec['memeje_friends']);
 
 	    }
+
 
 	    mysqli_free_result($res);
 
@@ -1605,6 +1608,30 @@ class meme_manager extends mod_manager {
 	    return $user_info;
 
 	}
+
+        function get_userfollowing($id_user=""){
+                global $link;
+
+                $cond = ($id_user!='')?" id_user IN(".$id_users.")":" 1 ";
+                
+                $sql = "SELECT following FROM memeje__friends WHERE id_user=".$_SESSION['id_user'];
+
+                $res = mysqli_query($link,$sql);
+
+                // if current user is following, add a 1. Used for live feed indexing
+                if($res){
+                        while ($rec = mysqli_fetch_assoc($res)){
+                                $user_follow[$rec['following']] = 1;    // 1 for yes am following
+                        }
+                } else{
+exit('no response');
+                }
+
+                mysqli_free_result($res);
+
+	        mysqli_next_result($link);
+                return $user_follow;
+        }
 
 	
 

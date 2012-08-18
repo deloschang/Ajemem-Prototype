@@ -317,9 +317,9 @@ $(document).ready(function() {
                         <div id="feed_follower_cont">
                                 <div id="follower_count">{$sm.uinfo[$x.id_user].follower_num}&nbsp followers</div>
                         {if $x.id_user != $smarty.session.id_user}
-                                {if $smarty.session.following == 'y'}
+                                {if $sm.ufollow[$x.id_user] == 1}
                                 <span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow', {$x.id_user});">Follow &nbsp --</a></span>
-				{elseif $smarty.session.following == 'n'}
+				{else}
 					<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
                                 {/if}
                         {/if}
@@ -329,11 +329,13 @@ $(document).ready(function() {
 			<div id="share_btns">
 				<table><tr>
 					{if $smarty.session.id_user == $x.id_user}
-					<td><a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /></a></td>
-					{/if}
+					        <td><a href="http://www.reddit.com/submit" onclick="window.location = 'http://www.reddit.com/submit?url=' + encodeURIComponent(window.location); return false"> <img src="http://www.reddit.com/static/spreddit6.gif" alt="submit to reddit" border="0" /></a></td>
+                                        {/if}
+
 					<td><a href="http://twitter.com/share" class="twitter-share-button" data-url="memeja.com/?id=FirstName-LastName&meme={$x.image}" data-text="{$x.title|capitalize}" data-count="none" data-via="memeje">Tweet</a></td> 
 					<td><div class="fb_btn"><fb:like href="memeja.com/?id=FirstName-LastName&meme={$x.image}" send="false" width="70" show_faces="true" font="arial" layout="button_count"></fb:like> </div></td>
-					</tr></table>
+                                </tr>
+                                </table>
 			</div>
 			<div id="comments">
 				{if $x.can_all_comment || $smarty.session.id_user==$x.id_user}
