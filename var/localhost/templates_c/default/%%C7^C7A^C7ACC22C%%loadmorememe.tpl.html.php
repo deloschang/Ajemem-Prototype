@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-18 03:41:23
+<?php /* Smarty version 2.6.7, created on 2012-08-18 04:14:40
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 222, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 224, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 03:41:23 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 04:14:39 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -104,9 +104,11 @@ $(document).ready(function() {
 	function follow_user(status, whotofollow) {		
 		';  if ($_SESSION['profile_id']):  echo '
 		var profile_id = ';  echo $_SESSION['profile_id'];  echo ';
+                ';  else:  echo '
+                var profile_id = whotofollow;
                 ';  endif;  echo '
 
-                var profile_id = whotofollow;
+                
 		var url = "http://localhost/user/follow_user";
 
 		$.post(url, {ce:0, id:profile_id, status:status }, function(res){
@@ -359,7 +361,8 @@ if ($this->_foreach['cur_meme']['total'] > 0):
                                 <span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow', <?php echo $this->_tpl_vars['x']['id_user']; ?>
 );">Follow &nbsp --</a></span>
 				<?php else: ?>
-					<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
+                                <span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow',<?php echo $this->_tpl_vars['x']['id_user']; ?>
+);">Follow &nbsp ++</a></span>
                                 <?php endif; ?>
                         <?php endif; ?>
                         </div>

@@ -95,11 +95,7 @@ $(document).ready(function() {
 
 	});	
 
-	function follow_user(status, whotofollow) {		
-		{/literal}{if $smarty.session.profile_id}{literal}
-		var profile_id = {/literal}{$smarty.session.profile_id}{literal};
-                {/literal}{/if}{literal}
-
+	function follow_user(status, whotofollow) {
                 var profile_id = whotofollow;
 		var url = "##LBL_SITE_URL##user/follow_user";
 
@@ -317,10 +313,10 @@ $(document).ready(function() {
                         <div id="feed_follower_cont">
                                 <div id="follower_count">{$sm.uinfo[$x.id_user].follower_num}&nbsp followers</div>
                         {if $x.id_user != $smarty.session.id_user}
-                                {if $smarty.session.following == 'y'}
+                                {if $sm.ufollow[$x.id_user] == 1}
                                 <span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow', {$x.id_user});">Follow &nbsp --</a></span>
-				{elseif $smarty.session.following == 'n'}
-					<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
+				{else}
+                                <span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow',{$x.id_user});">Follow &nbsp ++</a></span>
                                 {/if}
                         {/if}
                         </div>

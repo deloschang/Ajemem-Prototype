@@ -98,9 +98,11 @@ $(document).ready(function() {
 	function follow_user(status, whotofollow) {		
 		{/literal}{if $smarty.session.profile_id}{literal}
 		var profile_id = {/literal}{$smarty.session.profile_id}{literal};
+                {/literal}{else}{literal}
+                var profile_id = whotofollow;
                 {/literal}{/if}{literal}
 
-                var profile_id = whotofollow;
+                
 		var url = "##LBL_SITE_URL##user/follow_user";
 
 		$.post(url, {ce:0, id:profile_id, status:status}, function(res){
@@ -320,7 +322,7 @@ $(document).ready(function() {
                                 {if $sm.ufollow[$x.id_user] == 1}
                                 <span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow', {$x.id_user});">Follow &nbsp --</a></span>
 				{else}
-					<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
+                                <span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow',{$x.id_user});">Follow &nbsp ++</a></span>
                                 {/if}
                         {/if}
                         </div>
