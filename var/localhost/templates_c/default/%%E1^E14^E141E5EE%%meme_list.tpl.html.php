@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-18 05:20:07
+<?php /* Smarty version 2.6.7, created on 2012-08-18 06:30:26
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR')); ?>
 <?php echo '
@@ -263,12 +263,12 @@
 					 } else {
 						$(\'#all_memes\').html(res);	//friends feed
 					 }
-				 }
+				 }/*
 				if (ext == 1){
 					$(\'#page_boop\').hide();
 				 } else {
 					$(\'#page_boop\').show();
-				 }
+				 }*/
 			 });
 	 }
 	
