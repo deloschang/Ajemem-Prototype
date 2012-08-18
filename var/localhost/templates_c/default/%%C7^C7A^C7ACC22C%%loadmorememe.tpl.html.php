@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-18 04:24:52
+<?php /* Smarty version 2.6.7, created on 2012-08-18 04:38:50
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 225, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 228, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 04:24:51 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 04:38:50 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -109,20 +109,23 @@ $(document).ready(function() {
         ';  endif;  echo '
                 
 		var url = "http://localhost/user/follow_user";
+		console.log(follow_on_feed);
 
 		$.post(url, {ce:0, id:profile_id, status:status }, function(res){
 			if (status == \'follow\') {
+				console.log(\'inner reached\');
 				follow_on_feed += 1;
-				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user(\\\'unfollow\\\');">Follow &nbsp --</a>\');
+				$("#follow_me"+whotofollow).html(\'<a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user(\\\'unfollow\\\');">Follow &nbsp --</a>\');
 				//follow_count += 1;				
 			 } else if (status == \'unfollow\') {
 				follow_on_feed -= 1;
-				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" class="large orangellow button "onclick="follow_user(\\\'follow\\\');">Follow &nbsp ++</a>\');
+				$("#follow_me"+whotofollow).html(\'<a href="javascript:void(0);" id="follow_btn" class="large orangellow button "onclick="follow_user(\\\'follow\\\');">Follow &nbsp ++</a>\');
 				
 				//follow_count -= 1;
 			 }
 			
-			$(\'#follower_count\').html(follow_count+\' followers\');
+			console.log(\'outer reached\'+follow_on_feed);
+			$(\'#follower_count\'+whotofollow).html(follow_on_feed+\' followers\');
 		 });
 	 }
 	function live_feed (i) {		
@@ -353,15 +356,18 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 				</a>
 
                         <div id="feed_follower_cont">
-                                <div id="follower_count"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['follower_num']; ?>
+                                <div id="follower_count<?php echo $this->_tpl_vars['x']['id_user']; ?>
+"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['follower_num']; ?>
 &nbsp followers</div>
                         <?php if ($this->_tpl_vars['x']['id_user'] != $_SESSION['id_user']): ?>
                                 <?php if ($this->_tpl_vars['sm']['ufollow'][$this->_tpl_vars['x']['id_user']] == 1): ?>
-                                <span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow', <?php echo $this->_tpl_vars['x']['id_user']; ?>
+                                <span id="follow_me<?php echo $this->_tpl_vars['x']['id_user']; ?>
+"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow', <?php echo $this->_tpl_vars['x']['id_user']; ?>
 ,<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['follower_num']; ?>
 );">Follow &nbsp --</a></span>
 				<?php else: ?>
-                                <span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow',<?php echo $this->_tpl_vars['x']['id_user']; ?>
+                                <span id="follow_me<?php echo $this->_tpl_vars['x']['id_user']; ?>
+"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow',<?php echo $this->_tpl_vars['x']['id_user']; ?>
 ,<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['follower_num']; ?>
 );">Follow &nbsp ++</a></span>
                                 <?php endif; ?>
