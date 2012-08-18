@@ -1585,14 +1585,24 @@
 		text-shadow: 0px -1px 0px rgba(0,0,0,.3);
 	}
 
+	.follower_count {
+		position:relative;
+		left:15px;
+		font-size:16px;
+		margin-bottom: 8px;
+		color: #ACACAC;
+		text-shadow: 0px -1px 0px rgba(0,0,0,.3);
+	}
+
 	#follow_btn{
 		position:relative;
+		margin-top: 10px;
 	}
 
 	#my_memes{
 		position: relative;
 		left:20px;
-		top:20px;
+		top:10px;
 	}
 
 	#likes{
@@ -1870,6 +1880,16 @@
 	}
 
 	.meme_expanded{
+		width:460px;
+		height:auto;
+		-moz-border-radius: 5px; 
+		-webkit-border-radius: 5px; 
+		border-radius: 5px;
+		box-shadow: 0 0 10px 0 #5CC2FF;
+		border:1px solid #ACACAC;
+	}
+
+	.meme_expanded_a{
 		width:460px;
 		height:auto;
 		-moz-border-radius: 5px; 

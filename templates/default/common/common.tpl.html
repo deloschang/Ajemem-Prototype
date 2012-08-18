@@ -65,6 +65,14 @@ var chc = "{/literal}{$chc}{literal}";
 	var xp_wait = 8000;
 	
 	$(document).ready(function(){
+		$(".meme_expanded_a").mouseleave(function(){
+    		$(this).hide();
+    		$('.hide_me').hide();
+		});
+		$document.getElementsByClassName(".profile_gallery_meme").mouseover(function(){
+    		$(".meme_expanded_a").hide();
+    		$(".hide_me").hide();
+		});
 		$('.meme_gallery').fancybox({
 				padding: 0,
 				
@@ -367,10 +375,10 @@ var chc = "{/literal}{$chc}{literal}";
                                 {get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
                              </div>
                              <div id="profile_meme_expanded">
-                             	<div id="profile_meme_title">
+                             	<div id="profile_meme_title" class="hide_me">
 								{$smarty.session.profile_meme_title|capitalize}
 								</div>
-								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" class="meme_expanded"/>
+								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" class="meme_expanded_a"/>
                             </div>
                           </div>
 						{else}
@@ -602,10 +610,10 @@ var chc = "{/literal}{$chc}{literal}";
                                 {get_mod mod=manage mgr=manage choice=my_favorites gmod=1}
                              </div>
                              <div id="profile_meme_expanded">
-                             	<div id="profile_meme_title">
+                             	<div id="profile_meme_title" class="hide_me">
 								{$smarty.session.profile_meme_title|capitalize}
 								</div>
-								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" class="meme_expanded"/>
+								<img src="##LBL_SITE_URL##image/orig/meme/{$smarty.session.profile_meme_image}" class="meme_expanded_a"/>
                             </div>
                           </div>
 						{else}
