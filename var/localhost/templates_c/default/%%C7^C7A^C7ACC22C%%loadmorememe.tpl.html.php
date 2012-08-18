@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-17 23:56:17
+<?php /* Smarty version 2.6.7, created on 2012-08-18 01:10:00
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 220, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 238, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 17/08/2012 23:56:17 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 01:10:00 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
@@ -220,6 +220,25 @@ if ($this->_foreach['cur_meme']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['k'] => $this->_tpl_vars['x']):
         $this->_foreach['cur_meme']['iteration']++;
 ?>
+
+<?php echo '
+ 	<style type="text/css">
+ 		
+ 		';  if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )):  echo '
+ 		#big_heart';  echo $this->_tpl_vars['x']['id_meme'];  echo ':before, #big_heart';  echo $this->_tpl_vars['x']['id_meme'];  echo ':after { 
+			background:red;
+		 }
+		';  endif;  echo '
+
+ 		#like_link_box';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
+ 			display:none;
+ 		 }
+		#meme_image_cont';  echo $this->_tpl_vars['x']['id_meme'];  echo ':hover #like_link_box';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
+			display:inline;
+		 }
+	</style>
+'; ?>
+
 	<div  id="meme<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " class="meme">
 		
@@ -468,24 +487,6 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 	    <input type="hidden" name="is_disagreed" id="is_disagreed<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " value=''/>
 </div>
-<?php echo '
- 	<style type="text/css">
- 		
- 		';  if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )):  echo '
- 		.big_heart:before, .big_heart:after { 
-			background:red;
-		 }
-		';  endif;  echo '
-
- 		#like_link_box';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
- 			display:none;
- 		 }
-		#meme_image_cont';  echo $this->_tpl_vars['x']['id_meme'];  echo ':hover #like_link_box';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
-			display:inline;
-		 }
-	</style>
-'; ?>
-
 <?php endforeach; endif; unset($_from);  endif; ?>
 
 <!-- Template: meme/loadmorememe.tpl.html End --> 

@@ -221,6 +221,13 @@
 		top:-10px;
 	}
 
+	#logoa{
+		margin: 0 auto;
+		width:70px;
+		position: relative;
+		left:-100px;
+	}
+
 	#login_top {
 		position:relative;
 		top:-45px;
@@ -620,6 +627,19 @@
 		border-radius: 5px;
 	}
 
+	#videoa{
+		width:500px;
+		height:281px; 
+		position: absolute;
+		top:170px;
+		left:400px;
+		border: 2px solid #ACACAC;
+		box-shadow: 0 0 10px 0 #5CC2FF;
+		-moz-border-radius: 5px; 
+		-webkit-border-radius: 5px; 
+		border-radius: 5px;
+	}
+
 	#video_link{
 		position: absolute;
 		left:80px;
@@ -652,7 +672,7 @@
 
 	#cta_button{
 		position: absolute;
-		top:240px;
+		top:280px;
 		left:-320px;
 
 	}
@@ -664,7 +684,7 @@
 		position: absolute;
 		width:400px;
 		left:750px;
-		top:370px;
+		top:380px;
 		animation-name: wordPulse;
 	    animation-duration: 2s;
 	    animation-iteration-count: infinite;
@@ -796,7 +816,7 @@
 	#bottom_bar{
 		font-size:14px;
 		position:absolute;
-		top:650px;
+		top:700px;
 		left:530px;
 	}
 
@@ -839,16 +859,46 @@
 		left:5px;
 	}
 
-
-	
-	#about_page{
-		position:relative;
-		top:-30px;
-		opacity:100;
+	#privacy_cont{
+		width:900px;
+		margin:0 auto;
+		padding: 10px;
+		position: relative;
+		top:30px;
+		left:-200px;
 		moz-border-radius: 12px;
 	    webkit-border-radius: 12px;
 	    khtml-border-radius: 12px;
 	    border-radius: 12px;
+		background-color:#fff;
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+		border: 2px solid #ACACAC;
+	}
+
+	#logop{
+		margin: 0 auto;
+		width:100px;
+		position: relative;
+		left:-50px;
+	}
+	
+	#about_page{
+		position:relative;
+		margin-left: auto;
+		margin-right: auto;
+		left:-200px;
+		width:900px;
+		top:100px;
+		opacity:100;
+		padding:20px;
+		moz-border-radius: 12px;
+	    webkit-border-radius: 12px;
+	    khtml-border-radius: 12px;
+	    border-radius: 12px;
+		background-color:#fff;
+		background-image: url("noise.png"), -moz-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+		border: 2px solid #ACACAC;
+
 	}
 	
 	#about_title{
@@ -859,7 +909,6 @@
 	
 	.about_block {
 		position:relative;
-		border-bottom: 1px solid #C0C0C0;
 		padding:10px;
 	}
 	
@@ -899,6 +948,7 @@
 	
 	.privacy_p{
 		font-size:1.1em;
+		margin-bottom: 20px;
 	}
 
 
@@ -1702,7 +1752,7 @@
 		top: 0; 
 		width: 50px; 
 		height: 80px; 
-		background: #ACACAC; 
+		background: #555; 
 		-moz-border-radius: 50px 50px 0 0; 
 		border-radius: 50px 50px 0 0; 
 		-webkit-transform: rotate(-45deg); 
@@ -2428,9 +2478,9 @@ a{
 		position: absolute; 
 		top:100px;
 		left:570px;		
-		background-color:#E8E8E8;
+		background-color:#FCFCFC;
 		border: 1px solid #ACACA5;
-		box-shadow: 0 0 10px #ACACAC;
+		box-shadow: 0 0 10px #ff9718;
 		-moz-border-radius: 10px; 
 		-webkit-border-radius: 10px; 
 		border-radius: 10px;
@@ -2460,6 +2510,10 @@ a{
 		position:relative;
 		text-shadow: 2px 2px 3px #E0E0E0;
 		margin-bottom: 10px;
+	}
+
+	#meme_title:hover{
+		text-decoration: underline;
 	}
 
 	.info_profile_pic{
@@ -3039,7 +3093,6 @@ a{
 	position: relative;
 	padding: 0;
 	margin: 0;
-	right:300px;
 	background: #f9f9f9;
 	color: #444;
 	text-shadow: none;

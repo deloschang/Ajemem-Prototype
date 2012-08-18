@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-17 23:57:47
+<?php /* Smarty version 2.6.7, created on 2012-08-18 01:38:29
          compiled from meme/meme_list.tpl.html */ ?>
 <?php $this->assign('x', $this->_tpl_vars['util']->get_values_from_config('LIVEFEED_COLOR'));  echo '
 <!--
@@ -368,7 +368,7 @@ unset($_smarty_tpl_vars);
 		    				    	">
 	        Connect with Facebook
 			</div>
-			<div id="cta_message">We Promise To NEVER Post Without Your Permission</div>
+			<div id="cta_message">We Promise To NEVER Post Without Your Permission!</div>
 		</div>
 		<div id="bottom_bar">
 			<table><tr>

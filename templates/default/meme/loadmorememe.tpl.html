@@ -211,6 +211,24 @@
 <!-- end -->
 
 {foreach name=cur_meme item=x key=k from=$sm.res_meme}
+
+{literal}
+ 	<style type="text/css">
+ 		
+ 		{/literal}{if substr_count($x.honour_id_user,$smarty.session.id_user)}{literal}
+ 		#big_heart{/literal}{$x.id_meme}{literal}:before, #big_heart{/literal}{$x.id_meme}{literal}:after { 
+			background:red;
+		}
+		{/literal}{/if}{literal}
+
+ 		#like_link_box{/literal}{$x.id_meme}{literal} {
+ 			display:none;
+ 		}
+		#meme_image_cont{/literal}{$x.id_meme}{literal}:hover #like_link_box{/literal}{$x.id_meme}{literal} {
+			display:inline;
+		}
+	</style>
+{/literal}
 	<div  id="meme{$x.id_meme}" class="meme">
 		
 		<div id="meme_image_cont{$x.id_meme}"class="meme_image_cont">
@@ -409,22 +427,5 @@
 	    <input type="hidden" name="is_agreed" id="is_agreed{$x.id_meme}" value=''/>
 	    <input type="hidden" name="is_disagreed" id="is_disagreed{$x.id_meme}" value=''/>
 </div>
-{literal}
- 	<style type="text/css">
- 		
- 		{/literal}{if substr_count($x.honour_id_user,$smarty.session.id_user)}{literal}
- 		.big_heart:before, .big_heart:after { 
-			background:red;
-		}
-		{/literal}{/if}{literal}
-
- 		#like_link_box{/literal}{$x.id_meme}{literal} {
- 			display:none;
- 		}
-		#meme_image_cont{/literal}{$x.id_meme}{literal}:hover #like_link_box{/literal}{$x.id_meme}{literal} {
-			display:inline;
-		}
-	</style>
-{/literal}
 {/foreach}
 {/if}
