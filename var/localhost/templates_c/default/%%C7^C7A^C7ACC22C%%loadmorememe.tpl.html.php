@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.7, created on 2012-08-18 04:38:50
+<?php /* Smarty version 2.6.7, created on 2012-08-18 04:41:07
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 228, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 226, false),)), $this); ?>
 
-<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 04:38:50 --> 
+<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 04:41:07 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
 <?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
 <?php echo '
@@ -101,6 +101,7 @@ $(document).ready(function() {
 
 	 });	
 
+	// follow function for the live feed
 	function follow_user(status, whotofollow, follow_on_feed) {		
 		';  if ($_SESSION['profile_id']):  echo '
 			var profile_id = ';  echo $_SESSION['profile_id'];  echo ';
@@ -109,22 +110,19 @@ $(document).ready(function() {
         ';  endif;  echo '
                 
 		var url = "http://localhost/user/follow_user";
-		console.log(follow_on_feed);
 
 		$.post(url, {ce:0, id:profile_id, status:status }, function(res){
 			if (status == \'follow\') {
-				console.log(\'inner reached\');
 				follow_on_feed += 1;
-				$("#follow_me"+whotofollow).html(\'<a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user(\\\'unfollow\\\');">Follow &nbsp --</a>\');
+				$("#follow_me"+whotofollow).html(\'<a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user(\\\'unfollow\\\',\'+whotofollow+\',\'+follow_on_feed+\');">Follow &nbsp --</a>\');
 				//follow_count += 1;				
 			 } else if (status == \'unfollow\') {
 				follow_on_feed -= 1;
-				$("#follow_me"+whotofollow).html(\'<a href="javascript:void(0);" id="follow_btn" class="large orangellow button "onclick="follow_user(\\\'follow\\\');">Follow &nbsp ++</a>\');
+				$("#follow_me"+whotofollow).html(\'<a href="javascript:void(0);" id="follow_btn" class="large orangellow button "onclick="follow_user(\\\'follow\\\',\'+whotofollow+\',\'+follow_on_feed+\');">Follow &nbsp ++</a>\');
 				
 				//follow_count -= 1;
 			 }
 			
-			console.log(\'outer reached\'+follow_on_feed);
 			$(\'#follower_count\'+whotofollow).html(follow_on_feed+\' followers\');
 		 });
 	 }
