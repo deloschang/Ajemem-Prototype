@@ -260,14 +260,14 @@
 					if (ext == 0){
 						$('#all_memes').html(res);
 					} else {
-						$('#friend_memes').html(res);
+						$('#all_memes').html(res);	//friends feed
 					}
-				}
+				}/*
 				if (ext == 1){
 					$('#page_boop').hide();
 				} else {
 					$('#page_boop').show();
-				}
+				}*/
 			});
 	}
 	
@@ -291,15 +291,14 @@
 
 {if $smarty.session.id_user || $smarty.session.profile}
 <div>
-<div id="world_feed">
-<a href="javascript:void(0);" onclick="diff_feed(0);" class="large red button">World Feed</a>
-</div>
 
-{if $smarty.session.id_user}
-<div id="friends_feed">
-<a href="javascript:void(0);" onclick="diff_feed(1);" class="large red button">Friends Feed</a>
-</div>
-{/if}
+		<div id="world_feed" style="position:absolute; top:100px; left:0">
+				<a href="javascript:void(0);" onclick="diff_feed(0);">Latest</a>
+		</div>
+		
+		<div id="friends_feed" class="feed_buttons" style="position:absolute; top:0;left:0;">
+				<a href="javascript:void(0);" onclick="diff_feed(1);">Following</a>
+		</div>
 </div>
 
 
