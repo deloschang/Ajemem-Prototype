@@ -81,26 +81,28 @@
 		});		
 	}
 
-      $(document).ready(function() {	
+$(document).ready(function() {	
 		// prevents stacking w/ pagination
 		clearTimeout(meme_timer);
 		clearTimeout(meme_timer_new);
 		
 		//meme_timer = window.setTimeout("live_feed(0)", 1000);
 		
-		if (global_page_no == 1 && is_search != 1) {
+		/*if (global_page_no == 1 && is_search != 1) {
 			//meme_timer_new = window.setTimeout("live_meme()", 10000);
 		}
-		});
+		});*/
 
 	});	
 
-	function follow_user(status) {		
+	function follow_user(status, whotofollow) {		
 		{/literal}{if $smarty.session.profile_id}{literal}
-		var profile_id = {/literal}{$smarty.session.profile_id}{literal}
-		{/literal}{/if}{literal}
+		var profile_id = {/literal}{$smarty.session.profile_id}{literal};
+                {/literal}{/if}{literal}
+
+                var profile_id = whotofollow;
 		var url = "##LBL_SITE_URL##user/follow_user";
-		
+
 		$.post(url, {ce:0, id:profile_id, status:status}, function(res){
 			if (status == 'follow') {
 				$("#follow_me").html('<a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user(\'unfollow\');">Follow &nbsp --</a>');
@@ -326,10 +328,31 @@
 					{/if}
 					
 
+<<<<<<< HEAD
 				<div id="meme_info">  by
 					<span id="user{$sm.uinfo[$x.id_user].id_user}" class="info_name"><a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">{$sm.uinfo[$x.id_user].username}</a></span>		
 				</div>
 					</a>
+=======
+			<div id="meme_info">  by
+				<span id="user{$sm.uinfo[$x.id_user].id_user}" class="info_name"><a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">{$sm.uinfo[$x.id_user].username}</a></span>		
+			</div>
+				</a>
+
+                                
+                
+                        <div id="feed_follower_cont">
+                                <div id="follower_count">{$sm.uinfo[$x.id_user].follower_num}&nbsp followers</div>
+                        {if $x.id_user != $smarty.session.id_user}
+                                {if $smarty.session.following == 'y'}
+                                <span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow', {$x.id_user});">Follow &nbsp --</a></span>
+				{elseif $smarty.session.following == 'n'}
+					<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
+                                {/if}
+                        {/if}
+                        </div>
+                
+>>>>>>> 5c2ac589df438a501e85f1a4de9a7007afd6feeb
 
 				<div id="feed_follower_cont">
 					<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if}&nbsp followers</div>

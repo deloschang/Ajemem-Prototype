@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php /* Smarty version 2.6.7, created on 2012-08-18 01:10:00
          compiled from meme/loadmorememe.tpl.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
@@ -5,6 +6,17 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 
 <!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 01:10:00 --> 
  <?php if ($this->_tpl_vars['sm']['res_meme']):  $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY'));  echo '
+=======
+<?php /* Smarty version 2.6.7, created on 2012-08-18 01:29:58
+         compiled from meme/loadmorememe.tpl.html */ ?>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize', 'meme/loadmorememe.tpl.html', 222, false),)), $this); ?>
+
+<!-- Template: meme/loadmorememe.tpl.html Start 18/08/2012 01:29:57 --> 
+ <?php if ($this->_tpl_vars['sm']['res_meme']): ?>
+<?php $this->assign('category', $this->_tpl_vars['util']->get_values_from_config('CATEGORY')); ?>
+<?php echo '
+>>>>>>> 5c2ac589df438a501e85f1a4de9a7007afd6feeb
 <script type="text/javascript">	
 	var id = "';  echo $this->_tpl_vars['sm']['last_idmeme'];  echo '";	//lowest id
 	console.log(\'id=\'+id);
@@ -85,26 +97,28 @@ smarty_core_load_plugins(array('plugins' => array(array('modifier', 'capitalize'
 		 });		
 	 }
 
-      $(document).ready(function() {	
+$(document).ready(function() {	
 		// prevents stacking w/ pagination
 		clearTimeout(meme_timer);
 		clearTimeout(meme_timer_new);
 		
 		//meme_timer = window.setTimeout("live_feed(0)", 1000);
 		
-		if (global_page_no == 1 && is_search != 1) {
+		/*if (global_page_no == 1 && is_search != 1) {
 			//meme_timer_new = window.setTimeout("live_meme()", 10000);
 		 }
-		 });
+		 });*/
 
 	 });	
 
-	function follow_user(status) {		
+	function follow_user(status, whotofollow) {		
 		';  if ($_SESSION['profile_id']):  echo '
-		var profile_id = ';  echo $_SESSION['profile_id'];  echo '
-		';  endif;  echo '
+		var profile_id = ';  echo $_SESSION['profile_id'];  echo ';
+                ';  endif;  echo '
+
+                var profile_id = whotofollow;
 		var url = "http://localhost/user/follow_user";
-		
+
 		$.post(url, {ce:0, id:profile_id, status:status }, function(res){
 			if (status == \'follow\') {
 				$("#follow_me").html(\'<a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user(\\\'unfollow\\\');">Follow &nbsp --</a>\');
@@ -364,8 +378,29 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 " class="info_name"><a href="/?id=<?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['dupe_username']; ?>
 "><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['username']; ?>
 </a></span>		
+<<<<<<< HEAD
 				</div>
 					</a>
+=======
+			</div>
+				</a>
+
+                                
+                
+                        <div id="feed_follower_cont">
+                                <div id="follower_count"><?php echo $this->_tpl_vars['sm']['uinfo'][$this->_tpl_vars['x']['id_user']]['follower_num']; ?>
+&nbsp followers</div>
+                        <?php if ($this->_tpl_vars['x']['id_user'] != $_SESSION['id_user']): ?>
+                                <?php if ($_SESSION['following'] == 'y'): ?>
+                                <span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow', <?php echo $this->_tpl_vars['x']['id_user']; ?>
+);">Follow &nbsp --</a></span>
+				<?php elseif ($_SESSION['following'] == 'n'): ?>
+					<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
+                                <?php endif; ?>
+                        <?php endif; ?>
+                        </div>
+                
+>>>>>>> 5c2ac589df438a501e85f1a4de9a7007afd6feeb
 
 				<div id="feed_follower_cont">
 					<div id="follower_count"><?php if (! $_SESSION['profile_follower_count'] == '0'):  echo $_SESSION['profile_follower_count'];  else: ?>0<?php endif; ?>&nbsp followers</div>
@@ -389,6 +424,16 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 						</tr></table>
 				</div>
 			</div>
+<<<<<<< HEAD
+=======
+			<div id="comments">
+				<?php if ($this->_tpl_vars['x']['can_all_comment'] || $_SESSION['id_user'] == $this->_tpl_vars['x']['id_user']): ?>
+					<a href="javascript:void(0);" onclick="get_all_replies('<?php echo $this->_tpl_vars['x']['id_meme']; ?>
+');">Comments</a>
+				<?php endif; ?>
+			</div>
+
+>>>>>>> 5c2ac589df438a501e85f1a4de9a7007afd6feeb
 		</div>
 			<!-- Reply System -->
 			<!--
@@ -487,6 +532,28 @@ if ($this->_foreach['cur_meme']['total'] > 0):
 	    <input type="hidden" name="is_disagreed" id="is_disagreed<?php echo $this->_tpl_vars['x']['id_meme']; ?>
 " value=''/>
 </div>
+<<<<<<< HEAD
 <?php endforeach; endif; unset($_from);  endif; ?>
+=======
+<?php echo '
+ 	<style type="text/css">
+ 		';  if (substr_count ( $this->_tpl_vars['x']['honour_id_user'] , $_SESSION['id_user'] )):  echo '
+ 		.big_heart:before, .big_heart:after { 
+			background:red;
+		 }
+		';  endif;  echo '
+
+ 		#like_link_box';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
+ 			display:none;
+ 		 }
+		#meme_image_cont';  echo $this->_tpl_vars['x']['id_meme'];  echo ':hover #like_link_box';  echo $this->_tpl_vars['x']['id_meme'];  echo ' {
+			display:inline;
+		 }
+	</style>
+'; ?>
+
+<?php endforeach; endif; unset($_from); ?>
+<?php endif; ?>
+>>>>>>> 5c2ac589df438a501e85f1a4de9a7007afd6feeb
 
 <!-- Template: meme/loadmorememe.tpl.html End --> 

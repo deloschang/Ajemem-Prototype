@@ -1915,16 +1915,30 @@ function _logout(){
 	
 	function _follow_user(){
 		$data = $this->_input;
-		
+
+                
 		$info['following'] = $data['id'];
 		$info['id_user'] = $_SESSION['id_user'];
 				
 		if ($data['status'] == 'follow'){			
-			$this->obj_user->insert_all("friends",$info);
+                        $this->obj_user->insert_all("friends",$info);
+                        
+                        // adds 1 to the follower count in the MySQL database
+                        $table_name = "user";
+                        $follownum['follower_num'] = "follower_num+1";
+                        $cond = " id_user=".$info['following'];
+                        $result = $this->obj_user->update_this($table_name,$follownum,$cond,1);
+
 		} elseif ($data['status'] == 'unfollow'){
 			$sql = "DELETE FROM memeje__friends WHERE id_user = ".$info['id_user']." AND following = ".$info['following'];
-
 			execute($sql,$err);
+                        
+                        // subtracts 1 to follower count
+                        $table_name = "user";
+                        $follownum['follower_num'] = "follower_num-1";
+                        $cond = " id_user=".$info['following'];
+                        $result = $this->obj_user->update_this($table_name,$follownum,$cond,1);
+
 		}
 	}
 	
