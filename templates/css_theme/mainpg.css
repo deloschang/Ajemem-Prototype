@@ -1007,14 +1007,14 @@
 	
 	#world_feed {
 		position:absolute;
-		top:30px;
-		left:140px;
+		top:0px;
+		left:370px;
 	}
 	
 	#friends_feed {
 		position:absolute;
-		top:32px;
-		right:940px;
+		top:0px;
+		right:370px;
 		z-index:100;
 	}
 	

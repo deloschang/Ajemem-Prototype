@@ -326,14 +326,6 @@ $(document).ready(function() {
 					{if $sm.uinfo[$x.id_user].gender=='M'}
 						<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_male.png" class="info_profile_pic"/>{else}<img src="##LBL_SITE_URL##image/thumb/avatar/memeja_female.png" class="info_profile_pic"/>{/if}
 					{/if}
-					
-
-<<<<<<< HEAD
-				<div id="meme_info">  by
-					<span id="user{$sm.uinfo[$x.id_user].id_user}" class="info_name"><a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">{$sm.uinfo[$x.id_user].username}</a></span>		
-				</div>
-					</a>
-=======
 			<div id="meme_info">  by
 				<span id="user{$sm.uinfo[$x.id_user].id_user}" class="info_name"><a href="/?id={$sm.uinfo[$x.id_user].dupe_username}">{$sm.uinfo[$x.id_user].username}</a></span>		
 			</div>
@@ -351,17 +343,6 @@ $(document).ready(function() {
                                 {/if}
                         {/if}
                         </div>
-                
->>>>>>> 5c2ac589df438a501e85f1a4de9a7007afd6feeb
-
-				<div id="feed_follower_cont">
-					<div id="follower_count">{if !$smarty.session.profile_follower_count == '0'}{$smarty.session.profile_follower_count}{else}0{/if}&nbsp followers</div>
-					{if $smarty.session.following == 'y'}
-						<span id="follow_me"><a href="javascript:void(0);" id="follow_btn" class="large orangellow button" onclick="follow_user('unfollow');">Follow &nbsp --</a></span>
-					{elseif $smarty.session.following == 'n'}
-						<span id="follow_me"><a href="javascript:void(0);" id="follow_btn"class="large orangellow button" onclick="follow_user('follow');">Follow &nbsp ++</a></span>
-					{/if}
-				</div>
 
 				<div id="share_btns">
 					<table><tr>
