@@ -190,7 +190,7 @@ function _save_flash_meme(){
 		$data['top_caption'] = $_POST['top_caption'];
 		$data['bottom_caption'] = $_POST['bottom_caption'];
 		$data['user_id'] = $_POST['user_id'];
-		$data['tagged_user'] = $_POST['tagged_user'];
+		//$data['tagged_user'] = $_POST['tagged_user'];
 		$data['id_user'] = $_SESSION['id_user'];
 		
 		$test_success_id = $this->obj_meme->insert_all("meme",$data);
