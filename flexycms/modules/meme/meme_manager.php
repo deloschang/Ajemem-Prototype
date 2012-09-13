@@ -93,6 +93,9 @@ class meme_manager extends mod_manager {
 		$rows['items'] = array();
 		$i = 0;
 		while($rec = mysqli_fetch_assoc($res)){
+      if (stripos($rec['source'], 'http://') !== false){
+        $rec['source'] = substr($rec['source'], 18);
+      }
 			$rows['items'][] = $rec;
 			$decoded_top_caption = json_decode($rec['top_caption'], true);
 			$decoded_bot_caption = json_decode($rec['bottom_caption'], true);
@@ -190,6 +193,7 @@ function _save_flash_meme(){
 		$data['top_caption'] = $_POST['top_caption'];
 		$data['bottom_caption'] = $_POST['bottom_caption'];
 		$data['user_id'] = $_POST['user_id'];
+    // Fix for Execute SQL error 
 		//$data['tagged_user'] = $_POST['tagged_user'];
 		$data['id_user'] = $_SESSION['id_user'];
 		
