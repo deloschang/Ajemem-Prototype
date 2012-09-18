@@ -4,7 +4,7 @@
 
     define("DB_USER",'root'); // MySql User name
 
-    define("DB_PASS",'pf1cs3f2xo3q'); // MySql password
+    define("DB_PASS",''); // MySql password
 
     define("DB_DB",'demos4clients_com_db'); // MySql Database Name
 
